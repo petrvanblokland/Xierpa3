@@ -12,6 +12,8 @@ Make sure that Python 2.7 is installed, otherwise install from http://python.org
 Install Twisted Matrix server from https://twistedmatrix.com/trac/
 Install element tree "lxml" from http://lxml.de/index.html
 Install "sass" from http://sass-lang.com
+Install "boto" from https://aws.amazon.com/sdkforpython/
+Install "cjson" from http://sourceforge.net/projects/cjson/
 
 Installation
 Add xierpa3.pth to Python site-packages, referring to this git Xierpa3 install

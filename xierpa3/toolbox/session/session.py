@@ -56,7 +56,7 @@ class Session:
         self.data = {C.PARAM_SID: key,     # Always store session key and timestamp in data set, so it will show
             'timestamp': self.timestamp, # and be saved in a server halt-start
         }
-        self.limit = limit or C.SESSION_EXPIRETIME    # Remember the original limit, so we can extend with the same amount. Default is 1 hour.
+        self.limit = limit or C.SESSION_SESSIONEXPIRATIONTIME    # Remember the original limit, so we can extend with the same amount. Default is 1 hour.
         self.name = name or 'Session' # Store an optional name for this session (e.g. storage for a connected url)
         self.user = user or 'guest' # Store user name in the session
         self.refresh() # Set expire time for this session
@@ -216,7 +216,7 @@ class Session:
         if form:
             self.refresh()
             for field in form.keys():
-                if field == C.SESSION_ID:        # Never overwrite local sessions id
+                if field == C.PARAM_SID:        # Never overwrite local sessions id
                     continue
                 self[field] = form[field]
 

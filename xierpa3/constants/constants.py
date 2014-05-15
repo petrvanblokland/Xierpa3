@@ -111,6 +111,7 @@ class C(Config):
     PARAM_AUTHOR = 'author'
     PARAM_ARTICLE = 'article'
     PARAM_CATEGORY = 'category'
+    PARAM_SID = 'sid' # Session id
     
     # Tag
     TAG_BLOCK = 'div' # Default tag for blocks
@@ -186,6 +187,33 @@ class C(Config):
     SASS_DEFAULTSTYLE = SASS_COMPRESSED
 
     # ---------------------------------------------------------------------------------------------------------
+    #     S E S S I O N  K E Y S
+
+    SESSION_ID = PARAM_SID
+    SESSION_SESSIONEXPIRATIONTIME = 600 # 10 minutes for normal usage of the site
+    SESSION_EDITEXPIRATIONTIME = 3600 # 1 hour for editing mode.
+    SESSION_SIDDIGITS = 64 # Number of digits chunks for the session id (64 digits default)
+    # Don't make too high or else it will not fit in the cookie
+    SESSION_LANGUAGE = 'language'
+    SESSION_TYPESTAMPRANDOMRANGE = 10000000 # Random range added to a session timestamp
+
+    # ---------------------------------------------------------------------------------------------------------
+    #    D A T A B A S E
+    #
+    #    Standard table and field names
+    #
+    TABLE_XREF = 'xref'
+    TABLE_ADDRESS = 'address'    
+    
+    FIELD_XSRCTABLE = 'xsrc'
+    FIELD_XSRCFIELD = 'xsrc'
+    FIELD_XREFSRCID = 'srcId'
+
+    FIELD_XDSTTABLE = 'xdst'
+    FIELD_XDSTFIELD = 'dstId'
+    FIELD_XREFDSTID = 'dstId'
+    
+    # ---------------------------------------------------------------------------------------------------------
     #    B R O W S E R  S T U F F
 
     BROWSER_UNKNOWN = 'browser_unknown'
@@ -210,6 +238,8 @@ class C(Config):
     TRUEVALUES = (1, '1', 't', 'T', 'true', 'True', 'TRUE', 'y', 'Y', 'yes', 'Yes', 'YES', True)
     BOOLVALUES = FALSEVALUES + TRUEVALUES
 
-class Constants:
-    # Dummy class in order to make transition from Xierpa 2.
-    pass
+    # ---------------------------------------------------------------------------------------------------------
+    #     X S L
+
+    XSL_XMLCONVERSIONS = (int, float, long, tuple, list, dict, bool)
+

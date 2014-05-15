@@ -11,6 +11,7 @@
 #   environment.py
 #
 import weakref
+import cjson
 from xierpa3.descriptors.state import State
 from xierpa3.toolbox.formdict import FormDict
 

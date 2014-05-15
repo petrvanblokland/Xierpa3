@@ -12,8 +12,7 @@
 #
 #     Main server source example to be started for live serving of Xierpa3 sites.
 
-from dbdclient import DBDClient
-from xierpa3.constants.config.config import Config
+from client import Client
 from xierpa3.server.twistedmatrix.twistedserver import TwistedServer
 
 class Server(TwistedServer):

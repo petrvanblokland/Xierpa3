@@ -11,9 +11,9 @@
 #    json.py
 #
 try:
-    import cjson
+    import cjson #@UnusedImport
 except Exception, e:
-    print 'Error loading python-cjson'
+    print '### Error loading python-cjson. Better install it. json used otherwise.'
     print e
     import json
     

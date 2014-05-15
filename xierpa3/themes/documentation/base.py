@@ -7,3 +7,10 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
+#    base.py
+#
+from xierpa3.components.theme import Theme
+
+class BaseDocumentation(Theme):
+    pass

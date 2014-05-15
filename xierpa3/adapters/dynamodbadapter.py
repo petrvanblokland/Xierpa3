@@ -10,11 +10,12 @@
 #
 #   dynamodbadapter.py
 #
-from random import choice, randint
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
-from xierpa3.toolbox.database.dynamodb.dynamodbconnector import Connector
+#from xierpa3.toolbox.database.dynamodb.dynamodbconnector import Connector
+
+class Connector():
+    #    @@@ Under development
+    pass
 
 class DynamoDBAdapter(Adapter):
     u"""

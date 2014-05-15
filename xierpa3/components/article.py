@@ -11,7 +11,6 @@
 #    article.py
 #
 from xierpa3.components.column import Column
-from xierpa3.components.text import Text
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import *

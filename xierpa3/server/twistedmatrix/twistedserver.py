@@ -56,10 +56,10 @@ class TwistedServer(BaseServer):
 
         # Create a Twisted server reactor and subscribe our leaf server
         site = server.Site(client)
-        reactor.listenTCP(port, site)
+        reactor.listenTCP(port, site) # @UndefinedVariable
 
         # Start running the server
-        reactor.run()
+        reactor.run() # @UndefinedVariable
 
     def getScheduler(self, client):
         u"""

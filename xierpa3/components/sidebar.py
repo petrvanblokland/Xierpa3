@@ -7,6 +7,7 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
 #    sidebar.py
 #
 from xierpa3.components.component import Component

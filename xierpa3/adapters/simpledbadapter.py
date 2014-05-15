@@ -12,7 +12,6 @@
 #
 from random import choice, randint
 from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict
 
@@ -36,16 +35,17 @@ class SimpleDBAdapter(Adapter):
     def getFeaturedArticles(self, site, count=1):
         # Answer count list of (imagePath, head, ankeiler, link)
         articles = []
-        for n in range(1, (count or 1) + 1):
-            image = choice(images)
-            articles.append((image, self.blurb.getBlurb('design_headline', 8) + '.',
-                self.blurb.getBlurb('article_ankeiler', 30) + '.', 'Link'))
+        for _ in range(1, (count or 1) + 1):
+            pass
+            #image = choice(images)
+            #articles.append((image, self.blurb.getBlurb('design_headline', 8) + '.',
+            #    self.blurb.getBlurb('article_ankeiler', 30) + '.', 'Link'))
         return articles
 
     def getTagCloud(self, site, count=1):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         cloud = ['Tags']
-        for n in range(10):
+        for _ in range(10):
             cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
         return cloud
 

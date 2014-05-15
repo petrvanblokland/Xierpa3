@@ -11,8 +11,8 @@
 #     etreenode.py
 #
 from lxml import etree
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
+from xierpa3.constants.constants import C
 
 class EtreeNode:
     u"""
@@ -140,7 +140,7 @@ class EtreeNode:
         key = TX.pyAttrName2XmlAttrName(key)
         value = self._xpath('@' + key)
         if value:
-            return TX.xmlValue2PyValue(value[0], Constants.XSL_XMLCONVERSIONS)
+            return TX.xmlValue2PyValue(value[0], C.XSL_XMLCONVERSIONS)
         return None
 
     def _getTag(self):
@@ -164,7 +164,7 @@ class EtreeNode:
         attributes = {}
         for index, value in enumerate(self._xpath('@*') or []):
             attrname = TX.xmlAttrName2PyAttrName(self._xpath('name(@*[%d])' % (index + 1)))
-            attributes[attrname] = TX.xmlValue2PyValue(value, Constants.XSL_XMLCONVERSIONS)
+            attributes[attrname] = TX.xmlValue2PyValue(value, C.XSL_XMLCONVERSIONS)
         return attributes
 
     def _getNodes(self, name=None):

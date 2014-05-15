@@ -7,9 +7,10 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
-
-from os.path import exists
-from urllib import quote_plus
+#
+#    etreexmlparser.py
+#
+import os
 from lxml import etree
 
 XIERPANAMESPACE = 'http://www.xierpa.com/xslt'
@@ -33,7 +34,7 @@ class UnbasedPathResolver(etree.Resolver):
         cachedxsl = UnbasedPathResolver.cache.get(url)
         if CACHING and cachedxsl is not None:
             timestamp, path, xsl = cachedxsl
-            if timestamp == getmtime(path):
+            if timestamp == os.path.getmtime(path):
                 # Nothing changed, use the cache XSL content.
                 return self.resolve_string(xsl, context)
 
@@ -53,7 +54,7 @@ class UnbasedPathResolver(etree.Resolver):
         # Run over search path to test if file exists
         for i in range(len(dirs), 0, -1):
             p = fsroot + '/'.join(dirs[:i]) + path
-            if exists(p):
+            if os.path.exists(p):
                 f = open(p, 'rb')
                 xsl = f.read()
                 f.close()

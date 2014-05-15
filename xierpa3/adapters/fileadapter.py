@@ -8,14 +8,13 @@
 #
 # -----------------------------------------------------------------------------
 #
-#   fileadapter.py
+#    fileadapter.py
 #
 #    xpath examples: http://msdn.microsoft.com/en-us/library/ms256086(v=vs.110).aspx
 #
 import os
 from lxml import etree
 import codecs
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter, Data
 
@@ -184,7 +183,7 @@ class FileAdapter(Adapter):
             if not categories.has_key(category):
                 categories[category] = []
             categories[category].append(article)
-        return categores
+        return categories
     
     def getMenu(self, component, id):
         u"""Answer the list of menu articles in this component."""

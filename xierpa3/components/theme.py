@@ -91,15 +91,14 @@ if __name__ == "__main2__":
         TagCloud(),
         ), id='sidebar', width='38%', float='left'
     )
-    main = Group(e, (
+    main = Group(components=(
         Header(Text('Header of the page', fontsize=50, color='red')),
-        Title('Title of the page'),
         Article(Text('This is a text. ' * 40)),
         Header(Text('Another header')),
         Article(Text('This is another text. ' * 20)),
         ), id='main', width='60%', float='left'
     )
-    contact = Group(e, (
+    contact = Group(components=(
         Header(Text('Contact', fontsize=50), name='Contact'))
     )
     components = (

@@ -10,6 +10,7 @@
 #
 from component import Component
 from text import Text
+from title import Title
 from header import Header
 from footer import Footer
 from container import Container

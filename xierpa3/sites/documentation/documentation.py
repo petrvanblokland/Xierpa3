@@ -14,7 +14,7 @@
 #
 #    http://localhost:8013/course/how-to-deal-with-customers
 #
-from xierpa3.themes.documentation.base import BaseDocumentation
+from xierpa3.themes.documentation.base import BaseDocumentation 
 from xierpa3.adapters.fileadapter import FileAdapter
 from xierpa3.descriptors.style import StyleSet
 from xierpa3.attributes import Em

@@ -485,16 +485,6 @@ class Component(object):
 
     parent = property(_get_parent, _set_parent)
 
-    # self.root    Answer the root (typically the theme of a tree) component of this component
-
-    def _get_root(self):
-        parent = self.parent # Process weakref
-        if parent is None: # Top of the tree, answer self
-            return self
-        return parent.root # Find the root from parent.
-
-    root = property(_get_root)
-
     # self.text     Collect all text from the component nodes
 
     def _get_text(self):

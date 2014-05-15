@@ -11,9 +11,13 @@
 #   sqladapter.py
 #
 from xierpa3.adapters.adapter import Adapter
-from xierpa3.toolbox.database.sql.sqldatastore import SqlDatastore
+#from xierpa3.toolbox.database.sql.sqldatastore import SqlDatastore
 from xierpa3.toolbox.database.base.defaultmodels import Item
 from xierpa3.toolbox.database.base.selector import Selector
+
+class SqlDatastore():
+    #    @@@ Under development
+    pass
 
 class SQLAdapter(Adapter):
 

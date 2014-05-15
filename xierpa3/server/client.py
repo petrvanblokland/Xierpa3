@@ -10,7 +10,7 @@
 
 from xierpa3.server.twistedmatrix.twistedclient import TwistedClient
 from xierpa3.sites.doingbydesign.doingbydesign import DoingByDesign
-from xierpa3.sites.documentation.documentation import documentation
+from xierpa3.sites.documentation.documentation import Documentation
 
 class Client(TwistedClient):
 

@@ -10,8 +10,8 @@
 #
 #    state.py
 #
-import json
 from copy import copy
+from xierpa3.toolbox.parsers.json import cjson
 from basenode import BaseNode
 from xierpa3.toolbox.transformer import TX
 
@@ -98,7 +98,7 @@ class State(BaseNode):
 
     @classmethod
     def _fromDict(cls, d):
-        return cls(s)
+        return cls(d)
 
     @classmethod
     def _fromObject(cls, o):
@@ -145,21 +145,11 @@ class State(BaseNode):
         state. If s evaluates to a dict, then create a single state.
         """
         assert isinstance(s, basestring)
-        return cls._fromObject(json.loads(s))
+        return cls._fromObject(cjson.encode(s))
 
     def _asJson(self):
         u"""
         Convert self to an object of standard Python instances, so it can be dumped by JSON.
         """
-        return json.dumps(self._asObject(self))
+        return cjson.decode(self._asObject(self))
 
-    def _copyFrom(self, data):
-        u"""
-        Data can be a State instance or a dict. Only keys without a initial "_" are copied into self. Any existing 
-        value in self with the same key is overwritten. Other key values are untouched.
-        """
-        if isinstance(state, State):
-            data = state.getAttributes()
-        if isinstance(data, dict):
-            for key, item in data.items():
-                data[key] = item

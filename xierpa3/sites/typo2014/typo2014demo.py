@@ -10,12 +10,11 @@
 #
 #    typo2014demo.py
 #
-from xierpa3.themes.blog.blog import Blog
+from xierpa3.themes.blog.base import BaseBlog
 from xierpa3.components import Logo, Menu, SocialMedia, Header
 from xierpa3.components import MobileNavigation, Footer, Page
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
-from xierpa3.attributes import Em
 from xierpa3.adapters.fileadapter import FileAdapter
 from xierpa3.sites import typo2014
 
@@ -23,7 +22,7 @@ from xierpa3.sites import typo2014
 class Typo2014Adapter(FileAdapter):
     pass
 
-class Typo2014(Blog):
+class Typo2014(BaseBlog):
     TITLE = 'Typo2014'
     SUBTITLE = 'Roots.'
 

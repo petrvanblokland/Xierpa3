@@ -12,10 +12,7 @@
 #
 import sys, os
 import traceback
-try
-    import cStringIO as StringIO
-except:
-    import StringIO
+import cStringIO as StringIO
 
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.dating import DateTime

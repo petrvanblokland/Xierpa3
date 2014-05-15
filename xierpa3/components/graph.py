@@ -7,14 +7,12 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
 #    graph.py
 #
 from xierpa3.components.component import Component
-from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX 
-from xierpa3.attributes import *
-from xierpa3.descriptors.style import Media
 
 class Graph(Component):
 
@@ -22,8 +20,9 @@ class Graph(Component):
         # Layout stuff
     )
     def buildBlock(self, b):
+        colClass = TX.col2Class('graph')
         s = self.style
         b.block(self)
-        b.div(class_='graph', float=s.graphFloat or C.LEFT, width=s.graphWidth or C.C100)
+        b.div(class_=colClass, float=s.graphFloat or C.LEFT, width=s.graphWidth or C.C100)
         b._div(comment=colClass)
         b._block(self)

@@ -1,1 +1,1 @@
-"""Empty __init__.py file to signal Python this directory is a package.(It can't be completely empty since WinZip seems to skip empty files.)"""
+# -*- coding: UTF-8 -*-# -----------------------------------------------------------------------------#    xierpa server#    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com#    #    X I E R P A  3#    Distribution by the MIT License.## -----------------------------------------------------------------------------

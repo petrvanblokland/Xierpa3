@@ -7,14 +7,10 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
+#    base.py
+#
+from xierpa3.components.theme import Theme
 
-import rdflib
-
-class RdfDatastore(object):
-
-    def createStore(self):
-        # Example.
-        store = TripleStore()
-        store.parse ( inputsource )
-        rdf_subjects = store.subjects()
-        store.predicates(subject="http://web.resource.org/cc/License")
+class BaseBlog(Theme):
+    pass

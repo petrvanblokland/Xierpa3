@@ -15,6 +15,7 @@ import re
 import urllib
 import inspect
 from xierpa3.constants.constants import C
+from xierpa3.toolbox.dating import uniqueId
 
 class Transformer:
 
@@ -1279,7 +1280,7 @@ class Transformer:
             elif class_ is None:
                 continue
             else:
-                raise TypeError('[Transformer.flatten2Class] Class part must be None, string, tuple or list, not "%s"' % classes)
+                raise TypeError('[Transformer.flatten2Class] Class part must be None, string, tuple or list, not "%s"' % class_)
         return ' '.join(result)
 
     @classmethod

@@ -8,9 +8,9 @@
 #
 # -----------------------------------------------------------------------------
 #
-#   mysql.py
+#    title.py
 #
-import mysql.connector
+from xierpa3.components.component import Component
 
-class MySQL:
+class Title(Component):
     pass

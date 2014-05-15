@@ -7,6 +7,7 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
 from values import asValue, Value, Em, Z, Named, Selection
 from attribute import Attribute
 from gradient import Gradient, LinearGradient

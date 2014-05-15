@@ -10,7 +10,6 @@
 #
 #   sassbuilder.py
 #
-import os
 import re
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltransformerpart import XmlTransformerPart
@@ -448,52 +447,6 @@ class SassBuilder(XmlTransformerPart, Builder):
         if textComponent is not None and not isinstance(textComponent, basestring):
             self.buildStyle(textComponent.style)
     
-    # P R E F I X
-
-    def XXXexpandPrefix(self, name, values):
-        results = []
-        for prefix in C.PREFIXES_BASE:
-            result = []
-            results.append(result)
-            if prefix == C.PREFIX_DEFAULT:
-                cssprefix = ''
-                hook = 'prefix_%s' % attributeName
-                if hasattr(self, hook):
-                    result += getattr(self, hook)(prefix, value)
-                else: # No default hook defined, let the css caller do the work.
-                    break
-            else:
-                cssprefix = '-%s-' % prefix
-                hook = 'prefix_%s_%s' % (prefix, attributeName)
-                if not hasattr(self, hook):
-                    # If not a specific hook, use the generic hook with the added prefix in output
-                    hook = 'prefix_%s' % attributeName # Use default instead.
-                result += getattr(self, hook)(cssprefix, value)
-        return results
-
-    def XXXprefix_boxshadow(self, ccsprefix, values):
-        # (t, r, b, l, color)
-        assert len(values) == 5
-        t, r, b, l, c = values
-        return ['%sbox-shadow: %s %s %s %s %s' % (asValue(t), asValue(r), asValue(b), asValue(l), c)]
-
-    def XXXprefix_lineargradient(self, cssprefix, values):
-        # ('left' , 'rgb(179,179,181)', 35, 'rgb(130,132,135)', 82)
-        assert len(values) == 5
-        side, c1, p1, c2, p2 = values
-        return ['%slinear-gradient(%s, %s, %s%%, %s, %s%%);' % (cssprefix, side, c1, p1, c2, p2)]
-
-    def XXXprefix_webkit_lineargradient(self, cssprefix, values):
-        # ('left' , 'rgb(179,179,181)', 35, 'rgb(130,132,135)', 82)
-        assert len(value) == 5
-        side, c1, p1, c2, p2 = values
-        if 'left' in side:
-            side1, side2 = 'left', 'right'
-        else:
-            side2, side1 = 'right', 'left'
-        return ['-webkit-linear-gradient(%s, %s, %s%%, %s, %s%%);' % values,
-                '-webkit-gradient(linear, %s top, %s top, color-stop(%0.2f, %s), color-stop(%0.2f, %s)' % (side1, side2, p1 / 100, c1, p2 / 100, c2)]
-
     # R E S O U R C E S
 
     def reset(self):

@@ -42,10 +42,10 @@ class SessionManager(dict):
         u"""
         <doc>
         The <code>getNewSessionId</code> method answers a new generated session id of length <attr>size</attr>
-        of <code>self.VALUE_SIDDIGITS</code> if omitted.
+        of <code>self.SESSION_SIDDIGITS</code> if omitted.
         </doc>
         """
-        return str(uniqueId(size or C.VALUE_SIDDIGITS))
+        return str(uniqueId(size or C.SESSION_SIDDIGITS))
 
     @classmethod
     def newTimeStamp(cls):
