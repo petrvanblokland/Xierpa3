@@ -166,7 +166,7 @@ class Article(ArticleColumn):
         s = self.style
         # SVG demo
         b.div(class_=C.CLASS_CHAPTER, color=s.chapterColor)
-        # Should move from here. Make sure that svgExamples get SCSS builder call.
+        # Should move from here. Make sure that svgExamples get SCSS builder calls.
         b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
         b._div()
         # h1
@@ -175,17 +175,20 @@ class Article(ArticleColumn):
              paddingtop=s.h1PaddingTop, paddingbottom=s.h1PaddingBottom,
         )
         b._h1()
+        # <h2>
         b.h2(fontsize=s.h2Size, lineheight=s.h2LineHeight, 
              fontweight=s.h2FontSize,
              fontstyle=s.h2FontStyle, fontfamily=s.h2FontFamily, color=s.h2Color,
              paddingtop=s.h2PaddingTop, paddingbottom=s.h2PaddingBottom,
         )
         b._h2()
+        # <h3>
         b.h3(fontsize=s.h3Size, lineheight=s.h3LineHeight, fontweight=s.h3FontSize,
              fontstyle=s.h3FontStyle, fontfamily=s.h3FontFamily, color=s.h3Color,
              paddingtop=s.h3PaddingTop, paddingbottom=s.h3PaddingBottom,
         )
         b._h3()
+        # <h4>
         b.h4(fontsize=s.h4Size, lineheight=s.h4LineHeight, fontweight=s.h4FontSize,
              fontstyle=s.h4FontStyle, fontfamily=s.h4FontFamily, color=s.h4Color,
              paddingtop=s.h4PaddingTop, paddingbottom=s.h4PaddingBottom,

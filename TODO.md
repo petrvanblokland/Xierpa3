@@ -14,6 +14,7 @@ Wish list of features
 	- Finishing the S3 Adapter.
 	- Extending the amount of builders: AngularBuilder, PdfBuilder, PhPBuidler, WordpressBuilder, KirbyBuilder.
 	- Extending the JavaScript builder.
+	- Setup example development blog (online) with user respons. Both as working site and example themes in code.
 	- (Automatic) documentation site.
 	- More "how to" documentation: how to inherit from existing classes.
 	- Extending the designs of the example site.
