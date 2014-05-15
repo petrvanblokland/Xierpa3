@@ -21,6 +21,6 @@ class Client(TwistedClient):
     THEMES = {
         # Matching theme names with Theme instances.
         TwistedClient.DEFAULTTHEME: doingByDesign,
-        'dov': documentation,
-        'dbd': doingByDesign,
+        'doc': documentation, # http://localhost:8050/doc (developer documentation site)
+        'dbd': doingByDesign,  # http://localhost:8050/dbd (same as default site)
     }

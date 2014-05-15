@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 # -----------------------------------------------------------------------------
 #    xierpa server
-#    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
+#   
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -26,8 +26,14 @@ But it already is a great framework to start thinking about the creation of
 publications through objects, rather than writing websites in HTML and CSS directly. 
 
 # -----------------------------------------------------------------------------
-Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
+Databases
+A variety of database connections is possible: local and online SQL databases,
+Amazon database services and S3. The amount of adapters has to be extended for
+the public versions of Xierpa3 to make this work. Both Postgres and MySql are 
+supported.
 
+# -----------------------------------------------------------------------------
+Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
 # -----------------------------------------------------------------------------

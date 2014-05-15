@@ -1,9 +1,10 @@
 # -*- coding: UTF-8 -*-
 # -----------------------------------------------------------------------------
-#   xierpa server
-#   Copyright(c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
+#    xierpa server
+#    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
 #   
-#   X I E R P A  3
+#    X I E R P A  3
+#    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
 #
@@ -24,5 +25,10 @@ Add xierpa3.pth to Python site-packages, referring to this git Xierpa3 install
 Copy xierpa3/constants/config/COPYTO-config.py to xierpa3/constants/config.config.py and adjust
 the parameters and access keys to your own settings. Make sure this config.py never writes back
 into git (future development is to store this file in your local user folder).
+
+Databases
+A variety of database connections is possible: local and online SQL databases,
+Amazon database services and S3. The access codes and IP/URL's need to be filled
+into the config.py or defined locally in the site application.
 
 # -----------------------------------------------------------------------------

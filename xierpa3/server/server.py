@@ -20,5 +20,5 @@ class Server(TwistedServer):
 
 if __name__ == '__main__':
     client = Client()
-    port = 8013 # Use port = 80 for serving under main domain names.
+    port = 8050 # Use port = 80 for serving under main domain names.
     Server().start(client, port)

@@ -12,11 +12,13 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-from xierpa3.attributes import *
+from xierpa3.attributes import Margin
 from xierpa3.descriptors.style import Media
 
 class Container(Component):
 
+    MAXCOL = C.MAXCOL
+    
     def initialize(self):
         s = self.style
         self.addMedia(max=C.M_MOBILE, display=s.mobileDisplay) # No header in Mobile layout
@@ -24,10 +26,11 @@ class Container(Component):
         totalWidth = 0
         for component in self.components:
             totalWidth += component.style.colWidth or 0
-        if totalWidth > C.MAXCOL:
-            print '### Column error ###', totalWidth, self.components  
-        elif 0 < totalWidth < C.MAXCOL:
-            print '### Column warning ###', totalWidth, self.components  
+        if C.DEBUG: # If debugging, show some analysis about the use of columns.
+            if totalWidth > self.MAXCOL:
+                print '### Column error ###', totalWidth, self.components  
+            elif 0 < totalWidth < self.MAXCOL:
+                print '### Column warning ###', totalWidth, self.components  
 
     def buildBlock(self, b):
         u"""The Container is used to group components together. It shows the components combined in a single row.
