@@ -22,7 +22,7 @@ Wish list of features
 	
 Longer term
 	- Desktop app with a choice of parametric designer templates.
-	- Components for responsive graph and table building, spreadsheet component.
+	- Comoponents for responsive graph and table building, spreadsheet component.
 	- Automatic page composition, depending on amount and type of elements and content volume.
 	- Hyphenation
 	- Parametric webfont generator, 

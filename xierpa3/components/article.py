@@ -30,71 +30,7 @@ H2COLOR = '#828487'
 class ArticleColumn(Column):
     def getChapterIndex(self, b, article):
         return min(max(0, TX.asInt(b.e.form[C.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
-
-    def demoSvgDrawing1(self, b):
-        # Draw a responsive image in SVG
-        b.div(class_='svgDemo')
-        b.svg(width='100%', height=250)
-        b.rect(width='100%', height=50, fill=LinearGradient('left', '#000', 0, '#FFF', 100))
-        b.rect(y=50, width='100%', height=200, fill='green')
-        # Perspective line
-        b.line(x1=30, y1='100%', x2='50%', y2=50, stroke='yellow', strokewidth=3)
-        b.line(x1='70%', y1='100%', x2='50%', y2=50, stroke='yellow', strokewidth=3, display=C.NONE)
-
-        b.ellipse(x=80, y=150, rx=40, ry=10, fill='black', fillopacity=0.2)
-        b.filter('frozenLiquid')
-        b.circle(x=80, y=80, r=40, strokewidth=3, stroke='black', fill='red', fillopacity=0.5)
-        b.circle(x=80, y=80, r=20, fill='green', fillopacity=0.5)
-        b._filter()
-        b.circle(x=65, y=65, r=10, fill='white', fillopacity=0.2)
-
-        b.ellipse(x='50%', y='50%', rx=40, ry=10, fill='black', fillopacity=0.5)
-        b.circle(x='50%', y=50, r=40, strokewidth=3, stroke='black', fill='red', fillopacity=0.5)
-        b.circle(x='50%', y=50, r=20, fill='green', fillopacity=0.5)
-        b.circle(x='48%', y=35, r=10, fill='white', fillopacity=0.6) 
-
-        #b.text('Xierpa3', fill='#FFF', fontsize=45, fontfamiy='Verdana', x=100, y=100)
-
-        b._svg()
-        b._div()
-        
-    def demoSvgDrawing2(self, b):
-        # Draw a responsive image in SVG
-        b.div(class_='svgDemo')
-        b.svg(width='100%', height=250)
-        b.rect(width='100%', height=100, fill='cyan')
-        b.rect(y=100, width='100%', height=150, fill='green')
-        # Polygons don't work in %, so they cannot be positioned responsive to the container width
-        b.rect(x='5%', y=20, width='8%', height=200, fill='yellow', fillopacity=0.5)
-        b.filter('blur', blur=4)
-        b.rect(x='20%', y=20, width='8%', height=200, fill='yellow')
-        b._filter()
-        # Neon
-        b.filter('neon')
-        b.rect(x='35%', y=20, rx=12, ry=12, width=32, height=200, fill=C.NONE, stroke='red', strokewidth=6)
-        b._filter()
-        b.filter('neon')
-        b.rect(x='50%', y=20, rx=16, ry=16, width=32, height=200, fill=C.NONE, 
-            fillopacity=0.5, stroke='blue', strokewidth=20)
-        b._filter()
-        b.filter('frozenLiquid') # @@@ Should not change the overall color of the image.
-        b.rect(x='68%', y=20, rx=16, ry=16, width=32, height=200, fill='#D0D0D0', 
-            fillopacity=0.5, stroke='blue', strokewidth=20)
-        b._filter()
-        b._svg()
-        b._div()
-
-        #b.polygon(points="140,40 160,40 180,210 130,210", fill='yellow')
-
-    def demoSvgDrawing3(self, b):
-        # Draw a responsive image in JavaScript on <canvas>
-        b.div(class_='svgDemo')
-        b.canvas(width='100%', height=250)
-        b.cRect(width='100%', height=100, fill='cyan')
-        b.cRect(y=100, width='100%', height=150, fill='green')
-        b._canvas()
-        b._div()
-        
+     
 class Article(ArticleColumn):
     
     STYLE_DEFAULT = dict(
@@ -168,9 +104,6 @@ class Article(ArticleColumn):
         elif article.items:
             chapterIndex = self.getChapterIndex(b, article)
             self.buildArticleTop(b, article, chapterIndex)
-            self.demoSvgDrawing1(b)
-            self.demoSvgDrawing2(b)
-            self.demoSvgDrawing3(b)
             chapter = self.adapter.getChapterByIndex(article, chapterIndex)
             if chapter is not None:
                 self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
@@ -232,9 +165,10 @@ class Article(ArticleColumn):
     def buildArticleStyle(self, b):
         s = self.style
         # SVG demo
-        b.div(class_='svgDemo', marginbottom=Em(1))
-        b._div()
         b.div(class_=C.CLASS_CHAPTER, color=s.chapterColor)
+        # Should move from here. Make sure that svgExamples get SCSS builder call.
+        b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
+        b._div()
         # h1
         b.h1(fontsize=s.h1Size, lineheight=s.h1LineHeight, fontweight=s.h1FontSize,
              fontstyle=s.h1FontStyle, fontfamily=s.h1FontFamily, color=s.h1Color,

@@ -265,4 +265,14 @@ class XmlTransformerPart:
   
     #def doc_next(self, element, attrs):
     #def doc_prev(self, element, attrs):
+     
+    # S V G
+    
+    def doc_svgexample(self, element, attrs):
+        from xierpa3.components.examples.svg import SvgExample
+        svgComponent = SvgExample()
+        svgComponent.draw(self, drawingId=attrs.get('id' or 0))
         
+    def _doc_svgexample(self):
+        pass
+    
