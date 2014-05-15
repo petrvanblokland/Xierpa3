@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<document>
+<meta>
+<tag>About</tag>
+<title>About Xierpa3</title>
+<url>/article-about</url>
+</meta>
+<featured>
+<article id="how-to-start"/>
+    </featured>
+<chapters>
+<chapter>
+    <meta>
+    <title>
+    Contact
+    </title>
+    </meta>
+<p>Xierpa is an initiative by Petr van Blokland, Kirsten Langmuur, Claudia Mens.</p>
+<p>Development and design by Petr van Blokland (<email>buro@petr.com</email>), 
+Kirsten Langmuur (<email>kirsten@petr.com</email>), 
+Michiel Kauw-A-Tjoe (<email>michiel@petr.com</email>) and 
+Torben Wilhelmsen (<email>torben@wil.dk</email>).
+    </p>
+    
+</chapter>
+<chapter>
+    <meta>
+    <title>
+    About us
+    </title>
+    </meta>
+<p>Applying for admission in an art school can feel like a lottery. “Will they take me or not?” And for sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the amount of available seats. 
+But in the other hand a lot can be said about very generic points of attention that almost always play a role in the selection of new students. Knowing about how selections work and what it is that the selectors want to put their focus on, certainly will help the student during the admission process. No matter the differences between art schools in different countries and cultures, there is a common ground that is true for most situations. 
+This course shows students the steps that will improve their presentation and increase their chances to become admitted. 
+</p>
+
+</chapter>
+<chapter>
+    <meta>
+    <title>
+    Our services
+    </title>
+    </meta>
+<p>
+For sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the amount of available seats. 
+But in the other hand a lot can be said about very generic points of attention that almost always play a role in the selection of new students. Knowing about how selections work and what it is that the selectors want to put their focus on, certainly will help the student during the admission process. No matter the differences between art schools in different countries and cultures, there is a common ground that is true for most situations. 
+This course shows students the steps that will improve their presentation and increase their chances to become admitted. 
+</p>
+</chapter>
+</chapters>
+</document>

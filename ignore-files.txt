@@ -1,0 +1,16 @@
+*.pyc
+config.py
+.project
+.pydevproject
+.settings
+.metadata
+.DS_Store
+nohup.out
+site.css
+site.debug.css
+site.debug.scss
+*.swp
+.gitignore
+.sass-cache
+*#
+*~

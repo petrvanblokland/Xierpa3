@@ -1,0 +1,22 @@
+# -*- coding: UTF-8 -*-
+# -----------------------------------------------------------------------------
+#   xierpa server
+#   Copyright(c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
+#   
+#   X I E R P A  3
+#
+# -----------------------------------------------------------------------------
+#
+Dependencies
+Make sure that Python 2.7 is installed, otherwise install from http://python.org
+Install Twisted Matrix server from https://twistedmatrix.com/trac/
+Install element tree "lxml" from http://lxml.de/index.html
+Install "sass" from http://sass-lang.com
+
+Installation
+Add xierpa3.pth to Python site-packages, referring to this git Xierpa3 install
+Copy xierpa3/constants/config/COPYTO-config.py to xierpa3/constants/config.config.py and adjust
+the parameters and access keys to your own settings. Make sure this config.py never writes back
+into git (future development is to store this file in your local user folder).
+
+# -----------------------------------------------------------------------------

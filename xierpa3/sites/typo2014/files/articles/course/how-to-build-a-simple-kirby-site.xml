@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<document>
+<meta>
+<category>Course</category>
+<level>Novice</level>'
+<title>How to build a Kirby site</title>
+<author>Kirsten Langmuur and Petr van Blokland</author>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildKirbyWebsites.png"/>
+<topic>Learn the best way to build a website using Kirby.</topic>
+<summary>
+ Which is different from code-engineering or the web variant of Desktop Publishing. We’ll address it from a designer point of view, who may not have any knowledge or practical experience with coding.
+</summary>
+</meta>
+
+<featured>
+<article id="generous-gesture"/>
+<article id="how-to-build-a xierpa3-site"/>
+<article id="how-to-deal-with-designers"/>
+<article id="how-to-get-into-art-school"/>
+    </featured>
+
+<chapters>
+<chapter>
+<p>How to design the Responsive Page?
+</p>
+<p>
+Interview
+<footnote>
+There are many HTML/CSS course and documents online. Why add another one with this course? 
+</footnote>
+    For basic understanding. Our approach is from a design point of view. 
+</p>
+<p>
+    Which is different from code-engineering or the web variant of Desktop Publishing. We’ll address it from a designer point of view, who may not have any knowledge or practical experience with coding.
+</p>
+<image src="http://www.petr.net/_images/_thumbnails/257/Xierpa_Stokjes_slider_minfit.png"/>
+<p>
+What are we going to do in this session? 
+</p>
+<p>
+    Simple example, determine page components
+</p>
+<p>
+How do you start a local project? 
+</p>
+<p>
+    Folder, HTML file, CSS file, image folder
+</p>
+<p>
+How can you create and edit the files?
+</p>
+<p>
+    Download an editor application.
+</p>
+<p>
+    Download TextWrangler of demo of BBEdit, Coda or TextMate (on Mac)
+</p>
+<p>
+    Notepad or Notepad2, JEdit, Crimson Editor and other (on Windows)
+</p>
+<p>
+How can you open that document in the browser?
+</p>
+<p>
+What is the difference between HTML and CSS?
+</p>
+<p>
+Why do you need them as separate files? 
+</p>
+<p>
+    HTML is per page or page type. 
+</p>
+<p>
+    CSS is valid for the entire website.
+</p>
+<p>
+    HTML and CSS are different languages with a different syntax 
+        (we cannot help that)
+</p>
+<p>
+In HTML there are “tags”. What is that?
+</p>
+<p>
+So let’s make a first page. What do we need?
+</p>
+<p>
+
+What is a class in CSS?
+</p>
+</chapter>
+</chapters>
+</document>
+
