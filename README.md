@@ -31,11 +31,11 @@ Amazon database services and S3. The amount of adapters has to be extended for
 the public versions of Xierpa3 to make this work. Both Postgres and MySql are 
 supported.
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
 Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
 Xierpa3 is a product developed by:
 
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
