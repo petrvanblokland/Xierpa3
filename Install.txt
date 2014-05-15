@@ -13,7 +13,11 @@ Install Twisted Matrix server from https://twistedmatrix.com/trac/
 Install element tree "lxml" from http://lxml.de/index.html
 Install "sass" from http://sass-lang.com
 Install "boto" from https://aws.amazon.com/sdkforpython/
+
+Optional dependencies
 Install "cjson" from http://sourceforge.net/projects/cjson/
+Make sure "cStringIO" is installed, see http://pydoc.org/2.4.1/cStringIO.html
+Make sure "cPickle" is installed, see http://pymotw.com/2/pickle 
 
 Installation
 Add xierpa3.pth to Python site-packages, referring to this git Xierpa3 install

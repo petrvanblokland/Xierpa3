@@ -23,13 +23,15 @@ source available that are still worked on and being tested.
 This condition will remain until version 1.0
 
 But it already is a great framework to start thinking about the creation of 
-publications through objects, rather writing websites in HTML and CSS directly. 
+publications through objects, rather than writing websites in HTML and CSS directly. 
 
 # -----------------------------------------------------------------------------
 Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 
+XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
+
 # -----------------------------------------------------------------------------
-Xierpa & Xierpa3 are products developed by:
+Xierpa3 is a product developed by:
 
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
 
