@@ -1,16 +1,15 @@
-# -*- coding: UTF-8 -*-
-# -----------------------------------------------------------------------------
-#    xierpa server
-#    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
-#   
-#    X I E R P A  3
-#    Distribution by the MIT License.
-#
-# -----------------------------------------------------------------------------
+
+    xierpa server
+    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
+   
+    X I E R P A  3
+    Distribution by the MIT License.
+
+ -----------------------------------------------------------------------------
 
 Version 0.8 beta
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
 Xierpa3 is a frame work for object base publications, using Components, Builders, 
 Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
 images. Live or as template files.
@@ -25,7 +24,7 @@ This condition will remain until version 1.0
 But it already is a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in HTML and CSS directly. 
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
 Databases
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
@@ -63,7 +62,7 @@ Filibuster by Erik van Blokland and Jonathan Hoefler
 Published by he MIT License
 http://opensource.org/licenses/MIT
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -84,4 +83,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-# -----------------------------------------------------------------------------
+ -----------------------------------------------------------------------------
