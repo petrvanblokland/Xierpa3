@@ -5,11 +5,11 @@
     X I E R P A  3
     Distribution by the MIT License.
 
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 Version 0.8 beta
 
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 Xierpa3 is a frame work for object base publications, using Components, Builders, 
 Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
 images. Live or as template files.
@@ -24,18 +24,18 @@ This condition will remain until version 1.0
 But it already is a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in HTML and CSS directly. 
 
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 Databases
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
 the public versions of Xierpa3 to make this work. Both Postgres and MySql are 
 supported.
 
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 Xierpa3 is a product developed by:
 
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens

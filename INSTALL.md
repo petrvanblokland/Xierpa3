@@ -1,12 +1,11 @@
-+ -*- coding: UTF-8 -*-
-+ -----------------------------------------------------------------------------
-+    xierpa server
-+    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
-+   
-+    X I E R P A  3
-+    Distribution by the MIT License.
-+
-+ -----------------------------------------------------------------------------
+
+    xierpa server
+    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
+   
+    X I E R P A  3
+    Distribution by the MIT License.
+
+-----------------------------------------------------------------------------
 
 Dependencies
 Make sure that Python 2.7 is installed, otherwise install from http://python.org
@@ -31,4 +30,4 @@ A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The access codes and IP/URL's need to be filled
 into the config.py or defined locally in the site application.
 
-+ -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------

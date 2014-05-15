@@ -1,15 +1,14 @@
-# -*- coding: UTF-8 -*-
-# -----------------------------------------------------------------------------
-#    xierpa server
-#    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
-#   
-#    X I E R P A  3
-#    Distribution by the MIT License.
-#
-# -----------------------------------------------------------------------------
-#
-#    Getting started.
-#
+
+    xierpa server
+    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
+   
+    X I E R P A  3
+    Distribution by the MIT License.
+
+-----------------------------------------------------------------------------
+
+    Getting started.
+
 
 Follow the installation guide lines in INSTALL.md
 
@@ -32,4 +31,4 @@ Then the following should be visible, if all Python dependencies are installed w
 The example site can be visited in the browser under:
 http://localhost:8050
 
-# -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
