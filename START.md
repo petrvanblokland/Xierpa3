@@ -1,12 +1,3 @@
-
-    xierpa server
-    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
-   
-    X I E R P A  3
-    Distribution by the MIT License.
-
------------------------------------------------------------------------------
-
 ### Getting started.
 
 Follow the installation guide lines in INSTALL.md. Then:
@@ -29,5 +20,3 @@ If all dependencies have been installed, the following should be visible:
 
 The example site can be visited at this address:
  * http://localhost:8050
-
------------------------------------------------------------------------------
