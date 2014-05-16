@@ -1,5 +1,5 @@
 
-    xierpa server
+    Xierpa server
     Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
    
     X I E R P A  3
@@ -10,59 +10,62 @@
 Version 0.8 beta
 
 -----------------------------------------------------------------------------
+
 Xierpa3 is a frame work for object base publications, using Components, Builders, 
 Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
 images. Live or as template files.
 
-For now Xierpa3 is a proof-of-concept "gone live". 
-This means that currently installation may not be as automated and smooth as it 
-will be and themes, examples and documentation are not finished. 
-Parts of Xierpa3 are still under development right now. There are classes in the
-source available that are still worked on and being tested.
-This condition will remain until version 1.0
+For now Xierpa3 is a proof-of-concept "gone live". This means that currently
+installation may not be as automated and smooth as it will be and themes, examples
+and documentation are not finished. Parts of Xierpa3 are still under development
+right now. There are classes in the source available that are still worked on and
+being tested. This condition will remain until version 1.0.
 
 But it already is a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in HTML and CSS directly. 
 
 -----------------------------------------------------------------------------
+
 Databases
+
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
 the public versions of Xierpa3 to make this work. Both Postgres and MySql are 
 supported.
 
 -----------------------------------------------------------------------------
+
 Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
 -----------------------------------------------------------------------------
+
 Xierpa3 is a product developed by:
 
-Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
+Buro Petr van Blokland + Claudia Mens  
+Rietveld 56  
+2611 LM Delft  
+The Netherlands  
 
-Buro Petr van Blokland + Claudia Mens
-Rietveld 56
-2611 LM Delft
-The Netherlands
-
-Phone: +31 15 887 1233
-Mobile: +31 6 2421 9502
-Email: buro@petr.com
-FB & Twitter: @petrvanblokland
+Phone: +31 15 887 1233  
+Mobile: +31 6 2421 9502  
+Email: buro@petr.com  
+FB & Twitter: @petrvanblokland  
 
 Developers & designers contributing to Xierpa
-Petr van Blokland buro@petr.com
-Kirsten Langmuur kirsten@petr.com
-Michiel Kauw-A-Tjoe michiel@petr.com
-Torben Wilhelmsen torben@wil.dk
+ * Petr van Blokland buro@petr.com
+ * Kirsten Langmuur kirsten@petr.com
+ * Michiel Kauw-A-Tjoe michiel@petr.com
+ * Torben Wilhelmsen torben@wil.dk
 
 Contributers of code
-Filibuster by Erik van Blokland and Jonathan Hoefler
+ * Filibuster by Erik van Blokland and Jonathan Hoefler
 
 Published by he MIT License
-http://opensource.org/licenses/MIT
+ * http://opensource.org/licenses/MIT
 
  -----------------------------------------------------------------------------
+
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
