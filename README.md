@@ -11,34 +11,40 @@ Version 0.8 beta
 
 -----------------------------------------------------------------------------
 
-Xierpa3 is a frame work for object base publications, using Components, Builders, 
+### About
+
+Xierpa3 is a framework for object base publications, using Components, Builders, 
 Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
 images. Live or as template files.
 
 For now Xierpa3 is a proof-of-concept "gone live". This means that currently
 installation may not be as automated and smooth as it will be and themes, examples
 and documentation are not finished. Parts of Xierpa3 are still under development
-right now. There are classes in the source available that are still worked on and
-being tested. This condition will remain until version 1.0.
+right now. Classes are available in the source that are still being worked on and
+tested. This will remain until version 1.0.
 
-But it already is a great framework to start thinking about the creation of 
+But Xierpa is already a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in HTML and CSS directly. 
 
 -----------------------------------------------------------------------------
 
-Databases
+### Databases
 
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
-the public versions of Xierpa3 to make this work. Both Postgres and MySql are 
-supported.
+the public versions of Xierpa3 to make this work. Currently PostgreSQL is supported,
+we aim to support MySql as well in the near future.
 
 -----------------------------------------------------------------------------
+
+### History
 
 Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
 -----------------------------------------------------------------------------
+
+### Who
 
 Xierpa3 is a product developed by:
 
@@ -65,6 +71,8 @@ Published by he MIT License
  * http://opensource.org/licenses/MIT
 
  -----------------------------------------------------------------------------
+
+### Rights
 
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
 
