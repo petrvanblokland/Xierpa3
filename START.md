@@ -9,7 +9,7 @@
 
 ### Getting started.
 
-Follow the installation guide lines in INSTALL.md.
+Follow the installation guide lines in INSTALL.md. Then:
 
  * Start the terminal application
  * Goto "xierpa3/server"
