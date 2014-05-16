@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -14,7 +14,7 @@
 #
 #     The config.py defines the local settings for each server.
 #      Do not commit this file into Git.
-#    
+#
 #      Use COPYTO-config.py as template to see the possible paraemters and
 #      create a local version of config.py
 #
@@ -28,14 +28,15 @@ class Config(BaseConfig):
     #USE_ONLINE = True
     #USE_LOCAL = not USE_ONLINE
     #USE_FONTFACE = True and USE_ONLINE
-      #USE_MULTIPROCESSING = False and sys.version_info >= (2, 7)
- 
+    #USE_MULTIPROCESSING = False and sys.version_info >= (2, 7)
+
     #CONNECTION = 'fast'
+    FSPATH_DATAROOT = '<path/to/dataroot>'
 
     # ---------------------------------------------------------------------------------------------------------
     #    P Y T H O N
-          
-      #PYTHONAPP = 'python2.7'
+
+    #PYTHONAPP = 'python2.7'
 
     # ---------------------------------------------------------------------------------------------------------
     #    S 3
@@ -48,7 +49,7 @@ class Config(BaseConfig):
 
     # ---------------------------------------------------------------------------------------------------------
 	  #    A M A Z O N  D Y N A M O  D B
-	  
+
     #AMAZON_REGION = "us-east-1"
     #AMAZON_HOST = "dynamodb.{0}.amazonaws.com".format(AMAZON_REGION)
     #CONTENT_TYPE = "application/x-amz-json-1.0"
@@ -82,4 +83,4 @@ class Config(BaseConfig):
     #DEFAULT_IMAGEFONT = None
 
     #FONT_ROOTPATHS = ('/Library/Fonts',     # Default fonts path on OSX
-        #)
+    #)

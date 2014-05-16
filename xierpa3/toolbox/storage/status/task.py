@@ -22,13 +22,11 @@ Super = Status
 
 class Task(Super):
     u"""
-    <doc>
     The <code>Task</code> class implements a set of paramters (inherited from <code>Status</code>) that
     can be saved and derived from json files. These files are read by class method <code>Task.next()</code> 
     (or <code>Task.peek()</code>) and executed by the running <code>Scheduler</code> instance. 
     A posted task can be positioned in the scheduler list by altering the <attr>priority</attr> and 
     <attr>order</attr> attributes of the post.
-    </doc>
     """
     PATH_SCHEDULERTASKS = C.FSPATH_DATAROOT + '/_scheduler/tasks'
     PATH_SCHEDULERLOG = C.FSPATH_DATAROOT + '/_scheduler/log'
@@ -43,24 +41,20 @@ class Task(Super):
     @classmethod
     def getTaskNames(cls):
         u"""
-        <doc>
         The <code>getTaskNames</code> method answers the list of file names in the
         pending task directory.
-        </doc>
         """
         return os.listdir(cls.PATH_SCHEDULERTASKS)
 
     @classmethod
     def next(cls, remove=True):
         u"""
-        <doc>
         The <code>next</code> method answers the next task instance that needs
         to be executed. The method takes the top of the sorted list of task files
         from the <code>cls.PATH_SCHEDULERTASKS</code> and creates the <code>Task</code>
         instance and then deletes the task file (if the optional attribute 
         <attr>remove</attr> has default value <code>True</code>. This method is also 
         called by <code>self.peek()</code>, but then the file is not removed.
-        </doc>
         """
         tasknames = cls.getTaskNames()
         if not tasknames:
@@ -88,23 +82,19 @@ class Task(Super):
     @classmethod
     def peek(cls):
         u"""
-        <doc>
         The <code>peek</code> method answers the next task that must be executed 
         by the running <code>Scheduler</code>. The method is equivalent to 
         <code>self.next(False)</code>.
-        </doc>
         """
         return cls.next(remove=False)
 
     def post(self, builder, priority=999999, order=0, args=None):
         u"""
-        <doc>
         The <code>post</code> method adds <code>self</code> task to the scheduled tasks,
         if the <code>builder.USE_MULTIPROCESSING</code> is <code>True</code>. Other wise the
         task is immediately executed. This direct execution is required for servers running
         Python2.5 or older (that don‚Äôs support multiprocessing) of for debugging in Eclipse.
         Due to a deep bug, the Python application of the split process crashes when in debug mode.
-        </doc>
         """
         print '... Post task', self.name
         if builder.USE_MULTIPROCESSING:
@@ -119,7 +109,6 @@ class Task(Super):
 
     def execute(self, builderorcls):
         u"""
-        <doc>
         The <code>execute</code> method is called by the running <code>Scheduler</code> instance
         (or directly by the <code>self.post</code> method, if <code>builder.USE_MULTIPROCESSING</code>
         is turned off. The attribute <attr>builderorcls</attr> can either be a <code>Builder</code>
@@ -127,7 +116,6 @@ class Task(Super):
         class when called from the running <code>Scheduler</code> (since the <code>Scheduler</code>
         cannot know any instantiated builder, it just knows the class of the site.
         It is assumed that <code>self.method</code> exists as method name or list of method names.
-        </doc>
         """
         if inspect.isclass(builderorcls):
             builderorcls = builderorcls()
@@ -149,10 +137,8 @@ class Task(Super):
 
     def getTaskName(self, priority, order):
         u"""
-        <doc>
         The <code>getTaskName</code> method constructs a unique task name that depends on the order
         of <attr>priority</attr>, <code>timestamplong()</code>, <attr>order</attr> and an 6-digit random integer.
-        </doc>
         """
         return '%06d-%s-%06d-%06d.json' % (priority, timestampLong(), order, randint(0, 999999))
 
