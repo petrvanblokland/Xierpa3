@@ -1,6 +1,6 @@
-# TODO
+## TODO
 
-Wish list of features
+### Wish list of features
  * Extending different types of components.
  * Extending database adapters.
  * Finishing the S3 Adapter.
@@ -13,7 +13,7 @@ Wish list of features
  * Adding CMS functions, in case Xierpa3 is used as server (otherwise existing CMS systems van be used).
  * Scaling and caching images for responsive usage (and resolution independence).
 	
-Longer term
+### Longer term
  * Desktop app with a choice of parametric designer templates.
  * Comoponents for responsive graph and table building, spreadsheet component.
  * Automatic page composition, depending on amount and type of elements and content volume.
