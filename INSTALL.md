@@ -1,6 +1,6 @@
 ## Installing Xierpa
 
-Various possibilities are available to install Python packages Xierpa depends on, as well as third-party applications. On OSX, you can either get the Python dependencies through easy_install, pip, or directly from the Python package index. Make sure that packages that have C/C++ bindings are compiled with the same version of GCC as the version of Python you're using. It is also possible to pull most of the Python dependencies from MacPorts or Homebrew. On Linux, most packages are available from package managers such as apt-get / aptitude or yum.
+Xierpa3 is currently available from GitHub. Various possibilities are available to install the Python packages Xierpa depends on, as well as third-party applications. On OSX, you can either get the Python dependencies through easy_install, pip, or directly from the Python package index. Make sure that packages that have C/C++ bindings are compiled with the same version of GCC as the version of Python you're using. It is also possible to pull most of the Python dependencies from MacPorts or Homebrew. On Linux, most packages are available from package managers such as apt-get / aptitude or yum.
 
 ### Installation
 
@@ -12,7 +12,7 @@ Various possibilities are available to install Python packages Xierpa depends on
  * Make sure that Python 2.7 is installed, otherwise get it from http://python.org. Recent versions of OSX and Linux come with a completely installed Python environment.
  * Install the Twisted Matrix server, https://twistedmatrix.com/trac/ or https://pypi.python.org/pypi/Twisted
  * Install element tree ``lxml``, http://lxml.de/index.html or https://pypi.python.org/pypi/lxml/, which needs the ``libxml2`` and ``libxslt`` bindings.
- * Install "sass" from http://sass-lang.com. For this you first need to install Ruby and then get the sass gem like this:
+ * Install ``sass`` from http://sass-lang.com. For this you first need to install Ruby and then get the ``sass`` gem like this:
    * ``sudo gem install sass``
  * Install ``boto`` from https://aws.amazon.com/sdkforpython/ or https://pypi.python.org/pypi/boto
 
