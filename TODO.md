@@ -1,11 +1,4 @@
-
-    xierpa server
-    Copyright(c) 2014+ buro@petr.com, www.petr.com, www.xierpa.com
-   
-    X I E R P A  3
-    Distribution by the MIT License.
-
------------------------------------------------------------------------------
+# TODO
 
 Wish list of features
  * Extending different types of components.
