@@ -13,6 +13,7 @@
 #     Main server source example to be started for live serving of Xierpa3 sites.
 
 from client import Client
+from xierpa3.constants.config.config import Config
 from xierpa3.server.twistedmatrix.twistedserver import TwistedServer
 
 class Server(TwistedServer):
@@ -20,5 +21,8 @@ class Server(TwistedServer):
 
 if __name__ == '__main__':
     client = Client()
-    port = 8050 # Use port = 80 for serving under main domain names.
+    if Config.USE_ONLINE:
+        port = 80
+    else:
+        port = 8050 # Use port = 80 for serving under main domain names.
     Server().start(client, port)
