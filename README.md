@@ -58,16 +58,17 @@ Mobile: +31 6 2421 9502
 Email: buro@petr.com  
 FB & Twitter: @petrvanblokland  
 
-Developers & designers contributing to Xierpa
- * Petr van Blokland buro@petr.com
- * Kirsten Langmuur kirsten@petr.com
- * Michiel Kauw-A-Tjoe michiel@petr.com
- * Torben Wilhelmsen torben@wil.dk
+#### Developers & Designers Contributing to Xierpa
 
-Contributers of code
- * Filibuster by Erik van Blokland and Jonathan Hoefler
+ * [Petr van Blokland](mailto:buro@petr.com)
+ * [Kirsten Langmuur](mailto:kirsten@petr.com)
+ * [Michiel Kauw-A-Tjoe](mailto:michiel@petr.com)
+ * [Torben Wilhelmsen](mailto:torben@wil.dk)
 
-Published by he MIT License
+#### Contributers of code
+ * Filibuster by Erik van Blokland and Jonathan Hoefler.
+
+#### Published by he MIT License
  * http://opensource.org/licenses/MIT
 
  -----------------------------------------------------------------------------
