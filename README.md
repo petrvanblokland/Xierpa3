@@ -7,11 +7,11 @@
 
 -----------------------------------------------------------------------------
 
-Version 0.8 beta
+    Version 0.8 beta
 
 -----------------------------------------------------------------------------
 
-### About
+## About
 
 Xierpa3 is a framework for object base publications, using Components, Builders, 
 Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
