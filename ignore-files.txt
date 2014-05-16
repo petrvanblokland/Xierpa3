@@ -1,3 +1,5 @@
+# Set up global ignores like this:
+# git config --global core.excludesfile ignore-files.txt
 *.pyc
 config.py
 .project
