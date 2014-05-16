@@ -33,7 +33,7 @@ publications through objects, rather than writing websites in HTML and CSS direc
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
 the public versions of Xierpa3 to make this work. Currently PostgreSQL is supported,
-we aim to support MySql as well in the near future.
+we aim to support MySQL as well in the near future.
 
 -----------------------------------------------------------------------------
 
