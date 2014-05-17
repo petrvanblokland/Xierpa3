@@ -10,13 +10,9 @@
 #
 #    footer.py
 #
-from xierpa3.components.component import Component
 from xierpa3.components.container import Container
-from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX 
-from xierpa3.attributes import *
-from xierpa3.descriptors.style import Media
+from xierpa3.attributes import Em
 
 class Footer(Container):
 

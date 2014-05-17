@@ -75,23 +75,26 @@ class MobileNavigation(Navigation):
         b.img(src=s.menuIconUrl,
             padding=0, margin=0, verticalalign=C.MIDDLE, maxwidth='50%', height=C.AUTO)
         b._div(comment='#'+C.ID_MENUICON) # #menu-icon
-        b.ul(id=C.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
-            display=C.NONE, clear=C.BOTH, position=C.ABSOLUTE, top=s.menuHeight-5, 
-            width=C.C100, zindex=Z(2000), padding=0, margin=0, liststyletype=C.NONE, left=0,
-            textalign=C.CENTER)
+        if data.menuItems is None:
+            b.error('No items in the adapter')
+        else:
+            b.ul(id=C.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
+                display=C.NONE, clear=C.BOTH, position=C.ABSOLUTE, top=s.menuHeight-5, 
+                width=C.C100, zindex=Z(2000), padding=0, margin=0, liststyletype=C.NONE, left=0,
+                textalign=C.CENTER)
+        
+            for menu in data.menuItems:
+                url = menu.url
+                if url is None:
+                    url = '/%s-%s' % (C.PARAM_ARTICLE, menu.id)
+                b.a(href=url, color='#E8E8E8')
+                b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=C.C100, liststyletype=C.NONE,
+                    borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
+                b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
+                b._li()
+                b._a()
 
-        for menu in data.menuItems:
-            url = menu.url
-            if url is None:
-                url = '/%s-%s' % (C.PARAM_ARTICLE, menu.id)
-            b.a(href=url, color='#E8E8E8')
-            b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=C.C100, liststyletype=C.NONE,
-                borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
-            b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
-            b._li()
-            b._a()
-
-        b._ul()
+                b._ul()
         b._nav()
         b.a(href='/home', color='#E8E8E8')
         b.text('Doing by Design')

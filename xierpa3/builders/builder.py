@@ -116,6 +116,13 @@ class Builder(C):
             return writer.name, writer.getValue()
         return None, None
     
+    #   E R R O R
+    
+    def error(self, s):
+        self.div(color='red')
+        self.text(s)
+        self._div()
+        
     #   B U I L D E R  T Y P E
     
     def isType(self, type):
