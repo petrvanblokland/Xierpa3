@@ -18,14 +18,9 @@
 #    Make payed Udemy course how to use/implement/build
 #    Blog/site/store of components with specific tasks
 #
-import os
-from xierpa3.builders.cssbuilder import CssBuilder
-from xierpa3.themes.kirbyblog.kirbyblog import KirbyBlog
+from xierpa3.themes.blog.blog import Blog
 from xierpa3.themes.kirbyblog.kirbyadapter import KirbyAdapter
 from xierpa3.themes.kirbyblog.kirbybuilder import KirbyBuilder
-from xierpa3.attributes import * 
-from xierpa3.components import *
-from xierpa3.constants.constants import C
 
 class BlogBuilder(KirbyBuilder):
     pass
@@ -33,7 +28,7 @@ class BlogBuilder(KirbyBuilder):
 class BlogAdapter(KirbyAdapter):
     pass
 
-class Blog(KirbyBlog):
+class MyBlog(Blog):
     u"""The <b>Blog</b> class implements the standard example blog."""
     TITLE = 'Blog Petr van Blokland + Claudia Mens'
     SUBTITLE = 'Notes on design and education.'
