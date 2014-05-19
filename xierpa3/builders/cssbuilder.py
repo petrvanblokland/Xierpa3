@@ -12,13 +12,13 @@
 #
 import os
 from xierpa3.builders.sassbuilder import SassBuilder
-from xierpa3.toolbox.transformer import TX
+from xierpa3.constants.constants import C
 
 class CssBuilder(SassBuilder):
     u"""
     Used for dispatching component.build_sass, if components want to define builder dependent behavior.
     """
-    ID = 'css' # Also the default extension of the output format
+    ID = C.TYPE_CSS # Also the default extension of the output format
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
     # DEFAULT_PATH inherits from SassBuilder

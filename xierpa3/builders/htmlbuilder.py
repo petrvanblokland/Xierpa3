@@ -27,7 +27,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
     # for components that want to define builder dependent behavior. In normal
     # processing of a page, this should never happen. But it can be used to
     # select specific parts of code that should not be interpreted by other builders.
-    ID = 'html'# Also the default extenion of the output format.
+    ID = C.TYPE_HTML # Also the default extension of the output format.
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
 
