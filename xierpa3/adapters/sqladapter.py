@@ -15,6 +15,10 @@ from xierpa3.adapters.adapter import Adapter
 #from xierpa3.toolbox.database.base.defaultmodels import Item
 #from xierpa3.toolbox.database.base.selector import Selector
 
+class Selector():
+    #    @@@ Under development
+    pass
+
 class SqlDatastore():
     #    @@@ Under development
     pass

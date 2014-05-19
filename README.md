@@ -24,8 +24,25 @@ right now. Classes are available in the source that are still being worked on an
 tested. This will remain until version 1.0.
 
 But Xierpa is already a great framework to start thinking about the creation of 
-publications through objects, rather than writing websites in HTML and CSS directly. 
+publications through objects, rather than writing websites in CSS+HTML (or PHP) directly. 
 
+-----------------------------------------------------------------------------
+
+### Architecture
+
+The main types of classes are:
+ * Components form the hierarchical set of building block of a site or a page.
+ 	Components can contain other components, forming a tree. Each components has a 
+ 	range of attributes that can be defined. In principle a component is not made
+ 	for a particular output or usage. 
+ * Builders know how to convert a tree of components in a specific output format.
+ 	There a builders for CSS, SCSS, HTML (and later also for PDF and pixel images).
+ * Adapters can be queried for content, by calling them with a standardized set of
+ 	methods and an item id when searching for a specific record. There are adapters
+ 	for Blurb text, for database access, XML file parsing, etc.
+ * Attributes define values that are often used and need some kind of behavior,
+ 	depending on the type of the value and type of the output channel.
+ 	
 -----------------------------------------------------------------------------
 
 ### Databases

@@ -90,6 +90,7 @@ class ExampleColumn(Column):
             margintop=Em(0.5), textindent=0)
         # Mark the end paragraph (the element after is not a <p>) in case something
         # special needs to be done, e.g. change the marginbottom.
+        # @@@ TODO: Mark as p.end preceding <blockquote> too.
         b._p()
         b.blockquote(padding=Margin(Em(0.5), Em(1)), fontsize=Em(1.2), lineheight=Em(1.3),
             margintop=Em(0.5), marginbottom=Em(0.5), #border=Border('solid', 2, Color('E1E2E2')),
