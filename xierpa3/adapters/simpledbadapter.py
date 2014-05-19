@@ -11,9 +11,8 @@
 #   simpledbadapter.py
 #
 from random import randint
-from xierpa3.constants.constants import C
 from xierpa3.adapters.adapter import Adapter
-from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict
+#from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict
 
 class SimpleDBAdapter(Adapter):
 
@@ -21,7 +20,7 @@ class SimpleDBAdapter(Adapter):
 
     def __init__(self):
         Adapter.__init__(self)
-        self.blurb = SimpleDBDict
+        #self.blurb = SimpleDBDict
 
     def getChapters(self, site, count=1):
         return []
@@ -59,6 +58,7 @@ class SimpleDBAdapter(Adapter):
         return ['Logo']
 
 if __name__ == "__main__":
+    """
     from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict
     db = SimpleDBDict('petr.com', {}, C.ACCESSKEYID, C.SECRETACCESSKEY)
     domain = db.getDomain('petr.com')
@@ -66,5 +66,5 @@ if __name__ == "__main__":
     item = domain.get_item('record1')
     # item['text'] = 1234
     print item
-
+    """
 
