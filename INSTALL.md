@@ -6,7 +6,10 @@ Xierpa3 is currently available from GitHub. Various possibilities are available 
 
  * Add xierpa3.pth to Python site-packages, referring to the folder where Xierpa3 has been cloned from git. For example, the ``site-packages`` for a prepackaged Python on a recent OSX machine can be found here: ``/Library/Python/2.7/site-packages``.
  * Copy ``xierpa3/constants/config/COPYTO-config.py`` to ``xierpa3/constants/config.config.py`` and adjust the parameters and access keys to your own settings. Make sure this ``config.py`` never writes back into git (future development is to store this file in your local user folder).
-
+ * Create a text file in the Python site-packages directory (typically located in "/Library/Python/2.7/site-packages" for OSX) with the name "xierpa3.pth" that points to the location of the git "xierpa3" directory.
+ * Open the terminal and type "python" and hit enter.
+ * Then type "import xierpa3" and hit enter. If there is not error message, then the xierpa3 library is installed well.
+ 
 ### Dependencies
 
  * Make sure that Python 2.7 is installed, otherwise get it from http://python.org. Recent versions of OSX and Linux come with a completely installed Python environment.

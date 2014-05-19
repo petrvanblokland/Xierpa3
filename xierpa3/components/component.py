@@ -77,9 +77,11 @@ class Component(object):
         self.class_ = class_
         # self.name is used to identity components. Always answers something. Does not have to be unique.
         self.name = name
-        # Title of the browser window or generated document or table of content, or any other
-        # place where the title of a component is used.
-        self.title = title or self.TITLE
+        # Forced title of the browser window or generated document or table of content.
+        # If kept None, then the adapter will be queried for the title.
+        # THis allows both the definition of static names (per page template) or the usage
+        # of page titles that depend on the current url.
+        self.title = title
         # Prefix of class and selector, stored as self.style.prefix. Shows in CSS selector as myPrefix.class
         self.prefix = prefix
         # Cache for the unique ID based on the content tree, so components can be compared.
@@ -216,6 +218,11 @@ class Component(object):
         return None
 
     def getTitle(self, path):
+        u"""Answer the title of the page. If <b>self.title</b> is not <b>None</b> then answer
+        that value. Otherwise query the adapter to answer a title that may be dependent on the
+        current path (=url) of the page."""
+        if self.title is not None:
+            return self.title
         return self.getAdapterData(C.ADAPTER_PAGETITLE, id=path).text
 
     def build(self, builder):
