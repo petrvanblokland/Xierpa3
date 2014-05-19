@@ -13,7 +13,7 @@
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
-class KirbyBuilder(HtmlBuilder):
+class KirbyBuilder(HtmlBuilder): 
 
     # Default usage is to run the Kirby PHP application under MAMP.
     PATH_ROOT = '/Applications/MAMP/htdocs/'
