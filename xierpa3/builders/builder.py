@@ -20,6 +20,8 @@ from xierpa3.descriptors.environment import Environment
 class Builder(C):
 
     ID = None   # To be redefined by inheriting builder classes
+    EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
+    DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
     
     def __init__(self, e=None, result=None, verbose=True):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
@@ -43,13 +45,28 @@ class Builder(C):
         u"""To be redefined by inheriting builder classes."""
         pass
 
-    def save(self, path, makeDirectory=False):
-        u"""Save the file in path. If <i>makeDirectory</i> is <b>True</b> (default is <b>False</b>)
-        then create the directories in the path if they don’t exist."""
-        if makeDirectory:
-            dirPath = TX.path2Dir(path)
-            if not os.path.exists(dirPath):
-                os.makedirs(dirPath)
+    def getExtension(self):
+        u"""Answer the default extension of the output file of this type of builder.
+        Typically <b>self.EXTENSION</b> is answered."""
+        return self.EXTENSION
+    
+    def getFilePath(self, component):
+        return component.getRootPath() + '/' + self.DEFAULT_PATH + component.name + '.' + self.getExtension()
+
+    def makeDirectory(self, path):
+        u"""Make sure that the directory of path (as file) exists. Otherwse create it."""
+        dirPath = TX.path2Dir(path)
+        if not os.path.exists(dirPath):
+            os.makedirs(dirPath)
+
+    def save(self, component, path=None, makeDirectory=True):
+        u"""Save the file in path. If the optional <i>makeDirectory</i> atttribute is 
+        <b>True</b> (default is <b>True</b>) then create the directories in the path 
+        if they don’t exist."""
+        if path is None:
+            path = self.getFilePath(component)
+        if makeDirectory: # Make sure that the directory part of path exists.
+            self.makeDirectory(path)
         f = open(path, 'wb')
         f.write(self.getResult())
         f.close()
@@ -116,6 +133,13 @@ class Builder(C):
             return writer.name, writer.getValue()
         return None, None
     
+    #   E R R O R
+    
+    def error(self, s):
+        self.div(color='red')
+        self.text(s)
+        self._div()
+        
     #   B U I L D E R  T Y P E
     
     def isType(self, type):

@@ -3,6 +3,17 @@
 Follow the installation guide lines in INSTALL.md. Then:
 
  * Start the terminal application
+ * Goto "xierpa3/sites/examples/helloworld
+ * Run "python run.py"
+ 
+If all dependencies have been installed, the file "xierpa3/sites/examples/helloword/files/helloWorld.html"
+should exist. Open it in a browser to see the result.
+Try to understand the helloworld.py file and vary some of the values and see if the 
+intended change is visible in the output as you expected.
+
+Starting the server example:
+
+ * Start the terminal application
  * Goto "xierpa3/server"
  * Run "python server.py"
 

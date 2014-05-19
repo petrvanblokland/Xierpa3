@@ -4,7 +4,7 @@
  * Extending different types of components.
  * Extending database adapters.
  * Finishing the S3 Adapter.
- * Extending the amount of builders: AngularBuilder, PdfBuilder, PhPBuidler, WordpressBuilder, KirbyBuilder.
+ * Extending the amount of builders: AngularBuilder, PdfBuilder, PhpBuilder, WordpressBuilder, KirbyBuilder.
  * Extending the JavaScript builder.
  * Setup example development blog (online) with user respons. Both as working site and example themes in code.
  * (Automatic) documentation site.
@@ -12,6 +12,7 @@
  * Extending the designs of the example site.
  * Adding CMS functions, in case Xierpa3 is used as server (otherwise existing CMS systems van be used).
  * Scaling and caching images for responsive usage (and resolution independence).
+ * Add function to preview from remote web fonts.
 	
 ### Longer term
  * Desktop app with a choice of parametric designer templates.

@@ -14,6 +14,7 @@ from title import Title
 from header import Header
 from footer import Footer
 from container import Container
+from column import Column
 from group import Group, ItemGroup # Group of floating rows
 from menu import Menu
 from logo import Logo

@@ -27,7 +27,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
     # for components that want to define builder dependent behavior. In normal
     # processing of a page, this should never happen. But it can be used to
     # select specific parts of code that should not be interpreted by other builders.
-    ID = 'html'
+    ID = 'html'# Also the default extenion of the output format.
+    EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
 
     @classmethod
@@ -82,6 +83,20 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._body()
         self._html()
 
+    def save(self, component, path=None, makeDirectory=True):
+        u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
+        <b>True</b> (default is <b>True</b>) then create the directories in the path 
+        if they don’t exist."""
+        if path is None:
+            path = self.getFilePath(component)
+        if makeDirectory: # Make sure that the directory part of path exists.
+            self.makeDirectory(path)
+        for template in component.getTemplates():
+            template.build(self)
+            f = open(path, 'wb')
+            f.write(self.getResult())
+            f.close()
+
     def buildJavascript(self, component):
         if component.style and component.style.js:
             self.jsUrl(component.style.js)
@@ -109,10 +124,10 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         Create the CSS links inside the head. /css-<SASS_STYLENAME> defines the type of CSS output from the Sass
         compiler. The CSS parameter must be one of ['nested', 'expanded', 'compact', 'compressed']
         """
-        urlName = component.root.urlName # Get the specific URL prefix for from root of this component.
+        #urlName = component.root.urlName # Get the specific URL prefix for from root of this component.
         for cssUrl in component.css: # Should always be defined, default is an empty list
-            if not cssUrl.startswith('http://'):
-                cssUrl = '/' + urlName + cssUrl
+            #if not cssUrl.startswith('http://'):
+            #    cssUrl = '/' + urlName + cssUrl
             self.link(href=cssUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
 
     def buildFontLinks(self, component):

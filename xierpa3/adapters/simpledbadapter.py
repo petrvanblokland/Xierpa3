@@ -10,7 +10,7 @@
 #
 #   simpledbadapter.py
 #
-from random import choice, randint
+from random import randint
 from xierpa3.constants.constants import C
 from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict

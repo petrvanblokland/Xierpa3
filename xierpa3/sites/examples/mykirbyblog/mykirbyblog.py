@@ -8,17 +8,11 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    buroblog.py
+#    mykirbyblog.py
 #
-#    Example theme to build a blog site.
+#    Example theme to build a kirby blog site.
 #
-#    TODO
-#    Make it work (including auto install) with Amazon database + CMS functions
-#    Make example templates and components
-#    Make payed Udemy course how to use/implement/build
-#    Blog/site/store of components with specific tasks
-#
-from xierpa3.themes.blog.blog import Blog
+from xierpa3.themes.kirbyblog.kirbyblog import KirbyBlog
 from xierpa3.themes.kirbyblog.kirbyadapter import KirbyAdapter
 from xierpa3.themes.kirbyblog.kirbybuilder import KirbyBuilder
 
@@ -28,14 +22,14 @@ class BlogBuilder(KirbyBuilder):
 class BlogAdapter(KirbyAdapter):
     pass
 
-class MyBlog(Blog):
+class MyKirbyBlog(KirbyBlog):
     u"""The <b>Blog</b> class implements the standard example blog."""
     TITLE = 'Blog Petr van Blokland + Claudia Mens'
     SUBTITLE = 'Notes on design and education.'
 
 if __name__ == '__main__':
     adapter = BlogAdapter()
-    theme = Blog(adapter=adapter)
+    theme = MyKirbyBlog(adapter=adapter)
 
     #builder = CssBuilder()
     #theme.build(builder) # Build the SCSS/CSS of the theme
@@ -47,7 +41,7 @@ if __name__ == '__main__':
         template.build(builder) # Build the code for every page template in the theme
         exportPath = builder.getTemplatePath(theme)
         print 'Saving', exportPath
-        builder.save(exportPath, makeDirectory=True) # Save the exported template code into its file.
+        builder.save(template, path=exportPath, makeDirectory=True) # Save the exported template code into its file.
         # Build the panel blueprint
         #template.build(bluePrintBuilder)
         #print 'Saving panel blueprint', theme.PATH_BLUEPRINT % template.name

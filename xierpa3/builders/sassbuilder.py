@@ -17,7 +17,7 @@ from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.stack import Stack
 from xierpa3.constants.constants import C
 from xierpa3.descriptors.style import Media
-from xierpa3.attributes import *
+from xierpa3.attributes import Selection, Em, Shadow, asValue, Frame, Value, Transition, Z, Url, Gradient, LinearGradient
 
 trackAttributes = Stack() # Collect the stack of certain style attribute that are cascading for debugging.
 
@@ -26,8 +26,10 @@ class SassBuilder(XmlTransformerPart, Builder):
 
     # Used for dispatching component.build_sass, if components want to define builder dependent behavior.
     ID = 'sass'
+    EXTENSION = 'scss'
     ATTR_POSTFIX = 'css' # Postfix of dispatcher and attribute names above generic names.
-    
+    DEFAULT_PATH = 'files/css/style.css' # Default can be redefined by inheriting classes.
+   
     def initialize(self):
         self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
         self.mediaSelectors = Stack() # Collect the hierarchy of runtime media selectors
@@ -91,12 +93,18 @@ class SassBuilder(XmlTransformerPart, Builder):
             class_ = parts[-1]
         return class_
 
-    def save(self, path):
+    def save(self, component, path=None, makeDirectory=True):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
+        # Build the component output with self as builder.
+        component.build(self)
+        if path is None:
+            path = component.getRootPath() + self.DEFAULT_PATH
+        if makeDirectory:
+            self.makeDirectory(path)
         f = open(path, 'w')
         # Because we collected the variables during the process, 
-        # we must place them at the start of the output stream.
+        # we must now place them at the start of the output stream.
         for name, value in sorted(self.variables.items()):
             f.write('$%s: %s;\n' % (name, self.value2SassValue(value)))
         f.write('\n')
@@ -208,7 +216,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         # This doesn't have to be an error, it can be that there are two blocks with the same selector
         # but different content. But for clarity, it would be better to given them a different additional class
         # to make the selector different. In that case the warning will not appear.
-        if ts and tc and firstSelectors.has_key(ts) and firstSelectors[ts] != tc:
+        if ts and tc and firstSelectors is not None and firstSelectors.has_key(ts) and firstSelectors[ts] != tc:
             self.tabs()
             self.comment('@@@ Warning: redefine of existing selector')
         if ts and firstSelectors is not None:

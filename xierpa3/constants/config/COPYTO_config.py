@@ -48,7 +48,7 @@ class Config(BaseConfig):
     SECRETACCESSKEY = '' # Add your Amazon S3 secret access key here.
 
     # ---------------------------------------------------------------------------------------------------------
-	  #    A M A Z O N  D Y N A M O  D B
+	#    A M A Z O N  D Y N A M O  D B
 
     #AMAZON_REGION = "us-east-1"
     #AMAZON_HOST = "dynamodb.{0}.amazonaws.com".format(AMAZON_REGION)
