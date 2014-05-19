@@ -25,8 +25,8 @@ class Config(BaseConfig):
 
     #PORT = 80
     #DEBUG = False
-    #USE_ONLINE = True
-    #USE_LOCAL = not USE_ONLINE
+    USE_ONLINE = False
+    USE_LOCAL = not USE_ONLINE
     #USE_FONTFACE = True and USE_ONLINE
     #USE_MULTIPROCESSING = False and sys.version_info >= (2, 7)
 
@@ -48,7 +48,7 @@ class Config(BaseConfig):
     SECRETACCESSKEY = '' # Add your Amazon S3 secret access key here.
 
     # ---------------------------------------------------------------------------------------------------------
-	#    A M A Z O N  D Y N A M O  D B
+    #    A M A Z O N  D Y N A M O  D B
 
     #AMAZON_REGION = "us-east-1"
     #AMAZON_HOST = "dynamodb.{0}.amazonaws.com".format(AMAZON_REGION)
