@@ -10,12 +10,13 @@
 #
 #    run.py
 #
-#    Demo site for the simple "hello world" example, including some layout in the CSS.
+#    Demo site for the simple "hello world" example, including some layout
+#    attributes in the CSS.
 #    The "run.py" program creates the files:
 #        files/css/style.scss
 #        files/css/style.css
 #        files/helloWorld.html
-#    from the one HelloWorld theme instance by applying respectively the
+#    from the one HelloWorldLayout theme instance by applying respectively the
 #    CssBuilder and HtmlBuilder to the theme.
 #    Each of the builders takes the information from the theme to build its
 #    own type of file.
@@ -34,7 +35,7 @@ class HelloWorldText(Column):
         b.text('Hello world.')
         b._div()
         
-class HelloWorld(Theme):
+class HelloWorldLayout(Theme):
     u"""The <b>HelloWorld</b> class implements a basic Hello World page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
@@ -57,13 +58,13 @@ class HelloWorld(Theme):
         return [homePage]
     
 if __name__ == '__main__':
-    # This construction make the Python file only be executed when called in direct mode,
-    # such as "python run.py" in the terminal. This way it is also possible to inherit from
-    # "HelloWorld" class, to make another example (see example/helloworldlayout).
+    # This construction "__name__ == '__main__'" makes the Python file only 
+    # be executed when called in direct mode, such as "python run.py" in the terminal. 
     
-    # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
+    # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
     # the behavior of the object that is made by calling the class.
-    site = HelloWorld()
+    site = HelloWorldLayout()
+    
     # C S S
     # Create the main CSS builder instance to build the CSS part of the site with.
     cssBuilder = CssBuilder()

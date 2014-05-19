@@ -53,9 +53,8 @@ class HelloWorld(Theme):
         return [homePage]
     
 if __name__ == '__main__':
-    # This construction make the Python file only be executed when called in direct mode,
-    # such as "python run.py" in the terminal. This way it is also possible to inherit from
-    # "HelloWorld" class, to make another example (see example/helloworldlayout).
+    # This construction "__name__ == '__main__'" makes the Python file only 
+    # be executed when called in direct mode, such as "python run.py" in the terminal. 
     
     # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
     # the behavior of the object that is made by calling the class.
