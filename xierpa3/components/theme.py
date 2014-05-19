@@ -13,14 +13,10 @@
 import urllib
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-# Default builders for the standard Theme class.
-from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.builders.cssbuilder import CssBuilder
 
 class Theme(Component):
 
     TITLE = 'Redefine cls.TITLE in inheriting theme class.'
-    CLS_BUILDER = HtmlBuilder
 
     def reset(self):
         u"""Gets called prior to every page render. Can be redefined by inheriting theme classes.
@@ -47,15 +43,6 @@ class Theme(Component):
         u"""Answer the list of templates of this theme."""
         return self.components
             
-    def getBuilder(self, path):
-        u"""Answer the builder instance that fits the extension of this url request.
-        <b>CssBuilder</b> and <b>self.CLS_BUILDER</b> intstances."""
-        if path.endswith('.css'):
-            return CssBuilder(self)
-        # Answer the instance of the default builder for this theme.
-        # Can be changed by inheriting classes.
-        return self.CLS_BUILDER(self) 
-
     def buildBlock(self, builder):
         u"""Build the current page of this theme."""
         builder.theme(self) # Make the builder open the site.

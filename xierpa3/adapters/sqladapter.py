@@ -12,8 +12,8 @@
 #
 from xierpa3.adapters.adapter import Adapter
 #from xierpa3.toolbox.database.sql.sqldatastore import SqlDatastore
-from xierpa3.toolbox.database.base.defaultmodels import Item
-from xierpa3.toolbox.database.base.selector import Selector
+#from xierpa3.toolbox.database.base.defaultmodels import Item
+#from xierpa3.toolbox.database.base.selector import Selector
 
 class SqlDatastore():
     #    @@@ Under development
@@ -33,7 +33,7 @@ class SQLAdapter(Adapter):
         u"""
         Model of the database for Python representation and operation of data set. By default represent Item table only.
         """
-        return {'item': Item}
+        #return {'item': Item}
 
     def openDatabase(self, database_name, model):
         return SqlDatastore(database_name, model)

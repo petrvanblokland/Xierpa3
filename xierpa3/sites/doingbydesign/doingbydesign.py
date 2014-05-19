@@ -14,22 +14,18 @@
 #
 #    http://localhost:8013/course/how-to-deal-with-customers
 #
-import os
-from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.descriptors.style import Style, StyleSet
-from xierpa3.attributes import *
-from xierpa3.components import *
+from xierpa3.descriptors.style import StyleSet
+from xierpa3.attributes import Em
+from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
+    Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
+    MobileNavigation, Container, Header, Footer, Page, Documentation, \
+    ItemGroup, Featured
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.sites import doingbydesign
 
-
-FOOTERBACKGROUNDCOLOR = '#E1E1E1'
-
-
-        
 # Adapter
 
 class DbDAdapter(FileAdapter):
@@ -72,23 +68,25 @@ class DoingByDesign(Shop):
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
     CSS_BGCOLOR = '#FFFFFF'
+    CSS_FOOTERBGCOLOR = '#E1E1E1'
     CSS_ALINKCOLOR = '#888888'
     CSS_AVISITEDCOLOR = '+60%'
     CSS_AHOVERCOLOR = '-60%'
     CSS_ACTIVECOLOR = '+60%'
-
+    
     MAXWIDTH = 1140
     MINWIDTH = 755
 
     def _get_css(self):
-        # Force building of CSS with valid set of parameters
+        u"""Force building of CSS with valid set of parameters if "/force" is somewhere
+        in the url of the requested page."""
         force = ''
         if self.e.form['force']:
             force = '/force'
         return ['%s/css/site.css' % force]
 
     def _set_css(self, urls):
-        # Ignore for now?
+        u"""Ignore for now."""
         pass
 
     css = property(_get_css, _set_css)
@@ -115,7 +113,7 @@ class DoingByDesign(Shop):
         s.addStyle('ol', liststyletype=C.DECIMAL)
         return s
 
-    def baseComponents(self):
+    def baseComponents(self):        
         logo = Logo()
         menu = Menu()
         socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
@@ -125,7 +123,7 @@ class DoingByDesign(Shop):
         # Articles featured by image
         featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
         featuredByImage100 = FeaturedByImage(colWidth=9) # Featured article as group item
-        featuredByImageList = FeaturedByImageList() # Featured article on a page. List of related links
+        #featuredByImageList = FeaturedByImageList() # Featured article on a page. List of related links
         # Articles featured by summary text
         featuredSideText = FeaturedByDiapText(colWidth=4, itemStart=1, label='Featured course')
         featuredByText = FeaturedByText(itemStart=2, showPoster=False)
@@ -134,7 +132,6 @@ class DoingByDesign(Shop):
         bgColor = '#323A47'
         featuredImages = Featured(class_='featuredImages', 
             components=(featuredByImage, featuredSideText),
-            #components=(featuredSideText, featuredByImage),
             containerBackgroundColor=bgColor)
         # Featured text container
         bgColor = '#E8E8E8'
@@ -142,7 +139,7 @@ class DoingByDesign(Shop):
             components=(featuredByText, featuredByTextList),
             containerBackgroundColor=bgColor)
         # Footer group
-        footer = Footer(components=(menu,), containerBackgroundColor=FOOTERBACKGROUNDCOLOR)
+        footer = Footer(components=(menu,), containerBackgroundColor=self.CSS_FOOTERBGCOLOR)
 
         # Article
         featuredByTextList = FeaturedByTextList() # Default start a featured index 0

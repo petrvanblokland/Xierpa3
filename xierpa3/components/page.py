@@ -14,8 +14,6 @@ from xierpa3.components.component import Component
 
 class Page(Component):
 
-    STYLE_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
-    
     def reset(self):
         u"""Gets called prior to every page render. Can be redefined by inheriting theme classes.
         Default behavior is to do nothing."""
@@ -28,12 +26,6 @@ class Page(Component):
     def _block(self, b):
         b._div(comment=self.name) # End comment is automatic.
         
-    def getStylePath(self):
-        u"""
-        Answer the relative local style (css) path for this page.
-        """
-        return self.STYLE_PATH # Default is to answer the relative path of the local CSS file.
-
     def buildBlock(self, b):
         u"""
         Make the <i>builder</i> open the page and open the block. Then call the builder for all enclosed components. Make

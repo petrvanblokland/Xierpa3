@@ -10,8 +10,11 @@
 #
 #   constants.py
 #
-from config.config import Config
-
+try:
+    from config.xconfig import Config
+except ImportError:
+    from config.COPYTO_config import Config
+    
 class C(Config):
 
     UNTITLED = 'Untitled'

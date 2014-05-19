@@ -38,8 +38,8 @@
 #            SocialMedia
 #
 import weakref
-import inspect
 import hashlib
+import xierpa3
 from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
@@ -171,6 +171,10 @@ class Component(object):
         s = f.read()
         f.close()
         return s
+
+    def getRootPath(self):
+        from xierpa3 import components
+        return components.__path__[0]
 
     def baseComponents(self):
         """To be redefined by inheriting classes to answer the default child components of the component."""
@@ -360,7 +364,7 @@ class Component(object):
         css = self.style.css
         if css is None and self.parent:
             return self.parent.css
-        return ['/style.css']
+        return ['css/style.css']
 
     def _set_css(self, urls):
         assert urls is None or isinstance(urls, (tuple, list))

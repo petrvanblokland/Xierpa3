@@ -41,7 +41,7 @@ if __name__ == '__main__':
         template.build(builder) # Build the code for every page template in the theme
         exportPath = builder.getTemplatePath(theme)
         print 'Saving', exportPath
-        builder.save(exportPath, makeDirectory=True) # Save the exported template code into its file.
+        builder.save(template, path=exportPath, makeDirectory=True) # Save the exported template code into its file.
         # Build the panel blueprint
         #template.build(bluePrintBuilder)
         #print 'Saving panel blueprint', theme.PATH_BLUEPRINT % template.name
