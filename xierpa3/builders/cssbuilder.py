@@ -33,8 +33,6 @@ class CssBuilder(SassBuilder):
         Style type is one of ['nested', 'expanded', 'compact', 'compressed'].
         Given by the url parameter "/css-nested".
         """
-        # Build the component output with self as builder.
-        component.build(self)
         # Is there a server environment, then overwrite the style type.
         if self.e is not None: 
             styleType = self.e.form[self.PARAM_CSS] or styleType

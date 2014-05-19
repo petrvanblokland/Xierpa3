@@ -1,4 +1,12 @@
-$colorRed: red;
+$backgroundcolor222: #222;
+$class_Column: column;
+$colorYellow: yellow;
+$floatLeft: left;
+$fontfamilyGeorgia: Georgia;
+$fontsize4em: 4em;
+$marginleft10: 10%;
+$padding050em: 0.50em;
+$width50: 50%;
 
 /* Reset */
 html, body, div, span, applet, object, iframe,
@@ -74,8 +82,16 @@ input[type=submit], label, select, .pointer {
 
 
 /* Start page "page" */
-div { 
-    color: $colorRed;
+div.column { 
+    
+    color: $colorYellow;
+    float: $floatLeft;
+    padding: $padding050em;
+    width: $width50;
+    margin-left: $marginleft10;
+    font-size: $fontsize4em;
+    font-family: $fontfamilyGeorgia;
+    background-color: $backgroundcolor222;
 } 
 
 /* End page "page" */

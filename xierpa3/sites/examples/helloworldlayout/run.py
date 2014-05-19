@@ -10,7 +10,7 @@
 #
 #    run.py
 #
-#    Demo site for the simple "hello world" example.
+#    Demo site for the simple "hello world" example, including some layout in the CSS.
 #    The "run.py" program creates the files:
 #        files/css/style.scss
 #        files/css/style.css
@@ -20,13 +20,17 @@
 #    Each of the builders takes the information from the theme to build its
 #    own type of file.
 #
+from xierpa3.constants.constants import C
+from xierpa3.attributes import Em
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class HelloWorldText(Column):
     def buildBlock(self, b):
-        b.div(color='red')
+        b.div(class_='column', color='yellow', marginleft='10%', width='50%', 
+              float=C.LEFT, backgroundcolor='#222', padding=Em(0.5), 
+              fontfamily='Georgia', fontsize=Em(4))
         b.text('Hello world.')
         b._div()
         
@@ -39,8 +43,8 @@ class HelloWorld(Theme):
     def getRootPath(self):
         u"""Get the root path for the "files/" directory, so the builder knows where to 
         write the HTML file."""
-        from xierpa3.sites.examples import helloworld
-        return helloworld.__path__[0]
+        from xierpa3.sites.examples import helloworldlayout
+        return helloworldlayout.__path__[0]
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
