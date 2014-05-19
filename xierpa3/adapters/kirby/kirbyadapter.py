@@ -31,6 +31,9 @@ class KirbyAdapter(Adapter):
         
     # ===============
 
+    def getPageTitle(self, component, **kwargs):
+        return Data(text='Untitled') # To be redefined by inheriting adapter class.
+    
     def thisUrl(self):
         return Data(url="<?php echo thisURL() ?>")
     
