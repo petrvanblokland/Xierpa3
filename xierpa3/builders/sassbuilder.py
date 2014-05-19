@@ -25,7 +25,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     # For automatic Sass compilation, use inheriting CssBuilder instead.
 
     # Used for dispatching component.build_sass, if components want to define builder dependent behavior.
-    ID = 'sass'
+    ID = C.TYPE_SASS
     EXTENSION = 'scss'
     ATTR_POSTFIX = 'css' # Postfix of dispatcher and attribute names above generic names.
     DEFAULT_PATH = 'files/css/style.css' # Default can be redefined by inheriting classes.

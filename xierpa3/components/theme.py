@@ -61,7 +61,7 @@ if __name__ == "__main2__":
     from xierpa3.builders.htmlbuilder import HtmlBuilder
     from xierpa3.builders.sassbuilder import SassBuilder
     from xierpa3.descriptors.style import Style
-    from xierpa3.components import *
+    from xierpa3.components import Page, Group, Text, Article, Ruler, Header, Navigation, TagCloud
     # Define general page descriptors
     style = Style(layout='responsive') # Default behavior
     style.fontfamily = 'Verdana'
@@ -71,7 +71,7 @@ if __name__ == "__main2__":
     style.addMedia(min=700, color='green', fontfamily='Verdana')
     style.addStyle('body', backgroundcolor='yellow')
     # Define page components
-    sidebar = Sidebar(name='TheSidebar', components=(
+    sidebar = Group(name='TheSidebar', components=(
         Ruler(size=20, color='red'),
         Header(Text('Sidebar header'), fontsize=24),
         Navigation(backgroundcolor='#E0E0E0', type='menu'),

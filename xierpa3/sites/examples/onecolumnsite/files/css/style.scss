@@ -1,0 +1,162 @@
+$backgroundcolorDdd: #DDD;
+$backgroundcolorEee: #EEE;
+$class_Column: column;
+$class_End: end;
+$class_Start: start;
+$color222: #222;
+$color444: #444;
+$color888: #888;
+$colorBlack: black;
+$fontfamilyGeorgia: Georgia;
+$fontsize120em: 1.20em;
+$fontsize140em: 1.40em;
+$fontsize160em: 1.60em;
+$fontsize1em: 1em;
+$fontstyleItalic: italic;
+$fontweightBold: bold;
+$lineheight110em: 1.10em;
+$lineheight120em: 1.20em;
+$lineheight130em: 1.30em;
+$lineheight140em: 1.40em;
+$marginbottom050em: 0.50em;
+$marginbottom1em: 1em;
+$margintop050em: 0.50em;
+$margintop1em: 1em;
+$maxwidth700: 700px;
+$minwidth300: 300px;
+$padding2em: 2em;
+$textindent0: 0px;
+$textindent1em: 1em;
+$width50: 50%;
+
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, logo, section {
+    display: block;
+}
+a { text-decoration: none;
+    img {
+    border: 0; }
+}
+figure {
+    position: relative; }
+
+// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+// Make the img of class "autowidth" to get the function working.
+// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+// IE (default, as there is no clear way to determine IE now)
+img.autowidth { width:100%; }
+// Mozilla
+@-moz-document url-prefix() {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+// Webkit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:auto; }
+}
+// Opera
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+
+/* CSS Enhancements for Better User Experience */
+html {
+    overflow-y:scroll;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+/* Brakes Text for Mobile */
+.page-break {
+    page-break-before:always;
+}
+input[type=submit], label, select, .pointer {
+    cursor:pointer;
+}
+/* Hack */
+@media all and (-webkit-min-device-pixel-ratio: 1){
+    selectors {
+        properties: values;
+    }
+}
+
+
+/* Start page "page" */
+div.column { 
+    min-width: $minwidth300;
+    max-width: $maxwidth700;
+    
+    color: $color222;
+    padding: $padding2em;
+    width: $width50;
+    font-size: $fontsize1em;
+    font-family: $fontfamilyGeorgia;
+    background-color: $backgroundcolorEee;
+    line-height: $lineheight140em;
+    margin: 0px auto 0px auto;
+    h1 { 
+        color: $color888;
+        font-weight: $fontweightBold;
+        font-size: $fontsize160em;
+        line-height: $lineheight110em;
+    } 
+    h2 { 
+        font-style: $fontstyleItalic;
+        color: $color444;
+        margin-bottom: $marginbottom050em;
+        font-size: $fontsize140em;
+        line-height: $lineheight120em;
+        margin-top: $margintop1em;
+    } 
+    img { 
+        margin-top: $margintop050em;
+        margin-bottom: $marginbottom050em;
+    } 
+    p { 
+        text-indent: $textindent1em;
+    } 
+    p.start { 
+        
+        text-indent: $textindent0;
+    } 
+    p.end { 
+        
+        margin-top: $margintop050em;
+        margin-bottom: $marginbottom1em;
+        text-indent: $textindent0;
+        font-weight: $fontweightBold;
+    } 
+    blockquote { 
+        font-style: $fontstyleItalic;
+        color: $colorBlack;
+        margin-bottom: $marginbottom050em;
+        padding: 0.50em 1em;
+        font-size: $fontsize120em;
+        background-color: $backgroundcolorDdd;
+        line-height: $lineheight130em;
+        margin-top: $margintop050em;
+    } 
+} 
+
+/* End page "page" */
