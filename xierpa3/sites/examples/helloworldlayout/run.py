@@ -39,7 +39,7 @@ class HelloWorldLayout(Theme):
     u"""The <b>HelloWorld</b> class implements a basic Hello World page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
-    TITLE = u'The standard “Hello world” page.' # Use as title of window.
+    TITLE = u'The extended “Hello world” page.' # Use as title of window.
 
     def getRootPath(self):
         u"""Get the root path for the "files/" directory, so the builder knows where to 
@@ -52,7 +52,7 @@ class HelloWorldLayout(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of the text component to be placed on the page.
         hw = HelloWorldText()
-        # Cerate an instance (=object) of the page, containing the "hw" component.
+        # Create an instance (=object) of the page, containing the "hw" component.
         homePage = Page(components=(hw,), title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]

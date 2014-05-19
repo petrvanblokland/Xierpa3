@@ -1,0 +1,183 @@
+$backgroundcolor222: #222;
+$backgroundcolor323a47: #323A47;
+$class_Column: column;
+$class_Menu: menu;
+$class_Row: row;
+$class_Twelvecol: twelveCol;
+$colorE8e8e8: #E8E8E8;
+$colorWhite: white;
+$colorYellow: yellow;
+$cursorPointer: pointer;
+$displayInlineblock: inline-block;
+$displayNone: none;
+$floatLeft: left;
+$floatNone: none;
+$fontfamilyGeorgia: Georgia;
+$fontsize13: 13px;
+$fontsize4em: 4em;
+$height26: 26px;
+$heightAuto: auto;
+$left0: 0px;
+$margin0: 0px;
+$marginleft0: 0px;
+$marginleft050em: 0.50em;
+$marginleft10: 10%;
+$marginright0: 0px;
+$marginright050em: 0.50em;
+$maxwidth50: 50%;
+$minwidth0: 0px;
+$overflowHidden: hidden;
+$padding0: 0px;
+$padding050em: 0.50em;
+$paddingleft0: 0px;
+$paddingleft050em: 0.50em;
+$paddingright0: 0px;
+$paddingright050em: 0.50em;
+$paddingtop0_60: 0_60;
+$top0: 0px;
+$verticalalignMiddle: middle;
+$width30: 30%;
+$width50: 50%;
+$width56: 56px;
+$widthAuto: auto;
+
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, logo, section {
+    display: block;
+}
+a { text-decoration: none;
+    img {
+    border: 0; }
+}
+figure {
+    position: relative; }
+
+// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+// Make the img of class "autowidth" to get the function working.
+// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+// IE (default, as there is no clear way to determine IE now)
+img.autowidth { width:100%; }
+// Mozilla
+@-moz-document url-prefix() {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+// Webkit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:auto; }
+}
+// Opera
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+
+/* CSS Enhancements for Better User Experience */
+html {
+    overflow-y:scroll;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+/* Brakes Text for Mobile */
+.page-break {
+    page-break-before:always;
+}
+input[type=submit], label, select, .pointer {
+    cursor:pointer;
+}
+/* Hack */
+@media all and (-webkit-min-device-pixel-ratio: 1){
+    selectors {
+        properties: values;
+    }
+}
+
+
+/* Start page "page" */
+div.mobileNavigation { /* .container, .mobileNavigation */
+    padding-left: $paddingleft0;
+    
+    margin-left: $marginleft0;
+    background-color: $backgroundcolor323a47;
+    margin-right: $marginright0;
+    display: $displayNone;
+    div.row { 
+        padding-left: $paddingleft0;
+        min-width: $minwidth0;
+        
+        overflow: $overflowHidden;
+        padding-right: $paddingright0;
+        margin: 0px auto;
+        div.twelveCol { 
+            padding-left: $paddingleft050em;
+            
+            float: $floatNone;
+            width: $widthAuto;
+            margin-left: $marginleft050em;
+            margin-right: $marginright050em;
+            padding-right: $paddingright050em;
+            #nav-wrap { 
+                z-index: 1000;
+                width: $width30;
+                display: $displayInlineblock;
+                #menu-icon { 
+                    
+                    color: $colorWhite;
+                    top: $top0;
+                    padding-top: $paddingtop0_60;
+                    height: $height26;
+                    cursor: $cursorPointer;
+                    width: $width56;
+                    font-size: $fontsize13;
+                    margin-right: $marginright0;
+                    display: $displayInlineblock;
+                    left: $left0;
+                    img { 
+                        vertical-align: $verticalalignMiddle;
+                        max-width: $maxwidth50;
+                        height: $heightAuto;
+                        padding: $padding0;
+                        margin: $margin0;
+                    } 
+                } /* #menu-icon *//* ### No items in the adapter ### */
+            } 
+            a { 
+                color: $colorE8e8e8;
+            } 
+        } /* twelveCol */
+    } /* row */
+} 
+div.column { 
+    
+    color: $colorYellow;
+    float: $floatLeft;
+    padding: $padding050em;
+    width: $width50;
+    margin-left: $marginleft10;
+    font-size: $fontsize4em;
+    font-family: $fontfamilyGeorgia;
+    background-color: $backgroundcolor222;
+} 
+
+/* End page "page" */
