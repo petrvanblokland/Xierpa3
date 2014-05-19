@@ -13,7 +13,7 @@
 from xierpa3.components.column import Column
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
-from xierpa3.attributes import *
+from xierpa3.attributes import Em, Border, Margin, Padding
 from xierpa3.descriptors.style import Media
 
 CHAPTERCOLOR = '#202020'

@@ -21,7 +21,7 @@
 #    own type of file.
 #
 from xierpa3.constants.constants import C
-from xierpa3.attributes import Em, Margin
+from xierpa3.attributes import Em, Margin, Border, Color
 from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -46,7 +46,25 @@ class ExampleColumn(Column):
         if b.isType(C.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:
-            for item in self.adapter.getArticle(self).items:
+            for data in self.adapter.getFeaturedArticles(self):
+                # Build the headline without style attribute, as these are already defined
+                # in the self.buildCssColumnTemplate call.
+                b.h1()
+                b.text(data.headline)
+                b._h1()
+                if data.image:
+                    # Build the image that came with the featured article, if it exists.
+                    # Make it class autowidth to solve the width="100%" incompatibility
+                    # between browsers.
+                    b.img(src=data.image, class_=C.CLASS_AUTOWIDTH)
+                # Output the rest of the featured article.
+                b.text(data.item)
+            # Add some more volume to the blurb article. 
+            data = self.adapter.getArticle(self)
+            b.h2()
+            b.text(data.headline)
+            b._h2()
+            for item in data.items:
                 b.text(item)
         b._div()
         
@@ -54,6 +72,14 @@ class ExampleColumn(Column):
         u"""Build the single CSS for all expected tags in an article that is answered
         by <b>self.adapter</b>. We cannot check on that here, since the content may
         vary and even is hidden by e.g. calls to a PHP adapter.""" 
+        b.h1(fontweight=C.BOLD, color='#888', fontsize=Em(1.6), lineheight=Em(1.1))
+        # Headling made by BlurbAdapter
+        b._h1()
+        b.h2(fontstyle=C.ITALIC, color='#444', fontsize=Em(1.4), lineheight=Em(1.2),
+             margintop=Em(1), marginbottom=Em(0.5))
+        # Headling made by BlurbAdapter
+        b._h2()
+        b.img(margintop=Em(0.5), marginbottom=Em(0.5))
         b.p(textindent=Em(1))
         # Main paragraphs have an indent.
         b._p()
@@ -65,9 +91,10 @@ class ExampleColumn(Column):
         # Mark the end paragraph (the element after is not a <p>) in case something
         # special needs to be done, e.g. change the marginbottom.
         b._p()
-        b.blockquote(margin=Em(1), fontsize=Em(1.2), lineheight=Em(1.3),
-            fontstyle=C.ITALIC)
-        # Italic blockquotes with an indent.
+        b.blockquote(padding=Margin(Em(0.5), Em(1)), fontsize=Em(1.2), lineheight=Em(1.3),
+            margintop=Em(0.5), marginbottom=Em(0.5), #border=Border('solid', 2, Color('E1E2E2')),
+            fontstyle=C.ITALIC, backgroundcolor='#DDD', color=C.BLACK)
+        # Italic blockquotes with an indent and backgroundcolor.
         b._blockquote()
 
 class OneColumnSite(Theme):

@@ -1,18 +1,27 @@
+$backgroundcolorDdd: #DDD;
 $backgroundcolorEee: #EEE;
 $class_Column: column;
 $class_End: end;
 $class_Start: start;
 $color222: #222;
+$color444: #444;
+$color888: #888;
+$colorBlack: black;
 $fontfamilyGeorgia: Georgia;
 $fontsize120em: 1.20em;
+$fontsize140em: 1.40em;
+$fontsize160em: 1.60em;
 $fontsize1em: 1em;
 $fontstyleItalic: italic;
 $fontweightBold: bold;
+$lineheight110em: 1.10em;
+$lineheight120em: 1.20em;
 $lineheight130em: 1.30em;
 $lineheight140em: 1.40em;
-$margin1em: 1em;
+$marginbottom050em: 0.50em;
 $marginbottom1em: 1em;
 $margintop050em: 0.50em;
+$margintop1em: 1em;
 $maxwidth700: 700px;
 $minwidth300: 300px;
 $padding2em: 2em;
@@ -106,6 +115,24 @@ div.column {
     background-color: $backgroundcolorEee;
     line-height: $lineheight140em;
     margin: 0px auto 0px auto;
+    h1 { 
+        color: $color888;
+        font-weight: $fontweightBold;
+        font-size: $fontsize160em;
+        line-height: $lineheight110em;
+    } 
+    h2 { 
+        font-style: $fontstyleItalic;
+        color: $color444;
+        margin-bottom: $marginbottom050em;
+        font-size: $fontsize140em;
+        line-height: $lineheight120em;
+        margin-top: $margintop1em;
+    } 
+    img { 
+        margin-top: $margintop050em;
+        margin-bottom: $marginbottom050em;
+    } 
     p { 
         text-indent: $textindent1em;
     } 
@@ -121,10 +148,14 @@ div.column {
         font-weight: $fontweightBold;
     } 
     blockquote { 
-        margin: $margin1em;
         font-style: $fontstyleItalic;
+        color: $colorBlack;
+        margin-bottom: $marginbottom050em;
+        padding: 0.50em 1em;
         font-size: $fontsize120em;
+        background-color: $backgroundcolorDdd;
         line-height: $lineheight130em;
+        margin-top: $margintop050em;
     } 
 } 
 

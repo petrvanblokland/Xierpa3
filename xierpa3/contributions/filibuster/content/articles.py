@@ -22,12 +22,8 @@ __version__ = '3.0.0'
 __author__ = "someone"
 
 
-# ------------------------------------------------------
-#    geography
-#
-# -*- coding: utf-8 -*-
 content = {
-    # In case design.xml type attributes are missing, the XSL defaults to these values.
+
     '_headline': ['<#news_headline#>',],
     '_section': ['<#portal_anyshortname#>',],
     '_ankeiler': ['<#article_ankeiler#>',],
@@ -54,28 +50,28 @@ content = {
         '<#^,book_headline#>'
     ],
     'article_summary': [
-        '<p class="start"><#article_start#></p><p><#article_p1#><#article_p3#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p2#><#article_p4#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p3#><#article_p5#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p4#><#article_p6#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p5#><#article_p7#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p6#><#article_p8#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p7#><#article_p9#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p8#><#article_p10#></p>',
-        '<p class="start"><#article_start#></p><p><#da_text#><#article_p10#></p>', # Fake design text once in a while.
+        '<p class="start summary"><#article_start#></p><p><#article_p1#><#article_p3#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p2#><#article_p4#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p3#><#article_p5#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p4#><#article_p6#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p5#><#article_p7#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p6#><#article_p8#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p7#><#article_p9#></p>',
+        '<p class="start summary"><#article_start#></p><p><#article_p8#><#article_p10#></p>',
+        '<p class="start summary"><#article_start#></p><p><#da_text#><#article_p10#></p>', # Fake design text once in a while.
     ],
     'article_shortsummary': [
-        '<p class="start"><#article_start#></p><p><#article_p1#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p2#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p3#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p4#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p5#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p6#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p7#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p8#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p9#></p>',
-        '<p class="start"><#article_start#></p><p><#article_p10#></p>',
-        '<p class="start"><#article_start#></p><p><#da_text#></p>', # Fake design text once in a while.
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p1#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p2#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p3#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p4#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p5#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p6#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p7#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p8#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p9#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#article_p10#></p>',
+        '<p class="start shortsummary"><#article_start#></p><p><#da_text#></p>', # Fake design text once in a while.
     ],
     'article_deck': [
         '<#article_start#>',
@@ -160,6 +156,7 @@ content = {
         u"""Hacking scandal's far-reaching tentacles.""",
     ],
     'article_binder':['Meanwhile,','On the other hand,','Also,','Ignoring the fact that','This enhances the idea that','Furthermore,',
+        'Considering the fact that', 'Maybe that is true, but', '<#article_question#> It seems a valid assumption, but', 
         'Additionally,','But who could have thought that','But who could never have assumed that','On another level',
         'This contradicts the general assumption that','As mentioned before,','As stated,','As previously discussed,',
         'Not ignoring the fact that','Unfortunately,','On the contrary,','Although','Despite the fact that',

@@ -36,7 +36,7 @@ class BlurbAdapter(Adapter):
     def getFeaturedArticleThumbs(self, component, count):
         return [self.blurb.getBlurb('design_headline')]
 
-    def getFeaturedArticles(self, component, count):
+    def getFeaturedArticles(self, component, count=1):
         # Answer count list of (imagePath, head, ankeiler, link)
         images = [
             'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',
@@ -95,7 +95,8 @@ class BlurbAdapter(Adapter):
 
     def getArticle(self, component, id=None):
         data = Data()
-        data.items = [self.blurb.getBlurb('article'), 'Heading', self.blurb.getBlurb('article')]
+        data.headline = self.blurb.getBlurb('news_headline')
+        data.items = [self.blurb.getBlurb('article'), self.blurb.getBlurb('article'), self.blurb.getBlurb('article')]
         return data
     
     def getFooter(self, component, count):
