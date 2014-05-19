@@ -11,8 +11,6 @@
 #   blurbadapter.py
 #
 from random import choice, randint
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter, Data
 from xierpa3.contributions.filibuster.blurb import Blurb
 
@@ -79,7 +77,7 @@ class BlurbAdapter(Adapter):
             'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/verticalfashionshow.jpg',
         ]
         articles = []
-        for n in range(1, (count or 1) + 1):
+        for _ in range(1, (count or 1) + 1):
             data = Data()
             data.image = choice(images)
             data.headline = self.blurb.getBlurb('design_headline', 8) + '.'
@@ -91,7 +89,7 @@ class BlurbAdapter(Adapter):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         data = Data()
         data.items = cloud = ['Tags']
-        for n in range(10):
+        for _ in range(10):
             cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
         return data
 

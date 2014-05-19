@@ -28,10 +28,21 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class ExampleColumn(Column):
     def buildBlock(self, b):
-        b.div(class_='column', color='yellow', marginleft='10%', width='50%', 
-              float=C.LEFT, backgroundcolor='#222', padding=Em(0.5), 
-              fontfamily='Georgia', fontsize=Em(4))
-        b.text(self.adapter.getArticle(self))
+        b.div(class_='column', color='#222', marginleft='10%', width='50%', 
+              float=C.LEFT, backgroundcolor='#EEE', padding=Em(2), 
+              fontfamily='Georgia', fontsize=Em(1), lineheight=Em(1.4))
+        b.p(textindent=Em(1))
+        b._p()
+        b.p(class_='start', textindent=0)
+        b._p()
+        b.p(class_='end', fontweight=C.BOLD, marginbottom=Em(1),
+            margintop=Em(0.5), textindent=0)
+        b._p()
+        b.blockquote(margin=Em(1), fontsize=Em(1.2), lineheight=Em(1.3),
+            fontstyle=C.ITALIC)
+        b._blockquote()
+        for item in self.adapter.getArticle(self).items:
+            b.text(item)
         b._div()
         
 class NavigationExample(Theme):

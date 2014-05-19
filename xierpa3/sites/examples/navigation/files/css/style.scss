@@ -1,39 +1,51 @@
-$backgroundcolor222: #222;
 $backgroundcolor323a47: #323A47;
+$backgroundcolorEee: #EEE;
 $class_Column: column;
+$class_End: end;
 $class_Menu: menu;
 $class_Row: row;
+$class_Start: start;
 $class_Twelvecol: twelveCol;
+$color222: #222;
 $colorE8e8e8: #E8E8E8;
 $colorWhite: white;
-$colorYellow: yellow;
 $cursorPointer: pointer;
 $displayInlineblock: inline-block;
 $displayNone: none;
 $floatLeft: left;
 $floatNone: none;
 $fontfamilyGeorgia: Georgia;
+$fontsize120em: 1.20em;
 $fontsize13: 13px;
-$fontsize4em: 4em;
+$fontsize1em: 1em;
+$fontstyleItalic: italic;
+$fontweightBold: bold;
 $height26: 26px;
 $heightAuto: auto;
 $left0: 0px;
+$lineheight130em: 1.30em;
+$lineheight140em: 1.40em;
 $margin0: 0px;
+$margin1em: 1em;
+$marginbottom1em: 1em;
 $marginleft0: 0px;
 $marginleft050em: 0.50em;
 $marginleft10: 10%;
 $marginright0: 0px;
 $marginright050em: 0.50em;
+$margintop050em: 0.50em;
 $maxwidth50: 50%;
 $minwidth0: 0px;
 $overflowHidden: hidden;
 $padding0: 0px;
-$padding050em: 0.50em;
+$padding2em: 2em;
 $paddingleft0: 0px;
 $paddingleft050em: 0.50em;
 $paddingright0: 0px;
 $paddingright050em: 0.50em;
 $paddingtop0_60: 0_60;
+$textindent0: 0px;
+$textindent1em: 1em;
 $top0: 0px;
 $verticalalignMiddle: middle;
 $width30: 30%;
@@ -170,14 +182,35 @@ div.mobileNavigation { /* .container, .mobileNavigation */
 } 
 div.column { 
     
-    color: $colorYellow;
+    color: $color222;
     float: $floatLeft;
-    padding: $padding050em;
+    padding: $padding2em;
     width: $width50;
     margin-left: $marginleft10;
-    font-size: $fontsize4em;
+    font-size: $fontsize1em;
     font-family: $fontfamilyGeorgia;
-    background-color: $backgroundcolor222;
+    background-color: $backgroundcolorEee;
+    line-height: $lineheight140em;
+    p { 
+        text-indent: $textindent1em;
+    } 
+    p.start { 
+        
+        text-indent: $textindent0;
+    } 
+    p.end { 
+        
+        margin-top: $margintop050em;
+        margin-bottom: $marginbottom1em;
+        text-indent: $textindent0;
+        font-weight: $fontweightBold;
+    } 
+    blockquote { 
+        margin: $margin1em;
+        font-style: $fontstyleItalic;
+        font-size: $fontsize120em;
+        line-height: $lineheight130em;
+    } 
 } 
 
 /* End page "page" */
