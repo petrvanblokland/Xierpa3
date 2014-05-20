@@ -1,11 +1,18 @@
 $backgroundcolor222: #222;
+$class_Caption: caption;
 $class_Column: column;
+$color888: #888;
 $colorYellow: yellow;
-$floatLeft: left;
 $fontfamilyGeorgia: Georgia;
+$fontsize080em: 0.80em;
 $fontsize4em: 4em;
-$marginleft10: 10%;
+$fontstyleItalic: italic;
+$lineheight140em: 1.40em;
+$maxwidth700: 700px;
+$minwidth300: 300px;
 $padding050em: 0.50em;
+$paddingleft050em: 0.50em;
+$textalignCenter: center;
 $width50: 50%;
 
 /* Reset */
@@ -83,15 +90,32 @@ input[type=submit], label, select, .pointer {
 
 /* Start page "page" */
 div.column { 
+    min-width: $minwidth300;
+    max-width: $maxwidth700;
     
     color: $colorYellow;
-    float: $floatLeft;
     padding: $padding050em;
     width: $width50;
-    margin-left: $marginleft10;
     font-size: $fontsize4em;
     font-family: $fontfamilyGeorgia;
     background-color: $backgroundcolor222;
+    line-height: $lineheight140em;
+    margin: 0px auto 0px auto;
+    text-align: $textalignCenter;
+} 
+div.caption { 
+    font-style: $fontstyleItalic;
+    max-width: $maxwidth700;
+    
+    color: $color888;
+    padding-left: $paddingleft050em;
+    min-width: $minwidth300;
+    width: $width50;
+    font-size: $fontsize080em;
+    font-family: $fontfamilyGeorgia;
+    line-height: $lineheight140em;
+    margin: 0px auto 0px auto;
+    text-align: $textalignCenter;
 } 
 
 /* End page "page" */
