@@ -34,15 +34,6 @@ class Style(State):
     def __repr__(self):
         return '<%s: %s>' % (self.__class__.__name__, self.selector or self.name or self.id or 'Untitled')
 
-    @classmethod
-    def XXXfromDict(cls, selector, component, d):
-        u"""
-        If component is not defined, then this will be done later, when the style is attached to a component.
-        """
-        assert isinstance(d, dict)
-        assert selector is None or isinstance(selector, basestring)
-        return cls(selector, component, **d)
-
     def addMedia(self, selector, min=None, max=None, expression=None, **kwargs):
         u"""
         Create a new Media instance for @media content. The parameters @condition, @min and @max are expected 

@@ -12,7 +12,7 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-from xierpa3.attributes import *
+from xierpa3.attributes import Em, Border, Z, Margin
 from xierpa3.descriptors.style import Media
 
 class Navigation(Component):
@@ -21,6 +21,9 @@ class Navigation(Component):
 
 class MobileNavigation(Navigation):
 
+    # TODO: Default style will become a Style, where all default values
+    # also hold the description. This way the documentation for of the 
+    # component API can be automated.
     STYLE_DEFAULT = dict(
         colWidth=12,
         # Container stuff
@@ -93,8 +96,7 @@ class MobileNavigation(Navigation):
                 b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
                 b._li()
                 b._a()
-
-                b._ul()
+            b._ul()
         b._nav()
         b.a(href='/home', color='#E8E8E8')
         b.text('Doing by Design')

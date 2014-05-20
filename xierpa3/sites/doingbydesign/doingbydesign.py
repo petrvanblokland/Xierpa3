@@ -141,6 +141,12 @@ class DoingByDesign(Shop):
         # Footer group
         footer = Footer(components=(menu,), containerBackgroundColor=self.CSS_FOOTERBGCOLOR)
 
+        # Documentation
+        # The documentation class knows how to collect methods and their attrbutes
+        # from components, adapters and builders and build them in an automated
+        # documentation site.
+        documentation = Documentation()
+        
         # Article
         featuredByTextList = FeaturedByTextList() # Default start a featured index 0
         article = Container(class_=C.CLASS_ARTICLE, 
@@ -149,14 +155,11 @@ class DoingByDesign(Shop):
     
         # Floating items
         thumbnails = ItemGroup(components=(featuredByImage100,))
-
-        # Documentation
-        documentation = Documentation()
         
         homePage = Page(name=C.TEMPLATE_INDEX,
             components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
-
+    
         articlePage = Page(name=C.TEMPLATE_ARTICLE,
             components=(mobileNavigation, header, article, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
