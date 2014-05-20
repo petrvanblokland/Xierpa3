@@ -13,7 +13,7 @@
 import os
 import inspect
 from random import randint
-from xierpa3.toolbox.parsers.json import cjson
+from xierpa3.toolbox.parsers.c_json import cjson
 from xierpa3.toolbox.storage.status.status import Status
 from xierpa3.toolbox.dating import timestampLong
 from xierpa3.constants.constants import C

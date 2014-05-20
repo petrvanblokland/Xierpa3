@@ -61,7 +61,7 @@ class Preference(dict):
         return p
         
 if __name__ == '__main__':        
-    from xierpa3.toolbox.parsers.json import cjson
+    from xierpa3.toolbox.parsers.c_json import cjson
     p = Preference()
     p['aa/bb'] = 1234
     print p
