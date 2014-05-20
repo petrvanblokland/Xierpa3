@@ -13,7 +13,7 @@
 try:
     import cjson #@UnusedImport
 except Exception, e:
-    print '### Error loading python-cjson. Better install it. json used otherwise.'
+    print '### Error loading python-cjson. Better install it. json used instead.'
     print e
     import json
     

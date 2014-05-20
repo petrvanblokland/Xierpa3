@@ -11,7 +11,7 @@
 #   environment.py
 #
 import weakref
-import cjson
+from xierpa3.toolbox.parsers.json import cjson # Load cjson or json if available.
 from xierpa3.descriptors.state import State
 from xierpa3.toolbox.formdict import FormDict
 
