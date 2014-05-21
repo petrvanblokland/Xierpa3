@@ -18,6 +18,7 @@ except Exception, e:
     import json
     
     class cjson(object):
+        u"""Make json and cjson compatible calls."""
         @classmethod
         def encode(cls, s):
             return json.loads(s)
