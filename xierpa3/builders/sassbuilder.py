@@ -97,7 +97,9 @@ class SassBuilder(XmlTransformerPart, Builder):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
         # Build the component output with self as builder.
+        self.theme(component)
         component.build(self)
+        self._theme(component)
         if path is None:
             path = component.getRootPath() + self.DEFAULT_PATH
         if makeDirectory:
@@ -314,7 +316,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.newline()
     
     def buildMediaComponent(self, expression, component):
-        u"""Build the @media of the <i>component</i> that match the expression. 
+        u"""Build the @media of the <i>component</i> that matches the expression. 
         Skip the block header if the content renders to empty."""
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
         self.pushResult() # Save current output stream
@@ -493,10 +495,10 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {

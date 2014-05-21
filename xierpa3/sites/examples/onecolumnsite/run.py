@@ -21,10 +21,11 @@
 #    own type of file.
 #
 from xierpa3.constants.constants import C
-from xierpa3.attributes import Em, Margin, Border, Color
+from xierpa3.attributes import Em, Margin
 from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
+from xierpa3.descriptors.style import Media
 
 class ExampleColumn(Column):
     
@@ -37,7 +38,8 @@ class ExampleColumn(Column):
         b.div(class_='column', color='#222', margin=Margin(0, C.AUTO, 0, C.AUTO), 
               width='50%', maxwidth=700, minwidth=300, backgroundcolor='#EEE', 
               padding=Em(2), fontfamily='Georgia', fontsize=Em(1), 
-              lineheight=Em(1.4))
+              lineheight=Em(1.4),
+              media=Media(max=C.M_MOBILE, margin=0))
         # Since the self.adapter.getArticle answers an article that already 
         # includes XHTML tags, we cannot do the styling there. In order to 
         # define the unique CSS styles, a blank document content is created 
