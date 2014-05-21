@@ -10,9 +10,6 @@
 #
 #    xmltransformerpart.py
 #
-import copy
-from xierpa3.toolbox.stack import Stack
-from xierpa3.toolbox.transformer import TX
 from xierpa3.constants.constants import C
 
 class XmlTransformerPart:
