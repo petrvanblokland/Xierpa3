@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<document>
+<meta>
+    <category>Blog</category> 
+    <title>Design the Typography</title>
+    <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"/>
+    <author>Petr van Blokland</author>
+    <topic>Tips and tricks on typography.</topic>
+</meta>
+<summary>
+Let’s try something impossible. Learning to design Corporate Identities through an online course is just as impossible as learning to play violin from a book. A course can describe the basics, show you hints and tips and give you good advice. And at the bottom line, it all is a matter of discipline to develop your skills.
+</summary>
+
+<featured>
+<article id="how-to-build-a-simple-kirby-site"/>
+<article id="how-to-deal-with-designers"/>
+</featured>
+
+<chapters>
+<chapter>
+Hi,
+
+This is course is about Typography.
+
+Page structure
+    Hard coded white space
+Type
+    Webtype
+What is next?
+</chapter>
+</chapters>
+</document>
+

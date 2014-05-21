@@ -200,10 +200,10 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
@@ -563,17 +563,6 @@ div.featuredTexts { /* .container, .featuredTexts */
                     display: $displayBlock;
                     line-height: $lineheight140em;
                 } 
-            } 
-            div.featuredSummary { 
-                float: $floatLeft;
-                
-                color: $color202020;
-                clear: $clearBoth;
-                margin-bottom: $marginbottom050em;
-                width: $width100;
-                font-size: $fontsize120em;
-                line-height: $lineheight140em;
-                margin-top: $margintop040em;
             } 
         } /* eightCol */
         div.last { /* .fourCol, .last */
@@ -1438,10 +1427,139 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
+img.autowidth { width:100%; }
+// Mozilla
+@-moz-document url-prefix() {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+// Webkit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:auto; }
+}
+// Opera
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+
+/* CSS Enhancements for Better User Experience */
+html {
+    overflow-y:scroll;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+/* Brakes Text for Mobile */
+.page-break {
+    page-break-before:always;
+}
+input[type=submit], label, select, .pointer {
+    cursor:pointer;
+}
+/* Hack */
+@media all and (-webkit-min-device-pixel-ratio: 1){
+    selectors {
+        properties: values;
+    }
+}
+
+body { 
+    font-family: $fontfamilyBentonsansre;
+    font-size: $fontsize13;
+    background-color: $backgroundcolorFfffff;
+    line-height: $lineheight140em;
+} 
+h1, h2, h3, h4, h5, p.lead { 
+    font-family: $fontfamilyBentonsanscondmedium;
+} 
+h6 { 
+    font-family: $fontfamilyBentonsansre;
+} 
+a, a:link { 
+    color: $color888888;
+} 
+a:visited { 
+    color: $color60;
+} 
+a:hover { 
+    color: $color601;
+} 
+div.oneCol { 
+    float: $floatLeft;
+    width: $width8;
+    margin: $margin050em;
+} 
+div.twoCol { 
+    float: $floatLeft;
+    width: $width16;
+    margin: $margin050em;
+} 
+div.fourCol { 
+    float: $floatLeft;
+    width: $width30;
+    margin: $margin050em;
+} 
+div.eightCol { 
+    float: $floatLeft;
+    width: $width65;
+    margin: $margin050em;
+} 
+div.twelveCol { 
+    float: $floatLeft;
+    width: $width100;
+    margin: $margin050em;
+} 
+div.last { 
+    margin-right: $marginright0em;
+} 
+ul { 
+    display: $displayBlock;
+} 
+li { 
+    display: $displayBlock;
+} 
+ol { 
+    list-style-type: $liststyletypeDecimal;
+} /* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, logo, section {
+    display: block;
+}
+a { text-decoration: none;
+    img {
+    border: 0; }
+}
+figure {
+    position: relative; }
+
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
@@ -1801,17 +1919,6 @@ div.featuredTexts { /* .container, .featuredTexts */
                     display: $displayBlock;
                     line-height: $lineheight140em;
                 } 
-            } 
-            div.featuredSummary { 
-                float: $floatLeft;
-                
-                color: $color202020;
-                clear: $clearBoth;
-                margin-bottom: $marginbottom050em;
-                width: $width100;
-                font-size: $fontsize120em;
-                line-height: $lineheight140em;
-                margin-top: $margintop040em;
             } 
         } /* eightCol */
         div.last { /* .fourCol, .last */
@@ -2220,81 +2327,6 @@ div.itemGroup { /* .container, .itemGroup */
 
 /* Start page "courses" */
 
-    /* @@@ Warning: redefine of existing selector */
-div.featuredImages { /* .container, .featuredImages */
-    
-    padding-left: $paddingleft20;
-    background-color: $backgroundcolor323a47;
-    padding-right: $paddingright20;
-    display: $displayBlock;
-    div.row { 
-        max-width: $maxwidth1140;
-        
-        min-width: $minwidth755;
-        width: $width100;
-        overflow: $overflowHidden;
-        margin: 0px auto;
-        div.eightCol { 
-            padding-left: $paddingleft0;
-            float: $floatLeft;
-            min-height: $minheight1;
-            
-            margin-left: $marginleft0;
-            margin-right: $marginright18;
-            margin-top: $margintop1em;
-            display: $displayBlock;
-        } /* eightCol */
-        div.last { /* .fourCol, .last */
-            padding-left: $paddingleft0;
-            
-            margin-top: $margintop1em;
-            h2 { 
-                color: $color828487;
-                margin-bottom: $marginbottom050em;
-                font-size: $fontsize220em;
-                margin-top: $margintop030em;
-            } 
-            a.name { 
-                
-                h2 { 
-                    color: $colorE1e1e1;
-                    margin-bottom: $marginbottom020em;
-                    font-size: $fontsize180em;
-                    line-height: $lineheight110em;
-                    margin-top: $margintop0;
-                    display: $displayBlock;
-                } 
-            } 
-                /* @@@ Warning: redefine of existing selector */
-            a.name { 
-                
-                img { 
-                    float: $floatLeft;
-                    padding: $padding0;
-                    width: $width40;
-                    margin: 0.50em 0.50em 0px 0px;
-                } 
-            } 
-            h5.level { 
-                
-                color: $color6294d0;
-                font-weight: $fontweightBold;
-                font-size: $fontsize090em;
-                margin-top: $margintop050em;
-            } 
-            a.author { 
-                
-                h5 { 
-                    color: $colorB2b4b7;
-                    font-weight: $fontweightNormal;
-                    font-size: $fontsize120em;
-                    display: $displayBlock;
-                    line-height: $lineheight140em;
-                } 
-            } 
-        } /* fourCol last */
-    } /* row */
-} /* featured */
 
 /* End page "courses" */
 
@@ -2334,6 +2366,67 @@ div.documentation { /* .container, .documentation */
 } /* documentation */
 
 /* End page "documentation" */
+
+@media all and (max-width:767px) {
+    /* Initialized @media */
+    div.featuredImages { 
+        div.featuredByImage { 
+                display: $displayNone;
+        } 
+        div.featuredByDiapText { 
+                display: $displayNone;
+        } 
+    } 
+    div.featuredTexts { 
+        div.featuredByText { 
+                display: $displayNone;
+        } 
+        div.featuredByTextList { 
+                display: $displayNone;
+        } 
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    div.article { 
+        div.socialMedia { 
+                display: $displayNone;
+        } 
+        div.featuredByTextList { 
+                display: $displayNone;
+        } 
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    div.itemGroup { 
+        div.featuredByImage { 
+                display: $displayNone;
+        } 
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    div.featuredImages { 
+        div.featuredByImage { 
+                display: $displayNone;
+        } 
+        div.featuredByDiapText { 
+                display: $displayNone;
+        } 
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    div.footer { 
+            display: $displayNone;
+    } 
+    /* Runtime @media */
+}
+
 
 @media all and (max-width:767px) {
     /* Initialized @media */
