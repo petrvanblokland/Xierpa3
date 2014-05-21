@@ -15,8 +15,8 @@ from xierpa3.sites.documentation.documentation import Documentation
 class Client(TwistedClient):
 
     # Other examples to be added here as soon as they work.
-    doingByDesign = DoingByDesign()
-    documentation = Documentation()
+    doingByDesign = DoingByDesign(title='Doing by Design')
+    documentation = Documentation() # Title by class.TITLE name.
     
     THEMES = {
         # Matching theme names with Theme instances.

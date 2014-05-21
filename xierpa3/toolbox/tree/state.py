@@ -11,7 +11,7 @@
 #    state.py
 #
 from copy import copy
-from xierpa3.toolbox.parsers.json import cjson
+from xierpa3.toolbox.parsers.c_json import cjson
 from basenode import BaseNode
 from xierpa3.toolbox.transformer import TX
 

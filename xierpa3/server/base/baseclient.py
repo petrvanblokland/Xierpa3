@@ -158,7 +158,7 @@ class BaseClient(object):
                 if site.e.request.path.endswith('.css'):
                     builder = CssBuilder(e=site.e)
                     site.build(builder) # Build from entire site theme, not just from template.
-                    builder.save(cssPath=filePath) # Compile Sass to Css  
+                    builder.save(site, path=filePath) # Compile Sass to Css  
                     result = builder.getResult()
                     self.INITCSS = False # Mark that the initialize CSS on startup has been done.
                 else:

@@ -41,7 +41,7 @@ class Article(Data):
         self.topic = self.find('.//meta/topic') # Short description of the article
         poster = self.find('.//meta/poster') # First <poster> or <image>
         if poster is None:
-             poster = self.find('.//image')
+            poster = self.find('.//image')
         if poster is None:
             self.poster = None
         else:
@@ -55,7 +55,7 @@ class Article(Data):
         return '[Article:%s]' % self.name
 
     def find(self, xpath):
-         return self.tree.find(xpath)
+        return self.tree.find(xpath)
     
     def findAll(self, xpath):
         return self.tree.findall(xpath)
@@ -150,7 +150,7 @@ class FileAdapter(Adapter):
     def getPages(self, component, count=None):
         pages = Data()
         pages.items = []
-        for id, article in self.getCachedArticles().items(): # Add priority sorting and counting here
+        for name, article in self.getCachedArticles().items(): # @@@ Add priority sorting and counting here
             pages.items.append(article)
         return pages
     
