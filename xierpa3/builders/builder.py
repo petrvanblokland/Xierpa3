@@ -54,13 +54,13 @@ class Builder(C):
         return component.getRootPath() + '/' + self.DEFAULT_PATH + component.name + '.' + self.getExtension()
 
     def makeDirectory(self, path):
-        u"""Make sure that the directory of path (as file) exists. Otherwse create it."""
+        u"""Make sure that the directory of path (as file) exists. Otherwise create it."""
         dirPath = TX.path2Dir(path)
         if not os.path.exists(dirPath):
             os.makedirs(dirPath)
 
     def save(self, component, path=None, makeDirectory=True):
-        u"""Save the file in path. If the optional <i>makeDirectory</i> atttribute is 
+        u"""Save the <b>self.getResult()</b> in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
         if path is None:
@@ -73,10 +73,20 @@ class Builder(C):
         return path
     
     def getPath(self):
-        u"""Answer the path of the current url, e.g. to select the right article data for this page.
+        u"""Answer the path of the current URL, e.g. to select the right article data for this page.
         In CSS/SASS this gets overwritten by answering the path of the model document."""
         return self.e.path
   
+    # P A R A M
+    
+    def getParamNames(self):
+        u"""Answer the names of the params in the URL"""
+        return self.e.form.keys()
+    
+    def getParamItems(self):
+        u"""Answer the <b>(name, value)</b> tuple of URL params."""
+        return self.e.form.items()
+    
     # T A B
 
     def tabs(self):

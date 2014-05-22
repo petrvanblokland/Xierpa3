@@ -30,14 +30,16 @@ class Theme(Component):
         Then match them against the available template components of <b>self</b>. 
         """
         urlNames = set()
-        for urlName in builder.e.form.keys():
+        for urlName in builder.getParamNames():
             urlNames.add(urllib.unquote(urlName).replace(' ', ''))
         for component in self.components:
             if component.template in urlNames or component.name in urlNames:
                 return component
 
         # Could not find a match, answer the default template.
-        return self.getComponent(C.TEMPLATE_DEFAULT)
+        # If no default component exists, then answer self. This happes if there is only 
+        # one page in the site.
+        return self.getComponent(C.TEMPLATE_DEFAULT) or self
 
     def getTemplates(self):
         u"""Answer the list of templates of this theme."""
