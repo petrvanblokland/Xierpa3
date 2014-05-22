@@ -47,10 +47,10 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
@@ -118,10 +118,10 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
