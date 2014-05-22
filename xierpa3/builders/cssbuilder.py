@@ -48,7 +48,8 @@ class CssBuilder(SassBuilder):
         f = open(path, 'r')
         self.css = f.read()
         f.close()
-
+        return path
+    
     def getResult(self):
         u"""If there is any compiled result, answer it."""
         if self.css is not None:

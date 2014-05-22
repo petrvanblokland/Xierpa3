@@ -32,10 +32,81 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
+img.autowidth { width:100%; }
+// Mozilla
+@-moz-document url-prefix() {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+// Webkit
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:auto; }
+}
+// Opera
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    img.autowidth { max-width: 100%; width:100%; }
+}
+
+/* CSS Enhancements for Better User Experience */
+html {
+    overflow-y:scroll;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+/* Brakes Text for Mobile */
+.page-break {
+    page-break-before:always;
+}
+input[type=submit], label, select, .pointer {
+    cursor:pointer;
+}
+/* Hack */
+@media all and (-webkit-min-device-pixel-ratio: 1){
+    selectors {
+        properties: values;
+    }
+}
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, logo, section {
+    display: block;
+}
+a { text-decoration: none;
+    img {
+    border: 0; }
+}
+figure {
+    position: relative; }
+
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
@@ -79,3 +150,4 @@ div {
 } 
 
 /* End page "page" */
+

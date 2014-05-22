@@ -112,6 +112,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         f.write('\n')
         f.write(self.getResult())
         f.close()
+        return path
 
     def block(self, component):
         u"""Ignore additional classes here. They should be defined separately by the user.

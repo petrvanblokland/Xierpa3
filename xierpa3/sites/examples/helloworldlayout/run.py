@@ -21,6 +21,7 @@
 #    Each of the builders takes the information from the theme to build its
 #    own type of file.
 #
+import os
 from xierpa3.constants.constants import C
 from xierpa3.attributes import Em, Margin
 from xierpa3.components import Theme, Page, Column 
@@ -72,22 +73,30 @@ class HelloWorldLayout(Theme):
         # Answer a list of types of pages for this site.
         return [homePage]
     
+    @classmethod
+    def run(cls, openInBrowser=False):
+        u"""Run an instance of this class to build CSS and HTML."""
+        # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
+        # the behavior of the object that is made by calling the class.
+        site = cls()
+        # C S S
+        # Create the main CSS builder instance to build the CSS part of the site with.
+        cssBuilder = CssBuilder()
+        # Compile (=build) the SCSS to CSS and save the file.
+        cssBuilder.save(site) 
+    
+        # H T M L
+        # Create the main HTML builder instance to build the HTML part of the site with.
+        htmlBuilder = HtmlBuilder()
+        # Compile the HTML and save the resulting HTML file in "files/helloWorldLayout.html".
+        path = htmlBuilder.save(site)  
+        
+        # If requested, open the generated HTML file in default mode of the OS (Finder or Browser)
+        if openInBrowser:
+            os.open(path)
+
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes the Python file only 
-    # be executed when called in direct mode, such as "python run.py" in the terminal. 
+    # be executed when called in direct mode, such as "python run.py" in the terminal.         
+    HelloWorldLayout.run()
     
-    # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
-    # the behavior of the object that is made by calling the class.
-    site = HelloWorldLayout()
-    
-    # C S S
-    # Create the main CSS builder instance to build the CSS part of the site with.
-    cssBuilder = CssBuilder()
-    # Compile (=build) the SCSS to CSS and save the file.
-    cssBuilder.save(site) 
-
-    # H T M L
-    # Create the main HTML builder instance to build the HTML part of the site with.
-    htmlBuilder = HtmlBuilder()
-    # Compile the HTML and save the resulting HTML file in "files/hellowork.html".
-    htmlBuilder.save(site) 

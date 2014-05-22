@@ -70,7 +70,8 @@ class Builder(C):
         f = open(path, 'wb')
         f.write(self.getResult())
         f.close()
-
+        return path
+    
     def getPath(self):
         u"""Answer the path of the current url, e.g. to select the right article data for this page.
         In CSS/SASS this gets overwritten by answering the path of the model document."""

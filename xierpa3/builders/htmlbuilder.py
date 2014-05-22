@@ -96,7 +96,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             f = open(path, 'wb')
             f.write(self.getResult())
             f.close()
-
+        return path
+    
     def buildJavascript(self, component):
         if component.style and component.style.js:
             self.jsUrl(component.style.js)
