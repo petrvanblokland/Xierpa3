@@ -39,7 +39,6 @@
 #
 import weakref
 import hashlib
-import xierpa3
 from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
