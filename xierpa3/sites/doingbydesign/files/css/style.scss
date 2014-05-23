@@ -504,15 +504,6 @@ div.featuredImages { /* .container, .featuredImages */
                     line-height: $lineheight140em;
                 } 
             } 
-            div.featuredSummary { 
-                float: $floatLeft;
-                
-                color: $colorWhite;
-                clear: $clearBoth;
-                margin-bottom: $marginbottom050em;
-                width: $width100;
-                margin-top: $margintop040em;
-            } 
         } /* fourCol last */
     } /* row */
 } /* featured */
@@ -973,6 +964,90 @@ div.itemGroup { /* .container, .itemGroup */
 
 /* Start page "courses" */
 
+    /* @@@ Warning: redefine of existing selector */
+div.featuredImages { /* .container, .featuredImages */
+    
+    padding-left: $paddingleft20;
+    background-color: $backgroundcolor323a47;
+    padding-right: $paddingright20;
+    display: $displayBlock;
+    div.row { 
+        max-width: $maxwidth1140;
+        
+        min-width: $minwidth755;
+        width: $width100;
+        overflow: $overflowHidden;
+        margin: 0px auto;
+        div.eightCol { 
+            padding-left: $paddingleft0;
+            float: $floatLeft;
+            min-height: $minheight1;
+            
+            margin-left: $marginleft0;
+            margin-right: $marginright18;
+            margin-top: $margintop1em;
+            display: $displayBlock;
+        } /* eightCol */
+        div.last { /* .fourCol, .last */
+            padding-left: $paddingleft0;
+            
+            margin-top: $margintop1em;
+            h2 { 
+                color: $color828487;
+                margin-bottom: $marginbottom050em;
+                font-size: $fontsize220em;
+                margin-top: $margintop030em;
+            } 
+            a.name { 
+                
+                h2 { 
+                    color: $colorE1e1e1;
+                    margin-bottom: $marginbottom020em;
+                    font-size: $fontsize180em;
+                    line-height: $lineheight110em;
+                    margin-top: $margintop0;
+                    display: $displayBlock;
+                } 
+            } 
+                /* @@@ Warning: redefine of existing selector */
+            a.name { 
+                
+                img { 
+                    float: $floatLeft;
+                    padding: $padding0;
+                    width: $width40;
+                    margin: 0.50em 0.50em 0px 0px;
+                } 
+            } 
+            h5.level { 
+                
+                color: $color6294d0;
+                font-weight: $fontweightBold;
+                font-size: $fontsize090em;
+                margin-top: $margintop050em;
+            } 
+            a.author { 
+                
+                h5 { 
+                    color: $colorB2b4b7;
+                    font-weight: $fontweightNormal;
+                    font-size: $fontsize120em;
+                    display: $displayBlock;
+                    line-height: $lineheight140em;
+                } 
+            } 
+            div.featuredSummary { 
+                float: $floatLeft;
+                
+                color: $colorWhite;
+                clear: $clearBoth;
+                margin-bottom: $marginbottom050em;
+                width: $width100;
+                margin-top: $margintop040em;
+            } 
+        } /* fourCol last */
+    } /* row */
+} /* featured */
 
 /* End page "courses" */
 
