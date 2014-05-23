@@ -8,17 +8,9 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    json.py
+#    blog.py
 #
-try:
-    import cjson #@UnusedImport
-except Exception, e:
-    print '### Error loading python-cjson. Better install it. json used otherwise.'
-    print e
-    import json
-    
-    class cjson:
-        def encode(self, s):
-            return json.loads(s)
-        def decode(self, s):
-            return json.dumps(s)
+from xierpa3.themes.blog.base import BaseBlog
+
+class Blog(BaseBlog):
+    pass

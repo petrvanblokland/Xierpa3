@@ -8,3 +8,6 @@
 #
 # -----------------------------------------------------------------------------
 #
+from xierpa3.sites.examples.helloworld.make import HelloWorld
+from xierpa3.sites.examples.helloworldlayout.make import HelloWorldLayout
+from xierpa3.sites.examples.onecolumnsite.make import OneColumnSite

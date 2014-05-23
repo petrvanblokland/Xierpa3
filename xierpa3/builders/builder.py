@@ -20,6 +20,8 @@ from xierpa3.descriptors.environment import Environment
 class Builder(C):
 
     ID = None   # To be redefined by inheriting builder classes
+    EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
+    DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
     
     def __init__(self, e=None, result=None, verbose=True):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
@@ -43,22 +45,52 @@ class Builder(C):
         u"""To be redefined by inheriting builder classes."""
         pass
 
-    def save(self, path, makeDirectory=False):
-        u"""Save the file in path. If <i>makeDirectory</i> is <b>True</b> (default is <b>False</b>)
-        then create the directories in the path if they don’t exist."""
-        if makeDirectory:
-            dirPath = TX.path2Dir(path)
-            if not os.path.exists(dirPath):
-                os.makedirs(dirPath)
+    def getExtension(self):
+        u"""Answer the default extension of the output file of this type of builder.
+        Typically <b>self.EXTENSION</b> is answered."""
+        return self.EXTENSION
+    
+    def getFilePath(self, component):
+        return component.getRootPath() + '/' + self.DEFAULT_PATH + component.name + '.' + self.getExtension()
+
+    def getExportPath(self, component):
+        u"""Answer the constructs export path for component files: "~/Desktop/Xierpa3Examples/className".
+        It is not checked if the path exists or should be created."""
+        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__
+    
+    def makeDirectory(self, path):
+        u"""Make sure that the directory of path (as file) exists. Otherwise create it."""
+        dirPath = TX.path2Dir(path)
+        if not os.path.exists(dirPath):
+            os.makedirs(dirPath)
+
+    def save(self, component, path=None):
+        u"""Save the <b>self.getResult()</b> in path. If the optional <i>makeDirectory</i> attribute is 
+        <b>True</b> (default is <b>True</b>) then create the directories in the path 
+        if they don’t exist."""
+        if path is None:
+            path = self.getExportPath(component)
+        self.makeDirectory(path) # Make sure that the directory part of path exists.
         f = open(path, 'wb')
         f.write(self.getResult())
         f.close()
-
+        return path
+    
     def getPath(self):
-        u"""Answer the path of the current url, e.g. to select the right article data for this page.
+        u"""Answer the path of the current URL, e.g. to select the right article data for this page.
         In CSS/SASS this gets overwritten by answering the path of the model document."""
         return self.e.path
   
+    # P A R A M
+    
+    def getParamNames(self):
+        u"""Answer the names of the params in the URL"""
+        return self.e.form.keys()
+    
+    def getParamItems(self):
+        u"""Answer the <b>(name, value)</b> tuple of URL params."""
+        return self.e.form.items()
+    
     # T A B
 
     def tabs(self):
@@ -116,19 +148,26 @@ class Builder(C):
             return writer.name, writer.getValue()
         return None, None
     
+    #   E R R O R
+    
+    def error(self, s):
+        self.div(color='red')
+        self.text(s)
+        self._div()
+        
     #   B U I L D E R  T Y P E
     
-    def isType(self, type):
-        u"""Answer the boolean flag if <b>self</b> builder is of <i>type</i>.
+    def isType(self, builderType):
+        u"""Answer the boolean flag if <b>self</b> builder is of <i>builderType</i>.
         In normal processing of the page this should never be necessary, but the test can be used by
         code that otherwise will do a lot of content processing (such as image scaling) in the
         CSS building phase. Also it can be used to short cut loops in content, to avoid the same
         definitions showing up in CSS. The comparison is not case-sensitive. <i>Type</i> can be a single
         string or a list/tuple of strings."""
         lcTypes = []
-        if not isinstance(type, (list, tuple)):
-            type = [type]
-        for t in type:
+        if not isinstance(builderType, (list, tuple)):
+            builderType = [builderType]
+        for t in builderType:
             lcTypes.append(t.lower())  
         return self.ID.lower() in lcTypes
          
@@ -142,7 +181,7 @@ class Builder(C):
     def _snippet(self, component):
         pass
     
-    # R E Q U E S T  & F O R M
+    # R E Q U E S T  &  F O R M
     
     def getCurrentArticleId(self):
         return self.e.form[C.PARAM_ARTICLE]
@@ -152,7 +191,7 @@ class Builder(C):
     
     def getUrl(self):
         u"""Answer the url of the current page. To be implemented by inheriting classes
-        that actually knows about urls. Default gehavior is to do nothing."""
+        that actually knows about URLs. Default behavior is to do nothing."""
         return None
         
     # G E N E R I C  B L O C K  B E H A V I O R

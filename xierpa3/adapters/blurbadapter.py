@@ -11,8 +11,6 @@
 #   blurbadapter.py
 #
 from random import choice, randint
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter, Data
 from xierpa3.contributions.filibuster.blurb import Blurb
 
@@ -38,7 +36,7 @@ class BlurbAdapter(Adapter):
     def getFeaturedArticleThumbs(self, component, count):
         return [self.blurb.getBlurb('design_headline')]
 
-    def getFeaturedArticles(self, component, count):
+    def getFeaturedArticles(self, component, count=1):
         # Answer count list of (imagePath, head, ankeiler, link)
         images = [
             'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',
@@ -79,7 +77,7 @@ class BlurbAdapter(Adapter):
             'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/verticalfashionshow.jpg',
         ]
         articles = []
-        for n in range(1, (count or 1) + 1):
+        for _ in range(1, (count or 1) + 1):
             data = Data()
             data.image = choice(images)
             data.headline = self.blurb.getBlurb('design_headline', 8) + '.'
@@ -91,13 +89,14 @@ class BlurbAdapter(Adapter):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         data = Data()
         data.items = cloud = ['Tags']
-        for n in range(10):
+        for _ in range(10):
             cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
         return data
 
     def getArticle(self, component, id=None):
         data = Data()
-        data.items = [self.blurb.getBlurb('article'), 'Heading', self.blurb.getBlurb('article')]
+        data.headline = self.blurb.getBlurb('news_headline')
+        data.items = [self.blurb.getBlurb('article'), self.blurb.getBlurb('article'), self.blurb.getBlurb('article')]
         return data
     
     def getFooter(self, component, count):

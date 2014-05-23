@@ -10,8 +10,11 @@
 #
 #   constants.py
 #
-from config.config import Config
-
+try:
+    from config.xconfig import Config
+except ImportError:
+    from config.COPYTO_config import Config
+    
 class C(Config):
 
     UNTITLED = 'Untitled'
@@ -19,6 +22,13 @@ class C(Config):
     # Types of sites
     SITETYPE_BLOG = 'blog'
 
+    # Know builder id's, used to check on a specific builder of really necessary.
+    # Note that these value should match with the id's of the builder classes.
+    TYPE_HTML = 'html'
+    TYPE_SASS = 'sass'
+    TYPE_CSS = 'css'
+    TYPE_PHP = 'php'
+    
     # Known component names.
     C_TITLE = 'title'
 

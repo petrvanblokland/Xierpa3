@@ -19,7 +19,7 @@ class Blurb(object):
     u"""
     <doc>
     The <code>Content</code> is a wrapper around the filibuster <code>BlurbWriter</code>
-    of Erik van Blokland and Jonathan Hoeffler. There is supposed to be only one instance of
+    of Erik van Blokland and Jonathan Hoefler. There is supposed to be only one instance of
     the writer installed in the system.
     Current set of available types:
     ['BLURB_IPO', 'BLURB_sports', 'aerospace_headline', 'corporate_biz_news_headline', 'corporate_partnership_headline', 

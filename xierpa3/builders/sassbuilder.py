@@ -17,7 +17,7 @@ from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.stack import Stack
 from xierpa3.constants.constants import C
 from xierpa3.descriptors.style import Media
-from xierpa3.attributes import *
+from xierpa3.attributes import Selection, Em, Shadow, asValue, Frame, Value, Transition, Z, Url, Gradient, LinearGradient
 
 trackAttributes = Stack() # Collect the stack of certain style attribute that are cascading for debugging.
 
@@ -25,9 +25,11 @@ class SassBuilder(XmlTransformerPart, Builder):
     # For automatic Sass compilation, use inheriting CssBuilder instead.
 
     # Used for dispatching component.build_sass, if components want to define builder dependent behavior.
-    ID = 'sass'
+    ID = C.TYPE_SASS
+    EXTENSION = 'scss'
     ATTR_POSTFIX = 'css' # Postfix of dispatcher and attribute names above generic names.
-    
+    DEFAULT_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
+   
     def initialize(self):
         self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
         self.mediaSelectors = Stack() # Collect the hierarchy of runtime media selectors
@@ -91,17 +93,23 @@ class SassBuilder(XmlTransformerPart, Builder):
             class_ = parts[-1]
         return class_
 
-    def save(self, path):
+    def save(self, component, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
+        # Build the component output with self as builder.
+        component.build(self)
+        if path is None:
+            path = self.getExportPath(component) + self.DEFAULT_PATH
+        self.makeDirectory(path) # Make sure it is there.
         f = open(path, 'w')
         # Because we collected the variables during the process, 
-        # we must place them at the start of the output stream.
+        # we must now place them at the start of the output stream.
         for name, value in sorted(self.variables.items()):
             f.write('$%s: %s;\n' % (name, self.value2SassValue(value)))
         f.write('\n')
         f.write(self.getResult())
         f.close()
+        return path
 
     def block(self, component):
         u"""Ignore additional classes here. They should be defined separately by the user.
@@ -208,7 +216,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         # This doesn't have to be an error, it can be that there are two blocks with the same selector
         # but different content. But for clarity, it would be better to given them a different additional class
         # to make the selector different. In that case the warning will not appear.
-        if ts and tc and firstSelectors.has_key(ts) and firstSelectors[ts] != tc:
+        if ts and tc and firstSelectors is not None and firstSelectors.has_key(ts) and firstSelectors[ts] != tc:
             self.tabs()
             self.comment('@@@ Warning: redefine of existing selector')
         if ts and firstSelectors is not None:
@@ -306,7 +314,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.newline()
     
     def buildMediaComponent(self, expression, component):
-        u"""Build the @media of the <i>component</i> that match the expression. 
+        u"""Build the @media of the <i>component</i> that matches the expression. 
         Skip the block header if the content renders to empty."""
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
         self.pushResult() # Save current output stream
@@ -485,10 +493,10 @@ a { text-decoration: none;
 figure {
     position: relative; }
 
-// Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
-// Make the img of class "autowidth" to get the function working.
-// http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
-// IE (default, as there is no clear way to determine IE now)
+/* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
+Make the img of class "autowidth" to get the function working.
+http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
@@ -619,6 +627,12 @@ input[type=submit], label, select, .pointer {
     def _span(self):
         self._tag()
 
+    def b(self, **kwargs):
+        self.tag('b', **kwargs)
+        
+    def _b(self):
+        self._tag()
+        
     def em(self, **kwargs):
         self.tag('em', **kwargs)
         

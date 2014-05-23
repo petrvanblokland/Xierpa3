@@ -140,7 +140,9 @@ class BaseClient(object):
         Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
         The right 2 slash-parts of the site path are taken for the output (@@@ for now)
         """
-        return TX.class2Path(site) + '/files/' + '/'.join(site.e.path.split('/')[-2:])
+        if site.e is not None:
+            return TX.class2Path(site) + '/files/' + '/'.join(site.e.path.split('/')[-2:])
+        return None
     
     def render_GET(self, httprequest):
         u"""
@@ -158,7 +160,7 @@ class BaseClient(object):
                 if site.e.request.path.endswith('.css'):
                     builder = CssBuilder(e=site.e)
                     site.build(builder) # Build from entire site theme, not just from template.
-                    builder.save(cssPath=filePath) # Compile Sass to Css  
+                    builder.save(site, path=filePath) # Compile Sass to Css  
                     result = builder.getResult()
                     self.INITCSS = False # Mark that the initialize CSS on startup has been done.
                 else:

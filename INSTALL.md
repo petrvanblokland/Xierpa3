@@ -4,21 +4,24 @@ Xierpa3 is currently available from GitHub. Various possibilities are available 
 
 ### Installation
 
- * Add xierpa3.pth to Python site-packages, referring to the folder where Xierpa3 has been cloned from git. For example, the ``site-packages`` for a prepackaged Python on a recent OSX machine can be found here: ``/Library/Python/2.7/site-packages``.
- * Copy ``xierpa3/constants/config/COPYTO-config.py`` to ``xierpa3/constants/config.config.py`` and adjust the parameters and access keys to your own settings. Make sure this ``config.py`` never writes back into git (future development is to store this file in your local user folder).
-
+ * Add xierpa3.pth to Python site-packages, referring to the folder where Xierpa3 has been cloned from git. For example, the "site-packages" for a prepackaged Python on a recent OSX machine can be found here: ``/Library/Python/2.7/site-packages``.
+ * Copy "xierpa3/constants/config/COPYTO-config.py" to "xierpa3/constants/config.config.py" and adjust the parameters and access keys to your own settings. Make sure this ``config.py`` never writes back into git (future development is to store this file in your local user folder).
+ * Create a text file in the Python site-packages directory (typically located in "/Library/Python/2.7/site-packages" for OSX) with the name "xierpa3.pth" that points to the location of the git "xierpa3" directory.
+ * Open the terminal and type "python" and hit enter.
+ * Then type "import xierpa3" and hit enter. If there is not error message, then the xierpa3 library is installed well.
+ 
 ### Dependencies
 
  * Make sure that Python 2.7 is installed, otherwise get it from http://python.org. Recent versions of OSX and Linux come with a completely installed Python environment.
  * Install the Twisted Matrix server, https://twistedmatrix.com/trac/ or https://pypi.python.org/pypi/Twisted
- * Install element tree ``lxml``, http://lxml.de/index.html or https://pypi.python.org/pypi/lxml/, which needs the ``libxml2`` and ``libxslt`` bindings.
- * Install ``sass`` from http://sass-lang.com. For this you first need to install Ruby and then get the ``sass`` gem like this:
-   * ``sudo gem install sass``
- * Install ``boto`` from https://aws.amazon.com/sdkforpython/ or https://pypi.python.org/pypi/boto
+ * Install element tree "lxml", http://lxml.de/index.html or https://pypi.python.org/pypi/lxml/, which needs the "libxml2" and "libxslt" bindings.
+ * Install "sass" from http://sass-lang.com. For this you first need to install Ruby and then get the "sass" gem like this:
+   * "sudo gem install sass"
+ * Install "boto" from https://aws.amazon.com/sdkforpython/ or https://pypi.python.org/pypi/boto
 
 ### Optional Dependencies
 
- * Install ``cjson`` from http://sourceforge.net/projects/cjson/ or https://pypi.python.org/pypi/python-cjson for (much) faster JSON parsing.
+ * Install "cjson" from http://sourceforge.net/projects/cjson/ or https://pypi.python.org/pypi/python-cjson for (much) faster JSON parsing.
    * Make sure "cStringIO" is installed, see http://pydoc.org/2.4.1/cStringIO.html
    * Make sure "cPickle" is installed, see http://pymotw.com/2/pickle
 

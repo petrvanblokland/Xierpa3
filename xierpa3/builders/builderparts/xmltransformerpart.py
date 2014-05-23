@@ -10,9 +10,6 @@
 #
 #    xmltransformerpart.py
 #
-import copy
-from xierpa3.toolbox.stack import Stack
-from xierpa3.toolbox.transformer import TX
 from xierpa3.constants.constants import C
 
 class XmlTransformerPart:
@@ -162,7 +159,13 @@ class XmlTransformerPart:
         
     def _doc_p(self):
         self._p()
+    
+    def doc_b(self, element, attrs):
+        self.b()
         
+    def _doc_b(self):
+        self._b()
+           
     def doc_blockquote(self, element, attrs):
         self.blockquote(**attrs)
         

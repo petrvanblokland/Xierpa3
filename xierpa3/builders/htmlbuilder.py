@@ -10,6 +10,7 @@
 #
 #   htmlbuilder.py
 #
+import os
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltagbuilderpart import XmlTagBuilderPart
 from xierpa3.builders.builderparts.htmlbuilderpart import HtmlBuilderPart
@@ -27,7 +28,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
     # for components that want to define builder dependent behavior. In normal
     # processing of a page, this should never happen. But it can be used to
     # select specific parts of code that should not be interpreted by other builders.
-    ID = 'html'
+    ID = C.TYPE_HTML # Also the default extension of the output format.
+    EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
 
     @classmethod
@@ -38,7 +40,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         u"""Answer the url of the current page. To be implemented by inheriting classes
         that actually knows about urls. Default behavior is to do nothing."""
         return self.e.getFullUrl()
-        
+
+    def getExportPath(self, component):
+        u"""Answer the constructed default export path for component HTML files: 
+        "~/Desktop/Xierpa3Examples/[className]/index.html".
+        It is not checked if the directories of the path exists or should be created."""
+        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/index.html'
+           
     def theme(self, component):
         pass
 
@@ -82,6 +90,20 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._body()
         self._html()
 
+    def save(self, component, path=None):
+        u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
+        <b>True</b> (default is <b>True</b>) then create the directories in the path 
+        if they don’t exist."""
+        if path is None:
+            path = self.getExportPath(component)
+        self.makeDirectory(path) # Make sure that the directory part of path exists.
+        for template in component.getTemplates():
+            template.build(self)
+            f = open(path, 'wb')
+            f.write(self.getResult())
+            f.close()
+        return path
+    
     def buildJavascript(self, component):
         if component.style and component.style.js:
             self.jsUrl(component.style.js)
@@ -109,10 +131,10 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         Create the CSS links inside the head. /css-<SASS_STYLENAME> defines the type of CSS output from the Sass
         compiler. The CSS parameter must be one of ['nested', 'expanded', 'compact', 'compressed']
         """
-        urlName = component.root.urlName # Get the specific URL prefix for from root of this component.
+        #urlName = component.root.urlName # Get the specific URL prefix for from root of this component.
         for cssUrl in component.css: # Should always be defined, default is an empty list
-            if not cssUrl.startswith('http://'):
-                cssUrl = '/' + urlName + cssUrl
+            #if not cssUrl.startswith('http://'):
+            #    cssUrl = '/' + urlName + cssUrl
             self.link(href=cssUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
 
     def buildFontLinks(self, component):

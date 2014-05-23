@@ -37,8 +37,8 @@
 #                ItemGroup
 #            SocialMedia
 #
+import os
 import weakref
-import inspect
 import hashlib
 from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
@@ -77,9 +77,12 @@ class Component(object):
         self.class_ = class_
         # self.name is used to identity components. Always answers something. Does not have to be unique.
         self.name = name
-        # Title of the browser window or generated document or table of content, or any other
-        # place where the title of a component is used.
-        self.title = title or self.TITLE
+        # Forced title of the browser window or generated document or table of content.
+        # If kept None, then the adapter will be queried for the title.
+        # This allows both the definition of static names (per page template) or the usage
+        # of page titles that depend on the current url.
+        # If the adapter answers None as title, then use self.TITLE
+        self.title = title
         # Prefix of class and selector, stored as self.style.prefix. Shows in CSS selector as myPrefix.class
         self.prefix = prefix
         # Cache for the unique ID based on the content tree, so components can be compared.
@@ -172,6 +175,10 @@ class Component(object):
         f.close()
         return s
 
+    def getRootPath(self):
+        from xierpa3 import components
+        return components.__path__[0]
+
     def baseComponents(self):
         """To be redefined by inheriting classes to answer the default child components of the component."""
         return []
@@ -211,9 +218,28 @@ class Component(object):
                 return component
         return None
 
-    def getTitle(self, path):
-        return self.getAdapterData(C.ADAPTER_PAGETITLE, id=path).text
-
+    # self.title
+    
+    def getTitle(self, path=None):
+        u"""Answer the title of the page. If <b>self.title</b> is not <b>None</b> then answer
+        that value. Otherwise query the adapter to answer a title that may be dependent on the
+        current path (=url) of the page. If the adapter result is also <b>None</b>, then
+        answer <b>self.TITLE<b>, as optional defined by inheriting classes."""
+        title = self._title
+        if path is not None and not title:
+            title = self.getAdapterData(C.ADAPTER_PAGETITLE, id=path).text
+        if not title:
+            title = self.TITLE
+        return title
+    
+    def _get_title(self):
+        return self.getTitle()
+    
+    def _set_title(self, title):
+        self._title = title
+        
+    title = property(_get_title, _set_title)
+    
     def build(self, builder):
         u"""
         Test on the type of building to be done here. Normally the plain self.buildBlock will be called, but it is possible
@@ -360,7 +386,7 @@ class Component(object):
         css = self.style.css
         if css is None and self.parent:
             return self.parent.css
-        return ['/style.css']
+        return ['css/style.css']
 
     def _set_css(self, urls):
         assert urls is None or isinstance(urls, (tuple, list))

@@ -3,7 +3,7 @@
 <meta>
 <title>How to build a site with Xierpa3</title>
 <category>Course</category>
-<level>Advanced</level>'
+<level>Beginner</level>'
 <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
 <author>Petr van Blokland</author>
 <topic>A basic course in building sites the easy way.</topic>
@@ -11,6 +11,7 @@
 </meta>
 
 <featured>
+<article id="example-hello-world"/>
 <article id="how-to-build-a-simple-kirby-site"/>
 <article id="programming-python"/>
 <article id="typography"/>
@@ -22,11 +23,11 @@
 </meta>
 <lead>
 What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the related courses.</lead>
-<p>Xierpa a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is a different. Xierpa will write most of that for you. All you need to do is getting the big picture, define how the website should behave in a generic structure, and Xierpa will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.</p>
-<p>Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer add motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking <footnote>This is a footnote example.</footnote>. All these component need to work together in order to make the website function as it should.
-</p>
-<p>Xierpa is a toolbox of components, written in the programming language <www href="www.python.org">Python</www>. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course <www href="/article-programming-python">Programming Python</www>.
-</p>
+<p>Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different. Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.</p>
+</chapter>
+
+<chapter>
+<meta><title>iFinding your way.</title></meta>
 </chapter>
 
 <chapter>
@@ -37,6 +38,7 @@ What is Xierpa? Why do you need it? What will it solve for you? These questions 
 Let’s start. We are going to build a simple blog, using a selection of standard Xierpa3 components. A component defines the behavior and appearance of a part of a page. This can be navigation, a sidebar, an article column or a box holding Social Media links. Also as we will see – components can hold other components, so they actually represent a tree of nested behaviors and styles.</p>
 <p>As in almost all functions in Xierpa3, we don’t write code from scratch. Instead of creating from an empty document, there already is a vast amount of knowledge that we can use, without copying the source code. In object oriented programming languages, such as Python, this is done by inheriting from object classes that have similar, but not identical, behavior.</p>
 <p>Building a new blog website thus starts with creating a new class the inherits van one that exists in the Xierpa3 library. First create a new Python file, e.g. named <em>blog.py</em>. We‘ll have to put this file in a folder context so Python can find it, but we’ll solve that in a minute.</p>
+
 <code>from xierpa3.components.theme import Theme
 class Blog(Theme):
     pass</code> 
@@ -53,6 +55,15 @@ Special topic: Learning to program is learning to think in patterns. In models. 
 </meta>
 <p>
 </p>
+</chapter>
+
+<chapter>
+<meta><title>Background of Xierpa</title></meta>
+<p>Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking <footnote>This is a footnote example.</footnote>. All these component need to work together in order to make the website function as it should.
+</p>
+<p>Xierpa is a toolbox of components, written in the programming language <www href="www.python.org">Python</www>. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course <www href="/article-programming-python">Programming Python</www>.
+</p>
+
 </chapter>
 </chapters>
 </document>

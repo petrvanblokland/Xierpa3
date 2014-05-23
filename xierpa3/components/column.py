@@ -10,7 +10,7 @@
 #    column.py
 #
 from xierpa3.components.container import Container
-from xierpa3.attributes import *
+from xierpa3.attributes import Em
 from xierpa3.constants.constants import C
 from xierpa3.descriptors.style import Media
 
