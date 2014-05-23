@@ -20,7 +20,7 @@
 #    Each of the builders takes the information from the theme to build its
 #    own type of file.
 #
-import os
+import webbrowser
 from xierpa3.constants.constants import C
 from xierpa3.attributes import Em, Margin
 from xierpa3.components import Theme, Page, Column
@@ -104,18 +104,12 @@ class ExampleColumn(Column):
 class OneColumnSite(Theme):
     u"""The <b>TextColumn</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
-    TITLE = u'The navigation example page.' # Use as title of window.
+    TITLE = u'The Single Column Example Page.' # Use as title of window.
 
     # The single column is filled by the self.adapter article query result.
     # The default self.adapter (if nothing else is defined) is the BlurbAdapter,
     # which generates random pieces of text.
     
-    def getRootPath(self):
-        u"""Get the root path for the "files/" directory, so the builder knows where to 
-        write the HTML file."""
-        from xierpa3.sites.examples import onecolumnsite
-        return onecolumnsite.__path__[0]
-
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
@@ -126,30 +120,27 @@ class OneColumnSite(Theme):
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]
     
-    @classmethod
-    def run(cls, openInBrowser=False):
-        u"""Run an instance of this class to build CSS and HTML."""
-        # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
+    def make(self):
+        u"""Make the instance of this class to build CSS and HTML."""
+        # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
-        site = cls()
+
         # C S S
-        # Create the main CSS builder instance to build the CSS part of the site with.
+        # Create the main CSS builder instance to build the CSS part of the site.
         cssBuilder = CssBuilder()
-        # Compile (=build) the SCSS to CSS and save the file.
-        cssBuilder.save(site) 
+        # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
+        cssBuilder.save(self) 
     
         # H T M L
-        # Create the main HTML builder instance to build the HTML part of the site with.
+        # Create the main HTML builder instance to build the HTML part of the site.
         htmlBuilder = HtmlBuilder()
-        # Compile the HTML and save the resulting HTML file in "files/oneColumnSite.html".
-        path = htmlBuilder.save(site)  
-        
-        # If requested, open the generated HTML file in default mode of the OS (Finder or Browser)
-        if openInBrowser:
-            os.open(path)
-
+        # Compile the HTML and save the resulting HTML file in "helloWorld.html".
+        # Answer the path, so we can open the file with a browser.
+        return htmlBuilder.save(self)  
+    
 if __name__ == '__main__':
-    # This construction "__name__ == '__main__'" makes the Python file only 
-    # be executed when called in direct mode, such as "python run.py" in the terminal.         
-    OneColumnSite.run()
+    # This construction "__name__ == '__main__'" makes this Python file only 
+    # be executed when called in direct mode, such as "python make.py" in the terminal.         
+    path = OneColumnSite().make()
+    webbrowser.open(path)
     

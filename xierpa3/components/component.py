@@ -37,6 +37,7 @@
 #                ItemGroup
 #            SocialMedia
 #
+import os
 import weakref
 import hashlib
 from xierpa3.descriptors.style import Style

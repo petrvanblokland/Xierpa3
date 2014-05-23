@@ -28,7 +28,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     ID = C.TYPE_SASS
     EXTENSION = 'scss'
     ATTR_POSTFIX = 'css' # Postfix of dispatcher and attribute names above generic names.
-    DEFAULT_PATH = 'files/css/style.css' # Default can be redefined by inheriting classes.
+    DEFAULT_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
    
     def initialize(self):
         self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
@@ -93,17 +93,14 @@ class SassBuilder(XmlTransformerPart, Builder):
             class_ = parts[-1]
         return class_
 
-    def save(self, component, path=None, makeDirectory=True):
+    def save(self, component, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
         # Build the component output with self as builder.
-        self.theme(component)
         component.build(self)
-        self._theme(component)
         if path is None:
-            path = component.getRootPath() + self.DEFAULT_PATH
-        if makeDirectory:
-            self.makeDirectory(path)
+            path = self.getExportPath(component) + self.DEFAULT_PATH
+        self.makeDirectory(path) # Make sure it is there.
         f = open(path, 'w')
         # Because we collected the variables during the process, 
         # we must now place them at the start of the output stream.
@@ -630,6 +627,12 @@ input[type=submit], label, select, .pointer {
     def _span(self):
         self._tag()
 
+    def b(self, **kwargs):
+        self.tag('b', **kwargs)
+        
+    def _b(self):
+        self._tag()
+        
     def em(self, **kwargs):
         self.tag('em', **kwargs)
         

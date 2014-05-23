@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<document>
+<meta>
+<title>Hello world.</title>
+<category>Course</category>
+<level>Beginner</level>'
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
+<author>Petr van Blokland</author>
+<topic>The most basic website in Xierpa3: Hello world.</topic>
+<summary>How to build the most simple website in Xierpa3: Hello world.</summary>
+</meta>
+
+<featured>
+<article id="how-to-build-a-simple-kirby-site"/>
+<article id="programming-python"/>
+<article id="typography"/>
+</featured>
+
+<chapters>
+<chapter>
+<meta><title>Coding the Hello world.</title>
+</meta>
+<lead>
+This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.</lead>
+
+<image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"/>
+
+<p>Open a new Python code document, in an editor suitable for programming, such as  
+BBEdit, TextWrangler, Coda, or any other applications that understands Python syntax.
+Add this first line to the document, to indicate that it may contain Unicode strings.</p>
+
+<image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
+<p>Then we will define the Xierpa3 component and builder classes that we need in our website page.</p>
+<code>
+from xierpa3.components import Theme, Page, Column 
+from xierpa3.builders.cssbuilder import CssBuilder
+from xierpa3.builders.htmlbuilder import HtmlBuilder
+</code>
+<p>From the set of available Xierpa3 components, the <b>Theme</b> is used, as site container for the single <b>Page</b>.
+On the page there will be one <b>Column.</b></p>
+<p>Next is to define the type of column we want to have, holding the simple “Hello world” text. 
+We create a new type of component for this behavior, which initially inherits all aspect from the standard
+<b>Column</b> class.
+</p>
+<code>class HelloWorldText(Column):
+    def buildBlock(self, b):
+        b.div(color='red')
+        b.text('Hello world.')
+        b._div()
+</code>
+<p>Now we defined our new type of component, we need a page to place it on.</p>
+<p>Create a new type of theme, that initially inherits all behavior from the main Xierpa3
+	<b>Theme</b> component. <b>TITLE</b> defines the specific page name for this type
+	of theme, that will appear on the top of the browser window.</p><code>
+class HelloWorld(Theme):
+    TITLE = u'The standard “Hello world” page.'
+</code>
+<p>Then one of the required methods is defined for a <b>Theme</b>, answering the
+list of <b>Page</b> instances, each filled with their set of components. In this
+case there only a one home page, which contains one element: the instance of
+<b>HelloWorldText</b>.</p>
+<code>
+    def baseComponents(self):
+        hw = HelloWorldText()
+        homePage = Page(components=(hw,), title=self.TITLE)
+        return [homePage]
+</code>
+<p>Calling the <b>self.make()</b> method will build the CSS and HTML and place 
+the result in a directory on the users’ desktop. This <b>index.html</b> can be 
+dragged on a browser to view. The CSS is saved in a local <b>css</b> directory.
+</p>
+<code>
+    def make(self):
+        cssBuilder = CssBuilder()
+        cssBuilder.save(self) 
+    
+        htmlBuilder = HtmlBuilder()
+        return htmlBuilder.save(self)  
+    
+if __name__ == '__main__':
+    HelloWorld().make()
+</code>
+    
+</chapter>
+</chapters>
+</document>
+

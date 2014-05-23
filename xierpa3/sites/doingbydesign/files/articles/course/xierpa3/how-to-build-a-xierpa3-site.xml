@@ -11,6 +11,7 @@
 </meta>
 
 <featured>
+<article id="example-hello-world"/>
 <article id="how-to-build-a-simple-kirby-site"/>
 <article id="programming-python"/>
 <article id="typography"/>
@@ -37,6 +38,7 @@ What is Xierpa? Why do you need it? What will it solve for you? These questions 
 Let’s start. We are going to build a simple blog, using a selection of standard Xierpa3 components. A component defines the behavior and appearance of a part of a page. This can be navigation, a sidebar, an article column or a box holding Social Media links. Also as we will see – components can hold other components, so they actually represent a tree of nested behaviors and styles.</p>
 <p>As in almost all functions in Xierpa3, we don’t write code from scratch. Instead of creating from an empty document, there already is a vast amount of knowledge that we can use, without copying the source code. In object oriented programming languages, such as Python, this is done by inheriting from object classes that have similar, but not identical, behavior.</p>
 <p>Building a new blog website thus starts with creating a new class the inherits van one that exists in the Xierpa3 library. First create a new Python file, e.g. named <em>blog.py</em>. We‘ll have to put this file in a folder context so Python can find it, but we’ll solve that in a minute.</p>
+
 <code>from xierpa3.components.theme import Theme
 class Blog(Theme):
     pass</code> 

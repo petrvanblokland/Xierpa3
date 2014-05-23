@@ -37,8 +37,8 @@ class Theme(Component):
                 return component
 
         # Could not find a match, answer the default template.
-        # If no default component exists, then answer self. This happes if there is only 
-        # one page in the site.
+        # If no default component exists, then answer self. 
+        # This happens if there is only one page in the site.
         return self.getComponent(C.TEMPLATE_DEFAULT) or self
 
     def getTemplates(self):
@@ -57,54 +57,4 @@ class Theme(Component):
 
     def getClassName(self):
         return None # Selector does not show, just the style block.
-
-if __name__ == "__main2__":
-
-    from xierpa3.builders.htmlbuilder import HtmlBuilder
-    from xierpa3.builders.sassbuilder import SassBuilder
-    from xierpa3.descriptors.style import Style
-    from xierpa3.components import Page, Group, Text, Article, Ruler, Header, Navigation, TagCloud
-    # Define general page descriptors
-    style = Style(layout='responsive') # Default behavior
-    style.fontfamily = 'Verdana'
-    style.fontsize = '1em'
-    style.addMedia(max=500, backgroundcolor='yellow', fontfamily='Verdana', fontweight='bold')
-    style.addMedia(min=500, max=700, backgroundcolor='orange', fontfamily='Georgia')
-    style.addMedia(min=700, color='green', fontfamily='Verdana')
-    style.addStyle('body', backgroundcolor='yellow')
-    # Define page components
-    sidebar = Group(name='TheSidebar', components=(
-        Ruler(size=20, color='red'),
-        Header(Text('Sidebar header'), fontsize=24),
-        Navigation(backgroundcolor='#E0E0E0', type='menu'),
-        TagCloud(),
-        ), id='sidebar', width='38%', float='left'
-    )
-    main = Group(components=(
-        Header(Text('Header of the page', fontsize=50, color='red')),
-        Article(Text('This is a text. ' * 40)),
-        Header(Text('Another header')),
-        Article(Text('This is another text. ' * 20)),
-        ), id='main', width='60%', float='left'
-    )
-    contact = Group(components=(
-        Header(Text('Contact', fontsize=50), name='Contact'))
-    )
-    components = (
-        Page(name='index', components=(main, sidebar), style=style),
-        Page(name='contact', components=(contact, sidebar), style=style)
-    )
-    t = Theme(components)
-    hb = HtmlBuilder()
-    for page in t.pages:
-        page.build(hb) # Clear the builder and build the HTML for page
-        hb.save('/Library/WebServer/Documents/xierpa3/%s.html' % page.name)
-        print hb.getResult()
-        print
-        print
-
-    sb = SassBuilder()
-    t.build(sb)
-    sb.save('/Library/WebServer/Documents/xierpa3/style.scss')
-    print sb.getResult()
 

@@ -10,6 +10,7 @@
 #
 #   htmlbuilder.py
 #
+import os
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltagbuilderpart import XmlTagBuilderPart
 from xierpa3.builders.builderparts.htmlbuilderpart import HtmlBuilderPart
@@ -39,7 +40,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         u"""Answer the url of the current page. To be implemented by inheriting classes
         that actually knows about urls. Default behavior is to do nothing."""
         return self.e.getFullUrl()
-        
+
+    def getExportPath(self, component):
+        u"""Answer the constructed default export path for component HTML files: 
+        "~/Desktop/Xierpa3Examples/[className]/index.html".
+        It is not checked if the directories of the path exists or should be created."""
+        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/index.html'
+           
     def theme(self, component):
         pass
 
@@ -83,14 +90,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._body()
         self._html()
 
-    def save(self, component, path=None, makeDirectory=True):
+    def save(self, component, path=None):
         u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
         if path is None:
-            path = self.getFilePath(component)
-        if makeDirectory: # Make sure that the directory part of path exists.
-            self.makeDirectory(path)
+            path = self.getExportPath(component)
+        self.makeDirectory(path) # Make sure that the directory part of path exists.
         for template in component.getTemplates():
             template.build(self)
             f = open(path, 'wb')

@@ -159,7 +159,13 @@ class XmlTransformerPart:
         
     def _doc_p(self):
         self._p()
+    
+    def doc_b(self, element, attrs):
+        self.b()
         
+    def _doc_b(self):
+        self._b()
+           
     def doc_blockquote(self, element, attrs):
         self.blockquote(**attrs)
         

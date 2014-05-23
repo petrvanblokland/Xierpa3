@@ -84,7 +84,7 @@ class Article(ArticleColumn):
         captionFontStyle=C.ITALIC, captionFontSize=Em(0.9), captionMarginTop=Em(0.5),
         # Code
         codeFontFamily='Courier', codeFontSize=Em(1.2), codePaddingLeft=Em(1),
-        codePaddingTop=Em(0.5), codePaddingBottom=Em(0.5),
+        codePaddingTop=Em(0.5), codePaddingBottom=0,
         codeMarginTop=Em(0.5), codeMarginBottom=Em(0.5),
         codeBackgroundColor=C.WHITE,
     )
@@ -210,6 +210,9 @@ class Article(ArticleColumn):
             textindent=s.firstIndent)
         self.buildPStyle(b)
         b._p()
+        # <b>
+        b.b(fontweight=C.BOLD)
+        b._b()
         # <blockquote>
         b.blockquote(borderleft=s.blockQuoteBorderLeft or Border('solid', '4px', '#CCC'), 
             margin=s.blockQuoteMargin or Margin(Em(1.5), 10), 

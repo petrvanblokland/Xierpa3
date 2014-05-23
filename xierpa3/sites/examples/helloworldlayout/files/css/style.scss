@@ -86,6 +86,39 @@ input[type=submit], label, select, .pointer {
         properties: values;
     }
 }
+
+
+/* Start page "page" */
+div.column { 
+    min-width: $minwidth300;
+    max-width: $maxwidth700;
+    
+    color: $colorYellow;
+    padding: $padding050em;
+    width: $width50;
+    font-size: $fontsize4em;
+    font-family: $fontfamilyGeorgia;
+    background-color: $backgroundcolor222;
+    line-height: $lineheight140em;
+    margin: 0px auto 0px auto;
+    text-align: $textalignCenter;
+} 
+div.caption { 
+    font-style: $fontstyleItalic;
+    max-width: $maxwidth700;
+    
+    color: $color888;
+    padding-left: $paddingleft050em;
+    min-width: $minwidth300;
+    width: $width50;
+    font-size: $fontsize080em;
+    font-family: $fontfamilyGeorgia;
+    line-height: $lineheight140em;
+    margin: 0px auto 0px auto;
+    text-align: $textalignCenter;
+} 
+
+/* End page "page" */
 /* Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -190,4 +223,3 @@ div.caption {
 } 
 
 /* End page "page" */
-
