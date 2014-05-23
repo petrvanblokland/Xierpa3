@@ -65,7 +65,7 @@ class Article(ArticleColumn):
         # H3
         h3Size=Em(2), h3LineHeight=Em(1.4), h3PaddingTop=Em(1), h3PaddingBottom=0,
         # Chapter p stuff
-        articleSize=Em(1.2), articleLineHeight=Em(1.6), articleIndent=Em(2),
+        articleSize=Em(1.1), articleLineHeight=Em(1.6), articleIndent=Em(2),
         # First p
         firstIndent=0,
         # Bullet list
@@ -83,7 +83,7 @@ class Article(ArticleColumn):
         imagePaddingRight=None, imageBackgroundColor=None,
         captionFontStyle=C.ITALIC, captionFontSize=Em(0.9), captionMarginTop=Em(0.5),
         # Code
-        codeFontFamily='Courier', codeFontSize=Em(1.2), codePaddingLeft=Em(1),
+        codeFontFamily='Courier', codeFontSize=Em(1.1), codePaddingLeft=Em(1),
         codePaddingTop=Em(0.5), codePaddingBottom=0,
         codeMarginTop=Em(0.5), codeMarginBottom=Em(0.5),
         codeBackgroundColor=C.WHITE,

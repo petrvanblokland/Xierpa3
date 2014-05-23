@@ -27,7 +27,7 @@ This example instruction shows coding of the most simple website in Xierpa3: Hel
 
 <p>Open a new Python code document, in an editor suitable for programming, such as  
 BBEdit, TextWrangler, Coda, or any other applications that understands Python syntax.
-Add this first line to the document, to indicate that it may contain Unicode strings.</p>
+Add this first line to the document, to indicate that it may contain UTF-8 (Unicode) strings.</p>
 
 <image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
 <p>Then we will define the Xierpa3 component and builder classes that we need in our website page.</p>
@@ -48,8 +48,12 @@ We create a new type of component for this behavior, which initially inherits al
         b.text('Hello world.')
         b._div()
 </code>
-<p>Now we defined our new type of component, we need a page to place it on.</p>
-<p>Create a new type of theme, that initially inherits all behavior from the main Xierpa3
+<p>The <b>b.div</b> instructs the HTML builder to build an HTML open <b>div</b> tag,
+where the <b>b._div</b> creates a closing tag. The CSS builder generates the 
+corresponding CSS codes for this div, taking the color attribute as value. This attribute
+is ignored by the HTML builder. Builders know which attributes are for them.</p>
+<p>Now we defined our new type of component, we need a page to place it on.
+	Create a new type of theme, that initially inherits all behavior from the main Xierpa3
 	<b>Theme</b> component. <b>TITLE</b> defines the specific page name for this type
 	of theme, that will appear on the top of the browser window.</p><code>
 class HelloWorld(Theme):
@@ -80,7 +84,7 @@ dragged on a browser to view. The CSS is saved in a local <b>css</b> directory.
 if __name__ == '__main__':
     HelloWorld().make()
 </code>
-    
+    <p>In the next example, we’ll add some more styling and layout to the page.</p>
 </chapter>
 </chapters>
 </document>
