@@ -10,6 +10,9 @@
 #
 #   htmlbuilder.py
 #
+#   Following standard
+#   https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+#
 import os
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltagbuilderpart import XmlTagBuilderPart
@@ -58,6 +61,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         Builds entire HTML document.
         """
         self.clear() # Clear the output stream for next theme page
+        #self.docType(self.ID)
         self.html()
         self.head()
         self.title_(component.getTitle(self.getPath())) # Search for the title in the component tree
@@ -245,7 +249,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         u"""
         """
         if component.style:
-            width = component.style.width_html
+            width = component.style.width_html # Take explicit HTML width/height if defined in component.
             height = component.style.height_html
         else:
             width = None
@@ -254,6 +258,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             width = '100%'
         elif height is not None:
             width = None
+        alt = component.alt or TX.path2Name(component.url)
         self.img(src=component.url, width_html=width, height_html=height, alt=component.alt,
             class_=TX.flatten2Class(class_, component.getPrefixClass()))
 

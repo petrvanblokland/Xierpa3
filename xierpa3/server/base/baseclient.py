@@ -27,6 +27,7 @@ class BaseClient(object):
     """
     MTIMES = {}
     LINE = '-' * 80
+    DO_INDENT = True # Boolean flag if the build code should be indented.
     DEFAULTTHEME = 'default'
     THEMES = None # Name-class of the theme component trees, redefined by inheriting classes.
     INITCSS = True # Flag to make sure all CSS always gets initialized when server starts.
@@ -118,6 +119,12 @@ class BaseClient(object):
         """
         return self.getTheme().getTitle()
 
+    def getDoIndent(self):
+        u"""
+        The <code>getDoIndent</code> method answers the boolean flag if the output code building should include indents.
+        """
+        return self.DO_INDENT
+    
     def getSite(self, httprequest):
         u"""
         The <code>getSite</code> method answers a new instance of the site class that is indicated by the result of
@@ -151,6 +158,7 @@ class BaseClient(object):
         answered. The application needs to have the the right MIME type in the output.
         """
         site = self.getSite(httprequest) # Site is Theme instance
+        doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
         # b.setMimeTypeEncoding(httprequest)
         try:
             # If there is a matching file in the site root/files folder, then answer this.
@@ -158,14 +166,14 @@ class BaseClient(object):
             result = self.resolveByFile(site, filePath)
             if site.e.form['force'] or result is None or self.INITCSS:
                 if site.e.request.path.endswith('.css'):
-                    builder = CssBuilder(e=site.e)
+                    builder = CssBuilder(e=site.e, doIndent=doIndent)
                     site.build(builder) # Build from entire site theme, not just from template.
                     builder.save(site, path=filePath) # Compile Sass to Css  
                     result = builder.getResult()
                     self.INITCSS = False # Mark that the initialize CSS on startup has been done.
                 else:
                     site.reset() # Allow the theme to reset values for every page request, depending on url parameters. 
-                    builder = HtmlBuilder(e=site.e)
+                    builder = HtmlBuilder(e=site.e, doIndent=doIndent)
                     template = site.getMatchingTemplate(builder)
                     template.build(builder)
                     result = builder.getResult()

@@ -10,6 +10,8 @@
 #
 #   constants.py
 #
+#   Formatting conform https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+#
 try:
     from config.xconfig import Config
 except ImportError:
@@ -17,6 +19,9 @@ except ImportError:
     
 class C(Config):
 
+    # Indenting output
+    TAB_INDENT = ' '*2
+    
     UNTITLED = 'Untitled'
     SINGLE_ATTRIBUTES = [] # Attributes that need no value in the output.
     # Types of sites

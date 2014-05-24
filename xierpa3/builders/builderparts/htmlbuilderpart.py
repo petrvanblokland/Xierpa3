@@ -250,6 +250,9 @@ class HtmlBuilderPart:
 
             self.write_attribute(key, value)
 
+    def docType(self, s):
+        self.output('<!DOCTYPE %s>\n' % s)
+        
     def html(self, xmlns=None, **args):
         """
         <seealso><www href="http://www.w3schools.com/tags/tag_html.asp" target="external"/></seealso>

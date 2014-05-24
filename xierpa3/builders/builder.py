@@ -22,12 +22,15 @@ class Builder(C):
     ID = None   # To be redefined by inheriting builder classes
     EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
     DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
+    DO_INDENT = False
     
-    def __init__(self, e=None, result=None, verbose=True):
+    def __init__(self, e=None, result=None, verbose=True, doIndent=True):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
         self.clear(result) # Clear the result stack or initialize with the optional result stack.
         self._verbose = verbose
-        self._tabLevel = 0
+        self._doIndent = doIndent # Use indent for blocks on the output
+        self._tabLevel = 0 # If indenting, keep tab level here.
+        self._newLine = '\n' # Newline code to add at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
         self.initialize()
@@ -94,19 +97,22 @@ class Builder(C):
     # T A B
 
     def tabs(self):
-        # Output tabs to the current level
+        """"Output tabs to the current level and add newlines, depending on the setting of <b>self._newline</b>
+        (string with newlines) and <code>self._tabLevel</code> (number of indents)."""
         if self._verbose:
-            self.output('\n' + ('    ' * self._tabLevel))
+            self.output(self._newLine + (C.TAB_INDENT * self._tabLevel)) 
 
     def tabIn(self):
-        self._tabLevel += 1
+        if self._doIndent:
+            self._tabLevel += 1
 
     def tabOut(self):
-        self._tabLevel = max(0, self._tabLevel - 1)
+        if self._doIndent:
+            self._tabLevel = max(0, self._tabLevel - 1)
 
     def newline(self, count=1):
         if self._verbose:
-            self.output('\n' * count)
+            self.output(self._newLine * count)
 
     def newResultWriter(self, name=None):
         return Writer(name)

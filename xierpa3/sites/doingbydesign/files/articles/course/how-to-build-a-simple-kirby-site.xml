@@ -5,7 +5,7 @@
 <level>Novice</level>'
 <title>How to build a Kirby site</title>
 <author>Kirsten Langmuur and Petr van Blokland</author>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildKirbyWebsites.png"/>
+<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildKirbyWebsites.png"/>
 <topic>Learn the best way to build a website using Kirby.</topic>
 <summary>
  Which is different from code-engineering or the web variant of Desktop Publishing. We’ll address it from a designer point of view, who may not have any knowledge or practical experience with coding.

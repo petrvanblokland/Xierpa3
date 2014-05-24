@@ -4,7 +4,7 @@
 <title>Hello world.</title>
 <category>Course</category>
 <level>Beginner</level>'
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
+<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
 <author>Petr van Blokland</author>
 <topic>The most basic website in Xierpa3: Hello world.</topic>
 <summary>How to build the most simple website in Xierpa3: Hello world.</summary>
@@ -23,13 +23,13 @@
 <lead>
 This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.</lead>
 
-<image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"/>
 
 <p>Open a new Python code document, in an editor suitable for programming, such as  
 BBEdit, TextWrangler, Coda, or any other applications that understands Python syntax.
 Add this first line to the document, to indicate that it may contain UTF-8 (Unicode) strings.</p>
 
-<image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
 <p>Then we will define the Xierpa3 component and builder classes that we need in our website page.</p>
 <code>
 from xierpa3.components import Theme, Page, Column 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 <h2>HelloWorldLayout Example</h2>
     <p>In the next example, we’ll add some more styling and layout to the page.
     	Again we import the required classes from Xierpa.</p>
-    	<image src="http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"/>
+    	<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"/>
     	<code>
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder

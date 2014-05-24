@@ -10,6 +10,9 @@
 #
 #   sassbuilder.py
 #
+#   Validating:
+#   http://jigsaw.w3.org/css-validator/
+#
 import re
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltransformerpart import XmlTransformerPart
