@@ -28,6 +28,7 @@ from xierpa3.attributes import Em, Margin
 from xierpa3.descriptors.style import Media # Include type of Style that holds @media parameters.
 
 class HelloWorldResponsiveText(Column):
+
     def buildBlock(self, b):
         u"""Build the column. Note that although the "div" suggest that it is just
         HTML building there, the method get called both with <b>b</b> as CssBuilder

@@ -102,15 +102,15 @@ class Typo2014(Shop):
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
         s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
         s.addStyle('a:active', color=self.CSS_AACTIVECOLOR)
-        s.addStyle('div.' + C.CLASS_1COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 / 12))
-        s.addStyle('div.' + C.CLASS_2COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 2 / 12))
-        s.addStyle('div.' + C.CLASS_4COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
-        s.addStyle('div.' + C.CLASS_8COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 8 / 12))
-        s.addStyle('div.' + C.CLASS_12COL, margin=Em(0.5), float=C.LEFT, width=C.C100)
-        s.addStyle('div.' + C.CLASS_LAST, marginright=Em(0))
-        s.addStyle('ul', display=C.BLOCK)
-        s.addStyle('li', display=C.BLOCK)
-        s.addStyle('ol', liststyletype=C.DECIMAL)
+        s.addStyle('div.' + self.CLASS_1COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 / 12))
+        s.addStyle('div.' + self.CLASS_2COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 2 / 12))
+        s.addStyle('div.' + self.CLASS_4COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
+        s.addStyle('div.' + self.CLASS_8COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 8 / 12))
+        s.addStyle('div.' + self.CLASS_12COL, margin=Em(0.5), float=self.LEFT, width=self.C100)
+        s.addStyle('div.' + self.CLASS_LAST, marginright=Em(0))
+        s.addStyle('ul', display=self.BLOCK)
+        s.addStyle('li', display=self.BLOCK)
+        s.addStyle('ol', liststyletype=self.DECIMAL)
         return s
 
     def baseComponents(self):
@@ -118,7 +118,7 @@ class Typo2014(Shop):
         menu = Menu()
         socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
 
-        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE)
+        header = Header(components=(logo,menu), mobileContainerDisplay=self.NONE)
         mobileNavigation = MobileNavigation(title=self.TITLE) # Is container by itself. Change??
         # Articles featured by image
         featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
@@ -144,8 +144,8 @@ class Typo2014(Shop):
 
         # Article
         featuredByTextList = FeaturedByTextList() # Default start a featured index 0
-        article = Container(class_=C.CLASS_ARTICLE, 
-            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=C.REPEAT, 
+        article = Container(class_=self.CLASS_ARTICLE, 
+            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
     
         # Floating items
@@ -154,11 +154,11 @@ class Typo2014(Shop):
         # Documentation
         documentation = Documentation()
         
-        homePage = Page(name=C.TEMPLATE_INDEX,
+        homePage = Page(name=self.TEMPLATE_INDEX,
             components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
-        articlePage = Page(name=C.TEMPLATE_ARTICLE,
+        articlePage = Page(name=self.TEMPLATE_ARTICLE,
             components=(mobileNavigation, header, article, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
@@ -175,7 +175,7 @@ class Typo2014(Shop):
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
         # Automatic documentation about Xierpa3
-        documentationPage = Page(name=C.TEMPLATE_DOCUMENTATION,
+        documentationPage = Page(name=self.TEMPLATE_DOCUMENTATION,
             components=(mobileNavigation, header, documentation, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
