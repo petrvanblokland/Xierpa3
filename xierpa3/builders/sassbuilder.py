@@ -77,9 +77,11 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.newline()
         self.tabs()
         self.comment('Start page "%s"' % component.name)
+        self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
 
     def _page(self, component):
         u"""Mark the CSS end of the page <i>component</i> style."""
+        self._styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
         self.newline()
         self.tabs()
         self.comment('End page "%s"' % component.name)
@@ -198,13 +200,13 @@ class SassBuilder(XmlTransformerPart, Builder):
             if keyPostfix == self.ATTR_POSTFIX:
                 # Remove the postfix from the attribute name
                 key = '_'.join(key.split('_')[:-1])
-            if key == self.ATTR_MEDIA: # Collect the runtime Media instances in 'media' attribute.
+            if key == self.ATTR_MEDIA: # Collect the runtime Media instances as defined in the 'media' attribute.
                 # Copy the current stack of selectors in combination with the @media instances.
                 # Value can be a single Media instance or a list of instances.
-                # When all SCSS is done, the collected @media gets built.
+                # When all SCSS is done, the collected @media gets built from this.
                 self.runtimeMedia.append((self.mediaSelectors.getAll()[:], value)) 
                 continue
-            # This can result in an empty block
+            # This loop can result in an empty block, is there is only a media attribute.
             self.buildHookProperties(key, value)
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
 
