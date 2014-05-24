@@ -53,14 +53,13 @@ class Builder(C):
         Typically <b>self.EXTENSION</b> is answered."""
         return self.EXTENSION
     
-    def getFilePath(self, component):
-        return component.getRootPath() + '/' + self.DEFAULT_PATH + component.name + '.' + self.getExtension()
-
     def getExportPath(self, component):
-        u"""Answer the constructs export path for component files: "~/Desktop/Xierpa3Examples/className".
-        It is not checked if the path exists or should be created."""
-        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__
-    
+        u"""
+        Answer the constructed export path for component files: "~/Desktop/Xierpa3Examples/className".
+        It is not checked if the path exists and should be created.
+        """
+        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/'
+
     def makeDirectory(self, path):
         u"""Make sure that the directory of path (as file) exists. Otherwise create it."""
         dirPath = TX.path2Dir(path)
@@ -187,7 +186,7 @@ class Builder(C):
     def _snippet(self, component):
         pass
     
-    # R E Q U E S T  &  F O R M
+    #  R E Q U E S T  &  F O R M
     
     def getCurrentArticleId(self):
         return self.e.form[C.PARAM_ARTICLE]
@@ -200,7 +199,7 @@ class Builder(C):
         that actually knows about URLs. Default behavior is to do nothing."""
         return None
         
-    # G E N E R I C  B L O C K  B E H A V I O R
+    #  G E N E R I C  B L O C K  B E H A V I O R
     
     def block(self, component):
         u"""Generic block, called at any block opening. To be redefined by inheriting builder

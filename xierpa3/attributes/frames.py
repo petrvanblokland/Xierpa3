@@ -10,8 +10,6 @@
 #
 #    frames.py
 #
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX 
 from xierpa3.attributes.attribute import Attribute
 from xierpa3.attributes.values import asValue
 

@@ -18,6 +18,9 @@ class Theme(Component):
 
     TITLE = 'Redefine cls.TITLE in inheriting theme class.'
 
+    def __repr__(self):
+        return '<Theme: %s>' % (self.selector or self.name)
+
     def reset(self):
         u"""Gets called prior to every page render. Can be redefined by inheriting theme classes.
         Default behavior is to do nothing."""

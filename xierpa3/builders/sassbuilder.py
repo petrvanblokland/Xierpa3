@@ -42,10 +42,17 @@ class SassBuilder(XmlTransformerPart, Builder):
         #self.selectors = {} # Collect all value-selector combinations to combine identical values.
         self.firstSelectors = Stack() # Collect the nested selector-result to avoid multiple definitions.
         
-    def getPath(self):
+    def getModelsPath(self):
         u"""For the building of the CSS we need the path of a default document, that defines
         the styles for all elements in the Python and XML."""
         return '/_model'
+
+    def getFilePath(self, site):
+        u"""
+        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
+        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
+        """
+        return self.getExportPath(site) + self.DEFAULT_PATH
 
     def theme(self, component):
         u"""Build the reset code for the default values of HTML elements.
@@ -99,8 +106,6 @@ class SassBuilder(XmlTransformerPart, Builder):
     def save(self, component, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
-        # Build the component output with self as builder.
-        component.build(self)
         if path is None:
             path = self.getExportPath(component) + self.DEFAULT_PATH
         self.makeDirectory(path) # Make sure it is there.
@@ -193,7 +198,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             if keyPostfix == self.ATTR_POSTFIX:
                 # Remove the postfix from the attribute name
                 key = '_'.join(key.split('_')[:-1])
-            if key == 'media': # Collect the runtime Media instances
+            if key == self.ATTR_MEDIA: # Collect the runtime Media instances in 'media' attribute.
                 # Copy the current stack of selectors in combination with the @media instances.
                 # Value can be a single Media instance or a list of instances.
                 # When all SCSS is done, the collected @media gets built.
@@ -317,7 +322,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.newline()
     
     def buildMediaComponent(self, expression, component):
-        u"""Build the @media of the <i>component</i> that matches the expression. 
+        u"""Build the @media of the <i>component</i> that matches the <i>expression</i>. 
         Skip the block header if the content renders to empty."""
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
         self.pushResult() # Save current output stream
@@ -770,7 +775,7 @@ input[type=submit], label, select, .pointer {
         if isinstance(value, Url):
             value.build('src', self)
         else: # We assume here that it is an url.
-            self.output("src: url('%s');" % value)
+            self.output("src: url(%s);" % value)
 
     def css3_content(self, value):
         self.output('content: "%s";' % value)
@@ -1012,7 +1017,7 @@ input[type=submit], label, select, .pointer {
         self.output('list-style-position: %s;' % value)
 
     def css3_liststyleimage(self, value):
-        self.output("list-style-image:url('%s');" % self.e.getPath(value))
+        self.output("list-style-image:url(%s);" % value)
 
     def css3_margin(self, value):
         if isinstance(value, Frame): # Identical to Margin class

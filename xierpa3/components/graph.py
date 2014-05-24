@@ -11,7 +11,6 @@
 #    graph.py
 #
 from xierpa3.components.component import Component
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX 
 
 class Graph(Component):
@@ -23,6 +22,6 @@ class Graph(Component):
         colClass = TX.col2Class('graph')
         s = self.style
         b.block(self)
-        b.div(class_=colClass, float=s.graphFloat or C.LEFT, width=s.graphWidth or C.C100)
+        b.div(class_=colClass, float=s.graphFloat or self.LEFT, width=s.graphWidth or self.C100)
         b._div(comment=colClass)
         b._block(self)

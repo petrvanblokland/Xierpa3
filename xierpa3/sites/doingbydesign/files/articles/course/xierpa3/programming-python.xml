@@ -4,7 +4,8 @@
 <category>Course</category>
 <level>Advanced</level>'
 <title>Programming Python</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"
+	alt="Programming with Python"/>
 <author>Petr van Blokland</author>
 <topic>A short description of the article.</topic>
 <summary>Summary of the couse Programming Python.</summary>

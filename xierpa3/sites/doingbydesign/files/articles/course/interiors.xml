@@ -4,7 +4,8 @@
 <category>Blog</category>
 <level>Advanced</level>'
 <title>How to design Interiors by sketching</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToDesignInteriosBySketching.png"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToDesignInteriosBySketching.png"
+	alt="How to design interiors by sketching"/>
 <author>Claudia Mens</author>
 <topic>Highlights and pitfalls when redoing your interior.</topic>
 </meta>
@@ -43,7 +44,8 @@ The content is this course is a compilation of our years of talking with custome
 <footnote>This is a footnote content.</footnote>zzzz
 A little warning is in place here. In the course I will pose many bold statements, such as “Never start with the logo. Start with the identity.” and “Customers cannot tell you what they need.”, but keep in mind that I am well aware that there are always exceptions to whatever I say about design in general and corporate identities in particular. But there are several reasons to make the bold statements anyway.
 </p>
-<image src="http://data.petr.com.s3.amazonaws.com/_images/house/buro_stairs.png"/>
+<image src="http://data.petr.com.s3.amazonaws.com/_images/house/buro_stairs.png"
+   alt="Buro first floor Rietveld Delft"/>
 <p>
 First is that in a course like this we have a limited amount of time and resources. The time you want to spend on this course is relatively short and what is more important, I don’t know the details about your design project. I can only make assumptions through the wrong side of this one-way mirror. So I have to stay positioned at a certain level of abstraction, where knowing your design project more in detail, it would have been easier to address the details of it.
 </p>

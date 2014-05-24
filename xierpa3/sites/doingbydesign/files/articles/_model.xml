@@ -4,7 +4,8 @@
 <title>Model article</title>
 <level>Novice</level>
 <category>Blog</category>
-<poster src="http://localhost:8888/doingbydesign/assets/images/main_video.png"/>
+<poster src="http://localhost:8888/doingbydesign/assets/images/main_video.png"
+  alt="Main video image"/>
 </meta>
 <featured>
 <!--  id of featured articles -->

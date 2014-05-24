@@ -142,53 +142,60 @@ class BaseClient(object):
         theme.e = Environment(request=httprequest)
         return theme
 
-    def getFilePath(self, site):
-        u"""
-        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
-        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
-        """
-        if site.e is not None:
-            return TX.class2Path(site) + '/files/' + '/'.join(site.e.path.split('/')[-2:])
-        return None
+    def buildCss(self, site):
+        u"""Build the site to CSS."""
+        doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
+        builder = CssBuilder(e=site.e, doIndent=doIndent)
+        filePath = builder.getFilePath(site)
+        result = self.resolveByFile(site, filePath)
+        if site.e.form['force'] or result is None or self.INITCSS:
+            site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
+            builder.save(site, path=filePath) # Compile resulting Sass to Css  
+            result = builder.getResult() # Get the resulting Sass.
+            self.INITCSS = False # Mark that the initial CSS build on startup has been done.
+        return result
+    
+    def buildHtml(self, site):
+        u"""Build the site for HTML."""
+        doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
+        site.reset() # Allow the theme to reset values for every page request, depending on url parameters. 
+        builder = HtmlBuilder(e=site.e, doIndent=doIndent)
+        filePath = builder.getFilePath(site)
+        result = self.resolveByFile(site, filePath)
+        if site.e.form['force'] or result is None or self.INITCSS:
+            template = site.getMatchingTemplate(builder)
+            template.build(builder)
+            result = builder.getResult()
+        return result
     
     def render_GET(self, httprequest):
         u"""
-        The <code>render_GET</code> method is called by Twisted to handle the GET <attr>httprequest</attr>. The
-        site instance is called with <code>b.build()</code>. The result (this can be HTML, JSON or binary data) is
-        answered. The application needs to have the the right MIME type in the output.
+        The <code>render_GET</code> method is called by Twisted to handle the GET <attr>httprequest</attr>. 
+        It is the main loop (besides the <code>self.render_POST</code>) that builds pages from url requests.
+        The site instance is called by <code>b.build()</code>. The result (this can be HTML, JSON or binary data) is
+        answered. The application needs to have the right MIME type in the output.
         """
         site = self.getSite(httprequest) # Site is Theme instance
-        doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
         # b.setMimeTypeEncoding(httprequest)
         try:
             # If there is a matching file in the site root/files folder, then answer this.
-            filePath = self.getFilePath(site)
-            result = self.resolveByFile(site, filePath)
-            if site.e.form['force'] or result is None or self.INITCSS:
-                if site.e.request.path.endswith('.css'):
-                    builder = CssBuilder(e=site.e, doIndent=doIndent)
-                    site.build(builder) # Build from entire site theme, not just from template.
-                    builder.save(site, path=filePath) # Compile Sass to Css  
-                    result = builder.getResult()
-                    self.INITCSS = False # Mark that the initialize CSS on startup has been done.
-                else:
-                    site.reset() # Allow the theme to reset values for every page request, depending on url parameters. 
-                    builder = HtmlBuilder(e=site.e, doIndent=doIndent)
-                    template = site.getMatchingTemplate(builder)
-                    template.build(builder)
-                    result = builder.getResult()
+            if site.e.request.path.endswith('.css'):
+                result = self.buildCss(site)
+            else: # Not CSS, request must be HTML. This could be an extended choice in the future.
+                result = self.buildHtml(site)
             return result
         except Exception, e:
             t = traceback.format_exc()
             httprequest.setHeader('content-type', 'text/html')
-            return self.renderError(e, t)
+            result = self.renderError(e, t)
 
         # if b.shouldBeCompressed():
         #    httprequest.setHeader("Content-Encoding", "gzip")
-        #    return b.getResult().getCompressedValue()
+        #    result = b.getResult().getCompressedValue()
         # else:
-        #    return b.getResult().getValue()
-
+        #    result = b.getResult().getValue()
+        return result
+    
     def render_POST(self, httprequest):
         u"""
         The <code>render_POST</code> method is called by Twisted to handle the POST <attr>httprequest</attr>. The
@@ -208,24 +215,16 @@ class BaseClient(object):
             # print json
             # b.buildJSON(json)
         try:
-            # If there is a matching file in the site root folder, then answer this.
-            result = self.resolveByFile(site, self.getFilePath(site))
-            if result is None:
-                if site.e.request.path.endswith('.css'):
-                    builder = CssBuilder(e=site.e)
-                    site.build(builder) # Build from entire site theme, not just from template.
-                    builder.save() # Compile Sass to Css
-                    result = builder.getResult()
-                else:
-                    builder = HtmlBuilder(e=site.e)
-                    template = site.getMatchingTemplate(builder)
-                    template.build(builder)
-                    result = builder.getResult()
-            return result
+            # If there is a matching file in the site root/files folder, then answer this.
+            if site.e.request.path.endswith('.css'):
+                result = self.buildCss(site)
+            else: # Not CSS, request must be HTML. This could be an extended choice in the future.
+                result = self.buildHtml(site)
         except Exception, e:
             t = traceback.format_exc()
-            return self.renderError(e, t)
-
+            result = self.renderError(e, t)
+        return result
+    
         # if b.shouldBeCompressed():
         #    httprequest.setHeader("Content-Encoding", "gzip")
         #    return b.getResult().getCompressedValue()

@@ -11,10 +11,8 @@
 #    logo.py
 #
 from xierpa3.components.component import Component
-from xierpa3.descriptors.style import Style
 from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX 
-from xierpa3.attributes import *
+from xierpa3.attributes import Em
 from xierpa3.descriptors.style import Media
 
 class Logo(Component):
@@ -35,10 +33,10 @@ class Logo(Component):
             marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
         # @url: url of href link. If None no link is made
         # @src: url of the image source.
-        data = self.getAdapterData(C.ADAPTER_LOGO) 
+        data = self.getAdapterData(self.ADAPTER_LOGO) 
         if data.url:
             b.a(href=data.url)
-        #b.img(src=data.src, width=s.logoWidth, maxwidth=C.C100, height=s.height)
+        #b.img(src=data.src, width=s.logoWidth, maxwidth=self.C100, height=s.height)
         b.h2(fontsize=s.h2Size, lineheight=s.h2LineHeight, 
              fontweight=s.h2fontWeight,
              fontstyle=s.h2FontStyle, color=s.h2Color,

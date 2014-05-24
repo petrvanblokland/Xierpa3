@@ -18,7 +18,9 @@ except ImportError:
     from config.COPYTO_config import Config
     
 class C(Config):
-
+    u"""Inherited by main Xierpa3 classes, to share default constants, 
+    will allowing to be redefined by inheriting classes."""
+    
     # Indenting output
     TAB_INDENT = ' '*2
     
@@ -172,6 +174,7 @@ class C(Config):
     # Must containt the ATTR_POSTFIX of all available builders.
     ATTR_POSTFIXES = set(('html', 'css'))
     
+    ATTR_MEDIA = 'media' # Special attribute in components to define (a list of) Media instances.
     # Template names (as parameter in url)
     TEMPLATE_INDEX = 'index'
     TEMPLATE_ARTICLE = 'article'

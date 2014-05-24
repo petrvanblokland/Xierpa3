@@ -12,6 +12,7 @@
 #
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.storage.status.status import Data
+from xierpa3.constants.constants import C
 
 class Data(object):
     def __init__(self, **kargs):
@@ -21,7 +22,7 @@ class Data(object):
     def __getattr__(self, key):
         return self.__dict__.get(key)
     
-class Adapter(object):
+class Adapter(C):
     u"""
     The Adapter classes connect the templates to content. Note that an adapter always returns plain text/content
     elements (which can include plain HTML), not components. The conversion needs to be done by the calling

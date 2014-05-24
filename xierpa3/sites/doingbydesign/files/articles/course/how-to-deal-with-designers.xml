@@ -4,7 +4,8 @@
 <category>Course</category>
 <level>Novice</level>'
 <title>How to Deal with Designers and Other Creators</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png"
+	alt="Do you really need a designer?"/>
 <author>Petr van Blokland</author>
 <topic>Learn how to deal with designers in this 10 minute course.</topic>
 <summary>
@@ -31,7 +32,8 @@ Welcome to this course. If you are working with designers, in your professional 
 Of course you have ideas, and taste and you have the full understanding of why you want this design, and how it will be part of all the other new developments in your company or in your home. But you need someone to work that out for you, to fill in the details. To get it ready for manufacturing. To judge, what is feasible and what is fashionable. 
 Maybe you want a new website for your company. Or a logo. Or a new innovative product. Or a catchy advertisement campaign. Or a new building. So you ‘google’ through associating words, while making notes about what you like. You search on sites with similar products, where the style fits your ideas, matching what you have in mind. You are aware that there could potentially be a budget issue, looking at the work of Famous Designers, but that’s a problem to be solved later. You review what your competitors have done before and you try to guess where they are heading. 
 </p>
-<image src="http://data.petr.com.s3.amazonaws.com/_images/house/exterior/buro_rietveld_gracht_cepezed2.jpg">House at Rietveld Delft by CEPEZED.</image>
+<image src="http://data.petr.com.s3.amazonaws.com/_images/house/exterior/buro_rietveld_gracht_cepezed2.jpg"
+	alt="Buro aan het Rietveld Delft">House at Rietveld Delft by CEPEZED.</image>
 <p>
 You then write a brief to describe the context for this new design and you may even compose a mood board, to visualize what you like and perhaps what you don’t like. By the way, this course will show you the methods for doing these things. 
 You search through portfolios, read about previous projects of various designers or architects. You try to find the matching designer or design studio for your brief and mood board. One that understands what you want. And at the same time one that doesn’t only do what you tell him, or else you wouldn’t need to hire one.
@@ -50,7 +52,8 @@ Should you request total insight on every level of details and decision making, 
 <p>
 For the record: I am fully aware that there are male designers and female designers, and that there are female customers and male customers, so I will alternate referring to each of them as male or female during this course. Making the customer the opposite gender as the designer in the text of this course, will simplify the language. We’ll start with a male designer and female customer in this chapter. Then in the next chapter this will swap.
 </p>
-<image src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png">Do you really<footnote>A footnote reference in the middle of a sentence.</footnote> need a designer? <footnote>With a footnote reference inside a caption.</footnote></image>
+<image src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png"
+	alt="Do you really need a designer?">Do you really<footnote>A footnote reference in the middle of a sentence.</footnote> need a designer? <footnote>With a footnote reference inside a caption.</footnote></image>
 <p>
 This course will present checklists, methods, use-cases and working models. You can use them as starting point for your selection process. And as a model for the way you – as a customer – want to interact with the designer. What is your role in the process? You need to learn to think like a designer – a little bit, not too much, you are on the other side of the table. Your primary responsibilities are to keep the company alive. To maintain your household. It is not your responsibility to make the designer happy by all means. You need to be able to think like a designer, just enough to know how the processes work. To follow his line of reasoning. Why he shows what he shows. Why he comes up with the solutions he does. 
 And you want to have the tools to make it clear to designers that it is your problem they should be solving. Not making something that simply fits their own taste.

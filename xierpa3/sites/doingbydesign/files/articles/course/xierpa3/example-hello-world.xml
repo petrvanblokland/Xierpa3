@@ -4,7 +4,8 @@
 <title>Hello world.</title>
 <category>Course</category>
 <level>Beginner</level>'
-<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
+<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"
+	alt="How to build websites with Xierpa3"/>
 <author>Petr van Blokland</author>
 <topic>The most basic website in Xierpa3: Hello world.</topic>
 <summary>How to build the most simple website in Xierpa3: Hello world.</summary>
@@ -23,13 +24,15 @@
 <lead>
 This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.</lead>
 
-<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"
+	alt="Hello world in safari"/>
 
 <p>Open a new Python code document, in an editor suitable for programming, such as  
 BBEdit, TextWrangler, Coda, or any other applications that understands Python syntax.
 Add this first line to the document, to indicate that it may contain UTF-8 (Unicode) strings.</p>
 
-<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"
+	alt="Hello world source"/>
 <p>Then we will define the Xierpa3 component and builder classes that we need in our website page.</p>
 <code>
 from xierpa3.components import Theme, Page, Column 
@@ -49,7 +52,7 @@ We create a new type of component for this behavior, which initially inherits al
         b._div()
 </code>
 <p>The <b>b.div</b> instructs the HTML builder to build an HTML open <b>div</b> tag,
-where the <b>b._div</b> creates a closing tag. The CSS builder generates the 
+where the <b>b.div</b> creates a closing tag. The CSS builder generates the 
 corresponding CSS codes for this div, taking the color attribute as value. This attribute
 is ignored by the HTML builder. Builders know which attributes are for them.</p>
 <p>Now we defined our new type of component, we need a page to place it on.
@@ -87,7 +90,8 @@ if __name__ == '__main__':
 <h2>HelloWorldLayout Example</h2>
     <p>In the next example, we’ll add some more styling and layout to the page.
     	Again we import the required classes from Xierpa.</p>
-    	<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"/>
+    	<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"
+    	 alt="Hello world layout"/>
     	<code>
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder

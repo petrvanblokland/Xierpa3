@@ -44,12 +44,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         that actually knows about urls. Default behavior is to do nothing."""
         return self.e.getFullUrl()
 
-    def getExportPath(self, component):
-        u"""Answer the constructed default export path for component HTML files: 
-        "~/Desktop/Xierpa3Examples/[className]/index.html".
-        It is not checked if the directories of the path exists or should be created."""
-        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/index.html'
-           
+    def getFilePath(self, site):
+        u"""
+        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
+        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
+        """
+        return self.getExportPath(site) + site.name + '.' + self.getExtension()
+
     def theme(self, component):
         pass
 

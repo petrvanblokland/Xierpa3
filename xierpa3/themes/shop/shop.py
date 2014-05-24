@@ -26,7 +26,7 @@ class Shop(Theme):
     TITLE = '[Title of the blog]'
     SUBTITLE = '[Subtitle of the blog]'
 
-    def getFilePath(self, site):
+    def XXXgetFilePath(self, site):
         u"""
         Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
         """
