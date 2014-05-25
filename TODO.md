@@ -1,5 +1,10 @@
 ## TODO
 
+### Short term
+ * Check on duplicates in @media selectors
+ * Update articles on DbD example site
+ * Export to PHP Kirby
+ 
 ### Wish list of features
  * Extending different types of components.
  * Extending database adapters.
@@ -9,15 +14,18 @@
  * Setup example development blog (online) with user respons. Both as working site and example themes in code.
  * (Automatic) documentation site.
  * More "how to" documentation: how to inherit from existing classes.
- * Extending the designs of the example site.
+ * Extending the designs of the example site with templates for magazine, newspaper, stationary, books.
  * Adding CMS functions, in case Xierpa3 is used as server (otherwise existing CMS systems van be used).
  * Scaling and caching images for responsive usage (and resolution independence).
  * Add function to preview from remote web fonts.
 	
 ### Longer term
- * Desktop app with a choice of parametric designer templates.
- * Comoponents for responsive graph and table building, spreadsheet component.
+ * Desktop app Xierpa3App with a choice of parametric designer templates.
+ * Components for responsive graph and table building, spreadsheet component.
  * Automatic page composition, depending on amount and type of elements and content volume.
  * Hyphenation
  * Parametric webfont generator, 
  * Parametric (corporate) identity generator.
+
+### Done
+ * Responsive output for @media works again.
