@@ -80,7 +80,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._head()
 
         self.body()
-        self.div(class_=C.CLASS_PAGE)
+        self.div(class_=component.class_ or C.CLASS_PAGE)
         if self.isEditor(): # If in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
         self.block(component) # Open the main page block

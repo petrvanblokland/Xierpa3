@@ -312,7 +312,7 @@ class ArticleSideBar(ArticleColumn):
         
         # <div class="mobileChapterNavigation">
         b.div(class_=self.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.NONE,
-            media=Media(max=self.M_MOBILE, display=self.BLOCK)
+            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK)
         )
         b.ul()
         b.li(backgroundcolor=s.mobileChapterButtonColor or '#444444')
@@ -328,7 +328,7 @@ class ArticleSideBar(ArticleColumn):
         
         # <div class="chapterNavigation">
         b.div(class_=self.CLASS_CHAPTERNAVIGATION, marginbottom=Em(0.5), display=s.mobileContainerDisplay,
-            media=Media(max=self.M_MOBILE, display=self.NONE)
+            media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
         )
         b.h4(fontsize=Em(1.1))
         b._h4()

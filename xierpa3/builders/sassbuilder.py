@@ -34,7 +34,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     DEFAULT_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
    
     def initialize(self):
-        self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
+        #self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
         self.mediaSelectors = Stack() # Collect the hierarchy of runtime media selectors
         self.mediaSelectorResults = {} # Collect #media selector:results to skip doubles
         self.runtimeMedia = [] # Collect the @media that are collected during runtime
@@ -204,9 +204,9 @@ class SassBuilder(XmlTransformerPart, Builder):
                 # Copy the current stack of selectors in combination with the @media instances.
                 # Value can be a single Media instance or a list of instances.
                 # When all SCSS is done, the collected @media gets built from this.
-                self.runtimeMedia.append((self.mediaSelectors.getAll()[:], value)) 
-                continue
-            # This loop can result in an empty block, is there is only a media attribute.
+                self.runtimeMedia.append((self.mediaSelectors.getAll()[:], TX.asList(value))) 
+                continue # Don't add to the current property set for output.
+            # This loop can result in an empty block, e.g. if there is only a media attribute.
             self.buildHookProperties(key, value)
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
 
@@ -279,7 +279,7 @@ class SassBuilder(XmlTransformerPart, Builder):
                 # Call the css_<key> method if it exists. This filters the CSS attributes from the HTML attributes.
                 self.buildHookProperties(key, value)
                 # Collect any media expression in this style for later examination
-                self.collectMediaExpressions(style)
+                #self.collectMediaExpressions(style)
             # Build the children styles of style
             self.buildStyles(style.styles)
 
@@ -293,37 +293,41 @@ class SassBuilder(XmlTransformerPart, Builder):
             self._styleBlock(selector)
         self.popFirst() # Reduce level for firstSelectors.
 
-    def collectMediaExpressions(self, style):
+    def XXXcollectMediaExpressions(self, style):
         u"""Collect the media expressions as stored in the <b>self.style</b>."""
         for media in style.media:
             self.mediaExpressions.add(media.expression)
 
     def buildMedia(self, component):
-        u"""Output the collected @media expressions of <i>component</i> as media queries.
+        u"""Here all style have been written. What remains is the to sort and output the collected @media expression
+        of <i>component</i> as media queries.
         The collected <b>Media</b> instances will generate a selector that is related to
         the path of their parent styles and objects."""
-        for expression in self.mediaExpressions:
+        mediaExpressions = {}
+        for selectors, mediaList in self.runtimeMedia:
+            # Distribute the selectors+media over their own media expressions,
+            # this ways collecting all media expression together.
+            for media in mediaList:
+                if not mediaExpressions.has_key(media.expression):
+                    mediaExpressions[media.expression] = []
+                mediaExpressions[media.expression].append((selectors, media))
+            
+        for expression, selectorMedia in sorted(mediaExpressions.items()):
             self.tabs()
             self.output('@media %s {' % expression)
             self.tabIn()
             # Build the media styles that were collected in by components
             # Skip the top levels of site and pages
             self.tabs()
-            self.comment('Initialized @media')
-            for page in component.components:
-                for child in page.components:
-                    self.buildMediaComponent(expression, child)
-            # Now output the media style that got collected by the builder during runtime code
-            self.tabs()
             # Build the collected runtime Media of this expression
-            self.comment('Runtime @media')
-            self.buildMediaRuntimeExpression(expression)
+            for selectors, media in selectorMedia:
+                self.buildMediaRuntime(selectors, media)
             self.tabOut()
             self.tabs()
             self.output('}')
             self.newline()
     
-    def buildMediaComponent(self, expression, component):
+    def XXXbuildMediaComponent(self, expression, component):
         u"""Build the @media of the <i>component</i> that matches the <i>expression</i>. 
         Skip the block header if the content renders to empty."""
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
@@ -340,7 +344,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self._styleBlock(component.selector)
         self.popFirst() # Reduce the firstComponent level.
 
-    def buildMediaStyle(self, expression, style):
+    def XXXbuildMediaStyle(self, expression, style):
         for media in style.media:
             if expression == media.expression:
                 self.buildMediaItem(media)
@@ -349,7 +353,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.buildMediaStyle(expression, s)
             self.tabOut()
       
-    def buildMediaRuntimeExpression(self, expression):
+    def XXXbuildMediaRuntimeExpression(self, expression):
         u""" Build the unique media instance CSS for the given selector. If there already is 
         one with identical content, then skip it. If it exists with different content, then issue an error.
         """

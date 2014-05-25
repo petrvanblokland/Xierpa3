@@ -52,10 +52,10 @@ class C(Config):
     MENU_HORIZONTAL = 'horizontal' # Default
 
     # Media ranges
-    M_MOBILE = 767
-    M_TABLET = 900
-    M_DESKTOP_MIN = M_MOBILE
-    M_DESKTOP = 1023
+    M_MOBILE_MAX = 767
+    M_TABLET_MIN = M_MOBILE_MAX+1
+    M_DESKTOP_MIN = 1024
+    M_TABLET_MAX = M_DESKTOP_MIN-1
     MAXWIDTH = 1140
 
     # ID's
@@ -68,36 +68,37 @@ class C(Config):
     ID_HOME = 'home'
     
     # Classes
-    CLASS_PAGE = 'page'
+    CLASS_ARTICLE = 'article'
+    CLASS_ARTICLETOP = 'articleTop'
+    CLASS_AUTHOR = 'author'
+    CLASS_AUTOWIDTH = 'autoWidth' # Make img tags behave right for width='auto' in all browser.
+    CLASS_CAPTION = 'caption'
+    CLASS_CATEGORY = 'category'
+    CLASS_CATEGORYTHUMB = 'categoryThumb'
+    CLASS_COLUMN = 'column'
+    CLASS_CHAPTER = 'chapter'
+    CLASS_CHAPTERNAVIGATION = 'chapterNavigation'
+    CLASS_CONTAINER = 'container'
     CLASS_ERROR = 'error'
+    CLASS_FIRST = 'first'
+    CLASS_FIRST = 'first'
+    CLASS_FOOTNOTE = 'footnote'
+    CLASS_FOOTNOTES = 'footnotes' # List of footnotes
+    CLASS_IMAGEBLOCK = 'imageBlock'
+    CLASS_ITEM = 'item'
+    CLASS_LAST = 'last'
+    CLASS_LEAD = 'lead'
+    CLASS_LEVEL = 'level'
     CLASS_MENU = 'menu'
     CLASS_MENULINK = 'menuLink'
     CLASS_MENULINKS = 'menuLinks'
-    CLASS_CONTAINER = 'container'
-    CLASS_AUTOWIDTH = 'autoWidth' # Make img tags behave right for width='auto' in all browser.
-    CLASS_FIRST = 'first'
-    CLASS_LAST = 'last'
-    CLASS_ROW = 'row'
-    CLASS_CHAPTER = 'chapter'
-    CLASS_CHAPTERNAVIGATION = 'chapterNavigation'
     CLASS_MOBILECHAPTERNAVIGATION = 'mobileChapterNavigation'
     CLASS_NAME = 'name'
-    CLASS_AUTHOR = 'author'
-    CLASS_CATEGORY = 'category'
-    CLASS_CATEGORYTHUMB = 'categoryThumb'
+    CLASS_PAGE = 'page'
+    CLASS_ROW = 'row'
+    CLASS_SOCIALMEDIA = 'socialMedia'
     CLASS_SUMMARY = 'summary'
     CLASS_SUMMARYBOX = 'summaryBox'
-    CLASS_ARTICLE = 'article'
-    CLASS_ARTICLETOP = 'articleTop'
-    CLASS_FOOTNOTE = 'footnote'
-    CLASS_FOOTNOTES = 'footnotes' # List of footnotes
-    CLASS_LEVEL = 'level'
-    CLASS_LEAD = 'lead'
-    CLASS_FIRST = 'first'
-    CLASS_ITEM = 'item'
-    CLASS_IMAGEBLOCK = 'imageBlock'
-    CLASS_CAPTION = 'caption'
-    CLASS_SOCIALMEDIA = 'socialMedia'
     
     CLASS_1COL = 'oneCol'
     CLASS_2COL = 'twoCol'

@@ -26,7 +26,7 @@ class Column(Container):
             margintop=s.colMarginTop or Em(1),
             paddingleft=s.paddingLeft or 0, float=s.colFloat, display=s.colDisplay,
             minheight=s.colMinHeight,   
-            media=Media(max=self.M_MOBILE, display=self.BLOCK, float=self.NONE, width=self.AUTO,
+            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK, float=self.NONE, width=self.AUTO,
                 marginleft=0, marginright=0, paddingleft=Em(0.5), paddingright=Em(0.5))
             )
         self.buildColumn(b)

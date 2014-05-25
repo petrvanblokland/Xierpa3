@@ -185,8 +185,8 @@ class FeaturedByText(FeaturedBase):
             b.h2(fontsize=s.labelSize, color=s.labelColor, margintop=s.labelMarginTop,
                 marginbottom=s.labelMarginBottom, lineheight=s.labelLineHeight,
                 media=(
-                    Media(max=self.M_TABLET, fontsize=s.tabletLabelSize, color='red'),
-                    Media(max=self.M_MOBILE, color='blue')
+                    Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, fontsize=s.tabletLabelSize, color='red'),
+                    Media(max=self.M_MOBILE_MAX, color='blue')
                 ))
             b.text(s.label)
             b._h2()
@@ -201,7 +201,7 @@ class FeaturedByText(FeaturedBase):
             b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
             b.img(width=s.posterWidth, src=item.poster, float=self.LEFT, padding=0,
                 margin=Margin(Em(0.5), Em(0.5), 0, 0),
-                media=Media(max=self.M_MOBILE, display=self.NONE)
+                media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
             )
             b._a()
         if s.showLevel:

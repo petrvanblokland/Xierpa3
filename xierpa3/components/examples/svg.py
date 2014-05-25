@@ -47,7 +47,7 @@ class SvgExample(Component):
     def demoSvgDrawing1(self, b):
         # Draw a responsive image in SVG, only in 
         #b.div(class_='svgDemo', display=C.BLOCK, margintop=Em(0.5), marginbottom=Em(0.5),
-        #    media=Media(max=C.M_MOBILE, display=C.NONE))
+        #    media=Media(max=C.M_MOBILE_MAX, display=C.NONE))
         b.svg(width='100%', height=250)
         b.rect(width='100%', height=50, fill=LinearGradient('left', '#000', 0, '#FFF', 100))
         b.rect(y=50, width='100%', height=200, fill='green')
@@ -74,7 +74,7 @@ class SvgExample(Component):
     def demoSvgDrawing2(self, b):
         # Draw a responsive image in SVG
         #b.div(class_='svgDemo', display=C.NONE, margintop=Em(0.5), marginbottom=Em(0.5),
-        #    media=Media(max=C.M_MOBILE, display=C.BLOCK))
+        #    media=Media(max=C.M_MOBILE_MAX, display=C.BLOCK))
         b.svg(width='100%', height=250)
         b.rect(width='100%', height=100, fill='cyan')
         b.rect(y=100, width='100%', height=150, fill='green')

@@ -32,7 +32,10 @@ class Adapter(C):
         # Store optional root, so the adapter knows where to find stuff.
         self.root = root
         self.initialize()
-        
+    
+    def __repr__(self):
+        return '<Adapter: %s>' % self.__class__.__name__
+       
     def initialize(self):
         pass
     
@@ -55,7 +58,7 @@ class Adapter(C):
             if hook1 != hook2 and hasattr(self, hook2):
                 data = getattr(self, hook2)(component, **kwargs)
         if data is None:
-            data = Data(error='[Component] Could not find adapter.%s() or adapter.%s()' % (hook1, hook2))
+            data = Data(error='[%s] Could not find adapter.%s() or adapter.%s()' % (self, hook1, hook2))
             print data.error
         return data
 
