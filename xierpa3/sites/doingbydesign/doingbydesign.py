@@ -29,7 +29,12 @@ from xierpa3.sites import doingbydesign
 # Adapter
 
 class DbDAdapter(FileAdapter):
-    pass
+    def getDescription(self, component):
+        return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. 
+            Physical and digital.""")
+     
+    def getKeyWords(self, component):
+        return self.newData(text=u"""Doing, design, design process, programming, design education""")
 
 class DoingByDesign(Shop):
     u"""The <b>Shop</b> class implements the standard example shop

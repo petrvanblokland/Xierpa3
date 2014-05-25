@@ -73,7 +73,10 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.buildFontLinks(component)
         self.buildCssLinks(component)
         self.ieExceptions()
-
+        # Build required search engine info, if available in component.adapter
+        self.buildMetaDescription(component)
+        self.buildMetaKeyWords(component)
+        
         self.link(rel="apple-touch-icon-precomposed", href="img/appletouchicon.png")
         self.buildJavascript(component)
         self.buildFavIconLinks(component)
@@ -118,6 +121,18 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         if favIcon is not None:
             self.output("<link type='image/x-icon' rel='icon' href='%s'></link>" % favIcon)
 
+    def buildMetaDescription(self, component):
+        u"""Build the meta tag with description of the site for search engines, is available in the adapter."""
+        data = component.adapter.getDescription(component)
+        if data.text is not None:
+            self.meta(name=self.META_DESCRIPTION, content=data.text)
+            
+    def buildMetaKeyWords(self, component):
+        u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
+        data = component.adapter.getKeyWords(component)
+        if data.text is not None:
+            self.meta(name=self.META_KEYWORDS, content=data.text)
+            
     def cssUrl(self, css):
         if not isinstance(css, (list, tuple)):
             css = [css]

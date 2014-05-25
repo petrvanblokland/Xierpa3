@@ -62,7 +62,7 @@ class MobileNavigation(Navigation):
             backgroundcolor=s.containerBackgroundColor,
             marginleft=s.containerMarginLeft, marginright=s.containerMarginRight,
             paddingleft=s.containerPaddingLeft, paddingright=s.comtainerPaddingRight,
-            media=Media(max=self.M_MOBILE, display=s.mobileContainerDisplay))
+            media=Media(max=self.M_MOBILE_MAX, display=s.mobileContainerDisplay))
         b.snippet(self, 'navigation-mobile') # Allow PHP to create a snippet file from this block.
 
         b.div(class_=self.CLASS_ROW, minwidth=0, paddingleft=0, paddingright=0, 

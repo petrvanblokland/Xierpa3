@@ -109,3 +109,11 @@ class BlurbAdapter(Adapter):
         data.items = ['http://petr.com/_images/contact.png']
         return data
     
+    def getDescription(self, component):
+        u"""Answer a blurb description of the site."""
+        return Data(text=self.blurb.getBlurb('article_ankeiler', 40))
+    
+    def getKeyWords(self, component):
+        u"""Answer a blurb set of keywords of the site, comma-space separated."""
+        return Data(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))
+    

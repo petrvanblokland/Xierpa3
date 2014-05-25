@@ -20,7 +20,7 @@ class Container(Component):
     
     def initialize(self):
         s = self.style
-        self.addMedia(max=self.M_MOBILE, display=s.mobileDisplay) # No header in Mobile layout
+        self.addMedia(max=self.M_MOBILE_MAX, display=s.mobileDisplay) # No header in Mobile layout
         # Check on the total width of all components and issue an error or warning if the total does not fit.
         totalWidth = 0
         for component in self.components:
@@ -43,7 +43,7 @@ class Container(Component):
             paddingleft=s.containerPaddingLeft or 20, paddingright=s.containerPaddingRight or 20,
             backgroundcolor=s.containerBackgroundColor, backgroundimage=s.containerBackgroundImage,
             backgroundrepeat=s.containerBackgroundRepeat,
-            media=Media(max=self.M_MOBILE, width=s.mobileContainerWidth or self.C100, 
+            media=Media(max=self.M_MOBILE_MAX, width=s.mobileContainerWidth or self.C100, 
                 display=s.mobileContainerDisplay or self.BLOCK,
                 minwidth=s.mobileMinWidth or 0, paddingleft=s.mobilePaddingLeft or 0,
                 paddingright=s.mobilePaddingRight or 0)
@@ -57,7 +57,7 @@ class Container(Component):
         b.div(class_=self.CLASS_ROW, width=s.rowWidth or self.C100, minwidth=s.rowMinWidth or 755,
             maxwidth=s.rowMaxWidth or 1140, margin=s.rowMargin or Margin(0, self.AUTO), 
             overflow=s.rowOverflow or self.HIDDEN,
-            media=Media(max=self.M_MOBILE, display=s.mobileRowDisplay or self.BLOCK,
+            media=Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK,
                 minwidth=0, width=self.C100, paddingleft=0, paddingright=0, margin=0)
             )
         self.buildContainerBlock(b)

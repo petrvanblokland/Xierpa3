@@ -138,7 +138,7 @@ content = {
         When I decided to step away from Per Se and take on this new challenge of opening the restaurant, he was there again to support me.""",
         u"""It’s one thing to hear waves lap the shore of a nearby beach, quite another to hear them rumbling beneath you while you sleep.""",
         u"""Welcome to the world of the “floating hotel” – encompassing all manner of lodgings built on floats, boats, rafts or even stilts.""",
-        u"""Ensconced within the pristine Great Rainforest on the scarily remote western coast of <#country#>, the 
+        u"""Escorted within the pristine Great Rainforest on the scarily remote western coast of <#country#>, the 
         lodge is in fact a towering four-decker barge towed to the harbor of <#island#> every year from <#time_months#> to <#time_months#>."""
         u"""The “<#mountain#>” hovers across a mile-long coast of coral reef and is accessible only by a <#figs_rand_2digit#>-minute boat 
         ride from the nearest town on the rather unfortunately named <#island#>."""

@@ -205,6 +205,9 @@ class C(Config):
     SASS_STYLES = (SASS_NESTED, SASS_EXPANDED, SASS_COMPACT, SASS_COMPRESSED)
     SASS_DEFAULTSTYLE = SASS_COMPRESSED
 
+    META_DESCRIPTION = 'description'
+    META_KEYWORDS = 'keywords'
+    
     # ---------------------------------------------------------------------------------------------------------
     #     S E S S I O N  K E Y S
 

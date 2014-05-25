@@ -293,11 +293,6 @@ class SassBuilder(XmlTransformerPart, Builder):
             self._styleBlock(selector)
         self.popFirst() # Reduce level for firstSelectors.
 
-    def XXXcollectMediaExpressions(self, style):
-        u"""Collect the media expressions as stored in the <b>self.style</b>."""
-        for media in style.media:
-            self.mediaExpressions.add(media.expression)
-
     def buildMedia(self, component):
         u"""Here all style have been written. What remains is the to sort and output the collected @media expression
         of <i>component</i> as media queries.
@@ -321,50 +316,13 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.tabs()
             # Build the collected runtime Media of this expression
             for selectors, media in selectorMedia:
-                self.buildMediaRuntime(selectors, media)
+                self.buildSelectorsMedia(selectors, media)
             self.tabOut()
             self.tabs()
             self.output('}')
             self.newline()
     
-    def XXXbuildMediaComponent(self, expression, component):
-        u"""Build the @media of the <i>component</i> that matches the <i>expression</i>. 
-        Skip the block header if the content renders to empty."""
-        self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
-        self.pushResult() # Save current output stream
-        self.buildMediaStyle(expression, component.style)
-        for c in component.components: # Recursively do all child components
-            self.tabIn()
-            self.buildMediaComponent(expression, c)
-            self.tabOut()
-        result = self.popResult() # Get content of the temp output stream
-        if result.strip(): # See if there was output for this block, besides white space.
-            self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
-            self.output(result) # There is content in the block, output it with the block header and footer.
-            self._styleBlock(component.selector)
-        self.popFirst() # Reduce the firstComponent level.
-
-    def XXXbuildMediaStyle(self, expression, style):
-        for media in style.media:
-            if expression == media.expression:
-                self.buildMediaItem(media)
-        for s in style.styles:
-            self.tabIn()
-            self.buildMediaStyle(expression, s)
-            self.tabOut()
-      
-    def XXXbuildMediaRuntimeExpression(self, expression):
-        u""" Build the unique media instance CSS for the given selector. If there already is 
-        one with identical content, then skip it. If it exists with different content, then issue an error.
-        """
-        for selectors, mediaList in self.runtimeMedia:
-            if not isinstance(mediaList, (list, tuple)):
-                mediaList = [mediaList]
-                for media in mediaList:
-                    if expression == media.expression:
-                        self.buildMediaRuntime(selectors, media)
-        
-    def buildMediaRuntime(self, selectors, media):
+    def buildSelectorsMedia(self, selectors, media):
         self.pushResult() # Save current output stream
         self.buildMediaItem(media)
         selectors = ' '.join(selectors).strip()

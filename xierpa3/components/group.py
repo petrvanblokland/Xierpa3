@@ -31,13 +31,13 @@ class ItemGroup(Group):
         groupBackgroundColor=None, # Background image of the item row.
         # Range of items in one row and the corresponding widths
         #itemRange=range(3, 6),
-        #mediaWidths=(C.M_MOBILE)
+        #mediaWidths=(C.M_MOBILE_MAX)
         columns=5,
     )
     def buildBlockRow(self, b):
         s = self.style
         b.div(class_=self.CLASS_ROW, width=s.rowWidth or self.C100)
-        mediaStyles = Media(max=self.M_MOBILE, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
+        mediaStyles = Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
                  minwidth=0, width=self.AUTO, paddingleft=0, paddingright=0, margin=0)
 
         for index in range(s.itemCount):

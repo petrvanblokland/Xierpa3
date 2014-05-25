@@ -33,6 +33,11 @@ class Adapter(C):
         self.root = root
         self.initialize()
     
+    @classmethod
+    def newData(cls, text=None, items=None, url=None):
+        u"""To allow modification by inheriting classes, answer a new instance of Data."""
+        return Data(text=text, items=items, url=url)
+    
     def __repr__(self):
         return '<Adapter: %s>' % self.__class__.__name__
        
@@ -100,4 +105,12 @@ class Adapter(C):
 
     def getMobilePages(self, component, count=10):
         return Data(items=(Data(name='MobilePage', url='/mobilepage'),)*count)
+    
+    def getDescription(self, component):
+        u"""Answer the description of the site (or page) to be used in the head.meta.description tag."""
+        return Data(text=u'Description of the site here.')
+    
+    def getKeyWords(self, component):
+        u"""Answer the keywords of the site (or page) to be used in the head.meta.keywords tag."""
+        return Data(text='Keywords of the site here.')
     

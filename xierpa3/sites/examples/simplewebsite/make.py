@@ -15,43 +15,8 @@ from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.style import Media
-
-class SimpleTypeSpecimenColumn(Column):
-
-    CSS_BODYFONT = 'BentonSansRE'
-    CSS_HEADFONT = '"BentonSansCond Medium"'
-    
-    SIZE_SMALL = 10
-    SIZE_LARGE = 60
-    
-    def buildBlock(self, b):
-        u"""Build the specimen column"""
-        b.div(class_=self.CLASS_COLUMN, color=self.BLACK, 
-              margin=Margin(0, self.AUTO, 0, self.AUTO), width=1100, 
-              maxwidth=1100, minwidth=0, backgroundcolor=self.WHITE, 
-              padding=0, fontfamily=self.CSS_BODYFONT, fontsize=Em(1), 
-              lineheight=Em(1.4),
-              # Remove margins on mobile, showing the column on full screen width.
-              media=Media(max=self.M_MOBILE_MAX, margin=0, width=self.C100,
-                maxwidth=self.C100, minwidth=0),
-        )
-        # Add div.row to allow padding, without making the main column div
-        # grow outside the parent boudaries.
-        b.div(class_=self.CLASS_ROW, padding=Em(2))
-        b.h1(fontfamily=self.CSS_HEADFONT, fontsize=Em(2), lineheight=Em(1.4), marginbottom=Em(0.5))
-        b.text('WebType ' + self.CSS_BODYFONT)
-        b._h1()
-        for n in range(self.SIZE_SMALL, self.SIZE_LARGE):
-            b.div(class_='specimen%02d' % n, width=self.C100, fontsize=Px(n), lineheight=Em(1.2))
-            b.span(class_='size%02d' % n, fontsize=Px(self.SIZE_SMALL), color='#888')
-            b.text('%d px' % n)
-            b._span()
-            b.text(u'ABCDEFGH abcdefgh €$@#123')
-            b._div()
-        b._div(comment=self.CLASS_ROW)
-        b._div()
         
-class SimpleTypeSpecimenSite(Theme):
+class SimpleWebSite(Theme):
     u"""The <b>TypeSpecimenSite</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
     TITLE = u'The Single Column Example Page.' # Use as title of window.
@@ -64,7 +29,7 @@ class SimpleTypeSpecimenSite(Theme):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
-        column = SimpleTypeSpecimenColumn()
+        column = SimpleWebSite()
         # Create an instance (=object) of the page, containing the navigation components.
         homePage = Page(class_='home', components=(column,), title=self.TITLE, fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
