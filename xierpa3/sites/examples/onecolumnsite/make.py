@@ -47,12 +47,21 @@ class ExampleColumn(Column):
               media=Media(max=self.M_MOBILE_MAX, margin=0, width=self.C100,
                 maxwidth=self.C100, minwidth=0),
         )
+        # Add div.row to allow padding, without making the main column div
+        # grow outside the parent boudaries.
         b.div(class_=self.CLASS_ROW, padding=Em(2))
         # Since the self.adapter.getArticle answers an article that already 
         # includes XHTML tags, we cannot do the styling there. In order to 
         # define the unique CSS styles, a blank document content is created 
         # for the CssBuilder to evaluate, so we have all the definitions inside 
         # div.column, in case they are used in the article.
+        # Note that this is in conflict with the purpose of components, who
+        # should not know about the type of builder that they are talking to.
+        # In future this will be solved by supplying more default style parameters
+        # to the component, that include the styles of tags that are not used
+        # in the main building.
+        # See also the code for components/article, which includes a _model.xml
+        # document for this purpose.
         if b.isType(self.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:

@@ -51,7 +51,7 @@ class HelloWorldResponsiveText(Column):
                # Example for table, show lighter background, change color of text and smaller size.
                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor='#444', color='orange', 
                    fontsize=Em(3), width=self.C100),
-               # For mobile, even more lighter background, change color od text and smaller size.
+               # For mobile, even more lighter background, change color of text and smaller size.
                Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', color='red', fontsize=Em(2), 
                    width=self.C100)
             ))
