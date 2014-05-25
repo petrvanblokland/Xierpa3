@@ -13,3 +13,4 @@ from xierpa3.sites.examples.helloworldlayout.make import HelloWorldLayout
 from xierpa3.sites.examples.helloworldresponsive.make import HelloWorldResponsive
 from xierpa3.sites.examples.onecolumnsite.make import OneColumnSite
 from xierpa3.sites.examples.simpletypespecimen.make import SimpleTypeSpecimenSite
+from xierpa3.sites.examples.simplewebsite.make import SimpleWebSite

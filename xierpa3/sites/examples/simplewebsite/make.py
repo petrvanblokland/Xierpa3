@@ -10,8 +10,8 @@
 #
 #    make.py
 #
-from xierpa3.attributes import Em, Margin, Px 
-from xierpa3.components import Theme, Page, Column
+from xierpa3.attributes import Em
+from xierpa3.components import Theme, Page, Header, MobileNavigation, Footer, Text
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.style import Media
@@ -19,7 +19,7 @@ from xierpa3.descriptors.style import Media
 class SimpleWebSite(Theme):
     u"""The <b>TypeSpecimenSite</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
-    TITLE = u'The Single Column Example Page.' # Use as title of window.
+    TITLE = u'The Simple Website Example Page' # Use as title of window.
 
     URL_FONTS = (
         # Topaz (Benton Sans RE)
@@ -29,9 +29,16 @@ class SimpleWebSite(Theme):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
-        column = SimpleWebSite()
+        header = Header(components=[], mobileContainerDisplay=self.NONE)
+        mobileNavigation = MobileNavigation() # Is container by itself. Change??
+        footer = Footer(components=[])
+        content = Text('aaaa')
+
         # Create an instance (=object) of the page, containing the navigation components.
-        homePage = Page(class_='home', components=(column,), title=self.TITLE, fonts=self.URL_FONTS)
+        homePage = Page(name=self.TEMPLATE_INDEX, title=self.TITLE,
+            components=(mobileNavigation, header, content, footer),
+            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+    
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]
     
@@ -56,5 +63,5 @@ class SimpleWebSite(Theme):
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
-    path = SimpleTypeSpecimenSite().make()
+    path = SimpleWebSite().make()
     

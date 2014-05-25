@@ -54,7 +54,7 @@ class SimpleTypeSpecimenColumn(Column):
 class SimpleTypeSpecimenSite(Theme):
     u"""The <b>TypeSpecimenSite</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
-    TITLE = u'The Single Column Example Page.' # Use as title of window.
+    TITLE = u'The Simple Type Specimen Page' # Use as title of window.
 
     URL_FONTS = (
         # Topaz (Benton Sans RE)
