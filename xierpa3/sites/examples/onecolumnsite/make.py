@@ -8,7 +8,7 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    run.py
+#    make.py
 #
 #    Demo site for the simple "onecolumnsite" example.
 #    The "run.py" program creates the files:
@@ -21,7 +21,6 @@
 #    own type of file.
 #
 import webbrowser
-from xierpa3.constants.constants import C
 from xierpa3.attributes import Em, Margin
 from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
