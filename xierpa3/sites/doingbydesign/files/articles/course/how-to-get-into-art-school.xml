@@ -4,7 +4,8 @@
 <category>Course</category>
 <level>Novice</level>'
 <title>How to get into art school</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToApplyForArtSchool.png"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToApplyForArtSchool.png"
+alt="How to apply for art school"/>
 <author>Petr van Blokland</author>
 <topic>Practical tips to get admitted into art school.</topic>
 <summary>
@@ -81,7 +82,8 @@ Art schools not interested seeing just the final results. It is hard to conclude
     <item>Paying the yearly fee</item>
     <item>Language</item>
 </list>
-<image src="http://www.thetimes.co.uk/tto/multimedia/archive/00515/Art_School__20_best_515680a.jpg"/>
+<image src="http://www.thetimes.co.uk/tto/multimedia/archive/00515/Art_School__20_best_515680a.jpg"
+	alt="Art school"/>
 <h2>Admission day</h2>
 <list>
     <item>Execution of assignments during the day of admission</item>

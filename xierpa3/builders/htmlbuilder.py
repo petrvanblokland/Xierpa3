@@ -44,12 +44,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         that actually knows about urls. Default behavior is to do nothing."""
         return self.e.getFullUrl()
 
-    def getExportPath(self, component):
-        u"""Answer the constructed default export path for component HTML files: 
-        "~/Desktop/Xierpa3Examples/[className]/index.html".
-        It is not checked if the directories of the path exists or should be created."""
-        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/index.html'
-           
+    def getFilePath(self, site):
+        u"""
+        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
+        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
+        """
+        return self.getExportPath(site) + site.name + '.' + self.getExtension()
+
     def theme(self, component):
         pass
 
@@ -72,14 +73,17 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.buildFontLinks(component)
         self.buildCssLinks(component)
         self.ieExceptions()
-
+        # Build required search engine info, if available in component.adapter
+        self.buildMetaDescription(component)
+        self.buildMetaKeyWords(component)
+        
         self.link(rel="apple-touch-icon-precomposed", href="img/appletouchicon.png")
         self.buildJavascript(component)
         self.buildFavIconLinks(component)
         self._head()
 
         self.body()
-        self.div(class_=C.CLASS_PAGE)
+        self.div(class_=component.class_ or C.CLASS_PAGE)
         if self.isEditor(): # If in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
         self.block(component) # Open the main page block
@@ -117,6 +121,18 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         if favIcon is not None:
             self.output("<link type='image/x-icon' rel='icon' href='%s'></link>" % favIcon)
 
+    def buildMetaDescription(self, component):
+        u"""Build the meta tag with description of the site for search engines, is available in the adapter."""
+        data = component.adapter.getDescription(component)
+        if data.text is not None:
+            self.meta(name=self.META_DESCRIPTION, content=data.text)
+            
+    def buildMetaKeyWords(self, component):
+        u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
+        data = component.adapter.getKeyWords(component)
+        if data.text is not None:
+            self.meta(name=self.META_KEYWORDS, content=data.text)
+            
     def cssUrl(self, css):
         if not isinstance(css, (list, tuple)):
             css = [css]

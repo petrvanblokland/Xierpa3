@@ -34,7 +34,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     DEFAULT_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
    
     def initialize(self):
-        self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
+        #self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
         self.mediaSelectors = Stack() # Collect the hierarchy of runtime media selectors
         self.mediaSelectorResults = {} # Collect #media selector:results to skip doubles
         self.runtimeMedia = [] # Collect the @media that are collected during runtime
@@ -42,10 +42,17 @@ class SassBuilder(XmlTransformerPart, Builder):
         #self.selectors = {} # Collect all value-selector combinations to combine identical values.
         self.firstSelectors = Stack() # Collect the nested selector-result to avoid multiple definitions.
         
-    def getPath(self):
+    def getModelsPath(self):
         u"""For the building of the CSS we need the path of a default document, that defines
         the styles for all elements in the Python and XML."""
         return '/_model'
+
+    def getFilePath(self, site):
+        u"""
+        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
+        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
+        """
+        return self.getExportPath(site) + self.DEFAULT_PATH
 
     def theme(self, component):
         u"""Build the reset code for the default values of HTML elements.
@@ -70,9 +77,11 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.newline()
         self.tabs()
         self.comment('Start page "%s"' % component.name)
+        self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
 
     def _page(self, component):
         u"""Mark the CSS end of the page <i>component</i> style."""
+        self._styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
         self.newline()
         self.tabs()
         self.comment('End page "%s"' % component.name)
@@ -99,8 +108,6 @@ class SassBuilder(XmlTransformerPart, Builder):
     def save(self, component, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
-        # Build the component output with self as builder.
-        component.build(self)
         if path is None:
             path = self.getExportPath(component) + self.DEFAULT_PATH
         self.makeDirectory(path) # Make sure it is there.
@@ -193,13 +200,13 @@ class SassBuilder(XmlTransformerPart, Builder):
             if keyPostfix == self.ATTR_POSTFIX:
                 # Remove the postfix from the attribute name
                 key = '_'.join(key.split('_')[:-1])
-            if key == 'media': # Collect the runtime Media instances
+            if key == self.ATTR_MEDIA: # Collect the runtime Media instances as defined in the 'media' attribute.
                 # Copy the current stack of selectors in combination with the @media instances.
                 # Value can be a single Media instance or a list of instances.
-                # When all SCSS is done, the collected @media gets built.
-                self.runtimeMedia.append((self.mediaSelectors.getAll()[:], value)) 
-                continue
-            # This can result in an empty block
+                # When all SCSS is done, the collected @media gets built from this.
+                self.runtimeMedia.append((self.mediaSelectors.getAll()[:], TX.asList(value))) 
+                continue # Don't add to the current property set for output.
+            # This loop can result in an empty block, e.g. if there is only a media attribute.
             self.buildHookProperties(key, value)
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
 
@@ -272,7 +279,7 @@ class SassBuilder(XmlTransformerPart, Builder):
                 # Call the css_<key> method if it exists. This filters the CSS attributes from the HTML attributes.
                 self.buildHookProperties(key, value)
                 # Collect any media expression in this style for later examination
-                self.collectMediaExpressions(style)
+                #self.collectMediaExpressions(style)
             # Build the children styles of style
             self.buildStyles(style.styles)
 
@@ -286,74 +293,36 @@ class SassBuilder(XmlTransformerPart, Builder):
             self._styleBlock(selector)
         self.popFirst() # Reduce level for firstSelectors.
 
-    def collectMediaExpressions(self, style):
-        u"""Collect the media expressions as stored in the <b>self.style</b>."""
-        for media in style.media:
-            self.mediaExpressions.add(media.expression)
-
     def buildMedia(self, component):
-        u"""Output the collected @media expressions of <i>component</i> as media queries.
+        u"""Here all style have been written. What remains is the to sort and output the collected @media expression
+        of <i>component</i> as media queries.
         The collected <b>Media</b> instances will generate a selector that is related to
         the path of their parent styles and objects."""
-        for expression in self.mediaExpressions:
+        mediaExpressions = {}
+        for selectors, mediaList in self.runtimeMedia:
+            # Distribute the selectors+media over their own media expressions,
+            # this ways collecting all media expression together.
+            for media in mediaList:
+                if not mediaExpressions.has_key(media.expression):
+                    mediaExpressions[media.expression] = []
+                mediaExpressions[media.expression].append((selectors, media))
+            
+        for expression, selectorMedia in sorted(mediaExpressions.items()):
             self.tabs()
             self.output('@media %s {' % expression)
             self.tabIn()
             # Build the media styles that were collected in by components
             # Skip the top levels of site and pages
             self.tabs()
-            self.comment('Initialized @media')
-            for page in component.components:
-                for child in page.components:
-                    self.buildMediaComponent(expression, child)
-            # Now output the media style that got collected by the builder during runtime code
-            self.tabs()
             # Build the collected runtime Media of this expression
-            self.comment('Runtime @media')
-            self.buildMediaRuntimeExpression(expression)
+            for selectors, media in selectorMedia:
+                self.buildSelectorsMedia(selectors, media)
             self.tabOut()
             self.tabs()
             self.output('}')
             self.newline()
     
-    def buildMediaComponent(self, expression, component):
-        u"""Build the @media of the <i>component</i> that matches the expression. 
-        Skip the block header if the content renders to empty."""
-        self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
-        self.pushResult() # Save current output stream
-        self.buildMediaStyle(expression, component.style)
-        for c in component.components: # Recursively do all child components
-            self.tabIn()
-            self.buildMediaComponent(expression, c)
-            self.tabOut()
-        result = self.popResult() # Get content of the temp output stream
-        if result.strip(): # See if there was output for this block, besides white space.
-            self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
-            self.output(result) # There is content in the block, output it with the block header and footer.
-            self._styleBlock(component.selector)
-        self.popFirst() # Reduce the firstComponent level.
-
-    def buildMediaStyle(self, expression, style):
-        for media in style.media:
-            if expression == media.expression:
-                self.buildMediaItem(media)
-        for s in style.styles:
-            self.tabIn()
-            self.buildMediaStyle(expression, s)
-            self.tabOut()
-      
-    def buildMediaRuntimeExpression(self, expression):
-        u""" Build the unique media instance CSS for the given selector. If there already is 
-        one with identical content, then skip it. If it exists with different content, then issue an error.
-        """
-        for selectors, mediaList in self.runtimeMedia:
-            if not isinstance(mediaList, (list, tuple)):
-                mediaList = [mediaList]
-                for media in mediaList:
-                    if expression == media.expression:
-                        self.buildMediaRuntime(selectors, media)
-        
-    def buildMediaRuntime(self, selectors, media):
+    def buildSelectorsMedia(self, selectors, media):
         self.pushResult() # Save current output stream
         self.buildMediaItem(media)
         selectors = ' '.join(selectors).strip()
@@ -770,7 +739,7 @@ input[type=submit], label, select, .pointer {
         if isinstance(value, Url):
             value.build('src', self)
         else: # We assume here that it is an url.
-            self.output("src: url('%s');" % value)
+            self.output("src: url(%s);" % value)
 
     def css3_content(self, value):
         self.output('content: "%s";' % value)
@@ -1012,7 +981,7 @@ input[type=submit], label, select, .pointer {
         self.output('list-style-position: %s;' % value)
 
     def css3_liststyleimage(self, value):
-        self.output("list-style-image:url('%s');" % self.e.getPath(value))
+        self.output("list-style-image:url(%s);" % value)
 
     def css3_margin(self, value):
         if isinstance(value, Frame): # Identical to Margin class

@@ -38,11 +38,11 @@ class Typo2014(BaseBlog):
         socialmedia = SocialMedia(twitterAccount='typo2014', facebookAccount='typo2014') 
 
         title = self.TITLE + ': ' + self.SUBTITLE
-        header = Header(components=(logo,menu, socialmedia), mobileContainerDisplay=C.NONE)
+        header = Header(components=(logo,menu, socialmedia), mobileContainerDisplay=self.NONE)
         mobileNavigation = MobileNavigation(title=title) # Is container by itself. Change??
         footer = Footer(components=(menu,))
         
-        homePage = Page(name=C.TEMPLATE_INDEX,
+        homePage = Page(name=self.TEMPLATE_INDEX,
             components=(mobileNavigation, header, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 

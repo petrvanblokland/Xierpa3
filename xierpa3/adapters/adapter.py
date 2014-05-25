@@ -12,6 +12,7 @@
 #
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.storage.status.status import Data
+from xierpa3.constants.constants import C
 
 class Data(object):
     def __init__(self, **kargs):
@@ -21,7 +22,7 @@ class Data(object):
     def __getattr__(self, key):
         return self.__dict__.get(key)
     
-class Adapter(object):
+class Adapter(C):
     u"""
     The Adapter classes connect the templates to content. Note that an adapter always returns plain text/content
     elements (which can include plain HTML), not components. The conversion needs to be done by the calling
@@ -31,7 +32,15 @@ class Adapter(object):
         # Store optional root, so the adapter knows where to find stuff.
         self.root = root
         self.initialize()
-        
+    
+    @classmethod
+    def newData(cls, text=None, items=None, url=None):
+        u"""To allow modification by inheriting classes, answer a new instance of Data."""
+        return Data(text=text, items=items, url=url)
+    
+    def __repr__(self):
+        return '<Adapter: %s>' % self.__class__.__name__
+       
     def initialize(self):
         pass
     
@@ -54,7 +63,7 @@ class Adapter(object):
             if hook1 != hook2 and hasattr(self, hook2):
                 data = getattr(self, hook2)(component, **kwargs)
         if data is None:
-            data = Data(error='[Component] Could not find adapter.%s() or adapter.%s()' % (hook1, hook2))
+            data = Data(error='[%s] Could not find adapter.%s() or adapter.%s()' % (self, hook1, hook2))
             print data.error
         return data
 
@@ -96,4 +105,12 @@ class Adapter(object):
 
     def getMobilePages(self, component, count=10):
         return Data(items=(Data(name='MobilePage', url='/mobilepage'),)*count)
+    
+    def getDescription(self, component):
+        u"""Answer the description of the site (or page) to be used in the head.meta.description tag."""
+        return Data(text=u'Description of the site here.')
+    
+    def getKeyWords(self, component):
+        u"""Answer the keywords of the site (or page) to be used in the head.meta.keywords tag."""
+        return Data(text='Keywords of the site here.')
     

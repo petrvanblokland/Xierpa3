@@ -12,7 +12,6 @@
 #
 from xierpa3.components.container import Container
 from xierpa3.constants.constants import C
-from xierpa3.attributes import *
 from xierpa3.descriptors.style import Media
 
 class Group(Container):
@@ -32,14 +31,14 @@ class ItemGroup(Group):
         groupBackgroundColor=None, # Background image of the item row.
         # Range of items in one row and the corresponding widths
         #itemRange=range(3, 6),
-        #mediaWidths=(C.M_MOBILE)
+        #mediaWidths=(C.M_MOBILE_MAX)
         columns=5,
     )
     def buildBlockRow(self, b):
         s = self.style
-        b.div(class_=C.CLASS_ROW, width=s.rowWidth or C.C100)
-        mediaStyles = Media(max=C.M_MOBILE, display=s.mobileRowDisplay or C.BLOCK, float=C.NONE,
-                 minwidth=0, width=C.AUTO, paddingleft=0, paddingright=0, margin=0)
+        b.div(class_=self.CLASS_ROW, width=s.rowWidth or self.C100)
+        mediaStyles = Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
+                 minwidth=0, width=self.AUTO, paddingleft=0, paddingright=0, margin=0)
 
         for index in range(s.itemCount):
             # Build all child components of the generic group.
@@ -47,18 +46,18 @@ class ItemGroup(Group):
             colIndex = index % s.columns
             classIndex = '%s%d' % (s.class_ or 'itemGroup', colIndex)
             if index % s.columns == 0:
-                clear = C.BOTH
+                clear = self.BOTH
             else:
-                clear = C.NONE
-            b.div(class_=(C.CLASS_ITEM, classIndex), width='%d%%' % (100/s.columns), 
-                float=C.LEFT, clear=clear, media=mediaStyles,
+                clear = self.NONE
+            b.div(class_=(self.CLASS_ITEM, classIndex), width='%d%%' % (100/s.columns), 
+                float=self.LEFT, clear=clear, media=mediaStyles,
             )
             for component in self.components:
                 saveItemStart = component.style.itemStart
                 component.style.itemStart = index
                 component.build(b)
                 component.style.itemStart = saveItemStart
-            b._div(comment=C.CLASS_ITEM)
-        b._div(comment=C.CLASS_ROW)
+            b._div(comment=self.CLASS_ITEM)
+        b._div(comment=self.CLASS_ROW)
    
     

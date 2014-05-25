@@ -17,23 +17,9 @@
 #    Make payed Udemy course how to use/implement/build
 #    Blog/site/store of components with specific tasks
 #
-from xierpa3.attributes import * 
-from xierpa3.components import *
-from xierpa3.toolbox.transformer import TX
+from xierpa3.components import Theme
 
 class Shop(Theme):
     u"""The <b>SimpleBlog</b> class implements the standard example blog."""
     TITLE = '[Title of the blog]'
     SUBTITLE = '[Subtitle of the blog]'
-
-    def getFilePath(self, site):
-        u"""
-        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
-        """
-        fileName = site.e.path.split('/')[-1:]
-        if fileName:
-            fileName = '/'.join(file)
-        else:
-            fileName = 'index'
-        return TX.class2Path(site) + '/files/' + fileName
-    

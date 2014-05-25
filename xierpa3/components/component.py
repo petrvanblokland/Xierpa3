@@ -37,7 +37,6 @@
 #                ItemGroup
 #            SocialMedia
 #
-import os
 import weakref
 import hashlib
 from xierpa3.descriptors.style import Style
@@ -45,7 +44,7 @@ from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
 
-class Component(object):
+class Component(C):
     u"""
     The Component describes the abstract behavior of components on the page.
     """
@@ -102,7 +101,7 @@ class Component(object):
         self.initialize()
 
     def __repr__(self):
-        return '<%s>' % (self.selector or self.name)
+        return '<%s: %s>' % (self.__class__.__name__, self.selector or self.name)
 
     def __getattr__(self, key):
         # Always answer None for missing attributes.
@@ -125,7 +124,7 @@ class Component(object):
         last in the parent list of child components."""
         colClass = TX.col2Class(col)
         if self.parent.isLast(self):
-            colClass = (colClass, C.CLASS_LAST)
+            colClass = (colClass, self.CLASS_LAST)
         return colClass
     
     def getFavIcon(self, builder):
@@ -227,7 +226,7 @@ class Component(object):
         answer <b>self.TITLE<b>, as optional defined by inheriting classes."""
         title = self._title
         if path is not None and not title:
-            title = self.getAdapterData(C.ADAPTER_PAGETITLE, id=path).text
+            title = self.getAdapterData(self.ADAPTER_PAGETITLE, id=path).text
         if not title:
             title = self.TITLE
         return title

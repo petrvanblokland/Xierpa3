@@ -3,7 +3,8 @@
 <meta>
     <category>Blog</category> 
     <title>Manifest on skills</title>
-    <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"/>
+    <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"
+      alt="Udemy course"/>
     <author>Petr van Blokland</author>
     <topic>Skill of the designer</topic>
 </meta>

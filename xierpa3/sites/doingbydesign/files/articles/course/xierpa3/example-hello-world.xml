@@ -4,7 +4,8 @@
 <title>Hello world.</title>
 <category>Course</category>
 <level>Beginner</level>'
-<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"/>
+<poster src="//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"
+	alt="How to build websites with Xierpa3"/>
 <author>Petr van Blokland</author>
 <topic>The most basic website in Xierpa3: Hello world.</topic>
 <summary>How to build the most simple website in Xierpa3: Hello world.</summary>
@@ -23,13 +24,15 @@
 <lead>
 This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.</lead>
 
-<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png"
+	alt="Hello world in safari"/>
 
 <p>Open a new Python code document, in an editor suitable for programming, such as  
 BBEdit, TextWrangler, Coda, or any other applications that understands Python syntax.
 Add this first line to the document, to indicate that it may contain UTF-8 (Unicode) strings.</p>
 
-<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworld.py.png"
+	alt="Hello world source"/>
 <p>Then we will define the Xierpa3 component and builder classes that we need in our website page.</p>
 <code>
 from xierpa3.components import Theme, Page, Column 
@@ -43,13 +46,13 @@ We create a new type of component for this behavior, which initially inherits al
 <b>Column</b> class.
 </p>
 <code>class HelloWorldText(Column):
-    def buildBlock(self, b):
-        b.div(color='red')
-        b.text('Hello world.')
-        b._div()
+  def buildBlock(self, b):
+    b.div(color='red')
+    b.text('Hello world.')
+    b._div()
 </code>
 <p>The <b>b.div</b> instructs the HTML builder to build an HTML open <b>div</b> tag,
-where the <b>b._div</b> creates a closing tag. The CSS builder generates the 
+where the <b>b.div</b> creates a closing tag. The CSS builder generates the 
 corresponding CSS codes for this div, taking the color attribute as value. This attribute
 is ignored by the HTML builder. Builders know which attributes are for them.</p>
 <p>Now we defined our new type of component, we need a page to place it on.
@@ -57,38 +60,39 @@ is ignored by the HTML builder. Builders know which attributes are for them.</p>
 	<b>Theme</b> component. <b>TITLE</b> defines the specific page name for this type
 	of theme, that will appear on the top of the browser window.</p><code>
 class HelloWorld(Theme):
-    TITLE = u'The standard “Hello world” page.'
+  TITLE = u'The standard “Hello world” page.'
 </code>
 <p>Then one of the required methods is defined for a <b>Theme</b>, answering the
 list of <b>Page</b> instances, each filled with their set of components. In this
 case there only a one home page, which contains one element: the instance of
 <b>HelloWorldText</b>.</p>
 <code>
-    def baseComponents(self):
-        hw = HelloWorldText()
-        homePage = Page(components=(hw,), title=self.TITLE)
-        return [homePage]
+  def baseComponents(self):
+    hw = HelloWorldText()
+    homePage = Page(components=(hw,), title=self.TITLE)
+    return [homePage]
 </code>
 <p>Calling the <b>self.make()</b> method will build the CSS and HTML and place 
 the result in a directory on the users’ desktop. This <b>index.html</b> can be 
 dragged on a browser to view. The CSS is saved in a local <b>css</b> directory.
 </p>
 <code>
-    def make(self):
-        cssBuilder = CssBuilder()
-        cssBuilder.save(self) 
-    
-        htmlBuilder = HtmlBuilder()
-        return htmlBuilder.save(self)  
-    
+  def make(self):
+    cssBuilder = CssBuilder()
+    cssBuilder.save(self) 
+  
+    htmlBuilder = HtmlBuilder()
+    return htmlBuilder.save(self)  
+  
 if __name__ == '__main__':
-    HelloWorld().make()
+  HelloWorld().make()
 </code>
 <h2>HelloWorldLayout Example</h2>
-    <p>In the next example, we’ll add some more styling and layout to the page.
-    	Again we import the required classes from Xierpa.</p>
-    	<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"/>
-    	<code>
+  <p>In the next example, we’ll add some more styling and layout to the page.
+  	Again we import the required classes from Xierpa.</p>
+  	<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png"
+  	 alt="Hello world layout"/>
+  	<code>
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -105,59 +109,142 @@ from xierpa3.attributes import Em, Margin
 		from the development level of the user.</p>
 	<code>
 class HelloWorldText(Column):
-    def buildBlock(self, b):
-        b.div(class_='column', color='yellow', 
-		      margin=Margin(0, C.AUTO, 0, C.AUTO), 
-              width='70%', maxwidth=700, minwidth=300, 
-		      backgroundcolor='#222', padding=Em(0.5), 
-		      fontfamily='Georgia', fontsize=Em(4), 
-		      textalign=C.CENTER, lineheight=Em(1.4))
-        b.text('Hello world.')
-        b._div()
-        b.div(class_='caption', color='#888', 
-		      margin=Margin(0, C.AUTO, 0, C.AUTO), 
-              width='70%', maxwidth=700, minwidth=300,
-              paddingleft=Em(0.5), 
-		      fontfamily='Georgia', fontsize=Em(0.8), 
-		      textalign=C.CENTER, lineheight=Em(1.4), 
-		      fontstyle=C.ITALIC)
-        b.text('Generated by Xierpa3.')
-        b._div()
-        </code>
-        <p>Note that although the <b>div</b> may suggest that it is just
-        HTML building there, the method get called both with <b>b</b> as CssBuilder
-        and as HtmlBuilder. Each builder will filter out the appropriate attributes and
-        translates it into its own syntax. The HTML tags generated by the article
-        are set in CSS by the empty statements.</p>
-        <p>Building the styled 2 text blocks, written out with duplicated values,
-        as example how this works. See other examples for approaches with more
-        cascading styled hierarchy.</p>
-        <p>Also note that for clarity of the example, the two <b>div</b> blocks have their own
-        (redundant) styling. In a real site application these values would come from the 
-        same source, defining their relation in Python code. Also these values will be translated
-        into SASS variables, which can be altered there, if the generated files are to be
-        used again for manual manipulation, such as external templates.
-        The rest of this example is the identical to the simple HelloWorld.</p>
-        <code>
+  def buildBlock(self, b):
+    b.div(class_='column', color='yellow', 
+		    margin=Margin(0, C.AUTO, 0, C.AUTO), 
+        width='70%', maxwidth=700, minwidth=300, 
+		    backgroundcolor='#222', padding=Em(0.5), 
+		    fontfamily='Georgia', fontsize=Em(4), 
+		    textalign=C.CENTER, lineheight=Em(1.4))
+    b.text('Hello world.')
+    b._div()
+    b.div(class_='caption', color='#888', 
+		    margin=Margin(0, C.AUTO, 0, C.AUTO), 
+        width='70%', maxwidth=700, minwidth=300,
+        paddingleft=Em(0.5), 
+		    fontfamily='Georgia', fontsize=Em(0.8), 
+		    textalign=C.CENTER, lineheight=Em(1.4), 
+		    fontstyle=C.ITALIC)
+    b.text('Generated by Xierpa3.')
+    b._div()
+    </code>
+    <p>Note that although the <b>div</b> may suggest that it is just
+    HTML building there, the method get called both with <b>b</b> as CssBuilder
+    and as HtmlBuilder. Each builder will filter out the appropriate attributes and
+    translates it into its own syntax. The HTML tags generated by the article
+    are set in CSS by the empty statements.</p>
+    <p>Building the styled 2 text blocks, written out with duplicated values,
+    as example how this works. See other examples for approaches with more
+    cascading styled hierarchy.</p>
+    <p>Also note that for clarity of the example, the two <b>div</b> blocks have their own
+    (redundant) styling. In a real site application these values would come from the 
+    same source, defining their relation in Python code. Also these values will be translated
+    into SASS variables, which can be altered there, if the generated files are to be
+    used again for manual manipulation, such as external templates.
+    The rest of this example is the identical to the simple HelloWorld.</p>
+    <code>
 class HelloWorldLayout(Theme):
-    TITLE = u'The standard “Hello world” page.'
+  TITLE = u'The standard “Hello world” page.'
 
-    def baseComponents(self):
-        hw = HelloWorldText()
-        homePage = Page(components=(hw,), title=self.TITLE)
-        return [homePage]
+  def baseComponents(self):
+    hw = HelloWorldText()
+    homePage = Page(components=(hw,), title=self.TITLE)
+    return [homePage]
 
-    def make(self):
-        cssBuilder = CssBuilder()
-        cssBuilder.save(self) 
+  def make(self):
+    cssBuilder = CssBuilder()
+    cssBuilder.save(self) 
 
-        htmlBuilder = HtmlBuilder()
-        return htmlBuilder.save(self)  
-    
+    htmlBuilder = HtmlBuilder()
+    return htmlBuilder.save(self)  
+  
 if __name__ == '__main__':
-    HelloWorldLayout().make()
-</code>    
-</chapter>
+  HelloWorldLayout().make()
+</code>  
+<h2>HelloWorldResponsive Example</h2>
+<p>In the next example, we’ll add responsive behavior to the page. We will change some styling of the elements
+	from the previous example and we’ll show some conditional text, depending on the size of the window or screen.</p>
+  	
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldresponsivedesktop.png"
+	alt="Hello world responsive on desktop"/>
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helleoworldresponsivetablet.png"
+	alt="Hello world responsive on tablet"/>  	
+<image src="//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldresponsivemobile.png"
+	alt="Hello world responsive on mobile"/>
+
+	<p>Again we import the required classes from Xierpa, now including a style class called <b>Media</b>, which 
+		is used to collect the CSS3 @media information embedded in each component attribute set.</p>
+		
+	<code>
+from xierpa3.components import Theme, Page, Column 
+from xierpa3.builders.cssbuilder import CssBuilder
+from xierpa3.builders.htmlbuilder import HtmlBuilder
+from xierpa3.attributes import Em, Margin 
+# Include type of Style that holds @media parameters.
+from xierpa3.descriptors.style import Media 
+</code>
+
+<p>Next is to define a new class as content component, inheriting from the base <b>Column</b> class.
+As example of how to create local class variables as constants (overwriting the <b>constants.C</b>
+thet every main base class in Xierpa3 inherits from) these the values <b>CSS_BODYFONT</b> and
+<b>CSS_CAPTIONFONT</b> are defined. They will be used in the definition of the column build.</p>
+<code>
+class HelloWorldResponsiveText(Column):
+
+  CSS_BODYFONT = 'Georgia'
+  CSS_CAPTIONFONT = CSS_BODYFONT
+  </code>
+  <p>As in the previous example, we now redefine the <b>buildBlock</b> method.
+  Look for the <b>media=(Media(...), Media(...))</b> attribute, which defines the behavior
+  of this tag in the @media condition for mobile and tablet screen sizes. Each of the main
+  attributes of the <b>div</b> can be redefined in each <b>Media</b> style.</p>
+  <code>
+  def buildBlock(self, b):
+    b.div(class_='column', color='yellow', margin=Margin(0, self.AUTO), 
+      width='80%', maxwidth=700, minwidth=300, backgroundcolor='#222',
+      paddingtop=Em(0.5), paddingbottom=Em(0.5), 
+  	  fontfamily=self.CSS_BODYFONT, fontsize=Em(4), 
+  	  textalign=self.CENTER, lineheight=Em(1.2),
+      media=(
+         # Example for table, show lighter background, change color 
+  	     # of text and smaller size.
+         Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
+  	       backgroundcolor='#444', color='orange', 
+           fontsize=Em(3), width=self.C100),
+         # For mobile, even more lighter background, change color 
+  	     # of text and smaller size.
+         Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', 
+  		   color='red', fontsize=Em(2), width=self.C100)
+      ))
+    b.text('Hello world.')
+  </code>
+  <p>Still inside the <b>div</b> we’ll add some conditional text, that only shows in one of the
+  current three @media partitions. This is done by setting the <b>displayt</b> attribute to none
+  and the overwrite that attribute value conditionally from the state of the screen width.</p>
+  <code>
+    b.div(class_='c1', display=self.NONE, fontsize=Em(0.5), 
+  	  color=self.WHITE,
+      media=Media(min=self.M_DESKTOP_MIN, display=self.BLOCK))
+    b.text('Responsive desktop mode.')
+    b._div()
+    b.div(class_='c2', display=self.NONE, fontsize=Em(0.5), 
+  	  color=self.WHITE,
+      media=Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
+  	    display=self.BLOCK))
+    b.text('Responsive tablet mode.')
+    b._div()
+    b.div(class_='c3', display=self.NONE, fontsize=Em(0.5), 
+  	  color=self.BLACK,
+      media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK))
+    b.text('Responsive mobile mode.')
+    b._div()
+    b._div()
+    b._div()
+   </code>
+   <p>The rest of this example is similar to the previous one. The <b>Media</b> values are
+   sorted by their expressions, grouped together and written to the CSS at the end of the
+   main CSS document by the <b>CssBuilder</b>. Note that the <b>HtmlBuilder</b> ignores all <b>Media</b> attributes.</p>
+		</chapter>
 </chapters>
 </document>
 

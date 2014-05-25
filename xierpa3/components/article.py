@@ -11,7 +11,6 @@
 #    article.py
 #
 from xierpa3.components.column import Column
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import Em, Border, Margin, Padding
 from xierpa3.descriptors.style import Media
@@ -29,7 +28,7 @@ H2COLOR = '#828487'
 
 class ArticleColumn(Column):
     def getChapterIndex(self, b, article):
-        return min(max(0, TX.asInt(b.e.form[C.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
+        return min(max(0, TX.asInt(b.e.form[self.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
      
 class Article(ArticleColumn):
     
@@ -81,22 +80,22 @@ class Article(ArticleColumn):
         imageMarginTop=Em(1), imageMarginBottom=Em(0.8), 
         imagePaddingTop=None, imagePaddingBottom=None, imagePaddingLeft=None, 
         imagePaddingRight=None, imageBackgroundColor=None,
-        captionFontStyle=C.ITALIC, captionFontSize=Em(0.9), captionMarginTop=Em(0.5),
+        captionFontStyle=ArticleColumn.ITALIC, captionFontSize=Em(0.9), captionMarginTop=Em(0.5),
         # Code
         codeFontFamily='Courier', codeFontSize=Em(1.1), codePaddingLeft=Em(1),
         codePaddingTop=Em(0.5), codePaddingBottom=0,
         codeMarginTop=Em(0.5), codeMarginBottom=Em(0.5),
-        codeBackgroundColor=C.WHITE,
+        codeBackgroundColor=ArticleColumn.WHITE,
     )
     def buildColumn(self, b):
-        article = self.getAdapterData(C.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
+        article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
         self.buildArticle(b, article)
 
     def buildArticle(self, b, article):
         u"""Build the article. If there is a "/chapter-2" url parameter defined and it is in
         the range of available chapters, then show that chapter. Other values are cropped to
         min and max index of the chapter list."""
-        #b.element(tag='img', class_=C.CLASS_AUTOWIDTH, margintop=Em(1), marginbottom=Em(1))
+        #b.element(tag='img', class_=self.CLASS_AUTOWIDTH, margintop=Em(1), marginbottom=Em(1))
         if b.isType(('css', 'sass')): # @@@ Clean up, using model article?
             self.buildArticleTop(b, article, 0) # Separate CSS for first chapter and the rest.
             self.buildArticleTop(b, article, 1)
@@ -112,35 +111,35 @@ class Article(ArticleColumn):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
         For all other pages build a smaller version of the top."""
         s = self.style
-        class_ = C.CLASS_ARTICLETOP
-        b.div(class_=class_, float=C.LEFT, width=C.C100, paddingtop=Em(0.5))
+        class_ = self.CLASS_ARTICLETOP
+        b.div(class_=class_, float=self.LEFT, width=self.C100, paddingtop=Em(0.5))
         # Poster image
         if chapterIndex == 0 and s.showPoster:
-            b.img(class_=C.CLASS_AUTOWIDTH, src=article.poster)
+            b.img(class_=self.CLASS_AUTOWIDTH, src=article.poster)
         # Article category
         if chapterIndex == 0 and article.category: # Text on text
-            b.a(href='/%s-%s' % (C.PARAM_CATEGORY, article.category))
+            b.a(href='/%s-%s' % (self.PARAM_CATEGORY, article.category))
             b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
-                fontweight=s.categoryWeight, margintop=Em(1), display=C.BLOCK)
+                fontweight=s.categoryWeight, margintop=Em(1), display=self.BLOCK)
             b.text(article.category)
             b._h5()
             b._a()
         # Article title or name (on respectively the first chapter page or the rest of the pages.
         if chapterIndex == 0: # Show large title on the chapter first page of the article
             b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
-                color=s.titleColor, marginbottom=Em(0.2), display=C.BLOCK)
+                color=s.titleColor, marginbottom=Em(0.2), display=self.BLOCK)
             b.text(article.name)
             b._h2()
         else: # Show smaller title on the rest of the pages
             b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
-                color=s.nameColor, marginbottom=Em(0.2), display=C.BLOCK)
+                color=s.nameColor, marginbottom=Em(0.2), display=self.BLOCK)
             b.text(article.name)
             b._h2()
         # Author
         if chapterIndex == 0 and article.author: # Test if there is an author defined.
-            b.a(href='/%s-%s' % (C.PARAM_AUTHOR, article.author))
+            b.a(href='/%s-%s' % (self.PARAM_AUTHOR, article.author))
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
-                display=C.BLOCK)
+                display=self.BLOCK)
             b.text('By %s' % article.author)
             b._h5()
             b._a()
@@ -165,7 +164,7 @@ class Article(ArticleColumn):
     def buildArticleStyle(self, b):
         s = self.style
         # SVG demo
-        b.div(class_=C.CLASS_CHAPTER, color=s.chapterColor)
+        b.div(class_=self.CLASS_CHAPTER, color=s.chapterColor)
         # Should move from here. Make sure that svgExamples get SCSS builder calls.
         b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
         b._div()
@@ -199,24 +198,24 @@ class Article(ArticleColumn):
         self.buildPStyle(b)
         b._p()
         # <p class="... first">
-        b.p(class_=C.CLASS_FIRST, textindent=s.firstIndent)
+        b.p(class_=self.CLASS_FIRST, textindent=s.firstIndent)
         b._p()
         # <p class="... last">
-        b.p(class_=C.CLASS_LAST)
+        b.p(class_=self.CLASS_LAST)
         b._p()
         # <lead>
-        b.p(class_=C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
+        b.p(class_=self.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, 
             textindent=s.firstIndent)
         self.buildPStyle(b)
         b._p()
         # <b>
-        b.b(fontweight=C.BOLD)
+        b.b(fontweight=self.BOLD)
         b._b()
         # <blockquote>
         b.blockquote(borderleft=s.blockQuoteBorderLeft or Border('solid', '4px', '#CCC'), 
             margin=s.blockQuoteMargin or Margin(Em(1.5), 10), 
-            lineheight=s.blockQuoteLineHeight or Em(1.4), fontstyle=s.blockQuoteStyle or C.ITALIC,
+            lineheight=s.blockQuoteLineHeight or Em(1.4), fontstyle=s.blockQuoteStyle or self.ITALIC,
             padding=s.blockQuotePadding or Padding(Em(0.5), 10), 
             color=s.blockQuoteColor or '#828487')
         b._blockquote()
@@ -233,12 +232,12 @@ class Article(ArticleColumn):
         )
         b._pre()
         # <div class="imageBlock"><img/><div class="caption">...</div></div>
-        b.div(class_=C.CLASS_IMAGEBLOCK, backgroundcolor=s.imageBackgroundColor, 
+        b.div(class_=self.CLASS_IMAGEBLOCK, backgroundcolor=s.imageBackgroundColor, 
             margintop=s.imageMarginTop, marginbottom=s.imageMarginBottom,
             paddingtop=s.imagePaddingTop, paddingbottom=s.imagePaddingBottom,
             paddingleft=s.imagePaddingLeft, paddingright=s.imagePaddingRight,)
         b.img()
-        b.div(class_=C.CLASS_CAPTION, fontfamily=s.captionFontFamily, fontsize=s.captionFontSize,
+        b.div(class_=self.CLASS_CAPTION, fontfamily=s.captionFontFamily, fontsize=s.captionFontSize,
             color=s.captionColor, fontstyle=s.captionFontStyle, 
             margintop=s.captionMarginTop)
         b._div() # .caption
@@ -267,11 +266,11 @@ class Article(ArticleColumn):
     def buildPStyle(self, b):
         # <footnote>
         s = self.style
-        b.sup(class_=C.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
-            fontsize=s.footnoteFontSize or Em(0.8), position=s.footnotePosition or C.RELATIVE,
-            verticalalign=s.footnoteVerticalAlign or C.BASELINE)
+        b.sup(class_=self.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
+            fontsize=s.footnoteFontSize or Em(0.8), position=s.footnotePosition or self.RELATIVE,
+            verticalalign=s.footnoteVerticalAlign or self.BASELINE)
         b._sup()
-        b.em(fontweight=s.emWeight or C.BOLD)
+        b.em(fontweight=s.emWeight or self.BOLD)
         b._em()
     
 class ArticleSideBar(ArticleColumn):
@@ -286,7 +285,7 @@ class ArticleSideBar(ArticleColumn):
         showFootNotes=True, footnoteLabel='Footnotes', 
     )
     def buildColumn(self, b):
-        article = self.getAdapterData(C.ADAPTER_ARTICLE, id=b.e.form[C.PARAM_ARTICLE])
+        article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.e.form[self.PARAM_ARTICLE])
         self.buildArticleSideBar(b, article)
 
     def buildArticleSideBar(self, b, article):
@@ -306,14 +305,14 @@ class ArticleSideBar(ArticleColumn):
         u"""Build the styles for the articles side bar.  # @@@ Clean up, using model for article side bar?"""
         s = self.style
         # <div class="footnotes">
-        b.div(class_=C.CLASS_FOOTNOTES, marginbottom=Em(0.5))
+        b.div(class_=self.CLASS_FOOTNOTES, marginbottom=Em(0.5))
         b.h4(fontsize=Em(1.1))
         b._h4()
-        b._div(comment=C.CLASS_FOOTNOTES)  
+        b._div(comment=self.CLASS_FOOTNOTES)  
         
         # <div class="mobileChapterNavigation">
-        b.div(class_=C.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=C.NONE,
-            media=Media(max=C.M_MOBILE, display=C.BLOCK)
+        b.div(class_=self.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.NONE,
+            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK)
         )
         b.ul()
         b.li(backgroundcolor=s.mobileChapterButtonColor or '#444444')
@@ -325,11 +324,11 @@ class ArticleSideBar(ArticleColumn):
         b._a()
         b._li()
         b._ul()
-        b._div(comment=C.CLASS_MOBILECHAPTERNAVIGATION) # Article mobile chapter navigation
+        b._div(comment=self.CLASS_MOBILECHAPTERNAVIGATION) # Article mobile chapter navigation
         
         # <div class="chapterNavigation">
-        b.div(class_=C.CLASS_CHAPTERNAVIGATION, marginbottom=Em(0.5), display=s.mobileContainerDisplay,
-            media=Media(max=C.M_MOBILE, display=C.NONE)
+        b.div(class_=self.CLASS_CHAPTERNAVIGATION, marginbottom=Em(0.5), display=s.mobileContainerDisplay,
+            media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
         )
         b.h4(fontsize=Em(1.1))
         b._h4()
@@ -343,18 +342,18 @@ class ArticleSideBar(ArticleColumn):
         b._a()
         b._li()
         b._ul()  
-        b._div(comment=C.CLASS_CHAPTERNAVIGATION) # Article chapter navigation
+        b._div(comment=self.CLASS_CHAPTERNAVIGATION) # Article chapter navigation
     
     def buildMobileChapterNavigation(self, b, article):
         s = self.style
         chapters = article.items
         if chapters and len(chapters) > 1:
-            b.div(class_=C.CLASS_MOBILECHAPTERNAVIGATION)
+            b.div(class_=self.CLASS_MOBILECHAPTERNAVIGATION)
             b.ul()
             for index, chapter in enumerate(chapters):
                 b.li() 
-                b.a(class_=C.CLASS_NAME, 
-                    href='/%s-%s/%s-%s' % (C.PARAM_ARTICLE, article.id, C.PARAM_CHAPTER, index), 
+                b.a(class_=self.CLASS_NAME, 
+                    href='/%s-%s/%s-%s' % (self.PARAM_ARTICLE, article.id, self.PARAM_CHAPTER, index), 
                 )
                 chapterTitle = chapter.find('./meta/title') # @@@ Add this as adapter query
                 if chapterTitle is None: # No title, add a default chapter title (not in the right style)
@@ -373,15 +372,15 @@ class ArticleSideBar(ArticleColumn):
         s = self.style
         chapters = article.items
         if chapters and len(chapters) > 1:
-            b.div(class_=C.CLASS_CHAPTERNAVIGATION)
+            b.div(class_=self.CLASS_CHAPTERNAVIGATION)
             b.h4()
             b.text(s.chapterLabel)
             b._h4()
             b.ul()
             for index, chapter in enumerate(chapters):
                 b.li(margintop=Em(0.5))
-                b.a(class_=C.CLASS_NAME, 
-                    href='/%s-%s/%s-%s' % (C.PARAM_ARTICLE, article.id, C.PARAM_CHAPTER, index), 
+                b.a(class_=self.CLASS_NAME, 
+                    href='/%s-%s/%s-%s' % (self.PARAM_ARTICLE, article.id, self.PARAM_CHAPTER, index), 
                 )
                 chapterTitle = chapter.find('./meta/title') # @@@ Add this as adapter query
                 if chapterTitle is None: # No title, add a default chapter title (not in the right style)
@@ -403,7 +402,7 @@ class ArticleSideBar(ArticleColumn):
         chapterIndex = self.getChapterIndex(b, article)
         footnotes = article.footnotes[chapterIndex] # Get footnotes of this chapter
         if footnotes:
-            b.div(class_=C.CLASS_FOOTNOTES) 
+            b.div(class_=self.CLASS_FOOTNOTES) 
             b.h4()
             b.text(s.footnoteLabel)
             b._h4()

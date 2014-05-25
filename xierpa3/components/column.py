@@ -11,7 +11,6 @@
 #
 from xierpa3.components.container import Container
 from xierpa3.attributes import Em
-from xierpa3.constants.constants import C
 from xierpa3.descriptors.style import Media
 
 class Column(Container):
@@ -27,7 +26,7 @@ class Column(Container):
             margintop=s.colMarginTop or Em(1),
             paddingleft=s.paddingLeft or 0, float=s.colFloat, display=s.colDisplay,
             minheight=s.colMinHeight,   
-            media=Media(max=C.M_MOBILE, display=C.BLOCK, float=C.NONE, width=C.AUTO,
+            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK, float=self.NONE, width=self.AUTO,
                 marginleft=0, marginright=0, paddingleft=Em(0.5), paddingright=Em(0.5))
             )
         self.buildColumn(b)

@@ -3,7 +3,8 @@
 <meta>
 <category>Blog</category>
 <title>The URL</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/processingfordesigners.jpg"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/processingfordesigners.jpg"
+	alt="Processing for Designers"/>
 <author>Petr van Blokland</author>
 <topic>Dimensions are larger than you think.</topic>
 <date>2008</date>

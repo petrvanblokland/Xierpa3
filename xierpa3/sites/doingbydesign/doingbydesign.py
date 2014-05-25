@@ -29,7 +29,11 @@ from xierpa3.sites import doingbydesign
 # Adapter
 
 class DbDAdapter(FileAdapter):
-    pass
+    def getDescription(self, component):
+        return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
+     
+    def getKeyWords(self, component):
+        return self.newData(text=u"""Doing, design, design process, programming, design education""")
 
 class DoingByDesign(Shop):
     u"""The <b>Shop</b> class implements the standard example shop
@@ -48,13 +52,6 @@ class DoingByDesign(Shop):
     URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
     
     URL_FONTS = (
-        # Google
-        'http://fonts.googleapis.com/css?family=Bree+Serif',
-        #'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-        # Webtype project Poynter
-        #'http://cloud.webtype.com/css/0d2e9f93-9866-45e1-8119-9b678ba5ce23.css'
-        # Webtype project Doing by Design (Proforma & Rocky)
-        #'http://cloud.webtype.com/css/d5663b37-b395-4934-9f68-2f7ccd9e8c87.css',
         # Topaz (Benton Sans RE)
         'http://cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css',
     )
@@ -77,19 +74,19 @@ class DoingByDesign(Shop):
     MAXWIDTH = 1140
     MINWIDTH = 755
 
-    def _get_css(self):
+    def XX_get_css(self):
         u"""Force building of CSS with valid set of parameters if "/force" is somewhere
         in the url of the requested page."""
         force = ''
         if self.e.form['force']:
             force = '/force'
-        return ['%s/css/site.css' % force]
+        return ['%s/css/style.css' % force]
 
-    def _set_css(self, urls):
+    def XX_set_css(self, urls):
         u"""Ignore for now."""
         pass
 
-    css = property(_get_css, _set_css)
+    #css = property(_get_css, _set_css)
 
     def baseStyle(self):
         s = StyleSet() # Answer root style without selector
@@ -129,15 +126,15 @@ class DoingByDesign(Shop):
         featuredByText = FeaturedByText(itemStart=2, showPoster=False)
         featuredByTextList = FeaturedByTextList(itemStart=5)
         # Featured black container
-        bgColor = '#323A47'
+        BGCOLOR = '#323A47'
         featuredImages = Featured(class_='featuredImages', 
             components=(featuredByImage, featuredSideText),
-            containerBackgroundColor=bgColor)
+            containerBackgroundColor=BGCOLOR)
         # Featured text container
-        bgColor = '#E8E8E8'
+        BGCOLOR = '#E8E8E8'
         featuredTexts = Featured(class_='featuredTexts', 
             components=(featuredByText, featuredByTextList),
-            containerBackgroundColor=bgColor)
+            containerBackgroundColor=BGCOLOR)
         # Footer group
         footer = Footer(components=(menu,), containerBackgroundColor=self.CSS_FOOTERBGCOLOR)
 

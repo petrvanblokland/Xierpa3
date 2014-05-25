@@ -11,22 +11,21 @@
 #    container.py
 #
 from xierpa3.components.component import Component
-from xierpa3.constants.constants import C
 from xierpa3.attributes import Margin
 from xierpa3.descriptors.style import Media
 
 class Container(Component):
 
-    MAXCOL = C.MAXCOL
+    MAXCOL = Component.MAXCOL
     
     def initialize(self):
         s = self.style
-        self.addMedia(max=C.M_MOBILE, display=s.mobileDisplay) # No header in Mobile layout
+        self.addMedia(max=self.M_MOBILE_MAX, display=s.mobileDisplay) # No header in Mobile layout
         # Check on the total width of all components and issue an error or warning if the total does not fit.
         totalWidth = 0
         for component in self.components:
             totalWidth += component.style.colWidth or 0
-        if C.DEBUG: # If debugging, show some analysis about the use of columns.
+        if self.DEBUG: # If debugging, show some analysis about the use of columns.
             if totalWidth > self.MAXCOL:
                 print '### Column error ###', totalWidth, self.components  
             elif 0 < totalWidth < self.MAXCOL:
@@ -38,14 +37,14 @@ class Container(Component):
         s = self.style
         b.block(self)
         containerClass = self.class_ or self.className
-        b.div(class_=(C.CLASS_CONTAINER, containerClass), display=s.containerDisplay or C.BLOCK,
+        b.div(class_=(self.CLASS_CONTAINER, containerClass), display=s.containerDisplay or self.BLOCK,
             width=s.containerWidth, height=s.containerHeight,
             marginleft=s.containerMarginLeft, margintop=s.containerMarginTop,
             paddingleft=s.containerPaddingLeft or 20, paddingright=s.containerPaddingRight or 20,
             backgroundcolor=s.containerBackgroundColor, backgroundimage=s.containerBackgroundImage,
             backgroundrepeat=s.containerBackgroundRepeat,
-            media=Media(max=C.M_MOBILE, width=s.mobileContainerWidth or C.C100, 
-                display=s.mobileContainerDisplay or C.BLOCK,
+            media=Media(max=self.M_MOBILE_MAX, width=s.mobileContainerWidth or self.C100, 
+                display=s.mobileContainerDisplay or self.BLOCK,
                 minwidth=s.mobileMinWidth or 0, paddingleft=s.mobilePaddingLeft or 0,
                 paddingright=s.mobilePaddingRight or 0)
             )
@@ -55,14 +54,14 @@ class Container(Component):
 
     def buildBlockRow(self, b):
         s = self.style
-        b.div(class_=C.CLASS_ROW, width=s.rowWidth or C.C100, minwidth=s.rowMinWidth or 755,
-            maxwidth=s.rowMaxWidth or 1140, margin=s.rowMargin or Margin(0, C.AUTO), 
-            overflow=s.rowOverflow or C.HIDDEN,
-            media=Media(max=C.M_MOBILE, display=s.mobileRowDisplay or C.BLOCK,
-                minwidth=0, width=C.C100, paddingleft=0, paddingright=0, margin=0)
+        b.div(class_=self.CLASS_ROW, width=s.rowWidth or self.C100, minwidth=s.rowMinWidth or 755,
+            maxwidth=s.rowMaxWidth or 1140, margin=s.rowMargin or Margin(0, self.AUTO), 
+            overflow=s.rowOverflow or self.HIDDEN,
+            media=Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK,
+                minwidth=0, width=self.C100, paddingleft=0, paddingright=0, margin=0)
             )
         self.buildContainerBlock(b)
-        b._div(comment=C.CLASS_ROW)
+        b._div(comment=self.CLASS_ROW)
         
     def buildContainerBlock(self, b):
         """Default is to build all child components. This method can be redefined by inheriting container

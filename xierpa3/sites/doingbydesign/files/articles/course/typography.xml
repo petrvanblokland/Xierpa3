@@ -3,7 +3,8 @@
 <meta>
     <category>Blog</category> 
     <title>Design the Typography</title>
-    <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"/>
+    <poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"
+     alt="Udemy course"/>
     <author>Petr van Blokland</author>
     <topic>Tips and tricks on typography.</topic>
 </meta>

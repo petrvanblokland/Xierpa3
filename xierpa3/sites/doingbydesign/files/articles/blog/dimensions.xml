@@ -3,7 +3,8 @@
 <meta>
 <category>Blog</category>
 <title>The URL</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/goud1.jpg"/>
+<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/goud1.jpg" 
+	alt="Udemy courses: Generous Gesture Shawl Gold"/>
 <author>Petr van Blokland</author>
 <topic>Dimensions are larger than you think.</topic>
 </meta>

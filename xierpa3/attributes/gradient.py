@@ -10,7 +10,6 @@
 #
 #    gradient.py
 #
-from xierpa3.constants.constants import C
 from xierpa3.attributes.attribute import Attribute
 
 class Gradient(Attribute):
@@ -59,7 +58,7 @@ class Gradient(Attribute):
     def build(self, name, builder, prefix=None):
         # Build the instance output on the (sass/css) builder
         if prefix is None: # This is the top call, do the other prefixes
-            for prefix in C.PREFIXES:
+            for prefix in self.PREFIXES:
                 gradient = self.prefixes.get(prefix) or self.__class__(self.side, self.c1, self.p1, self.c2, self.p2, self.type, prefix=prefix)
                 gradient.build(name, builder, prefix)
             sprefix = ''
@@ -91,7 +90,7 @@ class LinearGradient(Gradient):
         builder.output('%s: %slinear-gradient(%s);' % (name, sprefix, self.value))
         builder.tabs()
         if prefix is None: # This is the top call, do the other prefixes
-            for prefix in C.PREFIXES:
+            for prefix in self.PREFIXES:
                 linearGradient = self.prefixes.get(prefix) or self.__class__(self.side, self.c1, self.p1, self.c2, self.p2, None, prefix=prefix)
                 linearGradient.build(name, builder, prefix)
                 if prefix == 'webkit':

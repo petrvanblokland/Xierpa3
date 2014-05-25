@@ -18,6 +18,9 @@ class Theme(Component):
 
     TITLE = 'Redefine cls.TITLE in inheriting theme class.'
 
+    def __repr__(self):
+        return '<Theme: %s>' % (self.selector or self.name)
+
     def reset(self):
         u"""Gets called prior to every page render. Can be redefined by inheriting theme classes.
         Default behavior is to do nothing."""
@@ -39,7 +42,7 @@ class Theme(Component):
         # Could not find a match, answer the default template.
         # If no default component exists, then answer self. 
         # This happens if there is only one page in the site.
-        return self.getComponent(C.TEMPLATE_DEFAULT) or self
+        return self.getComponent(self.TEMPLATE_DEFAULT) or self
 
     def getTemplates(self):
         u"""Answer the list of templates of this theme."""

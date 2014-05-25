@@ -11,8 +11,7 @@
 #    menu.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import *
-from xierpa3.toolbox.transformer import TX 
+from xierpa3.attributes import Em
 from xierpa3.constants.constants import C
 
 class Menu(Component):
@@ -30,20 +29,20 @@ class Menu(Component):
     )
     def buildBlock(self, b):
         u"""Build the menu from the articles in the menu tags of the home.xml document."""
-        data = self.getAdapterData(C.ADAPTER_MENU, id='home')
+        data = self.getAdapterData(self.ADAPTER_MENU, id='home')
         if data.menuItems is not None and len(data.menuItems):
             s = self.style
             b.block(self)
             colClass = self.getColClass(s.colWidth)
             b.div(class_=colClass)
-            b.nav(id=C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, display=s.navDisplay, 
+            b.nav(id=self.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, display=s.navDisplay, 
                 margin=s.navMargin, fontsize=s.navFontSize)
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
             for menu in data.menuItems:
                 b.li(float=s.listFloat, padding=s.listPadding)
                 url = menu.url
                 if url is None:
-                    url = '/%s-%s' % (C.PARAM_ARTICLE, menu.id)
+                    url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
                 b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration, 
                     padding=s.linkPadding, transition=s.linkTransition)
                 b.text(menu.tag or menu.name)

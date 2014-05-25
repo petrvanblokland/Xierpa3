@@ -18,8 +18,7 @@
 import inspect
 import xierpa3
 from xierpa3.components.container import Container
-from xierpa3.attributes import *
-from xierpa3.constants.constants import C
+from xierpa3.attributes import Em
 
 class Documentation(Container):
 
@@ -125,9 +124,9 @@ class Documentation(Container):
         for name, obj in inspect.getmembers(module):
             if self.isBoring(name):
                 continue
-            b.div(class_="label", width='20%', float=C.LEFT, clear=C.BOTH,
-                display=C.BLOCK,  bordertop='1px solid black')
-            b.h2(fontsize=Em(1.5), width=C.C100, lineheight=Em(1.4))
+            b.div(class_="label", width='20%', float=self.LEFT, clear=self.BOTH,
+                display=self.BLOCK,  bordertop='1px solid black')
+            b.h2(fontsize=Em(1.5), width=self.C100, lineheight=Em(1.4))
             if inspect.isclass(obj):
                 b.text(u'✏ ')
                 b.span(class_="classSource")
@@ -150,8 +149,8 @@ class Documentation(Container):
         b._table()
         """
     def showClass(self, b, cls):
-        b.div(class_="label", marginleft=Em(3), width='20%', float=C.LEFT, clear=C.BOTH,
-            display=C.BLOCK,  bordertop='1px solid black', backgroundcolor='#EEEEEE')
+        b.div(class_="label", marginleft=Em(3), width='20%', float=self.LEFT, clear=self.BOTH,
+            display=self.BLOCK,  bordertop='1px solid black', backgroundcolor='#EEEEEE')
         b.h3(fontsize=Em(1.5), lineheight=Em(1.4))
         b.span(class_="classSource", color='green')
         b.text('class')
@@ -161,7 +160,7 @@ class Documentation(Container):
         #for name, obj in inspect.getmembers(module):
             # method test: if inspect.
         b._div()
-        b.div(width='74%', float=C.LEFT, backgroundcolor='#DDDDDD')
+        b.div(width='74%', float=self.LEFT, backgroundcolor='#DDDDDD')
         if hasattr(cls, '__doc__') and cls.__doc__:
             try:
                 b.text(cls.__doc__)

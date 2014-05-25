@@ -13,12 +13,12 @@
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 
-class Attribute(object):
+class Attribute(C):
            
     def initializePrefixes(self, d):
         self.prefixes = {}
         for prefix, attribute in d.items():
-            if prefix in C.PREFIXES:
+            if prefix in self.PREFIXES:
                 assert isinstance(attribute, self.__class__)
                 self.prefixes[prefix] = attribute
 

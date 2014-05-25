@@ -10,8 +10,6 @@
 #
 #    shadow.py
 #
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX 
 from xierpa3.attributes.attribute import Attribute
 
 class Transition(Attribute):
@@ -24,7 +22,7 @@ class Transition(Attribute):
         #
         self.attributes = {}
         for key, value in kwargs.items():
-            if key in C.PREFIXES or key == 'prefix':
+            if key in self.PREFIXES or key == 'prefix':
                 continue
             self.attributes[key] = value
         self.initializePrefixes(kwargs)
@@ -37,7 +35,7 @@ class Transition(Attribute):
     def build(self, name, builder, prefix=None):
         # Build the instance output on the (sass/css) builder
         if prefix is None: # This is the top call, do the other prefixes
-            for prefix in C.PREFIXES:
+            for prefix in self.PREFIXES:
                 shadow = self.prefixes.get(prefix) or self.__class__(prefix=prefix, **self.attributes)
                 shadow.build(name, builder, prefix)
             sprefix = ''

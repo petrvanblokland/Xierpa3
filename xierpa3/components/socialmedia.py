@@ -31,13 +31,13 @@ class SocialMedia(Column):
     def buildColumn(self, b):
         s = self.style
         if s.twitterAccount or s.facebookAccount:
-            b.div(class_=C.CLASS_SOCIALMEDIA, display=C.BLOCK, float=s.float or C.LEFT,
-                width=s.width or C.C100,
-                media=Media(max=C.M_MOBILE, display=s.mobileDisplay)
+            b.div(class_=self.CLASS_SOCIALMEDIA, display=self.BLOCK, float=s.float or self.LEFT,
+                width=s.width or self.C100,
+                media=Media(max=self.M_MOBILE_MAX, display=s.mobileDisplay)
             )
             # getUrl does not seem to work with twitter. Script only tests http or https. 
             if s.twitterAccount:
-                b.div(id="twitter", float=C.LEFT)
+                b.div(id="twitter", float=self.LEFT)
                 b.a(href="https://twitter.com/share", data_href=b.getUrl(), class_="twitter-share-button", data_lang="en", data_via="doingbydesign", data_count="none", data_related="anywhere")
                 b.text(s.twitterLabel)
                 b._a()
@@ -46,7 +46,7 @@ class SocialMedia(Column):
                 b._script()
                 b._div()
             if s.facebookAccount:
-                b.div(id="fb-root", float=C.LEFT)
+                b.div(id="fb-root", float=self.LEFT)
                 b._div()
                 b.script()
                 b.text("""(function(d, s, id) {
@@ -58,7 +58,7 @@ class SocialMedia(Column):
                 }(document, 'script', 'facebook-jssdk'));
                 """)
                 b._script()
-                b.div(class_="fb-share-button", float=C.LEFT, 
+                b.div(class_="fb-share-button", float=self.LEFT, 
                     data_href=b.getUrl(), data_type="button_count")
                 b._div()
             b._div()

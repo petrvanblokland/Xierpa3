@@ -10,7 +10,6 @@
 #
 #    values.py
 #
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX 
 from xierpa3.attributes.attribute import Attribute
 
@@ -48,7 +47,21 @@ class Z(Value):
     # Z-index shows plain number
     def __init__(self, value):
         self.value = value
+
+class Px(Value):
     
+    def __init__(self, value):
+        self._value = value
+        
+    def _get_value(self):
+        if TX.isFloat(self._value):
+            return '%0.2fpx' % self._value
+        if TX.isInt(self._value):
+            return '%dpx' % self._value
+        return self._value
+
+    value = property(_get_value)
+         
 class Em(Value):
     
     def __init__(self, value):
