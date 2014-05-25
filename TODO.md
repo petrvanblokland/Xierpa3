@@ -4,6 +4,7 @@
  * Check on duplicates in @media selectors
  * Update articles on DbD example site
  * Export to PHP Kirby
+ * Desktop app Xierpa3App with a choice of parametric designer templates.
  
 ### Wish list of features
  * Extending different types of components.
@@ -18,13 +19,14 @@
  * Adding CMS functions, in case Xierpa3 is used as server (otherwise existing CMS systems van be used).
  * Scaling and caching images for responsive usage (and resolution independence).
  * Add function to preview from remote web fonts.
+ * Intelligent style templates, feeding into existing sites, changing appearance and behavior on the fly.
 	
 ### Longer term
- * Desktop app Xierpa3App with a choice of parametric designer templates.
+ * Export single pages or a set of pages from an existing site, as static HTML/CSS extracts.
  * Components for responsive graph and table building, spreadsheet component.
  * Automatic page composition, depending on amount and type of elements and content volume.
- * Hyphenation
- * Parametric webfont generator, 
+ * Hyphenation.
+ * Parametric webfont generator. 
  * Parametric (corporate) identity generator.
 
 ### Done
