@@ -430,9 +430,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     # R E S O U R C E S
 
     def reset(self):
-        u"""
-        Sets fallback values for CSS.
-        """
+        u"""Resets fallback values for CSS."""
         self.output("""/* Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -467,7 +465,7 @@ figure {
 
 /* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
 Make the img of class "autowidth" to get the function working.
-http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+See www.webmonkey.com/2010/02/browser-specific_css_hacks/
 IE (default, as there is no clear way to determine IE now) */
 img.autowidth { width:100%; }
 // Mozilla
@@ -798,8 +796,8 @@ input[type=submit], label, select, .pointer {
 
     def css3_opacity(self, value):
         u"""
-        The <code>opacity</code> method answers the CSS syntax for opacity for the browsers that support the feature. For
-        now this feature is not implemented in all browser.
+        The <code>opacity</code> method answers the CSS syntax for opacity for the browsers that support the feature. 
+        For now this feature is not implemented in all browsers.
         """
         css = self.getCssOpacityValue(value)
         self.output(css)
@@ -924,7 +922,7 @@ input[type=submit], label, select, .pointer {
         self.output('font-weight: %s;' % value)
 
     def css3_typesmooth(self, value):
-        # Values are one of ['none', 'antialiased', 'subpixel-antialiased']
+        u"""Smoothness attributes: values are one of ['none', 'antialiased', 'subpixel-antialiased']."""
         self.output(self.getCssFontSmoothValue(value))
 
     def css3_texttransform(self, value):

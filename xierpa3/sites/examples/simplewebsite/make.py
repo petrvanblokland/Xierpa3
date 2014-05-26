@@ -11,7 +11,7 @@
 #    make.py
 #
 from xierpa3.attributes import Em
-from xierpa3.components import Theme, Page, Header, MobileNavigation, Footer, Text
+from xierpa3.components import Theme, Page, Container, Group, Header, MobileNavigation, Footer, Text
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.style import Media
@@ -32,11 +32,15 @@ class SimpleWebSite(Theme):
         header = Header(components=[], mobileContainerDisplay=self.NONE)
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
         footer = Footer(components=[])
-        content = Text('aaaa')
+        #@@@ Bug here, CSS background color gets in output preceding this div class.
+        sideBar = Container(class_=self.CLASS_4COL, components=(Text('sidebar'),), width='15%',
+            backgroundcolor='orange', float=self.LEFT)
+        mainContent = Container(class_=self.CLASS_12COL, components=(Text('main content'),), width='75%',
+            backgroundcolor='yellow', float=self.LEFT)
 
         # Create an instance (=object) of the page, containing the navigation components.
         homePage = Page(name=self.TEMPLATE_INDEX, title=self.TITLE,
-            components=(mobileNavigation, header, content, footer),
+            components=(mobileNavigation, header, sideBar, mainContent, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
     
         # Answer a list of types of pages for this site. In this case just one template.
