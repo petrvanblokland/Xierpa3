@@ -12,7 +12,7 @@
 #
 from xierpa3.components.column import Column
 from xierpa3.constants.constants import C
-from xierpa3.descriptors.style import Media
+from xierpa3.descriptors.media import Media
 
 class SocialMedia(Column):
     

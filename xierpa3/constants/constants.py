@@ -29,6 +29,17 @@ class C(Config):
     # Types of sites
     SITETYPE_BLOG = 'blog'
 
+    # Webtype @fontface fonts, to be used for localhost demo purposes.
+    # Note that this package contains the a set of latest featured font, and may be changed in the future.
+    # If using the font in this package, safest is to refer to the functional constant names below,
+    # instead of making a direct reference to the family name.
+    # Of course, taking your own account at //www.webtype.com is even better :)
+    XIERPA3_DEMOFONTS = '//cloud.webtype.com/css/34d3e5fe-7dee-4122-9e87-ea5ee4a90a05.css'
+    # Redefine this list for other font packages in inheriting theme classes.
+    URL_FONTS = (XIERPA3_DEMOFONTS,)
+    BODYFAMILY = 'Brando Light'
+    HEADFAMILY = 'Hermes FB'
+    
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.
     TYPE_HTML = 'html'

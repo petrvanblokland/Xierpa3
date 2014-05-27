@@ -13,78 +13,117 @@
 from xierpa3.components.column import Column
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import Em, Border, Margin, Padding
-from xierpa3.descriptors.style import Media
-
-CHAPTERCOLOR = '#202020'
-CHAPTERTITLECOLOR0 = '#1F1F1F'
-AUTHORCOLOR = '#828487'
-CATEGORYCOLOR = '#828487'
-LABELCOLOR = '#828487'
-LEADCOLOR = '#828487'
-NAMECOLOR= '#66696C'
-TITLECOLOR= '#66696C'
-SUMMARYCOLOR= '#202020'
-H2COLOR = '#828487'
+from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class ArticleColumn(Column):
     def getChapterIndex(self, b, article):
         return min(max(0, TX.asInt(b.e.form[self.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
      
 class Article(ArticleColumn):
-    
-    STYLE_DEFAULT = dict(
+
+    CHAPTERCOLOR = '#202020'
+    SUMMARYCOLOR= CHAPTERCOLOR
+    CHAPTERTITLECOLOR0 = '#1F1F1F'
+    H2COLOR = '#828487'
+    AUTHORCOLOR = H2COLOR
+    CATEGORYCOLOR = H2COLOR
+    LABELCOLOR = H2COLOR
+    LEADCOLOR = H2COLOR
+    NAMECOLOR= '#66696C'
+    TITLECOLOR= NAMECOLOR
+
+    # Define the basic blue print style for this type of component.
+    BLUEPRINT = BluePrint(
         # Layout stuff
-        colWidth=8, # Default amount of columns for this component   
+        colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
         # Post
-        showPoster=False,                     
+        showPoster=False, doc_showPoster=u'Boolean flag if the poster image should be shown at start of the article.',                    
         # Title stuff on the first chapter page of the article
-        titleSize=Em(3.2), titleLineHeight=Em(1.2), titleColor=TITLECOLOR,
+        titleSize=Em(3.2), doc_titleSize=u'Title font size on the first chapter page of an article.',
+        titleLineHeight=Em(1.2), doc_titleLineHeight=u'Title leading on the first chapter page of an article.',
+        titleColor=TITLECOLOR, doc_titleColor=u'Title color on the first chapter page of an article.',
         # Name stuff on the second+ chapter page of the article
-        nameSize=Em(2), nameLineHeight=Em(1.2), nameColor=NAMECOLOR,
+        nameSize=Em(2), doc_nameSize=u'Name font size on the second+ page of an article.',
+        nameLineHeight=Em(1.2), doc_nameLineHeight=u'Name leading on the second+ page of an article.',
+        nameColor=NAMECOLOR, doc_nameColor=u'Name color on the second+ page of an article.',
         # Author stuff
-        authorSize=Em(1), authorColor=AUTHORCOLOR,
+        authorSize=Em(1), doc_autorSize=u'Author font size near article title.',
+        authorColor=AUTHORCOLOR, doc_authorColor=u'Author color near article title.',
         # Category stuff
-        categorySize=Em(0.8), categoryLineHeight=Em(1.2),
-        categoryColor=NAMECOLOR, categoryWeight=None, # Default to inherit from the default weight.
+        categorySize=Em(0.8), doc_categorySize=u'Article category font size.',
+        categoryLineHeight=Em(1.2), doc_categoryLineHeight=u'Article category leading.',
+        categoryColor=NAMECOLOR, doc_categoryColor=u'Article category color.',
+        categoryWeight=None, doc_categoryWeight=u'Article category weight.', # Default to inherit from the default weight.
         # Chapter stuff
-        chapterColor=CHAPTERCOLOR, chapterSize=Em(1.2), chapterLineHeight=Em(1.4),  
+        chapterColor=CHAPTERCOLOR, doc_chapterColor=u'Chapter color.',
+        chapterSize=Em(1.2), doc_chapterSize=u'Chapter font size.',
+        chapterLineHeight=Em(1.4), doc_chapterLineHeight=u'Chapter leading.',  
         # Chapter lead stuff
-        leadSize=Em(1.8), leadLineHeight=Em(1.2), leadMarginBottom=Em(0.3),
-        leadColor=LEADCOLOR,
+        leadSize=Em(1.8), doc_leadSize=u'Chapter lead font size.',
+        leadLineHeight=Em(1.2), doc_leadLineHeight=u'Chapter lead leading.',
+        leadMarginBottom=Em(0.3), doc_leadMarginBottom=u'Chapter lead bottom margin.',
+        leadColor=LEADCOLOR, doc_leadColor=u'Chapter lead color.',
         # Chapter first page
-        chapterTitleSize0=Em(1.5), chapterTitleColor0=CHAPTERTITLECOLOR0, 
-        chapterTitleMarginTop0=Em(1), chapterTitleMarginBottom0=Em(0.5),
+        chapterTitleSize0=Em(1.5), doc_chapterTitleSize0=u'Chapter title font size on first page.',
+        chapterTitleColor0=CHAPTERTITLECOLOR0, doc_chapterTitleColor0=u'Chapter title color on first page.', 
+        chapterTitleMarginTop0=Em(1), doc_chapterTitleMarginTop0=u'Chapter title margin top on first page.',
+        chapterTitleMarginBottom0=Em(0.5), doc_chapterTitleMarginBottom0=u'Chapter title margin bottom on first page.',
         # Chapter other pages
-        chapterTitleSize1=Em(2.5), chapterTitleColor1=None,
-        chapterTitleMarginTop1=Em(1), chapterTitleMarginBottom1=Em(0.5),
+        chapterTitleSize1=Em(2.5), doc_chapterTitleSize1=u'Chapter title font size on second+ page.',
+        chapterTitleColor1=None, doc_chapterTitleColor1=u'Chapter title color on second+ page.', 
+        chapterTitleMarginTop1=Em(1), doc_chapterTitleMarginTop0=u'Chapter title margin top on second+ page.',
+        chapterTitleMarginBottom1=Em(0.5), doc_chapterTitleMarginBottom1=u'Chapter title margin bottom on second+ page.',
         # H1
         # H2
-        h2Size=Em(2), h2LineHeight=Em(1.4), h2PaddingTop=Em(1), h2PaddingBottom=0,
-        h2Color=H2COLOR, 
+        h2Size=Em(2), doc_h2Size=u'Article h2 font size.',
+        h2LineHeight=Em(1.4), doc_h2LineHeight=u'Article h2 leading.',
+        h2PaddingTop=Em(1), doc_h2PaddingTop=u'Article h2 padding top.',
+        h2PaddingBottom=0, doc_h2PaddingBottom=u'Article h2 padding bottom.',
+        h2Color=H2COLOR, doc_h2Color=u'Article h2 color in article.',
         # H3
-        h3Size=Em(2), h3LineHeight=Em(1.4), h3PaddingTop=Em(1), h3PaddingBottom=0,
+        h3Size=Em(2), doc_h3Size=u'Article h3 font size.', 
+        h3LineHeight=Em(1.4), doc_h3LineHeight=u'Article h3 leading.',
+        h3PaddingTop=Em(1), doc_h3PaddingBottom=u'Article h3 padding bottom.',
+        h3PaddingBottom=0, doc_h3PaddingBottom=u'Article h3 color.',
         # Chapter p stuff
-        articleSize=Em(1.1), articleLineHeight=Em(1.6), articleIndent=Em(2),
-        # First p
-        firstIndent=0,
+        articleSize=Em(1.1), doc_articleSize=u'Article p font size.',
+        articleLineHeight=Em(1.6), doc_articleLineHeight=u'Article p leading.',
+        articleIndent=Em(2), doc_articleInden=u'Article p indent.',
+        articleFirstIndent=0, doc_firstIndent=u'Article p first indent.',
         # Bullet list
-        bulletType='disc', bulletPaddingLeft=Em(2), bulletPosition='inside',
-        bulletMarginBottom=0, bulletMarginTop=Em(1),
-        bulletItemMarginBottom=Em(1),
+        bulletType='disc', doc_bulletType=u'Article bullet type',
+        bulletPosition='inside', doc_bulletPosition=u'Article bullet position.',
+        bulletPaddingLeft=Em(2), doc_bulletPaddingLeft=u'Article bullet padding left.',
+        bulletMarginTop=Em(1), doc_bulletMarginTop=u'Article bullet margin top.',
+        bulletMarginBottom=0, doc_bulletMarginBottom=u'Article bullet margin bottom.',
+        bulletItemMarginBottom=Em(1), doc_bulletItemMarginBottom=u'Article bullet item margin bottom.',
         # Ordered list
-        numberedListType='decimal', numberedListPosition='inside',
-        numberedListPaddingLeft=Em(2),
-        numberedListMarginBottom=0, numberedListMarginTop=Em(1),
+        numberedListType='decimal', doc_numberedListType=u'Article numbered list type', 
+        numberedListPosition='inside', doc_numberedListPosition=u'Article numbered list position.',
+        numberedListPaddingLeft=Em(2), doc_numberedListPaddingLeft=u'Article numbered list padding left.',
+        numberedListMarginBottom=0, 
+        numberedListMarginTop=Em(1),
         numberedListItemMarginBottom=Em(1),
         # Image & caption
-        imageMarginTop=Em(1), imageMarginBottom=Em(0.8), 
-        imagePaddingTop=None, imagePaddingBottom=None, imagePaddingLeft=None, 
-        imagePaddingRight=None, imageBackgroundColor=None,
-        captionFontStyle=ArticleColumn.ITALIC, captionFontSize=Em(0.9), captionMarginTop=Em(0.5),
+        imageMarginTop=Em(1), 
+        imageMarginBottom=Em(0.8), 
+        imagePaddingTop=None, 
+        imagePaddingBottom=None, 
+        imagePaddingLeft=None, 
+        imagePaddingRight=None, 
+        imageBackgroundColor=None,
+        captionFontStyle=ArticleColumn.ITALIC, 
+        captionFontSize=Em(0.9), 
+        captionMarginTop=Em(0.5),
         # Code
-        codeFontFamily='Courier', codeFontSize=Em(1.1), codePaddingLeft=Em(1),
-        codePaddingTop=Em(0.5), codePaddingBottom=0,
-        codeMarginTop=Em(0.5), codeMarginBottom=Em(0.5),
+        codeFontFamily='Courier', 
+        codeFontSize=Em(1.1), 
+        codePaddingLeft=Em(1),
+        codePaddingTop=Em(0.5), 
+        codePaddingBottom=0,
+        codeMarginTop=Em(0.5), 
+        codeMarginBottom=Em(0.5),
         codeBackgroundColor=ArticleColumn.WHITE,
     )
     def buildColumn(self, b):
@@ -198,7 +237,7 @@ class Article(ArticleColumn):
         self.buildPStyle(b)
         b._p()
         # <p class="... first">
-        b.p(class_=self.CLASS_FIRST, textindent=s.firstIndent)
+        b.p(class_=self.CLASS_FIRST, textindent=s.articleFirstIndent)
         b._p()
         # <p class="... last">
         b.p(class_=self.CLASS_LAST)
@@ -206,7 +245,7 @@ class Article(ArticleColumn):
         # <lead>
         b.p(class_=self.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, 
-            textindent=s.firstIndent)
+            textindent=s.articleFirstIndent)
         self.buildPStyle(b)
         b._p()
         # <b>

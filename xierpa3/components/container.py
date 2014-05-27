@@ -12,7 +12,7 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.attributes import Margin
-from xierpa3.descriptors.style import Media
+from xierpa3.descriptors.media import Media
 
 class Container(Component):
 

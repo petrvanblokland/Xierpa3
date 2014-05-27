@@ -12,9 +12,8 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-from xierpa3.attributes import Em
+#from xierpa3.attributes import Em
 from xierpa3.attributes import LinearGradient
-from xierpa3.descriptors.style import Media
 
 CHAPTERCOLOR = '#202020'
 CHAPTERTITLECOLOR0 = '#1F1F1F'

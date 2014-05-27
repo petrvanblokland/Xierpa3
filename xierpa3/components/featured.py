@@ -13,8 +13,9 @@
 from random import choice
 from xierpa3.components.column import Column
 from xierpa3.components.container import Container
-from xierpa3.descriptors.style import Media
-from xierpa3.attributes import Em, Margin
+from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.attributes import Em, Margin, Perc, Color
 from xierpa3.constants.constants import C
 
 LEVELSIZE = Em(0.9)
@@ -42,18 +43,30 @@ class FeaturedBase(Column):
         self.buildFeatured(b, data)
    
 class FeaturedByImage(FeaturedBase):
-
-    STYLE_DEFAULT = dict(
+    
+    BLUEPRINT = BluePrint(
         # Selection stuff
-        itemStart=0, itemCount=24, # Index of first and last selected feature for this component
+        itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
+        itemCount=24, doc_itemCount=u'Number of selected items to feature.',
         # Col layout stuff
-        colWidth=8, # Default amount of columns for this component
-        colMarginRight='1.8%', colMarginLeft=0, colFloat=C.LEFT, colMinHeight=1, colDisplay=C.BLOCK,
+        colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
+        colMarginRight=Perc(1.8), 
+        colMarginLeft=0, 
+        colFloat=C.LEFT, 
+        colMinHeight=1, 
+        colDisplay=C.BLOCK,
         # Mobile stuff
         mobileDisplay=C.NONE,
-        mobilePaddingTop=Em(2), mobilePaddingBottom=Em(0.5), mobilePaddingLeft=Em(0.5), mobilePaddingRight=Em(0.5),
-        mobileMarginTop=Em(2), mobileMarginBottom=Em(0.5), mobileMarginLeft=Em(0.5), mobileMarginRight=Em(0.5),
-        mobileFloat=C.NONE, mobileWidth=C.AUTO,
+        mobilePaddingTop=Em(2), 
+        mobilePaddingBottom=Em(0.5), 
+        mobilePaddingLeft=Em(0.5), 
+        mobilePaddingRight=Em(0.5),
+        mobileMarginTop=Em(2), 
+        mobileMarginBottom=Em(0.5), 
+        mobileMarginLeft=Em(0.5), 
+        mobileMarginRight=Em(0.5),
+        mobileFloat=C.NONE, 
+        mobileWidth=C.AUTO,
     )
     def buildFeatured(self, b, data):
         s = self.style
@@ -83,23 +96,37 @@ class FeaturedByImage(FeaturedBase):
 class FeaturedByImageList(FeaturedBase):
     u"""The FeaturedByImageList builds a vertical list if thumbnails, level and optional names of the 
     selected items."""
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Selection stuff
-        itemStart=0, itemCount=3, # Index of first and last selected feature for this component
+        itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
+        itemCount=3, doc_itemCount=u'Number of selected items to feature.',
         # Col block stuff
-        colDisplay=C.BLOCK, colClear=C.BOTH, colMarginBottom=Em(0.5), colColor=None,
-        colMarginRight='1.8%', colMarginLeft=0, colFloat=C.LEFT, colMinHeight=1,  
+        colDisplay=C.BLOCK, doc_colDisplay=u'Column display type.',
+        colClear=C.BOTH, doc_colClear='Column float clear.',
+        colMarginBottom=Em(0.5), doc_colMarginBottom='Column margin bottom.',
+        colColor=None, doc_colColor=u'Column color',
+        colMarginRight=Perc(1.8), 
+        colMarginLeft=0, 
+        colFloat=C.LEFT, 
+        colMinHeight=1,  
         # Layout stuff
-        colWidth=4, # Default amount of columns for this component
+        colWidth=4, doc_colWidth=u'Default amount of columns for this component.',
         # Item stuff
-        itemClear=C.NONE, itemDisplay=C.LEFT, itemWidth='55%',
+        itemClear=C.NONE, itemDisplay=C.LEFT, itemWidth=Perc(55),
         # Thumbnail image stuff
         thumbDisplay=C.BLOCK,
         # Level stuff, handle local fontsize and lineheight here, related to the item size
-        showLevel=True, genericLevel='Generic', # Show generic level if level is omitted in data.
-        levelColor='#6294D0', levelSize=LEVELSIZE, levelWeight=C.BOLD, levelMarginTop=Em(0.5),
+        showLevel=True, 
+        genericLevel='Generic', doc_genericLevel=u'Show this generic level name if level attitbute is undefined in adapter data.',
+        levelColor=Color('#6294D0'), doc_levelColor=u'Level color.',
+        levelSize=LEVELSIZE, doc_levelSize=u'Level font size.',
+        levelWeight=C.BOLD, doc_levelWeight=u'Level font weight.',
+        levelMarginTop=Em(0.5), doc_levelMarginTop=u'Level margin top.',
         # Optional name stuff, handle local fontsize and lineheight here, related to the item sizes
-        showName=False, nameColor='#A32C2D', nameSize=Em(0.9), nameLineHeight=Em(1.4), 
+        showName=False, 
+        nameColor=Color('#A32C2D'), 
+        nameSize=Em(0.9), 
+        nameLineHeight=Em(1.4), 
         nameWeight=C.BOLD,
         # Optional topic
         showTopic=False,
@@ -136,7 +163,7 @@ class FeaturedByImageList(FeaturedBase):
 
 class FeaturedByText(FeaturedBase):
 
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Selection stuff
         # Index of first and amount of selected features for this component
         itemStart=0, itemCount=1, itemRandom=True,
@@ -233,10 +260,12 @@ class FeaturedByText(FeaturedBase):
 
 class FeaturedByDiapText(FeaturedByText):
     u"""As FeaturedByText, but default on a dark background."""
-    STYLE_DEFAULT = dict(
+    
+    BLUEPRINT = BluePrint(
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, itemCount=10, itemRandom=True,
+        itemStart=0, itemCount=10, 
+        itemRandom=True, doc_itemRandom=u'Choose random from the selected items.',
         # Label stuff 
         label=None, labelSize=Em(2.2), labelColor='#828487', labelMarginBottom=Em(0.5),
         labelMarginTop=Em(0.3),
@@ -270,9 +299,10 @@ class FeaturedByDiapText(FeaturedByText):
        
 class FeaturedByTextList(FeaturedBase):
 
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Selection stuff
-        itemStart=0, itemCount=6, # Index of first and last selected feature for this component
+        itemStart=0, 
+        itemCount=6, # Index of first and last selected feature for this component
         # Layout stuff
         colWidth=4, # Default amount of columns for this component
         # Category stuff in h5

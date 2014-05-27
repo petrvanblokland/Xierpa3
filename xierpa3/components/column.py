@@ -11,7 +11,7 @@
 #
 from xierpa3.components.container import Container
 from xierpa3.attributes import Em
-from xierpa3.descriptors.style import Media
+from xierpa3.descriptors.media import Media
 
 class Column(Container):
 

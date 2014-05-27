@@ -10,19 +10,28 @@
 #
 #    state.py
 #
+from copy import deepcopy
+
 class State(object):
-    u"""
-    Attributes
-    self.parent        Get/set the parent of this Floq or FloqValue (stored as weakref)
-    """
 
     def __init__(self, **kwargs):
+        self._doc = {} # If key is of format "doc_fontsize" then keep documentation string here.
         for key, value in kwargs.items():
-            self[key] = value
+            if key.startswith('doc_'):
+                self._doc[key] = value
+            else:
+                self[key] = value
+
+    def copy(self):
+        return deepcopy(self)
 
     @classmethod
     def fromDict(cls, d):
         return cls(d)
+
+    def getDoc(self, key):
+        u"""Answer the doc string of <b>key</b> if it exists. Answer <b>None</b> otherwise."""
+        return self._doc.get('doc_' + key)
 
     def __repr__(self):
         return '<%s.%s>' % (self.__class__.__name__, self.name or self.id or 'Untitled')

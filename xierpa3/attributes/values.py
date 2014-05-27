@@ -49,7 +49,7 @@ class Z(Value):
         self.value = value
 
 class Px(Value):
-    
+    u"""Answer 100px"""
     def __init__(self, value):
         self._value = value
         
@@ -61,7 +61,19 @@ class Px(Value):
         return self._value
 
     value = property(_get_value)
-         
+
+class Perc(Value):
+    u"""Answer 100%"""
+    def __init__(self, value):
+        self._value = value
+        
+    def _get_value(self):
+        if TX.isFloat(self._value):
+            return '%0.2f%%' % self._value
+        if TX.isInt(self._value):
+            return '%d%%' % self._value
+        return self._value
+    
 class Em(Value):
     
     def __init__(self, value):

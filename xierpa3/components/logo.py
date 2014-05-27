@@ -13,7 +13,7 @@
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
 from xierpa3.attributes import Em
-from xierpa3.descriptors.style import Media
+from xierpa3.descriptors.media import Media
 
 class Logo(Component):
 

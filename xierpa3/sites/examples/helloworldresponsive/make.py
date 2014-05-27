@@ -25,7 +25,7 @@ from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.attributes import Em, Margin 
-from xierpa3.descriptors.style import Media # Include type of Style that holds @media parameters.
+from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class HelloWorldResponsiveText(Column):
 
@@ -56,6 +56,22 @@ class HelloWorldResponsiveText(Column):
                    width=self.C100)
             ))
         b.text('Hello world.')
+        # One of the advantages of using a real programming language to generate 
+        # HTML/CSS code, is that repetitions can be written as a loop. Not necessary
+        # fewer lines, but more expandable and less redundant distribution of 
+        # knowledge in the code.
+        data = (
+            # class, minWidth, maxWidth,  text
+            ('c1', self.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
+            ('c2', self.M_TABLET_MIN, self.M_TABLET_MAX, 'Responsive tablet mode.' ),
+            ('c3', None, self.M_MOBILE_MAX, 'Responsive mobile mode..' ),
+        )
+        for class_, minWidth, maxWidth, text in data:
+            b.div(class_=class_, display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+                media=Media(min=minWidth, max=maxWidth, display=self.BLOCK))
+            b.text(text)
+            b._div()
+        """
         b.div(class_='c1', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
             media=Media(min=self.M_DESKTOP_MIN, display=self.BLOCK))
         b.text('Responsive desktop mode.')
@@ -68,6 +84,7 @@ class HelloWorldResponsiveText(Column):
             media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK))
         b.text('Responsive mobile mode.')
         b._div()
+        """
         b._div()
         b.div(class_=self.CLASS_CAPTION, color='#888', margin=Margin(0, self.AUTO), 
               width=self.C100, maxwidth=700, minwidth=300,

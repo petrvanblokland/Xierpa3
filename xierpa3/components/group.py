@@ -12,7 +12,7 @@
 #
 from xierpa3.components.container import Container
 from xierpa3.constants.constants import C
-from xierpa3.descriptors.style import Media
+from xierpa3.descriptors.media import Media
 
 class Group(Container):
     pass

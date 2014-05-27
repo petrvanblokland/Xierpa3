@@ -10,14 +10,15 @@
 #
 #   style.py
 #
+#   Implements Style(), Media() and 
 import weakref
 import hashlib
 from xierpa3.descriptors.state import State
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
+from xierpa3.descriptors.media import Media
 
 class Style(State):
-
+    u"""The <b>Style</b> holds a set of style values for a components and the constructors inside the component block builders."""
+    
     def __init__(self, selector=None, parent=None, component=None, **kwargs):
         u"""
         Constructor of a new style. The self.media holds a list of styles related to a specific @media size range of self.
@@ -146,49 +147,6 @@ class Style(State):
 
     selector = property(_get_selector, _set_selector)
 
-class Media(State):
-    def __init__(self, selector=None, parent=None, min=None, max=None, expression=None, **kwargs):
-        assert parent is None or isinstance(parent, Style)
-        State.__init__(self, **kwargs)
-        self.selector = selector
-        self.min = min
-        self.max = max
-        self.expression = expression
-        self.parent = parent
-
-    # self.parent
-
-    def _get_parent(self):
-        if self._parent is not None:
-            return self._parent()
-        return None
-
-    def _set_parent(self, parent):
-        if parent is not None:
-            if isinstance(parent, int):
-                pass
-            parent = weakref.ref(parent)
-        self._parent = parent
-
-    parent = property(_get_parent, _set_parent)
-
-    # self.expression     @media selector expression
-
-    def _get_expression(self):
-        expressions = []
-        if self.min:
-            expressions.append('(min-width:%s)' % TX.px(self.min))
-        if self.max:
-            expressions.append('(max-width:%s)' % TX.px(self.max))
-        if self.device or expressions:
-            return (self.device or 'all') + ' and ' + ' and '.join(expressions)
-        return None # Raising error, style as media needs a defined expression
-
-    def _set_expression(self, expression):
-        self._expression = expression
-
-    expression = property(_get_expression, _set_expression)
-
 class StyleSet(Style):
     u"""The <i>StyleSet</i> class is a wrapper set around a set of classes. It behaves like
     a <i>Style</i> instance, but it does not show up as selector. The open and close
@@ -201,10 +159,4 @@ class StyleSet(Style):
         pass # Ignore the selector
 
     selector = property(_get_selector, _set_selector)
-
-if __name__ == "__main__":
-    d = Style()
-    d.fontsize = 12
-    print d.fontsize
-    print d.items()
 

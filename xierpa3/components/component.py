@@ -60,7 +60,7 @@ class Component(C):
             selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
         # Initialize the self.style, as selector and id are stored there.
-        self.style = style # If style is None, then make a copy of self.STYLE_DEFAULT
+        self.style = style # If style is None, then use a copy of the self.BLUEPRINT style.
         self.style.add(kwargs) # Further initialize self.style from keyword arguments
         self.style.component = self # Add the weakref reference to self for the root style.
         # CSS and Fonts urls
@@ -346,15 +346,14 @@ class Component(C):
 
     # self.style
 
-    def baseStyle(self):
-        u"""To be redefined by inheriting classes to answer the default style tree of this component."""
-        return self.newStyle()
+    def fromBluePrint(self):
+        u"""Answer a copy of the component <b>self.BLUEPRINT</b>."""
+        return self.BLUEPRINT.copy()
 
     def newStyle(self, selector=None, d=None):
-        u"""Answer a new style with attributes defined in <i>d</i>. If omitted, then use
-        <b>self.STYLE_DEFAULT</b> as default style attributes."""
+        u"""Answer a new style with <b>selection</b> and attributes defined in the optional <i>d</i> dictionary."""
         if d is None:
-            d = self.STYLE_DEFAULT
+            d = {}
         return Style(selector, **d)
 
     def addStyle(self, selector=None, **kwargs):
@@ -366,9 +365,9 @@ class Component(C):
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
-        u"""Answer self._style. If it doesn't exist yet, create the default style from self.baseStyle."""
-        if not hasattr(self, '_style') or self._style is None:
-            self._style = self.baseStyle()
+        u"""Answer self._style. If it doesn't exist yet, create the default style from self.copyBluePrint."""
+        if self._style is None:
+            self._style = self.copyFromBuePrint()
         return self._style
 
     def _set_style(self, style):

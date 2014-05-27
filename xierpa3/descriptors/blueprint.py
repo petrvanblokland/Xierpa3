@@ -8,12 +8,12 @@
 #
 # -----------------------------------------------------------------------------
 #
-from values import asValue, Value, Perc, Px, Em, Z, Named, Selection
-from attribute import Attribute
-from gradient import Gradient, LinearGradient
-from frames import Frame, Margin, Padding, Border
-from shadow import Shadow
-from url import Url
-from transition import Transition
-from xierpa3.toolbox.coloring import Color
+#   blueprint.py
+#
+from xierpa3.descriptors.style import Style
 
+class BluePrint(Style):
+    u"""The <b>BluePrint</b> style holds the default set of style values for component classes.
+    If also support the definition of doc string information inside the value, by addingf “doc_” 
+    preceding the attribute names."""
+    pass

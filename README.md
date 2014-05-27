@@ -41,7 +41,8 @@ The main types of classes are:
  	methods and an item id when searching for a specific record. There are adapters
  	for Blurb text, for database access, XML file parsing, etc.
  * Attributes define values that are often used and need some kind of behavior,
- 	depending on the type of the value and type of the output channel.
+ 	depending on the type of the value and type of the output channel, such as
+ 	Shadow() and Gradient().
  	
 -----------------------------------------------------------------------------
 
@@ -49,8 +50,8 @@ The main types of classes are:
 
 A variety of database connections is possible: local and online SQL databases,
 Amazon database services and S3. The amount of adapters has to be extended for
-the public versions of Xierpa3 to make this work. Currently PostgreSQL is supported,
-we aim to support MySQL as well in the near future.
+this Open Source versions of Xierpa3 to make it work. Currently PostgreSQL is 
+supported, we aim to support MySQL as well in the near future.
 
 -----------------------------------------------------------------------------
 

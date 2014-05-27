@@ -10,11 +10,10 @@
 #
 #    make.py
 #
-from xierpa3.attributes import Em
-from xierpa3.components import Theme, Page, Container, Group, Header, MobileNavigation, Footer, Text
+#from xierpa3.attributes import Em
+from xierpa3.components import Theme, Page, Container, Header, MobileNavigation, Footer, Text
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.descriptors.style import Media
         
 class SimpleWebSite(Theme):
     u"""The <b>TypeSpecimenSite</b> generates an HTML file with a column of random blurb text. 
