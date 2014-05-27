@@ -71,12 +71,19 @@ class ExampleColumn(Column):
         textEndMarginTop=Em(0.5), doc_textEndMarginTop=u'Margin top of last paragraph before another element.', 
         textEndMarginBottom=Em(0.5), doc_textEndMarginBottom=u'Margin bottom of last paragraph before another element.', 
         # img
-        imageMarginTop=Em(0.5), doc_imageMarginTop=u'Image margin top',
-        imageMarginBottom=Em(0.5), doc_imageMarginBottom=u'Image margin bottom',
+        imgClass=CC.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
+        imgMarginTop=Em(0.5), doc_imgMarginTop=u'Image margin top',
+        imgMarginBottom=Em(0.5), doc_imgMarginBottom=u'Image margin bottom',
         # blockquote
         blockQuotePadding=Margin(Em(0.5), Em(1)), doc_blockQuotePadding=u'Block quote padding.',
         blockQuoteSize=Em(1.2), doc_blockQuoteSize=u'Block quote font size.',
         blockQuoteLineHeight=Em(1.3), doc_blockQuoteLineHeight=u'Block quote line height.',
+        blockQuoteMarginTop=Em(0.5), doc_blockQuoteMarginTop=u'Block quote margin top.',
+        blockQuoteMarginBottom=Em(0.5), doc_blockQuoteMarginBottom=u'Block quote margin bottom',
+        blockQuoteStyle=CC.ITALIC, doc_blockQuoteStyle=u'Block quote style', 
+        blockQuoteBgColor='#DDD', doc_blockQuoteBgColor=u'Block quote background color.',
+        blockQuoteColor=CC.BLACK, doc_blockQuoteColor=u'Block quote color.', 
+        blockQuoteBorder=None, doc_blockQuoteBorderu='Bloqk quote border.', #Border('solid', 2, Color('#E1E2E2')),
     )
     
     def buildBlock(self, b):
@@ -122,7 +129,7 @@ class ExampleColumn(Column):
                     # Build the image that came with the featured article, if it exists.
                     # Make it class autowidth to solve the width="100%" incompatibility
                     # between browsers.
-                    b.img(src=data.image, class_=self.CLASS_AUTOWIDTH)
+                    b.img(src=data.image, class_=s.classImg)
                 # Output the rest of the featured article.
                 b.text(data.item)
             # Add some more volume to the blurb article. 
@@ -156,17 +163,18 @@ class ExampleColumn(Column):
         b.p(class_='start', textindent=s.textFirstIndent)
         # The start paragraph (the element before was not a <p>) has no indent.
         b._p()
-        b.p(class_='end', fontweight=self.BOLD, marginbottom=s.textLastMarginBottom,
+        b.p(class_='end', marginbottom=s.textLastMarginBottom,
             margintop=s.textLastMarginTop, textindent=s.textLastIndent)
         # Mark the end paragraph (the element after is not a <p>) in case something
         # special needs to be done, e.g. change the marginbottom.
         # @@@ TODO: Mark as p.end preceding <blockquote> too.
         b._p()
-        b.blockquote(padding=s.blockQuotePadding, fontsize=s.blockQuoteSize, 
-            lineheight=s.blockQuoteLineHeight,
-            margintop=Em(0.5), marginbottom=Em(0.5), #border=Border('solid', 2, Color('E1E2E2')),
-            fontstyle=self.ITALIC, backgroundcolor='#DDD', color=self.BLACK)
         # Italic blockquotes with an indent and backgroundcolor.
+        b.blockquote(padding=s.blockQuotePadding, fontsize=s.blockQuoteSize, 
+            fontstyle=s.blockQuoteStyle, lineheight=s.blockQuoteLineHeight,
+            margintop=s.blockQuoteMarginTop, marginbottom=s.blockQuoteMarginBottom, 
+            border=s.blockQuoteBorder,
+            backgroundcolor=s.blockQuoteBgColor, color=s.blockQuoteColor)
         b._blockquote()
 
 class OneColumnSite(Theme):

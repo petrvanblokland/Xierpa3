@@ -39,6 +39,7 @@ class C(Config):
     URL_FONTS = (XIERPA3_DEMOFONTS,)
     BODYFAMILY = 'Brando Light'
     HEADFAMILY = 'Hermes FB'
+    LOGOFAMILY = HEADFAMILY
     
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.
