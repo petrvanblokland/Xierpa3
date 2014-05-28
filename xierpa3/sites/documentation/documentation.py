@@ -49,24 +49,11 @@ class Documentation(BaseDocumentation):
     
     URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
     
-    URL_FONTS = (
-        # Google
-        'http://fonts.googleapis.com/css?family=Bree+Serif',
-        #'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-        # Webtype project Poynter
-        #'http://cloud.webtype.com/css/0d2e9f93-9866-45e1-8119-9b678ba5ce23.css'
-        # Webtype project Doing by Design (Proforma & Rocky)
-        #'http://cloud.webtype.com/css/d5663b37-b395-4934-9f68-2f7ccd9e8c87.css',
-        # Topaz (Benton Sans RE)
-        'http://cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css',
-    )
     URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = DocumentationAdapter(root=TX.module2Path(documentation) + '/files/articles')
 
-    CSS_BODYFONT = '"BentonSansRE"'
-    CSS_HEADFONT = '"BentonSansCond Medium"'
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
     CSS_BGCOLOR = '#FFFFFF'

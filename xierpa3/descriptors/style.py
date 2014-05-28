@@ -35,6 +35,12 @@ class Style(State):
     def __repr__(self):
         return '<%s: %s>' % (self.__class__.__name__, self.selector or self.name or self.id or 'Untitled')
 
+    def addBluePrint(self, bluePrint):
+        for key, value in bluePrint.items():
+            self[key] = value
+        for key, value in bluePrint.docs():
+            self[key] = value
+        
     def addMedia(self, selector, min=None, max=None, expression=None, **kwargs):
         u"""
         Create a new Media instance for @media content. The parameters @condition, @min and @max are expected 

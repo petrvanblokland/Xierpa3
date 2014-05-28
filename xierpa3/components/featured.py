@@ -14,9 +14,9 @@ from random import choice
 from xierpa3.components.column import Column
 from xierpa3.components.container import Container
 from xierpa3.descriptors.media import Media
-from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.attributes import Em, Margin, Perc, Color
 from xierpa3.constants.constants import C
+from xierpa3.descriptors.blueprint import BluePrint
 
 LEVELSIZE = Em(0.9)
 AUTHORSIZE = Em(1.2)
@@ -44,7 +44,7 @@ class FeaturedBase(Column):
    
 class FeaturedByImage(FeaturedBase):
     
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
         itemCount=24, doc_itemCount=u'Number of selected items to feature.',
@@ -96,7 +96,7 @@ class FeaturedByImage(FeaturedBase):
 class FeaturedByImageList(FeaturedBase):
     u"""The FeaturedByImageList builds a vertical list if thumbnails, level and optional names of the 
     selected items."""
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
         itemCount=3, doc_itemCount=u'Number of selected items to feature.',
@@ -163,7 +163,7 @@ class FeaturedByImageList(FeaturedBase):
 
 class FeaturedByText(FeaturedBase):
 
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
         itemStart=0, itemCount=1, itemRandom=True,
@@ -261,7 +261,7 @@ class FeaturedByText(FeaturedBase):
 class FeaturedByDiapText(FeaturedByText):
     u"""As FeaturedByText, but default on a dark background."""
     
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
         itemStart=0, itemCount=10, 
@@ -299,7 +299,7 @@ class FeaturedByDiapText(FeaturedByText):
        
 class FeaturedByTextList(FeaturedBase):
 
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint( 
         # Selection stuff
         itemStart=0, 
         itemCount=6, # Index of first and last selected feature for this component

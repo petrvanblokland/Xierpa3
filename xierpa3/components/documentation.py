@@ -18,12 +18,19 @@
 import inspect
 import xierpa3
 from xierpa3.components.container import Container
-from xierpa3.attributes import Em
+from xierpa3.attributes import Em, Color
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Documentation(Container):
 
     #    @@@ Under development
 
+    BLUEPRINT = BluePrint( 
+        h2FontSize=Em(2), doc_h2FontSoze=u'h2 font size.',
+        h2Color=Color('#202020'), doc_h2Color=u'h2 color', 
+        h3FontSize=Em(1.5), doc_h3FontSoze=u'h3 font size.',
+        test='TEST',
+    )
     def buildContainerBlock(self, b):
         if b.isType(('css', 'sass')): # @@@ Clean up, using model article?
             self.buildDocStyle(b) # Separate CSS for first chapter and the rest.
@@ -31,13 +38,14 @@ class Documentation(Container):
             self.buildDoc(b, xierpa3)
     
     def buildDocStyle(self, b):
+        s = self.style
         b.div(class_='label')
-        b.h3(fontsize=Em(1.5))
+        b.h3(fontsize=s.h3FontSize)
         b.span(class_='classSource', color='green')
         b._span()
         b._h3()
         b._div()
-        b.h2(class_='h2', fontsize=Em(2), color='#202020')
+        b.h2(class_='h2', fontsize=s.h2FontSize, color=s.h2Color)
         b._h2()
          
     

@@ -40,6 +40,7 @@ class ExampleColumn(Column):
         # Column stuff
         fontFamlily=CC.BODYFAMILY, doc_fontFamily=u'Column body font family.',
         fontSize=Em(1), doc_fontSize=u'Column body font size.',
+        fontSizeMobile=Em(1.2), doc_fontSizeMobile=u'Column body font size for mobile.', 
         lineHeight=Em(1.4), doc_lineHeight=u'Column body leading.',
         margin=Margin(0, CC.AUTO, 0, CC.AUTO), doc_margin=u'Column margin.',
         marginMobile=0, doc_marginMobile=u'Column margin mobile', 
@@ -71,7 +72,6 @@ class ExampleColumn(Column):
         textEndMarginTop=Em(0.5), doc_textEndMarginTop=u'Margin top of last paragraph before another element.', 
         textEndMarginBottom=Em(0.5), doc_textEndMarginBottom=u'Margin bottom of last paragraph before another element.', 
         # img
-        imgClass=CC.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
         imgMarginTop=Em(0.5), doc_imgMarginTop=u'Image margin top',
         imgMarginBottom=Em(0.5), doc_imgMarginBottom=u'Image margin bottom',
         # blockquote
@@ -99,6 +99,7 @@ class ExampleColumn(Column):
               lineheight=s.lineHeight,
               # Remove margins on mobile, showing the column on full screen width.
               media=Media(max=self.M_MOBILE_MAX, margin=s.marginMobile, 
+                fontsize=s.fontSizeMobile, lineheight=s.lineHeight,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
         # Add div.row to allow padding, without making the main column div
@@ -129,7 +130,9 @@ class ExampleColumn(Column):
                     # Build the image that came with the featured article, if it exists.
                     # Make it class autowidth to solve the width="100%" incompatibility
                     # between browsers.
-                    b.img(src=data.image, class_=s.classImg)
+                    b.img(src=data.image, class_=s.classImg, maxwidth=s.imgMaxWidth,
+                        minwidth=s.imgMinWidth, margintop=s.imgMarginTop,
+                        marginbottom=s.imgMarginBottom)
                 # Output the rest of the featured article.
                 b.text(data.item)
             # Add some more volume to the blurb article. 

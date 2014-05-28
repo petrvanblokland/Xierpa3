@@ -12,9 +12,18 @@
 from xierpa3.components.container import Container
 from xierpa3.attributes import Em
 from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Column(Container):
 
+    BLUEPRINT = BluePrint( 
+        # Layout stuff
+        colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 
+        # Column stuff
+        marginLeft=None, doc_marginLeft=u'Column margin left',
+        marginRight=None, doc_marginRight=u'Column margin right',
+        marginTop=Em(1), doc_marginTop=u'Column margin top',
+    )
     def buildBlock(self, b):
         u"""Build the block of a column. Note that for clarity fontsize and lineheight are defined
         for each part separated, relation the overall container fontsize and lineheight.
@@ -22,8 +31,8 @@ class Column(Container):
         s = self.style
         colClass = self.getColClass(s.colWidth)
         b.block(self)
-        b.div(class_=colClass, marginright=s.colMarginRight, marginleft=s.colMarginLeft,
-            margintop=s.colMarginTop or Em(1),
+        b.div(class_=colClass, marginright=s.marginRight, marginleft=s.marginLeft,
+            margintop=s.marginTop,
             paddingleft=s.paddingLeft or 0, float=s.colFloat, display=s.colDisplay,
             minheight=s.colMinHeight,   
             media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK, float=self.NONE, width=self.AUTO,

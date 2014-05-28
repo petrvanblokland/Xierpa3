@@ -12,8 +12,9 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-#from xierpa3.attributes import Em
+from xierpa3.attributes import Px, Perc
 from xierpa3.attributes import LinearGradient
+from xierpa3.descriptors.blueprint import BluePrint
 
 CHAPTERCOLOR = '#202020'
 CHAPTERTITLECOLOR0 = '#1F1F1F'
@@ -28,6 +29,10 @@ H2COLOR = '#828487'
 
 class SvgExample(Component):
 
+    BLUEPRINT = BluePrint(
+        height=Px(250), doc_height=u'Svg canvas height', 
+        width=Perc(100), doc_width=u'Svg canvas width',               
+    )
     def build_html(self, b):
         u"""Do all as build for CSS."""
         # if b.isType('scss'): # If generating CSS, there are no selected banners. Add some fake data here for 2 columns.
@@ -47,7 +52,8 @@ class SvgExample(Component):
         # Draw a responsive image in SVG, only in 
         #b.div(class_='svgDemo', display=C.BLOCK, margintop=Em(0.5), marginbottom=Em(0.5),
         #    media=Media(max=C.M_MOBILE_MAX, display=C.NONE))
-        b.svg(width='100%', height=250)
+        s = self.style
+        b.svg(width=s.width, height=s.height)
         b.rect(width='100%', height=50, fill=LinearGradient('left', '#000', 0, '#FFF', 100))
         b.rect(y=50, width='100%', height=200, fill='green')
         # Perspective line
@@ -74,7 +80,8 @@ class SvgExample(Component):
         # Draw a responsive image in SVG
         #b.div(class_='svgDemo', display=C.NONE, margintop=Em(0.5), marginbottom=Em(0.5),
         #    media=Media(max=C.M_MOBILE_MAX, display=C.BLOCK))
-        b.svg(width='100%', height=250)
+        s = self.style
+        b.svg(width=s.width, height=s.height)
         b.rect(width='100%', height=100, fill='cyan')
         b.rect(y=100, width='100%', height=150, fill='green')
         # Polygons don't work in %, so they cannot be positioned responsive to the container width

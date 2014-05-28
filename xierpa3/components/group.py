@@ -11,8 +11,8 @@
 #    group.py
 #
 from xierpa3.components.container import Container
-from xierpa3.constants.constants import C
 from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Group(Container):
     pass
@@ -22,9 +22,10 @@ class ItemGroup(Group):
     Defined by a range of widths, a group of items is scaled to stay on the same line. If the screen width
     changes, then then the <b>clear</b> attribute is shifted value, so the line break takes place between another 
     set of items."""
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Selection stuff
-        itemStart=0, itemCount=12, # Index of first and last selected thumbnail for this component
+        itemStart=0, 
+        itemCount=12, # Index of first and last selected thumbnail for this component
         # Layout stuff
         colWidth=12,
         # Group stuff
@@ -40,6 +41,7 @@ class ItemGroup(Group):
         mediaStyles = Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
                  minwidth=0, width=self.AUTO, paddingleft=0, paddingright=0, margin=0)
 
+        print '33322323', s.itemCount
         for index in range(s.itemCount):
             # Build all child components of the generic group.
             #print index, s.columns, index % s.columns, index % s.columns == s.columns-1

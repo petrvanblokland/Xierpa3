@@ -13,10 +13,11 @@
 from xierpa3.components.container import Container
 from xierpa3.constants.constants import C
 from xierpa3.attributes import Em
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Footer(Container):
 
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint( 
         # Layout stuff
         colDisplay=C.BLOCK, colClear=C.BOTH, colMarginBottom=Em(0.5), colColor=None,
         colMarginRight='1.8%', colMarginLeft=0, colFloat=C.LEFT, colMinHeight=1,  

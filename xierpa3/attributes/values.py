@@ -48,7 +48,40 @@ class Z(Value):
     def __init__(self, value):
         self.value = value
 
-class Px(Value):
+class BaseCalculator(Value):
+    u"""Abstract <b>BaseCalculator</b> class to support arithmetic with measurements of the same type."""
+    def rawValue(self):
+        return self._value
+     
+    def __add__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() + value)
+        return None
+    
+    def __sub__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() - value)
+        return None
+
+    def __mul__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() * value)
+        return None
+
+    def __div__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() / value)
+        return None
+    
+class Px(BaseCalculator):
     u"""Answer 100px"""
     def __init__(self, value):
         self._value = value
@@ -62,7 +95,7 @@ class Px(Value):
 
     value = property(_get_value)
 
-class Perc(Value):
+class Perc(BaseCalculator):
     u"""Answer 100%"""
     def __init__(self, value):
         self._value = value
@@ -74,7 +107,9 @@ class Perc(Value):
             return '%d%%' % self._value
         return self._value
     
-class Em(Value):
+    value = property(_get_value)
+    
+class Em(BaseCalculator):
     
     def __init__(self, value):
         #

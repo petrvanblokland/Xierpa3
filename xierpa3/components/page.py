@@ -11,20 +11,29 @@
 #    page.py
 #
 from xierpa3.components.component import Component
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Page(Component):
 
+    CC = Component # Access constants through parent class.
+    
+    BLUEPRINT = BluePrint(
+        name='Untitled', doc_name=u'Name of the page.',
+        class_=CC.CLASS_PAGE, doc_pageClass=u'Class of the page. Defailt = CLASS_PAGE', 
+    )
     def reset(self):
-        u"""Gets called prior to every page render. Can be redefined by inheriting theme classes.
+        u"""Gets called prior to every page build. Can be redefined by inheriting theme classes.
         Default behavior is to do nothing."""
         pass
 
     def block(self, b):
-        b.div(class_=self.class_ or self.name) # @@@@ Page?
+        s = self.style
+        b.div(class_=s.class_ or s.name or self.class_ or self.name)
         b.comment(self.name)
         
     def _block(self, b):
-        b._div(comment=self.name) # End comment is automatic.
+        s = self.style
+        b._div(comment=s.class_ or s.name or self.class_ or self.name) # End comment is automatic.
         
     def buildBlock(self, b):
         u"""

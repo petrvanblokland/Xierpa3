@@ -39,7 +39,9 @@
 #
 import weakref
 import hashlib
+import inspect
 from xierpa3.descriptors.style import Style
+from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
@@ -48,7 +50,9 @@ class Component(C):
     u"""
     The Component describes the abstract behavior of components on the page.
     """
-
+    # Root default style template. To be cascaded by inheriting classes.
+    BLUEPRINT = BluePrint()
+        
     ADAPTER = None # To be inherited or defined separately into the component.
     TAGNAME = 'div' # By default every component has a root div element.
     BUILD_CSS = True # Default behavior of every component is to build in CSS.
@@ -346,10 +350,6 @@ class Component(C):
 
     # self.style
 
-    def fromBluePrint(self):
-        u"""Answer a copy of the component <b>self.BLUEPRINT</b>."""
-        return self.BLUEPRINT.copy()
-
     def newStyle(self, selector=None, d=None):
         u"""Answer a new style with <b>selection</b> and attributes defined in the optional <i>d</i> dictionary."""
         if d is None:
@@ -365,9 +365,18 @@ class Component(C):
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
-        u"""Answer self._style. If it doesn't exist yet, create the default style from self.copyBluePrint."""
+        u"""Answer self._style. If it doesn't exist yet, create the default style from self.copyBluePrint.
+        If not defined yet, then create a new instance of <b>Style</b>, initialized by the aggregation of the cascading
+        <b>self.BLUEPRINT</b> of the inherited classes."""
         if self._style is None:
-            self._style = self.copyFromBuePrint()
+            self._style = self.newStyle()
+            inheritedClasses = list(inspect.getmro(self.__class__))
+            inheritedClasses.reverse()
+            for inheritedClass in inheritedClasses:
+                if hasattr(inheritedClass, 'BLUEPRINT'):
+                    self._style.addBluePrint(inheritedClass.BLUEPRINT) 
+            self._style.addBluePrint(self.BLUEPRINT)
+        print self._style.keys()
         return self._style
 
     def _set_style(self, style):

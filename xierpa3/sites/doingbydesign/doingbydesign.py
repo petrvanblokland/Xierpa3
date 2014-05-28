@@ -50,18 +50,11 @@ class DoingByDesign(Shop):
     TEMPLATE_PRODUCTS = 'products'
     
     URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    
-    URL_FONTS = (
-        # Topaz (Benton Sans RE)
-        'http://cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css',
-    )
     URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = DbDAdapter(root=TX.module2Path(doingbydesign) + '/files/articles')
 
-    CSS_BODYFONT = '"BentonSansRE"'
-    CSS_HEADFONT = '"BentonSansCond Medium"'
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
     CSS_BGCOLOR = '#FFFFFF'
@@ -89,7 +82,7 @@ class DoingByDesign(Shop):
     #css = property(_get_css, _set_css)
 
     def baseStyle(self):
-        s = StyleSet() # Answer root style without selector
+        s = self.style # Answer root style without selector
         s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)

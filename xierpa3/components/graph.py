@@ -12,10 +12,11 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.toolbox.transformer import TX 
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Graph(Component):
 
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Layout stuff
     )
     def buildBlock(self, b):

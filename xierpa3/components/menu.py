@@ -19,7 +19,7 @@ class Menu(Component):
     by adapter id <b>C.ADAPTER_MENU</b>."""
     CC = Component # Access to constants through super class.
     
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint(
         # Block stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
         # nav stuff

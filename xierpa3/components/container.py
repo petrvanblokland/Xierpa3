@@ -13,11 +13,13 @@
 from xierpa3.components.component import Component
 from xierpa3.attributes import Margin
 from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Container(Component):
 
-    MAXCOL = Component.MAXCOL
-    
+    BLUEPRINT = BluePrint( 
+        maxColumns=Component.MAXCOL, doc_maxColumns=u'Maximum number of columns in this component.',
+    )
     def initialize(self):
         s = self.style
         self.addMedia(max=self.M_MOBILE_MAX, display=s.mobileDisplay) # No header in Mobile layout
@@ -26,9 +28,9 @@ class Container(Component):
         for component in self.components:
             totalWidth += component.style.colWidth or 0
         if self.DEBUG: # If debugging, show some analysis about the use of columns.
-            if totalWidth > self.MAXCOL:
+            if totalWidth > s.maxColumns:
                 print '### Column error ###', totalWidth, self.components  
-            elif 0 < totalWidth < self.MAXCOL:
+            elif 0 < totalWidth < self.s.maxColumns:
                 print '### Column warning ###', totalWidth, self.components  
 
     def buildBlock(self, b):
@@ -36,7 +38,7 @@ class Container(Component):
         The components know their own column widths."""
         s = self.style
         b.block(self)
-        containerClass = self.class_ or self.className
+        containerClass = s.class_ or self.class_ or self.className
         b.div(class_=(self.CLASS_CONTAINER, containerClass), display=s.containerDisplay or self.BLOCK,
             width=s.containerWidth, height=s.containerHeight,
             marginleft=s.containerMarginLeft, margintop=s.containerMarginTop,

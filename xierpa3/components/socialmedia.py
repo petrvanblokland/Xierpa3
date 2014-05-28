@@ -13,10 +13,11 @@
 from xierpa3.components.column import Column
 from xierpa3.constants.constants import C
 from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class SocialMedia(Column):
     
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint( 
         # layout
         colWidth=4,
         # Twitter

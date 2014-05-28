@@ -48,25 +48,11 @@ class Typo2014(Shop):
     TEMPLATE_PRODUCTS = 'products'
     
     URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    
-    URL_FONTS = (
-        # Google
-        'http://fonts.googleapis.com/css?family=Bree+Serif',
-        #'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-        # Webtype project Poynter
-        #'http://cloud.webtype.com/css/0d2e9f93-9866-45e1-8119-9b678ba5ce23.css'
-        # Webtype project Doing by Design (Proforma & Rocky)
-        #'http://cloud.webtype.com/css/d5663b37-b395-4934-9f68-2f7ccd9e8c87.css',
-        # Topaz (Benton Sans RE)
-        'http://cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css',
-    )
     URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
 
-    CSS_BODYFONT = '"BentonSansRE"'
-    CSS_HEADFONT = '"BentonSansCond Medium"'
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
     CSS_BGCOLOR = '#FFFFFF'
@@ -92,11 +78,11 @@ class Typo2014(Shop):
     css = property(_get_css, _set_css)
 
     def baseStyle(self):
-        s = StyleSet() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,
+        s = self.style # Answer root style without selector
+        s.addStyle('body', fontfamily=s.bodyFamily, fontsize=self.CSS_BODYSIZE,
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)
-        s.addStyle('h6', fontfamily=self.CSS_BODYFONT)
+        s.addStyle('h6', fontfamily=s.bodyFamily)
         s.addStyle('div', float=self.FLOAT_LEFT, width=self.C100)
         s.addStyle('a, a:link', color=self.CSS_ALINKCOLOR)
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)

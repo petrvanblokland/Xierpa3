@@ -18,6 +18,7 @@ from xierpa3.descriptors.blueprint import BluePrint
 class Logo(Component):
 
     CC = Component # Get constants from parent class.
+
     BLUEPRINT = BluePrint(
         # Layout stuff
         colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 

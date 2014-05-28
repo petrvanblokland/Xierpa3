@@ -12,7 +12,7 @@
 #
 from xierpa3.components.column import Column
 from xierpa3.toolbox.transformer import TX
-from xierpa3.attributes import Em, Border, Margin, Padding
+from xierpa3.attributes import Perc, Em, Border, Margin, Padding
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
@@ -22,6 +22,8 @@ class ArticleColumn(Column):
      
 class Article(ArticleColumn):
 
+    CC = ArticleColumn # Access constants through the parent class.
+    
     CHAPTERCOLOR = '#202020'
     SUMMARYCOLOR= CHAPTERCOLOR
     CHAPTERTITLECOLOR0 = '#1F1F1F'
@@ -34,7 +36,7 @@ class Article(ArticleColumn):
     TITLECOLOR= NAMECOLOR
 
     # Define the basic blue print style for this type of component.
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint( 
         # Layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
         # Post
@@ -72,7 +74,7 @@ class Article(ArticleColumn):
         # Chapter other pages
         chapterTitleSize1=Em(2.5), doc_chapterTitleSize1=u'Chapter title font size on second+ page.',
         chapterTitleColor1=None, doc_chapterTitleColor1=u'Chapter title color on second+ page.', 
-        chapterTitleMarginTop1=Em(1), doc_chapterTitleMarginTop0=u'Chapter title margin top on second+ page.',
+        chapterTitleMarginTop1=Em(1), doc_chapterTitleMarginTop1=u'Chapter title margin top on second+ page.',
         chapterTitleMarginBottom1=Em(0.5), doc_chapterTitleMarginBottom1=u'Chapter title margin bottom on second+ page.',
         # H1
         # H2
@@ -84,7 +86,7 @@ class Article(ArticleColumn):
         # H3
         h3Size=Em(2), doc_h3Size=u'Article h3 font size.', 
         h3LineHeight=Em(1.4), doc_h3LineHeight=u'Article h3 leading.',
-        h3PaddingTop=Em(1), doc_h3PaddingBottom=u'Article h3 padding bottom.',
+        h3PaddingTop=Em(1), doc_h3PaddingTop=u'Article h3 padding bottom.',
         h3PaddingBottom=0, doc_h3PaddingBottom=u'Article h3 color.',
         # Chapter p stuff
         articleSize=Em(1.1), doc_articleSize=u'Article p font size.',
@@ -106,14 +108,17 @@ class Article(ArticleColumn):
         numberedListMarginTop=Em(1),
         numberedListItemMarginBottom=Em(1),
         # Image & caption
-        imageMarginTop=Em(1), 
-        imageMarginBottom=Em(0.8), 
-        imagePaddingTop=None, 
-        imagePaddingBottom=None, 
-        imagePaddingLeft=None, 
-        imagePaddingRight=None, 
-        imageBackgroundColor=None,
-        captionFontStyle=ArticleColumn.ITALIC, 
+        imgMarginTop=Em(1), 
+        imgMarginBottom=Em(0.8), 
+        imgPaddingTop=None, 
+        imgPaddingBottom=None, 
+        imgPaddingLeft=None, 
+        imgPaddingRight=None, 
+        imgBackgroundColor=None,
+        imgClass=CC.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
+        imgMaxWidth=Perc(100), doc_imgMaxWidth=u'Image maximal width',
+        imgMinWidth=0, doc_imgMinWidth=u'Image minimal width', 
+        captionFontStyle=CC.ITALIC, 
         captionFontSize=Em(0.9), 
         captionMarginTop=Em(0.5),
         # Code
@@ -124,7 +129,7 @@ class Article(ArticleColumn):
         codePaddingBottom=0,
         codeMarginTop=Em(0.5), 
         codeMarginBottom=Em(0.5),
-        codeBackgroundColor=ArticleColumn.WHITE,
+        codeBackgroundColor=CC.WHITE,
     )
     def buildColumn(self, b):
         article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
@@ -270,11 +275,11 @@ class Article(ArticleColumn):
             margintop=s.codeMarginTop, marginbottom=s.codeMarginBottom,
         )
         b._pre()
-        # <div class="imageBlock"><img/><div class="caption">...</div></div>
-        b.div(class_=self.CLASS_IMAGEBLOCK, backgroundcolor=s.imageBackgroundColor, 
-            margintop=s.imageMarginTop, marginbottom=s.imageMarginBottom,
-            paddingtop=s.imagePaddingTop, paddingbottom=s.imagePaddingBottom,
-            paddingleft=s.imagePaddingLeft, paddingright=s.imagePaddingRight,)
+        # <div class="imgBlock"><img/><div class="caption">...</div></div>
+        b.div(class_=self.CLASS_IMAGEBLOCK, backgroundcolor=s.imgBackgroundColor, 
+            margintop=s.imgMarginTop, marginbottom=s.imgMarginBottom,
+            paddingtop=s.imgPaddingTop, paddingbottom=s.imgPaddingBottom,
+            paddingleft=s.imgPaddingLeft, paddingright=s.imgPaddingRight,)
         b.img()
         b.div(class_=self.CLASS_CAPTION, fontfamily=s.captionFontFamily, fontsize=s.captionFontSize,
             color=s.captionColor, fontstyle=s.captionFontStyle, 
@@ -313,15 +318,17 @@ class Article(ArticleColumn):
         b._em()
     
 class ArticleSideBar(ArticleColumn):
-    STYLE_DEFAULT = dict(
+    BLUEPRINT = BluePrint( 
         # Layout stuff
         colWidth=4, # Default amount of columns for this component   
         # Chapter navigation
-        showChapterNavigation=True, chapterLabel='Chapters',
+        showChapterNavigation=True, 
+        chapterLabel='Chapters',
         chapterNameSize=Em(1.2),
         showChapterSummaryOnMax=10, # Not show summary if more than 10 chapters
         # Footnotes
-        showFootNotes=True, footnoteLabel='Footnotes', 
+        showFootNotes=True, 
+        footnoteLabel='Footnotes', 
     )
     def buildColumn(self, b):
         article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.e.form[self.PARAM_ARTICLE])

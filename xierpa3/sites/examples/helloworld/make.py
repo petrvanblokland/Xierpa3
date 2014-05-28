@@ -27,7 +27,7 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class HelloWorldText(Column):
     def buildBlock(self, b):
-        b.div(color='red')
+        b.div(color='red') # Single style attribute, just to show how it works.
         b.text('Hello world.')
         b._div()
         
