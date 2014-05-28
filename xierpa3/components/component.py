@@ -44,6 +44,7 @@ from xierpa3.descriptors.style import Style
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
+from xierpa3.attributes import Perc
 from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
 
 class Component(C):
@@ -51,7 +52,12 @@ class Component(C):
     The Component describes the abstract behavior of components on the page.
     """
     # Root default style template. To be cascaded by inheriting classes.
-    BLUEPRINT = BluePrint()
+    BLUEPRINT = BluePrint(
+        # Default behavior of images, use class autowidth to cover differences between browsers.
+        imgClass=C.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
+        imgMaxWidth=Perc(100), doc_imgMaxWidth=u'Image maximal width',
+        imgMinWidth=0, doc_imgMinWidth=u'Image minimal width',                           
+    )
         
     ADAPTER = None # To be inherited or defined separately into the component.
     TAGNAME = 'div' # By default every component has a root div element.
@@ -376,7 +382,6 @@ class Component(C):
                 if hasattr(inheritedClass, 'BLUEPRINT'):
                     self._style.addBluePrint(inheritedClass.BLUEPRINT) 
             self._style.addBluePrint(self.BLUEPRINT)
-        print self._style.keys()
         return self._style
 
     def _set_style(self, style):

@@ -27,6 +27,7 @@ class Article(ArticleColumn):
     CHAPTERCOLOR = '#202020'
     SUMMARYCOLOR= CHAPTERCOLOR
     CHAPTERTITLECOLOR0 = '#1F1F1F'
+    CHAPTERTITLECOLOR1 = CHAPTERTITLECOLOR0
     H2COLOR = '#828487'
     AUTHORCOLOR = H2COLOR
     CATEGORYCOLOR = H2COLOR
@@ -73,7 +74,7 @@ class Article(ArticleColumn):
         chapterTitleMarginBottom0=Em(0.5), doc_chapterTitleMarginBottom0=u'Chapter title margin bottom on first page.',
         # Chapter other pages
         chapterTitleSize1=Em(2.5), doc_chapterTitleSize1=u'Chapter title font size on second+ page.',
-        chapterTitleColor1=None, doc_chapterTitleColor1=u'Chapter title color on second+ page.', 
+        chapterTitleColor1=CHAPTERTITLECOLOR1, doc_chapterTitleColor1=u'Chapter title color on second+ page.', 
         chapterTitleMarginTop1=Em(1), doc_chapterTitleMarginTop1=u'Chapter title margin top on second+ page.',
         chapterTitleMarginBottom1=Em(0.5), doc_chapterTitleMarginBottom1=u'Chapter title margin bottom on second+ page.',
         # H1

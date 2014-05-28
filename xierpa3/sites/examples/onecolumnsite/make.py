@@ -32,7 +32,6 @@ class ExampleColumn(Column):
     
     CC = Column # Get constants from parent class.
     BLUEPRINT = BluePrint(
-        classColumn=Column.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
         minWidth=300, doc_minWidth='Column minimal width.',
         minWidthMobile=0, doc_minWidthMobile=u'Column minimal width for mobile.',
         maxWidth=700, doc_maxWidth='Column maximal width.',
@@ -130,7 +129,7 @@ class ExampleColumn(Column):
                     # Build the image that came with the featured article, if it exists.
                     # Make it class autowidth to solve the width="100%" incompatibility
                     # between browsers.
-                    b.img(src=data.image, class_=s.classImg, maxwidth=s.imgMaxWidth,
+                    b.img(src=data.image, class_=s.imgClass, maxwidth=s.imgMaxWidth,
                         minwidth=s.imgMinWidth, margintop=s.imgMarginTop,
                         marginbottom=s.imgMarginBottom)
                 # Output the rest of the featured article.

@@ -50,8 +50,8 @@ class State(object):
     def __getattr__(self, key):
         if key.startswith('doc_'):
             return self._docs.get(key)
-        if self._docs.has_key(key):
-            return self._docs[key]
+        if self._items.has_key(key):
+            return self._items[key]
         return self.__dict__.get(key)
 
     def items(self):
