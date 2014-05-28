@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -231,8 +231,8 @@ class TitlecaseTests(unittest.TestCase):
         text = titlecase(
             u'Reading between the lines of steve jobs’s ‘thoughts on music’'
         )
-        result = u'Reading Between the Lines of Steve Jobs’s ‘Thoughts on '\
-            'Music’'
+        result = u'Reading Between the Lines of Steve Jobs’s ‘Thoughts on \
+            Music’'
         self.assertEqual(text, result, "%s should be: %s" % (text, result, ))
 
     def test_repair_perms(self):
