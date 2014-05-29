@@ -44,7 +44,7 @@ from xierpa3.descriptors.style import Style
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
-from xierpa3.attributes import Perc
+from xierpa3.attributes import Perc, Color
 from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
 
 class Component(C):
@@ -117,6 +117,17 @@ class Component(C):
         # Always answer None for missing attributes.
         return self.__dict__.get(key)
 
+    def _getInheritedClasses(self):
+        u"""Answer the list of inherited classes by this component."""
+        return list(inspect.getmro(self.__class__))
+    
+    def _getInheritedClassNames(self):
+        u"""Answer the list of inherited class names by this component."""
+        names = []
+        for cls in self._getInheritedClasses():
+            names.append(cls.__name__)
+        return names
+    
     @classmethod
     def getClassName(cls):
         u"""
@@ -280,12 +291,24 @@ class Component(C):
         b._div()
         b._page(self)
         
-    def buildDocumentationBlock(self, b):
+    def buildDocumentationBlock(self, b, processed=None):
+        if processed is None:
+            processed = set()
+        if self in processed:
+            return
+        
+        processed.add(self)
+        
         name = self.__class__.__name__
         b.block(self)
         b.h1(color='red', fontfamily='Verdana', fontsize=14)
         b.text('Documentation of %s' % name)
         b._h1()
+        # Inheritance 
+        b.p()
+        b.text(u'Inheritance: <b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
+        b._p()
+        # Doc string it is exists.
         if self.__doc__:
             b.p()
             b.text(self.__doc__)
@@ -295,7 +318,11 @@ class Component(C):
             componentList = []
             for component in self.components:
                 componentList.append(component.name)
-            b.text('<b>%s</b> contains %d child components: <b>%s</b>.' % (name, len(componentList), ', '.join(componentList)))
+            if len(componentList) > 1:
+                componentLabel = 'components'
+            else:
+                componentLabel = 'component'
+            b.text('<b>%s</b> contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
         else:
             b.text('<b>%s</b> has no child components.' % name)
         b._p()
@@ -313,15 +340,23 @@ class Component(C):
             b.text(key)
             b._td()
             b.td(textalign=self.RIGHT)
-            if isinstance(value, basestring):
-                if value.startswith('//'):
-                    b.img(src=value, width=50) # Show the image
-                elif len(value) > 50:
-                    b.text(value[:50] + '...')
-                else:
-                    b.text(value)
-            else:
+            if value is None:
+                b.span(style='color:#888;')
+                b.text('(Inherited)')
+                b._span()
+            elif isinstance(value, Color):
                 b.text('%s' % value)
+                b.span(style='background-color:%s;' % value)
+                b.text('&nbsp;'*4)
+                b._span()
+            elif not isinstance(value, basestring):
+                b.text('%s' % value)
+            elif value.startswith('//'):
+                b.img(src=value, width=50) # Show the image
+            elif len(value) > 50:
+                b.text(value[:50] + '...')
+            else:
+                b.text(value)
             b._td()
             b.td()
             b.text(self.style.getDoc(key))
@@ -330,7 +365,7 @@ class Component(C):
         b._table()
         # Show recursively the rest of the components 
         for component in self.components:
-            component.buildDocumentationBlock(b)
+            component.buildDocumentationBlock(b, processed)
         b.block(self)
         
     # X M L  R E N D E R I N G
@@ -439,7 +474,8 @@ class Component(C):
         <b>self.BLUEPRINT</b> of the inherited classes."""
         if self._style is None:
             self._style = self.newStyle()
-            inheritedClasses = list(inspect.getmro(self.__class__))
+            # Get the list of classes that self is inheriting from.
+            inheritedClasses = self._getInheritedClasses()
             inheritedClasses.reverse()
             for inheritedClass in inheritedClasses:
                 if hasattr(inheritedClass, 'BLUEPRINT'):

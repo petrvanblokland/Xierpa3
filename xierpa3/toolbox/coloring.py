@@ -422,7 +422,7 @@ def _col2hex(c, hx='#'):
         if len(h) == 1:
             h = '0' + h
         hx += h
-    return hx
+    return hx.upper()
 
 def _valueincrease(c, v):
     c += (1 - c) * v / 100.0

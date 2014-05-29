@@ -16,8 +16,7 @@
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.descriptors.style import StyleSet
-from xierpa3.attributes import Em
+from xierpa3.attributes import Em, Color
 from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
@@ -57,9 +56,9 @@ class DoingByDesign(Shop):
 
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
-    CSS_BGCOLOR = '#FFFFFF'
-    CSS_FOOTERBGCOLOR = '#E1E1E1'
-    CSS_ALINKCOLOR = '#888888'
+    CSS_BGCOLOR = Color('#FFFFFF')
+    CSS_FOOTERBGCOLOR = Color('#E1E1E1')
+    CSS_ALINKCOLOR = Color('#888888')
     CSS_AVISITEDCOLOR = '+60%'
     CSS_AHOVERCOLOR = '-60%'
     CSS_ACTIVECOLOR = '+60%'
@@ -120,12 +119,12 @@ class DoingByDesign(Shop):
         featuredByText = FeaturedByText(itemStart=2, showPoster=False)
         featuredByTextList = FeaturedByTextList(itemStart=5)
         # Featured black container
-        BGCOLOR = '#323A47'
+        BGCOLOR = Color('#323A47')
         featuredImages = Featured(class_='featuredImages', 
             components=(featuredByImage, featuredSideText),
             containerBackgroundColor=BGCOLOR)
         # Featured text container
-        BGCOLOR = '#E8E8E8'
+        BGCOLOR = Color('#E8E8E8')
         featuredTexts = Featured(class_='featuredTexts', 
             components=(featuredByText, featuredByTextList),
             containerBackgroundColor=BGCOLOR)

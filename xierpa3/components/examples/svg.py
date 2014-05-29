@@ -12,20 +12,20 @@
 #
 from xierpa3.components.component import Component
 from xierpa3.constants.constants import C
-from xierpa3.attributes import Px, Perc
+from xierpa3.attributes import Px, Perc, Color
 from xierpa3.attributes import LinearGradient
 from xierpa3.descriptors.blueprint import BluePrint
 
-CHAPTERCOLOR = '#202020'
-CHAPTERTITLECOLOR0 = '#1F1F1F'
-AUTHORCOLOR = '#828487'
-CATEGORYCOLOR = '#828487'
-LABELCOLOR = '#828487'
-LEADCOLOR = '#828487'
-NAMECOLOR= '#66696C'
-TITLECOLOR= '#66696C'
-SUMMARYCOLOR= '#202020'
-H2COLOR = '#828487'
+CHAPTERCOLOR = Color('#202020')
+SUMMARYCOLOR= CHAPTERCOLOR
+CHAPTERTITLECOLOR0 = Color('#1F1F1F')
+H2COLOR = Color('#828487')
+AUTHORCOLOR = H2COLOR
+CATEGORYCOLOR = AUTHORCOLOR
+LABELCOLOR = AUTHORCOLOR
+LEADCOLOR = AUTHORCOLOR
+NAMECOLOR= Color('#66696C') 
+TITLECOLOR= NAMECOLOR
 
 class SvgExample(Component):
 

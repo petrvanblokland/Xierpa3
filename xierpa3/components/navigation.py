@@ -11,7 +11,7 @@
 #    navigation.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import Perc, Px, Em, Border, Z, Margin
+from xierpa3.attributes import Perc, Px, Em, Border, Z, Margin, Color
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
@@ -33,7 +33,7 @@ class MobileNavigation(Navigation):
         width=None, doc_width=u'Mobile navigation container width.', 
         minWidth=0, doc_minWidth=u'Mobile navigation container minimal width', 
         # Navigation stuff
-        backgroundColor='#323A47', doc_backgroundColor='Mobile navigation background color.',
+        backgroundColor=Color('#323A47'), doc_backgroundColor='Mobile navigation background color.',
         fontSize=Em(1.4), doc_fontSize=u'Mobile navigation font size.', 
         lineHeight=Em(1.1), doc_lineHeight=u'Mobile navigation leading.',
         marginLeft=0, doc_marginLeft=u'Mobile navigation margin left.',
@@ -45,7 +45,7 @@ class MobileNavigation(Navigation):
         itemCount=20, doc_itemCount=u'Preferred/max amount of pages, suggestion to the adapter.',
         menuHeight=Px(44), doc_menuHeight=u'Menu height.',
         menuMargin=0, doc_menuMargin=u'Menu margin.', 
-        menuBackgroundColor='#323A47', doc_menuBackgroundColor=u'Menu background color.',
+        menuBackgroundColor=Color('#323A47'), doc_menuBackgroundColor=u'Menu background color.',
         menuZIndex=Z(1000), doc_menuZIndex='Menu Z index', 
         menuBorderBottom=Border('1 solid white'), doc_menuBorderBottom=u'Menu border bottom.',
         menuWidth=Perc(100), doc_menuWidth=u'Menu width.', 
@@ -57,7 +57,7 @@ class MobileNavigation(Navigation):
         listFontSize=None,
         # Menu
         menuType=CC.LIST, doc_menuType=u'Default is plain navigation list. Set to “menu” for menu.',
-        menuListBackgroundColor='#828487',
+        menuListBackgroundColor=Color('#828487'),
         menuIconUrl='//data.doingbydesign.com.s3.amazonaws.com/_images/menu_icon.png', doc_menuIconUrl=u'Url of the menu icon',
         # Link stuff
         linkColor=CC.WHITE, doc_linkColor=u'Link color',
@@ -103,7 +103,7 @@ class MobileNavigation(Navigation):
                     url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
                 b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=self.C100, liststyletype=self.NONE,
                     borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
-                b.a(href=url, color='#E8E8E8')
+                b.a(href=url, color=Color('#E8E8E8'))
                 b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
                 b._a()
                 b._li()

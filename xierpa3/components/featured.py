@@ -21,12 +21,11 @@ from xierpa3.descriptors.blueprint import BluePrint
 LEVELSIZE = Em(0.9)
 AUTHORSIZE = Em(1.2)
 CATEGORYSIZE = Em(1.4)
-AUTHORCOLOR = '#828487'
-CATEGORYCOLOR = '#828487'
-LABELCOLOR = '#828487'
-NAMECOLOR= '#66696C'
-SUMMARYCOLOR= '#202020'
-
+AUTHORCOLOR = Color('#828487')
+CATEGORYCOLOR = AUTHORCOLOR
+LABELCOLOR = AUTHORCOLOR
+NAMECOLOR= Color('#66696C')
+SUMMARYCOLOR= Color('#202020')
 
 class Featured(Container):
     pass
@@ -52,11 +51,11 @@ class FeaturedByImage(FeaturedBase):
         itemCount=24, doc_itemCount=u'Number of selected items to feature.',
         # Col layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
-        colMarginRight=Perc(1.8), 'Div.col margin right.',
-        colMarginLeft=0, 'Div.col margin left.',
-        colFloat=C.LEFT, 'Div.col float',
-        colMinHeight=1, 'Div.col minimal height.',
-        colDisplay=C.BLOCK, 'Div.col display type.',
+        colMarginRight=Perc(1.8), doc_colMarginRight=u'Div.col margin right.',
+        colMarginLeft=0, doc_colMarginLeft=u'Div.col margin left.',
+        colFloat=C.LEFT, doc_colFloat=u'Div.col float',
+        colMinHeight=1, doc_colMinHeight=u'Div.col minimal height.',
+        colDisplay=C.BLOCK, doc_colDisplay=u'Div.col display type.',
         # Mobile stuff
         mobileDisplay=C.NONE,
         mobilePaddingTop=Em(2), 
@@ -271,7 +270,9 @@ class FeaturedByDiapText(FeaturedByText):
         itemStart=0, itemCount=10, 
         itemRandom=True, doc_itemRandom=u'Choose random from the selected items.',
         # Label stuff 
-        label=None, labelSize=Em(2.2), labelColor='#828487', labelMarginBottom=Em(0.5),
+        label=None, labelSize=Em(2.2), 
+        labelColor=Color('#828487'), doc_labelColor=u'Label color.',
+        labelMarginBottom=Em(0.5),
         labelMarginTop=Em(0.3),
         # Poster
         showPoster=True, posterWidth='40%',
@@ -279,25 +280,44 @@ class FeaturedByDiapText(FeaturedByText):
         colWidth=8, # Default amount of columns for this component
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         showLevel=True, genericLevel='Generic', # Show generic level if level is omitted in data.
-        levelColor='#6294D0', levelSize=LEVELSIZE, levelWeight=C.BOLD, levelMarginTop=Em(0.5),
+        levelColor=Color('#6294D0'), 
+        levelSize=LEVELSIZE, 
+        levelWeight=C.BOLD, 
+        levelMarginTop=Em(0.5),
         # Category stuff in h5
-        showCategory=False, categoryColor=CATEGORYCOLOR, categorySize=Em(1.8), 
-        categoryLineHeight=Em(1.2), categoryWeight=C.BOLD,
+        showCategory=False, 
+        categoryColor=CATEGORYCOLOR, 
+        categorySize=Em(1.8), 
+        categoryLineHeight=Em(1.2), 
+        categoryWeight=C.BOLD,
         # Name stuff in h2
-        nameSize=Em(1.8), nameLineHeight=Em(1.1), nameWeight=None, # Default inheriting from the main weight.
-        nameColor='#E1E1E1', nameMarginBottom=Em(0.2), nameMarginTop=0,
+        nameSize=Em(1.8), 
+        nameLineHeight=Em(1.1), 
+        nameWeight=None, # Default inheriting from the main weight.
+        nameColor=Color('#E1E1E1'), 
+        nameMarginBottom=Em(0.2), 
+        nameMarginTop=0,
         nameDisplay=C.BLOCK,
         # Author stuff in h6
-        authorSize=AUTHORSIZE, authorWeight=C.NORMAL, authorColor='#B2B4B7', # Inheriting from the main color as default
-        authorDisplay=C.BLOCK, authorLineHeight=Em(1.4),
+        authorSize=AUTHORSIZE, 
+        authorWeight=C.NORMAL, 
+        authorColor=Color('#B2B4B7'), # Inheriting from the main color as default
+        authorDisplay=C.BLOCK, 
+        authorLineHeight=Em(1.4),
         # Summary stuff
-        summaryColor=C.WHITE, summaryMarginTop=Em(0.4), summaryMarginBottom=Em(0.5),
+        summaryColor=C.WHITE, 
+        summaryMarginTop=Em(0.4), 
+        summaryMarginBottom=Em(0.5),
         # Tablet stuff
         tabletLabelSize=Em(1.5),
         # Mobile stuff
         mobileDisplay=C.NONE,
-        mobilePaddingTop=Em(2), mobilePaddingBottom=Em(0.5), mobilePaddingLeft=Em(0.5), mobilePaddingRight=Em(0.5),
-        mobileMarginTop=Em(2), mobileMarginBottom=Em(0.5), mobileMarginLeft=Em(0.5), mobileMarginRight=Em(0.5),
+        mobilePaddingTop=Em(2), 
+        mobilePaddingBottom=Em(0.5), 
+        mobilePaddingLeft=Em(0.5), mobilePaddingRight=Em(0.5),
+        mobileMarginTop=Em(2), 
+        mobileMarginBottom=Em(0.5), 
+        mobileMarginLeft=Em(0.5), mobileMarginRight=Em(0.5),
         mobileFloat=C.NONE, 
     )
        
@@ -310,13 +330,13 @@ class FeaturedByTextList(FeaturedBase):
         # Layout stuff
         colWidth=4, # Default amount of columns for this component
         # Category stuff in h5
-        categoryColor='#828487', categorySize=Em(0.9), categoryLineHeight=Em(1.2), 
+        categoryColor=Color('#828487'), categorySize=Em(0.9), categoryLineHeight=Em(1.2), 
         categoryWeight=C.NORMAL, categoryMarginTop=Em(1), categoryDisplay=C.BLOCK,
         # Name stuff in h2
-        nameColor='#4080D0', nameSize=Em(1.4), nameWeight=C.NORMAL, nameDisplay=C.BLOCK, 
+        nameColor=Color('#4080D0'), nameSize=Em(1.4), nameWeight=C.NORMAL, nameDisplay=C.BLOCK, 
         nameMarginBottom=Em(0.2), nameMarginTop=Em(0.2), nameLineHeight=Em(1.2),
         # Topic stuff
-        topicColor='#202020',
+        topicColor=Color('#202020'),
         # Mobile stuff
         mobileDisplay=C.NONE,
         mobilePaddingTop=Em(2), mobilePaddingBottom=Em(0.5), mobilePaddingLeft=Em(0.5), mobilePaddingRight=Em(0.5),

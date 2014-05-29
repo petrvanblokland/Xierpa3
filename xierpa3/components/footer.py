@@ -19,15 +19,28 @@ class Footer(Container):
 
     BLUEPRINT = BluePrint( 
         # Layout stuff
-        colDisplay=C.BLOCK, colClear=C.BOTH, colMarginBottom=Em(0.5), colColor=None,
-        colMarginRight='1.8%', colMarginLeft=0, colFloat=C.LEFT, colMinHeight=1,  
+        colDisplay=C.BLOCK, 
+        colClear=C.BOTH, 
+        colMarginBottom=Em(0.5), 
+        colColor=None,
+        colMarginRight='1.8%', 
+        colMarginLeft=0, 
+        colFloat=C.LEFT, 
+        colMinHeight=1,  
         # Layout stuff
         colWidth=12, # Default amount of columns for this component       
         # Mobile stuff
         mobileDisplay=C.NONE,
-        mobilePaddingTop=Em(2), mobilePaddingBottom=Em(0.5), mobilePaddingLeft=Em(0.5), mobilePaddingRight=Em(0.5),
-        mobileMarginTop=Em(2), mobileMarginBottom=Em(0.5), mobileMarginLeft=Em(0.5), mobileMarginRight=Em(0.5),
-        mobileFloat=C.NONE, mobileWidth=C.AUTO,
+        mobilePaddingTop=Em(2), 
+        mobilePaddingBottom=Em(0.5), 
+        mobilePaddingLeft=Em(0.5), 
+        mobilePaddingRight=Em(0.5),
+        mobileMarginTop=Em(2), 
+        mobileMarginBottom=Em(0.5), 
+        mobileMarginLeft=Em(0.5), 
+        mobileMarginRight=Em(0.5),
+        mobileFloat=C.NONE, 
+        mobileWidth=C.AUTO,
     )
     def buildBlock(self, b):
         s = self.style

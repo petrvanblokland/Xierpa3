@@ -12,7 +12,7 @@
 #
 from xierpa3.components.column import Column
 from xierpa3.toolbox.transformer import TX
-from xierpa3.attributes import Perc, Em, Border, Margin, Padding
+from xierpa3.attributes import Perc, Em, Border, Margin, Padding, Color
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
@@ -24,16 +24,16 @@ class Article(ArticleColumn):
 
     CC = ArticleColumn # Access constants through the parent class.
     
-    CHAPTERCOLOR = '#202020'
+    CHAPTERCOLOR = Color('#202020')
     SUMMARYCOLOR= CHAPTERCOLOR
-    CHAPTERTITLECOLOR0 = '#1F1F1F'
+    CHAPTERTITLECOLOR0 = Color('#1F1F1F')
     CHAPTERTITLECOLOR1 = CHAPTERTITLECOLOR0
-    H2COLOR = '#828487'
+    H2COLOR = Color('#828487')
     AUTHORCOLOR = H2COLOR
     CATEGORYCOLOR = H2COLOR
     LABELCOLOR = H2COLOR
     LEADCOLOR = H2COLOR
-    NAMECOLOR= '#66696C'
+    NAMECOLOR= Color('#66696C')
     TITLECOLOR= NAMECOLOR
 
     # Define the basic blue print style for this type of component.
@@ -259,7 +259,7 @@ class Article(ArticleColumn):
             margin=s.blockQuoteMargin or Margin(Em(1.5), 10), 
             lineheight=s.blockQuoteLineHeight or Em(1.4), fontstyle=s.blockQuoteStyle or self.ITALIC,
             padding=s.blockQuotePadding or Padding(Em(0.5), 10), 
-            color=s.blockQuoteColor or '#828487')
+            color=s.blockQuoteColor or Color('#828487'))
         b._blockquote()
         # <em>
         b.em(fontstyle=s.emFontStyle, fontweight=s.emFontWeight,
