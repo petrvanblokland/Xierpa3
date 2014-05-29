@@ -52,11 +52,11 @@ class FeaturedByImage(FeaturedBase):
         itemCount=24, doc_itemCount=u'Number of selected items to feature.',
         # Col layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
-        colMarginRight=Perc(1.8), 
-        colMarginLeft=0, 
-        colFloat=C.LEFT, 
-        colMinHeight=1, 
-        colDisplay=C.BLOCK,
+        colMarginRight=Perc(1.8), 'Div.col margin right.',
+        colMarginLeft=0, 'Div.col margin left.',
+        colFloat=C.LEFT, 'Div.col float',
+        colMinHeight=1, 'Div.col minimal height.',
+        colDisplay=C.BLOCK, 'Div.col display type.',
         # Mobile stuff
         mobileDisplay=C.NONE,
         mobilePaddingTop=Em(2), 
