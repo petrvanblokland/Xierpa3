@@ -14,7 +14,9 @@ from xierpa3.components.component import Component
 from xierpa3.descriptors.blueprint import BluePrint
 
 class Page(Component):
-
+    u"""The <b>Page</b> component builds the content of a single page, dependent on
+    the parameters in the url."""
+    
     CC = Component # Access constants through parent class.
     
     BLUEPRINT = BluePrint(

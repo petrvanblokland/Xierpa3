@@ -47,9 +47,9 @@ class Documentation(BaseDocumentation):
     TEMPLATE_CATEGORY = 'category'
     TEMPLATE_PRODUCTS = 'products'
     
-    URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
+    URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
     
-    URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
+    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = DocumentationAdapter(root=TX.module2Path(documentation) + '/files/articles')

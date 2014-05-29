@@ -28,7 +28,7 @@ from xierpa3.attributes import Em, Margin
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class HelloWorldResponsiveText(Column):
-
+ 
     CSS_BODYFONT = 'Georgia'
     CSS_CAPTIONFONT = CSS_BODYFONT
     

@@ -49,8 +49,8 @@ class DoingByDesign(Shop):
     TEMPLATE_CATEGORY = 'category'
     TEMPLATE_PRODUCTS = 'products'
     
-    URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
+    URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
+    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = DbDAdapter(root=TX.module2Path(doingbydesign) + '/files/articles')
@@ -108,7 +108,8 @@ class DoingByDesign(Shop):
         menu = Menu()
         socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
 
-        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE)
+        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE,
+            doc_mobileContainerDisplay=u'Header is not visible for mobile')
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
         # Articles featured by image
         featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link

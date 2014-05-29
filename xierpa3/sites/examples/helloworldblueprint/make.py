@@ -15,29 +15,16 @@ from xierpa3.components import Theme, Page, Column
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.attributes import Em, Margin 
-from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
+from xierpa3.descriptors.media import Media 
 from xierpa3.descriptors.blueprint import BluePrint
 
-class SimpleResponsiveText(Column):
-
-    LORUMIPSUM = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel metus ullamcorper, porttitor ligula id, sollicitudin ante. Sed molestie cursus tortor, ut blandit felis tincidunt at. Suspendisse scelerisque malesuada massa, eu rhoncus nulla interdum ut. Morbi ullamcorper, leo pulvinar pharetra tincidunt, dolor quam ullamcorper lectus, in dignissim magna odio ut eros. Nulla vel enim a leo hendrerit auctor luctus nec urna. Donec ligula nunc, consequat ut aliquet in, auctor id nisl. Pellentesque malesuada tincidunt tortor, varius sollicitudin lorem dictum vitae. Duis vel neque non leo commodo faucibus. In dictum in mauris eget fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim scelerisque vitae."""
-    CC = Column # Access of constants through parent class.
+class HelloWorldResponsiveText(Column):
+ 
+    CC = Column
     
     BLUEPRINT = BluePrint(
-        margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
-        backgroundColor='#222', doc_backgroundColor=u'Column background color',
-        backgroundColorTablet='#444', doc_backgroundColorTable=u'Column background color for tablet.',
-        backgroundColorMobile='#BBB', doc_backgroundColorMobile=u'Column background color for mobile.', 
-        # Text
-        color='yellow', doc_color=u'Column text color.',
-        colorTablet='orange', doc_colorTablet=u'Column text color for tablet.',
-        colorMobile='red', doc_colorMobile=u'Column text color for mobile.',
-        fontSize=Em(4), doc_fontSize=u'Text font size.',
-        fontSizeTablet=Em(3), doc_fontSizeTablet=u'Text font size for tablet.',
-        fontSizeMobile=Em(2), doc_fontSizeMobile=u'Text font size for mobile.',
+        
     )
-    CSS_BODYFONT = 'Georgia'
-    CSS_CAPTIONFONT = CSS_BODYFONT
     
     def buildBlock(self, b):
         u"""Build the column. Note that although the "div" suggest that it is just
@@ -48,36 +35,73 @@ class SimpleResponsiveText(Column):
         Building the styled 2 text blocks, written out with duplicated values,
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
-        s = self.style
-        b.div(class_='column', color=s.color, margin=s.margin, 
-            width='80%', maxwidth=700, minwidth=300, 
-            backgroundcolor=s.backgroundColor,
+        b.div(class_='column', color='yellow', margin=Margin(0, self.AUTO), 
+            width='80%', maxwidth=700, minwidth=300, backgroundcolor='#222',
             paddingtop=Em(0.5), paddingbottom=Em(0.5), fontfamily=self.CSS_BODYFONT, 
-            fontsize=s.fontSize, textalign=self.LEFT, lineheight=Em(1.2),
+            fontsize=Em(4), textalign=self.CENTER, lineheight=Em(1.2),
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
-               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
-                   backgroundcolor=s.backgroundColorTablet, 
-                   color=s.colorTablet, fontsize=Em(3), width=self.C100),
+               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor='#444', color='orange', 
+                   fontsize=Em(3), width=self.C100),
                # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.M_MOBILE_MAX, 
-                   backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
-                   fontsize=Em(2), width=self.C100)
+               Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', color='red', fontsize=Em(2), 
+                   width=self.C100)
             ))
-        b.text(self.LORUMIPSUM)
+        b.text('Hello world.')
+        # One of the advantages of using a real programming language to generate 
+        # HTML/CSS code, is that repetitions can be written as a loop. Not necessary
+        # fewer lines, but more expandable and less redundant distribution of 
+        # knowledge in the code.
+        data = (
+            # class, minWidth, maxWidth,  text
+            ('c1', self.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
+            ('c2', self.M_TABLET_MIN, self.M_TABLET_MAX, 'Responsive tablet mode.' ),
+            ('c3', None, self.M_MOBILE_MAX, 'Responsive mobile mode..' ),
+        )
+        for class_, minWidth, maxWidth, text in data:
+            b.div(class_=class_, display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+                media=Media(min=minWidth, max=maxWidth, display=self.BLOCK))
+            b.text(text)
+            b._div()
+        """
+        b.div(class_='c1', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+            media=Media(min=self.M_DESKTOP_MIN, display=self.BLOCK))
+        b.text('Responsive desktop mode.')
+        b._div()
+        b.div(class_='c2', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+            media=Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, display=self.BLOCK))
+        b.text('Responsive tablet mode.')
+        b._div()
+        b.div(class_='c3', display=self.NONE, fontsize=Em(0.5), color=self.BLACK,
+            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK))
+        b.text('Responsive mobile mode.')
+        b._div()
+        """
+        b._div()
+        b.div(class_=self.CLASS_CAPTION, color='#888', margin=Margin(0, self.AUTO), 
+              width=self.C100, maxwidth=700, minwidth=300,
+              paddingtop=Em(0.5), fontfamily=self.CSS_CAPTIONFONT, fontsize=Em(0.8), 
+              textalign=self.CENTER, lineheight=Em(1.4), fontstyle=self.ITALIC,
+              # Change background color of the line to indicate the illustrate the difference for mobile size.
+              #media=Media(max=self.M_MOBILE_MAX, backgroundcolor='yellow', color='#222', fontsize=Em(1),
+              #  margin=0, width=self.C100),
+        )
+        b.text('Generated by Xierpa3.')
         b._div()
         
-class SimpleResponsive(Theme):
-    u"""The <b>SimpleResponsive</b> class implements a simple page with a text and an image."""
-    TITLE = u'The simple responsive text page.' # Use as title of window.
+class HelloWorldResponsive(Theme):
+    u"""The <b>HelloWorldResponsive</b> class implements a basic Hello World page, running as
+    batch process, saving the result as an HTML file. Double click the generated file or
+    drag to a browser see the result."""
+    TITLE = u'The responsive “Hello world” page.' # Use as title of window.
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of the text component to be placed on the page.
-        hw = SimpleResponsiveText()
+        hw = HelloWorldResponsiveText()
         # Create an instance (=object) of the page, containing the "hw" component.
         homePage = Page(components=(hw,), title=self.TITLE)
         # Answer a list of types of pages for this site.
@@ -104,5 +128,5 @@ class SimpleResponsive(Theme):
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
-    path = SimpleResponsive().make()
+    path = HelloWorldResponsive().make()
     webbrowser.open(path)

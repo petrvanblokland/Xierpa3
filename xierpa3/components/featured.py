@@ -43,7 +43,9 @@ class FeaturedBase(Column):
         self.buildFeatured(b, data)
    
 class FeaturedByImage(FeaturedBase):
-    
+    u"""The <b>FeaturedByImage</b> feature component, shows a featured article by its poster image.
+    If there is no poster image defined in the article meta data, then the first image in the article
+    is used here. The image is a link to the article page."""
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
@@ -94,8 +96,8 @@ class FeaturedByImage(FeaturedBase):
             b._div(comment=self.CLASS_FEATURED_ITEM)
   
 class FeaturedByImageList(FeaturedBase):
-    u"""The FeaturedByImageList builds a vertical list if thumbnails, level and optional names of the 
-    selected items."""
+    u"""The <b>FeaturedByImageList</b> feature component builds a vertical list if thumbnails, 
+    level and optional names of the selected article items."""
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
@@ -186,7 +188,9 @@ class FeaturedByText(FeaturedBase):
         nameColor=NAMECOLOR, nameMarginBottom=Em(0.2), nameMarginTop=0,
         nameDisplay=C.BLOCK,
         # Author stuff in h6
-        authorSize=AUTHORSIZE, authorWeight=C.NORMAL, authorColor=AUTHORCOLOR, # Inheriting from the main color as default
+        authorSize=AUTHORSIZE, 
+        authorWeight=C.NORMAL, 
+        authorColor=AUTHORCOLOR, doc_authorColor=u'Author name color.',
         authorDisplay=C.BLOCK, authorLineHeight=Em(1.4),
         # Summary stuff
         summaryColor=SUMMARYCOLOR, summarySize=Em(1.2), summaryLineHeight=Em(1.4),

@@ -20,7 +20,7 @@ def asValue(value):
 
 class Value(Attribute):
     def __repr__(self):
-        return self.value
+        return '%s' % self.value
 
 class Named(Value):
     u"""Show as Sass variable $name from the optional <i>name</i> or from the attribute name 

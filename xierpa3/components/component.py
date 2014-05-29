@@ -249,27 +249,90 @@ class Component(C):
         
     title = property(_get_title, _set_title)
     
-    def build(self, builder):
+    def build(self, b):
         u"""
         Test on the type of building to be done here. Normally the plain self.buildBlock will be called, but it is possible
         to catch the call by implementing a method, dedicated for a particular kind of builder. self.buildBlock_<builder.ID>
         will then called instead.
         """
-        hook = 'buildBlock_' + builder.ID
+        hook = 'buildBlock_' + b.ID
         buildBlock = getattr(self, hook)
         if buildBlock is None:
             buildBlock = self.buildBlock # Not special dispatch, use generic method instead.
-        buildBlock(builder)
+        buildBlock(b)
 
-    def buildBlock(self, builder):
+    def buildBlock(self, b):
         u"""
         Generic builder for all components. Can be redefined by an inheriting class.
         """
-        builder.block(self)
+        b.block(self)
         for component in self.components:
-            component.build(builder)
-        builder._block(self)
+            component.build(b)
+        b._block(self)
 
+    # D O C U M E N T A T I O N
+    
+    def buildDocumentation(self, b):
+        u"""Builder the documentation of self."""
+        b.page(self)
+        b.div(width=Perc(100))
+        self.buildDocumentationBlock(b)
+        b._div()
+        b._page(self)
+        
+    def buildDocumentationBlock(self, b):
+        name = self.__class__.__name__
+        b.block(self)
+        b.h1(color='red', fontfamily='Verdana', fontsize=14)
+        b.text('Documentation of %s' % name)
+        b._h1()
+        if self.__doc__:
+            b.p()
+            b.text(self.__doc__)
+            b._p()
+        b.p()
+        if self.components:
+            componentList = []
+            for component in self.components:
+                componentList.append(component.name)
+            b.text('<b>%s</b> contains %d child components: <b>%s</b>.' % (name, len(componentList), ', '.join(componentList)))
+        else:
+            b.text('<b>%s</b> has no child components.' % name)
+        b._p()
+        # Show the component style
+        b.table(width=Perc(100))
+        b.tr()
+        for label, width in (('Name', Perc(25)), ('Value', Perc(25)), ('Description', Perc(50))):
+            b.th(width_html=width)
+            b.text(label)
+            b._th()
+        b._tr()
+        for key, value in sorted(self.style.items()):
+            b.tr()
+            b.td()
+            b.text(key)
+            b._td()
+            b.td(textalign=self.RIGHT)
+            if isinstance(value, basestring):
+                if value.startswith('//'):
+                    b.img(src=value, width=50) # Show the image
+                elif len(value) > 50:
+                    b.text(value[:50] + '...')
+                else:
+                    b.text(value)
+            else:
+                b.text('%s' % value)
+            b._td()
+            b.td()
+            b.text(self.style.getDoc(key))
+            b._td()
+            b._tr()
+        b._table()
+        # Show recursively the rest of the components 
+        for component in self.components:
+            component.buildDocumentationBlock(b)
+        b.block(self)
+        
     # X M L  R E N D E R I N G
     
     def buildElement(self, b, element):

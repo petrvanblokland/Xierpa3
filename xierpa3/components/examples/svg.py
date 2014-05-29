@@ -72,7 +72,7 @@ class SvgExample(Component):
         b.circle(x='50%', y=50, r=20, fill='green', fillopacity=0.5)
         b.circle(x='48%', y=35, r=10, fill='white', fillopacity=0.6) 
 
-        #b.text('Xierpa3', fill='#FFF', fontsize=45, fontfamiy='Verdana', x=100, y=100)
+        #b.text('Xierpa3', fill='#FFF', fontsize=45, fontfamily='Verdana', x=100, y=100)
 
         b._svg()
         

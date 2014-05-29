@@ -142,6 +142,8 @@ class C(Config):
     PARAM_ARTICLE = 'article'
     PARAM_CATEGORY = 'category'
     PARAM_SID = 'sid' # Session id
+    PARAM_DOCUMENTATION = 'documentation'
+    PARAM_FORCE = 'force'
     
     # Tag
     TAG_BLOCK = 'div' # Default tag for blocks

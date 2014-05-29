@@ -47,8 +47,8 @@ class Typo2014(Shop):
     TEMPLATE_CATEGORY = 'category'
     TEMPLATE_PRODUCTS = 'products'
     
-    URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
+    URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
+    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')

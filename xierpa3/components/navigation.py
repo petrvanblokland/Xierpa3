@@ -20,7 +20,8 @@ class Navigation(Component):
     pass
 
 class MobileNavigation(Navigation):
-
+    u"""The <b>MobileNavigation</b> only shows in mobile screen mode."""
+    
     CC = Navigation # Get constants through super class
     
     BLUEPRINT = BluePrint(
