@@ -36,8 +36,8 @@ class SimpleTypeSpecimenColumn(Column):
         padding=0, doc_padding='Column padding.', 
         fontSize=Em(1), doc_fontSize=u'Column main font size.',
         lineheight=Em(1.4), doc_lineheight=u'Column main leading.', 
-        color=CC.BLACK, doc_color=u'Column text color.',
-        backgroundColor=CC.WHITE, doc_backgroundColor='Column background color.', 
+        color=Color(0), doc_color=u'Column text color, default is black.',
+        backgroundColor=Color('#FFF'), doc_backgroundColor='Column background color, default is white.', 
         # Row
         rowPadding=Em(2), doc_rowPadding=u'Row padding.',
         # Speciment stuff
@@ -46,7 +46,7 @@ class SimpleTypeSpecimenColumn(Column):
         specimenWidth=Perc(100), doc_specimenWidth=u'Specimen line width.', 
         specimentLineHeight=Em(1.2), doc_specimentLineHeight=u'Specimen line height, relative to waterfall font size.',
         # Size label
-        sizeLabelColor=Color('#888'), doc_sizeLabelColor='Size label color',
+        sizeLabelColor=Color('#888'), doc_sizeLabelColor='Size label color, default is mid-gray.',
         # h1
         h1FontFamily=CC.HEADFAMILY, doc_h1FontFamily=u'h1 font family.',
         h1FontSize=Em(2), doc_h1FontSize=u'h1 font size',

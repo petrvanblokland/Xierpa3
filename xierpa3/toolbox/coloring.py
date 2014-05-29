@@ -67,7 +67,9 @@ class Color:
         self.bwlevel      = bw or BWLEVEL
         self.bwrgb          = bwrgb or BWRGBWEIGHT
 
-        if isinstance(col, Color):
+        if isinstance(col, (long, float, int)):
+            col = hex(col)
+        elif isinstance(col, Color):
             col = col.hex
         if format in ('cmyk', 'rgb', 'hex', 'uhex'):
             self.format = format
@@ -78,9 +80,14 @@ class Color:
                 if ',' in col:
                     self.c = TX.list2IntFloatList(col)
                 elif HEXTUPLE.match(col):
+                    if len(col) == 4:
+                        col = '#%s%s%s' % (col[1]*2, col[2]*2, col[3]*2)
                     self.c = col
                 elif UHEXTUPLE.match(col):
-                    self.c = col[2:]
+                    col = col[2:]
+                    if len(col) == 4:
+                        col = '#%s%s%s' % (col[1]*2, col[2]*2, col[3]*2)
+                    self.c = col
                 elif RGBTUPLE.match(col):
                     mrgb = RGBTUPLE.match(col)
                     self.c = (int(mrgb.group(1)), int(mrgb.group(2)), int(mrgb.group(3)))

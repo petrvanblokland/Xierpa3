@@ -43,8 +43,8 @@ class ExampleColumn(Column):
         lineHeight=Em(1.4), doc_lineHeight=u'Column body leading.',
         margin=Margin(0, CC.AUTO, 0, CC.AUTO), doc_margin=u'Column margin.',
         marginMobile=0, doc_marginMobile=u'Column margin mobile', 
-        color='#222', doc_color='Column text color.',
-        bgColor='#EEE', doc_bgColor='Column background color.',
+        color=Color('#222'), doc_color='Column text color.',
+        bgColor=Color('#EEE'), doc_bgColor='Column background color.',
         width=Perc(50), doc_width=u'Column width.',
         widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile',
         # Row
@@ -80,8 +80,8 @@ class ExampleColumn(Column):
         blockQuoteMarginTop=Em(0.5), doc_blockQuoteMarginTop=u'Block quote margin top.',
         blockQuoteMarginBottom=Em(0.5), doc_blockQuoteMarginBottom=u'Block quote margin bottom',
         blockQuoteStyle=CC.ITALIC, doc_blockQuoteStyle=u'Block quote style', 
-        blockQuoteBgColor='#DDD', doc_blockQuoteBgColor=u'Block quote background color.',
-        blockQuoteColor=CC.BLACK, doc_blockQuoteColor=u'Block quote color.', 
+        blockQuoteBgColor=Color('#DDD'), doc_blockQuoteBgColor=u'Block quote background color.',
+        blockQuoteColor=Color('#000'), doc_blockQuoteColor=u'Block quote color.', 
         blockQuoteBorder=None, doc_blockQuoteBorderu='Bloqk quote border.', #Border('solid', 2, Color('#E1E2E2')),
     )
     
