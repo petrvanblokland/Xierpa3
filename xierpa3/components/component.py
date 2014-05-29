@@ -322,11 +322,14 @@ class Component(C):
                 componentLabel = 'components'
             else:
                 componentLabel = 'component'
-            b.text('<b>%s</b> contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
+            b.text('This <b>%s</b> instance contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
         else:
             b.text('<b>%s</b> has no child components.' % name)
         b._p()
         # Show the component style
+        b.h2()
+        b.text('Style from cascaded BluePrints')
+        b._h2()
         b.table(width=Perc(100))
         b.tr()
         for label, width in (('Name', Perc(25)), ('Value', Perc(25)), ('Description', Perc(50))):
@@ -360,6 +363,32 @@ class Component(C):
             b._td()
             b.td()
             b.text(self.style.getDoc(key))
+            b._td()
+            b._tr()
+        b._table()
+        # Methods of this component
+        b.h2()
+        b.text('Methods')
+        b._h2()
+        b.table(width=Perc(100))
+        b.tr()
+        b.th()
+        b.text('Name')
+        b._th()
+        b.th()
+        b.text('Description')
+        b._th()
+        b._tr()
+        for name, value in inspect.getmembers(self.__class__, predicate=inspect.ismethod):
+            if name.startswith('_'):
+                continue
+            b.tr()
+            b.td()
+            b.text(name)
+            b._td()
+            b.td()
+            if value.__doc__:
+                b.text(value.__doc__)
             b._td()
             b._tr()
         b._table()
@@ -461,11 +490,11 @@ class Component(C):
         return Style(selector, **d)
 
     def addStyle(self, selector=None, **kwargs):
-        u"""Add the attributes to the current style."""
+        u"""Add the style attributes to the current style."""
         return self.style.addStyle(selector, **kwargs)
 
     def addMedia(self, selector=None, **kwargs):
-        u"""Add the media styles to the current style"""
+        u"""Add the media style to the current style"""
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
