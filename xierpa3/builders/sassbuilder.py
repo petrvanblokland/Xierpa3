@@ -460,6 +460,9 @@ a { text-decoration: none;
     img {
     border: 0; }
 }
+table tr th, table tr, td {
+    vertical-align: top; text-align: left;
+}
 figure {
     position: relative; }
 

@@ -189,7 +189,7 @@ class Component(C):
         pass
 
     def readFile(self, path):
-        # Generic method to read from local file system.
+        u"""Generic method to read from local file system."""
         f = open(path, 'rb')
         s = f.read()
         f.close()
@@ -200,11 +200,13 @@ class Component(C):
         return components.__path__[0]
 
     def baseComponents(self):
-        """To be redefined by inheriting classes to answer the default child components of the component."""
+        """To be redefined by inheriting classes to answer the default child 
+        components of the component."""
         return []
 
     def isEmpty(self):
-        """Answer the boolean flag if this component has any attributes or child components."""
+        """Answer the boolean flag if this component has any attributes or child 
+        components."""
         return len(self.components) == 0 and self.style.isEmpty()
 
     def isEmptyCss(self):
@@ -232,9 +234,9 @@ class Component(C):
         return name == self.name # Compare with self._name or class names
 
     def getComponent(self, name):
-        """Answer the component that matches name."""
+        """Answer the child component that matches <i>name.</i>"""
         for component in self.components:
-            if component.name == name:
+            if self.isComponent(name):
                 return component
         return None
 
@@ -258,13 +260,14 @@ class Component(C):
     def _set_title(self, title):
         self._title = title
         
-    title = property(_get_title, _set_title)
+    title = property(_get_title, _set_title, 'Answer the title of the component.')
     
     def build(self, b):
         u"""
-        Test on the type of building to be done here. Normally the plain self.buildBlock will be called, but it is possible
-        to catch the call by implementing a method, dedicated for a particular kind of builder. self.buildBlock_<builder.ID>
-        will then called instead.
+        Test on the type of building to be done here by builder <i>b</i>. 
+        Normally the plain self.buildBlock will be called, but it is possible
+        to catch the call by implementing a method, dedicated for a particular 
+        kind of builder. self.buildBlock_[builder.ID] will then called instead.
         """
         hook = 'buildBlock_' + b.ID
         buildBlock = getattr(self, hook)
@@ -274,7 +277,8 @@ class Component(C):
 
     def buildBlock(self, b):
         u"""
-        Generic builder for all components. Can be redefined by an inheriting class.
+        Generic builder <i>b</i> for all child components of <b>self</b>. 
+        Can be redefined by an inheriting class.
         """
         b.block(self)
         for component in self.components:
@@ -284,7 +288,8 @@ class Component(C):
     # D O C U M E N T A T I O N
     
     def buildDocumentation(self, b):
-        u"""Builder the documentation of self."""
+        u"""Builder of the documentation of self. It is the main method generating this
+        documentation page."""
         b.page(self)
         b.div(width=Perc(100))
         self.buildDocumentationBlock(b)
@@ -292,6 +297,13 @@ class Component(C):
         b._page(self)
         
     def buildDocumentationBlock(self, b, processed=None):
+        u"""Recursive call to build the documentation of <b>self</b> and its child
+        components, using builder <i>b</i>. It is the method generating the 
+        documentation for this component.
+        The information extracted includes the level of inheritance of the component,
+        the general description, as defined in the class doc string, a list of child 
+        components, a table with the available cascaded method and the component style,
+        which cascades from the parent class <b>BLUEPRINT</b> definitions."""
         if processed is None:
             processed = set()
         if self in processed:
@@ -302,13 +314,9 @@ class Component(C):
         name = self.__class__.__name__
         b.block(self)
         b.h1(color='red', fontfamily='Verdana', fontsize=14)
-        b.text('Documentation of %s' % name)
+        b.text('Component %s' % name)
         b._h1()
-        # Inheritance 
-        b.p()
-        b.text(u'Inheritance: <b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
-        b._p()
-        # Doc string it is exists.
+        # Doc string as class descriptor, if is exists.
         if self.__doc__:
             b.p()
             b.text(self.__doc__)
@@ -325,6 +333,10 @@ class Component(C):
             b.text('This <b>%s</b> instance contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
         else:
             b.text('<b>%s</b> has no child components.' % name)
+        b._p()
+        # Inheritance 
+        b.p()
+        b.text(u'<b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
         b._p()
         # Show the component style
         b.h2()
@@ -366,6 +378,34 @@ class Component(C):
             b._td()
             b._tr()
         b._table()
+        # Attributes of this component
+        b.h2()
+        b.text('Attributes')
+        b._h2()
+        b.table(width=Perc(100))
+        b.tr()
+        b.th()
+        b.text('Name')
+        b._th()
+        b.th()
+        b.text('Attributes')
+        b._th()
+        b.th()
+        b.text('Description')
+        b._th()
+        b._tr()
+        for name, value in self.__dict__.items():
+            if name.startswith('_'):
+                continue
+            b.tr()
+            b.td()
+            b.text(name)
+            b._td()
+            b.td()
+            b.text(`value`)
+            b._td()
+            b._tr()
+        b._table()
         # Methods of this component
         b.h2()
         b.text('Methods')
@@ -376,19 +416,37 @@ class Component(C):
         b.text('Name')
         b._th()
         b.th()
+        b.text('Arguments')
+        b._th()
+        b.th()
         b.text('Description')
         b._th()
         b._tr()
-        for name, value in inspect.getmembers(self.__class__, predicate=inspect.ismethod):
-            if name.startswith('_'):
+        for name, method in inspect.getmembers(self.__class__, predicate=inspect.ismethod):
+            if name.startswith('__'):
                 continue
             b.tr()
             b.td()
             b.text(name)
             b._td()
             b.td()
-            if value.__doc__:
-                b.text(value.__doc__)
+            args, varargs, keywords, defaults = inspect.getargspec(method)
+            for index, arg in enumerate(args):
+                if arg == 'self':
+                    continue
+                b.text(arg)
+                if defaults is not None and index < len(defaults):
+                    b.text('=%s' % defaults[index])
+                b.br()
+            #b.text(varargs)
+            if keywords:
+                b.text('**%s' % keywords)
+                b.br()
+            #b.text(`defaults`)
+            b._td()
+            b.td()
+            if method.__doc__:
+                b.text(method.__doc__)
             b._td()
             b._tr()
         b._table()
@@ -427,7 +485,7 @@ class Component(C):
 
     def _get_hashedID(self):
         u"""
-        Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
+        Property <b>self.hashedID</b> Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
         identical. This is used by the CSS builder to decide of styles can be skipped then they are identical. Note that the
         value is cache, so alterations to the content of children don't reflect in the ID, once it is established.
         """
@@ -447,7 +505,7 @@ class Component(C):
     # self.name
 
     def _get_name(self):
-        """Answer one of <b>self._name or self.id or self.class_ or self.getClassName()</b>.
+        """Property <b>self.name</b> Answer one of <b>self._name or self.id or self.class_ or self.getClassName()</b>.
         The name attribute is for text identifiation of an element. It is not guaranteed to be unique."""
         name = self._name or self.id or self.class_
         if name is None: # Still None?
@@ -464,7 +522,7 @@ class Component(C):
     # self.oge
 
     def _get_urlName(self):
-        """Answer the url safe version of <b>self.name</b>."""
+        """Property <b>urlName</b> Answer the url safe version of <b>self.name</b>."""
         return TX.name2UrlName(self.name)
 
     urlName = property(_get_urlName)
@@ -472,6 +530,8 @@ class Component(C):
     # self.url
 
     def _get_url(self):
+        u"""Property <b>self.url</b> Answer the url of this component.
+        Otherwise answer <b>None</b>.""" 
         if self._url is None:
             return TX.label2ParamId(self.name)
         return self._url
@@ -611,6 +671,7 @@ class Component(C):
     # self.components
 
     def addComponent(self, component):
+        u"""Add <i>component</i> to the <b>self.component</b> list of children."""
         if isinstance(component, basestring):
             from text import Text
             component = Text(component)

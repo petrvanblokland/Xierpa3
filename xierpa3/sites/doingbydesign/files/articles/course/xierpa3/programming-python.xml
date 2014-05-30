@@ -131,7 +131,7 @@ It needs design skill to decide wether a design problem must be solved manually 
 </p>
 <p>
 This course is about programming in Python, but it is also about design. In more that one way. We will look into the design aspects of programming, such as the creation of classes and giving the right names to objects. But the process of programming is also very similar – identical? – to design, where you do things over and over again, and then the next time it gets better. 
-And finally, in the second half of the course, we’ll dive into the more sophisticated kinds of programming: how can you make programs that actually take design decisions. Don’t worry, robots don’t take over the world – yet – , you still have to write these programs yourself. But meanwhile it is very possible to write programs that simulate the design process. Just by adding some simple decision algorithms. This course will bring you to that level, step by step.
+And finally, in the second half of the course, we’ll dive into the more sophisticated kinds of programming: how can you make programs that actually take design decisions. Don’t worry, fbts don’t take over the world – yet – , you still have to write these programs yourself. But meanwhile it is very possible to write programs that simulate the design process. Just by adding some simple decision algorithms. This course will bring you to that level, step by step.
 </p>
 <p>
 

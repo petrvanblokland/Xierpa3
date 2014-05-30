@@ -29,11 +29,15 @@ class Page(Component):
         pass
 
     def block(self, b):
+        u"""Start the block by calling the builder <b>b.div( )</b> with the 
+        default class definition."""
         s = self.style
         b.div(class_=s.class_ or s.name or self.class_ or self.name)
         b.comment(self.name)
         
     def _block(self, b):
+        u"""End the block by calling the builder <b>b.div( )</b> with the 
+        default class definition in comment."""
         s = self.style
         b._div(comment=s.class_ or s.name or self.class_ or self.name) # End comment is automatic.
         
