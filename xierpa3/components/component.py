@@ -522,7 +522,7 @@ class Component(C):
     # self.oge
 
     def _get_urlName(self):
-        """Property <b>urlName</b> Answer the url safe version of <b>self.name</b>."""
+        """Property <b>self.urlName</b> Answer the url safe version of <b>self.name</b>."""
         return TX.name2UrlName(self.name)
 
     urlName = property(_get_urlName)
@@ -558,7 +558,7 @@ class Component(C):
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
-        u"""Answer self._style. If it doesn't exist yet, create the default style from self.copyBluePrint.
+        u"""Property <b>self.style</b> If it doesn't exist yet, create the default style from self.copyBluePrint.
         If not defined yet, then create a new instance of <b>Style</b>, initialized by the aggregation of the cascading
         <b>self.BLUEPRINT</b> of the inherited classes."""
         if self._style is None:
@@ -581,7 +581,7 @@ class Component(C):
     # self.css
 
     def _get_css(self):
-        u""""Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
+        u""""Property <b>self.css</b> Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
         Otherwise answer the default list."""
         css = self.style.css
         if css is None and self.parent:
@@ -597,7 +597,7 @@ class Component(C):
     # self.fonts
     
     def _get_fonts(self):
-        u"""Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
+        u"""Property <b>self.font</b> Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
         the parent. Otherwise answer the default list."""
         fonts = self.style.fonts
         if fonts is None and self.parent:
@@ -615,7 +615,7 @@ class Component(C):
     # self.prefix
 
     def _get_prefix(self):
-        # Answer prefix of class
+        u"""Property <b>self.prefix</b> Answer prefix of class."""
         return self.style.prefix
     def _set_prefix(self, prefix):
         self.style.prefix = prefix
@@ -625,6 +625,7 @@ class Component(C):
     # self.class_     Answer the self._class. This value can be None.
 
     def _get_class_(self):
+        u"""Property <b>self.class_</b> Answer the class name of <b>self</b>."""
         return self.style.class_
 
     def _set_class_(self, class_):
@@ -635,7 +636,7 @@ class Component(C):
     # self.prefixClass
 
     def _get_prefixClass(self):
-        """Answer the <b>self.prefix</b> + <b>self.class_</b>."""
+        u"""Property <b>self.prefixClass</b> Answer the <b>self.prefix</b> + <b>self.class_</b>."""
         return self.getPrefixClass()
 
     prefixClass = property(_get_prefixClass)
@@ -643,6 +644,7 @@ class Component(C):
     # self.id
 
     def _get_id(self):
+        u"""Property <b>self.id</b> Answer the id of <b>self</b>."""
         return self.style.id
 
     def _set_id(self, id):
@@ -653,6 +655,7 @@ class Component(C):
     # self.adapter
 
     def _get_adapter(self):
+        u"""Property <b>self.adapter</b> Answer the adapter of <b>self</b>."""
         if self._adapter:
             return self._adapter
         if self.parent:
@@ -784,7 +787,7 @@ class Component(C):
 
     def _set_selector(self, selector):
         u"""
-        Stores the (CSS) <i>selector</i> in self.style.
+        Stores the (CSS) <i>selector</i> in <b>self.style.</b>
         """
         if isinstance(selector, (list, tuple)):
             selector = ' '.join(selector)
