@@ -11,20 +11,32 @@
 #    menu.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import Em
-from xierpa3.constants.constants import C
+from xierpa3.attributes import Em, Perc
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Menu(Component):
     u"""The <b>Menu</b> supports a generic menu, setup as a list of links. The menu items are supplied
     by adapter id <b>C.ADAPTER_MENU</b>."""
-    STYLE_DEFAULT = dict(
+    CC = Component # Access to constants through super class.
+    
+    BLUEPRINT = BluePrint(
         # Block stuff
-        navWidth=C.C100, navFloat=C.RIGHT, navDisplay=C.INLINE, navMargin=0, colWidth=8,
+        colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
+        # nav stuff
+        navWidth=Perc(100), # ...
+        navFloat=CC.RIGHT, 
+        navDisplay=CC.INLINE, 
+        navMargin=0, 
         navFontSize=Em(1.5),
         # Menu list stuff
-        listStyleType=C.NONE, listDisplay=C.BLOCK, listFloat=C.RIGHT, listPadding=10,
+        listStyleType=CC.NONE, 
+        listDisplay=CC.BLOCK, 
+        listFloat=CC.RIGHT, 
+        listPadding=10,
         # Link stuff
-        linkColor='#4890be', linkTextDecoration=C.NONE, linkPadding=Em(0.3), 
+        linkColor='#4890be', doc_linkColor=u'Link color',
+        linkTextDecoration=CC.NONE, 
+        linkPadding=Em(0.3), doc_linkPadding=u'Link padding',
         linkTransition=None, #Transition(),
     )
     def buildBlock(self, b):
@@ -35,8 +47,8 @@ class Menu(Component):
             b.block(self)
             colClass = self.getColClass(s.colWidth)
             b.div(class_=colClass)
-            b.nav(id=self.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, display=s.navDisplay, 
-                margin=s.navMargin, fontsize=s.navFontSize)
+            b.nav(id=self.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
+                display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
             for menu in data.menuItems:
                 b.li(float=s.listFloat, padding=s.listPadding)

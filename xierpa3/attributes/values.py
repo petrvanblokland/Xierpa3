@@ -20,7 +20,7 @@ def asValue(value):
 
 class Value(Attribute):
     def __repr__(self):
-        return self.value
+        return '%s' % self.value
 
 class Named(Value):
     u"""Show as Sass variable $name from the optional <i>name</i> or from the attribute name 
@@ -48,8 +48,41 @@ class Z(Value):
     def __init__(self, value):
         self.value = value
 
-class Px(Value):
+class BaseCalculator(Value):
+    u"""Abstract <b>BaseCalculator</b> class to support arithmetic with measurements of the same type."""
+    def rawValue(self):
+        return self._value
+     
+    def __add__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() + value)
+        return None
     
+    def __sub__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() - value)
+        return None
+
+    def __mul__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() * value)
+        return None
+
+    def __div__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.rawValue()
+        if TX.isNumber(value):
+            return self.__class__(self.rawValue() / value)
+        return None
+    
+class Px(BaseCalculator):
+    u"""Answer 100px"""
     def __init__(self, value):
         self._value = value
         
@@ -61,8 +94,22 @@ class Px(Value):
         return self._value
 
     value = property(_get_value)
-         
-class Em(Value):
+
+class Perc(BaseCalculator):
+    u"""Answer 100%"""
+    def __init__(self, value):
+        self._value = value
+        
+    def _get_value(self):
+        if TX.isFloat(self._value):
+            return '%0.2f%%' % self._value
+        if TX.isInt(self._value):
+            return '%d%%' % self._value
+        return self._value
+    
+    value = property(_get_value)
+    
+class Em(BaseCalculator):
     
     def __init__(self, value):
         #

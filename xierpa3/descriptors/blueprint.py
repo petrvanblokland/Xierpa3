@@ -7,3 +7,13 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+#
+#   blueprint.py
+#
+from xierpa3.descriptors.style import Style
+
+class BluePrint(Style):
+    u"""The <b>BluePrint</b> style holds the default set of style values for component classes.
+    If also support the definition of doc string information inside the value, by addingf “doc_” 
+    preceding the attribute names."""
+    pass

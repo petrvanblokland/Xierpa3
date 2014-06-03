@@ -73,12 +73,12 @@ content = {
             'bitpull',
             'flipperfonts',
             'gifwrap',
-            'robot',
-            'pure robot',
+            'fbt',
+            'pure fbt',
             'pythography'        
                 ],
         'com_bylines':[
-            u"it’s pure robot!",
+            u"it’s pure fbt!",
             u"We’re The Phone Company.", "We Make The Things That Cool Your Food.", 
             "A Registered Trademark of LettError.", "Contains no artificial flavorings.",
             "Contains no inedible parts.", "Contains no content.", "www.letterror.com",

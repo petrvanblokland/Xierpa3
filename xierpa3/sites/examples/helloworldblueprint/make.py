@@ -10,27 +10,21 @@
 #
 #    make.py
 #
-#    Demo site for the simple "hello world" example.
-#    The "run.py" program creates the files:
-#        ~/Xierpa3Examples/HelloWorldLayout/css/style.scss
-#        ~/Xierpa3Examples/HelloWorldLayout/css/style.css
-#        ~/Xierpa3Examples/HelloWorldLayout/index.html
-#    from the one HelloWorldLayout theme instance by applying respectively the
-#    CssBuilder and HtmlBuilder to the theme.
-#    Each of the builders takes the information from the theme to build its
-#    own type of file.
-#
 import webbrowser
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.attributes import Em, Margin 
-from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
+from xierpa3.descriptors.media import Media 
+from xierpa3.descriptors.blueprint import BluePrint
 
 class HelloWorldResponsiveText(Column):
  
-    CSS_BODYFONT = 'Georgia'
-    CSS_CAPTIONFONT = CSS_BODYFONT
+    CC = Column
+    
+    BLUEPRINT = BluePrint(
+        
+    )
     
     def buildBlock(self, b):
         u"""Build the column. Note that although the "div" suggest that it is just

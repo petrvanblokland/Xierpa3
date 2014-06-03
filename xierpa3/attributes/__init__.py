@@ -8,7 +8,7 @@
 #
 # -----------------------------------------------------------------------------
 #
-from values import asValue, Value, Px, Em, Z, Named, Selection
+from values import asValue, Value, Perc, Px, Em, Z, Named, Selection
 from attribute import Attribute
 from gradient import Gradient, LinearGradient
 from frames import Frame, Margin, Padding, Border

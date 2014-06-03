@@ -11,58 +11,69 @@
 #    navigation.py
 #
 from xierpa3.components.component import Component
-from xierpa3.constants.constants import C
-from xierpa3.attributes import Em, Border, Z, Margin
-from xierpa3.descriptors.style import Media
+from xierpa3.attributes import Perc, Px, Em, Border, Z, Margin, Color
+from xierpa3.descriptors.media import Media
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Navigation(Component):
     u"""See also Menu component."""
     pass
 
 class MobileNavigation(Navigation):
-
-    # TODO: Default style will become a Style, where all default values
-    # also hold the description. This way the documentation for of the 
-    # component API can be automated.
-    STYLE_DEFAULT = dict(
+    u"""The <b>MobileNavigation</b> only shows in mobile screen mode."""
+    
+    CC = Navigation # Get constants through super class
+    
+    BLUEPRINT = BluePrint(
         colWidth=12,
+        # Display stuff
+        display=CC.NONE, doc_display=u'Display type',
+        displayMobile=CC.BLOCK, doc_displayMobile=u'Display type for mobile.',
         # Container stuff
-        containerDisplay=C.NONE, containerBackgroundColor='#323A47',
-        containerFontSize=Em(1.4), containerLineHeight=Em(1.1), containerMarginLeft=0,
-        containerMarginRight=0, containerPaddingLeft=0, containerPaddingRight=0,
-        containerMenuHeight=48, containerZIndex=Z(1000),
-        containerBorderBottom=Border('1 solid white'), containerWidth=C.C100, containerMinWidth=0,
+        width=None, doc_width=u'Mobile navigation container width.', 
+        minWidth=0, doc_minWidth=u'Mobile navigation container minimal width', 
+        # Navigation stuff
+        backgroundColor=Color('#323A47'), doc_backgroundColor='Mobile navigation background color.',
+        fontSize=Em(1.4), doc_fontSize=u'Mobile navigation font size.', 
+        lineHeight=Em(1.1), doc_lineHeight=u'Mobile navigation leading.',
+        marginLeft=0, doc_marginLeft=u'Mobile navigation margin left.',
+        marginRight=0, doc_marginRight=u'Mobile navigation margin right.',
+        paddingLeft=0, doc_paddingLeft=u'Mobile navigation padding left.',
+        # Row
+        rowClass=CC.CLASS_12COL, doc_rowClass=u'Class of the row.',
         # Item stuff
-        itemCount=20, # Preferred/max amount of page, suggestion to the adapter.
-        menuHeight=44, menuMargin=0, menuBackgroundColor='#323A47',
-        menuZIndex=Z(1000), menuBorderBottom=Border('1 solid white'), menuWidth=C.C100,
-        menuMinWidth=0, 
+        itemCount=20, doc_itemCount=u'Preferred/max amount of pages, suggestion to the adapter.',
+        menuHeight=Px(44), doc_menuHeight=u'Menu height.',
+        menuMargin=0, doc_menuMargin=u'Menu margin.', 
+        menuBackgroundColor=Color('#323A47'), doc_menuBackgroundColor=u'Menu background color.',
+        menuZIndex=Z(1000), doc_menuZIndex='Menu Z index', 
+        menuBorderBottom=Border('1 solid white'), doc_menuBorderBottom=u'Menu border bottom.',
+        menuWidth=Perc(100), doc_menuWidth=u'Menu width.', 
         # Nav stuff
-        navWidth='30%', navDisplay=C.INLINEBLOCK, navZIndex=Z(1000),
+        navWidth=Perc(30), doc_navWidth='Navigation width.', 
+        navDisplay=CC.INLINEBLOCK, doc_navDisplay=u'Navigation display type.',
+        navZIndex=Z(1000), doc_navZIndex='Navigation Z index.',
         # List item stuff
         listFontSize=None,
         # Menu
-        menuListBackgroundColor='#828487',
-        menuIconUrl='http://data.doingbydesign.com.s3.amazonaws.com/_images/menu_icon.png',
+        menuType=CC.LIST, doc_menuType=u'Default is plain navigation list. Set to “menu” for menu.',
+        menuListBackgroundColor=Color('#828487'),
+        menuIconUrl='//data.doingbydesign.com.s3.amazonaws.com/_images/menu_icon.png', doc_menuIconUrl=u'Url of the menu icon',
         # Link stuff
-        linkColor=C.WHITE, 
-        # Mobile stuff
-        mobileContainerDisplay=C.BLOCK, 
-    )
-    def initialize(self):
-        s = self.style
-        self.menuType = 'list' # Default is plain navigation list. Set to 'menu' for menu.
-        self.rowClass = self.CLASS_12COL
-                      
+        linkColor=CC.WHITE, doc_linkColor=u'Link color',
+    )                      
     def buildBlock(self, b):
         s = self.style
-        data = self.getAdapterData(self.ADAPTER_MENU, id='home')
+        data = self.getAdapterData(self.ADAPTER_MENU, id='home') # Get data for home page from adapter.
         b.block(self) # div.mobileNavigation
-        b.div(class_=(self.CLASS_CONTAINER, self.className), display=s.containerDisplay,
-            backgroundcolor=s.containerBackgroundColor,
-            marginleft=s.containerMarginLeft, marginright=s.containerMarginRight,
-            paddingleft=s.containerPaddingLeft, paddingright=s.comtainerPaddingRight,
-            media=Media(max=self.M_MOBILE_MAX, display=s.mobileContainerDisplay))
+        b.div(class_=(self.CLASS_CONTAINER, self.className), display=s.display,
+            backgroundcolor=s.backgroundColor, width=s.width,
+            marginleft=s.marginLeft, marginright=s.marginRight,
+            paddingleft=s.paddingLeft, paddingright=s.paddingRight,
+            media=(
+                Media(max=self.M_MOBILE_MAX, display=s.displayMobile),
+            )
+        )
         b.snippet(self, 'navigation-mobile') # Allow PHP to create a snippet file from this block.
 
         b.div(class_=self.CLASS_ROW, minwidth=0, paddingleft=0, paddingright=0, 
@@ -92,7 +103,7 @@ class MobileNavigation(Navigation):
                     url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
                 b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=self.C100, liststyletype=self.NONE,
                     borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
-                b.a(href=url, color='#E8E8E8')
+                b.a(href=url, color=Color('#E8E8E8'))
                 b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
                 b._a()
                 b._li()

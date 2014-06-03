@@ -13,9 +13,13 @@
 #    @@@ Under development
 #
 from xierpa3.components.container import Container
+from xierpa3.descriptors.blueprint import BluePrint
 
 class SpringGraph(Container):
-    
+
+    BLUEPRINT = BluePrint(
+    )
+       
     def buildSpringGraph(self, id, root, width, height, **args):
         self.text("""<!--[if lte IE 8]><script type="text/javascript" src="excanvas.js"></script><![endif]-->""")
         self.script(src='http://s3.amazonaws.com/data.xierpalib.com/_root/' + self.PATH_SPRINGGRAPH_JS)

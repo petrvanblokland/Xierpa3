@@ -39,16 +39,26 @@
 #
 import weakref
 import hashlib
+import inspect
 from xierpa3.descriptors.style import Style
+from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
+from xierpa3.attributes import Perc, Color
 from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
 
 class Component(C):
     u"""
     The Component describes the abstract behavior of components on the page.
     """
-
+    # Root default style template. To be cascaded by inheriting classes.
+    BLUEPRINT = BluePrint(
+        # Default behavior of images, use class autowidth to cover differences between browsers.
+        imgClass=C.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
+        imgMaxWidth=Perc(100), doc_imgMaxWidth=u'Image maximal width',
+        imgMinWidth=0, doc_imgMinWidth=u'Image minimal width',                           
+    )
+        
     ADAPTER = None # To be inherited or defined separately into the component.
     TAGNAME = 'div' # By default every component has a root div element.
     BUILD_CSS = True # Default behavior of every component is to build in CSS.
@@ -60,7 +70,7 @@ class Component(C):
             selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
         # Initialize the self.style, as selector and id are stored there.
-        self.style = style # If style is None, then make a copy of self.STYLE_DEFAULT
+        self.style = style # If style is None, then use a copy of the self.BLUEPRINT style.
         self.style.add(kwargs) # Further initialize self.style from keyword arguments
         self.style.component = self # Add the weakref reference to self for the root style.
         # CSS and Fonts urls
@@ -107,6 +117,17 @@ class Component(C):
         # Always answer None for missing attributes.
         return self.__dict__.get(key)
 
+    def _getInheritedClasses(self):
+        u"""Answer the list of inherited classes by this component."""
+        return list(inspect.getmro(self.__class__))
+    
+    def _getInheritedClassNames(self):
+        u"""Answer the list of inherited class names by this component."""
+        names = []
+        for cls in self._getInheritedClasses():
+            names.append(cls.__name__)
+        return names
+    
     @classmethod
     def getClassName(cls):
         u"""
@@ -168,7 +189,7 @@ class Component(C):
         pass
 
     def readFile(self, path):
-        # Generic method to read from local file system.
+        u"""Generic method to read from local file system."""
         f = open(path, 'rb')
         s = f.read()
         f.close()
@@ -179,11 +200,13 @@ class Component(C):
         return components.__path__[0]
 
     def baseComponents(self):
-        """To be redefined by inheriting classes to answer the default child components of the component."""
+        """To be redefined by inheriting classes to answer the default child 
+        components of the component."""
         return []
 
     def isEmpty(self):
-        """Answer the boolean flag if this component has any attributes or child components."""
+        """Answer the boolean flag if this component has any attributes or child 
+        components."""
         return len(self.components) == 0 and self.style.isEmpty()
 
     def isEmptyCss(self):
@@ -211,9 +234,9 @@ class Component(C):
         return name == self.name # Compare with self._name or class names
 
     def getComponent(self, name):
-        """Answer the component that matches name."""
+        """Answer the child component that matches <i>name.</i>"""
         for component in self.components:
-            if component.name == name:
+            if self.isComponent(name):
                 return component
         return None
 
@@ -237,29 +260,201 @@ class Component(C):
     def _set_title(self, title):
         self._title = title
         
-    title = property(_get_title, _set_title)
+    title = property(_get_title, _set_title, 'Answer the title of the component.')
     
-    def build(self, builder):
+    def build(self, b):
         u"""
-        Test on the type of building to be done here. Normally the plain self.buildBlock will be called, but it is possible
-        to catch the call by implementing a method, dedicated for a particular kind of builder. self.buildBlock_<builder.ID>
-        will then called instead.
+        Test on the type of building to be done here by builder <i>b</i>. 
+        Normally the plain self.buildBlock will be called, but it is possible
+        to catch the call by implementing a method, dedicated for a particular 
+        kind of builder. self.buildBlock_[builder.ID] will then called instead.
         """
-        hook = 'buildBlock_' + builder.ID
+        hook = 'buildBlock_' + b.ID
         buildBlock = getattr(self, hook)
         if buildBlock is None:
             buildBlock = self.buildBlock # Not special dispatch, use generic method instead.
-        buildBlock(builder)
+        buildBlock(b)
 
-    def buildBlock(self, builder):
+    def buildBlock(self, b):
         u"""
-        Generic builder for all components. Can be redefined by an inheriting class.
+        Generic builder <i>b</i> for all child components of <b>self</b>. 
+        Can be redefined by an inheriting class.
         """
-        builder.block(self)
+        b.block(self)
         for component in self.components:
-            component.build(builder)
-        builder._block(self)
+            component.build(b)
+        b._block(self)
 
+    # D O C U M E N T A T I O N
+    
+    def buildDocumentation(self, b):
+        u"""Builder of the documentation of self. It is the main method generating this
+        documentation page."""
+        b.page(self)
+        b.div(width=Perc(100))
+        self.buildDocumentationBlock(b)
+        b._div()
+        b._page(self)
+        
+    def buildDocumentationBlock(self, b, processed=None):
+        u"""Recursive call to build the documentation of <b>self</b> and its child
+        components, using builder <i>b</i>. It is the method generating the 
+        documentation for this component.
+        The information extracted includes the level of inheritance of the component,
+        the general description, as defined in the class doc string, a list of child 
+        components, a table with the available cascaded method and the component style,
+        which cascades from the parent class <b>BLUEPRINT</b> definitions."""
+        if processed is None:
+            processed = set()
+        if self in processed:
+            return
+        
+        processed.add(self)
+        
+        name = self.__class__.__name__
+        b.block(self)
+        b.h1(color='red', fontfamily='Verdana', fontsize=14)
+        b.text('Component %s' % name)
+        b._h1()
+        # Doc string as class descriptor, if is exists.
+        if self.__doc__:
+            b.p()
+            b.text(self.__doc__)
+            b._p()
+        b.p()
+        if self.components:
+            componentList = []
+            for component in self.components:
+                componentList.append(component.name)
+            if len(componentList) > 1:
+                componentLabel = 'components'
+            else:
+                componentLabel = 'component'
+            b.text('This <b>%s</b> instance contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
+        else:
+            b.text('<b>%s</b> has no child components.' % name)
+        b._p()
+        # Inheritance 
+        b.p()
+        b.text(u'<b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
+        b._p()
+        # Show the component style
+        b.h2()
+        b.text('Style from cascaded BluePrints')
+        b._h2()
+        b.table(width=Perc(100))
+        b.tr()
+        for label, width in (('Name', Perc(25)), ('Value', Perc(25)), ('Description', Perc(50))):
+            b.th(width_html=width)
+            b.text(label)
+            b._th()
+        b._tr()
+        for key, value in sorted(self.style.items()):
+            b.tr()
+            b.td()
+            b.text(key)
+            b._td()
+            b.td(textalign=self.RIGHT)
+            if value is None:
+                b.span(style='color:#888;')
+                b.text('(Inherited)')
+                b._span()
+            elif isinstance(value, Color):
+                b.text('%s' % value)
+                b.span(style='background-color:%s;' % value)
+                b.text('&nbsp;'*4)
+                b._span()
+            elif not isinstance(value, basestring):
+                b.text('%s' % value)
+            elif value.startswith('//'):
+                b.img(src=value, width=50) # Show the image
+            elif len(value) > 50:
+                b.text(value[:50] + '...')
+            else:
+                b.text(value)
+            b._td()
+            b.td()
+            b.text(self.style.getDoc(key))
+            b._td()
+            b._tr()
+        b._table()
+        # Attributes of this component
+        b.h2()
+        b.text('Attributes')
+        b._h2()
+        b.table(width=Perc(100))
+        b.tr()
+        b.th()
+        b.text('Name')
+        b._th()
+        b.th()
+        b.text('Attributes')
+        b._th()
+        b.th()
+        b.text('Description')
+        b._th()
+        b._tr()
+        for name, value in self.__dict__.items():
+            if name.startswith('_'):
+                continue
+            b.tr()
+            b.td()
+            b.text(name)
+            b._td()
+            b.td()
+            b.text(`value`)
+            b._td()
+            b._tr()
+        b._table()
+        # Methods of this component
+        b.h2()
+        b.text('Methods')
+        b._h2()
+        b.table(width=Perc(100))
+        b.tr()
+        b.th()
+        b.text('Name')
+        b._th()
+        b.th()
+        b.text('Arguments')
+        b._th()
+        b.th()
+        b.text('Description')
+        b._th()
+        b._tr()
+        for name, method in inspect.getmembers(self.__class__, predicate=inspect.ismethod):
+            if name.startswith('__'):
+                continue
+            b.tr()
+            b.td()
+            b.text(name)
+            b._td()
+            b.td()
+            args, varargs, keywords, defaults = inspect.getargspec(method)
+            for index, arg in enumerate(args):
+                if arg == 'self':
+                    continue
+                b.text(arg)
+                if defaults is not None and index < len(defaults):
+                    b.text('=%s' % defaults[index])
+                b.br()
+            #b.text(varargs)
+            if keywords:
+                b.text('**%s' % keywords)
+                b.br()
+            #b.text(`defaults`)
+            b._td()
+            b.td()
+            if method.__doc__:
+                b.text(method.__doc__)
+            b._td()
+            b._tr()
+        b._table()
+        # Show recursively the rest of the components 
+        for component in self.components:
+            component.buildDocumentationBlock(b, processed)
+        b.block(self)
+        
     # X M L  R E N D E R I N G
     
     def buildElement(self, b, element):
@@ -290,7 +485,7 @@ class Component(C):
 
     def _get_hashedID(self):
         u"""
-        Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
+        Property <b>self.hashedID</b> Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
         identical. This is used by the CSS builder to decide of styles can be skipped then they are identical. Note that the
         value is cache, so alterations to the content of children don't reflect in the ID, once it is established.
         """
@@ -310,7 +505,7 @@ class Component(C):
     # self.name
 
     def _get_name(self):
-        """Answer one of <b>self._name or self.id or self.class_ or self.getClassName()</b>.
+        """Property <b>self.name</b> Answer one of <b>self._name or self.id or self.class_ or self.getClassName()</b>.
         The name attribute is for text identifiation of an element. It is not guaranteed to be unique."""
         name = self._name or self.id or self.class_
         if name is None: # Still None?
@@ -327,7 +522,7 @@ class Component(C):
     # self.oge
 
     def _get_urlName(self):
-        """Answer the url safe version of <b>self.name</b>."""
+        """Property <b>self.urlName</b> Answer the url safe version of <b>self.name</b>."""
         return TX.name2UrlName(self.name)
 
     urlName = property(_get_urlName)
@@ -335,6 +530,8 @@ class Component(C):
     # self.url
 
     def _get_url(self):
+        u"""Property <b>self.url</b> Answer the url of this component.
+        Otherwise answer <b>None</b>.""" 
         if self._url is None:
             return TX.label2ParamId(self.name)
         return self._url
@@ -346,29 +543,33 @@ class Component(C):
 
     # self.style
 
-    def baseStyle(self):
-        u"""To be redefined by inheriting classes to answer the default style tree of this component."""
-        return self.newStyle()
-
     def newStyle(self, selector=None, d=None):
-        u"""Answer a new style with attributes defined in <i>d</i>. If omitted, then use
-        <b>self.STYLE_DEFAULT</b> as default style attributes."""
+        u"""Answer a new style with <b>selection</b> and attributes defined in the optional <i>d</i> dictionary."""
         if d is None:
-            d = self.STYLE_DEFAULT
+            d = {}
         return Style(selector, **d)
 
     def addStyle(self, selector=None, **kwargs):
-        u"""Add the attributes to the current style."""
+        u"""Add the style attributes to the current style."""
         return self.style.addStyle(selector, **kwargs)
 
     def addMedia(self, selector=None, **kwargs):
-        u"""Add the media styles to the current style"""
+        u"""Add the media style to the current style"""
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
-        u"""Answer self._style. If it doesn't exist yet, create the default style from self.baseStyle."""
-        if not hasattr(self, '_style') or self._style is None:
-            self._style = self.baseStyle()
+        u"""Property <b>self.style</b> If it doesn't exist yet, create the default style from self.copyBluePrint.
+        If not defined yet, then create a new instance of <b>Style</b>, initialized by the aggregation of the cascading
+        <b>self.BLUEPRINT</b> of the inherited classes."""
+        if self._style is None:
+            self._style = self.newStyle()
+            # Get the list of classes that self is inheriting from.
+            inheritedClasses = self._getInheritedClasses()
+            inheritedClasses.reverse()
+            for inheritedClass in inheritedClasses:
+                if hasattr(inheritedClass, 'BLUEPRINT'):
+                    self._style.addBluePrint(inheritedClass.BLUEPRINT) 
+            self._style.addBluePrint(self.BLUEPRINT)
         return self._style
 
     def _set_style(self, style):
@@ -380,7 +581,7 @@ class Component(C):
     # self.css
 
     def _get_css(self):
-        u""""Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
+        u""""Property <b>self.css</b> Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
         Otherwise answer the default list."""
         css = self.style.css
         if css is None and self.parent:
@@ -396,7 +597,7 @@ class Component(C):
     # self.fonts
     
     def _get_fonts(self):
-        u"""Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
+        u"""Property <b>self.font</b> Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
         the parent. Otherwise answer the default list."""
         fonts = self.style.fonts
         if fonts is None and self.parent:
@@ -414,7 +615,7 @@ class Component(C):
     # self.prefix
 
     def _get_prefix(self):
-        # Answer prefix of class
+        u"""Property <b>self.prefix</b> Answer prefix of class."""
         return self.style.prefix
     def _set_prefix(self, prefix):
         self.style.prefix = prefix
@@ -424,6 +625,7 @@ class Component(C):
     # self.class_     Answer the self._class. This value can be None.
 
     def _get_class_(self):
+        u"""Property <b>self.class_</b> Answer the class name of <b>self</b>."""
         return self.style.class_
 
     def _set_class_(self, class_):
@@ -434,7 +636,7 @@ class Component(C):
     # self.prefixClass
 
     def _get_prefixClass(self):
-        """Answer the <b>self.prefix</b> + <b>self.class_</b>."""
+        u"""Property <b>self.prefixClass</b> Answer the <b>self.prefix</b> + <b>self.class_</b>."""
         return self.getPrefixClass()
 
     prefixClass = property(_get_prefixClass)
@@ -442,6 +644,7 @@ class Component(C):
     # self.id
 
     def _get_id(self):
+        u"""Property <b>self.id</b> Answer the id of <b>self</b>."""
         return self.style.id
 
     def _set_id(self, id):
@@ -452,6 +655,7 @@ class Component(C):
     # self.adapter
 
     def _get_adapter(self):
+        u"""Property <b>self.adapter</b> Answer the adapter of <b>self</b>."""
         if self._adapter:
             return self._adapter
         if self.parent:
@@ -470,6 +674,7 @@ class Component(C):
     # self.components
 
     def addComponent(self, component):
+        u"""Add <i>component</i> to the <b>self.component</b> list of children."""
         if isinstance(component, basestring):
             from text import Text
             component = Text(component)
@@ -582,7 +787,7 @@ class Component(C):
 
     def _set_selector(self, selector):
         u"""
-        Stores the (CSS) <i>selector</i> in self.style.
+        Stores the (CSS) <i>selector</i> in <b>self.style.</b>
         """
         if isinstance(selector, (list, tuple)):
             selector = ' '.join(selector)

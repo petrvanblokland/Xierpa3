@@ -16,7 +16,6 @@ import cStringIO as StringIO
 
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.dating import DateTime
-from xierpa3.toolbox.transformer import TX
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.descriptors.environment import Environment
@@ -148,7 +147,10 @@ class BaseClient(object):
         builder = CssBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
-        if site.e.form['force'] or result is None or self.INITCSS:
+        if site.e.form[C.PARAM_DOCUMENTATION]:
+            site.buildDocumentation(builder)
+            result = builder.getResult
+        if site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
             builder.save(site, path=filePath) # Compile resulting Sass to Css  
             result = builder.getResult() # Get the resulting Sass.
@@ -162,7 +164,10 @@ class BaseClient(object):
         builder = HtmlBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
-        if site.e.form['force'] or result is None or self.INITCSS:
+        if site.e.form[C.PARAM_DOCUMENTATION]:
+            site.buildDocumentation(builder)
+            result = builder.getResult()
+        elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
             template = site.getMatchingTemplate(builder)
             template.build(builder)
             result = builder.getResult()
@@ -261,7 +266,7 @@ class BaseClient(object):
         <h2>Error</h2>
         <p>The following error occurred:</p>
         <pre>%s</pre>
-        <p>Please contact the system administrator at <a href="mailto:r@petr.com">r@petr.com</a>.</p>
+        <p>Please contact the system administrator.</p>
         <pre>%s</pre>
         <p>
         <img src="http://data.xierpa.com.s3.amazonaws.com/_images/grid.png">

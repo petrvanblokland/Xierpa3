@@ -11,8 +11,12 @@
 #    text.py
 #
 from xierpa3.components.component import Component
+from xierpa3.descriptors.blueprint import BluePrint
 
 class Text(Component):
+
+    BLUEPRINT = BluePrint(
+    )                                   
     def __init__(self, text=None, style=None, id=None, parent=None, 
             class_=None, type=None, contentID=None, editable=False, **kwargs):
         Component.__init__(self, style=style, id=id, parent=parent,

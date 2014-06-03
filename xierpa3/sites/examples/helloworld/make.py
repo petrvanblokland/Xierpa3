@@ -26,15 +26,17 @@ from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class HelloWorldText(Column):
+    u"""The <b>HelloWorldText</b> text column component shows the fixed ”Hello world” 
+    in red color."""
     def buildBlock(self, b):
-        b.div(color='red')
+        b.div(color='red') # Single style attribute, just to show how it works.
         b.text('Hello world.')
         b._div()
         
 class HelloWorld(Theme):
-    u"""The <b>HelloWorld</b> class implements a basic Hello World page, running as
-    batch process, saving the result as an HTML file. Double click the generated file or
-    drag to a browser see the result."""
+    u"""The <b>HelloWorld</b> site class implements a basic ”Hello World page“,
+    showing the smallest possible web page, while including one style attribute to be 
+    generated in CSS."""
     TITLE = u'The standard “Hello world” page.' # Use as title of window.
 
     def baseComponents(self):

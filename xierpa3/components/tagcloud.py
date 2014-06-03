@@ -11,9 +11,12 @@
 #    navigation.py
 #
 from xierpa3.components.component import Component
+from xierpa3.descriptors.blueprint import BluePrint
 
 class TagCloud(Component):
     
+    BLUEPRINT = BluePrint( 
+    )
     def initialize(self):
         # Generic builder for all components. To be redefined by inheriting class.
         components = self.components # Replace by linked components

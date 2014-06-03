@@ -900,7 +900,6 @@ class HtmlBuilderPart:
         </python>
         """
         self.write_tag(u'th', True, args)
-        self._debugclass(u'th', self.getClassName(args, self.TH_ATTRIBUTES))
 
     def _th(self):
         self._closeTag(u'th')

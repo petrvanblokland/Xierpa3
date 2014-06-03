@@ -16,8 +16,7 @@
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.descriptors.style import StyleSet
-from xierpa3.attributes import Em
+from xierpa3.attributes import Em, Color
 from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
@@ -49,24 +48,17 @@ class DoingByDesign(Shop):
     TEMPLATE_CATEGORY = 'category'
     TEMPLATE_PRODUCTS = 'products'
     
-    URL_BACKGROUNDIMAGE = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    
-    URL_FONTS = (
-        # Topaz (Benton Sans RE)
-        'http://cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css',
-    )
-    URL_JAVASCRIPT = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
+    URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
+    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
     # Cache the adapter, initialized automatic.
     ADAPTER = DbDAdapter(root=TX.module2Path(doingbydesign) + '/files/articles')
 
-    CSS_BODYFONT = '"BentonSansRE"'
-    CSS_HEADFONT = '"BentonSansCond Medium"'
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
-    CSS_BGCOLOR = '#FFFFFF'
-    CSS_FOOTERBGCOLOR = '#E1E1E1'
-    CSS_ALINKCOLOR = '#888888'
+    CSS_BGCOLOR = Color('#FFFFFF')
+    CSS_FOOTERBGCOLOR = Color('#E1E1E1')
+    CSS_ALINKCOLOR = Color('#888888')
     CSS_AVISITEDCOLOR = '+60%'
     CSS_AHOVERCOLOR = '-60%'
     CSS_ACTIVECOLOR = '+60%'
@@ -89,7 +81,7 @@ class DoingByDesign(Shop):
     #css = property(_get_css, _set_css)
 
     def baseStyle(self):
-        s = StyleSet() # Answer root style without selector
+        s = self.style # Answer root style without selector
         s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)
@@ -115,7 +107,8 @@ class DoingByDesign(Shop):
         menu = Menu()
         socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
 
-        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE)
+        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE,
+            doc_mobileContainerDisplay=u'Header is not visible for mobile')
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
         # Articles featured by image
         featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
@@ -126,12 +119,12 @@ class DoingByDesign(Shop):
         featuredByText = FeaturedByText(itemStart=2, showPoster=False)
         featuredByTextList = FeaturedByTextList(itemStart=5)
         # Featured black container
-        BGCOLOR = '#323A47'
+        BGCOLOR = Color('#323A47')
         featuredImages = Featured(class_='featuredImages', 
             components=(featuredByImage, featuredSideText),
             containerBackgroundColor=BGCOLOR)
         # Featured text container
-        BGCOLOR = '#E8E8E8'
+        BGCOLOR = Color('#E8E8E8')
         featuredTexts = Featured(class_='featuredTexts', 
             components=(featuredByText, featuredByTextList),
             containerBackgroundColor=BGCOLOR)
