@@ -265,9 +265,13 @@ class Component(C):
     def build(self, b):
         u"""
         Test on the type of building to be done here by builder <i>b</i>. 
-        Normally the plain self.buildBlock will be called, but it is possible
+        Normally the plain <b>self.buildBlock</b> will be called, but it is possible
         to catch the call by implementing a method, dedicated for a particular 
-        kind of builder. self.buildBlock_[builder.ID] will then called instead.
+        kind of builder. <b>self.buildBlock_[builder.ID]</b> will then called instead.
+        E.g. <b>self.buildBlock_css(b)</b> will force the CSS builder to call that
+        method instead of the regular <b>self.buildBlock(b)</b>. Note that this only should be 
+        exceptional situation where there is no way to make the builder call abstract.
+        Normally components should not be aware which builder they are talking to.
         """
         hook = 'buildBlock_' + b.ID
         buildBlock = getattr(self, hook)
@@ -549,6 +553,12 @@ class Component(C):
             d = {}
         return Style(selector, **d)
 
+    def baseStyle(self):
+        u"""Answer the base style for this component, before the BluePrint parameters
+        are copied into it. This can be cone by inheriting classes defining htis method.
+        Default behavior is just to answer the result of <b>self.newStyleI()</b>."""
+        return self.newStyle()
+    
     def addStyle(self, selector=None, **kwargs):
         u"""Add the style attributes to the current style."""
         return self.style.addStyle(selector, **kwargs)
@@ -562,7 +572,7 @@ class Component(C):
         If not defined yet, then create a new instance of <b>Style</b>, initialized by the aggregation of the cascading
         <b>self.BLUEPRINT</b> of the inherited classes."""
         if self._style is None:
-            self._style = self.newStyle()
+            self._style = self.baseStyle() # Allow theme to define the base style.
             # Get the list of classes that self is inheriting from.
             inheritedClasses = self._getInheritedClasses()
             inheritedClasses.reverse()

@@ -21,10 +21,13 @@ class SimpleTypeSpecimenColumn(Column):
 
     CC = Column # Access constants through super class.
     MAXWIDTH = Px(1100)
+    # Load @fontface fonts for this example from www.webtype.com
+    FONT_FAMILY = '"Brando Light"' 
+    HEAD_FAMILY = '"Brando Semibold"'
     
     BLUEPRINT = BluePrint(
         # Column stuff
-        fontFamily=CC.BODYFAMILY, doc_fontFamily=u'Column main font family', 
+        fontFamily=FONT_FAMILY, doc_fontFamily=u'Column main font family', 
         width=MAXWIDTH, doc_width=u'Column width.', 
         widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile.',  
         minWidth=0, doc_minWidth=u'Column minimal width.', 
@@ -41,14 +44,14 @@ class SimpleTypeSpecimenColumn(Column):
         # Row
         rowPadding=Em(2), doc_rowPadding=u'Row padding.',
         # Speciment stuff
-        specimentSmall=10, doc_specimentSmall=u'Smallest font size of the specimen.',
-        specimenLarge=60, doc_specimenLarge=u'Largest font size of the specimen.', 
+        specimentSmall=18, doc_specimentSmall=u'Smallest font size of the specimen.',
+        specimenLarge=37, doc_specimenLarge=u'Largest font size of the specimen.', 
         specimenWidth=Perc(100), doc_specimenWidth=u'Specimen line width.', 
         specimentLineHeight=Em(1.2), doc_specimentLineHeight=u'Specimen line height, relative to waterfall font size.',
         # Size label
         sizeLabelColor=Color('#888'), doc_sizeLabelColor='Size label color, default is mid-gray.',
         # h1
-        h1FontFamily=CC.HEADFAMILY, doc_h1FontFamily=u'h1 font family.',
+        h1FontFamily=HEAD_FAMILY, doc_h1FontFamily=u'h1 font family.',
         h1FontSize=Em(2), doc_h1FontSize=u'h1 font size',
         h1LineHeight=Em(1.4), doc_h1LineHeight=u'h1 leading',
         h1MarginBottom=Em(0.5), doc_h1MarginBottom=u'h1 margin bottom',  
@@ -70,7 +73,7 @@ class SimpleTypeSpecimenColumn(Column):
         b.div(class_=self.CLASS_ROW, padding=s.rowPadding)
         b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight, 
             marginbottom=s.h1MarginBottom)
-        b.text('WebType ' + self.BODYFAMILY)
+        b.text('WebType ' + self.FONT_FAMILY)
         b._h1()
         for n in range(s.specimentSmall, s.specimenLarge):
             b.div(class_='specimen%02d' % n, width=s.specimenWidth, fontsize=Px(n), 
@@ -78,7 +81,7 @@ class SimpleTypeSpecimenColumn(Column):
             b.span(class_='size%02d' % n, fontsize=Px(s.specimentSmall), color=s.sizeLabelColor)
             b.text('%d px' % n)
             b._span()
-            b.text(u'ABCDEFGH abcdefgh €$@#123')
+            b.text(u'ABCDEFGHIJKLM abcdefghijklm €$@#123')
             b._div()
         b._div(comment=self.CLASS_ROW)
         b._div()

@@ -60,13 +60,18 @@ class SassBuilder(XmlTransformerPart, Builder):
         Open the theme block (omitted if the style has no selector) and build the style of <b>component.style</b>."""
         self.reset() # Build the reset code for the default values of HTML elements.
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
+        # If there is a base style defined for this theme, then export them before the CSS of all
+        for style in component.style.styles:
+            self.styleBlock(style.selector) # Build the opening of the style block if the selector is defined.
+            self.buildStyle(style)
+            self._styleBlock(style.selector) # Build the closing of the style block if the selector is defined.
+            self.newline()
+            # Export specific child components now.
         self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
-        self.buildStyle(component.style)
 
     def _theme(self, component): 
         u"""Close the theme block. Omit of <b>component.selector</b> is not defined."""
         self._styleBlock(component.selector) # Build the closing of the style block if the selector is defined.
-        self.newline()
         self.popFirst() # Reduce level for firstSelectors.
         # Finally, run through the component-styles for each of the collected media style expression.
         self.buildMedia(component)
