@@ -19,7 +19,7 @@ from xierpa3.descriptors.style import Media
 class WebTypeSpecimenColumn(Column):
 
     SIZE_SMALL = 10
-    SIZE_LARGE = 60
+    SIZE_LARGE = 32
     
     def buildBlock(self, b):
         u"""Build the specimen column"""
@@ -34,17 +34,17 @@ class WebTypeSpecimenColumn(Column):
                 maxwidth=self.C100, minwidth=0),
         )
         # Add div.row to allow padding, without making the main column div
-        # grow outside the parent boudaries.
+        # grow outside the parent boundaries.
         b.div(class_=self.CLASS_ROW, padding=Em(2))
         b.h1(fontfamily=self.CSS_HEADFONT, fontsize=Em(2), lineheight=Em(1.4), marginbottom=Em(0.5))
         b.text('WebType ' + s.bodyFamily)
         b._h1()
-        for n in range(self.SIZE_SMALL, self.SIZE_LARGE):
+        for n in range(10, 20): #range(self.SIZE_SMALL, self.SIZE_LARGE):
             b.div(class_='specimen%02d' % n, width=self.C100, fontsize=Px(n), lineheight=Em(1.2))
             b.span(class_='size%02d' % n, fontsize=Px(self.SIZE_SMALL), color='#888')
             b.text('%d px' % n)
             b._span()
-            b.text(u'ABCDEFGH abcdefgh €$@#123')
+            b.text(u'AAABCDEFGH abcdefgh €$@#123')
             b._div()
         b._div(comment=self.CLASS_ROW)
         b._div()
@@ -85,5 +85,5 @@ class WebTypeSpecimenSite(Theme):
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
-    path = WebTypeSpecimenSite().make()
+    WebTypeSpecimenSite().make()
     

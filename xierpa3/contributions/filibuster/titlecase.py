@@ -231,8 +231,7 @@ class TitlecaseTests(unittest.TestCase):
         text = titlecase(
             u'Reading between the lines of steve jobs’s ‘thoughts on music’'
         )
-        result = u'Reading Between the Lines of Steve Jobs’s ‘Thoughts on '\
-            'Music’'
+        result = u'Reading Between the Lines of Steve Jobs’s ‘Thoughts on Music’'
         self.assertEqual(text, result, "%s should be: %s" % (text, result, ))
 
     def test_repair_perms(self):
@@ -249,8 +248,7 @@ class TitlecaseTests(unittest.TestCase):
             'generalissimo francisco franco: still dead; kieren McCarthy: '\
                 'still a jackass'
         )
-        result = 'Generalissimo Francisco Franco: Still Dead; Kieren '\
-            'McCarthy: Still a Jackass'
+        result = u"""Generalissimo Francisco Franco: Still Dead; Kieren McCarthy: Still a Jackass."""
         self.assertEqual(text, result, "%s should be: %s" % (text, result, ))
 
 
