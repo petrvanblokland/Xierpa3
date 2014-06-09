@@ -29,22 +29,22 @@ class Page(Component):
         pass
 
     def block(self, b):
-        u"""Start the block by calling the builder <b>b.div( )</b> with the 
+        u"""Start the block by calling the builder method <b>b.div( )</b> with the 
         default class definition."""
         s = self.style
         b.div(class_=s.class_ or s.name or self.class_ or self.name)
         b.comment(self.name)
         
     def _block(self, b):
-        u"""End the block by calling the builder <b>b.div( )</b> with the 
-        default class definition in comment."""
+        u"""End the block by calling the builder method <b>b.div( )</b> with the 
+        default class definition as comment."""
         s = self.style
         b._div(comment=s.class_ or s.name or self.class_ or self.name) # End comment is automatic.
         
     def buildBlock(self, b):
         u"""
-        Make the <i>builder</i> open the page and open the block. Then call the builder for all enclosed components. Make
-        the <i>builder</i> close the block and close the page.
+        Make the builder <i>b</i> open the page and open the block. Then call the builder 
+        for all enclosed components. Make the builder <i>b</i> close the block and close the page.
         """
         b.page(self)
         for component in self.components:

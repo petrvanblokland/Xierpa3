@@ -107,6 +107,7 @@ class C(Config):
     CLASS_MOBILECHAPTERNAVIGATION = 'mobileChapterNavigation'
     CLASS_NAME = 'name'
     CLASS_PAGE = 'page'
+    CLASS_PULLQUOTE = 'pullquote'
     CLASS_ROW = 'row'
     CLASS_SOCIALMEDIA = 'socialMedia'
     CLASS_SUMMARY = 'summary'

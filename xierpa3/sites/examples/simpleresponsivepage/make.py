@@ -14,7 +14,7 @@ import webbrowser
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.attributes import Em, Margin 
+from xierpa3.attributes import Em, Margin, Perc, Padding, Px
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 from xierpa3.descriptors.blueprint import BluePrint
 
@@ -22,22 +22,27 @@ class SimpleResponsiveText(Column):
 
     LORUMIPSUM = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel metus ullamcorper, porttitor ligula id, sollicitudin ante. Sed molestie cursus tortor, ut blandit felis tincidunt at. Suspendisse scelerisque malesuada massa, eu rhoncus nulla interdum ut. Morbi ullamcorper, leo pulvinar pharetra tincidunt, dolor quam ullamcorper lectus, in dignissim magna odio ut eros. Nulla vel enim a leo hendrerit auctor luctus nec urna. Donec ligula nunc, consequat ut aliquet in, auctor id nisl. Pellentesque malesuada tincidunt tortor, varius sollicitudin lorem dictum vitae. Duis vel neque non leo commodo faucibus. In dictum in mauris eget fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim scelerisque vitae."""
     CC = Column # Access of constants through parent class.
+
+    BODYFONT = 'Georgia'
+    CAPTIONFONT = BODYFONT
     
     BLUEPRINT = BluePrint(
+        # Body
+        bodyFontSize=Px(12), doc_bodyFontSize=u'Body font size',
+        bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family',
+        # Page/Column
         margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
         backgroundColor='#222', doc_backgroundColor=u'Column background color',
         backgroundColorTablet='#444', doc_backgroundColorTable=u'Column background color for tablet.',
         backgroundColorMobile='#BBB', doc_backgroundColorMobile=u'Column background color for mobile.', 
         # Text
+        fontSize=Em(2), doc_fontSize=u'Column font size, relative to body font size.',
+        fontSizeTablet=Em(1.8), doc_fontSizeTablet=u'Text font size for tablet, relative to body font size.',
+        fontSizeMobile=Em(2.5), doc_fontSizeMobile=u'Text font size for mobile, relative to body font size.',
         color='yellow', doc_color=u'Column text color.',
         colorTablet='orange', doc_colorTablet=u'Column text color for tablet.',
         colorMobile='red', doc_colorMobile=u'Column text color for mobile.',
-        fontSize=Em(4), doc_fontSize=u'Text font size.',
-        fontSizeTablet=Em(3), doc_fontSizeTablet=u'Text font size for tablet.',
-        fontSizeMobile=Em(2), doc_fontSizeMobile=u'Text font size for mobile.',
     )
-    CSS_BODYFONT = 'Georgia'
-    CSS_CAPTIONFONT = CSS_BODYFONT
     
     def buildBlock(self, b):
         u"""Build the column. Note that although the "div" suggest that it is just
@@ -50,29 +55,44 @@ class SimpleResponsiveText(Column):
         cascading styled hierarchy."""
         s = self.style
         b.div(class_='column', color=s.color, margin=s.margin, 
-            width='80%', maxwidth=700, minwidth=300, 
-            backgroundcolor=s.backgroundColor,
-            paddingtop=Em(0.5), paddingbottom=Em(0.5), fontfamily=self.CSS_BODYFONT, 
-            fontsize=s.fontSize, textalign=self.LEFT, lineheight=Em(1.2),
+            width=Perc(90), maxwidth=900, minwidth=300, 
+            backgroundcolor=s.backgroundColor, fontsize=s.fontSize,
+            padding=Padding(Em(0.5), Em(0.5), Em(0.5), Em(0.5)), 
+            textalign=self.LEFT,
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
-                   backgroundcolor=s.backgroundColorTablet, 
-                   color=s.colorTablet, fontsize=Em(3), width=self.C100),
+                   backgroundcolor=s.backgroundColorTablet, margin=0,
+                   color=s.colorTablet, fontsize=s.fontSizeTablet, width=Perc(100),
+                   minwidth=0, maxwidth=Perc(100)),
                # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.M_MOBILE_MAX, 
+               Media(max=self.M_MOBILE_MAX, margin=0,
                    backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
-                   fontsize=Em(2), width=self.C100)
+                   fontsize=s.fontSizeMobile, width=Perc(100), 
+                   minwidth=0, maxwidth=Perc(100)),
             ))
+        # Add standard row that 100% fits the column, so we can change the margins
+        # by adding padding to the container.
+        b.div(class_=self.CLASS_ROW, width=Perc(100))
         b.text(self.LORUMIPSUM)
+        b._div(comment=self.CLASS_ROW)
         b._div()
         
-class SimpleResponsive(Theme):
-    u"""The <b>SimpleResponsive</b> class implements a simple page with a text and an image."""
+class SimpleResponsivePage(Theme):
+    u"""The <b>SimpleResponsivePage</b> class implements a simple page with a text and an image."""
     TITLE = u'The simple responsive text page.' # Use as title of window.
 
+    def baseStyle(self):
+        u"""Answer the single basis style that will be defined as overall CSS, before
+        specific block definitions start."""
+        s = SimpleResponsiveText.BLUEPRINT
+        root = self.newStyle() # Create root style
+        root.addStyle('body', fontfamily=s.bodyFontFamily, fontsize=s.bodyFontSize,
+            backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
+        return root
+        
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
@@ -104,5 +124,5 @@ class SimpleResponsive(Theme):
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
-    path = SimpleResponsive().make()
+    path = SimpleResponsivePage().make()
     webbrowser.open(path)

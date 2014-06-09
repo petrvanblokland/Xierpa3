@@ -13,7 +13,6 @@
 #   Following standard
 #   https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
 #
-import os
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltagbuilderpart import XmlTagBuilderPart
 from xierpa3.builders.builderparts.htmlbuilderpart import HtmlBuilderPart

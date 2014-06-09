@@ -42,15 +42,15 @@ class HelloWorldResponsiveText(Column):
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
         b.div(class_='column', color='yellow', margin=Margin(0, self.AUTO), 
-            width='80%', maxwidth=700, minwidth=300, backgroundcolor='#222',
+            width='90%', maxwidth=900, minwidth=300, backgroundcolor='#222',
             paddingtop=Em(0.5), paddingbottom=Em(0.5), fontfamily=self.CSS_BODYFONT, 
-            fontsize=Em(4), textalign=self.CENTER, lineheight=Em(1.2),
+            fontsize=Em(3), textalign=self.CENTER, lineheight=Em(1.2),
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor='#444', color='orange', 
-                   fontsize=Em(3), width=self.C100),
+                   fontsize=Em(2), width=self.C100),
                # For mobile, even more lighter background, change color of text and smaller size.
                Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', color='red', fontsize=Em(2), 
                    width=self.C100)
@@ -103,6 +103,15 @@ class HelloWorldResponsive(Theme):
     drag to a browser see the result."""
     TITLE = u'The responsive “Hello world” page.' # Use as title of window.
 
+    def baseStyle(self):
+        u"""Answer the single basis style that will be defined as overall CSS, before
+        specific block definitions start."""
+        root = self.newStyle() # Create root style
+        root.addStyle('body', backgroundcolor='yellow',
+            # DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
+        )
+        return root
+        
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""

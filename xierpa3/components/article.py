@@ -444,20 +444,21 @@ class ArticleSideBar(ArticleColumn):
         u"""Build the list of footnotes with links to the position in the article where they are defined."""
         s = self.style
         chapterIndex = self.getChapterIndex(b, article)
-        footnotes = article.footnotes[chapterIndex] # Get footnotes of this chapter
-        if footnotes:
-            b.div(class_=self.CLASS_FOOTNOTES) 
-            b.h4()
-            b.text(s.footnoteLabel)
-            b._h4()
-            b.ol() # Not displaying the index number here, how to solve with style?
-            for index, footnote in enumerate(footnotes):
-                b.li(fontsize=Em(0.9), color='red')
-                b.a(href='#fnref:footnoteRef%d' % (index+1), name='fnref:footnote%d' % (index+1))
-                # Hard copy the index number, as <ol> doesn't show now.
-                b.text('%d | %s %s' % (index+1, footnote.text, s.footnoteArrow or u'↩')) # Process element, instead of plain text.
-                b._a()
-                b._li()
-            b._ol()
-            b._div() # .footnotes
-
+        if article.footnotes:
+            footnotes = article.footnotes[chapterIndex] # Get footnotes of this chapter
+            if footnotes:
+                b.div(class_=self.CLASS_FOOTNOTES) 
+                b.h4()
+                b.text(s.footnoteLabel)
+                b._h4()
+                b.ol() # Not displaying the index number here, how to solve with style?
+                for index, footnote in enumerate(footnotes):
+                    b.li(fontsize=Em(0.9), color='red')
+                    b.a(href='#fnref:footnoteRef%d' % (index+1), name='fnref:footnote%d' % (index+1))
+                    # Hard copy the index number, as <ol> doesn't show now.
+                    b.text('%d | %s %s' % (index+1, footnote.text, s.footnoteArrow or u'↩')) # Process element, instead of plain text.
+                    b._a()
+                    b._li()
+                b._ol()
+                b._div() # .footnotes
+    

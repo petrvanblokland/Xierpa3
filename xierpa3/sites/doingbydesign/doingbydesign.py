@@ -8,11 +8,12 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    doingbydesignID.py
-#
-#    Demo application exporting to InDesign
+#    doingbydesign.py
 #
 #    http://localhost:8013/course/how-to-deal-with-customers
+#
+#    @@@ Temporary out of order. Needs update of some functions. 
+#    @@@ Wait for github commit.
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
@@ -81,7 +82,7 @@ class DoingByDesign(Shop):
     #css = property(_get_css, _set_css)
 
     def baseStyle(self):
-        s = self.style # Answer root style without selector
+        s = self.newStyle() # Answer root style without selector
         s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)

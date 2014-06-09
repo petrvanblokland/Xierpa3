@@ -30,7 +30,7 @@ class Builder(C):
         self._verbose = verbose
         self._doIndent = doIndent # Use indent for blocks on the output
         self._tabLevel = 0 # If indenting, keep tab level here.
-        self._newLine = '\n' # Newline code to add at all closing of blocks
+        self._newLine = '\n' # Newline code to add˙ at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
         self.initialize()
@@ -191,8 +191,8 @@ class Builder(C):
     def getCurrentArticleId(self):
         return self.e.form[C.PARAM_ARTICLE]
 
-    def setCurrentArticleId(self, id):
-        self.e.form.set(C.PARAM_ARTICLE, id)
+    def setCurrentArticleId(self, aid):
+        self.e.form.set(C.PARAM_ARTICLE, aid)
     
     def getUrl(self):
         u"""Answer the url of the current page. To be implemented by inheriting classes

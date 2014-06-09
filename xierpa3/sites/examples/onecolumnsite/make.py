@@ -31,33 +31,40 @@ from xierpa3.descriptors.blueprint import BluePrint
 class ExampleColumn(Column):
     
     CC = Column # Get constants from parent class.
+    # Load @fontface fonts for this example from www.webtype.com
+    BODYFAMILY = '"Hermes FB Book"'
+    HEADFAMILY = '"Hermes FB Semibold"'
     
     BLUEPRINT = BluePrint(
+        # Page stuff
+        pageBackgroundColor=Color('#EEE'), doc_pageBackgroundColor=u'Page background color.',
+        # Responsive stuff
         minWidth=300, doc_minWidth='Column minimal width.',
         minWidthMobile=0, doc_minWidthMobile=u'Column minimal width for mobile.',
         maxWidth=700, doc_maxWidth='Column maximal width.',
         maxWidthMobile=CC.C100, doc_maxWidthMobile='Column maximal width for mobile',
         # Column stuff
-        fontFamlily=CC.BODYFAMILY, doc_fontFamily=u'Column body font family.',
+        fontFamlily=BODYFAMILY, doc_fontFamily=u'Column body font family.',
         fontSize=Em(1), doc_fontSize=u'Column body font size.',
         fontSizeMobile=Em(1.2), doc_fontSizeMobile=u'Column body font size for mobile.', 
         lineHeight=Em(1.4), doc_lineHeight=u'Column body leading.',
         margin=Margin(0, CC.AUTO, 0, CC.AUTO), doc_margin=u'Column margin.',
         marginMobile=0, doc_marginMobile=u'Column margin mobile', 
         color=Color('#222'), doc_color='Column text color.',
-        bgColor=Color('#EEE'), doc_bgColor='Column background color.',
+        backgroundColor=Color('#FFF'), doc_backgroundColor='Column background color.',
         width=Perc(50), doc_width=u'Column width.',
         widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile',
         # Row
         rowPadding=Em(2), doc_rowPadding=u'Row padding.',
+        rowPaddingMobile=Em(1.4), doc_rowPaddingMobile=u'Row padding for mobile.',
         # h1
-        h1FontFamily=CC.HEADFAMILY, doc_h1FontFamily=u'Column h1 font family.',
+        h1FontFamily=HEADFAMILY, doc_h1FontFamily=u'Column h1 font family.',
         h1FontSize=Em(1.6), doc_h1FontSize=u'Column h1 font size',
         h1LineHeight=Em(1.1), doc_h1LineHeight=u'Column h1 leading', 
         h1Color=Color('#666'), doc_h1Color=u'Column h1 color.',
         h1MarginBottom=Em(0.5), doc_h1MarginBottom=u'Column h1 margin bottom',
         # h2
-        h2FontFamily=CC.HEADFAMILY, doc_h2FontFamily=u'Column h2 font family.',
+        h2FontFamily=HEADFAMILY, doc_h2FontFamily=u'Column h2 font family.',
         h2FontSize=Em(1.4), doc_h2FontSize=u'Column h2 font size',
         h2LineHeight=Em(1.2), doc_h2LineHeight=u'Column h2 leading',
         h2Color=Color('#888'), doc_h2Color=u'Column h2 color.',
@@ -74,18 +81,18 @@ class ExampleColumn(Column):
         # img
         imgMarginTop=Em(0.5), doc_imgMarginTop=u'Image margin top',
         imgMarginBottom=Em(0.5), doc_imgMarginBottom=u'Image margin bottom',
-        # blockquote
-        blockQuotePadding=Margin(Em(0.5), Em(1)), doc_blockQuotePadding=u'Block quote padding.',
-        blockQuoteSize=Em(1.2), doc_blockQuoteSize=u'Block quote font size.',
-        blockQuoteLineHeight=Em(1.3), doc_blockQuoteLineHeight=u'Block quote line height.',
-        blockQuoteMarginTop=Em(0.5), doc_blockQuoteMarginTop=u'Block quote margin top.',
-        blockQuoteMarginBottom=Em(0.5), doc_blockQuoteMarginBottom=u'Block quote margin bottom',
-        blockQuoteStyle=CC.ITALIC, doc_blockQuoteStyle=u'Block quote style', 
-        blockQuoteBgColor=Color('#DDD'), doc_blockQuoteBgColor=u'Block quote background color.',
-        blockQuoteColor=Color('#000'), doc_blockQuoteColor=u'Block quote color.', 
-        blockQuoteBorder=None, doc_blockQuoteBorderu='Bloqk quote border.', #Border('solid', 2, Color('#E1E2E2')),
+        # blockquote.pullQuote
+        pullQuoteFontFamily=BODYFAMILY, doc_pullQuoteFontFamily=u'Pull quote font family.',
+        pullQuotePadding=Margin(Em(0.5), Em(1)), doc_pullQuotePadding=u'Pull quote padding.',
+        pullQuoteSize=Em(1.2), doc_pullQuoteSize=u'Pull quote font size.',
+        pullQuoteLineHeight=Em(1.3), doc_pullQuoteLineHeight=u'Pull quote line height.',
+        pullQuoteMarginTop=Em(0.5), doc_pullQuoteMarginTop=u'Pull quote margin top.',
+        pullQuoteMarginBottom=Em(0.5), doc_pullQuoteMarginBottom=u'Pull quote margin bottom',
+        pullQuoteStyle=CC.ITALIC, doc_pullQuoteStyle=u'Pull quote style', 
+        pullQuoteBackgroundColor=Color('#EEE'), doc_pullQuoteBackgroundColor=u'Pull quote background color.',
+        pullQuoteColor=Color('#333'), doc_pullQuoteColor=u'Pull quote color.', 
+        pullQuoteBorder=None, doc_pullQuoteBorderu='Pull quote border.', #Border('solid', 2, Color('#E1E2E2')),
     )
-    
     def buildBlock(self, b):
         u"""Build the column. Note that although the "div" suggest that it is just
         HTML building there, the method get called both with <b>b</b> as CssBuilder
@@ -95,8 +102,8 @@ class ExampleColumn(Column):
         s = self.style # Get compile style from cascading blue prints of inheriting classes.
         b.div(class_=s.classColumn, color=s.color, margin=s.margin, 
               width=s.columnWidth, maxwidth=s.maxWidth, minwidth=s.minWidth, 
-              backgroundcolor=s.bgColor, fontfamily=s.fontFamily, fontsize=s.fontSize,
-              lineheight=s.lineHeight,
+              backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
+              fontsize=s.fontSize, lineheight=s.lineHeight,
               # Remove margins on mobile, showing the column on full screen width.
               media=Media(max=self.M_MOBILE_MAX, margin=s.marginMobile, 
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight,
@@ -104,7 +111,9 @@ class ExampleColumn(Column):
         )
         # Add div.row to allow padding, without making the main column div
         # grow outside the parent boudaries.
-        b.div(class_=self.CLASS_ROW, padding=s.rowPadding)
+        b.div(class_=self.CLASS_ROW, padding=s.rowPadding,
+              media=Media(max=self.M_MOBILE_MAX, padding=s.rowPaddingMobile)
+        )
         # Since the self.adapter.getArticle answers an article that already 
         # includes XHTML tags, we cannot do the styling there. In order to 
         # define the unique CSS styles, a blank document content is created 
@@ -160,7 +169,7 @@ class ExampleColumn(Column):
         # Headling made by BlurbAdapter
         b._h2()
         b.img(margintop=s.imageMarginTop, marginbottom=s.imageMarginBottom)
-        b.p(textindent=s.textIndent)
+        b.p(textindent=s.textIndent, fontfamily=self.BODYFAMILY)
         # Main paragraphs have an indent.
         b._p()
         b.p(class_='start', textindent=s.textFirstIndent)
@@ -173,11 +182,12 @@ class ExampleColumn(Column):
         # @@@ TODO: Mark as p.end preceding <blockquote> too.
         b._p()
         # Italic blockquotes with an indent and backgroundcolor.
-        b.blockquote(padding=s.blockQuotePadding, fontsize=s.blockQuoteSize, 
-            fontstyle=s.blockQuoteStyle, lineheight=s.blockQuoteLineHeight,
-            margintop=s.blockQuoteMarginTop, marginbottom=s.blockQuoteMarginBottom, 
-            border=s.blockQuoteBorder,
-            backgroundcolor=s.blockQuoteBgColor, color=s.blockQuoteColor)
+        b.blockquote(class_=self.CLASS_PULLQUOTE, padding=s.pullQuotePadding, 
+            fontsize=s.pullQuoteSize, fontfamily=s.pullQuoteFontFamily, 
+            fontstyle=s.pullQuoteStyle, lineheight=s.pullQuoteLineHeight,
+            margintop=s.pullQuoteMarginTop, marginbottom=s.pullQuoteMarginBottom, 
+            border=s.pullQuoteBorder,
+            backgroundcolor=s.pullQuoteBackgroundColor, color=s.pullQuoteColor)
         b._blockquote()
 
 class OneColumnSite(Theme):
@@ -185,18 +195,38 @@ class OneColumnSite(Theme):
     Double click the generated file or drag to a browser see the result."""
     TITLE = u'The Single Column Example Page.' # Use as title of window.
 
-    # Fonts defined in Theme.URL_FONTS as Webtype.com Xierpa3 demo fonts for localhost usage.
+    URL_FONTS = [
+        # Note that this package contains the a set of latest featured font, and may be changed in the future.
+        # If using the font in this package, safest is to refer to the functional constant names below,
+        # instead of making a direct reference to the family name.
+        # Of course, taking your own account at //www.webtype.com is even better :)
+        Theme.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
+    ]    
     # The single column is filled by the self.adapter article query result.
     # The default self.adapter (if nothing else is defined) is the BlurbAdapter,
     # which generates random pieces of text.
-    
+
+    def baseStyle(self):
+        u"""Answer the single basis style that will be defined as overall CSS, before
+        specific block definitions start."""
+        s = ExampleColumn.BLUEPRINT
+        root = self.newStyle() # Create root style
+        root.addStyle('body', fontfamily=s.fontFamily, fontsize=s.fontSize,
+            backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
+        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFONT)
+        s.addStyle('h6', fontfamily=s.fontFamily)
+        return root
+        
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
         column = ExampleColumn()
         # Create an instance (=object) of the page, containing the navigation components.
-        homePage = Page(class_='home', components=(column,), title=self.TITLE, fonts=self.URL_FONTS)
+        
+        print self.URL_FONTS
+        homePage = Page(class_='home', components=(column,), title=self.TITLE, 
+            fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]
     
