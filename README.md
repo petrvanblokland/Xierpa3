@@ -14,8 +14,8 @@
 ## About
 
 Xierpa3 is a framework for object base publications, using Components, Builders, 
-Adapters and Attributes. Generating HTML+CSS configurations, or PDF, or pixel 
-images. Live or as template files.
+Adapters and Attributes. Generating HTML5+CSS3 configurations (with or without PHP), 
+or PDF, or pixel images. Live or as template files.
 
 For now Xierpa3 is a proof-of-concept "gone live". This means that currently
 installation may not be as automated and smooth as it will be and themes, examples
@@ -26,6 +26,24 @@ tested. This will remain until version 1.0.
 But Xierpa is already a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in CSS+HTML (or PHP) directly. 
 
+-----------------------------------------------------------------------------
+
+### Getting started
+
+The includes example site "doingbydesign" will include guided instructions how to get 
+started with Python (www.python.org) in general and Xierpa3 in particular. 
+The example sites are set up as an incremental sequence, starting with the most simple
+"Hello world" site, and then adding styling, adapters, responsive behavior, multiple pages,
+adapters such as PHP, etc. The final example is the complete documentation website for Xierpa3,
+showing all the aspects of the system in code as well as page content.
+
+Also under development is the Xierpa3App, an OSX desktop application that functions as a wrapper
+around the Xierpa3 library. Since the application acts like a desktop webserver, it allows 
+testing of the example sites without installing any Python libraries. Also it is the platform 
+in which alterations can be made to existing style sets, buth by UI functions or by scripting.
+
+The Xierpa3App will be available for download in the near future.
+	
 -----------------------------------------------------------------------------
 
 ### Architecture
