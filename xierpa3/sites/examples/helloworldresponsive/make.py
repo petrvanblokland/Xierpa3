@@ -103,6 +103,15 @@ class HelloWorldResponsive(Theme):
     drag to a browser see the result."""
     TITLE = u'The responsive “Hello world” page.' # Use as title of window.
 
+    def baseStyle(self):
+        u"""Answer the single basis style that will be defined as overall CSS, before
+        specific block definitions start."""
+        root = self.newStyle() # Create root style
+        root.addStyle('body', backgroundcolor='yellow',
+            # DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
+        )
+        return root
+        
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
