@@ -180,7 +180,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         u"""Used for non-component blocks. Build the <i>tag</i> with the given arguments as 
         selector and SASS source attribute values. If there is a attribute ending with "_css" then ignore
         the output of the attribute with the same name, without "_css" ending. 
-        This offers the opportunity to specifically describe css attribute, prefered above the generic attribute value.
+        This offers the opportunity to specifically describe css attribute, preferred above the generic attribute value.
         All attributes that have the postfix of another builder are ignored. 
         Make forked nesting of output streams, to test if a current block created content, so the headers can be skipped
         if there already is an identical selector-content match inside the current block."""
@@ -194,10 +194,11 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.tabIn()
         self.pushResult() # Divert the tag content output, so we can see at closing if the result was empty.
         for key, value in kwargs.items():
-            # Check if the key has a companion with the same name+postfix for this builder.
+            # Check if the key has a companion with the same name+postfix for this builder type.
             # In that case ignore the attribute value. If the postfix is one of the other
             # builder postfixes, then also ignore. So "<key>" is compared with "<key>_css"
-            # for a match. Or "<key>" is compared with "<key>_html", which is ignored.
+            # for a match to execute. Or "<key>" is compared with "<key>_html", 
+            # which is the ignored here.
             keyPostfix = key.split('_')[-1]
             if not key or kwargs.has_key(key+'_'+self.ATTR_POSTFIX) or \
                 (keyPostfix != self.ATTR_POSTFIX and keyPostfix in C.ATTR_POSTFIXES): 

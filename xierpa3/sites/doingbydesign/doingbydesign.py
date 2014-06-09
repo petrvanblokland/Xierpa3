@@ -8,11 +8,12 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    doingbydesignID.py
-#
-#    Demo application exporting to InDesign
+#    doingbydesign.py
 #
 #    http://localhost:8013/course/how-to-deal-with-customers
+#
+#    @@@ Temporary out of order. Needs update of some functions. 
+#    @@@ Wait for github commit.
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
