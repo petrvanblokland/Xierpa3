@@ -37,6 +37,8 @@ The example sites are set up as an incremental sequence, starting with the most 
 adapters such as PHP, etc. The final example is the complete documentation website for Xierpa3,
 showing all the aspects of the system in code as well as page content.
 
+The online version of the documentation site is available as soon as the functions in Xierpa3 are up to date.
+
 Also under development is the Xierpa3App, an OSX desktop application that functions as a wrapper
 around the Xierpa3 library. Since the application acts like a desktop webserver, it allows 
 testing of the example sites without installing any Python libraries. Also it is the platform 
@@ -75,7 +77,8 @@ supported, we aim to support MySQL as well in the near future.
 
 ### History
 
-Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010)
+Xierpa3 (2014) is based on XPyth (2002), Xierpa (2006) and Xierpa2 (2010).
+
 XPyth, Xierpa and Xierpa2 were developed by Petr van Blokland and Torben Wilhelmsen.
 
 -----------------------------------------------------------------------------
