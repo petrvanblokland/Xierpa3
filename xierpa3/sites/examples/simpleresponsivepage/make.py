@@ -14,13 +14,24 @@ import webbrowser
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.attributes import Em, Margin, Perc, Padding, Px
+from xierpa3.attributes import Em, Margin, Perc, Padding, Px, Color
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 from xierpa3.descriptors.blueprint import BluePrint
 
 class SimpleResponsiveText(Column):
-
-    LORUMIPSUM = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel metus ullamcorper, porttitor ligula id, sollicitudin ante. Sed molestie cursus tortor, ut blandit felis tincidunt at. Suspendisse scelerisque malesuada massa, eu rhoncus nulla interdum ut. Morbi ullamcorper, leo pulvinar pharetra tincidunt, dolor quam ullamcorper lectus, in dignissim magna odio ut eros. Nulla vel enim a leo hendrerit auctor luctus nec urna. Donec ligula nunc, consequat ut aliquet in, auctor id nisl. Pellentesque malesuada tincidunt tortor, varius sollicitudin lorem dictum vitae. Duis vel neque non leo commodo faucibus. In dictum in mauris eget fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim scelerisque vitae."""
+    u"""The <b>SimpleResponsiveText</b> shows a simple heading and lorum ipsum text on 
+    a colored background, where the styling depends on the screen size through @media selection."""
+    
+    # Sample string, we don't use data adapaters yet in this example.
+    LORUMIPSUM = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel metus ullamcorper, 
+    porttitor ligula id, sollicitudin ante. Sed molestie cursus tortor, ut blandit felis tincidunt at. Suspendisse 
+    scelerisque malesuada massa, eu rhoncus nulla interdum ut. Morbi ullamcorper, leo pulvinar pharetra tincidunt, 
+    dolor quam ullamcorper lectus, in dignissim magna odio ut eros. Nulla vel enim a leo hendrerit auctor luctus 
+    nec urna. Donec ligula nunc, consequat ut aliquet in, auctor id nisl. Pellentesque malesuada tincidunt tortor, 
+    varius sollicitudin lorem dictum vitae. Duis vel neque non leo commodo faucibus. In dictum in mauris eget 
+    fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. 
+    Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim 
+    scelerisque vitae."""
     CC = Column # Access of constants through parent class.
 
     BODYFONT = 'Georgia'
@@ -32,16 +43,19 @@ class SimpleResponsiveText(Column):
         bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family',
         # Page/Column
         margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
-        backgroundColor='#222', doc_backgroundColor=u'Column background color',
-        backgroundColorTablet='#444', doc_backgroundColorTable=u'Column background color for tablet.',
-        backgroundColorMobile='#BBB', doc_backgroundColorMobile=u'Column background color for mobile.', 
+        # Show @media transition by background color
+        backgroundColor=Color('#BBB'), doc_backgroundColor=u'Column background color',
+        backgroundColorTablet=Color('#CCC'), doc_backgroundColorTablet=u'Column background color for tablet.',
+        backgroundColorMobile=Color('#EEE'), doc_backgroundColorMobile=u'Column background color for mobile.', 
         # Text
         fontSize=Em(2), doc_fontSize=u'Column font size, relative to body font size.',
         fontSizeTablet=Em(1.8), doc_fontSizeTablet=u'Text font size for tablet, relative to body font size.',
         fontSizeMobile=Em(2.5), doc_fontSizeMobile=u'Text font size for mobile, relative to body font size.',
-        color='yellow', doc_color=u'Column text color.',
-        colorTablet='orange', doc_colorTablet=u'Column text color for tablet.',
+        color=Color('#000'), doc_color=u'Column text color.',
+        colorTablet=Color('#111'), doc_colorTablet=u'Column text color for tablet.',
         colorMobile='red', doc_colorMobile=u'Column text color for mobile.',
+        # h1
+        h1Size=Em(2), doc_h1Size=u'h1 font size',
     )
     
     def buildBlock(self, b):
@@ -76,7 +90,12 @@ class SimpleResponsiveText(Column):
         # Add standard row that 100% fits the column, so we can change the margins
         # by adding padding to the container.
         b.div(class_=self.CLASS_ROW, width=Perc(100))
+        b.h1(fontsize=s.h1Size)
+        b.text('Headline')
+        b._h1()
+        b.p()
         b.text(self.LORUMIPSUM)
+        b._p()
         b._div(comment=self.CLASS_ROW)
         b._div()
         
@@ -91,6 +110,7 @@ class SimpleResponsivePage(Theme):
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.bodyFontFamily, fontsize=s.bodyFontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
+        root.addStyle('div', display=self.BLOCK)
         return root
         
     def baseComponents(self):
@@ -104,12 +124,12 @@ class SimpleResponsivePage(Theme):
         return [homePage]
 
     def make(self):
-        u"""Make the instance of this class to build CSS and HTML."""
+        u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
         # C S S
-        # Create the main CSS builder instance to build the CSS part of the site.
+        # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
         cssBuilder.save(self) 

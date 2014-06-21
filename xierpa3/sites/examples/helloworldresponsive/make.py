@@ -24,7 +24,7 @@ import webbrowser
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.attributes import Em, Margin 
+from xierpa3.attributes import Em, Margin, Color 
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class HelloWorldResponsiveText(Column):
@@ -48,12 +48,13 @@ class HelloWorldResponsiveText(Column):
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
-               # Example for table, show lighter background, change color of text and smaller size.
-               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor='#444', color='orange', 
-                   fontsize=Em(2), width=self.C100),
-               # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', color='red', fontsize=Em(2), 
-                   width=self.C100)
+                # Example for table, show lighter background, change color of text and smaller size.
+                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor=Color('#444'), 
+                      color='orange', 
+                      fontsize=Em(2), width=self.C100),
+                # For mobile, even more lighter background, change color of text and smaller size.
+                Media(max=self.M_MOBILE_MAX, backgroundcolor=Color('#AAA'), color='red', 
+                      fontsize=Em(2), width=self.C100)
             ))
         b.text('Hello world.')
         # One of the advantages of using a real programming language to generate 
@@ -107,7 +108,7 @@ class HelloWorldResponsive(Theme):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
         root = self.newStyle() # Create root style
-        root.addStyle('body', backgroundcolor='yellow',
+        root.addStyle('body', backgroundcolor='white',
             # DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
         )
         return root
@@ -123,12 +124,12 @@ class HelloWorldResponsive(Theme):
         return [homePage]
 
     def make(self):
-        u"""Make the instance of this class to build CSS and HTML."""
+        u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
         # C S S
-        # Create the main CSS builder instance to build the CSS part of the site.
+        # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
         cssBuilder.save(self) 

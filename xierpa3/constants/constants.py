@@ -36,10 +36,13 @@ class C(Config):
     # Of course, taking your own account at //www.webtype.com is even better :)
     XIERPA3_DEMOFONTS = '//cloud.webtype.com/css/34d3e5fe-7dee-4122-9e87-ea5ee4a90a05.css'
     # Redefine this list for other font packages in inheriting theme classes.
-    URL_FONTS = [] #XIERPA3_DEMOFONTS,)
+    URL_FONTS = [] #XIERPA3_DEMOFONTS,)    
     BODYFAMILY = 'Georgia'
     HEADFAMILY = 'Verdana'
     LOGOFAMILY = HEADFAMILY
+    
+    # Sponsored fonts in the example sites
+    URL_WEBTYPELOGO = 'http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/webtypelogo.png'
     
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.

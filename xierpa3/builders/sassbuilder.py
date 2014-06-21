@@ -132,14 +132,16 @@ class SassBuilder(XmlTransformerPart, Builder):
         Test if component.BUILD_CSS is True, components may be HTML only, not showing up in the CSS.
         Make nesting of output stream, to test if a current block created content, so the headers can be skipped."""
         # print component, component.BUILD_CSS, component.isEmpty()
-        #self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
-        #self.styleBlock(component.selector) # Open the block if there is a valid selector
+        if component.selector is not None:
+            self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
+            self.styleBlock(component.selector) # Open the block if there is a valid selector
         self.buildStyle(component.style)
 
     def _block(self, component):
         u"""Close the block if there is a valid selector in the <i>component</i>."""
-        #self._styleBlock(component.selector)
-        #self.popFirst() # Reduce level for firstSelectors.
+        if component.selector is not None:
+            self._styleBlock(component.selector)
+            self.popFirst() # Reduce level for firstSelectors.
 
     def linkBlock(self, component, **kwargs):
         if component.BUILD_CSS:

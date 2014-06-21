@@ -10,6 +10,7 @@
 #
 from xierpa3.sites.examples.helloworld.make import HelloWorld
 from xierpa3.sites.examples.helloworldlayout.make import HelloWorldLayout
+from xierpa3.sites.examples.helloworldblueprint.make import HelloWorldBluePrint
 from xierpa3.sites.examples.helloworldresponsive.make import HelloWorldResponsive
 from xierpa3.sites.examples.onecolumnsite.make import OneColumnSite
 from xierpa3.sites.examples.simpletypespecimen.make import SimpleTypeSpecimenSite

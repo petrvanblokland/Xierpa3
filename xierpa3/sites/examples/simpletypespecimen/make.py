@@ -22,12 +22,13 @@ class SimpleTypeSpecimenColumn(Column):
     CC = Column # Access constants through super class.
     MAXWIDTH = Px(1100)
     # Load @fontface fonts for this example from www.webtype.com
-    FONT_FAMILY = '"Brando Light"' 
-    HEAD_FAMILY = '"Brando Semibold"'
+    BODYFAMILY = '"Benton Sans RE"'
+    HEADFAMILY = '"Benton Modern RE"'
+    SPECIMENFAMILY = HEADFAMILY
     
     BLUEPRINT = BluePrint(
         # Column stuff
-        fontFamily=FONT_FAMILY, doc_fontFamily=u'Column main font family', 
+        fontFamily=BODYFAMILY, doc_fontFamily=u'Column main font family', 
         width=MAXWIDTH, doc_width=u'Column width.', 
         widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile.',  
         minWidth=0, doc_minWidth=u'Column minimal width.', 
@@ -44,6 +45,7 @@ class SimpleTypeSpecimenColumn(Column):
         # Row
         rowPadding=Em(2), doc_rowPadding=u'Row padding.',
         # Speciment stuff
+        specimentSizeIndicator=13, doc_specimenSizeIndicator=u'Size of the size indicator.',
         specimentSmall=18, doc_specimentSmall=u'Smallest font size of the specimen.',
         specimenLarge=37, doc_specimenLarge=u'Largest font size of the specimen.', 
         specimenWidth=Perc(100), doc_specimenWidth=u'Specimen line width.', 
@@ -51,7 +53,7 @@ class SimpleTypeSpecimenColumn(Column):
         # Size label
         sizeLabelColor=Color('#888'), doc_sizeLabelColor='Size label color, default is mid-gray.',
         # h1
-        h1FontFamily=HEAD_FAMILY, doc_h1FontFamily=u'h1 font family.',
+        h1FontFamily=HEADFAMILY, doc_h1FontFamily=u'h1 font family.',
         h1FontSize=Em(2), doc_h1FontSize=u'h1 font size',
         h1LineHeight=Em(1.4), doc_h1LineHeight=u'h1 leading',
         h1MarginBottom=Em(0.5), doc_h1MarginBottom=u'h1 margin bottom',  
@@ -73,16 +75,26 @@ class SimpleTypeSpecimenColumn(Column):
         b.div(class_=self.CLASS_ROW, padding=s.rowPadding)
         b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight, 
             marginbottom=s.h1MarginBottom)
-        b.text('WebType ' + self.FONT_FAMILY)
+        b.text('WebType ' + self.SPECIMENFAMILY[1:-1])
         b._h1()
         for n in range(s.specimentSmall, s.specimenLarge):
             b.div(class_='specimen%02d' % n, width=s.specimenWidth, fontsize=Px(n), 
-                lineheight=s.specimentLineHeight)
-            b.span(class_='size%02d' % n, fontsize=Px(s.specimentSmall), color=s.sizeLabelColor)
+                lineheight=s.specimentLineHeight, fontfamily=self.SPECIMENFAMILY)
+            b.span(class_='size%02d' % n, fontsize=Px(s.specimentSizeIndicator), 
+                color=s.sizeLabelColor, fontfamily=self.BODYFAMILY)
             b.text('%d px' % n)
             b._span()
             b.text(u'ABCDEFGHIJKLM abcdefghijklm €$@#123')
             b._div()
+
+        # Add reference to sponsored Webtype webfonts.
+        b.hr()
+        b.a(href='//webtype.com', color=s.color, fontfamily=self.BODYFAMILY, fontsize=Em(0.8),
+            lineheight=Em(1.4), target='external')
+        b.text('The typefaces in this example %s and %s are sponsored by &lt;Webtype&gt;' % (self.BODYFAMILY, self.HEADFAMILY))
+        b._a()
+
+        # Close the row
         b._div(comment=self.CLASS_ROW)
         b._div()
         
@@ -110,12 +122,12 @@ class SimpleTypeSpecimenSite(Theme):
         return [homePage]
     
     def make(self):
-        u"""Make the instance of this class to build CSS and HTML."""
+        u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
         # C S S
-        # Create the main CSS builder instance to build the CSS part of the site.
+        # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
         cssBuilder.save(self) 

@@ -82,13 +82,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._head()
 
         self.body()
+        # Instead of calling the main self.block
         self.div(class_=component.class_ or C.CLASS_PAGE)
         if self.isEditor(): # If in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
-        self.block(component) # Open the main page block
 
     def _page(self, component):
-        self._block(component) # Close the main page block
+        # Instead of calling the main self._block
         if self.isEditor(): # If in /edit mode, make the whole page as form.
             self._editor(component)
         self._div(comment=C.CLASS_PAGE)
@@ -225,6 +225,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         showing the <b>component.selector</b> as comment/"""
         if component.selector:
             self.tabs()
+            self.div(class_=component.class_)
             self.comment(component.selector)
 
     def _block(self, component):
@@ -233,6 +234,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         To be redefined by inheriting builder classed. Default behavior is to do nothing, except 
         showing the <b>component.selector</b> as comment."""
         if component.selector:
+            self.tabs()
+            self._div(comment=component.class_)
             self.comment('%s' % component.selector)
 
     def linkBlock(self, component, **kwargs):

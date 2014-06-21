@@ -151,6 +151,21 @@ class ExampleColumn(Column):
             b._h2()
             for item in data.items:
                 b.text(item)
+                
+        # Add reference about the content of this page
+        b.hr()
+        b.div(class_='colophon', fontsize=Em(0.8), color=s.color, fontfamily=self.BODYFAMILY,
+            lineheight=Em(1.4))
+        b.text('The text and image selection on this page is blurb, created by Filibuster.')
+        b._div()
+        
+        # Add reference to sponsored Webtype webfonts.
+        b.a(href='//webtype.com', color=s.color, fontfamily=self.BODYFAMILY, fontsize=Em(0.8),
+            lineheight=Em(1.4), target='external')
+        b.text('The typefaces in this example %s and %s are sponsored by &lt;Webtype&gt;' % (self.BODYFAMILY, self.HEADFAMILY))
+        b._a()
+        
+        # Close the column row
         b._div(comment=self.CLASS_ROW)
         b._div()
         
@@ -231,12 +246,12 @@ class OneColumnSite(Theme):
         return [homePage]
     
     def make(self):
-        u"""Make the instance of this class to build CSS and HTML."""
+        u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
         # C S S
-        # Create the main CSS builder instance to build the CSS part of the site.
+        # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
         cssBuilder.save(self) 

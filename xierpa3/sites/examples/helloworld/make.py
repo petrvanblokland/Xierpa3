@@ -29,7 +29,9 @@ class HelloWorldText(Column):
     u"""The <b>HelloWorldText</b> text column component shows the fixed ”Hello world” 
     in red color."""
     def buildBlock(self, b):
-        b.div(color='red') # Single style attribute, just to show how it works.
+        # Single style attribute, just to show how it works. 
+        # In the simple example the resulting div does not have a class.
+        b.div(color='red') 
         b.text('Hello world.')
         b._div()
         
@@ -50,7 +52,7 @@ class HelloWorld(Theme):
         return [homePage]
 
     def make(self):
-        u"""Make the instance of this class to build CSS and HTML."""
+        u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
