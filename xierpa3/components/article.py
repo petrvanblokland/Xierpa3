@@ -130,7 +130,7 @@ class Article(ArticleColumn):
         codeBackgroundColor=CC.WHITE,
     )
     def buildColumn(self, b):
-        article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
+        article = b.adapter.get(self.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
         self.buildArticle(b, article)
 
     def buildArticle(self, b, article):
@@ -145,7 +145,7 @@ class Article(ArticleColumn):
         elif article.items:
             chapterIndex = self.getChapterIndex(b, article)
             self.buildArticleTop(b, article, chapterIndex)
-            chapter = self.adapter.getChapterByIndex(article, chapterIndex)
+            chapter = b.adapter.getChapterByIndex(article, chapterIndex)
             if chapter is not None:
                 self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
         
@@ -186,7 +186,7 @@ class Article(ArticleColumn):
             b._h5()
             b._a()
         # Chapter title
-        chapterTitle = self.adapter.getChapterTitleByIndex(article, chapterIndex)
+        chapterTitle = b.adapter.getChapterTitleByIndex(article, chapterIndex)
         if chapterIndex == 0: # Show large title on the chapter first page of the article
             b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
                  margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
@@ -329,7 +329,7 @@ class ArticleSideBar(ArticleColumn):
         footnoteLabel='Footnotes', 
     )
     def buildColumn(self, b):
-        article = self.getAdapterData(self.ADAPTER_ARTICLE, id=b.e.form[self.PARAM_ARTICLE])
+        article = b.adapter.get(self.ADAPTER_ARTICLE, id=b.e.form[self.PARAM_ARTICLE])
         self.buildArticleSideBar(b, article)
 
     def buildArticleSideBar(self, b, article):

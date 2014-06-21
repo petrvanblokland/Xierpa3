@@ -16,6 +16,6 @@ class Message(Component):
             
     def buildBlock(self, builder):
         builder.block(self)
-        for component in self.getAdapterComponents(self.ADAPTER_MESSAGE):
+        for component in builder.adapter.get(self.ADAPTER_MESSAGE):
             component.build(builder)
         builder._block(self)

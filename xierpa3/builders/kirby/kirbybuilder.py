@@ -13,7 +13,7 @@
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
-class KirbyBuilder(HtmlBuilder): 
+class XXXKirbyBuilder(HtmlBuilder): 
 
     # Default usage is to run the Kirby PHP application under MAMP.
     PATH_ROOT = '/Applications/MAMP/htdocs/'
@@ -28,7 +28,6 @@ class KirbyBuilder(HtmlBuilder):
         pass
     
     def page(self, component):
-        adapter = component.adapter
         self.clear() # Clear the output stream for next theme page
         
     def _page(self, component):
@@ -76,7 +75,7 @@ class KirbyBuilder(HtmlBuilder):
         u"""Allows inheriting (PHP) classes to save the block code to another snippet file,
         by redefining this method. Default behavior is to do nothing"""
         self.tabs()
-        self.text(component.adapter.getSnippet(name))
+        self.text(self.adapter.getSnippet(name))
         self.pushResult(name=name) # Divert the output, so we can save the block content in the snippet file.
         
     def _snippet(self, component):

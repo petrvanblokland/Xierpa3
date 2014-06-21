@@ -41,7 +41,7 @@ class Menu(Component):
     )
     def buildBlock(self, b):
         u"""Build the menu from the articles in the menu tags of the home.xml document."""
-        data = self.getAdapterData(self.ADAPTER_MENU, id='home')
+        data = b.adapter.get(self.ADAPTER_MENU, id='home')
         if data.menuItems is not None and len(data.menuItems):
             s = self.style
             b.block(self)

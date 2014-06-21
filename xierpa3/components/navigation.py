@@ -64,7 +64,7 @@ class MobileNavigation(Navigation):
     )                      
     def buildBlock(self, b):
         s = self.style
-        data = self.getAdapterData(self.ADAPTER_MENU, id='home') # Get data for home page from adapter.
+        data = b.adapter.get(self.ADAPTER_MENU, id='home') # Get data for home page from adapter.
         b.block(self) # div.mobileNavigation
         b.div(class_=(self.CLASS_CONTAINER, self.className), display=s.display,
             backgroundcolor=s.backgroundColor, width=s.width,

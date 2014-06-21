@@ -31,6 +31,9 @@ FOOTERBACKGROUNDCOLOR = '#E1E1E1'
 
 class Typo2014Adapter(FileAdapter):
     pass
+# Cache the adapter, initialized automatic.
+#ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
+
 
 class Typo2014(Shop):
     u"""The <b>Shop</b> class implements the standard example shop
@@ -49,9 +52,6 @@ class Typo2014(Shop):
     
     URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
     URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
-
-    # Cache the adapter, initialized automatic.
-    ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
 
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)

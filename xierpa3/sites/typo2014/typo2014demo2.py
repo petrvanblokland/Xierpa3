@@ -22,15 +22,15 @@ from xierpa3.toolbox.transformer import TX
 class Typo2014Adapter(FileAdapter):
     pass
 
+# Cache the adapter, initialized automatic.
+#ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
+    
 class Typo2014(BaseBlog):
     u"""The <b>Blog</b> class implements the standard example show with content based on files."""
     TITLE = 'Typo 2014'
     SUBTITLE = 'Roots'
 
     SRCLOGO = 'http://data.xierpa.com.s3.amazonaws.com/_images/examples/typo2014.png'
-
-    # Cache the adapter, initialized automatic.
-    ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
    
     def baseComponents(self):
         logo = Logo(logoName='Type 2014', hoverColor='#888') # logoSrc=self.SRCLOGO

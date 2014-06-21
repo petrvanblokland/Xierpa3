@@ -45,7 +45,6 @@ from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import Perc, Color
-from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in root component.
 
 class Component(C):
     u"""
@@ -58,15 +57,13 @@ class Component(C):
         imgMaxWidth=Perc(100), doc_imgMaxWidth=u'Image maximal width',
         imgMinWidth=0, doc_imgMinWidth=u'Image minimal width',                           
     )
-        
-    ADAPTER = None # To be inherited or defined separately into the component.
     TAGNAME = 'div' # By default every component has a root div element.
     BUILD_CSS = True # Default behavior of every component is to build in CSS.
     STYLE_DEFAULT = {} # Default style source, optionally redefined by inheriting classes.
     
     def __init__(self, components=None, style=None, id=None, parent=None, name=None,
             css=None, fonts=None, prefix=None, class_=None, type=None, contentID=None, 
-            count=1, title=None, url=None, template=None, editable=False, adapter=None, 
+            count=1, title=None, url=None, template=None, editable=False,  
             selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
         # Initialize the self.style, as selector and id are stored there.
@@ -87,18 +84,17 @@ class Component(C):
         # self.name is used to identity components. Always answers something. Does not have to be unique.
         self.name = name
         # Forced title of the browser window or generated document or table of content.
-        # If kept None, then the adapter will be queried for the title.
+        # If kept None, then the builder.adapter will be queried for the title.
         # This allows both the definition of static names (per page template) or the usage
         # of page titles that depend on the current url.
-        # If the adapter answers None as title, then use self.TITLE
+        # If the builder.adapter answers None as title, then use self.TITLE
         self.title = title
         # Prefix of class and selector, stored as self.style.prefix. Shows in CSS selector as myPrefix.class
         self.prefix = prefix
         # Cache for the unique ID based on the content tree, so components can be compared.
         self._uid = None
         self.template = template # Optional template match with URL parameter
-        self.adapter = adapter or self.ADAPTER # Adapter instance for content query, otherwise ask the parent of self.
-        self.contentID = contentID # Optional unique id to query content from the adapter
+        self.contentID = contentID # Optional unique id to query content from the builder.adapter
         self.parent = parent # Weakref to parent component
         self.count = count # Count for repeating this component in output
         self.url = url # Default is not to have a URL. Page attribute define URL automatic from name.
@@ -185,7 +181,7 @@ class Component(C):
         self.components = components # Create parent weakrefs in the components to self
 
     def initialize(self):
-        # To be redefined by inheriting classes to fill adapter, default style and components.
+        # To be redefined by inheriting classes to fill default style and components.
         pass
 
     def readFile(self, path):
@@ -240,28 +236,6 @@ class Component(C):
                 return component
         return None
 
-    # self.title
-    
-    def getTitle(self, path=None):
-        u"""Answer the title of the page. If <b>self.title</b> is not <b>None</b> then answer
-        that value. Otherwise query the adapter to answer a title that may be dependent on the
-        current path (=url) of the page. If the adapter result is also <b>None</b>, then
-        answer <b>self.TITLE<b>, as optional defined by inheriting classes."""
-        title = self._title
-        if path is not None and not title:
-            title = self.getAdapterData(self.ADAPTER_PAGETITLE, id=path).text
-        if not title:
-            title = self.TITLE
-        return title
-    
-    def _get_title(self):
-        return self.getTitle()
-    
-    def _set_title(self, title):
-        self._title = title
-        
-    title = property(_get_title, _set_title, 'Answer the title of the component.')
-    
     def build(self, b):
         u"""
         Test on the type of building to be done here by builder <i>b</i>. 
@@ -474,7 +448,7 @@ class Component(C):
          
     # A D A P T E R  S T U F F
 
-    def getAdapterData(self, contentID=None, **kwargs):
+    def XXXgetAdapterData(self, contentID=None, **kwargs):
         u"""Answer the adapter content (list of components) as indicated by the
         optional content attribute, self.contentID or the class name.
         If the result is not a list (e.g. as PHP instruction), then the caller needs
@@ -670,13 +644,13 @@ class Component(C):
             return self._adapter
         if self.parent:
             return self.parent.adapter
-        # The root has a default adapter to make sure there is always content.
-        return BlurbAdapter()
+        return None # Answer None, so the adapter of the builder is used.
 
     def _set_adapter(self, adapter):
-        # Set the adapter for this component. This allows various components to have
-        # their own adapter. If not defined, the component will take the adapter
-        # of its parent.
+        u"""Set the adapter for this component. This allows various components to have
+        their own adapter. If not defined, the component will take the adapter
+        # of its parent. If the parent adapter is <b>None</b>, then don’t overwrite
+        the adapter of the builder during runtime."""
         self._adapter = adapter
 
     adapter = property(_get_adapter, _set_adapter)

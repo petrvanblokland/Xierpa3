@@ -16,6 +16,7 @@ from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.stack import Stack
 from xierpa3.descriptors.environment import Environment
+from xierpa3.adapters.blurbadapter import BlurbAdapter # Blurb adapter as default in any builder.
 
 class Builder(C):
 
@@ -23,16 +24,19 @@ class Builder(C):
     EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
     DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
     DO_INDENT = False
-    
-    def __init__(self, e=None, result=None, verbose=True, doIndent=True):
+
+    ADAPTER = BlurbAdapter() # Default adapter, if components or builders don't define an adapter.
+        
+    def __init__(self, e=None, result=None, verbose=True, doIndent=True, adapter=None):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
         self.clear(result) # Clear the result stack or initialize with the optional result stack.
         self._verbose = verbose
         self._doIndent = doIndent # Use indent for blocks on the output
         self._tabLevel = 0 # If indenting, keep tab level here.
-        self._newLine = '\n' # Newline code to add˙ at all closing of blocks
+        self._newLine = '\n' # Newline code to add˙at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
+        self.adapter = adapter or self.ADAPTER # Adapter for this builder. Can be overwritten by component.adapter, if defined.
         self.initialize()
         
     def clear(self, result=None):

@@ -37,7 +37,7 @@ class FeaturedBase(Column):
       
     def buildColumn(self, b):
         s = self.style
-        data = self.getAdapterData(self.ADAPTER_FEATUREDARTICLES, id=b.getCurrentArticleId() or self.ID_HOME, 
+        data = b.adapter.get(self.ADAPTER_FEATUREDARTICLES, id=b.getCurrentArticleId() or self.ID_HOME, 
             start=s.itemStart, count=s.itemCount)
         self.buildFeatured(b, data)
    

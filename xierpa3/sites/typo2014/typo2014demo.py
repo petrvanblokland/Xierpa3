@@ -22,14 +22,14 @@ from xierpa3.sites import typo2014
 class Typo2014Adapter(FileAdapter):
     pass
 
+# Cache the adapter, initialized automatic.
+#ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
+
 class Typo2014(BaseBlog):
     TITLE = 'Typo2014'
     SUBTITLE = 'Roots.'
 
     SRCLOGO = 'http://data.xierpa.com.s3.amazonaws.com/_images/examples/typo2014.png'
-
-    # Cache the adapter, initialized automatic.
-    ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
    
     def baseComponents(self):
         logo = Logo(logoSrc=self.SRCLOGO)

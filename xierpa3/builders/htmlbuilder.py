@@ -64,7 +64,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         #self.docType(self.ID)
         self.html()
         self.head()
-        self.title_(component.getTitle(self.getPath())) # Search for the title in the component tree
+        self.title_(self.adapter.getPageTitle(self.getPath())) # Search for the title in the component tree
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
         # self.title_(component.getTitle()) # Search for the title the component tree
@@ -72,7 +72,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.buildFontLinks(component)
         self.buildCssLinks(component)
         self.ieExceptions()
-        # Build required search engine info, if available in component.adapter
+        # Build required search engine info, if available in self.adapter
         self.buildMetaDescription(component)
         self.buildMetaKeyWords(component)
         
@@ -122,13 +122,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def buildMetaDescription(self, component):
         u"""Build the meta tag with description of the site for search engines, is available in the adapter."""
-        data = component.adapter.getDescription(component)
+        data = self.adapter.getDescription(component)
         if data.text is not None:
             self.meta(name=self.META_DESCRIPTION, content=data.text)
             
     def buildMetaKeyWords(self, component):
         u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
-        data = component.adapter.getKeyWords(component)
+        data = self.adapter.getKeyWords(component)
         if data.text is not None:
             self.meta(name=self.META_KEYWORDS, content=data.text)
             
