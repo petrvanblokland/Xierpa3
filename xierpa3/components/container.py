@@ -11,7 +11,7 @@
 #    container.py
 #
 from xierpa3.components import Component
-from xierpa3.attributes import Perc
+from xierpa3.attributes import Perc, Margin, Em
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
@@ -22,6 +22,10 @@ class Container(Component):
     CC = Component # Access of constants through parent class.
 
     BLUEPRINT = BluePrint(
+        # Page/Column
+        margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
+        paddingLeft=Em(1), doc_paddingLeft=u'Padding left of main container.',
+        paddingRight=Em(1), doc_paddingRight=u'Padding left of main container.',
         # Row
         rowMinWidth=CC.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % CC.M_MOBILE_MAX,
         rowMaxWidth=CC.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % CC.MAXWIDTH,     
@@ -31,10 +35,11 @@ class Container(Component):
     def buildBlock(self, b):
         u"""Build the container-div with a row-div inside."""
         s = self.style
-        b.div(class_=self.getClassName()) # Add the CSS class name, derived from the Python class.
+        b.div(class_=self.getClassName(), margin=s.margin, paddingleft=s.paddingLeft,
+            paddingright=s.paddingRight) 
         b.div(class_=self.CLASS_ROW, width=s.rowWidth, maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,
             media=(
-               Media(max=self.M_MOBILE_MAX, minwidth=0, maxwidth=Perc(100)),
+               Media(max=self.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=self.NONE),
         ))
         for component in self.components:
             component.build(b)

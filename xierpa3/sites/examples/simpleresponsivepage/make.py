@@ -43,8 +43,6 @@ class SimpleResponsiveText(Column):
         bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family',
         minWidth=755, doc_minWidth=u'Minimum width of the row inside a container.',
         maxWidth=CC.MAXWIDTH, doc_maxWidth=u'Maximum width of the row inside a container. Default is %d.' % CC.MAXWIDTH,
-        # Page/Column
-        margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
         # Show @media transition by background color
         backgroundColor=Color('#BBB'), doc_backgroundColor=u'Column background color',
         backgroundColorTablet=Color('#CCC'), doc_backgroundColorTablet=u'Column background color for tablet.',
