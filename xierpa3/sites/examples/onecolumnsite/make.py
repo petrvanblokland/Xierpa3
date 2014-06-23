@@ -22,7 +22,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Em, Margin, Perc, Color
-from xierpa3.components import Theme, Page, Column
+from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.media import Media
@@ -109,11 +109,6 @@ class ExampleColumn(Column):
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
-        # Add div.row to allow padding, without making the main column div
-        # grow outside the parent boudaries.
-        b.div(class_=self.CLASS_ROW, padding=s.rowPadding,
-              media=Media(max=self.M_MOBILE_MAX, padding=s.rowPaddingMobile)
-        )
         # Since the b.adapter.getArticle answers an article that already 
         # includes XHTML tags, we cannot do the styling there. In order to 
         # define the unique CSS styles, a blank document content is created 
@@ -164,9 +159,6 @@ class ExampleColumn(Column):
             lineheight=Em(1.4), target='external')
         b.text('The typefaces in this example %s and %s are sponsored by &lt;Webtype&gt;' % (self.BODYFAMILY, self.HEADFAMILY))
         b._a()
-        
-        # Close the column row
-        b._div(comment=self.CLASS_ROW)
         b._div()
         
     def buildCssColumnTemplate(self, b):
@@ -237,9 +229,10 @@ class OneColumnSite(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
         column = ExampleColumn()
+        container = Container(components=column)
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(column,), title=self.TITLE, 
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE, 
             fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]

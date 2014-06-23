@@ -78,16 +78,15 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.body()
         # Instead of calling the main self.block
         self.div(class_=component.class_ or C.CLASS_PAGE)
-        if self.isEditor(): # If in /edit mode, make the whole page as form.
+        self.comment(component.getClassName()) # Add reference  Python class name of this component
+        if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
 
     def _page(self, component):
         # Instead of calling the main self._block
-        if self.isEditor(): # If in /edit mode, make the whole page as form.
+        if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self._editor(component)
-        self._div(comment=C.CLASS_PAGE)
-        if self.e.form['fontsize']:
-            self.jsUrl('js/showfontsize.js')
+        self._div(comment='.'+(component.class_ or C.CLASS_PAGE))
         self._body()
         self._html()
 

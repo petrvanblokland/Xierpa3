@@ -47,8 +47,9 @@ class HelloWorld(Theme):
         # Create an instance (=object) of the text component to be placed on the page.
         hw = HelloWorldText()
         # Create an instance (=object) of the page, containing the "hw" component.
-        # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
+        # The page class is also the page name in the url: http://localhost:8060/index
+        # Components can be a single component or a list of components.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=hw, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 
@@ -56,20 +57,21 @@ class HelloWorld(Theme):
         u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
         # the behavior of the object that is made by calling the class.
-        # Save the site as files, e.g. as Wordpress or Kirby templates.
 
         # C S S
         # Create the main CSS builder instance to build the CSS part of the site.
         cssBuilder = CssBuilder()
-        # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
-        self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
+        # Compile (=build) the SCSS to CSS.
+        self.build(cssBuilder) 
+        # Save the file in "css/style.css".
         cssBuilder.save(self) 
     
         # H T M L
         # Create the main HTML builder instance to build the HTML part of the site.
         htmlBuilder = HtmlBuilder()
-        # Compile the HTML and save the resulting HTML file in "helloWorld.html".
-        self.build(htmlBuilder) # Build all site themes.
+        # Compile the site instance and its components into HTML code.
+        self.build(htmlBuilder) 
+        # Save the resulting HTML file in "helloWorld.html"
         # Answer the path, so we can open the file with a browser.
         return htmlBuilder.save(self)  
     

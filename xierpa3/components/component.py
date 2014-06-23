@@ -126,9 +126,7 @@ class Component(C):
     
     @classmethod
     def getClassName(cls):
-        u"""
-        Answers the class name of the <i>cls</i> as capitalized name.
-        """
+        u"""Answers the class name of the <i>cls</i> as capitalized name."""
         name = cls.__name__
         return name[0].lower() + name[1:]
 
@@ -174,10 +172,13 @@ class Component(C):
 
     def initializeComponents(self, components):
         u"""
-        Sets the self.components. If not components, then use the self.baseComponents().
+        Sets the self.components. If components is None, then use the result of <b>self.baseComponents()</b>.
+        If <i>components</i> is a single component, then make it into a list.
         """
         if components is None:
             components = self.baseComponents()
+        elif not isinstance(components, (list, tuple)):
+            components = [components]
         self.components = components # Create parent weakrefs in the components to self
 
     def initialize(self):

@@ -116,7 +116,8 @@ class HelloWorldBluePrint(Theme):
         hw = HelloWorldBluePrintText()
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
+        # Components can be a single component or a list of components.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=hw, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

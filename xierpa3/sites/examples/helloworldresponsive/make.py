@@ -21,7 +21,7 @@
 #    own type of file.
 #
 import webbrowser
-from xierpa3.components import Theme, Page, Column 
+from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.attributes import Em, Margin, Color 
@@ -41,7 +41,7 @@ class HelloWorldResponsiveText(Column):
         Building the styled 2 text blocks, written out with duplicated values,
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
-        b.div(class_='column', color='yellow', margin=Margin(0, self.AUTO), 
+        b.div(class_=self.getClassName(), color='yellow', margin=Margin(0, self.AUTO), 
             width='90%', maxwidth=900, minwidth=300, backgroundcolor='#222',
             paddingtop=Em(0.5), paddingbottom=Em(0.5), fontfamily=self.CSS_BODYFONT, 
             fontsize=Em(3), textalign=self.CENTER, lineheight=Em(1.2),
@@ -118,9 +118,11 @@ class HelloWorldResponsive(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of the text component to be placed on the page.
         hw = HelloWorldResponsiveText()
+        container = Container(components=hw)
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
+        # Components can be a single component or a list of components.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

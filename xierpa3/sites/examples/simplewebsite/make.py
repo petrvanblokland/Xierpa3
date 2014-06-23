@@ -50,9 +50,7 @@ class MainColumn(Container):
               fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
             )
         )
-        b.div(class_=self.CLASS_ROW)
         b.text(LORUMIPSUM)
-        b._div(comment=self.CLASS_ROW)
         b._div()
   
 class SideColumn(Container):
@@ -71,9 +69,7 @@ class SideColumn(Container):
               fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
             )
         )
-        b.div(class_=self.CLASS_ROW)
         b.text(LORUMIPSUM)
-        b._div(comment=self.CLASS_ROW)
         b._div()
         
 class SimpleWebSite(Theme):

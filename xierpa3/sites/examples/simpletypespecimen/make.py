@@ -11,7 +11,7 @@
 #    make.py
 #
 from xierpa3.attributes import Perc, Em, Margin, Px, Color
-from xierpa3.components import Theme, Page, Column
+from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.media import Media
@@ -115,9 +115,10 @@ class SimpleTypeSpecimenSite(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
         column = SimpleTypeSpecimenColumn()
+        container = Container(components=column)
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(column,), title=self.TITLE, 
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE, 
             fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]

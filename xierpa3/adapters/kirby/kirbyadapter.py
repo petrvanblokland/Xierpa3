@@ -32,7 +32,7 @@ class KirbyAdapter(Adapter):
     # ===============
 
     def getPageTitle(self, **kwargs):
-        return Data(text='Untitled') # To be redefined by inheriting adapter class.
+        return Data(text='<?php echo h($site->title()) ?> : %s' % (kwargs.get('title', 'Untitled')))  # To be redefined by inheriting adapter class.
     
     def thisUrl(self):
         return Data(url="<?php echo thisURL() ?>")

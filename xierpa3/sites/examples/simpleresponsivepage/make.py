@@ -11,7 +11,7 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.components import Theme, Page, Column 
+from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.attributes import Em, Margin, Perc, Padding, Px, Color
@@ -41,6 +41,8 @@ class SimpleResponsiveText(Column):
         # Body
         bodyFontSize=Px(12), doc_bodyFontSize=u'Body font size',
         bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family',
+        minWidth=755, doc_minWidth=u'Minimum width of the row inside a container.',
+        maxWidth=CC.MAXWIDTH, doc_maxWidth=u'Maximum width of the row inside a container. Default is %d.' % CC.MAXWIDTH,
         # Page/Column
         margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
         # Show @media transition by background color
@@ -68,8 +70,8 @@ class SimpleResponsiveText(Column):
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
         s = self.style
-        b.div(class_='column', color=s.color, margin=s.margin, 
-            width=Perc(90), maxwidth=900, minwidth=300, 
+        b.div(class_=self.getClassName(), color=s.color, margin=s.margin, 
+            width=Perc(100),
             backgroundcolor=s.backgroundColor, fontsize=s.fontSize,
             padding=Padding(Em(0.5), Em(0.5), Em(0.5), Em(0.5)), 
             textalign=self.LEFT,
@@ -79,24 +81,18 @@ class SimpleResponsiveText(Column):
                # Example for table, show lighter background, change color of text and smaller size.
                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
                    backgroundcolor=s.backgroundColorTablet, margin=0,
-                   color=s.colorTablet, fontsize=s.fontSizeTablet, width=Perc(100),
-                   minwidth=0, maxwidth=Perc(100)),
+                   color=s.colorTablet, fontsize=s.fontSizeTablet),
                # For mobile, even more lighter background, change color of text and smaller size.
                Media(max=self.M_MOBILE_MAX, margin=0,
                    backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
-                   fontsize=s.fontSizeMobile, width=Perc(100), 
-                   minwidth=0, maxwidth=Perc(100)),
+                   fontsize=s.fontSizeMobile),
             ))
-        # Add standard row that 100% fits the column, so we can change the margins
-        # by adding padding to the container.
-        b.div(class_=self.CLASS_ROW, width=Perc(100))
         b.h1(fontsize=s.h1Size)
-        b.text('HeadlineXXX')
+        b.text('Headline')
         b._h1()
         b.p()
         b.text(self.LORUMIPSUM)
         b._p()
-        b._div(comment=self.CLASS_ROW)
         b._div()
         
 class SimpleResponsivePage(Theme):
@@ -118,9 +114,10 @@ class SimpleResponsivePage(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of the text component to be placed on the page.
         hw = SimpleResponsiveText()
+        container = Container(components=hw)
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 
