@@ -21,7 +21,7 @@ class Container(Component):
     that handles the responsive behavior of the content."""
     CC = Component # Access of constants through parent class.
 
-    BLUEPRINT = BluePrint(
+    BLUEPRINT = BluePrint( 
         # Page/Column
         paddingLeft=Em(1), doc_paddingLeft=u'Padding left of main container.',
         paddingRight=Em(1), doc_paddingRight=u'Padding left of main container.',
