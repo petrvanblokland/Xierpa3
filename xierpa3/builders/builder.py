@@ -57,25 +57,39 @@ class Builder(C):
         Typically <b>self.EXTENSION</b> is answered."""
         return self.EXTENSION
     
-    def getExportPath(self, component):
+    def getUserRootDir(self, component):
         u"""
         Answer the constructed export path for component files: "~/Desktop/Xierpa3Examples/className".
         It is not checked if the path exists and should be created.
         """
         return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/'
 
+    def getFilePath(self, component, root=None):
+        u"""
+        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
+        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
+        """
+        if root is None:
+            root = self.getUserRootDir(component)
+        if not root.endswith('/'):
+            root += '/'
+        return root + component.name + '.' + self.getExtension()
+
     def makeDirectory(self, path):
-        u"""Make sure that the directory of path (as file) exists. Otherwise create it."""
+        u"""Make sure that the directory of path (as file) exists. Otherwise create it.
+        Answer the directory path for convenience of the caller."""
         dirPath = TX.path2Dir(path)
         if not os.path.exists(dirPath):
             os.makedirs(dirPath)
-
-    def save(self, component, path=None):
+        return dirPath
+    
+    def save(self, component, root=None, path=None):
         u"""Save the <b>self.getResult()</b> in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
-        if path is None:
-            path = self.getExportPath(component)
+        # Make the component dictionary inside the defined root path
+        if path is None: # Allow full overwrite of complete path.
+            path = self.getFilePath(component, root)
         self.makeDirectory(path) # Make sure that the directory part of path exists.
         f = open(path, 'wb')
         f.write(self.getResult())
@@ -121,6 +135,7 @@ class Builder(C):
         return Writer(name)
 
     def output(self, s):
+        u"""Output the <b>s</b> string to the result stream."""
         # See all output:
         #print s,
         self.result.peek().write(s)

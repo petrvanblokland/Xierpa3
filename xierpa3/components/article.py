@@ -145,9 +145,10 @@ class Article(ArticleColumn):
         elif article.items:
             chapterIndex = self.getChapterIndex(b, article)
             self.buildArticleTop(b, article, chapterIndex)
-            chapter = b.adapter.getChapterByIndex(article, chapterIndex)
-            if chapter is not None:
-                self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
+            # @@@@
+            #chapter = b.adapter.getChapterByIndex(chapterIndex, component=article)
+            #if chapter is not None:
+            #    self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
         
     def buildArticleTop(self, b, article, chapterIndex):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
@@ -186,20 +187,18 @@ class Article(ArticleColumn):
             b._h5()
             b._a()
         # Chapter title
-        chapterTitle = b.adapter.getChapterTitleByIndex(article, chapterIndex)
+        chapterTitle = 'AAAAAAA' #b.adapter.getChapterTitleByIndex(chapterIndex, component=article)
         if chapterIndex == 0: # Show large title on the chapter first page of the article
             b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
                  margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
             if chapterTitle is not None: 
-                b.text(chapterTitle.text)
-                #self.buildElement(b, chapterTitle)
+                b.text(chapterTitle)
             b._h3()
         else: # Other chapter pages
             b.h3(class_='chapterTitle1', fontsize=s.chapterTitleSize1, color=s.chapterTitleColor1,
                  margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
             if chapterTitle is not None: 
-                b.text(chapterTitle.text)
-                #self.buildElement(b, chapterTitle)
+                b.text(chapterTitle)
             b._h3()
         b._div(comment=class_)
                 

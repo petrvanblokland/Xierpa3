@@ -91,7 +91,7 @@ class SimpleResponsiveText(Column):
         # by adding padding to the container.
         b.div(class_=self.CLASS_ROW, width=Perc(100))
         b.h1(fontsize=s.h1Size)
-        b.text('Headline')
+        b.text('HeadlineXXX')
         b._h1()
         b.p()
         b.text(self.LORUMIPSUM)
@@ -119,7 +119,8 @@ class SimpleResponsivePage(Theme):
         # Create an instance (=object) of the text component to be placed on the page.
         hw = SimpleResponsiveText()
         # Create an instance (=object) of the page, containing the "hw" component.
-        homePage = Page(components=(hw,), title=self.TITLE)
+        # The class is also the page name in the url.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 
@@ -132,6 +133,7 @@ class SimpleResponsivePage(Theme):
         # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
+        self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         cssBuilder.save(self) 
     
         # H T M L
@@ -139,6 +141,7 @@ class SimpleResponsivePage(Theme):
         htmlBuilder = HtmlBuilder()
         # Compile the HTML and save the resulting HTML file in "helloWorld.html".
         # Answer the path, so we can open the file with a browser.
+        self.build(htmlBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         return htmlBuilder.save(self)  
     
 if __name__ == '__main__':

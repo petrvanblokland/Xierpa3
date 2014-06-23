@@ -34,7 +34,6 @@ class Typo2014Adapter(FileAdapter):
 # Cache the adapter, initialized automatic.
 #ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
 
-
 class Typo2014(Shop):
     u"""The <b>Shop</b> class implements the standard example shop
     with content based on files."""

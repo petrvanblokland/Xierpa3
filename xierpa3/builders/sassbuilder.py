@@ -52,7 +52,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
         The right 2 slash-parts of the site path are taken for the output (@@@ for now)
         """
-        return self.getExportPath(site) + self.DEFAULT_PATH
+        return self.getUserRootDir(site) + self.DEFAULT_PATH
 
     def theme(self, component):
         u"""Build the reset code for the default values of HTML elements.
@@ -110,11 +110,13 @@ class SassBuilder(XmlTransformerPart, Builder):
             class_ = parts[-1]
         return class_
 
-    def save(self, component, path=None):
+    def save(self, component, root=None, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
         and then the result it self. """
-        if path is None:
-            path = self.getExportPath(component) + self.DEFAULT_PATH
+        if path is None: # Allow full overwrite of path
+            if root is None:
+                root = self.getUserRootDir(component)
+            path = root + self.DEFAULT_PATH
         self.makeDirectory(path) # Make sure it is there.
         f = open(path, 'w')
         # Because we collected the variables during the process, 

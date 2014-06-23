@@ -116,7 +116,8 @@ class SimpleTypeSpecimenSite(Theme):
         # Create an instance (=object) of components to be placed on the page.
         column = SimpleTypeSpecimenColumn()
         # Create an instance (=object) of the page, containing the navigation components.
-        homePage = Page(class_='home', components=(column,), title=self.TITLE, 
+        # The class is also the page name in the url.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=(column,), title=self.TITLE, 
             fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]
@@ -125,11 +126,13 @@ class SimpleTypeSpecimenSite(Theme):
         u"""The instance of this class builds CSS and HTML."""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
-
+        # NOTE THAT VIEWING THIS PAGE IN DIRECT file:// MODE DOES NOT SHOW THE RIGHT @fontface WEBFONTS.
+        
         # C S S
         # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
+        self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         cssBuilder.save(self) 
     
         # H T M L
@@ -137,6 +140,7 @@ class SimpleTypeSpecimenSite(Theme):
         htmlBuilder = HtmlBuilder()
         # Compile the HTML and save the resulting HTML file in "helloWorld.html".
         # Answer the path, so we can open the file with a browser.
+        self.build(htmlBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         return htmlBuilder.save(self)  
     
 if __name__ == '__main__':

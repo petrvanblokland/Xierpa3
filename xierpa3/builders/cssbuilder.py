@@ -28,7 +28,7 @@ class CssBuilder(SassBuilder):
         SassBuilder.initialize(self)
         self.css = None
 
-    def save(self, component, path=None, styleType=None):
+    def save(self, component, path=None, root=None, styleType=None):
         u"""
         Style type is one of ['nested', 'expanded', 'compact', 'compressed'].
         Given by the url parameter "/css-nested".
@@ -38,12 +38,15 @@ class CssBuilder(SassBuilder):
             styleType = self.e.form[self.PARAM_CSS] or styleType
         if not styleType in self.SASS_STYLES:
             styleType = self.SASS_DEFAULTSTYLE
-        if path is None:
-            path = self.getExportPath(component) + '/' + self.DEFAULT_PATH
+        if path is None: # Allow full overwrite of path
+            if root is None:
+                root = self.getUserRootDir(component)
+            path = root + self.DEFAULT_PATH
+        self.makeDirectory(path) # Make sure it is there.
         scssPath = path.replace('.css', '.scss')
         SassBuilder.save(self, component, path=scssPath)
         # Call external sass application to always compile SCSS into CSS
-        os.system('sass --trace %s %s --style %s' % (scssPath, path, styleType))
+        os.system('sass --trace %s %s --style %s; chmod a+r %s' % (scssPath, path, styleType, path))
         # Read the compiled CSS into self.css to be answered as result of this builder.
         f = open(path, 'r')
         self.css = f.read()

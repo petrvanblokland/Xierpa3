@@ -141,13 +141,13 @@ class FileAdapter(Adapter):
     
     #    A P I  G E T 
     
-    def getPageTitle(self, component, id=None):
-        article = self.getArticle(component, id)
+    def getPageTitle(self, id=None):
+        article = self.getArticle(id)
         if article is not None:
             return Data(text=article.name)
         return None
     
-    def getPages(self, component, count=None):
+    def getPages(self, count=None):
         pages = Data()
         pages.items = []
         for name, article in self.getCachedArticles().items(): # @@@ Add priority sorting and counting here
@@ -156,22 +156,22 @@ class FileAdapter(Adapter):
     
     getArticles = getPages
     
-    def getMobilePages(self, component, count=None):
-        return self.getPages(component, count)
+    def getMobilePages(self, count=None):
+        return self.getPages(count)
     
-    def getArticle(self, component, id=None):
+    def getArticle(self, id=None):
         return self.getCachedArticle(id)
     
-    def getFeaturedArticles(self, component, id, start, count):
+    def getFeaturedArticles(self, id, start, count):
         u"""Answer a list of featured articles in the article that has <i>id</i>."""
         data = Data()
         data.items = []
-        article = self.getArticle(component, id)
+        article = self.getArticle(id)
         if article:
             for index, featured in enumerate(article.featured[start:start+count]):
                 if index == count:
                     break
-                featuredArticle = self.getArticle(component, featured.attrib['id'])
+                featuredArticle = self.getArticle(featured.attrib['id'])
                 if featuredArticle is not None:     
                     data.items.append(featuredArticle)
         return data
@@ -185,14 +185,14 @@ class FileAdapter(Adapter):
             categories[category].append(article)
         return categories
     
-    def getMenu(self, component, id):
+    def getMenu(self, id):
         u"""Answer the list of menu articles in this component."""
         data = Data()
         data.menuItems = []
-        article = self.getArticle(component, id)
+        article = self.getArticle(id)
         if article:
             for menu in article.menu:
-                menuArticle = self.getArticle(component, menu.attrib['id'])
+                menuArticle = self.getArticle(menu.attrib['id'])
                 if menuArticle is not None:
                     data.menuItems.append(menuArticle)
         return data

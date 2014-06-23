@@ -24,19 +24,19 @@ class BlurbAdapter(Adapter):
         Adapter.__init__(self)
         self.blurb = Blurb()
 
-    def getMessage(self, component, count):
+    def getMessage(self, count=1, **kwargs):
         return u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com'
 
-    def getChapters(self, component, count):
+    def getChapters(self, count=1, **kwargs):
         return []
 
-    def getSocialMedia(self, component, count):
+    def getSocialMedia(self, count=1, **kwargs):
         return [self.blurb.getBlurb('design_theory_title')]
 
-    def getFeaturedArticleThumbs(self, component, count):
+    def getFeaturedArticleThumbs(self, count=1, **kwargs):
         return [self.blurb.getBlurb('design_headline')]
 
-    def getFeaturedArticles(self, component, count=1):
+    def getFeaturedArticles(self, count=1, **kwargs):
         # Answer count list of (imagePath, head, ankeiler, link)
         images = [
             'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',
@@ -83,9 +83,9 @@ class BlurbAdapter(Adapter):
             data.headline = self.blurb.getBlurb('design_headline', 8) + '.'
             data.items = [self.blurb.getBlurb('article_ankeiler', 30)]
             articles.append(data)
-        return articles
+        return Data(items=articles)
 
-    def getTagCloud(self, component, count):
+    def getTagCloud(self, count=10, **kwargs):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         data = Data()
         data.items = cloud = ['Tags']
@@ -93,27 +93,27 @@ class BlurbAdapter(Adapter):
             cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
         return data
 
-    def getArticle(self, component, id=None):
+    def getArticle(self, id=None, **kwargs):
         data = Data()
         data.headline = self.blurb.getBlurb('news_headline')
         data.items = [self.blurb.getBlurb('article'), self.blurb.getBlurb('article'), self.blurb.getBlurb('article')]
         return data
     
-    def getFooter(self, component, count):
+    def getFooter(self, count=1, **kwargs):
         data = Data()
         data.items = ['Footer: ' + self.blurb.getBlurb('events_headline')]
         return data
     
-    def getLogo(self, component, count):
+    def getLogo(self, **kwargs):
         data = Data()
         data.items = ['http://petr.com/_images/contact.png']
         return data
     
-    def getDescription(self, component):
+    def getDescription(self, **kwargs):
         u"""Answer a blurb description of the site."""
         return Data(text=self.blurb.getBlurb('article_ankeiler', 40))
     
-    def getKeyWords(self, component):
+    def getKeyWords(self, **kwargs):
         u"""Answer a blurb set of keywords of the site, comma-space separated."""
         return Data(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))
     

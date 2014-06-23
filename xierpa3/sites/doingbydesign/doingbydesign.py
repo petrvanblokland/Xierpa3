@@ -23,8 +23,6 @@ from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
     ItemGroup, Featured
 from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
-from xierpa3.sites import doingbydesign
 
 # Adapter
 
@@ -63,20 +61,6 @@ class DoingByDesign(Shop):
     
     MAXWIDTH = 1140
     MINWIDTH = 755
-
-    def XX_get_css(self):
-        u"""Force building of CSS with valid set of parameters if "/force" is somewhere
-        in the url of the requested page."""
-        force = ''
-        if self.e.form['force']:
-            force = '/force'
-        return ['%s/css/style.css' % force]
-
-    def XX_set_css(self, urls):
-        u"""Ignore for now."""
-        pass
-
-    #css = property(_get_css, _set_css)
 
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector

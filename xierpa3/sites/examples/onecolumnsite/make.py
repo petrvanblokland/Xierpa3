@@ -129,7 +129,7 @@ class ExampleColumn(Column):
         if b.isType(self.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:
-            for data in b.adapter.getFeaturedArticles(self): 
+            for data in b.adapter.getFeaturedArticles().items: 
                 # Build the headline without style attribute, as these are already defined
                 # in the self.buildCssColumnTemplate call.
                 b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight)
@@ -145,7 +145,7 @@ class ExampleColumn(Column):
                 # Output the rest of the featured article.
                 b.text(data.item)
             # Add some more volume to the blurb article. 
-            data = b.adapter.getArticle(self)
+            data = b.adapter.getArticle()
             b.h2(fontfamily=s.h2FontFamily, fontsize=s.h2FontSize, lineheight=s.h2LineHeight)
             b.text(data.headline)
             b._h2()
@@ -238,9 +238,8 @@ class OneColumnSite(Theme):
         # Create an instance (=object) of components to be placed on the page.
         column = ExampleColumn()
         # Create an instance (=object) of the page, containing the navigation components.
-        
-        print self.URL_FONTS
-        homePage = Page(class_='home', components=(column,), title=self.TITLE, 
+        # The class is also the page name in the url.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=(column,), title=self.TITLE, 
             fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]
@@ -254,6 +253,7 @@ class OneColumnSite(Theme):
         # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
+        self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         cssBuilder.save(self) 
     
         # H T M L
@@ -261,6 +261,7 @@ class OneColumnSite(Theme):
         htmlBuilder = HtmlBuilder()
         # Compile the HTML and save the resulting HTML file in "helloWorld.html".
         # Answer the path, so we can open the file with a browser.
+        self.build(htmlBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         return htmlBuilder.save(self)  
     
 if __name__ == '__main__':

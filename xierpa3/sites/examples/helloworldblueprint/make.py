@@ -95,7 +95,7 @@ class HelloWorldBluePrintText(Column):
         b.div(class_=self.CLASS_CAPTION, color=s.captionColor, margin=Margin(0, self.AUTO), 
               width=self.C100, maxwidth=700, minwidth=300,
               paddingtop=s.captionPaddingTop, fontfamily=s.captionFont, fontsize=Em(0.9), 
-              textalign=self.CENTER, lineheight=Em(1.4), fontstyle=self.ITALIC,
+              textalign=s.textAlign, fontstyle=self.ITALIC,
               # Change background color of the line to indicate the illustrate the difference for mobile size.
               #media=Media(max=self.M_MOBILE_MAX, backgroundcolor='yellow', color='#222', fontsize=Em(1),
               #  margin=0, width=self.C100),
@@ -115,7 +115,8 @@ class HelloWorldBluePrint(Theme):
         # Create an instance (=object) of the text component to be placed on the page.
         hw = HelloWorldBluePrintText()
         # Create an instance (=object) of the page, containing the "hw" component.
-        homePage = Page(components=(hw,), title=self.TITLE)
+        # The class is also the page name in the url.
+        homePage = Page(class_=self.TEMPLATE_INDEX, components=(hw,), title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 
@@ -128,12 +129,14 @@ class HelloWorldBluePrint(Theme):
         # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
+        self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         cssBuilder.save(self) 
     
         # H T M L
         # Create the main HTML builder instance to build the HTML part of the site.
         htmlBuilder = HtmlBuilder()
         # Compile the HTML and save the resulting HTML file in "helloWorld.html".
+        self.build(htmlBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
         # Answer the path, so we can open the file with a browser.
         return htmlBuilder.save(self)  
     

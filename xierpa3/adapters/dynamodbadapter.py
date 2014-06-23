@@ -39,35 +39,35 @@ class DynamoDBAdapter(Adapter):
     def saveItem(self, item):
         Connector.saveItem(item)
 
-    def getMessage(self, component, count):
+    def getMessage(self, count):
         return u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com'
 
-    def getChapters(self, component, count):
+    def getChapters(self, count):
         return []
 
-    def getSocialMedia(self, component, count):
+    def getSocialMedia(self, count):
         return []
 
-    def getFeaturedArticleThumbs(self, component, count):
+    def getFeaturedArticleThumbs(self, count):
         return []
 
-    def getFeaturedArticles(self, component, countsite, count=1):
+    def getFeaturedArticles(self, countsite, count=1):
         # Answer count list of (imagePath, head, ankeiler, link)
         articles = ['Featured articles']
         return articles
 
-    def getTagCloud(self, component, count):
+    def getTagCloud(self, count):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         cloud = ['Tags']
         return cloud
 
-    def getArticle(self, component, count):
+    def getArticle(self, count):
         return ['Article']
 
-    def getFooter(self, component, count):
+    def getFooter(self, count):
         return ['Footer']
 
-    def getLogo(self, component, count):
+    def getLogo(self, count):
         return ['http://petr.com/_images/contact.png']
 
 if __name__ == "__main__":

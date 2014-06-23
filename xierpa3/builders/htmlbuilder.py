@@ -43,18 +43,11 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         that actually knows about urls. Default behavior is to do nothing."""
         return self.e.getFullUrl()
 
-    def getFilePath(self, site):
-        u"""
-        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
-        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
-        """
-        return self.getExportPath(site) + site.name + '.' + self.getExtension()
-
     def theme(self, component):
         pass
 
     def _theme(self, component):
-        pass
+        pass 
 
     def page(self, component):
         u"""
@@ -64,7 +57,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         #self.docType(self.ID)
         self.html()
         self.head()
-        self.title_(self.adapter.getPageTitle(self.getPath())) # Search for the title in the component tree
+        title = self.adapter.getPageTitle(path=self.getPath()).text
+        self.title_(title) # Search for the title in the component tree
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
         # self.title_(component.getTitle()) # Search for the title the component tree
@@ -97,20 +91,21 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._body()
         self._html()
 
-    def save(self, component, path=None):
+    def save(self, component, root=None, path=None):
         u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
-        if path is None:
-            path = self.getExportPath(component)
-        self.makeDirectory(path) # Make sure that the directory part of path exists.
+        if path is None: # Allow full overwrite of path
+            path = self.getFilePath(component, root)
+        dirPath = self.makeDirectory(path) # Make sure that the directory part of path exists.
         for template in component.getTemplates():
+            filePath = dirPath + '/' + template.name + '.html'
             template.build(self)
-            f = open(path, 'wb')
+            f = open(filePath, 'wb')
             f.write(self.getResult())
             f.close()
         return path
-    
+   
     def buildJavascript(self, component):
         if component.style and component.style.js:
             self.jsUrl(component.style.js)
@@ -122,13 +117,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def buildMetaDescription(self, component):
         u"""Build the meta tag with description of the site for search engines, is available in the adapter."""
-        data = self.adapter.getDescription(component)
+        data = self.adapter.getDescription()
         if data.text is not None:
             self.meta(name=self.META_DESCRIPTION, content=data.text)
             
     def buildMetaKeyWords(self, component):
         u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
-        data = self.adapter.getKeyWords(component)
+        data = self.adapter.getKeyWords()
         if data.text is not None:
             self.meta(name=self.META_KEYWORDS, content=data.text)
             

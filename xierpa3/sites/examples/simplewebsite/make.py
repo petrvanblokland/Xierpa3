@@ -110,14 +110,17 @@ class SimpleWebSite(Theme):
         side = SideColumn()
         main = MainColumn()
         # Create the single page instance, containing the 2 components
-        homePage = Page(class_='index', name=self.TEMPLATE_INDEX, fonts=self.URL_FONTS,
+        # The class is also the page name in the url.
+        homePage = Page(class_=self.TEMPLATE_INDEX, name=self.TEMPLATE_INDEX, fonts=self.URL_FONTS,
             title=self.TITLE, css=self.URL_CSS, components=(side, main))
         return [homePage]
     
     def make(self):
         cssBuilder = CssBuilder()
+        self.build(cssBuilder)
         cssBuilder.save(self) 
         htmlBuilder = HtmlBuilder()
+        self.build(htmlBuilder)
         return htmlBuilder.save(self)  
     
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ class KirbyAdapter(Adapter):
     def __init__(self):
         pass
     
-    def getPages(self, component, count): 
+    def getPages(self, count): 
         return Data(items=[])
 
     def getSnippet(self, s1, s2=None):
@@ -31,7 +31,7 @@ class KirbyAdapter(Adapter):
         
     # ===============
 
-    def getPageTitle(self, component, **kwargs):
+    def getPageTitle(self, **kwargs):
         return Data(text='Untitled') # To be redefined by inheriting adapter class.
     
     def thisUrl(self):

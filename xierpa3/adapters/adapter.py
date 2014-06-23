@@ -15,6 +15,7 @@ from xierpa3.toolbox.storage.status.status import Data
 from xierpa3.constants.constants import C
 
 class Data(object):
+    u"""Generic data instance, answered by every adapter query."""
     def __init__(self, **kargs):
         for key, item in kargs.items():
             setattr(self, key, item)
@@ -28,15 +29,17 @@ class Adapter(C):
     elements (which can include plain HTML), not components. The conversion needs to be done by the calling
     component.
     """
+    DATACLASS = Data
+    
     def __init__(self, root=None):
         # Store optional root, so the adapter knows where to find stuff.
         self.root = root
         self.initialize()
     
     @classmethod
-    def newData(cls, text=None, items=None, url=None):
+    def newData(cls, text=None, items=None, url=None, error=None):
         u"""To allow modification by inheriting classes, answer a new instance of Data."""
-        return Data(text=text, items=items, url=url)
+        return cls.DATACLASS(text=text, items=items, url=url, error=error)
     
     def __repr__(self):
         return '<Adapter: %s>' % self.__class__.__name__
@@ -44,73 +47,68 @@ class Adapter(C):
     def initialize(self):
         pass
     
-    def get(self, component, contentID, **kwargs):
+    def get(self, contentID=None, **kwargs):
         u"""
         This get method is the core routine to make the adapter produce content. 
-        There are two levels of dispatching matches: search for an adapter method that matches 
-        the contentID and if that cannot be found the method that matches the component class name.
-        contentID of "featuredArticles" will search for adapter method "getFeaturedArticles"
-        component class "MainContent" will search for adapter method "getMainContent".
-        All adapter method need to answer a Data instance, where the requested data is embedded.
+        There is a dispatcher level to search for an adapter method that matches 
+        the contentID.
+        All adapter method need to answer a Data instance, where the requested data is embedded
+        as one of the attributes <b>(data.text, data.url, data.items)</b>.
         """
-        data = hook1 = hook2 = None
+        data = hook = None
         if contentID is not None:
-            hook1 = TX.asGetMethodName(contentID)
-            if hasattr(self, hook1):
-                data = getattr(self, hook1)(component, **kwargs)
+            hook = TX.asGetMethodName(contentID)
+            if hasattr(self, hook):
+                data = getattr(self, hook)(**kwargs)
         if data is None:
-            hook2 = TX.asGetMethodName(component.__class__.__name__)
-            if hook1 != hook2 and hasattr(self, hook2):
-                data = getattr(self, hook2)(component, **kwargs)
-        if data is None:
-            data = Data(error='[%s] Could not find adapter.%s() or adapter.%s()' % (self, hook1, hook2))
+            data = self.newData(error='[%s] Could not find adapter.%s()' % (self, hook))
             print data.error
         return data
 
-    def getPageTitle(self, component, **kwargs):
-        return Data(text='Untitled') # To be redefined by inheriting adapter class.
+    def getPageTitle(self, **kwargs):
+        return self.newData(text='Untitled') # To be redefined by inheriting adapter class.
     
-    def getSocialMedia(self, component, **kwargs):
-        return Data(text='Social icons')
+    def getSocialMedia(self, **kwargs):
+        return self.newData(text='Social icons')
 
-    def getFeaturedArticleThumbs(self, component, **kwargs):
-        return Data(text='Featured Article thumbs')
+    def getFeaturedArticleThumbs(self, **kwargs):
+        return self.newData(text='Featured Article thumbs')
 
-    def getTagCloud(self, component, **kwargs):
-        return Data(text='Tag Cloud ' * kwargs.get('count', 10))
+    def getTagCloud(self, **kwargs):
+        return self.newData(text='Tag Cloud ' * kwargs.get('count', 10))
 
-    def getChapters(self, component, **kwargs):
-        return Data(items=('Chapter1', 'Chapter2', 'Chapter3'))
+    def getChapters(self, **kwargs):
+        return self.newData(items=('Chapter1', 'Chapter2', 'Chapter3'))
 
-    def getFeaturedArticles(self, component, **kwargs):
-        return Data(items=('Featured article1', 'Featured article2', 'Featured article3'))
+    def getFeaturedArticles(self, **kwargs):
+        return self.newData(items=('Featured article1', 'Featured article2', 'Featured article3'))
 
-    def getArticles(self, component, **kwargs):
-        return Data(items=('Article1', 'Article2', 'Article3'))
+    def getArticles(self, **kwargs):
+        return self.newData(items=('Article1', 'Article2', 'Article3'))
 
-    def getArticle(self, component, **kwargs):
-        return Data(text='Article ' * 300)
+    def getArticle(self, **kwargs):
+        return self.newData(text='Article ' * 300)
 
-    def getFooter(self, component, **kwargs):
-        return Data(text='Footer ' * 20)
+    def getFooter(self, **kwargs):
+        return self.newData(text='Footer ' * 20)
 
-    def getLogo(self, component, **kwargs):
-        return Data(text='Logo ' * 4)
+    def getLogo(self, **kwargs):
+        return self.newData(text='Logo ' * 4)
     
-    def getLogoUrl(self, component, **kwargs):
-        return Data(url='http://data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png')
+    def getLogoUrl(self, **kwargs):
+        return self.newData(url='http://data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png')
     
-    def getPages(self, component, count=10):
-        return Data(items=(Data(name='Page', url='/page'),)*count)
+    def getPages(self, count=10):
+        return self.newData(items=(Data(name='Page', url='/page'),)*count)
 
-    def getMobilePages(self, component, count=10):
-        return Data(items=(Data(name='MobilePage', url='/mobilepage'),)*count)
+    def getMobilePages(self, count=10):
+        return self.newData(items=(Data(name='MobilePage', url='/mobilepage'),)*count)
     
-    def getDescription(self, component):
+    def getDescription(self):
         u"""Answer the description of the site (or page) to be used in the head.meta.description tag."""
-        return Data(text=u'Description of the site here.')
+        return self.newData(text=u'Description of the site here.')
     
-    def getKeyWords(self, component):
+    def getKeyWords(self):
         u"""Answer the keywords of the site (or page) to be used in the head.meta.keywords tag."""
-        return Data(text='Keywords of the site here.')
+        return self.newData(text='Keywords of the site here.')
     
