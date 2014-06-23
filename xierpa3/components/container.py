@@ -23,10 +23,10 @@ class Container(Component):
 
     BLUEPRINT = BluePrint(
         # Page/Column
-        margin=Margin(0, CC.AUTO), doc_margin=u'Column margin.', 
         paddingLeft=Em(1), doc_paddingLeft=u'Padding left of main container.',
         paddingRight=Em(1), doc_paddingRight=u'Padding left of main container.',
         # Row
+        rowMargin=Margin(0, CC.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.', 
         rowMinWidth=CC.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % CC.M_MOBILE_MAX,
         rowMaxWidth=CC.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % CC.MAXWIDTH,     
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
@@ -35,9 +35,9 @@ class Container(Component):
     def buildBlock(self, b):
         u"""Build the container-div with a row-div inside."""
         s = self.style
-        b.div(class_=self.getClassName(), margin=s.margin, paddingleft=s.paddingLeft,
-            paddingright=s.paddingRight) 
-        b.div(class_=self.CLASS_ROW, width=s.rowWidth, maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,
+        b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight) 
+        b.div(class_=self.CLASS_ROW, margin=s.rowMargin, width=s.rowWidth, 
+            maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,
             media=(
                Media(max=self.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=self.NONE),
         ))
