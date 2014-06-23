@@ -112,7 +112,7 @@ class SimpleResponsivePage(Theme):
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of the text component to be placed on the page.
         hw = SimpleResponsiveText()
-        container = Container(components=hw)
+        container = Container(components=hw) # Makes container-div and row-div
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
         homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE)
