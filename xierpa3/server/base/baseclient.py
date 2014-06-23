@@ -148,9 +148,10 @@ class BaseClient(object):
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
         if site.e.form[C.PARAM_DOCUMENTATION]:
-            site.buildDocumentation(builder)
-            result = builder.getResult
-        if site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
+            site.buildDocumentation(builder) # Build the live documentation page from the site
+            result = builder.getResult() 
+        elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
+            # Forced or no cached CSS, so try to build is and save it in the cache.
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
             builder.save(site, path=filePath) # Compile resulting Sass to Css  
             result = builder.getResult() # Get the resulting Sass.
@@ -168,6 +169,7 @@ class BaseClient(object):
             site.buildDocumentation(builder)
             result = builder.getResult()
         elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
+            # Find the matching template for the current site and build from there.
             template = site.getMatchingTemplate(builder)
             template.build(builder)
             result = builder.getResult()

@@ -295,6 +295,9 @@ class Component(C):
         b.h1(color='red', fontfamily='Verdana', fontsize=14)
         b.text('Component %s' % name)
         b._h1()
+        b._block(self)
+        return
+    
         # Doc string as class descriptor, if is exists.
         if self.__doc__:
             b.p()
