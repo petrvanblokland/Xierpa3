@@ -11,7 +11,7 @@
 #    make.py
 #
 from xierpa3.attributes import Perc, Color, Em, Px
-from xierpa3.components import Theme, Page, Container
+from xierpa3.components import Theme, Page, Container, Component
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -35,8 +35,8 @@ HEADFAMILY = '"Hermes FB Semibold"'
 # where the BluePrint values function as API to adjust the component instance behavior
 # from the outside.
   
-class MainColumn(Container):
-    CC = Container
+class MainColumn(Component):
+    CC = Component
     
     BLUEPRINT = BluePrint(
         width=Perc(70), doc_width=u'Main column width', float=CC.LEFT, 
@@ -53,8 +53,8 @@ class MainColumn(Container):
         b.text(LORUMIPSUM)
         b._div()
   
-class SideColumn(Container):
-    CC = Container
+class SideColumn(Component):
+    CC = Component
     
     BLUEPRINT = BluePrint(
         width=Perc(20), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
@@ -105,10 +105,10 @@ class SimpleWebSite(Theme):
         # Create the component instances
         side = SideColumn()
         main = MainColumn()
-        # Create the single page instance, containing the 2 components
+        container = Container(components=(side, main)) # Create the single page instance, containing the 2 components
         # The class is also the page name in the url.
         homePage = Page(class_=self.TEMPLATE_INDEX, name=self.TEMPLATE_INDEX, fonts=self.URL_FONTS,
-            title=self.TITLE, css=self.URL_CSS, components=(side, main))
+            title=self.TITLE, css=self.URL_CSS, components=container)
         return [homePage]
     
     def make(self):
