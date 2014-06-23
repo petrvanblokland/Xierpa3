@@ -13,6 +13,6 @@ site.debug.css
 site.debug.scss
 *.swp
 .gitignore
-.sass-cache
+.sass-cache*
 *#
 *~
