@@ -290,12 +290,12 @@ class Component(C):
         
         processed.add(self)
         
-        name = self.__class__.__name__
-        b.block(self)
+        name = self.getClassName()
+        #b.block(self)
         b.h1(color='red', fontfamily='Verdana', fontsize=14)
         b.text('Component %s' % name)
         b._h1()
-        b._block(self)
+        #b._block(self)
         return
     
         # Doc string as class descriptor, if is exists.

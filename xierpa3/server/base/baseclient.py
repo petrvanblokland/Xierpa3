@@ -149,6 +149,7 @@ class BaseClient(object):
         result = self.resolveByFile(site, filePath)
         if site.e.form[C.PARAM_DOCUMENTATION]:
             site.buildDocumentation(builder) # Build the live documentation page from the site
+            builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
             result = builder.getResult() 
         elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
             # Forced or no cached CSS, so try to build is and save it in the cache.
