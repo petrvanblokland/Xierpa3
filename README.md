@@ -62,7 +62,7 @@ The main types of classes are:
  	for Blurb text, for database access, XML file parsing, etc.
  * Attributes define values that are often used and need some kind of behavior,
  	depending on the type of the value and type of the output channel, such as
- 	Shadow() and Gradient().
+ 	Shadow() and Gradient(). Attributes allow arithmetic, such as Em(2)*1.2.
  	
 -----------------------------------------------------------------------------
 
