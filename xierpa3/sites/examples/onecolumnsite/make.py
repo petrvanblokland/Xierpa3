@@ -109,7 +109,7 @@ class ExampleColumn(Column):
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
-        # Since the b.adapter.getArticle answers an article that already 
+        # Since the self.adapter.getArticle answers an article that already 
         # includes XHTML tags, we cannot do the styling there. In order to 
         # define the unique CSS styles, a blank document content is created 
         # for the CssBuilder to evaluate, so we have all the definitions inside 
@@ -124,7 +124,7 @@ class ExampleColumn(Column):
         if b.isType(self.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:
-            for data in b.adapter.getFeaturedArticles().items: 
+            for data in self.adapter.getFeaturedArticles().items: 
                 # Build the headline without style attribute, as these are already defined
                 # in the self.buildCssColumnTemplate call.
                 b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight)
@@ -140,7 +140,7 @@ class ExampleColumn(Column):
                 # Output the rest of the featured article.
                 b.text(data.item)
             # Add some more volume to the blurb article. 
-            data = b.adapter.getArticle()
+            data = self.adapter.getArticle()
             b.h2(fontfamily=s.h2FontFamily, fontsize=s.h2FontSize, lineheight=s.h2LineHeight)
             b.text(data.headline)
             b._h2()
@@ -163,7 +163,7 @@ class ExampleColumn(Column):
         
     def buildCssColumnTemplate(self, b):
         u"""Build the single CSS for all expected tags in an article that is answered
-        by <b>b.adapter</b>. We cannot check on that here, since the content may
+        by <b>self.adapter</b>. We cannot check on that here, since the content may
         vary and even is hidden by e.g. calls to a PHP adapter.""" 
         s = self.style
         b.h1(fontfamily=s.h1FontFamily, color=s.h1Color, fontsize=s.h1FontSize, 
@@ -209,7 +209,7 @@ class OneColumnSite(Theme):
         # Of course, taking your own account at //www.webtype.com is even better :)
         Theme.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
     ]    
-    # The single column is filled by the b.adapter article query result.
+    # The single column is filled by the self.adapter article query result.
     # The default b.adapter (if nothing else is defined) is the BlurbAdapter,
     # which generates random pieces of text.
 

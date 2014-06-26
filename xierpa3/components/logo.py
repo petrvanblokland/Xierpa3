@@ -51,7 +51,7 @@ class Logo(Component):
             marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
         # @url: url of href link. If None no link is made
         # @src: url of the image source.
-        data = b.adapter.get(self.ADAPTER_LOGO) 
+        data = self.adapter.getLogo() 
         if data.url:
             b.a(href=data.url)
         if data.src:

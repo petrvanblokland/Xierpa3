@@ -42,7 +42,11 @@ class C(Config):
     LOGOFAMILY = HEADFAMILY
     
     # Sponsored fonts in the example sites
-    URL_WEBTYPELOGO = 'http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/webtypelogo.png'
+    URL_WEBTYPELOGO = '//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/webtypelogo.png'
+    
+    # Xierpa ico, answered by the default adapter.getIco()
+    URL_ICO = '//data.xierpadoc.com.s3.amazonaws.com/_images/xierpa_x.ico'
+    URL_LOGO = '//data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png'
     
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.
@@ -211,6 +215,7 @@ class C(Config):
     ADAPTER_SOCIALMEDIA = 'socialMedia'
     ADAPTER_TAGCLOUD = 'tagCloud'
     ADAPTER_ARTICLE = 'article'
+    ADAPTER_ARTICLES = 'articles'
     ADAPTER_PAGES = 'pages'
     ADAPTER_MOBILEPAGES = 'mobilePages'
     ADAPTER_MENU = 'menu'

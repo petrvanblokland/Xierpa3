@@ -21,6 +21,7 @@ from xierpa3.builders.builderparts.svgbuilderpart import SvgBuilderPart
 from xierpa3.builders.builderparts.canvasbuilderpart import CanvasBuilderPart
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
+from xierpa3.toolbox.stack import Stack
 
 class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart, 
         XmlTransformerPart, HtmlBuilderPart, Builder, C):
@@ -33,6 +34,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
     ID = C.TYPE_HTML # Also the default extension of the output format.
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
+
+    def initialize(self):
+        Builder.initialize(self)
+        # XmlTagBuilderPart support
+        self._tagStack = Stack() # Stack with running tags for closing and XML validation
+        self._svgMode = False # Some calls change behavior when in svg mode.
+        self._canvasMode = False # Some calls change behavior in HTML5 canvas mode.
 
     @classmethod
     def getModelsPath(cls):
@@ -57,7 +65,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         #self.docType(self.ID)
         self.html()
         self.head()
-        title = self.adapter.getPageTitle(path=self.getPath()).text
+        title = component.adapter.getPageTitle(path=self.getPath()).text
         self.title_(title) # Search for the title in the component tree
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
@@ -110,19 +118,21 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.jsUrl(component.style.js)
 
     def buildFavIconLinks(self, component):
-        favIcon = component.getFavIcon(self)
-        if favIcon is not None:
-            self.output("<link type='image/x-icon' rel='icon' href='%s'></link>" % favIcon)
+        u"""Build the favicon link, from the result of <b>component.adapter.getFavIcon()</b>.
+        If the result is <b>None</b> then ignore."""
+        data = component.adapter.getFavIcon()
+        if data.url is not None:
+            self.output("<link type='image/x-icon' rel='icon' href='%s'></link>" % data.url)
 
     def buildMetaDescription(self, component):
-        u"""Build the meta tag with description of the site for search engines, is available in the adapter."""
-        data = self.adapter.getDescription()
+        u"""Build the meta tag with description of the site for search engines, if available in the adapter."""
+        data = component.adapter.getDescription()
         if data.text is not None:
             self.meta(name=self.META_DESCRIPTION, content=data.text)
             
     def buildMetaKeyWords(self, component):
         u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
-        data = self.adapter.getKeyWords()
+        data = component.adapter.getKeyWords()
         if data.text is not None:
             self.meta(name=self.META_KEYWORDS, content=data.text)
             

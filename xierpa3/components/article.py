@@ -130,7 +130,7 @@ class Article(ArticleColumn):
         codeBackgroundColor=CC.WHITE,
     )
     def buildColumn(self, b):
-        article = b.adapter.get(self.ADAPTER_ARTICLE, id=b.getCurrentArticleId())
+        article = self.adapter.getArticle(id=b.getCurrentArticleId())
         self.buildArticle(b, article)
 
     def buildArticle(self, b, article):
@@ -328,7 +328,7 @@ class ArticleSideBar(ArticleColumn):
         footnoteLabel='Footnotes', 
     )
     def buildColumn(self, b):
-        article = b.adapter.get(self.ADAPTER_ARTICLE, id=b.e.form[self.PARAM_ARTICLE])
+        article = self.adapter.getArticle(id=b.e.form[self.PARAM_ARTICLE])
         self.buildArticleSideBar(b, article)
 
     def buildArticleSideBar(self, b, article):

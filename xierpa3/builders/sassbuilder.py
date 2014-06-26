@@ -34,6 +34,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     DEFAULT_PATH = 'css/style.css' # Default can be redefined by inheriting classes.
    
     def initialize(self):
+        Builder.initialize(self)
         #self.mediaExpressions = set() # Collect the @media output expressions that we need a media run for.
         self.mediaSelectors = Stack() # Collect the hierarchy of runtime media selectors
         self.mediaSelectorResults = {} # Collect #media selector:results to skip doubles

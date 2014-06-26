@@ -64,7 +64,7 @@ class MobileNavigation(Navigation):
     )                      
     def buildBlock(self, b):
         s = self.style
-        data = b.adapter.get(self.ADAPTER_MENU, id='home') # Get data for home page from adapter.
+        data = self.adapter.getMenu(id='home') # Get data for home page from adapter.
         b.block(self) # div.mobileNavigation
         b.div(class_=(self.CLASS_CONTAINER, self.className), display=s.display,
             backgroundcolor=s.backgroundColor, width=s.width,
@@ -76,8 +76,6 @@ class MobileNavigation(Navigation):
         )
         b.snippet(self, 'navigation-mobile') # Allow PHP to create a snippet file from this block.
 
-        b.div(class_=self.CLASS_ROW, minwidth=0, paddingleft=0, paddingright=0, 
-            overflow=self.HIDDEN, margin=Margin(0, self.AUTO))
         colClass = self.getColClass(s.colWidth)
         #b.text(data.loop) # In case there is PHP looping code. Skip for CSS
         b.div(class_=colClass, width=self.AUTO, float=self.NONE, marginleft=Em(0.5),
@@ -114,7 +112,6 @@ class MobileNavigation(Navigation):
         #b._a()
         b._div(comment=self.CLASS_12COL)
         #b.text(data._loop) # In case there is PHP looping code. Skip for CSS
-        b._div(comment=self.CLASS_ROW)
 
         b._snippet(self) # In case PHP saved this block as snippet.
         b._div() # Final comment is automatic from component.selector

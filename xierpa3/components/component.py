@@ -40,6 +40,7 @@
 import weakref
 import hashlib
 import inspect
+from xierpa3.adapters import BlurbAdapter
 from xierpa3.descriptors.style import Style
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.constants.constants import C
@@ -61,15 +62,19 @@ class Component(C):
     BUILD_CSS = True # Default behavior of every component is to build in CSS.
     STYLE_DEFAULT = {} # Default style source, optionally redefined by inheriting classes.
     
+    ADAPTER = BlurbAdapter() # Unless defined otherwise by inheriting classes.
+    
     def __init__(self, components=None, style=None, id=None, parent=None, name=None,
             css=None, fonts=None, prefix=None, class_=None, type=None, contentID=None, 
-            count=1, title=None, url=None, template=None, editable=False,  
+            count=1, title=None, url=None, template=None, editable=False, adapter=None,
             selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
         # Initialize the self.style, as selector and id are stored there.
         self.style = style # If style is None, then use a copy of the self.BLUEPRINT style.
         self.style.add(kwargs) # Further initialize self.style from keyword arguments
         self.style.component = self # Add the weakref reference to self for the root style.
+        # Adapter for reading content/data
+        self.adapter = adapter # If None, then "parent.adapter or self.ADAPTER" is used
         # CSS and Fonts urls
         self.css = css # Set the css path list for this component (can be empty list or None)
         self.fonts = fonts # Set the css path list for this component (can be empty list or None)
@@ -84,17 +89,17 @@ class Component(C):
         # self.name is used to identity components. Always answers something. Does not have to be unique.
         self.name = name
         # Forced title of the browser window or generated document or table of content.
-        # If kept None, then the builder.adapter will be queried for the title.
+        # If kept None, then the self.adapter will be queried for the title.
         # This allows both the definition of static names (per page template) or the usage
         # of page titles that depend on the current url.
-        # If the builder.adapter answers None as title, then use self.TITLE
+        # If the self.adapter answers None as title, then use self.TITLE
         self.title = title
         # Prefix of class and selector, stored as self.style.prefix. Shows in CSS selector as myPrefix.class
         self.prefix = prefix
         # Cache for the unique ID based on the content tree, so components can be compared.
         self._uid = None
         self.template = template # Optional template match with URL parameter
-        self.contentID = contentID # Optional unique id to query content from the builder.adapter
+        self.contentID = contentID # Optional unique id to query content from the self.adapter
         self.parent = parent # Weakref to parent component
         self.count = count # Count for repeating this component in output
         self.url = url # Default is not to have a URL. Page attribute define URL automatic from name.
@@ -452,11 +457,11 @@ class Component(C):
          
     # A D A P T E R  S T U F F
 
-    def XXXgetAdapterData(self, contentID=None, **kwargs):
+    def getAdapterData(self, contentID=None, **kwargs):
         u"""Answer the adapter content (list of components) as indicated by the
         optional content attribute, self.contentID or the class name.
         If the result is not a list (e.g. as PHP instruction), then the caller needs
-        to call a <b>adapter.forEach()</b> to generate the looping the code."""
+        to call a <b>adapter.forEach()</b> to generate the looping code."""
         if contentID is None:
             contentID = self.contentID # Get the content id.
         return self.adapter.get(self, contentID, **kwargs)
@@ -643,17 +648,20 @@ class Component(C):
     # self.adapter
 
     def _get_adapter(self):
-        u"""Property <b>self.adapter</b> Answer the adapter of <b>self</b>."""
+        u"""Property <b>self.adapter</b> Answer the adapter of <b>self</b>. Although it may
+        be change during the course of development (and also force otherwise), a component
+        keeps the instance of the adapter. The reason is that we want caching to be done by
+        the adapter. Builders are only created temporary, so they should not hold the adapter."""
         if self._adapter:
             return self._adapter
         if self.parent:
             return self.parent.adapter
-        return None # Answer None, so the adapter of the builder is used.
+        return self.ADAPTER # Use default adapter of this component
 
     def _set_adapter(self, adapter):
         u"""Set the adapter for this component. This allows various components to have
         their own adapter. If not defined, the component will take the adapter
-        # of its parent. If the parent adapter is <b>None</b>, then don’t overwrite
+        of its parent. If the parent adapter is <b>None</b>, then don’t overwrite
         the adapter of the builder during runtime."""
         self._adapter = adapter
 

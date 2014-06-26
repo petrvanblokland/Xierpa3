@@ -17,23 +17,9 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
-# Sample string, we don't use data adapaters yet in this example.
-LORUMIPSUM = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel metus ullamcorper, 
-    porttitor ligula id, sollicitudin ante. Sed molestie cursus tortor, ut blandit felis tincidunt at. Suspendisse 
-    scelerisque malesuada massa, eu rhoncus nulla interdum ut. Morbi ullamcorper, leo pulvinar pharetra tincidunt, 
-    dolor quam ullamcorper lectus, in dignissim magna odio ut eros. Nulla vel enim a leo hendrerit auctor luctus 
-    nec urna. Donec ligula nunc, consequat ut aliquet in, auctor id nisl. Pellentesque malesuada tincidunt tortor, 
-    varius sollicitudin lorem dictum vitae. Duis vel neque non leo commodo faucibus. In dictum in mauris eget 
-    fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. 
-    Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim 
-    scelerisque vitae."""
-
-BODYFAMILY = '"Hermes FB Book"'
-HEADFAMILY = '"Hermes FB Semibold"'
-
-# Define the two component here. Normally these would come from a component library,
-# where the BluePrint values function as API to adjust the component instance behavior
-# from the outside.
+# For sake of the example define two component classes here. Normally these would come 
+# from a component library, where the BluePrint values function as API to adjust the 
+# component instance behavior from the outside.
   
 class MainColumn(Component):
     CC = Component
@@ -50,16 +36,23 @@ class MainColumn(Component):
               fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
             )
         )
-        b.text(LORUMIPSUM)
-        b._div()
-  
+        article = self.adapter.get(self.ADAPTER_ARTICLE)
+        print article
+        b.h1()
+        b.text(article.headline)
+        b._h1()
+        b.p()
+        b.text(article.text)
+        b._p()
+        b._div(comment=self.getClassName())
+          
 class SideColumn(Component):
     CC = Component
     
     BLUEPRINT = BluePrint(
         width=Perc(20), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
         backgroundColor='orange', doc_backgroundColor=u'Side column background color.',                  
-        backgroundColorMobile=Color('#888'), doc_backgroundColorMobile=u'Side bar backtround color for mobile.',  
+        backgroundColorMobile=Color('#888'), doc_backgroundColorMobile=u'Side bar background color for mobile.',  
     )                
     def buildBlock(self, b):
         s = self.style
@@ -69,17 +62,21 @@ class SideColumn(Component):
               fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
             )
         )
-        b.text(LORUMIPSUM)
-        b._div()
+        article = self.adapter.get(self.ADAPTER_ARTICLE)
+        b.h1()
+        b.text(article.headline)
+        b._h1()
+        b.p()
+        b.text(article.text)
+        b._p()
+        b._div(comment=self.getClassName())
         
 class SimpleWebSite(Theme):
     TITLE = u'The Simple Website Example Page' # Use as title of window.
 
-    CLASS_MAINCOLUMN = 'mainColumn'
-    CLASS_SIDECOLUMN = 'sideColumn'
-
     BODYFAMILY = '"Hermes FB Book"'
     HEADFAMILY = '"Hermes FB Semibold"'
+    
     BODYSIZE = Px(12)
     BODYLEADING = Em(1.4)
     

@@ -93,7 +93,19 @@ class BlurbAdapter(Adapter):
             cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
         return data
 
+    def getArticleText(self, id=None, **kwargs):
+        data = Data()
+        data.headline = self.blurb.getBlurb('news_headline')
+        data.text = self.blurb.getBlurb('article')
+        return data
+ 
     def getArticle(self, id=None, **kwargs):
+        data = Data()
+        data.headline = self.blurb.getBlurb('news_headline')
+        data.text = self.blurb.getBlurb('article')
+        return data
+    
+    def getArticles(self, id=None, **kwargs):
         data = Data()
         data.headline = self.blurb.getBlurb('news_headline')
         data.items = [self.blurb.getBlurb('article'), self.blurb.getBlurb('article'), self.blurb.getBlurb('article')]

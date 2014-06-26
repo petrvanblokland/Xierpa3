@@ -10,16 +10,9 @@
 #
 #    xmltagbuilderpart.py
 #
-from xierpa3.toolbox.stack import Stack
 from xierpa3.toolbox.transformer import TX
-from xierpa3.constants.constants import C
 
 class XmlTagBuilderPart:
-
-    def initialize(self):
-        self._tagStack = Stack() # Stack with running tags for closing and XML validation
-        self._svgMode = False # Some calls change behavior when in svg mode.
-        self._canvasMode = False # Some calls change behavior in HTML5 canvas mode.
         
     GLOBAL_ATTRIBUTES = set(['id', 'class_', 'title', 'onclick', 'style'])
 
