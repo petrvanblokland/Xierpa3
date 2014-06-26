@@ -18,7 +18,7 @@ Adapters and Attributes. Generating HTML5+CSS3 configurations (with or without P
 or PDF, or pixel images. Live or as template files.
 
 For now Xierpa3 is a proof-of-concept "gone live". This means that currently
-installation may not be as automated and smooth as it will be and themes, examples
+installations may not be as automated and smooth as it will be and themes, examples
 and documentation are not finished. Parts of Xierpa3 are still under development
 right now. Classes are available in the source that are still being worked on and
 tested. This will remain until version 1.0.
