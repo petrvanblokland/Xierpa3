@@ -16,6 +16,8 @@ from xierpa3.adapters.adapter import Adapter
 class PhpAdapter(Adapter):
     u"""
     Adapter for PHP output.
+    
+    TODO: Make matching with http://simplemvcframework.com/documentation/v2/install
     """
 
     def __init__(self):
@@ -32,7 +34,8 @@ class PhpAdapter(Adapter):
     # ===============
 
     def getPageTitle(self, **kwargs):
-        return Data(text='<?php echo h($site->title()) ?> : %s' % (kwargs.get('title', 'Untitled')))  # To be redefined by inheriting adapter class.
+        return Data(text='<?php echo "PHP generated title" ?>')
+        #return Data(text='<?php echo h($site->title()) ?> : %s' % (kwargs.get('title', 'Untitled')))  # To be redefined by inheriting adapter class.
     
     def thisUrl(self):
         return Data(url="<?php echo thisURL() ?>")

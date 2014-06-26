@@ -98,7 +98,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._body()
         self._html()
 
-    def save(self, component, root=None, path=None):
+    def save(self, component, root=None, path=None, extension=None):
         u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
@@ -106,7 +106,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             path = self.getFilePath(component, root)
         dirPath = self.makeDirectory(path) # Make sure that the directory part of path exists.
         for template in component.getTemplates():
-            filePath = dirPath + '/' + template.name + '.' + self.ID # .html or .php
+            filePath = dirPath + '/' + template.name + '.' + (extension or self.EXTENSION) # .html or .php
             template.build(self)
             f = open(filePath, 'wb')
             f.write(self.getResult())
