@@ -327,8 +327,12 @@ class ArticleSideBar(ArticleColumn):
         showFootNotes=True, 
         footnoteLabel='Footnotes', 
     )
+    def getArticleUrlId(self, b):
+        return b.e.form[self.PARAM_ARTICLE]
+    
     def buildColumn(self, b):
-        article = self.adapter.getArticle(id=b.e.form[self.PARAM_ARTICLE])
+        u"""Build the column of the article, as indicated in the urt."""
+        article = self.adapter.getArticle(id=self.getArticleId(b))
         self.buildArticleSideBar(b, article)
 
     def buildArticleSideBar(self, b, article):

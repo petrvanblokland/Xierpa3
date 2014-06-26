@@ -45,7 +45,7 @@ class C(Config):
     URL_WEBTYPELOGO = '//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/webtypelogo.png'
     
     # Xierpa ico, answered by the default adapter.getIco()
-    URL_ICO = '//data.xierpadoc.com.s3.amazonaws.com/_images/xierpa_x.ico'
+    URL_FAVICON = '//data.xierpadoc.com.s3.amazonaws.com/_images/xierpa_x.ico'
     URL_LOGO = '//data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png'
     
     # Know builder id's, used to check on a specific builder of really necessary.
@@ -206,6 +206,7 @@ class C(Config):
     TEMPLATE_DEFAULT = TEMPLATE_INDEX
 
     # Adapter
+    '''
     ADAPTER_PAGETITLE = 'pageTitle'
     ADAPTER_LOGO = 'logo' 
     ADAPTER_MESSAGE = 'message'
@@ -219,6 +220,9 @@ class C(Config):
     ADAPTER_PAGES = 'pages'
     ADAPTER_MOBILEPAGES = 'mobilePages'
     ADAPTER_MENU = 'menu'
+    '''
+    # Types of article selector
+    SELECTOR_FEATURED = 'featured'
     
     # SASS
     SASS_NESTED = 'nested'

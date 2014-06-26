@@ -27,16 +27,21 @@ class MainColumn(Component):
     BLUEPRINT = BluePrint(
         width=Perc(70), doc_width=u'Main column width', float=CC.LEFT, 
         backgroundColor='yellow', doc_backgroundColor=u'Main column background color.', 
+        fontSize=Em(2), doc_fontSize=u"""Font size of the body text.""",
+        lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
+        # Mobile
+        fontSizeMobile=Em(3), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
+        lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
     )                
     def buildBlock(self, b):
         s = self.style
-        b.div(class_=self.getClassName(),
-            width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1), lineheight=Em(1.3),
-            media=Media(max=self.M_MOBILE_MAX, backgroundcolor=s.backgroundColorMobile, 
-              fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
+        b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
+            width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1),
+            media=Media(max=self.M_MOBILE_MAX, 
+              fontsize=s.fontSizeMobile, width=Perc(100), lineheight=s.lineHeightMobile,
             )
         )
-        article = self.adapter.get(self.ADAPTER_ARTICLE)
+        article = self.adapter.getArticle() 
         print article
         b.h1()
         b.text(article.headline)
@@ -50,19 +55,23 @@ class SideColumn(Component):
     CC = Component
     
     BLUEPRINT = BluePrint(
-        width=Perc(20), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
+        width=Perc(30), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
         backgroundColor='orange', doc_backgroundColor=u'Side column background color.',                  
-        backgroundColorMobile=Color('#888'), doc_backgroundColorMobile=u'Side bar background color for mobile.',  
+        fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
+        lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
+        # Mobile
+        fontSizeMobile=Em(1.5), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
+        lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
     )                
     def buildBlock(self, b):
         s = self.style
-        b.div(class_=self.getClassName(), 
-            width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1), lineheight=Em(1.3),
-            media=Media(max=self.M_MOBILE_MAX, backgroundcolor=s.backgroundColorMobile, 
-              fontsize=Em(2), width=Perc(100), margin=0, lineheight=Em(1.3),
+        b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
+            width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1), 
+            media=Media(max=self.M_MOBILE_MAX, 
+              fontsize=s.fontSizeMobile, width=Perc(100), lineheight=s.lineHeightMobile,
             )
         )
-        article = self.adapter.get(self.ADAPTER_ARTICLE)
+        article = self.adapter.getArticle() 
         b.h1()
         b.text(article.headline)
         b._h1()

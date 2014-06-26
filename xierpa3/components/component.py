@@ -455,17 +455,6 @@ class Component(C):
         b._docTagElement(element)
         b.text(element.tail) # Plain text output of the element tail
          
-    # A D A P T E R  S T U F F
-
-    def getAdapterData(self, contentID=None, **kwargs):
-        u"""Answer the adapter content (list of components) as indicated by the
-        optional content attribute, self.contentID or the class name.
-        If the result is not a list (e.g. as PHP instruction), then the caller needs
-        to call a <b>adapter.forEach()</b> to generate the looping code."""
-        if contentID is None:
-            contentID = self.contentID # Get the content id.
-        return self.adapter.get(self, contentID, **kwargs)
-
     # A T T R I B U T E S
 
     # self.hashedID
@@ -652,9 +641,9 @@ class Component(C):
         be change during the course of development (and also force otherwise), a component
         keeps the instance of the adapter. The reason is that we want caching to be done by
         the adapter. Builders are only created temporary, so they should not hold the adapter."""
-        if self._adapter:
+        if self._adapter is not None:
             return self._adapter
-        if self.parent:
+        if self.parent is not None:
             return self.parent.adapter
         return self.ADAPTER # Use default adapter of this component
 

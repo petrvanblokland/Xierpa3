@@ -11,7 +11,7 @@
 #   blurbadapter.py
 #
 from random import choice, randint
-from xierpa3.adapters.adapter import Adapter, Data
+from xierpa3.adapters.adapter import Adapter
 from xierpa3.contributions.filibuster.blurb import Blurb
 
 class BlurbAdapter(Adapter):
@@ -19,113 +19,94 @@ class BlurbAdapter(Adapter):
     The Adapter classes connect the templates to Blurb content. Note that an adapter always returns plain text/content
     elements (which can include plain HTML), not components. The conversion needs to be done by the calling component.
     """
+    IMAGES = [
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bush.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/chinatown.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/earthquake.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/egypt.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/electrical-storm.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/felix-graph-3.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass2.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass3.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass4.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/guaguacrater.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/katrina.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/kiss.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/libya.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/little_italy.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/news.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/newspaper.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/nkorealaunch.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama2.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama03.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast2.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/perfect_storm1_large.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/polarbears.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rahm.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rolyaluk2.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/royaluk.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/shuttle.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/storm-nbpier.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/swarmybigshot.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/tibet.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/transport.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/travel.jpg',
+        '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/verticalfashionshow.jpg',
+    ]
 
     def __init__(self):
         Adapter.__init__(self)
         self.blurb = Blurb()
 
     def getMessage(self, count=1, **kwargs):
-        return u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com'
-
-    def getChapters(self, count=1, **kwargs):
-        return []
+        return self.newData(text=u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com')
 
     def getSocialMedia(self, count=1, **kwargs):
-        return [self.blurb.getBlurb('design_theory_title')]
-
-    def getFeaturedArticleThumbs(self, count=1, **kwargs):
-        return [self.blurb.getBlurb('design_headline')]
-
-    def getFeaturedArticles(self, count=1, **kwargs):
-        # Answer count list of (imagePath, head, ankeiler, link)
-        images = [
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bush.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/chinatown.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/earthquake.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/egypt.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/electrical-storm.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/felix-graph-3.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass2.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass3.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass4.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/guaguacrater.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/katrina.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/kiss.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/libya.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/little_italy.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/news.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/newspaper.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/nkorealaunch.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama2.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama03.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast2.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/perfect_storm1_large.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/polarbears.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rahm.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rolyaluk2.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/royaluk.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/shuttle.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/storm-nbpier.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/swarmybigshot.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/tibet.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/transport.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/travel.jpg',
-            'http://lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/verticalfashionshow.jpg',
-        ]
-        articles = []
-        for _ in range(1, (count or 1) + 1):
-            data = Data()
-            data.image = choice(images)
-            data.headline = self.blurb.getBlurb('design_headline', 8) + '.'
-            data.items = [self.blurb.getBlurb('article_ankeiler', 30)]
-            articles.append(data)
-        return Data(items=articles)
+        return self.newData(text=self.blurb.getBlurb('design_theory_title'))
 
     def getTagCloud(self, count=10, **kwargs):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
-        data = Data()
-        data.items = cloud = ['Tags']
+        cloud = []
         for _ in range(10):
-            cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
+            cloud.append(self.newData(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
+        return self.newData(items=cloud)
+
+    def getArticleIds(self, start=0, count=1, selector=None, order=None, **kwargs):
+        ids = []
+        for index in range(start, count):
+            ids.append(self.blurb.getBlurb('news_headline', 10))
+        return ids
+
+    def getArticle(self, id=None, index=0, selector=None, order=None, **kwargs):
+        data = self.newData(
+            headline=self.blurb.getBlurb('news_headline', 10),
+            poster=choice(self.IMAGES),
+            ankeiler=self.blurb.getBlurb('article_ankeiler', 30),
+            text=self.blurb.getBlurb('article'),
+        )
         return data
 
-    def getArticleText(self, id=None, **kwargs):
-        data = Data()
-        data.headline = self.blurb.getBlurb('news_headline')
-        data.text = self.blurb.getBlurb('article')
-        return data
- 
-    def getArticle(self, id=None, **kwargs):
-        data = Data()
-        data.headline = self.blurb.getBlurb('news_headline')
-        data.text = self.blurb.getBlurb('article')
-        return data
+    def getChapter(self, index, **kwargs):
+        u"""Answer a blurb article as chapter."""
+        return self.getArticle()
     
-    def getArticles(self, id=None, **kwargs):
-        data = Data()
-        data.headline = self.blurb.getBlurb('news_headline')
-        data.items = [self.blurb.getBlurb('article'), self.blurb.getBlurb('article'), self.blurb.getBlurb('article')]
-        return data
-    
+    # P A G E  S T U F F
+        
     def getFooter(self, count=1, **kwargs):
-        data = Data()
-        data.items = ['Footer: ' + self.blurb.getBlurb('events_headline')]
-        return data
+        return self.newData(text='Footer: ' + self.blurb.getBlurb('events_headline'))
     
     def getLogo(self, **kwargs):
-        data = Data()
-        data.items = ['http://petr.com/_images/contact.png']
-        return data
+        return self.newData(url='//petr.com/_images/contact.png')
     
     def getDescription(self, **kwargs):
         u"""Answer a blurb description of the site."""
-        return Data(text=self.blurb.getBlurb('article_ankeiler', 40))
+        return self.newData(text=self.blurb.getBlurb('article_ankeiler', 40))
     
     def getKeyWords(self, **kwargs):
         u"""Answer a blurb set of keywords of the site, comma-space separated."""
-        return Data(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))
+        return self.newData(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))
     

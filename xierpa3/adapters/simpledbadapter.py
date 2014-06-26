@@ -11,7 +11,7 @@
 #   simpledbadapter.py
 #
 from random import randint
-from xierpa3.adapters.adapter import Adapter, Data
+from xierpa3.adapters.adapter import Adapter
 #from xierpa3.toolbox.database.simpledb.simpledbdict import SimpleDBDict
 
 class SimpleDBAdapter(Adapter):
@@ -21,41 +21,6 @@ class SimpleDBAdapter(Adapter):
     def __init__(self):
         Adapter.__init__(self)
         #self.blurb = SimpleDBDict
-
-    def getChapters(self, count=1):
-        return Data(items=[])
-
-    def getSocialMedia(self, count=1):
-        return Data(items=[self.blurb.getBlurb('design_theory_title')])
-
-    def getFeaturedArticleThumbs(self, count=1):
-        return Data(items=[self.blurb.getBlurb('design_headline')])
-
-    def getFeaturedArticles(self, count=1):
-        # Answer count list of (imagePath, head, ankeiler, link)
-        articles = []
-        for _ in range(1, (count or 1) + 1):
-            pass
-            #image = choice(images)
-            #articles.append((image, self.blurb.getBlurb('design_headline', 8) + '.',
-            #    self.blurb.getBlurb('article_ankeiler', 30) + '.', 'Link'))
-        return Data(items=articles)
-
-    def getTagCloud(self, count=1):
-        # Answer count tagCloud list entries as tuple (word, emphasisNumber)
-        cloud = ['Tags']
-        for _ in range(10):
-            cloud.append(dict(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
-        return Data(items=cloud)
-
-    def getArticle(self, count=1):
-        return Data(items=[self.blurb.getBlurb('article')])
-
-    def getFooter(self, count=1):
-        return Data(items=['Footer: ' + self.blurb.getBlurb('events_headline')])
-
-    def getLogo(self, count=1):
-        return Data(items=['Logo'])
 
 if __name__ == "__main__":
     """

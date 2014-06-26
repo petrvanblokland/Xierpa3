@@ -17,7 +17,7 @@ from xierpa3.constants.constants import C
 class Data(object):
     u"""Generic data instance, answered by every adapter query."""
     def __init__(self, **kargs):
-        self.items = []
+        self.items = [] # Make sure that self.items is always iterable.
         for key, item in kargs.items():
             setattr(self, key, item)
     
@@ -76,48 +76,70 @@ class Adapter(C):
     # Set of available direct request, which inheriting adapter classes may choose
     # to redefine.
     
+    def getSocialMedia(self, **kwargs):
+        return self.newData(text='[Social media icons]')
+
+    def getTagCloud(self, **kwargs):
+        return self.newData(text='[Tag Cloud]')
+
+    # A R T I C L E
+    
+    def getArticleIds(self, start=0, count=1, selector=None, order=None, **kwargs):
+        u"""Answer the list article ids in the current sort order. To be redefined
+        but inheriting adapter classes. Default behavior is the answer an list of index
+        numbers from <b>start</b> to <b>start+count</b>.
+        The <b>selector</b> and <b>order</b> indicate the kind of articles to be 
+        selected and the order in which they should be indexed. """
+        return range(start, count) # Ignore selector and order in the base method.
+
+    def getArticle(self, id=None, index=0, selector=None, order=None, **kwargs):
+        u"""Answer the article, indicate by <b>id</b>. If <b>id</b> is <b>None</b>
+        or omitted, then try to find the id the sort order of article ids at <b>index</b>."""
+        if id is None:
+            id = self.getArticleIds(start=index, selector=selector, order=order, **kwargs)
+        return self.newData(text='[' + 'Article text of ”%s”]' % id)
+
+    def getArticles(self, ids=None, start=0, count=1, selector=None, order=None, **kwargs):
+        u"""Answer the articles as indicated by the arguments. There are several types
+        of selection possible. <b>self.getArticles(count=4)</b> will answer the 
+        first 4 articles in the current sort order of articles. <b>self.getArticles(start=5, count=3)</b>
+        will answer the articles with index 5, 6 and 7 in the current sort order of articles.
+        <b>self.getArticles(ids=('aaa', 'bbb', 'ccc')</b> will answer the articles with
+        the indicated id in the defined order."""
+        items = []
+        if ids is None:
+            ids = self.getArticleIds(start=start, count=count, selector=selector, order=None, **kwargs)
+        for id in ids:
+            assert id is not None
+            items.append(self.getArticle(id=id, **kwargs))
+        return self.newData(items=items)
+
+    def getChapter(self, index, **kwargs):
+        u"""Answer the chapter with in index of the current article."""
+        return self.newData(index=index, text='[Chapter %d]' % index)
+ 
+    def getChapters(self, **kwargs):
+        u"""Answer a list of featured chapters. Also answer the article itself
+        as <b>data.article</b>."""
+        items = []
+        for index in kwargs.get('count', 1):
+            items.append(self.getChapter(index=index, **kwargs))
+        return self.newData(items=items, article=self.getArticle(**kwargs))
+   
+    # P A G E  S T U F F
+        
     def getFavIcon(self, **kwargs):
-        return self.newData(url=C.URL_ICO)
+        return self.newData(url=C.URL_FAVICON)
     
     def getPageTitle(self, **kwargs):
         return self.newData(text='Untitled') # To be redefined by inheriting adapter class.
     
-    def getMenu(self, **kwargs):
+    def getMenu(self, count=1, **kwargs):
         return self.newData(items=(
             self.newData(text='Menu 1', url='/home'),
             self.newData(text='Menu 2', url='/home'),
             self.newData(text='Menu 3', url='/home'),
         ))
-    def getSocialMedia(self, **kwargs):
-        return self.newData(text='[Social media icons]')
-
-    def getFeaturedArticles(self, **kwargs):
-        return self.newData(items=(
-            self.newData(text='[Featured article 1]'), 
-            self.newData(text='[Featured article 2]'), 
-            self.newData(text='[Featured article 3]')
-        ))
-
-    def getFeaturedArticleThumbs(self, **kwargs):
-        return self.newData(text='[Featured Article thumbs]')
-
-    def getTagCloud(self, **kwargs):
-        return self.newData(text='[Tag Cloud]')
-
-    def getChapters(self, **kwargs):
-        return self.newData(items=(
-            self.newData(text='[Chapter 1]'), 
-            self.newData(text='[Chapter 2]'), 
-            self.newData(text='[Chapter 3]')
-        ))
-
-    def getArticles(self, **kwargs):
-        u"""Answer a list of items.Each item is a <b>data</b> instance, containing 
-        an article data instance."""
-        return self.newData(items=(self.getArticle(), self.getArticle(), self.getArticle()))
-
-    def getArticle(self, **kwargs):
-        return self.newData(text='[' + 'Article text. ' * 100 + ']')
 
     def getFooter(self, **kwargs):
         return self.newData(text='[' + 'Footer text. ' * 20 + ']')
@@ -130,7 +152,7 @@ class Adapter(C):
 
     def getMobilePages(self, count=10):
         return self.newData(items=(self.newData(name='MobilePage', url='/mobilepage'),)*count)
-    
+        
     def getDescription(self):
         u"""Answer the description of the site (or page) to be used in the head.meta.description tag."""
         return self.newData(text=u'Description of the site here.')

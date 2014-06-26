@@ -124,28 +124,28 @@ class ExampleColumn(Column):
         if b.isType(self.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:
-            for data in self.adapter.getFeaturedArticles().items: 
-                # Build the headline without style attribute, as these are already defined
-                # in the self.buildCssColumnTemplate call.
-                b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight)
-                b.text(data.headline)
-                b._h1()
-                if data.image:
-                    # Build the image that came with the featured article, if it exists.
-                    # Make it class autowidth to solve the width="100%" incompatibility
-                    # between browsers.
-                    b.img(src=data.image, class_=s.imgClass, maxwidth=s.imgMaxWidth,
-                        minwidth=s.imgMinWidth, margintop=s.imgMarginTop,
-                        marginbottom=s.imgMarginBottom)
-                # Output the rest of the featured article.
-                b.text(data.item)
-            # Add some more volume to the blurb article. 
-            data = self.adapter.getArticle()
-            b.h2(fontfamily=s.h2FontFamily, fontsize=s.h2FontSize, lineheight=s.h2LineHeight)
+            data = self.adapter.getArticle(index=4, selector=self.SELECTOR_FEATURED) 
+            # Build the headline without style attribute, as these are already defined
+            # in the self.buildCssColumnTemplate call.
+            b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight)
             b.text(data.headline)
-            b._h2()
-            for item in data.items:
-                b.text(item)
+            b._h1()
+            if data.poster:
+                # Build the image that came with the featured article, if it exists.
+                # Make it class autowidth to solve the width="100%" incompatibility
+                # between browsers.
+                b.img(src=data.poster, class_=s.imgClass, maxwidth=s.imgMaxWidth,
+                    minwidth=s.imgMinWidth, margintop=s.imgMarginTop,
+                    marginbottom=s.imgMarginBottom)
+            # Output the rest of the featured article.
+            b.text(data.item)
+            # Add some more volume to the blurb article. 
+            data = self.adapter.getArticles(count=4)
+            for article in data.items:
+                b.h2(fontfamily=s.h2FontFamily, fontsize=s.h2FontSize, lineheight=s.h2LineHeight)
+                b.text(article.headline)
+                b._h2()
+                b.text(article.text)
                 
         # Add reference about the content of this page
         b.hr()
