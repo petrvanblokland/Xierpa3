@@ -104,17 +104,17 @@ class Adapter(C):
         of selection possible. <b>self.getArticles(count=4)</b> will answer the 
         first 4 articles in the current sort order of articles. <b>self.getArticles(start=5, count=3)</b>
         will answer the articles with index 5, 6 and 7 in the current sort order of articles.
-        <b>self.getArticles(ids=('aaa', 'bbb', 'ccc')</b> will answer the articles with
+        <b>self.getArticles(ids=('aaa', 'bbb', 'ccc'))</b> will answer the articles with
         the indicated id in the defined order."""
         items = []
         if ids is None:
             ids = self.getArticleIds(start=start, count=count, selector=selector, order=None, **kwargs)
         for id in ids:
-            assert id is not None
-            items.append(self.getArticle(id=id, **kwargs))
+            kwargs['id'] = id
+            items.append(self.getArticle(**kwargs))
         return self.newData(items=items)
 
-    def getChapter(self, index, **kwargs):
+    def getChapter(self, index=0, **kwargs):
         u"""Answer the chapter with in index of the current article."""
         return self.newData(index=index, text='[Chapter %d]' % index)
  

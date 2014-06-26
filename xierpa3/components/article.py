@@ -332,7 +332,7 @@ class ArticleSideBar(ArticleColumn):
     
     def buildColumn(self, b):
         u"""Build the column of the article, as indicated in the urt."""
-        article = self.adapter.getArticle(id=self.getArticleId(b))
+        article = self.adapter.getArticle(id=self.getArticleUrlId(b))
         self.buildArticleSideBar(b, article)
 
     def buildArticleSideBar(self, b, article):

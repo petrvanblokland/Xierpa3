@@ -55,7 +55,7 @@ class SideColumn(Component):
     CC = Component
     
     BLUEPRINT = BluePrint(
-        width=Perc(30), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
+        width=Perc(20), doc_width=u'Side bar width', float=CC.LEFT, # @@@@ Should be 30
         backgroundColor='orange', doc_backgroundColor=u'Side column background color.',                  
         fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
         lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",

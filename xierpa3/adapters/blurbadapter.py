@@ -90,7 +90,7 @@ class BlurbAdapter(Adapter):
         )
         return data
 
-    def getChapter(self, index, **kwargs):
+    def getChapter(self, index=0, **kwargs):
         u"""Answer a blurb article as chapter."""
         return self.getArticle()
     
