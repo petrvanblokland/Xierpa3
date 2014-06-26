@@ -11,3 +11,4 @@
 from adapter import Adapter
 from blurbadapter import BlurbAdapter
 from fileadapter import FileAdapter
+from phpadapter import PhpAdapter

@@ -106,7 +106,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             path = self.getFilePath(component, root)
         dirPath = self.makeDirectory(path) # Make sure that the directory part of path exists.
         for template in component.getTemplates():
-            filePath = dirPath + '/' + template.name + '.html'
+            filePath = dirPath + '/' + template.name + '.' + self.ID # .html or .php
             template.build(self)
             f = open(filePath, 'wb')
             f.write(self.getResult())

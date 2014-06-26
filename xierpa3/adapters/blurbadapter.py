@@ -102,6 +102,9 @@ class BlurbAdapter(Adapter):
     def getLogo(self, **kwargs):
         return self.newData(url='//petr.com/_images/contact.png')
     
+    def getPageTitle(self, **kwargs):
+        return self.newData(text=self.blurb.getBlurb('news_headline'))
+    
     def getDescription(self, **kwargs):
         u"""Answer a blurb description of the site."""
         return self.newData(text=self.blurb.getBlurb('article_ankeiler', 40))

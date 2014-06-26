@@ -110,7 +110,7 @@ class Adapter(C):
         if ids is None:
             ids = self.getArticleIds(start=start, count=count, selector=selector, order=None, **kwargs)
         for id in ids:
-            kwargs['id'] = id
+            kwargs['id'] = id # Cannot be direct argument?
             items.append(self.getArticle(**kwargs))
         return self.newData(items=items)
 

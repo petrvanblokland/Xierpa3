@@ -7,3 +7,5 @@
 #    Distribution by the MIT License.
 #
 # -----------------------------------------------------------------------------
+
+from phpbuilder import PhpBuilder

@@ -37,7 +37,7 @@ class MainColumn(Component):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
             width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1),
-            media=Media(max=self.M_MOBILE_MAX, 
+            media=Media(max=self.M_MOBILE_MAX, margin=0,
               fontsize=s.fontSizeMobile, width=Perc(100), lineheight=s.lineHeightMobile,
             )
         )
@@ -67,7 +67,7 @@ class SideColumn(Component):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
             width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1), 
-            media=Media(max=self.M_MOBILE_MAX, 
+            media=Media(max=self.M_MOBILE_MAX, margin=0,
               fontsize=s.fontSizeMobile, width=Perc(100), lineheight=s.lineHeightMobile,
             )
         )
