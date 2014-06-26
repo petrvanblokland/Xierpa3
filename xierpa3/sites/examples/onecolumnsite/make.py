@@ -54,9 +54,8 @@ class ExampleColumn(Column):
         backgroundColor=Color('#FFF'), doc_backgroundColor='Column background color.',
         width=Perc(50), doc_width=u'Column width.',
         widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile',
-        # Row
-        rowPadding=Em(2), doc_rowPadding=u'Row padding.',
-        rowPaddingMobile=Em(1.4), doc_rowPaddingMobile=u'Row padding for mobile.',
+        padding=Em(2), doc_padding=u'Column margin in the page.',
+        paddingMobile=Em(1.4), doc_paddingMobile=u'Column margin in the page for mobile.',
         # h1
         h1FontFamily=HEADFAMILY, doc_h1FontFamily=u'Column h1 font family.',
         h1FontSize=Em(1.6), doc_h1FontSize=u'Column h1 font size',
@@ -103,10 +102,10 @@ class ExampleColumn(Column):
         b.div(class_=s.classColumn, color=s.color, margin=s.margin, 
               width=s.columnWidth, maxwidth=s.maxWidth, minwidth=s.minWidth, 
               backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
-              fontsize=s.fontSize, lineheight=s.lineHeight,
+              fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
               # Remove margins on mobile, showing the column on full screen width.
               media=Media(max=self.M_MOBILE_MAX, margin=s.marginMobile, 
-                fontsize=s.fontSizeMobile, lineheight=s.lineHeight,
+                fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
         # Since the self.adapter.getArticle answers an article that already 
