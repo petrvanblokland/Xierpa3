@@ -59,10 +59,12 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def page(self, component):
         u"""
-        Builds entire HTML document.
+        Builds the header of an HTML document.
+        Note that the inheriting PhPBuilder uses the result of this method to generate
+        the header.php file, as a separate result stream.
         """
-        self.clear() # Clear the output stream for next theme page
-        #self.docType(self.ID)
+        #self.clear() # Clear the output stream for next theme page
+        self.docType(self.ID)
         self.html()
         self.head()
         title = component.adapter.getPageTitle(path=self.getPath()).text
@@ -91,6 +93,9 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.editor(component) # Build top editor interface.
 
     def _page(self, component):
+        u"""Build the tail of an HTML document.
+        Note that the inheriting PhPBuilder uses the result of this method to generate
+        the footer.php file, as a separate result stream."""
         # Instead of calling the main self._block
         if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self._editor(component)

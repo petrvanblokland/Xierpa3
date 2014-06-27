@@ -61,6 +61,7 @@ class Featuring1(Theme):
         return [homePage]
     
     def make(self):
+        adapter = FileAdapter()
         cssBuilder = CssBuilder()
         self.build(cssBuilder)
         cssBuilder.save(self) 
