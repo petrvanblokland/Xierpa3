@@ -37,9 +37,9 @@ class Container(Component):
         s = self.style
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight) 
         b.div(class_=self.CLASS_ROW, margin=s.rowMargin, width=s.rowWidth, 
-            maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,
+            maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
             media=(
-               Media(max=self.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=self.NONE),
+               Media(max=self.M_MOBILE_MAX, width=Perc(100), minwidth=0),
         ))
         for component in self.components:
             component.build(b)

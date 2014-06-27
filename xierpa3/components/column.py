@@ -26,11 +26,11 @@ class Column(Container):
         # Column stuff
         columnMarginLeft=None, doc_columnMarginLeft=u'Column margin left.',
         columnMarginLeftMobile=0, doc_columnMarginLeftMobile=u'Column margin left for mobile.',
-        columnMarginRight=None, doc_columnMarginRight=u'Column margin right.',
+        columnMarginRight=Em(1), doc_columnMarginRight=u'Column margin right.',
         columnMarginRightMobile=0, doc_columnMarginRightMobile=u'Column margin right for mobile.',
         columnMarginTop=Em(1), doc_columnMarginTop=u'Column margin top.',
         columnPaddingRight=0, doc_columnPaddingRight=u'Column padding right.',
-        columnPaddingRightMobile=Em(0.5), doc_columnPaddingRightMobile=u'Column padding right for mobile.',
+        columnPaddingRightMobile=Em(1), doc_columnPaddingRightMobile=u'Column padding right for mobile.',
         columnPaddingLeft=0, doc_columnPaddingLeft=u'Column padding left.',
         columnPaddingLeftMobile=Em(0.5), doc_columnPaddingLeftMobile=u'Column padding left for mobile.',
         columnFloat=CC.LEFT, doc_columnFloat=u'Column float.', 
@@ -46,17 +46,19 @@ class Column(Container):
         s = self.style
         colClass = self.getColClass(s.colWidth)
         b.block(self)
-        b.div(class_=colClass, marginright=s.columnMarginRight, 
+        b.div(class_=colClass, marginright=s.columnMarginRight, width=s.colWidth, 
             marginleft=s.columnMarginLeft, margintop=s.columnMarginTop,
             paddingleft=s.columnPaddingLeft, float=s.columnFloat, 
-            display=s.columnDisplay, minheight=s.columnMinHeight,   
-            media=Media(max=self.M_MOBILE_MAX, display=s.columnDisplayMobile, 
-                float=s.columnFloatMobile, width=s.columnWidthMobile,
+            display=s.columnDisplay,   
+            media=(
+            	Media(width=s.columnWidthMobile,
+				display=s.columnDisplayMobile, 
+                float=s.columnFloatMobile, 
                 marginleft=s.columnMarginLeftMobile, 
                 marginright=s.columnMarginRightMobile, 
                 paddingleft=s.columnPaddingLeftMobile, 
-                paddingright=s.columnPaddingRightMobile,)
-            )
+                paddingright=s.columnPaddingRightMobile,),
+        ))
         self.buildColumn(b)
         b._div(comment=colClass)
         b._block(self) 

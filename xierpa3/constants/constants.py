@@ -70,7 +70,7 @@ class C(Config):
     MENU_VERTICAL = 'vertical'
     MENU_HORIZONTAL = 'horizontal' # Default
 
-    # Media ranges
+    # Media ranges and widths
     M_MOBILE_MAX = 755
     M_TABLET_MIN = M_MOBILE_MAX+1
     M_DESKTOP_MIN = 1024
