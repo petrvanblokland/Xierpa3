@@ -112,7 +112,7 @@ class Stack:
         u"""
         <doc>
         The <code>pop</code> method pops the stack and answers the popped element.
-        If the stack is empthe, then answer <code>None</code>. This is a “friendly” error, so the application
+        If the stack is empty, then answer <code>None</code>. This is a “friendly” error, so the application
         can decide what to do with the wrong sized stack.
         </doc>
         """

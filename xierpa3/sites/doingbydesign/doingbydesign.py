@@ -62,6 +62,8 @@ class DoingByDesign(Shop):
     MAXWIDTH = 1140
     MINWIDTH = 755
 
+    adapter = FileAdapter()
+    
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
         s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,

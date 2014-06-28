@@ -47,7 +47,7 @@ class PhpBuilder(HtmlBuilder):
         pass
                    
     def save(self, component, root=None, path=None, extension=None):
-        u"""Save the result streams in the PHP framework. in path."""
+        u"""Save the result streams in the PHP framework."""
         # Write the templates
         rootPath = root + 'app/templates/default/' # Extend the path to save the template files.
         if path is None: # Allow full overwrite of path
