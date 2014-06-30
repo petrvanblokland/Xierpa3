@@ -68,9 +68,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
         self.setViewPort()
-        #self.buildFontLinks(component)
+        self.buildFontLinks(component)
         self.buildCssLinks(component)
-        """
         self.ieExceptions()
         # Build required search engine info, if available in self.adapter
         self.buildMetaDescription(component)
@@ -79,7 +78,6 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.link(rel="apple-touch-icon-precomposed", href="img/appletouchicon.png")
         self.buildJavascript(component)
         self.buildFavIconLinks(component)
-        """
         self._head()
 
         self.body()

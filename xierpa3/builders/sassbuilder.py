@@ -16,7 +16,7 @@
 import re
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltransformerpart import XmlTransformerPart
-from xierpa3.toolbox.transformer import TX
+from xierpa3.toolbox.transformer import TX 
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.stack import Stack
 from xierpa3.descriptors.style import Media

@@ -45,9 +45,9 @@ content = {
         u'There are only three ages for women in Hollywood - Babe, District Attorney, and Driving Miss Daisy. ~Goldie Hawn',
         u'Acting is like a Halloween mask that you put on. ~River Phoenix',
         u'Why should people go out and pay money to see bad films when they can stay home and see bad television for nothing? ~Samuel Goldwyn',
-        """The chief difference between horror fans and science fiction fans lies in why they won’t walk backwards.  
+        u"""The chief difference between horror fans and science fiction fans lies in why they won’t walk backwards.  
             A horror fan won’t walk backwards because he knows he’ll be knifed by a madman.  
-            A science fiction fan won’t walk backwards because he knows he'll step on the cat. ~Aaron Allston""",
+            A science fiction fan won’t walk backwards because he knows he‘ll step on the cat. ~Aaron Allston""",
         u'It would have been more logical if silent pictures had grown out of the talkies instead of the other way around. ~Mary Pickford',
         u'A play should give you something to think about.  When I see a play and understand it the first time, then I know it can’t be much good. ~T.S. Eliot, New York Post, 22 September 1963',
         u'Why do critics make such an outcry against tragicomedies? is not life one? ~Augustus William Hare and Julius Charles Hare, Guesses at Truth, by Two Brothers, 1827',

@@ -204,7 +204,6 @@ class BaseClient(object):
             else: # Not CSS, request must be HTML. This could be an extended choice in the future.
                 result = self.buildHtml(site)
                 mimeType = 'html'
-            return result
         except Exception, e:
             t = traceback.format_exc()
             result = self.renderError(e, t)
