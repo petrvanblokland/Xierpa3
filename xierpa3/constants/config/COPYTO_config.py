@@ -15,7 +15,7 @@
 #     The config.py defines the local settings for each server.
 #      Do not commit this file into Git.
 #
-#      Use COPYTO-config.py as template to see the possible paraemters and
+#      Use COPYTO-config.py as template to see the possible parameters and
 #      create a local version of config.py
 #
 import sys
@@ -37,6 +37,12 @@ class Config(BaseConfig):
     #    P Y T H O N
 
     #PYTHONAPP = 'python2.7'
+
+    # ---------------------------------------------------------------------------------------------------------
+    #    P A T H S
+    
+    #PATH_MAMP = '/Applications/MAMP/htdocs/' # Save exported PHP site templates here
+    #PATH_EXAMPLES = '~/Desktop/Xierpa3Examples/'  # Save exported examples here.
 
     # ---------------------------------------------------------------------------------------------------------
     #    S 3

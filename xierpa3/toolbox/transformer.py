@@ -274,6 +274,16 @@ class Transformer:
         return '/'.join(path.split('/')[:-1])
     
     @classmethod
+    def asDir(cls, path):
+        u"""Make sure that path expands local user and always ends with a slash."""
+        if path is None:
+            path = ''
+        path = os.path.expanduser(path)
+        if not path.endswith('/'):
+            path += '/'
+        return path
+    
+    @classmethod
     def path2NoExtension(cls, path):
         u"""Remove the extension from the path if it exists in the filename part."""
         parts = path.split('/')
@@ -1118,6 +1128,31 @@ class Transformer:
         return urllib.unquote_plus(param)
 
     # ---------------------------------------------------------------------------------------------------------
+    #     L I S T  S T U F F 
+
+    @classmethod
+    def list2IntFloatList(cls, l):
+        floatPat = re.compile('^\d+(\.\d+)$')
+        l = list(cls.obj2List(l))
+        for i in range(len(l)):
+            if l[i]:
+                if not isinstance(l[i], (float, int)):
+                    if l[i].isdigit():
+                        l[i] = int(l[i])
+                    elif floatPat.match(l[i]):
+                        l[i] = float(l[i])
+                    else:
+                        l[i] = 0
+            else:
+                l[i] = 0
+        return l
+
+    @classmethod
+    def list2Lines(cls, l):
+        u"""Answer the list as string with line-endings. It is assumed that all items of the list are strings."""
+        return '\n'.join(l)
+    
+    # ---------------------------------------------------------------------------------------------------------
     #     S T R I N G  C O N V E R S I O N S
 
     @classmethod
@@ -1282,23 +1317,6 @@ class Transformer:
             else:
                 raise TypeError('[Transformer.flatten2Class] Class part must be None, string, tuple or list, not "%s"' % class_)
         return ' '.join(result)
-
-    @classmethod
-    def list2IntFloatList(cls, l):
-        floatPat = re.compile('^\d+(\.\d+)$')
-        l = list(cls.obj2List(l))
-        for i in range(len(l)):
-            if l[i]:
-                if not isinstance(l[i], (float, int)):
-                    if l[i].isdigit():
-                        l[i] = int(l[i])
-                    elif floatPat.match(l[i]):
-                        l[i] = float(l[i])
-                    else:
-                        l[i] = 0
-            else:
-                l[i] = 0
-        return l
 
     #    L A Y O U T
     

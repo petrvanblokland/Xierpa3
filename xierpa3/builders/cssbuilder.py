@@ -13,6 +13,7 @@
 import os
 from xierpa3.builders.sassbuilder import SassBuilder
 from xierpa3.constants.constants import C
+from xierpa3.toolbox.transformer import TX
 
 class CssBuilder(SassBuilder):
     u"""
@@ -35,14 +36,12 @@ class CssBuilder(SassBuilder):
         """
         # Is there a server environment, then overwrite the style type.
         if self.e is not None: 
-            styleType = self.e.form[self.PARAM_CSS] or styleType
+            styleType = self.e.form[self.PARAM_CSS] or styleType or 'expanded'
         if not styleType in self.SASS_STYLES:
             styleType = self.SASS_DEFAULTSTYLE
-        if path is None: # Allow full overwrite of path
-            if root is None:
-                root = self.getUserRootDir(component)
-            path = root + self.DEFAULT_PATH
-        self.makeDirectory(path) # Make sure it is there.
+        if path is None: # Allow full overwrite of complete path.
+            assert root is not None # Always needs external root path defined.
+            path = TX.asDir(root) + self.getComponentFileName(root, component)
         scssPath = path.replace('.css', '.scss')
         SassBuilder.save(self, component, path=scssPath)
         # Call external sass application to always compile SCSS into CSS

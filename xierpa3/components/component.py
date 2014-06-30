@@ -72,6 +72,7 @@ class Component(C):
         # Initialize the self.style, as selector and id are stored there.
         self.style = style # If style is None, then use a copy of the self.BLUEPRINT style.
         self.style.add(kwargs) # Further initialize self.style from keyword arguments
+        self.style.title = title # Page or other component title
         self.style.component = self # Add the weakref reference to self for the root style.
         # Adapter for reading content/data
         self.adapter = adapter # If None, then "parent.adapter or self.ADAPTER" is used
@@ -147,6 +148,11 @@ class Component(C):
             colClass = (colClass, self.CLASS_LAST)
         return colClass
     
+    def getTitle(self, path):
+        u"""Answer the page title as defined in the style or answered by <b>self.adapter</b>.
+        The adapter can use the <b>path</b> argument to fine-tune the title."""
+        return self.style.title or self.adapter.getPageTitle(path=path).text
+
     def getFavIcon(self, builder):
         u"""Call back from the builder to answer the favIcon url. This can be redefined by inheriting classes
         if the favIcon is depending on the content and status of a page."""

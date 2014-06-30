@@ -10,7 +10,8 @@
 #
 #    make.py
 #
-from xierpa3.attributes import Perc, Color, Em, Px
+import webbrowser
+from xierpa3.attributes import Perc, Em, Px
 from xierpa3.components import Theme, Page, Container, Component
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -117,16 +118,21 @@ class SimpleWebSite(Theme):
             title=self.TITLE, css=self.URL_CSS, components=container)
         return [homePage]
     
-    def make(self):
+    def make(self, root=None):
+        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
+        as set by Builder.DEFAULT_ROOTPATH"""
         cssBuilder = CssBuilder()
         self.build(cssBuilder)
-        cssBuilder.save(self) 
+        cssBuilder.save(self, root) 
         htmlBuilder = HtmlBuilder()
         self.build(htmlBuilder)
-        return htmlBuilder.save(self)  
+        return htmlBuilder.save(self, root)  
     
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
-    SimpleWebSite().make()
-    
+    # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/SimpleWebSite/   
+    path = SimpleWebSite().make()
+    webbrowser.open(path)
+   

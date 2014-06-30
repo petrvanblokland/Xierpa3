@@ -42,10 +42,6 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._svgMode = False # Some calls change behavior when in svg mode.
         self._canvasMode = False # Some calls change behavior in HTML5 canvas mode.
 
-    @classmethod
-    def getModelsPath(cls):
-        pass
-
     def getUrl(self):
         u"""Answer the url of the current page. To be implemented by inheriting classes
         that actually knows about urls. Default behavior is to do nothing."""
@@ -63,18 +59,18 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         Note that the inheriting PhPBuilder uses the result of this method to generate
         the header.php file, as a separate result stream.
         """
-        #self.clear() # Clear the output stream for next theme page
+        self.clear() # Clear the output stream for next theme page
         self.docType(self.ID)
         self.html()
         self.head()
-        title = component.adapter.getPageTitle(path=self.getPath()).text
+        title = component.getTitle(path=self.getPath())
         self.title_(title) # Search for the title in the component tree
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
-        # self.title_(component.getTitle()) # Search for the title the component tree
         self.setViewPort()
-        self.buildFontLinks(component)
+        #self.buildFontLinks(component)
         self.buildCssLinks(component)
+        """
         self.ieExceptions()
         # Build required search engine info, if available in self.adapter
         self.buildMetaDescription(component)
@@ -83,6 +79,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.link(rel="apple-touch-icon-precomposed", href="img/appletouchicon.png")
         self.buildJavascript(component)
         self.buildFavIconLinks(component)
+        """
         self._head()
 
         self.body()
@@ -104,18 +101,14 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self._html()
 
     def save(self, component, root=None, path=None, extension=None):
-        u"""Save the file in path. If the optional <i>makeDirectory</i> attribute is 
-        <b>True</b> (default is <b>True</b>) then create the directories in the path 
-        if they don’t exist."""
-        if path is None: # Allow full overwrite of path
+        u"""Save the file in path."""
+        if path is None: # Allow full overwrite of complete path.
             path = self.getFilePath(component, root)
         dirPath = self.makeDirectory(path) # Make sure that the directory part of path exists.
         for template in component.getTemplates():
             filePath = dirPath + '/' + template.name + '.' + (extension or self.EXTENSION) # .html or .php
             template.build(self)
-            f = open(filePath, 'wb')
-            f.write(self.getResult())
-            f.close()
+            self.saveAsFile(filePath, self.getResult()) # Directory already exists.
         return path
    
     def buildJavascript(self, component):

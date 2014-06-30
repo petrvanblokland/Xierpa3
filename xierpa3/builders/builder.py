@@ -21,9 +21,10 @@ class Builder(C):
 
     ID = None   # To be redefined by inheriting builder classes
     EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
-    DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
+    #DEFAULT_PATH = 'files/' # Default path for saving files with self.save()
     DO_INDENT = False
-        
+    ROOT_PATH = None # Root path to be redefined by inheriting builder classes. 
+    
     def __init__(self, e=None, result=None, verbose=True, doIndent=True):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
         self.clear(result) # Clear the result stack or initialize with the optional result stack.
@@ -33,8 +34,8 @@ class Builder(C):
         self._newLine = '\n' # Newline code to add˙at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
-        
-        self.initialize() # Allow inheriting builder classes to do initialization.
+        # Allow inheriting builder classes to do initialization.
+        self.initialize() 
         
     def clear(self, result=None):
         u"""Initialize the <b>self.result</b> from the optional <i>result</i> stack."""
@@ -49,28 +50,25 @@ class Builder(C):
         u"""To be redefined by inheriting builder classes. Default havior is to nothing."""
         pass
     
+    #    P A T H
+    
+    def getPath(self):
+        u"""Answer the path of the current URL, e.g. to select the right article data for this page.
+        In CSS/SASS this gets overwritten by answering the path of the model document."""
+        return self.e.path
+  
     def getExtension(self):
         u"""Answer the default extension of the output file of this type of builder.
         Typically <b>self.EXTENSION</b> is answered."""
         return self.EXTENSION
     
-    def getUserRootDir(self, component):
-        u"""
-        Answer the constructed export path for component files: "~/Desktop/Xierpa3Examples/className".
-        It is not checked if the path exists and should be created.
-        """
-        return os.path.expanduser('~') + '/Desktop/Xierpa3Examples/' + component.__class__.__name__ + '/'
+    def getComponentFileName(self, root, component):
+        u"""Answer the file path of the component. @@@ This should be based on URL too."""
+        return component.name + '.' + self.getExtension()
 
     def getFilePath(self, component, root=None):
-        u"""
-        Answers the file path, based on the URL. Add '/files' to hide Python sources from view.
-        The right 2 slash-parts of the site path are taken for the output (@@@ for now)
-        """
-        if root is None:
-            root = self.getUserRootDir(component)
-        if not root.endswith('/'):
-            root += '/'
-        return root + component.name + '.' + self.getExtension()
+        u"""Answer the file path of <b>component</b>."""
+        return TX.asDir(root or self.ROOT_PATH) + self.getComponentFileName(root, component)
 
     def makeDirectory(self, path):
         u"""Make sure that the directory of path (as file) exists. Otherwise create it.
@@ -84,20 +82,20 @@ class Builder(C):
         u"""Save the <b>self.getResult()</b> in path. If the optional <i>makeDirectory</i> attribute is 
         <b>True</b> (default is <b>True</b>) then create the directories in the path 
         if they don’t exist."""
-        # Make the component dictionary inside the defined root path
         if path is None: # Allow full overwrite of complete path.
             path = self.getFilePath(component, root)
-        self.makeDirectory(path) # Make sure that the directory part of path exists.
-        f = open(path, 'wb')
-        f.write(self.getResult())
-        f.close()
+        self.saveAsFile(path, self.getResult(), makeDir=True)
         return path
     
-    def getPath(self):
-        u"""Answer the path of the current URL, e.g. to select the right article data for this page.
-        In CSS/SASS this gets overwritten by answering the path of the model document."""
-        return self.e.path
-  
+    def saveAsFile(self, path, content, makeDir=False):
+        u"""Save content as a file under path. If the file exists it is overwritten.
+        If <b>makeDirs</b> is <b>True</b> (default is <b>False</b>), the try to create the directory first."""
+        if makeDir:
+            self.makeDirectory(path) # Make sure that the directory part of path exists.
+        f = open(path, 'wb')
+        f.write(content)
+        f.close()
+
     # P A R A M
     
     def getParamNames(self):

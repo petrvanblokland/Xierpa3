@@ -53,10 +53,13 @@ class HelloWorld(Theme):
         # Answer a list of types of pages for this site.
         return [homePage]
 
-    def make(self):
-        u"""The instance of this class builds CSS and HTML."""
-        # Create an "instance" (=object) of type "HelloWorld". The type (=class) defines
-        # the behavior of the object that is made by calling the class.
+    def make(self, root=None):
+        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        If not defined, then <b>Builder.DEFAULT_ROOTPATH</b> is used, as in general builders 
+        are associated where output should go to. 
+        E.g. the default <b>HtmlBuilder.DEFAULT_ROOTPATH</b> is defined as to the user extended 
+        path of <b>~/Desktop/Xierpa3Examples/[component.name]</b>.
+        And for <b>CssBuilder</b> it is <b>~/Desktop/Xierpa3Examples/[component.name]/css/style.css</b>."""
 
         # C S S
         # Create the main CSS builder instance to build the CSS part of the site.
@@ -64,7 +67,7 @@ class HelloWorld(Theme):
         # Compile (=build) the SCSS to CSS.
         self.build(cssBuilder) 
         # Save the file in "css/style.css".
-        cssBuilder.save(self) 
+        cssBuilder.save(self, root) 
     
         # H T M L
         # Create the main HTML builder instance to build the HTML part of the site.
@@ -72,11 +75,13 @@ class HelloWorld(Theme):
         # Compile the site instance and its components into HTML code.
         self.build(htmlBuilder) 
         # Save the resulting HTML file in "helloWorld.html"
-        # Answer the path, so we can open the file with a browser.
-        return htmlBuilder.save(self)  
+        # Answer the path, so we can directly open the file with a browser.
+        return htmlBuilder.save(self, root)  
     
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
-    # be executed when called in direct mode, such as "python make.py" in the terminal.         
+    # be executed when called in direct mode, such as "python make.py" in the terminal.      
+    # Since no rootPath is added to make(), the file export is in builder.DEFAULT_ROOTPATH
+    # which typically is the user extended path of ~/Desktop/Xierpa3Examples/HelloWorld/   
     path = HelloWorld().make()
     webbrowser.open(path)

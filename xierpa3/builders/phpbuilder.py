@@ -45,13 +45,18 @@ class PhpBuilder(HtmlBuilder):
         HtmlBuilder._page(self, component)
         self.phpFooter = self.popResult()
         pass
-                   
+   
+    def clear(self):
+        # Don't do clear inside page composition, as normal HtmlBuilder.page does.
+        pass
+                    
     def save(self, component, root=None, path=None, extension=None):
         u"""Save the result streams in the PHP framework."""
         # Write the templates
+        root = root or self.ROOTPATH
         rootPath = root + 'app/templates/default/' # Extend the path to save the template files.
-        if path is None: # Allow full overwrite of path
-            path = self.getFilePath(component, rootPath)
+        # path argument is ignored
+        path = self.getFilePath(component, root)
         dirPath = self.makeDirectory(path) # Make sure that the directory part of path exists.
         # Write header and footer
         for fileName, content in (('header.php', self.phpHeader), ('footer.php', self.phpFooter)):

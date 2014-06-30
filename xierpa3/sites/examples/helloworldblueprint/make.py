@@ -107,7 +107,7 @@ class HelloWorldBluePrint(Theme):
     u"""The <b>HelloWorldResponsive</b> class implements a basic Hello World page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
-    TITLE = u'The responsive “Hello world” page.' # Use as title of window.
+    TITLE = u'The responsive “Hello world” page using BluePrint styling.' # Use as title of window.
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
@@ -121,8 +121,10 @@ class HelloWorldBluePrint(Theme):
         # Answer a list of types of pages for this site.
         return [homePage]
 
-    def make(self):
-        u"""The instance of this class builds CSS and HTML."""
+    def make(self, root):
+        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
+        as set by Builder.DEFAULT_ROOTPATH"""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
 
@@ -131,18 +133,19 @@ class HelloWorldBluePrint(Theme):
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS and save the file in "css/style.css".
         self.build(cssBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
-        cssBuilder.save(self) 
+        cssBuilder.save(self, root) 
     
         # H T M L
         # Create the main HTML builder instance to build the HTML part of the site.
         htmlBuilder = HtmlBuilder()
         # Compile the HTML and save the resulting HTML file in "helloWorld.html".
         self.build(htmlBuilder) # Build from entire site theme, not just from template. Result is stream in builder.
-        # Answer the path, so we can open the file with a browser.
-        return htmlBuilder.save(self)  
+        # Answer the path, so we can directly open the file with a browser.
+        return htmlBuilder.save(self, root)  
     
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
+    # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/HelloWorldBluePrint/   
     path = HelloWorldBluePrint().make()
     webbrowser.open(path)

@@ -141,6 +141,18 @@ class BaseClient(object):
         theme.e = Environment(request=httprequest)
         return theme
 
+    def setMimeTypeEncoding(self, mime, request):
+        u"""
+        <doc>The <code>getMimeTypeEncoding</code> method answers the MIME type and coding in format <code>'text/css;
+        charset-utf-8'</code>.</doc>
+        """
+        mimetype = C.MIMETYPES.get(mime)
+        if mimetype is not None:
+            if mimetype and 'text' in mimetype:
+                mimetype += '; charset=utf-8'
+        if mimetype is not None:
+            request.setHeader('content-type', mimetype)
+
     def buildCss(self, site):
         u"""Build the site to CSS."""
         doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
@@ -184,24 +196,26 @@ class BaseClient(object):
         answered. The application needs to have the right MIME type in the output.
         """
         site = self.getSite(httprequest) # Site is Theme instance
-        # b.setMimeTypeEncoding(httprequest)
         try:
             # If there is a matching file in the site root/files folder, then answer this.
             if site.e.request.path.endswith('.css'):
                 result = self.buildCss(site)
+                mimeType = 'css'
             else: # Not CSS, request must be HTML. This could be an extended choice in the future.
                 result = self.buildHtml(site)
+                mimeType = 'html'
             return result
         except Exception, e:
             t = traceback.format_exc()
-            httprequest.setHeader('content-type', 'text/html')
             result = self.renderError(e, t)
+            mimeType = 'html'
 
         # if b.shouldBeCompressed():
         #    httprequest.setHeader("Content-Encoding", "gzip")
         #    result = b.getResult().getCompressedValue()
         # else:
         #    result = b.getResult().getValue()
+        self.setMimeTypeEncoding(mimeType, httprequest)        
         return result
     
     def render_POST(self, httprequest):
@@ -211,11 +225,9 @@ class BaseClient(object):
         answered. The application is supposed to have the the right MIME type in the output. The data of the post is
         located in the file object <code>httprequest.content</code>. The data can be read by <code>
         httprequest.content.read()</code>.
-        
         """
         site = self.getSite(httprequest)  # Site is Theme instance
         site.handlePost()
-        # b.setMimeTypeEncoding(httprequest)
 
         if isinstance(httprequest.content, StringIO.OutputType):
             # Probably JSON.
@@ -226,11 +238,15 @@ class BaseClient(object):
             # If there is a matching file in the site root/files folder, then answer this.
             if site.e.request.path.endswith('.css'):
                 result = self.buildCss(site)
+                mimeType = 'css'
             else: # Not CSS, request must be HTML. This could be an extended choice in the future.
                 result = self.buildHtml(site)
+                mimeType = 'html'
         except Exception, e:
             t = traceback.format_exc()
             result = self.renderError(e, t)
+            mimeType = 'html'
+        self.setMimeTypeEncoding(mimeType, httprequest)        
         return result
     
         # if b.shouldBeCompressed():

@@ -42,8 +42,8 @@ class BaseConfig(object):
     USE_S3 = True
     USE_LOCALS3 = (True and USE_S3) or not USE_ONLINE
 
-    ACCESSKEYID = '' # Add your Amazon S3 access key here.
-    SECRETACCESSKEY = '' # Add your Amazon S3 secret access key here.
+    ACCESSKEYID = '' # Add your Amazon S3 access key here in the config file.
+    SECRETACCESSKEY = '' # Add your Amazon S3 secret access key here in the config file.
     
     # ---------------------------------------------------------------------------------------------------------
     #    A M A Z O N  D Y N A M O  D B
@@ -54,6 +54,12 @@ class BaseConfig(object):
     DYNAMODB_URI = "/"
     DYNAMODB_TARGET = "" # To be defined by user account in config.py
     DYNAMODB_SIGNING_ALGORITHM = ""  # To be defined by user account in config.py
+
+    # ---------------------------------------------------------------------------------------------------------
+    #    P A T H S
+    
+    PATH_MAMP = '/Applications/MAMP/htdocs/' # Save exported PHP site templates here
+    PATH_EXAMPLES = '~/Desktop/Xierpa3Examples/'  # Save exported examples here.
 
     # ---------------------------------------------------------------------------------------------------------
     #    D A T A B A S E
