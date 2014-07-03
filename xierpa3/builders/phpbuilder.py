@@ -73,3 +73,15 @@ class PhpBuilder(HtmlBuilder):
             f.close()
         return path
 
+    def buildCssLinks(self, component):
+        u"""
+        Create the CSS links inside the head. /css-<SASS_STYLENAME> defines the type of CSS output from the Sass
+        compiler. The CSS parameter must be one of ['nested', 'expanded', 'compact', 'compressed']
+        """
+        #urlName = component.root.urlName # Get the specific URL prefix for from root of this component.
+        for cssUrl in component.css: # Should always be defined, default is an empty list
+            if not cssUrl.startswith('http://'):
+                cssUrl = '<?php echo \helpers\url::get_template_path();?>' + cssUrl
+            self.link(href=cssUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
+
+

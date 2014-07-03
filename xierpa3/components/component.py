@@ -136,6 +136,11 @@ class Component(C):
         name = cls.__name__
         return name[0].lower() + name[1:]
 
+    @classmethod
+    def getPythonClassName(cls):
+        u"""Answer the Python class name."""
+        return cls.__name__
+    
     def isLast(self, component):
         u"""Allow components to test the parent if they are last."""
         return self.components and self.components[-1] is component
