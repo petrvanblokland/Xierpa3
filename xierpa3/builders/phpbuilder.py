@@ -46,7 +46,7 @@ class PhpBuilder(HtmlBuilder):
         self.phpFooter = self.popResult()
         pass
    
-    def clear(self):
+    def XXXclear(self, result=None):
         # Don't do clear inside page composition, as normal HtmlBuilder.page does.
         pass
                     

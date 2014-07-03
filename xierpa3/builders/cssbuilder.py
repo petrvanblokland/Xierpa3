@@ -41,7 +41,7 @@ class CssBuilder(SassBuilder):
             styleType = self.SASS_DEFAULTSTYLE
         if path is None: # Allow full overwrite of complete path.
             assert root is not None # Always needs external root path defined.
-            path = TX.asDir(root) + self.getComponentFileName(root, component)
+            path = self.getFilePath(component, root)
         scssPath = path.replace('.css', '.scss')
         SassBuilder.save(self, component, path=scssPath)
         # Call external sass application to always compile SCSS into CSS

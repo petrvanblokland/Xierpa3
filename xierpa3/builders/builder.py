@@ -10,7 +10,7 @@
 #
 #   builder.py
 #
-import os
+import os, shutil
 from xierpa3.toolbox.stream.writer import Writer
 from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
@@ -69,6 +69,19 @@ class Builder(C):
     def getFilePath(self, component, root=None):
         u"""Answer the file path of <b>component</b>."""
         return TX.asDir(root or self.ROOT_PATH) + self.getComponentFileName(root, component)
+
+    def copyTree(self, srcPath, dstPath, force=False):
+        for fileName in os.listdir(srcPath):
+            if fileName.startswith('.'):
+                continue
+            srcPath2 = srcPath + fileName
+            dstPath2 = dstPath + fileName 
+            if os.path.isdir(srcPath2):
+                if not os.path.exists(dstPath2):
+                    os.mkdir(dstPath2)
+                self.copyTree(srcPath2 + '/', dstPath2 + '/', force)
+            elif force or not os.path.exists(dstPath2):
+                shutil.copy2(srcPath2, dstPath2)
 
     def makeDirectory(self, path):
         u"""Make sure that the directory of path (as file) exists. Otherwise create it.

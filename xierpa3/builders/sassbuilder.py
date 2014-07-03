@@ -101,7 +101,7 @@ class SassBuilder(XmlTransformerPart, Builder):
 
     def getFilePath(self, component, root=None):
         u"""Answer the CSS file path of <b>component</b>."""
-        return TX.asDir(root or self.ROOT_PATH) + component.__class__.__name__.lower() + '/' + self.DEFAULT_PATH
+        return TX.asDir(root or (self.ROOT_PATH + component.__class__.__name__.lower())) + self.DEFAULT_PATH
 
     def save(self, component, root=None, path=None):
         u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
