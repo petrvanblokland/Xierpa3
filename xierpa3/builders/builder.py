@@ -27,27 +27,28 @@ class Builder(C):
     
     def __init__(self, e=None, result=None, verbose=True, doIndent=True):
         self.e = e or Environment() # Store the theme.e environment in case running as server. Otherwise create.
-        self.clear(result) # Clear the result stack or initialize with the optional result stack.
         self._verbose = verbose
         self._doIndent = doIndent # Use indent for blocks on the output
         self._tabLevel = 0 # If indenting, keep tab level here.
         self._newLine = '\n' # Newline code to add˙at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
+        # Initialize the stack of result witers
+        self.initializeResult(result)
         # Allow inheriting builder classes to do initialization.
         self.initialize() 
         
-    def clear(self, result=None):
+    def initializeResult(self, result):
         u"""Initialize the <b>self.result</b> from the optional <i>result</i> stack."""
         assert result is None or isinstance(result, Stack)
         if result is None:
             result = Stack()
         self.result = result
-        if not self.result:
+        if not self.result: # If empty stack, so push a new root result writer
             self.result.push(self.newResultWriter())
 
     def initialize(self):
-        u"""To be redefined by inheriting builder classes. Default havior is to nothing."""
+        u"""To be redefined by inheriting builder classes. Default behavior is to nothing."""
         pass
     
     #    P A T H

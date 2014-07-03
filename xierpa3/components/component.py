@@ -239,12 +239,12 @@ class Component(C):
 
     def isComponent(self, name):
         """Answer the boolean flag if this is a component where <b>name == self.name</b>."""
-        return name == self.name # Compare with self._name or class names
+        return name == self.name or (name in self.class_ or []) # Compare with self._name or class names
 
     def getComponent(self, name):
         """Answer the child component that matches <i>name.</i>"""
         for component in self.components:
-            if self.isComponent(name):
+            if component.isComponent(name):
                 return component
         return None
 

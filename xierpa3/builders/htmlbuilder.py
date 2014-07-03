@@ -59,7 +59,6 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         Note that the inheriting PhPBuilder uses the result of this method to generate
         the header.php file, as a separate result stream.
         """
-        self.clear() # Clear the output stream for next theme page
         self.docType(self.ID)
         self.html()
         self.head()

@@ -29,7 +29,6 @@ class BaseClient(object):
     DO_INDENT = True # Boolean flag if the build code should be indented.
     DEFAULTTHEME = 'default'
     THEMES = None # Name-class of the theme component trees, redefined by inheriting classes.
-    INITCSS = True # Flag to make sure all CSS always gets initialized when server starts.
     
     def __repr__(self):
         u"""
@@ -163,12 +162,11 @@ class BaseClient(object):
             site.buildDocumentation(builder) # Build the live documentation page from the site
             builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
             result = builder.getResult() 
-        elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
+        elif site.e.form[C.PARAM_FORCE] or result is None:
             # Forced or no cached CSS, so try to build is and save it in the cache.
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
             builder.save(site, path=filePath) # Compile resulting Sass to Css  
             result = builder.getResult() # Get the resulting Sass.
-            self.INITCSS = False # Mark that the initial CSS build on startup has been done.
         return result
     
     def buildHtml(self, site):
@@ -181,11 +179,12 @@ class BaseClient(object):
         if site.e.form[C.PARAM_DOCUMENTATION]:
             site.buildDocumentation(builder)
             result = builder.getResult()
-        elif site.e.form[C.PARAM_FORCE] or result is None or self.INITCSS:
+        elif site.e.form[C.PARAM_FORCE] or result is None:
             # Find the matching template for the current site and build from there.
             template = site.getMatchingTemplate(builder)
+            builder.pushResult()
             template.build(builder)
-            result = builder.getResult()
+            result = builder.popResult()
         return result
     
     def render_GET(self, httprequest):
