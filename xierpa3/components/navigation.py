@@ -11,7 +11,7 @@
 #    navigation.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import Perc, Px, Em, Border, Z, Margin, Color
+from xierpa3.attributes import Perc, Px, Em, Border, Z, Color
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
@@ -92,14 +92,14 @@ class MobileNavigation(Navigation):
         else:
             b.ul(id=self.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
                 display=self.NONE, clear=self.BOTH, position=self.ABSOLUTE, top=s.menuHeight-5, 
-                width=self.C100, zindex=Z(2000), padding=0, margin=0, liststyletype=self.NONE, left=0,
+                width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.NONE, left=0,
                 textalign=self.CENTER)
         
             for menu in data.menuItems:
                 url = menu.url
                 if url is None:
                     url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
-                b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=self.C100, liststyletype=self.NONE,
+                b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=Perc(100), liststyletype=self.NONE,
                     borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
                 b.a(href=url, color=Color('#E8E8E8'))
                 b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)

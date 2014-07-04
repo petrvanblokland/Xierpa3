@@ -42,7 +42,7 @@ class ExampleColumn(Column):
         minWidth=300, doc_minWidth='Column minimal width.',
         minWidthMobile=0, doc_minWidthMobile=u'Column minimal width for mobile.',
         maxWidth=700, doc_maxWidth='Column maximal width.',
-        maxWidthMobile=CC.C100, doc_maxWidthMobile='Column maximal width for mobile',
+        maxWidthMobile=Perc(100), doc_maxWidthMobile='Column maximal width for mobile',
         # Column stuff
         fontFamlily=BODYFAMILY, doc_fontFamily=u'Column body font family.',
         fontSize=Em(1), doc_fontSize=u'Column body font size.',

@@ -11,7 +11,7 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px
+from xierpa3.attributes import Em, Px, Perc
 from xierpa3.adapters import FileAdapter
 from xierpa3.components import Theme, Page, Container, FeaturedByDiapText, FeaturedByTextList
 from xierpa3.builders.cssbuilder import CssBuilder
@@ -48,7 +48,7 @@ class Featuring1(Theme):
         s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, lineheight=self.BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
-        s.addStyle('div', float=self.LEFT, width=self.C100)
+        s.addStyle('div', float=self.LEFT, width=Perc(100))
         return s
     
     def baseComponents(self):

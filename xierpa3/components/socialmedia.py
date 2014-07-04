@@ -14,6 +14,7 @@ from xierpa3.components.column import Column
 from xierpa3.constants.constants import C
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.attributes import Perc
 
 class SocialMedia(Column):
     
@@ -33,7 +34,7 @@ class SocialMedia(Column):
         s = self.style
         if s.twitterAccount or s.facebookAccount:
             b.div(class_=self.CLASS_SOCIALMEDIA, display=self.BLOCK, float=s.float or self.LEFT,
-                width=s.width or self.C100,
+                width=s.width or Perc(100),
                 media=Media(max=self.M_MOBILE_MAX, display=s.mobileDisplay)
             )
             # getUrl does not seem to work with twitter. Script only tests http or https. 

@@ -33,16 +33,13 @@ class SimpleResponsiveText(Column):
     Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim 
     scelerisque vitae."""
     CC = Column # Access of constants through parent class.
-
-    BODYFONT = 'Georgia'
-    CAPTIONFONT = BODYFONT
     
     BLUEPRINT = BluePrint(
-        # Body
-        bodyFontSize=Px(12), doc_bodyFontSize=u'Body font size',
-        bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family',
+        margin=Margin(0, CC.AUTO), doc_margin=u"Margin of the column",
+        width=Perc(90), doc_width=u"Width of the main column.",
+        padding=Padding(Em(0.5), Em(0.5), Em(0.5), Em(0.5)), doc_padding=u"Padding of column.",
         # Show @media transition by background color
-        backgroundColor=Color('#BBB'), doc_backgroundColor=u'Column background color',
+        backgroundColor=Color('#BBB'), doc_backgroundColor=u'Column background color.',
         backgroundColorTablet=Color('#CCC'), doc_backgroundColorTablet=u'Column background color for tablet.',
         backgroundColorMobile=Color('#EEE'), doc_backgroundColorMobile=u'Column background color for mobile.', 
         # Text
@@ -66,20 +63,18 @@ class SimpleResponsiveText(Column):
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
         s = self.style
-        b.div(class_=self.getClassName(), color=s.color, margin=s.margin, 
-            width=Perc(100),
-            backgroundcolor=s.backgroundColor, fontsize=s.fontSize,
-            padding=Padding(Em(0.5), Em(0.5), Em(0.5), Em(0.5)), 
+        b.div(class_=self.getClassName(), color=s.color, margin=s.margin, width=s.width,
+            backgroundcolor=s.backgroundColor, fontsize=s.fontSize, padding=s.padding, 
             textalign=self.LEFT,
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
-               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, 
+               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, width=Perc(100),
                    backgroundcolor=s.backgroundColorTablet, margin=0,
                    color=s.colorTablet, fontsize=s.fontSizeTablet),
                # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.M_MOBILE_MAX, margin=0,
+               Media(max=self.M_MOBILE_MAX, margin=0, width=Perc(100),
                    backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
                    fontsize=s.fontSizeMobile),
             ))
@@ -95,10 +90,20 @@ class SimpleResponsivePage(Theme):
     u"""The <b>SimpleResponsivePage</b> class implements a simple page with a text and an image."""
     TITLE = u'The simple responsive text page.' # Use as title of window.
 
+    BODYFONT = 'Georgia'
+    CAPTIONFONT = BODYFONT
+
+    BLUEPRINT = BluePrint(
+        # Body
+        bodyFontFamily=BODYFONT, doc_fontFamily=u'Page body font family.',                          
+        bodyFontSize=Px(12), doc_bodyFontSize=u'Body font size.',
+        bodyLineHeight=Em(1.4), doc_bodyLineHeight=u'Body line height.',
+        pageBackgroundColor='white', doc_pageBackgroundColor=u"Page background color.",
+    )
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
-        s = SimpleResponsiveText.BLUEPRINT
+        s = self.BLUEPRINT
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.bodyFontFamily, fontsize=s.bodyFontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)

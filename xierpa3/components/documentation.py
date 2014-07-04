@@ -134,7 +134,7 @@ class Documentation(Container):
                 continue
             b.div(class_="label", width='20%', float=self.LEFT, clear=self.BOTH,
                 display=self.BLOCK,  bordertop='1px solid black')
-            b.h2(fontsize=Em(1.5), width=self.C100, lineheight=Em(1.4))
+            b.h2(fontsize=Em(1.5), width=Perc(100), lineheight=Em(1.4))
             if inspect.isclass(obj):
                 b.text(u'✏ ')
                 b.span(class_="classSource")

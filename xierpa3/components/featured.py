@@ -255,7 +255,7 @@ class FeaturedByText(FeaturedBase):
             b._h5()
             b._a()
         if item.summary is not None: # Test on element. Summary elements tag must be defined by generic style.
-            b.div(class_='featuredSummary', clear=self.BOTH, float=self.LEFT, width=self.C100, color=s.summaryColor,
+            b.div(class_='featuredSummary', clear=self.BOTH, float=self.LEFT, width=Perc(100), color=s.summaryColor,
                 fontsize=s.summarySize, lineheight=s.summaryLineHeight, 
                 margintop=s.summaryMarginTop, marginbottom=s.summaryMarginBottom)
             self.buildElement(b, item.summary)

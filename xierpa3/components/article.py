@@ -155,7 +155,7 @@ class Article(ArticleColumn):
         For all other pages build a smaller version of the top."""
         s = self.style
         class_ = self.CLASS_ARTICLETOP
-        b.div(class_=class_, float=self.LEFT, width=self.C100, paddingtop=Em(0.5))
+        b.div(class_=class_, float=self.LEFT, width=Perc(100), paddingtop=Em(0.5))
         # Poster image
         if chapterIndex == 0 and s.showPoster:
             b.img(class_=self.CLASS_AUTOWIDTH, src=article.poster)

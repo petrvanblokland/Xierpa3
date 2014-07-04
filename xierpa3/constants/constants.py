@@ -138,7 +138,6 @@ class C(Config):
         1: CLASS_1COL, 2: CLASS_2COL, 3: CLASS_3COL, 4: CLASS_4COL, 5: CLASS_5COL, 6: CLASS_6COL,
         7: CLASS_7COL, 8: CLASS_8COL, 9: CLASS_9COL, 10: CLASS_10COL, 11: CLASS_11COL, 12: CLASS_12COL,
     }
-    C100 = '100%'
     
     # Params
     PARAM_CSS = 'css'

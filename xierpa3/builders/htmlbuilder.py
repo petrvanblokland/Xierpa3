@@ -131,7 +131,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         if data.text is not None:
             self.meta(name=self.META_KEYWORDS, content=data.text)
             
-    def cssUrl(self, css):
+    def XXXcssUrl(self, css):
         if not isinstance(css, (list, tuple)):
             css = [css]
         for url in css:

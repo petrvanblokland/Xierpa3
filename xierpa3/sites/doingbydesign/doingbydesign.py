@@ -17,7 +17,7 @@
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.attributes import Em, Color
+from xierpa3.attributes import Em, Color, Perc
 from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
@@ -70,7 +70,7 @@ class DoingByDesign(Shop):
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)
         s.addStyle('h6', fontfamily=self.CSS_BODYFONT)
-        s.addStyle('div', float=self.FLOAT_LEFT, width=self.C100)
+        s.addStyle('div', float=self.FLOAT_LEFT, width=Perc(100))
         s.addStyle('a, a:link', color=self.CSS_ALINKCOLOR)
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
         s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
@@ -79,7 +79,7 @@ class DoingByDesign(Shop):
         s.addStyle('div.' + C.CLASS_2COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 2 / 12))
         s.addStyle('div.' + C.CLASS_4COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
         s.addStyle('div.' + C.CLASS_8COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 8 / 12))
-        s.addStyle('div.' + C.CLASS_12COL, margin=Em(0.5), float=C.LEFT, width=C.C100)
+        s.addStyle('div.' + C.CLASS_12COL, margin=Em(0.5), float=C.LEFT, width=Perc(100))
         s.addStyle('div.' + C.CLASS_LAST, marginright=Em(0))
         s.addStyle('ul', display=C.BLOCK)
         s.addStyle('li', display=C.BLOCK)

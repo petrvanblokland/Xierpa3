@@ -157,6 +157,7 @@ class BaseClient(object):
         doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
         builder = CssBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
+        print '34424243', site.e.form
         result = self.resolveByFile(site, filePath)
         if site.e.form[C.PARAM_DOCUMENTATION]:
             site.buildDocumentation(builder) # Build the live documentation page from the site

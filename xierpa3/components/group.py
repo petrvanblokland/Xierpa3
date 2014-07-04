@@ -13,6 +13,7 @@
 from xierpa3.components.container import Container
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.attributes import Perc
 
 class Group(Container):
     pass
@@ -37,7 +38,7 @@ class ItemGroup(Group):
     )
     def buildBlockRow(self, b):
         s = self.style
-        b.div(class_=self.CLASS_ROW, width=s.rowWidth or self.C100)
+        b.div(class_=self.CLASS_ROW, width=s.rowWidth or Perc(100))
         mediaStyles = Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
                  minwidth=0, width=self.AUTO, paddingleft=0, paddingright=0, margin=0)
 

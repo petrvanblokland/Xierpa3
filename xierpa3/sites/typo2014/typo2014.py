@@ -16,14 +16,14 @@
 #
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.descriptors.style import StyleSet
-from xierpa3.attributes import Em
+#from xierpa3.descriptors.style import StyleSet
+from xierpa3.attributes import Em, Perc
 from xierpa3.components import Logo, SocialMedia, Header, MobileNavigation, Featured, Footer, Menu
 from xierpa3.components import ItemGroup, Page, FeaturedByText, FeaturedByTextList, Article, Container
 from xierpa3.components import FeaturedByDiapText, FeaturedByImage, Documentation, ArticleSideBar
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
-from xierpa3.sites import typo2014
+#from xierpa3.constants.constants import C
+#from xierpa3.toolbox.transformer import TX
+#from xierpa3.sites import typo2014
 
 FOOTERBACKGROUNDCOLOR = '#E1E1E1'
        
@@ -82,7 +82,7 @@ class Typo2014(Shop):
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)
         s.addStyle('h6', fontfamily=s.bodyFamily)
-        s.addStyle('div', float=self.FLOAT_LEFT, width=self.C100)
+        s.addStyle('div', float=self.FLOAT_LEFT, width=Perc(100))
         s.addStyle('a, a:link', color=self.CSS_ALINKCOLOR)
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
         s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
@@ -91,7 +91,7 @@ class Typo2014(Shop):
         s.addStyle('div.' + self.CLASS_2COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 2 / 12))
         s.addStyle('div.' + self.CLASS_4COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
         s.addStyle('div.' + self.CLASS_8COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 8 / 12))
-        s.addStyle('div.' + self.CLASS_12COL, margin=Em(0.5), float=self.LEFT, width=self.C100)
+        s.addStyle('div.' + self.CLASS_12COL, margin=Em(0.5), float=self.LEFT, width=Perc(100))
         s.addStyle('div.' + self.CLASS_LAST, marginright=Em(0))
         s.addStyle('ul', display=self.BLOCK)
         s.addStyle('li', display=self.BLOCK)
