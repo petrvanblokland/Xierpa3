@@ -28,19 +28,6 @@ class Page(Component):
         Default behavior is to do nothing."""
         pass
 
-    def XXXblock(self, b):
-        u"""Start the block by calling the builder method <b>b.div( )</b> with the 
-        default class definition."""
-        s = self.style
-        b.div(class_=s.class_ or self.class_ or self.CLASS_PAGE)
-        b.comment(self.name) 
-        
-    def XXX_block(self, b):
-        u"""End the block by calling the builder method <b>b.div( )</b> with the 
-        default class definition as comment."""
-        s = self.style
-        b._div(comment=s.class_ or self.class_ or self.CLASS_PAGE) # End comment is automatic.
-        
     def buildBlock(self, b):
         u"""
         Make the builder <i>b</i> open the page and open the block. Then call the builder 
