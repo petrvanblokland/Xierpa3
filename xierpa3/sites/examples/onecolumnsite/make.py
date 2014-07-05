@@ -29,8 +29,8 @@ from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
 # Load @fontface fonts for this example from www.webtype.com
-BODYFAMILY = '"Hermes FB Book"'
-HEADFAMILY = '"Hermes FB Semibold"'
+BODYFAMILY = '"Hermes FB Book", Verdana, sans'
+HEADFAMILY = '"Hermes FB Semibold", Impact, Verdana, sans'
 
 class ExampleColumn(Column):
     

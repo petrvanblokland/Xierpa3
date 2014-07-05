@@ -32,7 +32,7 @@ class HelloWorldResponsiveText(Column):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Column.C
 
-    CSS_BODYFONT = 'Georgia'
+    CSS_BODYFONT = 'Georgia, serif'
     CSS_CAPTIONFONT = CSS_BODYFONT
     
     def buildBlock(self, b):

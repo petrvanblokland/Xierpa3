@@ -39,7 +39,7 @@ class FeaturedBase(Column):
       
     def buildColumn(self, b):
         s = self.style
-        data = self.adapter.getArticles(id=b.getCurrentArticleId() or self.ID_HOME, 
+        data = self.adapter.getArticles(id=b.getCurrentArticleId() or self.C.ID_HOME, 
             start=s.itemStart, count=s.itemCount)
         self.buildFeatured(b, data)
    
@@ -78,7 +78,7 @@ class FeaturedByImage(FeaturedBase):
         s = self.style
         if s.itemStart < len(data.items):
             item = data.items[s.itemStart]
-            b.div(class_=self.C.CLASS_FEATURED_ITEM, display=s.itemDisplay,
+            b.div(class_=self.C.CLASS_FEATUREDITEM, display=s.itemDisplay,
                 clear=s.itemClear, marginbottom=s.itemMarginBottom, width=s.itemWidth,
             )
             b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id))
@@ -97,7 +97,7 @@ class FeaturedByImage(FeaturedBase):
             if s.showTopic and item.topic is not None: # Elements must be defined in global style
                 self.buildElement(b, item.topic)
             b._a()
-            b._div(comment=self.C.CLASS_FEATURED_ITEM)
+            b._div(comment=self.C.CLASS_FEATUREDITEM)
   
 class FeaturedByImageList(FeaturedBase):
     u"""The <b>FeaturedByImageList</b> feature component builds a vertical list if thumbnails, 
@@ -239,35 +239,35 @@ class FeaturedByText(FeaturedBase):
         b._h2()
         b._a()
         if s.showPoster:
-            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
-            b.img(width=s.posterWidth, src=item.poster, float=self.LEFT, padding=0,
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.C.CLASS_NAME)
+            b.img(width=s.posterWidth, src=item.poster, float=self.C.LEFT, padding=0,
                 margin=Margin(Em(0.5), Em(0.5), 0, 0),
-                media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
+                media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE)
             )
             b._a()
         if s.showLevel:
-            b.h5(class_=self.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
+            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
                 margintop=s.levelMarginTop, lineheight=s.levelLineHeight)
             b.text(item.level or s.genericLevel)
             b.text(' level')
             b._h5()
         if item.author: # Test on text
-            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, item.author), class_=self.CLASS_AUTHOR)
+            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, item.author), class_=self.C.CLASS_AUTHOR)
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, color=s.authorColor, 
                  lineheight=s.authorLineHeight, display=s.authorDisplay)
             b.text('By %s' % item.author)
             b._h5()
             b._a()
         if s.showCategory and item.category: # Text on text
-            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORY)
+            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.C.CLASS_CATEGORY)
             b.h5(fontsize=s.categorySize, fontweight=s.categoryWeight, lineheight=s.categoryLineHeight, 
-                 color=s.categoryColor, margintop=Em(1), display=self.BLOCK)
+                 color=s.categoryColor, margintop=Em(1), display=self.C.BLOCK)
             b.text(item.category)
             b._h5()
             b._a()
         if item.summary is not None: # Test on element. Summary elements tag must be defined by generic style.
-            b.div(class_='featuredSummary', clear=self.BOTH, float=self.LEFT, width=Perc(100), color=s.summaryColor,
-                fontsize=s.summarySize, lineheight=s.summaryLineHeight, 
+            b.div(class_='featuredSummary', clear=self.C.BOTH, float=self.C.LEFT, width=Perc(100), 
+                color=s.summaryColor, fontsize=s.summarySize, lineheight=s.summaryLineHeight, 
                 margintop=s.summaryMarginTop, marginbottom=s.summaryMarginBottom)
             self.buildElement(b, item.summary)
             b._div()
@@ -367,13 +367,13 @@ class FeaturedByTextList(FeaturedBase):
         s = self.style
         for item in data.items:
             if item.category:
-                b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORYTHUMB)
+                b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.C.CLASS_CATEGORYTHUMB)
                 b.h5(fontsize=s.categorySize, fontweight=s.categoryWeight, lineheight=s.categoryLineHeight,
                      color=s.categoryColor, margintop=s.categoryMarginTop, display=s.categoryDisplay)
                 b.text(item.category)
                 b._h5()
                 b._a()
-            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.C.CLASS_NAME)
             b.h2(fontsize=s.nameSize, fontweight=s.nameWeight, lineheight=s.nameLineHeight, 
                  color=s.nameColor, marginbottom=s.nameMarginBottom, display=s.nameDisplay,
                  margintop=s.nameMarginTop)

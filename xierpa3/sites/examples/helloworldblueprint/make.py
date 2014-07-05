@@ -18,6 +18,9 @@ from xierpa3.attributes import Em, Margin, Perc, Color
 from xierpa3.descriptors.media import Media 
 from xierpa3.descriptors.blueprint import BluePrint
 
+BODYFAMILY = 'Impact, Verdana, sans'
+CAPTIONFAMILY = 'Georgia, serif' 
+
 class HelloWorldBluePrintText(Column):
  
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -34,14 +37,16 @@ class HelloWorldBluePrintText(Column):
     BLUEPRINT = BluePrint(
         # Attribute, documentation about the attribute.
         # Main div block
-        bodyFont='Impact', doc_bodyFont=u'Body font of this example. For now, in this examply we only use system fonts.',
+        bodyFamily=BODYFAMILY, doc_bodyFamily=u'Body font family of this example. For now, in this example we only use system fonts.',
         fontSize=Em(4), doc_fontSize=u'Font size of the body text, relative to the body font size.',
         lineHeight=Em(1.2), doc_lineHeight=u'Line height (leading) of body text.',
         textAlign=C.CENTER, doc_textAlign=u'Horizontal alignment of text.',
-        color='yellow', doc_color=u'The “doc_” attributes are used for documentation about the interface of this component.',
-        colorTablet='orange', doc_colorTablet=u'Text color of the main column.',
-        backgroundColor='red', doc_backgroundColor=u'Background color of the main column',
-        backgroundColorTablet='green', doc_backgroundColorTablet=u'Background color of the main column for tablet.',
+        color=Color('yellow'), doc_color=u'Color of the main column.',
+        colorTablet=Color('orange'), doc_colorTablet=u'Text color of the main column for tablet.',
+        colorMobile=Color('red'), doc_colorMobile=u'Text color of the main column for mobile.',
+        backgroundColor=Color('red'), doc_backgroundColor=u'Background color of the main column',
+        backgroundColorTablet=Color('green'), doc_backgroundColorTablet=u'Background color of the main column for tablet.',
+        backgroundColorMobile=Color('#BBB'), doc_backgroundColorMobile=u'Background color of the main column for mobile.',
         paddingTop=Em(0.5), doc_paddingTop=u'Padding on top of the page',
         paddingBottom=Em(0.5), doc_paddingBottom=u'Padding at bottom of the page.',
         margin=Margin(0, C.AUTO), doc_margin=u'Page margin of the column. In this case, horizontally centered on the page.',
@@ -49,10 +54,9 @@ class HelloWorldBluePrintText(Column):
         maxWidth=700, doc_maxWidth=u'Maximal width of the column.',
         minWidth=300, doc_minWidth=u'Minimal width of the column.',
         # Caption
-        captionFont='Georgia', doc_captionFont=u'Caption font for this example. For now, in this examply we only use system fonts.',
-        captionColor='#888', doc_captionColor=u'Color of the caption.',
+        captionFont=CAPTIONFAMILY, doc_captionFont=u'Caption font family for this example. For now, in this example we only use system fonts.',
+        captionColor=Color('#888'), doc_captionColor=u'Color of the caption.',
         captionPaddingTop=Em(0.2), doc_captionPaddingTop=u'Padding top of the caption.',
-        # 
     )
     
     def buildBlock(self, b):
@@ -63,7 +67,7 @@ class HelloWorldBluePrintText(Column):
         s = self.style
         b.div(class_=self.getClassName(), color=s.color, margin=s.margin, 
             width=s.width, maxwidth=s.maxWidth, minwidth=s.minWidth, backgroundcolor=s.backgroundColor,
-            paddingtop=s.paddingTop, paddingbottom=s.paddingBottom, fontfamily=s.bodyFont, 
+            paddingtop=s.paddingTop, paddingbottom=s.paddingBottom, fontfamily=s.bodyFamily, 
             fontsize=s.fontSize, textalign=s.textAlign, lineheight=s.lineHeight,
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
@@ -72,8 +76,8 @@ class HelloWorldBluePrintText(Column):
                 Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=s.backgroundColorTablet, 
                     color=s.colorTablet, fontsize=Em(3), width=Perc(100)),
                 # For mobile, even more lighter background, change color of text and smaller size.
-                Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#BBB'), color=Color('red'), 
-                    fontsize=Em(2), width=Perc(100))
+                Media(max=self.C.M_MOBILE_MAX, backgroundcolor=s.backgroundColorMobile, 
+                    color=s.colorMobile, fontsize=Em(2), width=Perc(100))
             ))
         b.text('Hello parametric world.')
         # One of the advantages of using a real programming language to generate 

@@ -35,14 +35,16 @@ class SocialMedia(Column):
     def buildColumn(self, b):
         s = self.style
         if s.twitterAccount or s.facebookAccount:
-            b.div(class_=self.C.CLASS_SOCIALMEDIA, display=self.C.BLOCK, float=s.float or self.LEFT,
+            b.div(class_=self.C.CLASS_SOCIALMEDIA, display=self.C.BLOCK, float=s.float or self.C.LEFT,
                 width=s.width or Perc(100),
                 media=Media(max=self.C.M_MOBILE_MAX, display=s.mobileDisplay)
             )
             # getUrl does not seem to work with twitter. Script only tests http or https. 
             if s.twitterAccount:
                 b.div(id="twitter", float=self.C.LEFT)
-                b.a(href="https://twitter.com/share", data_href=b.getUrl(), class_="twitter-share-button", data_lang="en", data_via="doingbydesign", data_count="none", data_related="anywhere")
+                b.a(href="https://twitter.com/share", data_href=b.getUrl(), 
+                    class_="twitter-share-button", data_lang="en", data_via="doingbydesign", 
+                    data_count="none", data_related="anywhere")
                 b.text(s.twitterLabel)
                 b._a()
                 b.script()

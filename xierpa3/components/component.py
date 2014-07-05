@@ -152,7 +152,7 @@ class Component(object):
         last in the parent list of child components."""
         colClass = TX.col2Class(col)
         if self.parent.isLast(self):
-            colClass = (colClass, self.CLASS_LAST)
+            colClass = (colClass, self.C.CLASS_LAST)
         return colClass
     
     def getTitle(self, path):

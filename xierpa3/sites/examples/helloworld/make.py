@@ -21,6 +21,7 @@
 #    own type of file.
 #
 import webbrowser
+from xierpa3.attributes import Px
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -31,7 +32,7 @@ class HelloWorldText(Column):
     def buildBlock(self, b):
         # Single style attribute, just to show how it works. 
         # In the simple example the resulting div does not have a class.
-        b.div(color='red') 
+        b.div(color='red', fontfamily='Verdana', fontsize=Px(24)) 
         b.text('Hello world.')
         b._div()
         

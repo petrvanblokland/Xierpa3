@@ -17,11 +17,12 @@ from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
 class ArticleColumn(Column):
+    u"""Generic column for articles."""
     def getChapterIndex(self, b, article):
-        return min(max(0, TX.asInt(b.e.form[self.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
+        return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
      
 class Article(ArticleColumn):
-
+    u"""The Article component is the main medium to display article content."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = ArticleColumn.C
     
@@ -333,7 +334,7 @@ class ArticleSideBar(ArticleColumn):
         footnoteLabel='Footnotes', 
     )
     def getArticleUrlId(self, b):
-        return b.e.form[self.PARAM_ARTICLE]
+        return b.e.form[self.C.PARAM_ARTICLE]
     
     def buildColumn(self, b):
         u"""Build the column of the article, as indicated in the urt."""
@@ -363,24 +364,25 @@ class ArticleSideBar(ArticleColumn):
         b._div(comment=self.CLASS_FOOTNOTES)  
         
         # <div class="mobileChapterNavigation">
-        b.div(class_=self.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.NONE,
-            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK)
+        b.div(class_=self.C.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.C.NONE,
+            media=Media(max=self.C.M_MOBILE_MAX, display=self.C.BLOCK)
         )
         b.ul()
-        b.li(backgroundcolor=s.mobileChapterButtonColor or '#444444')
+        b.li(backgroundcolor=s.mobileChapterButtonColor or Color('#444'))
         # <a>Chapter name</a>
-        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor or 'white')
+        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor or Color(self.C.WHITE))
         b.h2(fontsize=Em(2), lineheight=Em(1.2),
              marginbottom=Em(0.2), margintop=Em(0.2), padding=Em(0.5))
         b._h2()
         b._a()
         b._li()
         b._ul()
-        b._div(comment=self.CLASS_MOBILECHAPTERNAVIGATION) # Article mobile chapter navigation
+        b._div(comment=self.C.CLASS_MOBILECHAPTERNAVIGATION) # Article mobile chapter navigation
         
         # <div class="chapterNavigation">
-        b.div(class_=self.CLASS_CHAPTERNAVIGATION, marginbottom=Em(0.5), display=s.mobileContainerDisplay,
-            media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
+        b.div(class_=self.C.CLASS_CHAPTERNAVIGATION, marginbottom=Em(0.5), 
+            display=s.mobileContainerDisplay,
+            media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE)
         )
         b.h4(fontsize=Em(1.1))
         b._h4()
@@ -394,18 +396,18 @@ class ArticleSideBar(ArticleColumn):
         b._a()
         b._li()
         b._ul()  
-        b._div(comment=self.CLASS_CHAPTERNAVIGATION) # Article chapter navigation
+        b._div(comment=self.C.CLASS_CHAPTERNAVIGATION) # Article chapter navigation
     
     def buildMobileChapterNavigation(self, b, article):
         s = self.style
         chapters = article.items
         if chapters and len(chapters) > 1:
-            b.div(class_=self.CLASS_MOBILECHAPTERNAVIGATION)
+            b.div(class_=self.C.CLASS_MOBILECHAPTERNAVIGATION)
             b.ul()
             for index, chapter in enumerate(chapters):
                 b.li() 
-                b.a(class_=self.CLASS_NAME, 
-                    href='/%s-%s/%s-%s' % (self.PARAM_ARTICLE, article.id, self.PARAM_CHAPTER, index), 
+                b.a(class_=self.C.CLASS_NAME, 
+                    href='/%s-%s/%s-%s' % (self.C.PARAM_ARTICLE, article.id, self.C.PARAM_CHAPTER, index), 
                 )
                 chapterTitle = chapter.find('./meta/title') # @@@ Add this as adapter query
                 if chapterTitle is None: # No title, add a default chapter title (not in the right style)
@@ -424,15 +426,15 @@ class ArticleSideBar(ArticleColumn):
         s = self.style
         chapters = article.items
         if chapters and len(chapters) > 1:
-            b.div(class_=self.CLASS_CHAPTERNAVIGATION)
+            b.div(class_=self.C.CLASS_CHAPTERNAVIGATION)
             b.h4()
             b.text(s.chapterLabel)
             b._h4()
             b.ul()
             for index, chapter in enumerate(chapters):
                 b.li(margintop=Em(0.5))
-                b.a(class_=self.CLASS_NAME, 
-                    href='/%s-%s/%s-%s' % (self.PARAM_ARTICLE, article.id, self.PARAM_CHAPTER, index), 
+                b.a(class_=self.C.CLASS_NAME, 
+                    href='/%s-%s/%s-%s' % (self.C.PARAM_ARTICLE, article.id, self.C.PARAM_CHAPTER, index), 
                 )
                 chapterTitle = chapter.find('./meta/title') # @@@ Add this as adapter query
                 if chapterTitle is None: # No title, add a default chapter title (not in the right style)
@@ -455,7 +457,7 @@ class ArticleSideBar(ArticleColumn):
         if article.footnotes:
             footnotes = article.footnotes[chapterIndex] # Get footnotes of this chapter
             if footnotes:
-                b.div(class_=self.CLASS_FOOTNOTES) 
+                b.div(class_=self.C.CLASS_FOOTNOTES) 
                 b.h4()
                 b.text(s.footnoteLabel)
                 b._h4()

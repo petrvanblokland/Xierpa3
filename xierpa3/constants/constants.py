@@ -105,6 +105,7 @@ class Constants(Config):
     CLASS_CHAPTERNAVIGATION = 'chapterNavigation'
     CLASS_CONTAINER = 'container'
     CLASS_ERROR = 'error'
+    CLASS_FEATUREDITEM = 'featuredItem'
     CLASS_FIRST = 'first'
     CLASS_FIRST = 'first'
     CLASS_FOOTNOTE = 'footnote'

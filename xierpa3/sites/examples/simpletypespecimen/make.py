@@ -25,9 +25,9 @@ class SimpleTypeSpecimenColumn(Column):
 
     MAXWIDTH = Px(1100)
     # Load @fontface fonts for this example from www.webtype.com
-    BODYFAMILY = '"Benton Sans RE"'
-    HEADFAMILY = '"Benton Modern RE"'
-    SPECIMENFAMILY = HEADFAMILY
+    SPECIMENFAMILY = '"Benton Modern RE"'
+    BODYFAMILY = '"Benton Sans RE", Verdana, sans'
+    HEADFAMILY = SPECIMENFAMILY+ ', Georgia, serif'
     
     BLUEPRINT = BluePrint(
         # Column stuff
@@ -70,19 +70,19 @@ class SimpleTypeSpecimenColumn(Column):
               padding=s.padding, fontfamily=s.fontFamily, fontsize=s.fontSize, 
               lineheight=s.lineheight,
               # Remove margins on mobile, showing the column on full screen width.
-              media=Media(max=self.M_MOBILE_MAX, margin=s.marginMobile, width=s.widthMobile,
+              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, width=s.widthMobile,
                 maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
         # Add div.row to allow padding, without making the main column div
         # grow outside the parent boundaries.
-        b.div(class_=self.CLASS_ROW, padding=s.rowPadding)
+        b.div(class_=self.C.CLASS_ROW, padding=s.rowPadding)
         b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight, 
             marginbottom=s.h1MarginBottom)
         b.text('WebType ' + self.SPECIMENFAMILY[1:-1])
         b._h1()
         for n in range(s.specimentSmall, s.specimenLarge):
             b.div(class_='specimen%02d' % n, width=s.specimenWidth, fontsize=Px(n), 
-                lineheight=s.specimentLineHeight, fontfamily=self.SPECIMENFAMILY)
+                lineheight=s.specimentLineHeight, fontfamily=self.HEADFAMILY)
             b.span(class_='size%02d' % n, fontsize=Px(s.specimentSizeIndicator), 
                 color=s.sizeLabelColor, fontfamily=self.BODYFAMILY)
             b.text('%d px' % n)
@@ -98,7 +98,7 @@ class SimpleTypeSpecimenColumn(Column):
         b._a()
 
         # Close the row
-        b._div(comment=self.CLASS_ROW)
+        b._div(comment=self.C.CLASS_ROW)
         b._div()
         
 class SimpleTypeSpecimenSite(Theme):
@@ -135,7 +135,8 @@ class SimpleTypeSpecimenSite(Theme):
         as set by Builder.DEFAULT_ROOTPATH"""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
-        # NOTE THAT VIEWING THIS PAGE IN DIRECT file:// MODE DOES NOT SHOW THE RIGHT @fontface WEBFONTS.
+        # NOTE THAT VIEWING THIS PAGE IN DIRECT file:// MODE OR OFFLINE MODE
+        # DOES NOT SHOW THE RIGHT @fontface WEBFONTS.
         
         # C S S
         # Create the main CSS builder instance to build the SASS/CSS part of the site.

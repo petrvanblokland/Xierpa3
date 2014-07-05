@@ -159,8 +159,11 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.link(href=cssUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
 
     def buildFontLinks(self, component):
-        for fontUrl in component.fonts: # Should always be defined, default is an empty list
-            self.link(href=fontUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
+        u"""Build the webfont links of they are defined in <b>components.fonts</b>.
+        Ignore if <b>self.C.useOnline()</b> is <b>False</b>."""
+        if self.C.useOnline():
+            for fontUrl in component.fonts: # Should always be defined, default is an empty list
+                self.link(href=fontUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
 
     def ieExceptions(self):
         self.comment("1140px Grid styles for <= IE9")

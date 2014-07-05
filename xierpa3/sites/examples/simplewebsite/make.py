@@ -22,8 +22,8 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # from a component library, where the BluePrint values function as API to adjust the 
 # component instance behavior from the outside.
 
-BODYFAMILY = '"Hermes FB Book"'
-HEADFAMILY = '"Hermes FB Semibold"'
+BODYFAMILY = '"Hermes FB Book", Verdana, sans'
+HEADFAMILY = '"Hermes FB Semibold", Impact, Verdana, sans'
 
 BODYSIZE = Px(12)
 BODYLEADING = Em(1.4)
@@ -51,7 +51,6 @@ class MainColumn(Component):
             )
         )
         article = self.adapter.getArticle() 
-        print article
         b.h1()
         b.text(article.headline)
         b._h1()
@@ -66,7 +65,7 @@ class SideColumn(Component):
     
     BLUEPRINT = BluePrint(
         width=Perc(20), doc_width=u'Side bar width',  # @@@@ Should be 30?
-        float=C.LEFT, 
+        float=C.LEFT, doc_float=u'Float left inside row.',
         backgroundColor=Color('orange'), doc_backgroundColor=u'Side column background color.',                  
         fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
         lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",

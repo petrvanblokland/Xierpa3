@@ -35,8 +35,8 @@ class Featuring1(Theme):
 
     BODYSIZE = Px(12)
     BODYLEADING = Em(1.4)
-    BODYFAMILY = '"Hermes FB Book"'
-    HEADFAMILY = '"Hermes FB Semibold"'
+    BODYFAMILY = '"Hermes FB Book", Verdana, sans'
+    HEADFAMILY = '"Hermes FB Semibold", Impact, sans'
     
     CC = Theme # Inherit the constants from the parent class.
 

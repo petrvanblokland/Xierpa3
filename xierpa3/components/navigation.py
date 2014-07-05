@@ -67,32 +67,32 @@ class MobileNavigation(Navigation):
         s = self.style
         data = self.adapter.getMenu(id='home') # Get data for home page from adapter.
         b.block(self) # div.mobileNavigation
-        b.div(class_=(self.CLASS_CONTAINER, self.className), display=s.display,
+        b.div(class_=(self.C.CLASS_CONTAINER, self.className), display=s.display,
             backgroundcolor=s.backgroundColor, width=s.width,
             marginleft=s.marginLeft, marginright=s.marginRight,
             paddingleft=s.paddingLeft, paddingright=s.paddingRight,
             media=(
-                Media(max=self.M_MOBILE_MAX, display=s.displayMobile),
+                Media(max=self.C.M_MOBILE_MAX, display=s.displayMobile),
             )
         )
         b.snippet(self, 'navigation-mobile') # Allow PHP to create a snippet file from this block.
 
         colClass = self.getColClass(s.colWidth)
         #b.text(data.loop) # In case there is PHP looping code. Skip for CSS
-        b.div(class_=colClass, width=self.C.AUTO, float=self.NONE, marginleft=Em(0.5),
+        b.div(class_=colClass, width=self.C.AUTO, float=self.C.NONE, marginleft=Em(0.5),
             marginright=Em(0.5), paddingleft=Em(0.5), paddingright=Em(0.5))
         b.div(id=self.C.ID_MOBILENAVWRAP, width=s.navWidth, display=s.navDisplay, zindex=s.navZIndex)
-        b.div(id=self.C.ID_MENUICON, class_=self.C.CLASS_MENU, color=self.C.WHITE, height=26, width=56,
-            paddingtop=0.6, cursor='pointer',
-            display=self.C.INLINEBLOCK, marginright=0, top=0, left=0, fontsize=13)
+        b.div(id=self.C.ID_MENUICON, class_=self.C.CLASS_MENU, color=Color(self.C.WHITE), 
+            height=26, width=56, paddingtop=Em(0.6), cursor='pointer',
+            display=self.C.INLINEBLOCK, marginright=0, top=0, left=0, fontsize=Px(13))
         b.img(src=s.menuIconUrl,
-            padding=0, margin=0, verticalalign=self.MIDDLE, maxwidth='50%', height=self.C.AUTO)
+            padding=0, margin=0, verticalalign=self.C.MIDDLE, maxwidth=Perc(50), height=self.C.AUTO)
         b._div(comment='#'+self.C.ID_MENUICON) # #menu-icon
         if data.menuItems is None:
             b.error('No items in the adapter')
         else:
             b.ul(id=self.C.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
-                display=self.C.NONE, clear=self.C.BOTH, position=self.ABSOLUTE, top=s.menuHeight-5, 
+                display=self.C.NONE, clear=self.C.BOTH, position=self.C.ABSOLUTE, top=s.menuHeight-5, 
                 width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.C.NONE, left=0,
                 textalign=self.C.CENTER)
         
