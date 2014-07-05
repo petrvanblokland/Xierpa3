@@ -176,19 +176,19 @@ class Article(ArticleColumn):
         # Article title or name (on respectively the first chapter page or the rest of the pages.
         if chapterIndex == 0: # Show large title on the chapter first page of the article
             b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
-                color=s.titleColor, marginbottom=Em(0.2), display=self.BLOCK)
+                color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
             b.text(article.name)
             b._h2()
         else: # Show smaller title on the rest of the pages
             b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
-                color=s.nameColor, marginbottom=Em(0.2), display=self.BLOCK)
+                color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
             b.text(article.name)
             b._h2()
         # Author
         if chapterIndex == 0 and article.author: # Test if there is an author defined.
-            b.a(href='/%s-%s' % (self.PARAM_AUTHOR, article.author))
+            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, article.author))
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
-                display=self.BLOCK)
+                display=self.C.BLOCK)
             b.text('By %s' % article.author)
             b._h5()
             b._a()
@@ -211,7 +211,7 @@ class Article(ArticleColumn):
     def buildArticleStyle(self, b):
         s = self.style
         # SVG demo
-        b.div(class_=self.CLASS_CHAPTER, color=s.chapterColor)
+        b.div(class_=self.C.CLASS_CHAPTER, color=s.chapterColor)
         # Should move from here. Make sure that svgExamples get SCSS builder calls.
         b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
         b._div()
@@ -245,24 +245,24 @@ class Article(ArticleColumn):
         self.buildPStyle(b)
         b._p()
         # <p class="... first">
-        b.p(class_=self.CLASS_FIRST, textindent=s.articleFirstIndent)
+        b.p(class_=self.C.CLASS_FIRST, textindent=s.articleFirstIndent)
         b._p()
         # <p class="... last">
-        b.p(class_=self.CLASS_LAST)
+        b.p(class_=self.C.CLASS_LAST)
         b._p()
         # <lead>
-        b.p(class_=self.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
+        b.p(class_=self.C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, 
             textindent=s.articleFirstIndent)
         self.buildPStyle(b)
         b._p()
         # <b>
-        b.b(fontweight=self.BOLD)
+        b.b(fontweight=self.C.BOLD)
         b._b()
         # <blockquote>
         b.blockquote(borderleft=s.blockQuoteBorderLeft or Border('solid', '4px', '#CCC'), 
             margin=s.blockQuoteMargin or Margin(Em(1.5), 10), 
-            lineheight=s.blockQuoteLineHeight or Em(1.4), fontstyle=s.blockQuoteStyle or self.ITALIC,
+            lineheight=s.blockQuoteLineHeight or Em(1.4), fontstyle=s.blockQuoteStyle or self.C.ITALIC,
             padding=s.blockQuotePadding or Padding(Em(0.5), 10), 
             color=s.blockQuoteColor or Color('#828487'))
         b._blockquote()
@@ -279,12 +279,12 @@ class Article(ArticleColumn):
         )
         b._pre()
         # <div class="imgBlock"><img/><div class="caption">...</div></div>
-        b.div(class_=self.CLASS_IMAGEBLOCK, backgroundcolor=s.imgBackgroundColor, 
+        b.div(class_=self.C.CLASS_IMAGEBLOCK, backgroundcolor=s.imgBackgroundColor, 
             margintop=s.imgMarginTop, marginbottom=s.imgMarginBottom,
             paddingtop=s.imgPaddingTop, paddingbottom=s.imgPaddingBottom,
             paddingleft=s.imgPaddingLeft, paddingright=s.imgPaddingRight,)
         b.img()
-        b.div(class_=self.CLASS_CAPTION, fontfamily=s.captionFontFamily, fontsize=s.captionFontSize,
+        b.div(class_=self.C.CLASS_CAPTION, fontfamily=s.captionFontFamily, fontsize=s.captionFontSize,
             color=s.captionColor, fontstyle=s.captionFontStyle, 
             margintop=s.captionMarginTop)
         b._div() # .caption
@@ -313,11 +313,11 @@ class Article(ArticleColumn):
     def buildPStyle(self, b):
         # <footnote>
         s = self.style
-        b.sup(class_=self.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
-            fontsize=s.footnoteFontSize or Em(0.8), position=s.footnotePosition or self.RELATIVE,
-            verticalalign=s.footnoteVerticalAlign or self.BASELINE)
+        b.sup(class_=self.C.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
+            fontsize=s.footnoteFontSize or Em(0.8), position=s.footnotePosition or self.C.RELATIVE,
+            verticalalign=s.footnoteVerticalAlign or self.C.BASELINE)
         b._sup()
-        b.em(fontweight=s.emWeight or self.BOLD)
+        b.em(fontweight=s.emWeight or self.C.BOLD)
         b._em()
     
 class ArticleSideBar(ArticleColumn):
