@@ -75,7 +75,7 @@ class FileAdapter(Adapter):
         self.readArticles()
         
     def readArticles(self):
-        for _, path in self.getIdPaths(): # id, path 
+        for id, path in self.getIdPaths(): # id, path 
             xml = self.readXmlFile(self.root + path)
             if xml is not None:
                 # Create the article instance and cache the standard query values from the tree.
