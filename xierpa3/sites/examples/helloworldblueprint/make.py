@@ -14,14 +14,14 @@ import webbrowser
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.attributes import Em, Margin, Perc
+from xierpa3.attributes import Em, Margin, Perc, Color
 from xierpa3.descriptors.media import Media 
 from xierpa3.descriptors.blueprint import BluePrint
 
 class HelloWorldBluePrintText(Column):
  
-    # Parent is also inheriting from the constants/config class to allow inheriting redefinition of values.
-    CC = Column 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
     
     # The BluePrint defined the parameters for the component. They can be adjusted by parent
     # components who implement this component on a page, or by inheriting classes that
@@ -37,14 +37,14 @@ class HelloWorldBluePrintText(Column):
         bodyFont='Impact', doc_bodyFont=u'Body font of this example. For now, in this examply we only use system fonts.',
         fontSize=Em(4), doc_fontSize=u'Font size of the body text, relative to the body font size.',
         lineHeight=Em(1.2), doc_lineHeight=u'Line height (leading) of body text.',
-        textAlign=CC.CENTER, doc_textAlign=u'Horizontal alignment of text.',
+        textAlign=C.CENTER, doc_textAlign=u'Horizontal alignment of text.',
         color='yellow', doc_color=u'The “doc_” attributes are used for documentation about the interface of this component.',
         colorTablet='orange', doc_colorTablet=u'Text color of the main column.',
         backgroundColor='red', doc_backgroundColor=u'Background color of the main column',
         backgroundColorTablet='green', doc_backgroundColorTablet=u'Background color of the main column for tablet.',
         paddingTop=Em(0.5), doc_paddingTop=u'Padding on top of the page',
         paddingBottom=Em(0.5), doc_paddingBottom=u'Padding at bottom of the page.',
-        margin=Margin(0, CC.AUTO), doc_margin=u'Page margin of the column. In this case, horizontally centered on the page.',
+        margin=Margin(0, C.AUTO), doc_margin=u'Page margin of the column. In this case, horizontally centered on the page.',
         width=Perc(80), doc_width=u'Width of the main column. Default is 80% os the page with.',
         maxWidth=700, doc_maxWidth=u'Maximal width of the column.',
         minWidth=300, doc_minWidth=u'Minimal width of the column.',
@@ -69,11 +69,11 @@ class HelloWorldBluePrintText(Column):
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                 # Example for table, show lighter background, change color of text and smaller size.
-                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor=s.backgroundColorTablet, 
+                Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=s.backgroundColorTablet, 
                     color=s.colorTablet, fontsize=Em(3), width=Perc(100)),
                 # For mobile, even more lighter background, change color of text and smaller size.
-                Media(max=self.M_MOBILE_MAX, backgroundcolor='#BBB', color='red', fontsize=Em(2), 
-                    width=Perc(100))
+                Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#BBB'), color=Color('red'), 
+                    fontsize=Em(2), width=Perc(100))
             ))
         b.text('Hello parametric world.')
         # One of the advantages of using a real programming language to generate 
@@ -82,20 +82,20 @@ class HelloWorldBluePrintText(Column):
         # knowledge in the code.
         data = (
             # class, minWidth, maxWidth,  text
-            ('c1', self.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
-            ('c2', self.M_TABLET_MIN, self.M_TABLET_MAX, 'Responsive tablet mode.' ),
-            ('c3', None, self.M_MOBILE_MAX, 'Responsive mobile mode..' ),
+            ('c1', self.C.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
+            ('c2', self.C.M_TABLET_MIN, self.C.M_TABLET_MAX, 'Responsive tablet mode.' ),
+            ('c3', None, self.C.M_MOBILE_MAX, 'Responsive mobile mode..' ),
         )
         for class_, minWidth, maxWidth, text in data:
-            b.div(class_=class_, display=self.NONE, fontsize=Em(0.7), color=self.WHITE,
-                media=Media(min=minWidth, max=maxWidth, display=self.BLOCK))
+            b.div(class_=class_, display=self.C.NONE, fontsize=Em(0.7), color=Color(self.C.WHITE),
+                media=Media(min=minWidth, max=maxWidth, display=self.C.BLOCK))
             b.text(text)
             b._div()
         b._div()
-        b.div(class_=self.CLASS_CAPTION, color=s.captionColor, margin=Margin(0, self.AUTO), 
+        b.div(class_=self.C.CLASS_CAPTION, color=s.captionColor, margin=Margin(0, self.C.AUTO), 
               width=Perc(100), maxwidth=700, minwidth=300,
               paddingtop=s.captionPaddingTop, fontfamily=s.captionFont, fontsize=Em(0.9), 
-              textalign=s.textAlign, fontstyle=self.ITALIC,
+              textalign=s.textAlign, fontstyle=self.C.ITALIC,
               # Change background color of the line to indicate the illustrate the difference for mobile size.
               #media=Media(max=self.M_MOBILE_MAX, backgroundcolor='yellow', color='#222', fontsize=Em(1),
               #  margin=0, width=Perc(100),
@@ -117,7 +117,7 @@ class HelloWorldBluePrint(Theme):
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
         # Components can be a single component or a list of components.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=hw, title=self.TITLE)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=hw, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

@@ -49,7 +49,7 @@ class HelloWorld(Theme):
         # Create an instance (=object) of the page, containing the "hw" component.
         # The page class is also the page name in the url: http://localhost:8060/index
         # Components can be a single component or a list of components.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=hw, title=self.TITLE)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=hw, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

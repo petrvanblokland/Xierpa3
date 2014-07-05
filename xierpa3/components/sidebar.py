@@ -13,4 +13,5 @@
 from xierpa3.components.component import Component
 
 class Sidebar(Component):
-    pass
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 

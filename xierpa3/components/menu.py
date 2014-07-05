@@ -17,25 +17,26 @@ from xierpa3.descriptors.blueprint import BluePrint
 class Menu(Component):
     u"""The <b>Menu</b> supports a generic menu, setup as a list of links. The menu items are supplied
     by adapter id <b>C.ADAPTER_MENU</b>."""
-    CC = Component # Access to constants through super class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
     
     BLUEPRINT = BluePrint(
         # Block stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
         # nav stuff
         navWidth=Perc(100), # ...
-        navFloat=CC.RIGHT, 
-        navDisplay=CC.INLINE, 
+        navFloat=C.RIGHT, 
+        navDisplay=C.INLINE, 
         navMargin=0, 
         navFontSize=Em(1.5),
         # Menu list stuff
-        listStyleType=CC.NONE, 
-        listDisplay=CC.BLOCK, 
-        listFloat=CC.RIGHT, 
+        listStyleType=C.NONE, 
+        listDisplay=C.BLOCK, 
+        listFloat=C.RIGHT, 
         listPadding=10,
         # Link stuff
         linkColor='#4890be', doc_linkColor=u'Link color',
-        linkTextDecoration=CC.NONE, 
+        linkTextDecoration=C.NONE, 
         linkPadding=Em(0.3), doc_linkPadding=u'Link padding',
         linkTransition=None, #Transition(),
     )
@@ -47,14 +48,14 @@ class Menu(Component):
             b.block(self)
             colClass = self.getColClass(s.colWidth)
             b.div(class_=colClass)
-            b.nav(id=self.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
+            b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
                 display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
             for menu in data.menuItems:
                 b.li(float=s.listFloat, padding=s.listPadding)
                 url = menu.url
                 if url is None:
-                    url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
+                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menu.id)
                 b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration, 
                     padding=s.linkPadding, transition=s.linkTransition)
                 b.text(menu.tag or menu.name)

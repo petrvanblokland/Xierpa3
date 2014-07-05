@@ -17,7 +17,6 @@ import re
 from xierpa3.builders.builder import Builder
 from xierpa3.builders.builderparts.xmltransformerpart import XmlTransformerPart
 from xierpa3.toolbox.transformer import TX 
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.stack import Stack
 from xierpa3.descriptors.style import Media
 from xierpa3.attributes import Selection, Em, Shadow, asValue, Frame, Value, Transition, Z, Url, Gradient, LinearGradient
@@ -26,6 +25,9 @@ trackAttributes = Stack() # Collect the stack of certain style attribute that ar
 
 class SassBuilder(XmlTransformerPart, Builder):
     # For automatic Sass compilation, use inheriting CssBuilder instead.
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Builder.C 
 
     # Used for dispatching component.build_sass, if components want to define builder dependent behavior.
     ID = C.TYPE_SASS
@@ -194,12 +196,12 @@ class SassBuilder(XmlTransformerPart, Builder):
             # which is the ignored here.
             keyPostfix = key.split('_')[-1]
             if not key or kwargs.has_key(key+'_'+self.ATTR_POSTFIX) or \
-                (keyPostfix != self.ATTR_POSTFIX and keyPostfix in C.ATTR_POSTFIXES): 
+                (keyPostfix != self.ATTR_POSTFIX and keyPostfix in self.C.ATTR_POSTFIXES): 
                 continue
             if keyPostfix == self.ATTR_POSTFIX:
                 # Remove the postfix from the attribute name
                 key = '_'.join(key.split('_')[:-1])
-            if key == self.ATTR_MEDIA: # Collect the runtime Media instances as defined in the 'media' attribute.
+            if key == self.C.ATTR_MEDIA: # Collect the runtime Media instances as defined in the 'media' attribute.
                 # Copy the current stack of selectors in combination with the @media instances.
                 # Value can be a single Media instance or a list of instances.
                 # When all SCSS is done, the collected @media gets built from this.
@@ -213,7 +215,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         u"""Closing the tag, get the selector and context of the block from the stacked result writers.
         If there is a selector and content, then check if the parent block didn't already have an identical
         combination. This e.g. happens when building from a list of data. If there already is a match
-        with the selector-content conbination, then ignore. If there is already a selector, but with different
+        with the selector-content combination, then ignore. If there is already a selector, but with different
         content, then export the code with an warning as comment."""
         self.popFirst() # Reduce level for firstSelectors.
         firstSelectors = self.firstSelectors.peek()

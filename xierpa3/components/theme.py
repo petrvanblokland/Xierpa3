@@ -15,7 +15,10 @@ from xierpa3.components.component import Component
 from xierpa3.descriptors.blueprint import BluePrint
 
 class Theme(Component):
-    
+ 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
+   
     TITLE = 'Redefine cls.TITLE in inheriting theme class.'
     
     BLUEPRINT = BluePrint(
@@ -44,7 +47,7 @@ class Theme(Component):
         # Could not find a match, answer the default template.
         # If no default component exists, then answer self. 
         # This happens if there is only one page in the site.
-        return self.getComponent(self.TEMPLATE_DEFAULT) or self
+        return self.getComponent(self.C.TEMPLATE_DEFAULT) or self
     
     def getTemplates(self):
         u"""Answer the list of templates of this theme."""

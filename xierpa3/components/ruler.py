@@ -14,6 +14,9 @@ from xierpa3.components.component import Component
 
 class Ruler(Component):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
+
     def buildBlock(self, builder):
         # Generic builder for all components. To be redefined by inheriting class.
         builder.hr(**self.__dict__)

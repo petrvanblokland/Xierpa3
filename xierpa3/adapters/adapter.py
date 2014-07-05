@@ -12,7 +12,7 @@
 #
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.storage.status.status import Data
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 
 class Data(object):
     u"""Generic data instance, answered by every adapter query."""
@@ -27,7 +27,7 @@ class Data(object):
     def __repr__(self):
         return '[Data] %s' % `self.__dict__`
     
-class Adapter(C):
+class Adapter(object):
     u"""
     The Adapter classes connect the templates to content. Note that an adapter always a <b>Data</b>
     instance with attributes fields that fit the request. The caller needs to check if the requested fields
@@ -35,6 +35,9 @@ class Adapter(C):
     and the error fields are <b>None</b>. In case there is an unknown request, the output text is
     equal to the error message.
     """
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants
+
     DATACLASS = Data
     
     def __init__(self, root=None):
@@ -129,7 +132,7 @@ class Adapter(C):
     # P A G E  S T U F F
         
     def getFavIcon(self, **kwargs):
-        return self.newData(url=C.URL_FAVICON)
+        return self.newData(url=self.C.URL_FAVICON)
     
     def getPageTitle(self, **kwargs):
         return self.newData(text='Untitled') # To be redefined by inheriting adapter class.
@@ -145,7 +148,7 @@ class Adapter(C):
         return self.newData(text='[' + 'Footer text. ' * 20 + ']')
 
     def getLogo(self, **kwargs):
-        return self.newData(text='[Logo]', url=C.URL_LOGO)
+        return self.newData(text='[Logo]', url=self.C.URL_LOGO)
    
     def getPages(self, count=10):
         return self.newData(items=(self.newData(name='Page', url='/page'),)*count)

@@ -11,13 +11,14 @@
 #    logo.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import Em, Perc
+from xierpa3.attributes import Em, Perc, Color
 #from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
 class Logo(Component):
 
-    CC = Component # Get constants from parent class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
 
     BLUEPRINT = BluePrint(
         # Layout stuff
@@ -26,22 +27,22 @@ class Logo(Component):
         minWidth=Perc(100), doc_minWidth=u'Minimal width of the component',
         # Logo stuff
         width=280, doc_logoWidth=u'Logo width',
-        height=CC.AUTO, doc_height=u'Logo height', 
+        height=C.AUTO, doc_height=u'Logo height', 
         marginTop=0, doc_marginTop=u'Logo margin top', 
         marginLeft=0, doc_marginLeft=u'Logo margin left',
-        marginRight='1.8%', doc_marginRight=u'Logo margin right', 
+        marginRight=Perc(1.8), doc_marginRight=u'Logo margin right', 
         fontSize=Em(2.9), doc_fontSize=u'Logo font size',
         marginBottom=0, doc_marginBottom=u'Logo margin bottom', 
-        logoFloat=CC.LEFT, doc_logoFloat=u'Logo div float',
+        logoFloat=C.LEFT, doc_logoFloat=u'Logo div float',
         # H2
-        h2FontFamily=CC.LOGOFAMILY, doc_h2FontFamily=u'h2 font family', 
+        h2FontFamily=C.LOGOFAMILY, doc_h2FontFamily=u'h2 font family', 
         h2Size=Em(2.8), doc_h2Size=u'h2 size',
         h2LineHeight=Em(1.4), doc_h2LineHeight=u'h2 leading',
-        h2Weight=CC.BOLD, doc_h2Weight=u'h2 weight',
+        h2Weight=C.BOLD, doc_h2Weight=u'h2 weight',
         h2Style=None, doc_h2Style=u'h2 style',
         h2PaddingTop=Em(0.2), doc_h2PaddingTop=u'h2 padding top',
         h2PaddingBottom=Em(0.2), doc_h2PaddingBottom=u'h2 padding bottom',
-        h2Color='#323A47', doc_h2Color=u'h2 color',
+        h2Color=Color('#323A47'), doc_h2Color=u'h2 color',
     )
     def buildBlock(self, b):
         s = self.style

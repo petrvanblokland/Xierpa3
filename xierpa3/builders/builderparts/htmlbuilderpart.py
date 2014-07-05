@@ -961,12 +961,13 @@ class HtmlBuilderPart:
         To avoid compatibility problems between browser with the default <attr>border</attr> value,
         it is set to <code>0</code> if not defined.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_img.asp" target="external"/></seealso>
-        <python>
-        self.img(src='./_image/animage.png', width=100)<br/>
-        </python>
+        <b>self.img(src='./_image/animage.png', width=100)</b>.
+        If not using online, the replace the url by a local place holder image.
         """
         if not args.get('border'):
-            args['border'] = self.IMG_DEFAULTBORDER
+            args['border'] = self.C.IMG_DEFAULTBORDER
+        if not self.C.useOnline(): # If online, then use the real url. Otherwise local image placeholder
+            args['src'] = self.C.URL_IMAGEPLACEHOLDER
         self.write_tag(u'img', False, args)
 
     def map(self, name):

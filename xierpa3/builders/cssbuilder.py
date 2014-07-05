@@ -12,13 +12,14 @@
 #
 import os
 from xierpa3.builders.sassbuilder import SassBuilder
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX 
 
 class CssBuilder(SassBuilder):
     u"""
     Used for dispatching component.build_sass, if components want to define builder dependent behavior.
     """
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = SassBuilder.C 
+
     ID = C.TYPE_CSS # Also the default extension of the output format
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
@@ -36,9 +37,9 @@ class CssBuilder(SassBuilder):
         """
         # Is there a server environment, then overwrite the style type.
         if self.e is not None: 
-            styleType = self.e.form[self.PARAM_CSS] or styleType or 'expanded'
-        if not styleType in self.SASS_STYLES:
-            styleType = self.SASS_DEFAULTSTYLE
+            styleType = self.e.form[self.C.PARAM_CSS] or styleType or 'expanded'
+        if not styleType in self.C.SASS_STYLES:
+            styleType = self.C.SASS_DEFAULTSTYLE
         if path is None: # Allow full overwrite of complete path.
             assert root is not None # Always needs external root path defined.
             path = self.getFilePath(component, root)

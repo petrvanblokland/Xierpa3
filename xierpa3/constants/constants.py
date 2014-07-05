@@ -17,7 +17,7 @@ try:
 except ImportError:
     from config.COPYTO_config import Config
     
-class C(Config):
+class Constants(Config):
     u"""Inherited by main Xierpa3 classes, to share default constants, 
     will allowing to be redefined by inheriting classes."""
     
@@ -47,6 +47,12 @@ class C(Config):
     # Xierpa ico, answered by the default adapter.getIco()
     URL_FAVICON = '//data.xierpadoc.com.s3.amazonaws.com/_images/xierpa_x.ico'
     URL_LOGO = '//data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png'
+    # Placeholder for all images if not online.
+    URL_XIERPA3RESOURCES = '/xierpa3/resources/'
+    URL_IMAGEPLACEHOLDER = URL_XIERPA3RESOURCES + 'images/placeholder.png'
+    
+    # CSS
+    URL_CSS = ['css/style.css']
     
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.
@@ -144,13 +150,12 @@ class C(Config):
     PARAM_EDIT = 'edit'
     PARAM_ARTICLE = 'article'
     PARAM_CHAPTER = 'chapter' # Chapter index in the current article, starting with 0
-    PARAM_FORCECSS = 'forcecss' # Force the recalculation of the SASS/CSS
     PARAM_AUTHOR = 'author'
     PARAM_ARTICLE = 'article'
     PARAM_CATEGORY = 'category'
     PARAM_SID = 'sid' # Session id
     PARAM_DOCUMENTATION = 'documentation'
-    PARAM_FORCE = 'force'
+    PARAM_FORCE = 'force' # Force the recalculation of the SASS/CSS
     PARAM_AJAX = 'ajax'
     
     # Tag
@@ -560,4 +565,7 @@ class C(Config):
     MIMETYPE_XSL = MIMETYPES[EXTENSION_XSL]
     MIMETYPE_XSD = MIMETYPES[EXTENSION_XSD]
     MIMETYPE_EPUB = MIMETYPES[EXTENSION_EPUB]
+    MIMETYPE_PNG = MIMETYPES[EXTENSION_PNG]
+    MIMETYPE_JPG = MIMETYPES[EXTENSION_JPG]
+    MIMETYPE_GIF = MIMETYPES[EXTENSION_GIF]
     DEFAULT_MIMETYPE = MIMETYPE_PLAIN

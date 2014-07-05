@@ -11,11 +11,13 @@
 #    footer.py
 #
 from xierpa3.components.container import Container
-from xierpa3.constants.constants import C
 from xierpa3.attributes import Em
 from xierpa3.descriptors.blueprint import BluePrint
 
 class Footer(Container):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Container.C 
 
     BLUEPRINT = BluePrint( 
         # Layout stuff
@@ -46,6 +48,7 @@ class Footer(Container):
         s = self.style
         colClass = self.getColClass(s.colWidth)
         b.block(self)
-        b.div(class_=colClass, float=s.logoFloat, marginleft=s.marginLeft, marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
+        b.div(class_=colClass, float=s.logoFloat, marginleft=s.marginLeft, 
+              marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
         b._div(comment=colClass)
         b._block(self)

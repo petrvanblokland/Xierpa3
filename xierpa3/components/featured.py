@@ -15,7 +15,6 @@ from xierpa3.components.column import Column
 from xierpa3.components.container import Container
 from xierpa3.descriptors.media import Media
 from xierpa3.attributes import Em, Margin, Perc, Color
-from xierpa3.constants.constants import C
 from xierpa3.descriptors.blueprint import BluePrint
 
 LEVELSIZE = Em(0.9)
@@ -32,6 +31,9 @@ class Featured(Container):
 
 class FeaturedBase(Column):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Column.C 
+
     CLASS_FEATURED_ITEM = 'featuredItem'
     CLASS_FEATURED_ITEM_IMG = 'featuredItemImg'
       
@@ -45,6 +47,9 @@ class FeaturedByImage(FeaturedBase):
     u"""The <b>FeaturedByImage</b> feature component, shows a featured article by its poster image.
     If there is no poster image defined in the article meta data, then the first image in the article
     is used here. The image is a link to the article page."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = FeaturedBase.C 
+
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
@@ -73,11 +78,11 @@ class FeaturedByImage(FeaturedBase):
         s = self.style
         if s.itemStart < len(data.items):
             item = data.items[s.itemStart]
-            b.div(class_=self.CLASS_FEATURED_ITEM, display=s.itemDisplay,
+            b.div(class_=self.C.CLASS_FEATURED_ITEM, display=s.itemDisplay,
                 clear=s.itemClear, marginbottom=s.itemMarginBottom, width=s.itemWidth,
             )
-            b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id))
-            b.img(class_=(self.CLASS_AUTOWIDTH, 'featuredImage'), src=item.poster)
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id))
+            b.img(class_=(self.C.CLASS_AUTOWIDTH, 'featuredImage'), src=item.poster)
             if s.showLevel:
                 b.h5(color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
                     margintop=s.levelMarginTop)
@@ -92,11 +97,14 @@ class FeaturedByImage(FeaturedBase):
             if s.showTopic and item.topic is not None: # Elements must be defined in global style
                 self.buildElement(b, item.topic)
             b._a()
-            b._div(comment=self.CLASS_FEATURED_ITEM)
+            b._div(comment=self.C.CLASS_FEATURED_ITEM)
   
 class FeaturedByImageList(FeaturedBase):
     u"""The <b>FeaturedByImageList</b> feature component builds a vertical list if thumbnails, 
     level and optional names of the selected article items."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = FeaturedBase.C 
+
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
@@ -141,17 +149,17 @@ class FeaturedByImageList(FeaturedBase):
     def buildFeatured(self, b, data):
         s = self.style
         for item in data.items:
-            b.div(class_=self.CLASS_FEATURED_ITEM, display=s.itemDisplay,
+            b.div(class_=self.C.CLASS_FEATURED_ITEM, display=s.itemDisplay,
                 clear=s.itemClear, marginbottom=s.itemMarginBottom, width=s.itemWidth,
             )
-            b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id))
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id))
             if s.showLevel:
                 b.h5(color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
                     margintop=s.levelMarginTop)
                 b.text(item.level or s.genericLevel)
                 b.text(' level')
                 b._h5()
-            b.img(class_=self.CLASS_AUTOWIDTH, src=item.poster)
+            b.img(class_=self.C.CLASS_AUTOWIDTH, src=item.poster)
             if s.showName:
                 b.h4(color=s.nameColor, fontsize=s.nameSize, fontweight=s.nameWeight, 
                      lineheight=s.nameLineHeight)
@@ -163,6 +171,9 @@ class FeaturedByImageList(FeaturedBase):
             b._div(comment=self.CLASS_FEATURED_ITEM)
 
 class FeaturedByText(FeaturedBase):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = FeaturedBase.C 
 
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
@@ -215,12 +226,12 @@ class FeaturedByText(FeaturedBase):
             b.h2(fontsize=s.labelSize, color=s.labelColor, margintop=s.labelMarginTop,
                 marginbottom=s.labelMarginBottom, lineheight=s.labelLineHeight,
                 media=(
-                    Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, fontsize=s.tabletLabelSize, color='red'),
-                    Media(max=self.M_MOBILE_MAX, color='blue')
+                    Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, fontsize=s.tabletLabelSize, color='red'),
+                    Media(max=self.C.M_MOBILE_MAX, color='blue')
                 ))
             b.text(s.label)
             b._h2()
-        b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
+        b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.C.CLASS_NAME)
         b.h2(fontsize=s.nameSize, fontweight=s.nameWeight, lineheight=s.nameLineHeight, 
              color=s.nameColor, marginbottom=s.nameMarginBottom, display=s.nameDisplay,
              margintop=s.nameMarginTop)
@@ -228,7 +239,7 @@ class FeaturedByText(FeaturedBase):
         b._h2()
         b._a()
         if s.showPoster:
-            b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
             b.img(width=s.posterWidth, src=item.poster, float=self.LEFT, padding=0,
                 margin=Margin(Em(0.5), Em(0.5), 0, 0),
                 media=Media(max=self.M_MOBILE_MAX, display=self.NONE)
@@ -241,14 +252,14 @@ class FeaturedByText(FeaturedBase):
             b.text(' level')
             b._h5()
         if item.author: # Test on text
-            b.a(href='/%s-%s' % (self.PARAM_AUTHOR, item.author), class_=self.CLASS_AUTHOR)
+            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, item.author), class_=self.CLASS_AUTHOR)
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, color=s.authorColor, 
                  lineheight=s.authorLineHeight, display=s.authorDisplay)
             b.text('By %s' % item.author)
             b._h5()
             b._a()
         if s.showCategory and item.category: # Text on text
-            b.a(href='/%s-%s' % (self.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORY)
+            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORY)
             b.h5(fontsize=s.categorySize, fontweight=s.categoryWeight, lineheight=s.categoryLineHeight, 
                  color=s.categoryColor, margintop=Em(1), display=self.BLOCK)
             b.text(item.category)
@@ -263,14 +274,19 @@ class FeaturedByText(FeaturedBase):
 
 class FeaturedByDiapText(FeaturedByText):
     u"""As FeaturedByText, but default on a dark background."""
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = FeaturedByText.C 
     
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, itemCount=10, 
+        itemStart=0, 
+        itemCount=10, 
         itemRandom=True, doc_itemRandom=u'Choose random from the selected items.',
         # Label stuff 
-        label=None, labelSize=Em(2.2), 
+        label=None, doc_label=u'Label string.',
+        labelSize=Em(2.2), doc_labelSize=u'Label size.',
         labelColor=Color('#828487'), doc_labelColor=u'Label color.',
         labelMarginBottom=Em(0.5),
         labelMarginTop=Em(0.3),
@@ -323,6 +339,9 @@ class FeaturedByDiapText(FeaturedByText):
        
 class FeaturedByTextList(FeaturedBase):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = FeaturedBase.C 
+
     BLUEPRINT = BluePrint( 
         # Selection stuff
         itemStart=0, 
@@ -348,13 +367,13 @@ class FeaturedByTextList(FeaturedBase):
         s = self.style
         for item in data.items:
             if item.category:
-                b.a(href='/%s-%s' % (self.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORYTHUMB)
+                b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, item.category), class_=self.CLASS_CATEGORYTHUMB)
                 b.h5(fontsize=s.categorySize, fontweight=s.categoryWeight, lineheight=s.categoryLineHeight,
                      color=s.categoryColor, margintop=s.categoryMarginTop, display=s.categoryDisplay)
                 b.text(item.category)
                 b._h5()
                 b._a()
-            b.a(href='/%s-%s' % (self.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
+            b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id), class_=self.CLASS_NAME)
             b.h2(fontsize=s.nameSize, fontweight=s.nameWeight, lineheight=s.nameLineHeight, 
                  color=s.nameColor, marginbottom=s.nameMarginBottom, display=s.nameDisplay,
                  margintop=s.nameMarginTop)

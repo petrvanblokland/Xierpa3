@@ -22,21 +22,20 @@ import sys
 from baseconfig import BaseConfig
 
 class Config(BaseConfig):
-
+    u"""Inheriting all default values from BaseConfig. Just uncomment and redefine the values
+    if different from the default."""
     #PORT = 80
     #DEBUG = False
-    USE_ONLINE = False
-    USE_LOCAL = not USE_ONLINE
+    #USE_ONLINE = True # Can be changed through UI of implementing application.
     #USE_FONTFACE = True and USE_ONLINE
     #USE_MULTIPROCESSING = False and sys.version_info >= (2, 7)
 
     #CONNECTION = 'fast'
-    FSPATH_DATAROOT = '<path/to/dataroot>'
 
     # ---------------------------------------------------------------------------------------------------------
     #    P Y T H O N
 
-    #PYTHONAPP = 'python2.7'
+    PYTHONAPP = 'python2.7'
 
     # ---------------------------------------------------------------------------------------------------------
     #    P A T H S

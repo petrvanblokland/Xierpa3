@@ -17,6 +17,9 @@ from xierpa3.attributes import Perc
 
 class Graph(Component):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
+
     BLUEPRINT = BluePrint(
         # Layout stuff
     )

@@ -28,12 +28,14 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.media import Media
 from xierpa3.descriptors.blueprint import BluePrint
 
+# Load @fontface fonts for this example from www.webtype.com
+BODYFAMILY = '"Hermes FB Book"'
+HEADFAMILY = '"Hermes FB Semibold"'
+
 class ExampleColumn(Column):
     
-    CC = Column # Get constants from parent class.
-    # Load @fontface fonts for this example from www.webtype.com
-    BODYFAMILY = '"Hermes FB Book"'
-    HEADFAMILY = '"Hermes FB Semibold"'
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Column.C
     
     BLUEPRINT = BluePrint(
         # Page stuff
@@ -48,7 +50,7 @@ class ExampleColumn(Column):
         fontSize=Em(1), doc_fontSize=u'Column body font size.',
         fontSizeMobile=Em(1.2), doc_fontSizeMobile=u'Column body font size for mobile.', 
         lineHeight=Em(1.4), doc_lineHeight=u'Column body leading.',
-        margin=Margin(0, CC.AUTO, 0, CC.AUTO), doc_margin=u'Column margin.',
+        margin=Margin(0, C.AUTO, 0, C.AUTO), doc_margin=u'Column margin.',
         marginMobile=0, doc_marginMobile=u'Column margin mobile', 
         color=Color('#222'), doc_color='Column text color.',
         backgroundColor=Color('#FFF'), doc_backgroundColor='Column background color.',
@@ -67,7 +69,7 @@ class ExampleColumn(Column):
         h2FontSize=Em(1.4), doc_h2FontSize=u'Column h2 font size',
         h2LineHeight=Em(1.2), doc_h2LineHeight=u'Column h2 leading',
         h2Color=Color('#888'), doc_h2Color=u'Column h2 color.',
-        h2Style=CC.ITALIC, doc_h2Style=u'Column h2 style', 
+        h2Style=C.ITALIC, doc_h2Style=u'Column h2 style', 
         h2MarginTop=Em(1), doc_h2MarginTop=u'Column h2 margin top',
         h2MarginBottom=Em(0.5), doc_h2MarginBottom=u'Column h2 margin bottom',
         # p
@@ -87,7 +89,7 @@ class ExampleColumn(Column):
         pullQuoteLineHeight=Em(1.3), doc_pullQuoteLineHeight=u'Pull quote line height.',
         pullQuoteMarginTop=Em(0.5), doc_pullQuoteMarginTop=u'Pull quote margin top.',
         pullQuoteMarginBottom=Em(0.5), doc_pullQuoteMarginBottom=u'Pull quote margin bottom',
-        pullQuoteStyle=CC.ITALIC, doc_pullQuoteStyle=u'Pull quote style', 
+        pullQuoteStyle=C.ITALIC, doc_pullQuoteStyle=u'Pull quote style', 
         pullQuoteBackgroundColor=Color('#EEE'), doc_pullQuoteBackgroundColor=u'Pull quote background color.',
         pullQuoteColor=Color('#333'), doc_pullQuoteColor=u'Pull quote color.', 
         pullQuoteBorder=None, doc_pullQuoteBorderu='Pull quote border.', #Border('solid', 2, Color('#E1E2E2')),
@@ -104,7 +106,7 @@ class ExampleColumn(Column):
               backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
               fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
               # Remove margins on mobile, showing the column on full screen width.
-              media=Media(max=self.M_MOBILE_MAX, margin=s.marginMobile, 
+              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, 
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
@@ -120,10 +122,10 @@ class ExampleColumn(Column):
         # in the main building.
         # See also the code for components/article, which includes a _model.xml
         # document for this purpose.
-        if b.isType(self.TYPE_CSS):
+        if b.isType(self.C.TYPE_CSS):
             self.buildCssColumnTemplate(b)
         else:
-            data = self.adapter.getArticle(index=4, selector=self.SELECTOR_FEATURED) 
+            data = self.adapter.getArticle(index=4, selector=self.C.SELECTOR_FEATURED) 
             # Build the headline without style attribute, as these are already defined
             # in the self.buildCssColumnTemplate call.
             b.h1(fontfamily=s.h1FontFamily, fontsize=s.h1FontSize, lineheight=s.h1LineHeight)
@@ -148,15 +150,15 @@ class ExampleColumn(Column):
                 
         # Add reference about the content of this page
         b.hr()
-        b.div(class_='colophon', fontsize=Em(0.8), color=s.color, fontfamily=self.BODYFAMILY,
+        b.div(class_='colophon', fontsize=Em(0.8), color=s.color, fontfamily=BODYFAMILY,
             lineheight=Em(1.4))
         b.text('The text and image selection on this page is blurb, created by Filibuster.')
         b._div()
         
         # Add reference to sponsored Webtype webfonts.
-        b.a(href='//webtype.com', color=s.color, fontfamily=self.BODYFAMILY, fontsize=Em(0.8),
+        b.a(href='//webtype.com', color=s.color, fontfamily=BODYFAMILY, fontsize=Em(0.8),
             lineheight=Em(1.4), target='external')
-        b.text('The typefaces in this example %s and %s are sponsored by &lt;Webtype&gt;' % (self.BODYFAMILY, self.HEADFAMILY))
+        b.text('The typefaces in this example %s and %s are sponsored by &lt;Webtype&gt;' % (BODYFAMILY, HEADFAMILY))
         b._a()
         b._div()
         
@@ -175,7 +177,7 @@ class ExampleColumn(Column):
         # Headling made by BlurbAdapter
         b._h2()
         b.img(margintop=s.imageMarginTop, marginbottom=s.imageMarginBottom)
-        b.p(textindent=s.textIndent, fontfamily=self.BODYFAMILY)
+        b.p(textindent=s.textIndent, fontfamily=BODYFAMILY)
         # Main paragraphs have an indent.
         b._p()
         b.p(class_='start', textindent=s.textFirstIndent)
@@ -188,7 +190,7 @@ class ExampleColumn(Column):
         # @@@ TODO: Mark as p.end preceding <blockquote> too.
         b._p()
         # Italic blockquotes with an indent and backgroundcolor.
-        b.blockquote(class_=self.CLASS_PULLQUOTE, padding=s.pullQuotePadding, 
+        b.blockquote(class_=self.C.CLASS_PULLQUOTE, padding=s.pullQuotePadding, 
             fontsize=s.pullQuoteSize, fontfamily=s.pullQuoteFontFamily, 
             fontstyle=s.pullQuoteStyle, lineheight=s.pullQuoteLineHeight,
             margintop=s.pullQuoteMarginTop, marginbottom=s.pullQuoteMarginBottom, 
@@ -199,6 +201,9 @@ class ExampleColumn(Column):
 class OneColumnSite(Theme):
     u"""The <b>TextColumn</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
+
     TITLE = u'The Single Column Example Page.' # Use as title of window.
 
     URL_FONTS = [
@@ -206,7 +211,7 @@ class OneColumnSite(Theme):
         # If using the font in this package, safest is to refer to the functional constant names below,
         # instead of making a direct reference to the family name.
         # Of course, taking your own account at //www.webtype.com is even better :)
-        Theme.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
+        C.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
     ]    
     # The single column is filled by the self.adapter article query result.
     # The default b.adapter (if nothing else is defined) is the BlurbAdapter,
@@ -219,7 +224,7 @@ class OneColumnSite(Theme):
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.fontFamily, fontsize=s.fontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
-        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFONT)
+        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=s.fontFamily)
         return root
         
@@ -231,7 +236,7 @@ class OneColumnSite(Theme):
         container = Container(components=column)
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, 
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=container, 
             title=self.TITLE, fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]

@@ -17,11 +17,12 @@ class Page(Component):
     u"""The <b>Page</b> component builds the content of a single page, dependent on
     the parameters in the url."""
     
-    CC = Component # Access constants through parent class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C
     
     BLUEPRINT = BluePrint(
         name='Untitled', doc_name=u'Name of the page.',
-        class_=CC.CLASS_PAGE, doc_pageClass=u'Class of the page. Defailt = CLASS_PAGE', 
+        class_=C.CLASS_PAGE, doc_pageClass=u'Class of the page. Default is the result of <b>self.getClassName()</b> or C.CLASS_PAGE', 
     )
     def reset(self):
         u"""Gets called prior to every page build. Can be redefined by inheriting theme classes.

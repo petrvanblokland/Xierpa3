@@ -17,12 +17,15 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class SpringGraph(Container):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Container.C 
+   
     BLUEPRINT = BluePrint(
     )
        
     def buildSpringGraph(self, id, root, width, height, **args):
         self.text("""<!--[if lte IE 8]><script type="text/javascript" src="excanvas.js"></script><![endif]-->""")
-        self.script(src='http://s3.amazonaws.com/data.xierpalib.com/_root/' + self.PATH_SPRINGGRAPH_JS)
+        self.script(src='http://s3.amazonaws.com/data.xierpalib.com/_root/' + self.C.PATH_SPRINGGRAPH_JS)
         self.script()
         self.output("""
         function init_graph_%(id)s() {

@@ -32,10 +32,11 @@ class SimpleResponsiveText(Column):
     fermentum. Nunc feugiat vitae dolor mollis interdum. Suspendisse potenti. In hac habitasse platea dictumst. 
     Donec ac massa vel velit cursus posuere in a urna. Vestibulum porttitor lacus neque, eu scelerisque enim 
     scelerisque vitae."""
-    CC = Column # Access of constants through parent class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Column.C
     
     BLUEPRINT = BluePrint(
-        margin=Margin(0, CC.AUTO), doc_margin=u"Margin of the column",
+        margin=Margin(0, C.AUTO), doc_margin=u"Margin of the column",
         width=Perc(90), doc_width=u"Width of the main column.",
         padding=Padding(Em(0.5), Em(0.5), Em(0.5), Em(0.5)), doc_padding=u"Padding of column.",
         # Show @media transition by background color
@@ -65,16 +66,16 @@ class SimpleResponsiveText(Column):
         s = self.style
         b.div(class_=self.getClassName(), color=s.color, margin=s.margin, width=s.width,
             backgroundcolor=s.backgroundColor, fontsize=s.fontSize, padding=s.padding, 
-            textalign=self.LEFT,
+            textalign=self.C.LEFT,
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
-               Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, width=Perc(100),
+               Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, width=Perc(100),
                    backgroundcolor=s.backgroundColorTablet, margin=0,
                    color=s.colorTablet, fontsize=s.fontSizeTablet),
                # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.M_MOBILE_MAX, margin=0, width=Perc(100),
+               Media(max=self.C.M_MOBILE_MAX, margin=0, width=Perc(100),
                    backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
                    fontsize=s.fontSizeMobile),
             ))
@@ -88,6 +89,9 @@ class SimpleResponsiveText(Column):
         
 class SimpleResponsivePage(Theme):
     u"""The <b>SimpleResponsivePage</b> class implements a simple page with a text and an image."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
+
     TITLE = u'The simple responsive text page.' # Use as title of window.
 
     BODYFONT = 'Georgia'
@@ -107,7 +111,7 @@ class SimpleResponsivePage(Theme):
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.bodyFontFamily, fontsize=s.bodyFontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
-        root.addStyle('div', display=self.BLOCK)
+        root.addStyle('div', display=self.C.BLOCK)
         return root
         
     def baseComponents(self):
@@ -118,7 +122,7 @@ class SimpleResponsivePage(Theme):
         container = Container(components=hw) # Makes container-div and row-div
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=container, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

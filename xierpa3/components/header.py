@@ -15,3 +15,6 @@ from xierpa3.components.container import Container
 class Header(Container):
     u"""The header only shows in desktop mode."""
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Container.C 
+

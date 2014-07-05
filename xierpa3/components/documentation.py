@@ -25,6 +25,9 @@ class Documentation(Container):
 
     #    @@@ Under development
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Container.C 
+
     BLUEPRINT = BluePrint( 
         h2FontSize=Em(2), doc_h2FontSoze=u'h2 font size.',
         h2Color=Color('#202020'), doc_h2Color=u'h2 color', 

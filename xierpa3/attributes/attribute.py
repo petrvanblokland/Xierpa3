@@ -10,15 +10,17 @@
 #
 #    attribute.py
 #
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
+from xierpa3.constants.constants import Constants
 
-class Attribute(C):
+class Attribute(object):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants 
            
     def initializePrefixes(self, d):
         self.prefixes = {}
         for prefix, attribute in d.items():
-            if prefix in self.PREFIXES:
+            if prefix in self.C.PREFIXES:
                 assert isinstance(attribute, self.__class__)
                 self.prefixes[prefix] = attribute
 

@@ -15,6 +15,9 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class Text(Component):
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Component.C 
+
     BLUEPRINT = BluePrint(
     )                                   
     def __init__(self, text=None, style=None, id=None, parent=None, 

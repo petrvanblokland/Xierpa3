@@ -22,7 +22,8 @@ class ArticleColumn(Column):
      
 class Article(ArticleColumn):
 
-    CC = ArticleColumn # Access constants through the parent class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = ArticleColumn.C
     
     CHAPTERCOLOR = Color('#202020')
     SUMMARYCOLOR= CHAPTERCOLOR
@@ -116,7 +117,7 @@ class Article(ArticleColumn):
         imgPaddingLeft=None, 
         imgPaddingRight=None, 
         imgBackgroundColor=None,
-        captionFontStyle=CC.ITALIC, 
+        captionFontStyle=C.ITALIC, 
         captionFontSize=Em(0.9), 
         captionMarginTop=Em(0.5),
         # Code
@@ -127,7 +128,7 @@ class Article(ArticleColumn):
         codePaddingBottom=0,
         codeMarginTop=Em(0.5), 
         codeMarginBottom=Em(0.5),
-        codeBackgroundColor=CC.WHITE,
+        codeBackgroundColor=Color(C.WHITE),
     )
     def buildColumn(self, b):
         article = self.adapter.getArticle(id=b.getCurrentArticleId())
@@ -149,21 +150,25 @@ class Article(ArticleColumn):
             #chapter = b.adapter.getChapterByIndex(chapterIndex, component=article)
             #if chapter is not None:
             #    self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
-        
+        elif article.text:
+            b.text(article.text)
+        else:
+            b.text('Cannot find article')
+            
     def buildArticleTop(self, b, article, chapterIndex):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
         For all other pages build a smaller version of the top."""
         s = self.style
-        class_ = self.CLASS_ARTICLETOP
-        b.div(class_=class_, float=self.LEFT, width=Perc(100), paddingtop=Em(0.5))
+        class_ = self.C.CLASS_ARTICLETOP
+        b.div(class_=class_, float=self.C.LEFT, width=Perc(100), paddingtop=Em(0.5))
         # Poster image
         if chapterIndex == 0 and s.showPoster:
-            b.img(class_=self.CLASS_AUTOWIDTH, src=article.poster)
+            b.img(class_=self.C.CLASS_AUTOWIDTH, src=article.poster)
         # Article category
         if chapterIndex == 0 and article.category: # Text on text
-            b.a(href='/%s-%s' % (self.PARAM_CATEGORY, article.category))
+            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, article.category))
             b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
-                fontweight=s.categoryWeight, margintop=Em(1), display=self.BLOCK)
+                fontweight=s.categoryWeight, margintop=Em(1), display=self.C.BLOCK)
             b.text(article.category)
             b._h5()
             b._a()

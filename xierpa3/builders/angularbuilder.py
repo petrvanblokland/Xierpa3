@@ -16,6 +16,9 @@ class AngularBuilder(Builder):
 
     #    @@@ Under development
 
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Builder.C 
+
     # Used for dispatching component.build_sass, if components want to define builder dependent behavior.
     ID = 'angular'
 

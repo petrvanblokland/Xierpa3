@@ -16,13 +16,14 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class Column(Container):
 
-    CC = Container
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Container.C
     
     BLUEPRINT = BluePrint( 
-        classColumn=CC.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
+        classColumn=C.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
         # Layout stuff
         colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 
-        columnWidthMobile=CC.AUTO, doc_columnWidthMobile=u'Column width for mobile.',
+        columnWidthMobile=C.AUTO, doc_columnWidthMobile=u'Column width for mobile.',
         # Column stuff
         columnMarginLeft=None, doc_columnMarginLeft=u'Column margin left.',
         columnMarginLeftMobile=0, doc_columnMarginLeftMobile=u'Column margin left for mobile.',
@@ -33,9 +34,9 @@ class Column(Container):
         columnPaddingRightMobile=Em(1), doc_columnPaddingRightMobile=u'Column padding right for mobile.',
         columnPaddingLeft=0, doc_columnPaddingLeft=u'Column padding left.',
         columnPaddingLeftMobile=Em(0.5), doc_columnPaddingLeftMobile=u'Column padding left for mobile.',
-        columnFloat=CC.LEFT, doc_columnFloat=u'Column float.', 
-        columnFloatMobile=CC.NONE, doc_columnFloatMobile=u'Column float for mobile.', 
-        columnDisplay=CC.BLOCK, doc_columnDisplay=u'Column display.',
+        columnFloat=C.LEFT, doc_columnFloat=u'Column float.', 
+        columnFloatMobile=C.NONE, doc_columnFloatMobile=u'Column float for mobile.', 
+        columnDisplay=C.BLOCK, doc_columnDisplay=u'Column display.',
         columnDisplayMobile=None, doc_columnDisplayMobile=u'Column display for mobile.',
         columnMinHeight=0, doc_columnMinHeight=u'Column minimal height.', 
     )

@@ -22,13 +22,14 @@ class Navigation(Component):
 class MobileNavigation(Navigation):
     u"""The <b>MobileNavigation</b> only shows in mobile screen mode."""
     
-    CC = Navigation # Get constants through super class
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Navigation.C 
     
     BLUEPRINT = BluePrint(
         colWidth=12,
         # Display stuff
-        display=CC.NONE, doc_display=u'Display type',
-        displayMobile=CC.BLOCK, doc_displayMobile=u'Display type for mobile.',
+        display=C.NONE, doc_display=u'Display type',
+        displayMobile=C.BLOCK, doc_displayMobile=u'Display type for mobile.',
         # Container stuff
         width=None, doc_width=u'Mobile navigation container width.', 
         minWidth=0, doc_minWidth=u'Mobile navigation container minimal width', 
@@ -40,7 +41,7 @@ class MobileNavigation(Navigation):
         marginRight=0, doc_marginRight=u'Mobile navigation margin right.',
         paddingLeft=0, doc_paddingLeft=u'Mobile navigation padding left.',
         # Row
-        rowClass=CC.CLASS_12COL, doc_rowClass=u'Class of the row.',
+        rowClass=C.CLASS_12COL, doc_rowClass=u'Class of the row.',
         # Item stuff
         itemCount=20, doc_itemCount=u'Preferred/max amount of pages, suggestion to the adapter.',
         menuHeight=Px(44), doc_menuHeight=u'Menu height.',
@@ -51,16 +52,16 @@ class MobileNavigation(Navigation):
         menuWidth=Perc(100), doc_menuWidth=u'Menu width.', 
         # Nav stuff
         navWidth=Perc(30), doc_navWidth='Navigation width.', 
-        navDisplay=CC.INLINEBLOCK, doc_navDisplay=u'Navigation display type.',
+        navDisplay=C.INLINEBLOCK, doc_navDisplay=u'Navigation display type.',
         navZIndex=Z(1000), doc_navZIndex='Navigation Z index.',
         # List item stuff
         listFontSize=None,
         # Menu
-        menuType=CC.LIST, doc_menuType=u'Default is plain navigation list. Set to “menu” for menu.',
+        menuType=C.LIST, doc_menuType=u'Default is plain navigation list. Set to “menu” for menu.',
         menuListBackgroundColor=Color('#828487'),
         menuIconUrl='//data.doingbydesign.com.s3.amazonaws.com/_images/menu_icon.png', doc_menuIconUrl=u'Url of the menu icon',
         # Link stuff
-        linkColor=CC.WHITE, doc_linkColor=u'Link color',
+        linkColor=C.WHITE, doc_linkColor=u'Link color',
     )                      
     def buildBlock(self, b):
         s = self.style
@@ -78,39 +79,39 @@ class MobileNavigation(Navigation):
 
         colClass = self.getColClass(s.colWidth)
         #b.text(data.loop) # In case there is PHP looping code. Skip for CSS
-        b.div(class_=colClass, width=self.AUTO, float=self.NONE, marginleft=Em(0.5),
+        b.div(class_=colClass, width=self.C.AUTO, float=self.NONE, marginleft=Em(0.5),
             marginright=Em(0.5), paddingleft=Em(0.5), paddingright=Em(0.5))
-        b.div(id=self.ID_MOBILENAVWRAP, width=s.navWidth, display=s.navDisplay, zindex=s.navZIndex)
-        b.div(id=self.ID_MENUICON, class_=self.CLASS_MENU, color=self.WHITE, height=26, width=56,
+        b.div(id=self.C.ID_MOBILENAVWRAP, width=s.navWidth, display=s.navDisplay, zindex=s.navZIndex)
+        b.div(id=self.C.ID_MENUICON, class_=self.C.CLASS_MENU, color=self.C.WHITE, height=26, width=56,
             paddingtop=0.6, cursor='pointer',
-            display=self.INLINEBLOCK, marginright=0, top=0, left=0, fontsize=13)
+            display=self.C.INLINEBLOCK, marginright=0, top=0, left=0, fontsize=13)
         b.img(src=s.menuIconUrl,
-            padding=0, margin=0, verticalalign=self.MIDDLE, maxwidth='50%', height=self.AUTO)
-        b._div(comment='#'+self.ID_MENUICON) # #menu-icon
+            padding=0, margin=0, verticalalign=self.MIDDLE, maxwidth='50%', height=self.C.AUTO)
+        b._div(comment='#'+self.C.ID_MENUICON) # #menu-icon
         if data.menuItems is None:
             b.error('No items in the adapter')
         else:
-            b.ul(id=self.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
-                display=self.NONE, clear=self.BOTH, position=self.ABSOLUTE, top=s.menuHeight-5, 
-                width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.NONE, left=0,
-                textalign=self.CENTER)
+            b.ul(id=self.C.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
+                display=self.C.NONE, clear=self.C.BOTH, position=self.ABSOLUTE, top=s.menuHeight-5, 
+                width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.C.NONE, left=0,
+                textalign=self.C.CENTER)
         
             for menu in data.menuItems:
                 url = menu.url
                 if url is None:
-                    url = '/%s-%s' % (self.PARAM_ARTICLE, menu.id)
+                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menu.id)
                 b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=Perc(100), liststyletype=self.NONE,
-                    borderbottom=Border('1 solid white'), height=36, backgroundcolor='#4890BC')
+                    borderbottom=Border('1 solid white'), height=36, backgroundcolor=Color('#4890BC'))
                 b.a(href=url, color=Color('#E8E8E8'))
                 b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
                 b._a()
                 b._li()
             b._ul()
-        b._div(comment=self.ID_MOBILENAVWRAP)
+        b._div(comment=self.C.ID_MOBILENAVWRAP)
         #b.a(href='/home', color='#E8E8E8')
         #b.text('Doing by Design')
         #b._a()
-        b._div(comment=self.CLASS_12COL)
+        b._div(comment=self.C.CLASS_12COL)
         #b.text(data._loop) # In case there is PHP looping code. Skip for CSS
 
         b._snippet(self) # In case PHP saved this block as snippet.

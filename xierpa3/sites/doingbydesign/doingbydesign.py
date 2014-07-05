@@ -22,7 +22,6 @@ from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
     ItemGroup, Featured
-from xierpa3.constants.constants import C
 
 # Adapter
 
@@ -34,8 +33,10 @@ class DbDAdapter(FileAdapter):
         return self.newData(text=u"""Doing, design, design process, programming, design education""")
 
 class DoingByDesign(Shop):
-    u"""The <b>Shop</b> class implements the standard example shop
-    with content based on files."""
+    u"""The <b>Shop</b> class implements the standard example shop with content based on files."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Shop.C 
+    
     TITLE = 'Doing by Design'
     SUBTITLE = 'Notes on design and education.'
 
@@ -50,6 +51,12 @@ class DoingByDesign(Shop):
     URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
     URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
 
+    # TODO: Make BluePrint instance here.
+    
+    # Load @fontface fonts for this example from www.webtype.com
+    CSS_BODYFAMILY = '"Hermes FB Book"'
+    CSS_HEADFAMILY = '"Hermes FB Semibold"'
+   
     CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
     CSS_BODYLEADING = Em(1.4)
     CSS_BGCOLOR = Color('#FFFFFF')
@@ -66,24 +73,24 @@ class DoingByDesign(Shop):
     
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.CSS_BODYFONT, fontsize=self.CSS_BODYSIZE,
+        s.addStyle('body', fontfamily=self.CSS_BODYFAMILY, fontsize=self.CSS_BODYSIZE,
             backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
-        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFONT)
-        s.addStyle('h6', fontfamily=self.CSS_BODYFONT)
-        s.addStyle('div', float=self.FLOAT_LEFT, width=Perc(100))
+        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFAMILY)
+        s.addStyle('h6', fontfamily=self.CSS_BODYFAMILY)
+        s.addStyle('div', float=self.C.LEFT, width=Perc(100))
         s.addStyle('a, a:link', color=self.CSS_ALINKCOLOR)
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
         s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
-        s.addStyle('a:active', color=self.CSS_AACTIVECOLOR)
-        s.addStyle('div.' + C.CLASS_1COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 / 12))
-        s.addStyle('div.' + C.CLASS_2COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 2 / 12))
-        s.addStyle('div.' + C.CLASS_4COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
-        s.addStyle('div.' + C.CLASS_8COL, margin=Em(0.5), float=C.LEFT, width='%d%%' % (98 * 8 / 12))
-        s.addStyle('div.' + C.CLASS_12COL, margin=Em(0.5), float=C.LEFT, width=Perc(100))
-        s.addStyle('div.' + C.CLASS_LAST, marginright=Em(0))
-        s.addStyle('ul', display=C.BLOCK)
-        s.addStyle('li', display=C.BLOCK)
-        s.addStyle('ol', liststyletype=C.DECIMAL)
+        s.addStyle('a:active', color=self.CSS_ACTIVECOLOR)
+        s.addStyle('div.' + self.C.CLASS_1COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 / 12))
+        s.addStyle('div.' + self.C.CLASS_2COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 * 2 / 12))
+        s.addStyle('div.' + self.C.CLASS_4COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(30)) #(98 * 4 / 12))
+        s.addStyle('div.' + self.C.CLASS_8COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 * 8 / 12))
+        s.addStyle('div.' + self.C.CLASS_12COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(100))
+        s.addStyle('div.' + self.C.CLASS_LAST, marginright=Em(0))
+        s.addStyle('ul', display=self.C.BLOCK)
+        s.addStyle('li', display=self.C.BLOCK)
+        s.addStyle('ol', liststyletype=self.C.DECIMAL)
         return s
 
     def baseComponents(self):        
@@ -91,7 +98,7 @@ class DoingByDesign(Shop):
         menu = Menu()
         socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
 
-        header = Header(components=(logo,menu), mobileContainerDisplay=C.NONE,
+        header = Header(components=(logo,menu), mobileContainerDisplay=self.C.NONE,
             doc_mobileContainerDisplay=u'Header is not visible for mobile')
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
         # Articles featured by image
@@ -123,36 +130,36 @@ class DoingByDesign(Shop):
         
         # Article
         featuredByTextList = FeaturedByTextList() # Default start a featured index 0
-        article = Container(class_=C.CLASS_ARTICLE, 
-            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=C.REPEAT, 
+        article = Container(class_=self.C.CLASS_ARTICLE, 
+            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
     
         # Floating items
         thumbnails = ItemGroup(components=(featuredByImage100,))
         
-        homePage = Page(name=C.TEMPLATE_INDEX,
+        homePage = Page(name=self.C.TEMPLATE_INDEX,
             components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
     
-        articlePage = Page(name=C.TEMPLATE_ARTICLE,
+        articlePage = Page(name=self.C.TEMPLATE_ARTICLE,
             components=(mobileNavigation, header, article, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
 
         thumbnailPage = Page(name=self.TEMPLATE_COURSES,
             components=(mobileNavigation, header, featuredImages, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
 
         productsPage = Page(name=self.TEMPLATE_PRODUCTS,
             components=(mobileNavigation, header, thumbnails, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
 
         categoryPage = Page(name=self.TEMPLATE_CATEGORY,
             components=(mobileNavigation, header, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
 
         # Automatic documentation about Xierpa3
-        documentationPage = Page(name=C.TEMPLATE_DOCUMENTATION,
+        documentationPage = Page(name=self.C.TEMPLATE_DOCUMENTATION,
             components=(mobileNavigation, header, documentation, footer),
-            css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
 
         return [homePage, articlePage, productsPage, thumbnailPage, categoryPage, documentationPage]

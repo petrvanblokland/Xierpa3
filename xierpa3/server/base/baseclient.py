@@ -14,16 +14,21 @@ import sys, os
 import traceback
 import cStringIO as StringIO
 
-from xierpa3.constants.constants import C
+import xierpa3 # To get the root for /xierpa3/resource file request.
+from xierpa3.constants.constants import Constants
 from xierpa3.toolbox.dating import DateTime
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.descriptors.environment import Environment
+from xierpa3.toolbox.transformer import TX
 
 class BaseClient(object):
     u"""
     Connects the SiteBuilder to Twisted client.
     """
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants
+
     MTIMES = {}
     LINE = '-' * 80
     DO_INDENT = True # Boolean flag if the build code should be indented.
@@ -140,35 +145,43 @@ class BaseClient(object):
         theme.e = Environment(request=httprequest)
         return theme
 
-    def setMimeTypeEncoding(self, mime, request):
+    def setMimeTypeEncoding(self, mimeType, request):
         u"""
         <doc>The <code>getMimeTypeEncoding</code> method answers the MIME type and coding in format <code>'text/css;
         charset-utf-8'</code>.</doc>
         """
-        mimetype = C.MIMETYPES.get(mime)
-        if mimetype is not None:
-            if mimetype and 'text' in mimetype:
-                mimetype += '; charset=utf-8'
-        if mimetype is not None:
-            request.setHeader('content-type', mimetype)
+        if mimeType:
+            if 'text' in mimeType:
+                mimeType += '; charset=utf-8'
+            request.setHeader('content-type', mimeType)
+
+    def buildResource(self, site):
+        u"""The url requested a xierpa3 resource, try to find it and answer the result
+        with the appropriate mime type."""
+        path = TX.path2ParentDirectory(TX.module2Path(xierpa3)) + site.e.request.path
+        if os.path.exists(path):
+            f = open(path, 'rb')
+            result = f.read()
+            f.close()
+            return result, self.C.MIMETYPE_PNG
+        return '', self.C.MIMETYPE_HTML
 
     def buildCss(self, site):
         u"""Build the site to CSS."""
         doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
         builder = CssBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
-        print '34424243', site.e.form
         result = self.resolveByFile(site, filePath)
-        if site.e.form[C.PARAM_DOCUMENTATION]:
+        if site.e.form[self.C.PARAM_DOCUMENTATION]:
             site.buildDocumentation(builder) # Build the live documentation page from the site
             builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
             result = builder.getResult() 
-        elif site.e.form[C.PARAM_FORCE] or result is None:
+        elif site.e.form[self.C.PARAM_FORCE] or result is None:
             # Forced or no cached CSS, so try to build is and save it in the cache.
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
             builder.save(site, path=filePath) # Compile resulting Sass to Css  
             result = builder.getResult() # Get the resulting Sass.
-        return result
+        return result, self.C.MIMETYPE_CSS
     
     def buildHtml(self, site):
         u"""Build the site for HTML."""
@@ -177,16 +190,16 @@ class BaseClient(object):
         builder = HtmlBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
-        if site.e.form[C.PARAM_DOCUMENTATION]:
+        if site.e.form[self.C.PARAM_DOCUMENTATION]:
             site.buildDocumentation(builder)
             result = builder.getResult()
-        elif site.e.form[C.PARAM_FORCE] or result is None:
+        elif site.e.form[self.C.PARAM_FORCE] or result is None:
             # Find the matching template for the current site and build from there.
             template = site.getMatchingTemplate(builder)
             builder.pushResult()
             template.build(builder)
             result = builder.popResult()
-        return result
+        return result, self.C.MIMETYPE_HTML
     
     def render_GET(self, httprequest):
         u"""
@@ -197,17 +210,18 @@ class BaseClient(object):
         """
         site = self.getSite(httprequest) # Site is Theme instance
         try:
+            path = site.e.request.path
+            if path.startswith(self.C.URL_XIERPA3RESOURCES):
+                result, mimeType = self.buildResource(site)
             # If there is a matching file in the site root/files folder, then answer this.
-            if site.e.request.path.endswith('.css'):
-                result = self.buildCss(site)
-                mimeType = 'css'
+            elif path.endswith('.css'):
+                result, mimeType = self.buildCss(site)
             else: # Not CSS, request must be HTML. This could be an extended choice in the future.
-                result = self.buildHtml(site)
-                mimeType = 'html'
+                result, mimeType = self.buildHtml(site)
         except Exception, e:
             t = traceback.format_exc()
             result = self.renderError(e, t)
-            mimeType = 'html'
+            mimeType = self.C.MIMETYPE_HTML
 
         # if b.shouldBeCompressed():
         #    httprequest.setHeader("Content-Encoding", "gzip")
@@ -234,17 +248,18 @@ class BaseClient(object):
             # print json
             # b.buildJSON(json)
         try:
+            path = site.e.request.path
+            if path.startswith(self.C.URL_XIERPA3RESOURCES):
+                result, mimeType = self.buildResource(site)
             # If there is a matching file in the site root/files folder, then answer this.
             if site.e.request.path.endswith('.css'):
-                result = self.buildCss(site)
-                mimeType = 'css'
+                result, mimeType = self.buildCss(site)
             else: # Not CSS, request must be HTML. This could be an extended choice in the future.
-                result = self.buildHtml(site)
-                mimeType = 'html'
+                result, mimeType = self.buildHtml(site)
         except Exception, e:
             t = traceback.format_exc()
             result = self.renderError(e, t)
-            mimeType = 'html'
+            mimeType = self.C.MIMETYPE_HTML
         self.setMimeTypeEncoding(mimeType, httprequest)        
         return result
     
@@ -304,7 +319,7 @@ class BaseClient(object):
 
     def resolveByFile(self, site, path):
         """Test if the path exists as file. If it does, then answer the content. If forcing then skip. If in /ie then read."""
-        if path is not None and (not site.e.form[C.PARAM_FORCECSS] or '/ie' in path) and os.path.exists(path) and not os.path.isdir(path):
+        if path is not None and (not site.e.form[self.C.PARAM_FORCE] or '/ie' in path) and os.path.exists(path) and not os.path.isdir(path):
             f = open(path, 'rb')
             result = f.read()
             f.close()

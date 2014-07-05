@@ -28,7 +28,10 @@ from xierpa3.attributes import Em, Margin, Color, Perc
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class HelloWorldResponsiveText(Column):
- 
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Column.C
+
     CSS_BODYFONT = 'Georgia'
     CSS_CAPTIONFONT = CSS_BODYFONT
     
@@ -41,59 +44,59 @@ class HelloWorldResponsiveText(Column):
         Building the styled 2 text blocks, written out with duplicated values,
         as example how this works. See other examples for approaches with more
         cascading styled hierarchy."""
-        b.div(class_=self.getClassName(), color='yellow', margin=Margin(0, self.AUTO), 
-            width='90%', maxwidth=900, minwidth=300, backgroundcolor='#222',
+        b.div(class_=self.getClassName(), margin=Margin(0, self.C.AUTO), 
+            color=Color('yellow'), # Translate color name to hex
+            width=Perc(90), maxwidth=900, minwidth=300, backgroundcolor=Color('#222'),
             paddingtop=Em(0.5), paddingbottom=Em(0.5), fontfamily=self.CSS_BODYFONT, 
-            fontsize=Em(3), textalign=self.CENTER, lineheight=Em(1.2),
+            fontsize=Em(3), textalign=self.C.CENTER, lineheight=Em(1.2),
             # Now define the @media parameters, where they belong: inside the definition of the element.
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                 # Example for table, show lighter background, change color of text and smaller size.
-                Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, backgroundcolor=Color('#444'), 
-                      color='orange', 
-                      fontsize=Em(2), width=Perc(100)),
+                Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=Color('#444'), 
+                      color=Color('orange'), # Translate color name to hex. 
+                      margin=0, fontsize=Em(2), width=Perc(100)),
                 # For mobile, even more lighter background, change color of text and smaller size.
-                Media(max=self.M_MOBILE_MAX, backgroundcolor=Color('#AAA'), color='red', 
-                      fontsize=Em(2), width=Perc(100))
+                Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#AAA'), 
+                      color=Color('red'), # Translate color name to hex. 
+                      margin=0, fontsize=Em(2), width=Perc(100))
             ))
         b.text('Hello world.')
         # One of the advantages of using a real programming language to generate 
         # HTML/CSS code, is that repetitions can be written as a loop. Not necessary
         # fewer lines, but more expandable and less redundant distribution of 
         # knowledge in the code.
+        # This generates the same result as:
+        #    b.div(class_='c1', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+        #        media=Media(min=self.M_DESKTOP_MIN, display=self.BLOCK))
+        #    b.text('Responsive desktop mode.')
+        #    b._div()
+        #    b.div(class_='c2', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
+        #        media=Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, display=self.BLOCK))
+        #    b.text('Responsive tablet mode.')
+        #    b._div()
+        #    b.div(class_='c3', display=self.NONE, fontsize=Em(0.5), color=self.BLACK,
+        #        media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK))
+        #    b.text('Responsive mobile mode.')
+        #    b._div()
+        #
         data = (
             # class, minWidth, maxWidth,  text
-            ('c1', self.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
-            ('c2', self.M_TABLET_MIN, self.M_TABLET_MAX, 'Responsive tablet mode.' ),
-            ('c3', None, self.M_MOBILE_MAX, 'Responsive mobile mode..' ),
+            ('c1', self.C.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
+            ('c2', self.C.M_TABLET_MIN, self.C.M_TABLET_MAX, 'Responsive tablet mode.' ),
+            ('c3', None, self.C.M_MOBILE_MAX, 'Responsive mobile mode..' ),
         )
         for class_, minWidth, maxWidth, text in data:
-            b.div(class_=class_, display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
-                media=Media(min=minWidth, max=maxWidth, display=self.BLOCK))
+            b.div(class_=class_, display=self.C.NONE, fontsize=Em(0.5), color=Color(self.C.WHITE),
+                media=Media(min=minWidth, max=maxWidth, display=self.C.BLOCK))
             b.text(text)
             b._div()
-        """
-        b.div(class_='c1', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
-            media=Media(min=self.M_DESKTOP_MIN, display=self.BLOCK))
-        b.text('Responsive desktop mode.')
         b._div()
-        b.div(class_='c2', display=self.NONE, fontsize=Em(0.5), color=self.WHITE,
-            media=Media(min=self.M_TABLET_MIN, max=self.M_TABLET_MAX, display=self.BLOCK))
-        b.text('Responsive tablet mode.')
-        b._div()
-        b.div(class_='c3', display=self.NONE, fontsize=Em(0.5), color=self.BLACK,
-            media=Media(max=self.M_MOBILE_MAX, display=self.BLOCK))
-        b.text('Responsive mobile mode.')
-        b._div()
-        """
-        b._div()
-        b.div(class_=self.CLASS_CAPTION, color='#888', margin=Margin(0, self.AUTO), 
-              width=Perc(100), maxwidth=700, minwidth=300,
-              paddingtop=Em(0.5), fontfamily=self.CSS_CAPTIONFONT, fontsize=Em(0.8), 
-              textalign=self.CENTER, lineheight=Em(1.4), fontstyle=self.ITALIC,
-              # Change background color of the line to indicate the illustrate the difference for mobile size.
-              #media=Media(max=self.M_MOBILE_MAX, backgroundcolor='yellow', color='#222', fontsize=Em(1),
-              #  margin=0, width=Perc(100)),
+        b.div(class_=self.C.CLASS_CAPTION, color=Color('#888'), 
+            width=Perc(100), maxwidth=700, minwidth=300,
+            margin=Margin(0, self.C.AUTO), 
+            paddingtop=Em(0.5), fontfamily=self.CSS_CAPTIONFONT, fontsize=Em(0.8), 
+            textalign=self.C.CENTER, lineheight=Em(1.4), fontstyle=self.C.ITALIC,
         )
         b.text('Responsive page generated by Xierpa3.')
         b._div()
@@ -102,14 +105,17 @@ class HelloWorldResponsive(Theme):
     u"""The <b>HelloWorldResponsive</b> class implements a basic Hello World page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
+
     TITLE = u'The responsive “Hello world” page.' # Use as title of window.
 
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
         root = self.newStyle() # Create root style
-        root.addStyle('body', backgroundcolor='white',
-            # DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
+        root.addStyle('body', backgroundcolor=Color(self.C.WHITE),
+            # TODO: GLOBAL MEDIA DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
         )
         return root
         
@@ -122,7 +128,7 @@ class HelloWorldResponsive(Theme):
         # Create an instance (=object) of the page, containing the "hw" component.
         # The class is also the page name in the url.
         # Components can be a single component or a list of components.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=container, title=self.TITLE)
         # Answer a list of types of pages for this site.
         return [homePage]
 

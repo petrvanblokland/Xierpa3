@@ -23,6 +23,10 @@ class ItemGroup(Group):
     Defined by a range of widths, a group of items is scaled to stay on the same line. If the screen width
     changes, then then the <b>clear</b> attribute is shifted value, so the line break takes place between another 
     set of items."""
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Group.C 
+    
     BLUEPRINT = BluePrint(
         # Selection stuff
         itemStart=0, 
@@ -38,22 +42,21 @@ class ItemGroup(Group):
     )
     def buildBlockRow(self, b):
         s = self.style
-        b.div(class_=self.CLASS_ROW, width=s.rowWidth or Perc(100))
-        mediaStyles = Media(max=self.M_MOBILE_MAX, display=s.mobileRowDisplay or self.BLOCK, float=self.NONE,
-                 minwidth=0, width=self.AUTO, paddingleft=0, paddingright=0, margin=0)
+        b.div(class_=self.C.CLASS_ROW, width=s.rowWidth or Perc(100))
+        mediaStyles = Media(max=self.C.M_MOBILE_MAX, display=s.mobileRowDisplay or self.C.BLOCK, float=self.NONE,
+                 minwidth=0, width=self.C.AUTO, paddingleft=0, paddingright=0, margin=0)
 
-        print '33322323', s.itemCount
         for index in range(s.itemCount):
             # Build all child components of the generic group.
             #print index, s.columns, index % s.columns, index % s.columns == s.columns-1
             colIndex = index % s.columns
             classIndex = '%s%d' % (s.class_ or 'itemGroup', colIndex)
             if index % s.columns == 0:
-                clear = self.BOTH
+                clear = self.C.BOTH
             else:
-                clear = self.NONE
-            b.div(class_=(self.CLASS_ITEM, classIndex), width='%d%%' % (100/s.columns), 
-                float=self.LEFT, clear=clear, media=mediaStyles,
+                clear = self.C.NONE
+            b.div(class_=(self.C.CLASS_ITEM, classIndex), width=Perc(100/s.columns), 
+                float=self.C.LEFT, clear=clear, media=mediaStyles,
             )
             for component in self.components:
                 saveItemStart = component.style.itemStart

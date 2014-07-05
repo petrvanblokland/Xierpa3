@@ -12,12 +12,15 @@
 #
 import os, shutil
 from xierpa3.toolbox.stream.writer import Writer
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.stack import Stack
 from xierpa3.descriptors.environment import Environment
 
-class Builder(C):
+class Builder(object):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants 
 
     ID = None   # To be redefined by inheriting builder classes
     EXTENSION = ID # To be redefined by inheriting class. Default extension of output files.
@@ -33,7 +36,7 @@ class Builder(C):
         self._newLine = '\n' # Newline code to add˙at all closing of blocks
         self._loopLevel = Stack() # Storage of inheriting classes that want to filter on loop iterations.
         self._footnoteCount = 0
-        # Initialize the stack of result witers
+        # Initialize the stack of result writers
         self.initializeResult(result)
         # Allow inheriting builder classes to do initialization.
         self.initialize() 
@@ -126,7 +129,7 @@ class Builder(C):
         """"Output tabs to the current level and add newlines, depending on the setting of <b>self._newline</b>
         (string with newlines) and <code>self._tabLevel</code> (number of indents)."""
         if self._verbose:
-            self.output(self._newLine + (C.TAB_INDENT * self._tabLevel)) 
+            self.output(self._newLine + (self.C.TAB_INDENT * self._tabLevel)) 
 
     def tabIn(self):
         if self._doIndent:
@@ -217,10 +220,10 @@ class Builder(C):
     #  R E Q U E S T  &  F O R M
     
     def getCurrentArticleId(self):
-        return self.e.form[C.PARAM_ARTICLE]
+        return self.e.form[self.C.PARAM_ARTICLE]
 
     def setCurrentArticleId(self, aid):
-        self.e.form.set(C.PARAM_ARTICLE, aid)
+        self.e.form.set(self.C.PARAM_ARTICLE, aid)
     
     def getUrl(self):
         u"""Answer the url of the current page. To be implemented by inheriting classes

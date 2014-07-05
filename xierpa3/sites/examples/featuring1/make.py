@@ -13,7 +13,7 @@
 import webbrowser
 from xierpa3.attributes import Em, Px, Perc
 from xierpa3.adapters import FileAdapter
-from xierpa3.components import Theme, Page, Container, FeaturedByDiapText, FeaturedByTextList
+from xierpa3.components import Theme, Page, Container, FeaturedByDiapText, FeaturedByTextList, Article
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -22,8 +22,15 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # Define the two component here. Normally these would come from a component library,
 # where the BluePrint values function as API to adjust the component instance behavior
 # from the outside.
-          
+
+class ArticleAdapter(FileAdapter):
+    def getCurrentArticleId(self):
+        return 'manifest-on-skills'
+            
 class Featuring1(Theme):
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
+
     TITLE = u'The Simple Website Example Page' # Use as title of window.
 
     BODYSIZE = Px(12)
@@ -33,14 +40,14 @@ class Featuring1(Theme):
     
     CC = Theme # Inherit the constants from the parent class.
 
-    ADAPTERCLASS = FileAdapter # Preferred adapter class for this site.
+    ADAPTERCLASS = ArticleAdapter # Preferred adapter class for this site.
     
     URL_FONTS = [
         # Note that this package contains the a set of latest featured font, and may be changed in the future.
         # If using the font in this package, safest is to refer to the functional constant names below,
         # instead of making a direct reference to the family name.
         # Of course, taking your own account at //www.webtype.com is even better :)
-        Theme.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
+        C.XIERPA3_DEMOFONTS, # Webtype @fontface fonts, to be used for localhost demo purposes.
     ]    
 
     def baseStyle(self):
@@ -48,17 +55,17 @@ class Featuring1(Theme):
         s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, lineheight=self.BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
-        s.addStyle('div', float=self.LEFT, width=Perc(100))
+        s.addStyle('div', float=self.C.LEFT, width=Perc(100))
         return s
     
     def baseComponents(self):
         # Create the component instances
-        featured1 = FeaturedByDiapText()
-        featured2 = FeaturedByTextList()
-        container = Container(components=(featured1, featured2)) # Create the single page instance, containing the 2 components
+        article = Article()
+        #featured2 = FeaturedByTextList()
+        container = Container(components=article) # Create the single page instance, containing the 2 components
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, name=self.TEMPLATE_INDEX, fonts=self.URL_FONTS,
-            title=self.TITLE, css=self.URL_CSS, components=container)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
+            title=self.TITLE, css=self.C.URL_CSS, components=container)
         return [homePage]
     
     def make(self, root=None):

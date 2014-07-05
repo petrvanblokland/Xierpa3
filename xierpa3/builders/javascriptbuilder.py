@@ -11,11 +11,12 @@
 #   javascriptbuilder.py
 #
 from xierpa3.builders.builder import Builder
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 
 class JavaScriptBuilder(Builder):
     u"""The JavaScriptBuilder implements the basic behavior of generating JavaScript output."""
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Builder.C 
     
     def comment(self, s):
         if s is not None:

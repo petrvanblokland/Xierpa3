@@ -14,10 +14,13 @@ import os
 import re
 import urllib
 import inspect
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 from xierpa3.toolbox.dating import uniqueId
 
-class Transformer:
+class Transformer(object):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants
 
     # ---------------------------------------------------------------------------------------------------------
     #     M E A S U R E
@@ -972,7 +975,7 @@ class Transformer:
                 if cls.value2Bool(vv):
                     return True
             return False
-        return not str(v).lower() in C.FALSEVALUES
+        return not str(v).lower() in cls.C.FALSEVALUES
 
     @classmethod
     def toBase62(cls, value, base=62):
@@ -1324,9 +1327,9 @@ class Transformer:
     def col2Class(cls, col):
         u"""Translate the <i>col</i> number to a column width class name. If the <i>col</i>
         class cannot be found, e.g. because it is <b>None</b> then answer the class of <b>C.MAXCOL</b>."""        
-        colClass = C.COL2CLASS.get(col)    
+        colClass = cls.C.COL2CLASS.get(col)    
         if colClass is None:
-            colClass = C.COL2CLASS.get(C.MAXCOL)
+            colClass = cls.C.COL2CLASS.get(cls.C.MAXCOL)
         return colClass
     
     #    C U R R E N C Y

@@ -14,7 +14,6 @@
 #   https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
 #
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.constants.constants import C
 
 class PhpBuilder(HtmlBuilder):
     u"""
@@ -22,6 +21,9 @@ class PhpBuilder(HtmlBuilder):
     directory of the site, otherwise the default framework is copied there. 
     Then the multiple result streams are saved at the destination in the framework.
     """
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = HtmlBuilder.C 
+
     ID = C.TYPE_PHP # Also the default extension of the output format.
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.

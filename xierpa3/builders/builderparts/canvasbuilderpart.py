@@ -12,9 +12,6 @@
 #
 #    http://diveintohtml5.info/canvas.html#shapes
 #
-from xierpa3.toolbox.transformer import TX
-from xierpa3.constants.constants import C
-from xierpa3.attributes.gradient import LinearGradient
 from xierpa3.toolbox.dating import uniqueId
 
 class CanvasBuilderPart:
@@ -48,7 +45,7 @@ class CanvasBuilderPart:
             xierpa3_context.fillStyle = "%(fill)s";
             xierpa3_context.fillRect("%(x)s", "%(y)s", "%(width)s", "%(height)s");
         """ % dict(id=self._canvasMode, x=kwargs.get('x', 0), y=kwargs.get('y', 0), 
-            fill=kwargs.get('fill', C.NONE),
+            fill=kwargs.get('fill', self.C.NONE),
             width=kwargs.get('width', 100), height=kwargs.get('height', 100)))
         self._script()
            

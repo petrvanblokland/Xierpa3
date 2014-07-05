@@ -10,8 +10,6 @@
 #
 #    xmltransformerpart.py
 #
-from xierpa3.constants.constants import C
-
 class XmlTransformerPart:
 
     def addDocBaseClass(self, class_, attrs):
@@ -146,13 +144,13 @@ class XmlTransformerPart:
         previous = element.getprevious()
         if previous is None or previous.tag != element.tag:
             item = attrs.get('class_') or []
-            item.append(C.CLASS_FIRST)
+            item.append(self.C.CLASS_FIRST)
             attrs['class_'] = item
         # Mark in the class if the element is last of its kind in list of siblings.            
         next = element.getnext()
         if next is None or next.tag != element.tag:
             item = attrs.get('class_') or []
-            item.append(C.CLASS_LAST)
+            item.append(self.C.CLASS_LAST)
             attrs['class_'] = item
         
         self.p(**attrs)
@@ -236,11 +234,11 @@ class XmlTransformerPart:
     # I M A G I N G
                
     def doc_image(self, element, attrs):
-        self.div(class_=C.CLASS_IMAGEBLOCK)
+        self.div(class_=self.C.CLASS_IMAGEBLOCK)
         if not attrs.has_key('src'): # No src url defined, then use default image.
             attrs['src'] = "http://data.petr.com.s3.amazonaws.com/_images/xierpa/kruis6.jpg"
         if not attrs.has_key('class_'):
-            attrs['class_'] = C.CLASS_AUTOWIDTH
+            attrs['class_'] = self.C.CLASS_AUTOWIDTH
         self.img(**attrs)
         self.pushResult() # Push output stream, to catch any caption output
         
@@ -248,7 +246,7 @@ class XmlTransformerPart:
         u"""Pop the result output streams."""
         caption = self.popResult().strip()
         if caption:
-            self.div(class_=C.CLASS_CAPTION)
+            self.div(class_=self.C.CLASS_CAPTION)
             self.text(caption)
             self._div() 
         self._div() # .imageBlock
@@ -261,7 +259,7 @@ class XmlTransformerPart:
         href = attrs.get('href')
         if href and not href.startswith('http://') and not href.startswith('/'):
             href = 'http://' + href
-        self.a(href=href, target=attrs.get('target', C.TARGET_EXTERN))
+        self.a(href=href, target=attrs.get('target', self.C.TARGET_EXTERN))
     
     def _doc_www(self):
         self._a()

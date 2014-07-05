@@ -20,7 +20,9 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class SimpleTypeSpecimenColumn(Column):
 
-    CC = Column # Access constants through super class.
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Column.C
+
     MAXWIDTH = Px(1100)
     # Load @fontface fonts for this example from www.webtype.com
     BODYFAMILY = '"Benton Sans RE"'
@@ -36,7 +38,7 @@ class SimpleTypeSpecimenColumn(Column):
         minWidthMobile=0, doc_minWidthMobile=u'Column minimal width for mobile.', 
         maxWidth=MAXWIDTH, doc_maxWidth=u'Column maximal width.',   
         maxWidthMobile=Perc(100), doc_maxWidthMobile=u'Column maximal width for mobile.', 
-        margin=Margin(0, CC.AUTO, 0, CC.AUTO), doc_margin=u'Column margin.', 
+        margin=Margin(0, C.AUTO, 0, C.AUTO), doc_margin=u'Column margin.', 
         marginMobile=0, doc_marginMobile=u'Column margin for mobile.', 
         padding=0, doc_padding='Column padding.', 
         fontSize=Em(1), doc_fontSize=u'Column main font size.',
@@ -62,7 +64,7 @@ class SimpleTypeSpecimenColumn(Column):
     def buildBlock(self, b):
         u"""Build the specimen column"""
         s = self.style # Copy from inherited BluePrints with redefined user attributes.
-        b.div(class_=self.CLASS_COLUMN, color=s.color, 
+        b.div(class_=self.C.CLASS_COLUMN, color=s.color, 
               margin=s.margin, width=s.width, maxwidth=s.maxWidth, minwidth=s.minWidth, 
               backgroundcolor=s.backgroundColor, 
               padding=s.padding, fontfamily=s.fontFamily, fontsize=s.fontSize, 
@@ -102,6 +104,9 @@ class SimpleTypeSpecimenColumn(Column):
 class SimpleTypeSpecimenSite(Theme):
     u"""The <b>TypeSpecimenSite</b> generates an HTML file with a column of random blurb text. 
     Double click the generated file or drag to a browser see the result."""
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Theme.C
+
     TITLE = u'The Simple Type Specimen Page' # Use as title of window.
 
     URL_FONTS = (
@@ -109,7 +114,7 @@ class SimpleTypeSpecimenSite(Theme):
         # If using the font in this package, safest is to refer to the functional constant names below,
         # instead of making a direct reference to the family name.
         # Of course, taking your own account at //www.webtype.com is even better :)
-        Theme.XIERPA3_DEMOFONTS,    # Webtype @fontface fonts, to be used for localhost demo purposes.
+        C.XIERPA3_DEMOFONTS,    # Webtype @fontface fonts, to be used for localhost demo purposes.
     )    
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
@@ -119,7 +124,7 @@ class SimpleTypeSpecimenSite(Theme):
         container = Container(components=column)
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.TEMPLATE_INDEX, components=container, title=self.TITLE, 
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=container, title=self.TITLE, 
             fonts=self.URL_FONTS)
         # Answer a list of types of pages for this site. In this case just one template.
         return [homePage]

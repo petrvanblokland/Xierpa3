@@ -24,9 +24,7 @@ class BaseConfig(object):
 
     PORT = 80
     DEBUG = False
-    USE_ONLINE = True
-    USE_LOCAL = not USE_ONLINE
-    USE_FONTFACE = True and USE_ONLINE
+    USE_ONLINE = True # Can be changed through UI of implementing application.
     USE_MULTIPROCESSING = False and sys.version_info >= (2, 7)
  
     CONNECTION = 'fast'
@@ -37,10 +35,22 @@ class BaseConfig(object):
     PYTHONAPP = 'python2.7'
 
     # ---------------------------------------------------------------------------------------------------------
+    #    I M A G E S 
+    
+    @classmethod
+    def useOnline(cls):
+        # As method, because cls.USE_ONLINE can be change by application.
+        return cls.USE_ONLINE
+        
+    # ---------------------------------------------------------------------------------------------------------
     #    S 3
 
     USE_S3 = True
-    USE_LOCALS3 = (True and USE_S3) or not USE_ONLINE
+    @classmethod
+    def useLocalS3(cls):
+        # As method, because cls.USE_ONLINE can be change by application.
+        # As method, because cls.USE_ONLINE can be change by application.
+        return (True and cls.USE_S3) or not cls.useOnline()
 
     ACCESSKEYID = '' # Add your Amazon S3 access key here in the config file.
     SECRETACCESSKEY = '' # Add your Amazon S3 secret access key here in the config file.

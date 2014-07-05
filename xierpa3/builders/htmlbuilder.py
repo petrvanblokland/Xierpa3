@@ -19,18 +19,21 @@ from xierpa3.builders.builderparts.htmlbuilderpart import HtmlBuilderPart
 from xierpa3.builders.builderparts.xmltransformerpart import XmlTransformerPart
 from xierpa3.builders.builderparts.svgbuilderpart import SvgBuilderPart
 from xierpa3.builders.builderparts.canvasbuilderpart import CanvasBuilderPart
-from xierpa3.constants.constants import C
 from xierpa3.toolbox.transformer import TX
 from xierpa3.toolbox.stack import Stack
 
 class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart, 
-        XmlTransformerPart, HtmlBuilderPart, Builder, C):
+        XmlTransformerPart, HtmlBuilderPart, Builder):
     u"""
     """
     # Used for dispatching component.build_sass, and builder.isType('html'),
     # for components that want to define builder dependent behavior. In normal
     # processing of a page, this should never happen. But it can be used to
     # select specific parts of code that should not be interpreted by other builders.
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Builder.C 
+
     ID = C.TYPE_HTML # Also the default extension of the output format.
     EXTENSION = ID
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
@@ -81,7 +84,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
         self.body()
         # Instead of calling the main self.block
-        self.div(class_=component.class_ or C.CLASS_PAGE)
+        self.div(class_=component.class_ or self.C.CLASS_PAGE)
         self.comment(component.getClassName()) # Add reference  Python class name of this component
         if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
@@ -93,7 +96,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         # Instead of calling the main self._block
         if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self._editor(component)
-        self._div(comment='.'+(component.class_ or C.CLASS_PAGE))
+        self._div(comment='.'+(component.class_ or self.C.CLASS_PAGE))
         self._body()
         self._html()
 
@@ -123,13 +126,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         u"""Build the meta tag with description of the site for search engines, if available in the adapter."""
         data = component.adapter.getDescription()
         if data.text is not None:
-            self.meta(name=self.META_DESCRIPTION, content=data.text)
+            self.meta(name=self.C.META_DESCRIPTION, content=data.text)
             
     def buildMetaKeyWords(self, component):
         u"""Build the meta tag with keywords of the site for search engines, if available in the adapter."""
         data = component.adapter.getKeyWords()
         if data.text is not None:
-            self.meta(name=self.META_KEYWORDS, content=data.text)
+            self.meta(name=self.C.META_KEYWORDS, content=data.text)
             
     def XXXcssUrl(self, css):
         if not isinstance(css, (list, tuple)):
@@ -179,13 +182,13 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
     def isEditor(self):
         if not self.e:
             return False # Running batch mode, has no editor.
-        return self.e.form[self.PARAM_EDIT]
+        return self.e.form[self.C.PARAM_EDIT]
 
     def editor(self, component):
         self.form(id='editor', method='post', action='/' + component.root.urlName)
         self.div(style='float:left;background-color:#D0D0D0;width:100%')
-        self.input(type='hidden', name='edit', value=self.e.form[self.PARAM_EDIT]) # Keep edit open when in that mode.
-        self.input(type='hidden', name='article', value=self.e.form[self.PARAM_ARTICLE]) # Keep edit open when in that mode.
+        self.input(type='hidden', name='edit', value=self.e.form[self.C.PARAM_EDIT]) # Keep edit open when in that mode.
+        self.input(type='hidden', name='article', value=self.e.form[self.C.PARAM_ARTICLE]) # Keep edit open when in that mode.
         self.input(type='submit', name='new', value='New')
         self.input(type='submit', name='save', value='Save', onclick='saveArticle();')
         self._div()
@@ -276,7 +279,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         elif height is not None:
             width = None
         alt = component.alt or TX.path2Name(component.url)
-        self.img(src=component.url, width_html=width, height_html=height, alt=component.alt,
+        self.img(src=component.url, width_html=width, height_html=height, alt=alt,
             class_=TX.flatten2Class(class_, component.getPrefixClass()))
 
     def element(self, **kwargs):

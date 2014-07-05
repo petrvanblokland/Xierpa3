@@ -43,14 +43,16 @@ import inspect
 from xierpa3.adapters import BlurbAdapter
 from xierpa3.descriptors.style import Style
 from xierpa3.descriptors.blueprint import BluePrint
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import Perc, Color
 
-class Component(C):
+class Component(object):
     u"""
     The Component describes the abstract behavior of components on the page.
     """
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Constants 
     # Root default style template. To be cascaded by inheriting classes.
     BLUEPRINT = BluePrint(
         # Default behavior of images, use class autowidth to cover differences between browsers.
@@ -115,7 +117,7 @@ class Component(C):
     def __repr__(self):
         return '<%s: %s>' % (self.__class__.__name__, self.selector or self.name)
 
-    def __getattr__(self, key):
+    def XXX__getattr__(self, key):
         # Always answer None for missing attributes.
         return self.__dict__.get(key)
 
@@ -265,8 +267,9 @@ class Component(C):
         Normally components should not be aware which builder they are talking to.
         """
         hook = 'buildBlock_' + b.ID
-        buildBlock = getattr(self, hook)
-        if buildBlock is None:
+        if hasattr(self, hook):
+            buildBlock = getattr(self, hook)
+        else:
             buildBlock = self.buildBlock # Not special dispatch, use generic method instead.
         buildBlock(b)
 
