@@ -158,7 +158,7 @@ class Article(ArticleColumn):
         else:
             b.text('Cannot find article')
             
-    def buildArticleTop(self, b, article, chapterIndex):
+    def buildArticleTop(self, b, articleData, chapterIndex):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
         For all other pages build a smaller version of the top."""
         s = self.style
@@ -166,48 +166,47 @@ class Article(ArticleColumn):
         b.div(class_=class_, float=self.C.LEFT, width=Perc(100), paddingtop=Em(0.5))
         # Poster image
         if chapterIndex == 0 and s.showPoster:
-            b.img(class_=self.C.CLASS_AUTOWIDTH, src=article.poster)
+            b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster)
         # Article category
-        if chapterIndex == 0 and article.category: # Text on text
-            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, article.category))
+        if chapterIndex == 0 and articleData.category: # Text on text
+            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, articleData.category))
             b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
                 fontweight=s.categoryWeight, margintop=Em(1), display=self.C.BLOCK)
-            b.text(article.category)
+            b.text(articleData.category)
             b._h5()
             b._a()
         # Article title or name (on respectively the first chapter page or the rest of the pages.
         if chapterIndex == 0: # Show large title on the chapter first page of the article
             b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
                 color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-            b.text(article.name)
+            b.text(articleData.name)
             b._h2()
         else: # Show smaller title on the rest of the pages
             b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
                 color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-            b.text(article.name)
+            b.text(articleData.name)
             b._h2()
         # Author
-        if chapterIndex == 0 and article.author: # Test if there is an author defined.
-            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, article.author))
+        if chapterIndex == 0 and articleData.author: # Test if there is an author defined.
+            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
                 display=self.C.BLOCK)
-            b.text('By %s' % article.author)
+            b.text('By %s' % articleData.author)
             b._h5()
             b._a()
         # Chapter title
-        chapterTitle = 'AAAAAAA' #b.adapter.getChapterTitleByIndex(chapterIndex, component=article)
-        if chapterIndex == 0: # Show large title on the chapter first page of the article
-            b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
-                 margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
-            if chapterTitle is not None: 
+        chapterTitle = self.adapter.getChapterTitleByIndex(chapterIndex, articleData)
+        if chapterTitle:
+            if chapterIndex == 0: # Show large title on the chapter first page of the article
+                b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
+                     margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
                 b.text(chapterTitle)
-            b._h3()
-        else: # Other chapter pages
-            b.h3(class_='chapterTitle1', fontsize=s.chapterTitleSize1, color=s.chapterTitleColor1,
-                 margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
-            if chapterTitle is not None: 
+                b._h3()
+            else: # Other chapter pages
+                b.h3(class_='chapterTitle1', fontsize=s.chapterTitleSize1, color=s.chapterTitleColor1,
+                     margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
                 b.text(chapterTitle)
-            b._h3()
+                b._h3()
         b._div(comment=class_)
                 
     def buildArticleStyle(self, b):

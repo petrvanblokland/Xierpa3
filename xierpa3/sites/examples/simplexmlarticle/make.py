@@ -11,10 +11,10 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px, Perc
+from xierpa3.attributes import Em, Px, Perc, Color
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import FileAdapter
-from xierpa3.components import Theme, Page, Container, FeaturedByDiapText, FeaturedByTextList, Article
+from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -25,6 +25,8 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # from the outside.
 
 class ArticleAdapter(FileAdapter):
+    u"""Inherit from the <b>FileAdapter</b> to read the example XML article file."""
+    
     def getArticle(self, id=None):
         u"""Redefine this method of the standard <b>FileAdapter</b> always to answer
         the one example article. Normal usage is that the <b>id</b> attribute is connected
@@ -32,7 +34,22 @@ class ArticleAdapter(FileAdapter):
         The builders always know the request parameters, such as the url of the page."""
         return self.getCachedArticle('manifest-on-skills')
 
-class Featuring1(Theme):
+class SimpleArticle(Column):
+    u"""The <b>SimpleArticle</b> class is a simplified example component, similar to the main 
+    <b>Article</b> component, showing how an XML article file can be used as “database”
+    for content structure."""
+    def buildColumn(self, b):
+        articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
+        self.buildArticleData(b, articleData)
+
+    def buildArticleData(self, b, articleData):
+        b.img(src=articleData.poster)
+        b.br()
+        b.text(articleData.category)
+        b.br()
+        b.text('AAAAAA')
+        
+class SimpleXmlArticle(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
@@ -63,12 +80,14 @@ class Featuring1(Theme):
     
     def baseComponents(self):
         # Create the component instances
-        from xierpa3.sites.examples import featuring1 # The demo article is located in our own module.
-        articleRoot = TX.module2Path(featuring1) + '/files/articles/' # Root path where to find the article XML file.
+        from xierpa3.sites.examples import simplexmlarticle
+        # Root path where to find the article XML file for this example page.
+        articleRoot = TX.module2Path(simplexmlarticle) + '/files/articles/' 
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
-        article = Article(adapter=adapter) 
-        #featured2 = FeaturedByTextList()
-        container = Container(components=article) # Create the single page instance, containing the 2 components
+        # Create the article component to contain articles answered by the adapter.
+        article = SimpleArticle(adapter=adapter) 
+        # Put the article in a container for automatic responsive behavior
+        container = Container(components=article, backgroundcolor=Color('yellow'))
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
             title=self.TITLE, css=self.C.URL_CSS, components=container)
@@ -90,5 +109,5 @@ if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
     # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/Featuring1/   
-    path = Featuring1().make()
+    path = SimpleXmlArticle().make()
     webbrowser.open(path)

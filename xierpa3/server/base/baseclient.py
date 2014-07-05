@@ -156,7 +156,7 @@ class BaseClient(object):
             request.setHeader('content-type', mimeType)
 
     def buildResource(self, site):
-        u"""The url requested a xierpa3 resource, try to find it and answer the result
+        u"""The url refers to a xierpa3 resource, try to find it and answer the result
         with the appropriate mime type."""
         path = TX.path2ParentDirectory(TX.module2Path(xierpa3)) + site.e.request.path
         if os.path.exists(path):
