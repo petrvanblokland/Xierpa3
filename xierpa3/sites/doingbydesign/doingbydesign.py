@@ -129,7 +129,7 @@ class DoingByDesign(Shop):
         documentation = Documentation()
         
         # Article
-        featuredByTextList = FeaturedByTextList() # Default start a featured index 0
+        featuredByTextList = FeaturedByTextList() # Default start at featured index 0
         article = Container(class_=self.C.CLASS_ARTICLE, 
             containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))

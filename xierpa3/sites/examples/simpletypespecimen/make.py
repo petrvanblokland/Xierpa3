@@ -37,7 +37,7 @@ class SimpleTypeSpecimenColumn(Column):
         minWidth=0, doc_minWidth=u'Column minimal width.', 
         minWidthMobile=0, doc_minWidthMobile=u'Column minimal width for mobile.', 
         maxWidth=MAXWIDTH, doc_maxWidth=u'Column maximal width.',   
-        maxWidthMobile=Perc(100), doc_maxWidthMobile=u'Column maximal width for mobile.', 
+        maxWidthMobile=C.AUTO, doc_maxWidthMobile=u'Column maximal width for mobile.', 
         margin=Margin(0, C.AUTO, 0, C.AUTO), doc_margin=u'Column margin.', 
         marginMobile=0, doc_marginMobile=u'Column margin for mobile.', 
         padding=0, doc_padding='Column padding.', 

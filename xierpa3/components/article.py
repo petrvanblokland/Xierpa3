@@ -18,8 +18,8 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class ArticleColumn(Column):
     u"""Generic column for articles."""
-    def getChapterIndex(self, b, article):
-        return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(article.items or [])-1)
+    def getChapterIndex(self, b, articleData):
+        return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(articleData.items or [])-1)
      
 class Article(ArticleColumn):
     u"""The Article component is the main medium to display article content."""
@@ -135,27 +135,26 @@ class Article(ArticleColumn):
         codeBackgroundColor=Color(C.WHITE),
     )
     def buildColumn(self, b):
-        article = self.adapter.getArticle(id=b.getCurrentArticleId())
-        self.buildArticle(b, article)
+        articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
+        self.buildArticleData(b, articleData)
 
-    def buildArticle(self, b, article):
+    def buildArticleData(self, b, articleData):
         u"""Build the article. If there is a "/chapter-2" url parameter defined and it is in
         the range of available chapters, then show that chapter. Other values are cropped to
         min and max index of the chapter list."""
         #b.element(tag='img', class_=self.CLASS_AUTOWIDTH, margintop=Em(1), marginbottom=Em(1))
         if b.isType(('css', 'sass')): # @@@ Clean up, using model article?
-            self.buildArticleTop(b, article, 0) # Separate CSS for first chapter and the rest.
-            self.buildArticleTop(b, article, 1)
+            self.buildArticleTop(b, articleData, 0) # Separate CSS for first chapter and the rest.
+            self.buildArticleTop(b, articleData, 1)
             self.buildArticleStyle(b) # Build the CSS style template of an article here
-        elif article is not None and article.items:
-            chapterIndex = self.getChapterIndex(b, article)
-            self.buildArticleTop(b, article, chapterIndex)
-            # @@@@
-            #chapter = b.adapter.getChapterByIndex(chapterIndex, component=article)
-            #if chapter is not None:
-            #    self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
-        elif article.text:
-            b.text(article.text)
+        elif articleData is not None and articleData.items:
+            chapterIndex = self.getChapterIndex(b, articleData)
+            self.buildArticleTop(b, articleData, chapterIndex)
+            chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
+            if chapter is not None:
+                self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
+        elif articleData.text:
+            b.text(articleData.text)
         else:
             b.text('Cannot find article')
             

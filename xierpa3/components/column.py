@@ -23,7 +23,7 @@ class Column(Container):
         classColumn=C.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
         # Layout stuff
         colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 
-        columnWidthMobile=C.CLASS_AUTO, doc_columnWidthMobile=u'Column width for mobile.',
+        columnWidthMobile=C.AUTO, doc_columnWidthMobile=u'Column width for mobile.',
         # Column stuff
         columnMarginLeft=None, doc_columnMarginLeft=u'Column margin left.',
         columnMarginLeftMobile=0, doc_columnMarginLeftMobile=u'Column margin left for mobile.',

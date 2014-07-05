@@ -128,13 +128,17 @@ class FileAdapter(Adapter):
             return []
         return article.items 
     
-    def getChapterByIndex(self, article, index):
+    def getChapterByIndex(self, index, article):
+        u"""Find the chapter by <b>index</b> in the ArticleData instance <b>article</b>.
+        Answer <b>None</b> if the chapter index is not valid."""
         if 0 <= index < len(article.items or []):
             return article.items[index]
         return None
     
-    def getChapterTitleByIndex(self, article, index):
-        chapter = self.getChapterByIndex(article, index)
+    def getChapterTitleByIndex(self, index, article):
+        u"""Find the title of the chapter by <b>index</b> in the ArticleData instance <b>article</b>.
+        Answer <b>None</b> if the index is not valid or the title cannot be found."""
+        chapter = self.getChapterByIndex(index, article)
         if chapter is not None:
             return chapter.find('./meta/title')
         return None
