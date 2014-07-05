@@ -26,6 +26,9 @@ class Article(ArticleColumn):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = ArticleColumn.C
     
+    # Default parameters for the article layout, to make sure that the default 
+    # behavior makes reasonable good  typography. Each of these values can be redefined
+    # by changing the BluePrint parameters in the Article() constructor call.
     CHAPTERCOLOR = Color('#202020')
     SUMMARYCOLOR= CHAPTERCOLOR
     CHAPTERTITLECOLOR0 = Color('#1F1F1F')
@@ -144,7 +147,7 @@ class Article(ArticleColumn):
             self.buildArticleTop(b, article, 0) # Separate CSS for first chapter and the rest.
             self.buildArticleTop(b, article, 1)
             self.buildArticleStyle(b) # Build the CSS style template of an article here
-        elif article.items:
+        elif article is not None and article.items:
             chapterIndex = self.getChapterIndex(b, article)
             self.buildArticleTop(b, article, chapterIndex)
             # @@@@
@@ -305,13 +308,13 @@ class Article(ArticleColumn):
         b._div() # Article chapter
              
     def buildLiStyle(self, b):
-        # <li>
+        # <li> in side article XML
         s = self.style
         b.li(marginbottom=s.bulletItemMarginBottom)
         b._li()
                
     def buildPStyle(self, b):
-        # <footnote>
+        # <footnote> inside article XML
         s = self.style
         b.sup(class_=self.C.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
             fontsize=s.footnoteFontSize or Em(0.8), position=s.footnotePosition or self.C.RELATIVE,
@@ -321,6 +324,10 @@ class Article(ArticleColumn):
         b._em()
     
 class ArticleSideBar(ArticleColumn):
+
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = ArticleColumn.C
+    
     BLUEPRINT = BluePrint( 
         # Layout stuff
         colWidth=4, # Default amount of columns for this component   
@@ -329,6 +336,8 @@ class ArticleSideBar(ArticleColumn):
         chapterLabel='Chapters',
         chapterNameSize=Em(1.2),
         showChapterSummaryOnMax=10, # Not show summary if more than 10 chapters
+        mobileChapterButtonColor=Color(C.WHITE), doc_mobileChapterButtonColor=u'Color of chapter button for mobile.',
+        mobileChapterButtonBackgroundColor=Color('#444'), doc_mobileChapterButtonBackgroundColor=u'Background color of chapter button for mobile.',
         # Footnotes
         showFootNotes=True, 
         footnoteLabel='Footnotes', 
@@ -368,9 +377,9 @@ class ArticleSideBar(ArticleColumn):
             media=Media(max=self.C.M_MOBILE_MAX, display=self.C.BLOCK)
         )
         b.ul()
-        b.li(backgroundcolor=s.mobileChapterButtonColor or Color('#444'))
+        b.li(backgroundcolor=s.mobileChapterButtonColor)
         # <a>Chapter name</a>
-        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor or Color(self.C.WHITE))
+        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor)
         b.h2(fontsize=Em(2), lineheight=Em(1.2),
              marginbottom=Em(0.2), margintop=Em(0.2), padding=Em(0.5))
         b._h2()

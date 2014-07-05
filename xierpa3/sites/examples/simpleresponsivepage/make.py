@@ -94,7 +94,7 @@ class SimpleResponsivePage(Theme):
 
     TITLE = u'The simple responsive text page.' # Use as title of window.
 
-    BODYFONT = 'Georgia'
+    BODYFONT = 'Georgia, serif'
     CAPTIONFONT = BODYFONT
 
     BLUEPRINT = BluePrint(

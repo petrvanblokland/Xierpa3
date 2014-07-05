@@ -18,8 +18,8 @@ import codecs
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter, Data
 
-class Article(Data):
-    u"""Inheriting from the <b>Data</b> class, the <b>Article</b> automatically generates
+class ArticleData(Data):
+    u"""Inheriting from the <b>Data</b> class, the <b>ArticleData</b> automatically generates
     (and caches) information from the <b>self.tree</b>."""
     # self.id: Unique id of the article, bound to (unique) file name. Key in the cache
     # self.path: Url path name of the file
@@ -52,7 +52,7 @@ class Article(Data):
             self.footnotes.append(item.findall('.//footnote')) # All footnotes per chapter
             
     def __repr__(self):
-        return '[Article:%s]' % self.name
+        return '[ArticleData:%s]' % self.name
 
     def find(self, xpath):
         return self.tree.find(xpath)
@@ -75,11 +75,11 @@ class FileAdapter(Adapter):
         self.readArticles()
         
     def readArticles(self):
-        for id, path in self.getIdPaths():
+        for _, path in self.getIdPaths(): # id, path 
             xml = self.readXmlFile(self.root + path)
             if xml is not None:
                 # Create the article instance and cache the standard query values from the tree.
-                article = Article(id=id, path=path, tree=etree.fromstring(xml))
+                article = ArticleData(id=id, path=path, tree=etree.fromstring(xml))
                 self.cacheArticle(article)
     
     def readXmlFile(self, fsPath): 
@@ -107,7 +107,7 @@ class FileAdapter(Adapter):
     
     def getIdPaths(self, path=None, idPaths=None):
         if path is None:
-            path = '/'
+            path = ''
         if idPaths is None:
             idPaths = []
         for name in os.listdir(self.root + path):

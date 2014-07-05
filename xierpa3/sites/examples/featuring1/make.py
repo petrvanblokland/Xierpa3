@@ -12,6 +12,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Em, Px, Perc
+from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import FileAdapter
 from xierpa3.components import Theme, Page, Container, FeaturedByDiapText, FeaturedByTextList, Article
 from xierpa3.builders.cssbuilder import CssBuilder
@@ -24,9 +25,13 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # from the outside.
 
 class ArticleAdapter(FileAdapter):
-    def getCurrentArticleId(self):
-        return 'manifest-on-skills'
-            
+    def getArticle(self, id=None):
+        u"""Redefine this method of the standard <b>FileAdapter</b> always to answer
+        the one example article. Normal usage is that the <b>id</b> attribute is connected
+        to the current url, as available from <b>builder.getCurrentArticleId()</b>.
+        The builders always know the request parameters, such as the url of the page."""
+        return self.getCachedArticle('manifest-on-skills')
+
 class Featuring1(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
@@ -39,8 +44,6 @@ class Featuring1(Theme):
     HEADFAMILY = '"Hermes FB Semibold", Impact, sans'
     
     CC = Theme # Inherit the constants from the parent class.
-
-    ADAPTERCLASS = ArticleAdapter # Preferred adapter class for this site.
     
     URL_FONTS = [
         # Note that this package contains the a set of latest featured font, and may be changed in the future.
@@ -60,7 +63,10 @@ class Featuring1(Theme):
     
     def baseComponents(self):
         # Create the component instances
-        article = Article()
+        from xierpa3.sites.examples import featuring1 # The demo article is located in our own module.
+        articleRoot = TX.module2Path(featuring1) + '/files/articles/' # Root path where to find the article XML file.
+        adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
+        article = Article(adapter=adapter) 
         #featured2 = FeaturedByTextList()
         container = Container(components=article) # Create the single page instance, containing the 2 components
         # The class is also the page name in the url.
