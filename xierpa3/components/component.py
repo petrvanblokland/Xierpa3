@@ -37,6 +37,7 @@
 #                ItemGroup
 #            SocialMedia
 #
+import os
 import weakref
 import hashlib
 import inspect
@@ -204,12 +205,14 @@ class Component(object):
         pass
 
     def readFile(self, path):
-        u"""Generic method to read from local file system."""
-        f = open(path, 'rb')
-        s = f.read()
-        f.close()
-        return s
-
+        u"""Generic method to read from local file system. Answer None if the file does not exist."""
+        if os.path.exists(path):
+            f = open(path, 'rb')
+            s = f.read()
+            f.close()
+            return s
+        return None
+    
     def getRootPath(self):
         from xierpa3 import components
         return components.__path__[0]

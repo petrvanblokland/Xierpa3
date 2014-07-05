@@ -34,7 +34,9 @@ class SocialMedia(Column):
     )            
     def buildColumn(self, b):
         s = self.style
-        if s.twitterAccount or s.facebookAccount:
+        if not self.C.useOnline():
+            b.text('No Social Media links when off-line.')
+        elif s.twitterAccount or s.facebookAccount:
             b.div(class_=self.C.CLASS_SOCIALMEDIA, display=self.C.BLOCK, float=s.float or self.C.LEFT,
                 width=s.width or Perc(100),
                 media=Media(max=self.C.M_MOBILE_MAX, display=s.mobileDisplay)
