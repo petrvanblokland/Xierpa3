@@ -13,7 +13,7 @@
 import webbrowser
 from xierpa3.attributes import Em, Px, Perc, Color
 from xierpa3.toolbox.transformer import TX
-from xierpa3.adapters import XmlFileAdapter
+from xierpa3.adapters import FileAdapter
 from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder

@@ -16,82 +16,35 @@ import os
 from lxml import etree
 import codecs
 from xierpa3.toolbox.transformer import TX
-from xierpa3.adapters.adapter import Adapter, Data
+from xierpa3.adapters.adapter import Adapter
+from xierpa3.toolbox.storage.data import Data
+from xierpa3.toolbox.parsers.simplex import Simplex # Simplex Wiki parser
 
-class ArticleData(Data):
-    u"""Inheriting from the <b>Data</b> class, the <b>ArticleData</b> automatically generates
-    (and caches) information from the <b>self.tree</b>."""
-    # self.id: Unique id of the article, bound to (unique) file name. Key in the cache
-    # self.path: Url path name of the file
-    # self.name: Name of the article, derived from the <title> tag.
-    # self.items: List of chapter tags, children of the <chapters> tag.
-    def __init__(self, **kwargs):
-        Data.__init__(self, **kwargs)
-        self.name = self.findText('.//meta/title', 'Untitled') # <title>
-        self.tag = self.findText('.//meta/tag') # <tag> is the shorted usage of name/title
-        self.url = self.findText('.//meta/url') # <url> is the optional url, otherwise /article-name is used.
-        self.items = self.findAll('.//chapters/*') # List of <chapters> children
-        self.featured = self.findAll('.//featured/*') # List of <featured> articles.
-        self.children = self.findAll('.//children/*') # List of <children> articles.
-        self.menu = self.findAll('.//menu/*') # List of <menu> children
-        self.summary = self.find('.//meta/summary') # <summary>
-        self.author = self.findText('.//meta/author')
-        self.category = self.findText('.//meta/category') # Category of the article
-        self.level = self.findText('.//meta/level')
-        self.topic = self.find('.//meta/topic') # Short description of the article
-        poster = self.find('.//meta/poster') # First <poster> or <image>
-        if poster is None:
-            poster = self.find('.//image')
-        if poster is None:
-            self.poster = None
-        else:
-            self.poster = poster.attrib['src']
-        # Collect the footnotes per chapter
-        self.footnotes = []
-        for item in self.items:
-            self.footnotes.append(item.findall('.//footnote')) # All footnotes per chapter
-            
-    def __repr__(self):
-        return '[ArticleData:%s]' % self.name
-
-    def find(self, xpath):
-        return self.tree.find(xpath)
-    
-    def findAll(self, xpath):
-        return self.tree.findall(xpath)
-          
-    def findText(self, xpath, default=None):
-        element = self.find(xpath)
-        if element is not None:
-            return element.text
-        return default
-    
-class FileAdapter(Adapter):
-    u"""
-    Adapter for XML file serving
-    """
+class SimplexFileAdapter(Adapter):
+    u"""Adapter for Simples wiki file serving"""
     def initialize(self):
         self._cache = {}
         self.readArticles()
         
     def readArticles(self):
+        simplex = Simplex()
         for id, path in self.getIdPaths(): # id, path 
-            xml = self.readXmlFile(self.root + path)
-            if xml is not None:
-                # Create the article instance and cache the standard query values from the tree.
-                article = ArticleData(id=id, path=path, tree=etree.fromstring(xml))
-                self.cacheArticle(article)
+            wiki = self.readWikiFile(self.root + path)
+            if wiki is not None:
+                # Create the Data instance and cache the standard query values from the tree.
+                data = simplex.compile(wiki)
+                self.cacheArticle(data)
     
-    def readXmlFile(self, fsPath): 
+    def readWikiFile(self, fsPath): 
         if not fsPath.endswith('.xml'):
             fsPath += '.xml'           
         if os.path.exists(fsPath):
             f = codecs.open(fsPath, encoding='utf-8', mode='r+')
-            xml = f.read()
+            wiki = f.read()
             f.close()
         else:
-            xml = None
-        return xml
+            wiki = None
+        return wiki
     
     def cacheArticle(self, article):
         self._cache[article.id] = article
@@ -110,16 +63,17 @@ class FileAdapter(Adapter):
             path = ''
         if idPaths is None:
             idPaths = []
+        extension = '.'+self.C.EXTENSION_TXT
         for name in os.listdir(self.root + path):
             filePath = path + name
             if name.startswith('.'):
                 continue
             if os.path.isdir(self.root + filePath):
                 self.getIdPaths(filePath+'/', idPaths)
-            elif not name.endswith('.xml'):
+            elif not name.endswith(extension):
                 continue
             else:
-                name = name.replace('.xml', '')
+                name = name.replace(extension, '')
                 idPaths.append((name, filePath))
         return idPaths
     
@@ -204,13 +158,13 @@ class FileAdapter(Adapter):
     def getLogo(self, component):
         data = Data()
         data.url = '/home'
-        data.src = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/logo.png'
+        data.src = '//data.doingbydesign.com.s3.amazonaws.com/_images/logo.png'
         return data
 
 if __name__ == '__main__':
     # Cache the adapter
     from xierpa3.sites import doingbydesign
-    fa = FileAdapter(root=TX.module2Path(doingbydesign)+'/files/articles')
+    fa = SimplexFileAdapter(root=TX.module2Path(doingbydesign)+'/files/articles')
     if 0:
         print fa.getIdPaths()
         print fa.getPages(None).items

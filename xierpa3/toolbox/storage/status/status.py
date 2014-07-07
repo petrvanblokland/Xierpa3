@@ -66,7 +66,7 @@ class Status(object):
     def isAllowedValueType(self, value):
         return not self.USE_BASECLASSONLY or value is None or isinstance(value, (bool, int, float, long, basestring, list, tuple, dict))
 
-class Data(Status):
+class XXXData(Status):
     u"""Data is identical to Status, except that it allows non-isAllowedValueType values as storage.
     (Which makes the instances more flexible, but they cannot be stored automatically as JSON or plist)."""
     USE_BASECLASSONLY = False

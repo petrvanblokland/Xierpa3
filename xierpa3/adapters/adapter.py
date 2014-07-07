@@ -11,21 +11,8 @@
 #   adapter.py
 #
 from xierpa3.toolbox.transformer import TX
-from xierpa3.toolbox.storage.status.status import Data
+from xierpa3.toolbox.storage.data import Data 
 from xierpa3.constants.constants import Constants
-
-class Data(object):
-    u"""Generic data instance, answered by every adapter query."""
-    def __init__(self, **kargs):
-        self.items = [] # Make sure that self.items is always iterable.
-        for key, item in kargs.items():
-            setattr(self, key, item)
-    
-    def __getattr__(self, key):
-        return self.__dict__.get(key)
-    
-    def __repr__(self):
-        return '[Data] %s' % `self.__dict__`
     
 class Adapter(object):
     u"""
