@@ -25,24 +25,25 @@ class Container(Component):
 
     BLUEPRINT = BluePrint( 
         # Page/Column
-        paddingLeft=Em(1), doc_paddingLeft=u'Padding left of main container.',
-        paddingRight=Em(1), doc_paddingRight=u'Padding left of main container.',
+        paddingLeft=Px(10), doc_paddingLeft=u'Padding left of main container.',
+        paddingRight=Px(10), doc_paddingRight=u'Padding left of main container.',
         # Row
         rowMargin=Margin(0, C.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.', 
         rowMinWidth=C.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % C.M_MOBILE_MAX,
         rowMaxWidth=C.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % C.MAXWIDTH,     
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
         rowOverflow=C.HIDDEN, doc_rowOverflow=u'Default overflow hidden inside a row inside a container.',
+        rowFloat=C.NONE, doc_rowFloat=u'Default float none inside a row inside a container.',
     )
     
     def buildBlock(self, b):
         u"""Build the container-div with a row-div inside."""
         s = self.style
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight)
-        b.div(class_=self.C.CLASS_ROW, margin=s.rowMargin, width=s.rowWidth, overflow=s.rowOverflow, 
+        b.div(class_=self.C.CLASS_ROW, margin=s.rowMargin, float=s.rowFloat, width=s.rowWidth, overflow=s.rowOverflow, 
             maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
             media=(
-               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0),
+               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat,),
         ))
         for component in self.components:
             component.build(b)
