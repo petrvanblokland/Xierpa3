@@ -142,7 +142,7 @@ class Article(ArticleColumn):
     def buildColumn(self, b):
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
         b.div(class_=self.getClassName(), paddingleft=Em(0.5), paddingright=Em(0.5),
-              media=Media(width=self.C.AUTO, float=self.C.NONE),
+              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE),
         )
         self.buildArticleData(b, articleData)
         b._div()

@@ -42,7 +42,7 @@ class Container(Component):
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight)
         b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat, overflow=s.rowOverflow, 
             maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
-            media=(
+            media=( # Containers have width 100% !
                Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat,),
         ))
         for component in self.components:
