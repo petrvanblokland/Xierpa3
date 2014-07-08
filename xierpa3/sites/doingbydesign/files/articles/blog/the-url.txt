@@ -1,0 +1,60 @@
+$category Blog
+$title The URL
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/processingfordesigners.jpg
+$author Petr van Blokland
+$topic Dimensions are larger than you think.
+$date 2008
+$language nl
+$summary Math is tough. As long as everything is flat and straight, it is easy to maintain an overview. Ideally, we want to compare everything by a single number value. An object of $12 costs half of an object from $24. A bargain. The two-hour movie is twice as good as a movie that only lasts for an hour. Students who get a 4 (out of 10) for an examination are twice as dumb as other students with an 8. And someone who works twenty days will do twice the amount as someone who works for ten days. Or not?
+
+p(lead). Bijna iedereen gebruikt ze dagelijks, maar slechts weinigen weten hoe het werkt: de Uniform Resource Locator (URL), het adres van een pagina op Internet.
+
+Waar cartogafie, Google Maps and Second Life kunnen volstaan met ruimtelijke coördinaten (drie waarden x, y en z leggen elke plaats in een ruimte of op een bol eenduidig vast), is voor het bepalen van een plaats (lees: pagina) op Internet meer informatie nodig. Voorbeelden: !www.doingbydesign.com! en !http://www.webtype.com!.
+
+Door hyperlinks heeft elke pagina op Internet dezelfde afstand tot alle andere pagina's. Hierdoor is alle informatie op het Internet voor te stellen als een wolk. Elke pagina is een druppel. Maar dan geen wolk in twee of drie dimensies, maar in oneindig veel richtingen. Het is lastig om je dat als plaatje voor te stellen, maar met een paar voorbeelden wordt het wel duidelijker.
+De afstand tussen twee foto's op de linker- en rechterpagina van een boek wordt tot nul gereduceerd als je het boek dicht doet. Wat in twee dimensies een afstand lijkt, blijkt in drie dimensies op elkaar te liggen.
+
+De fysieke afstand tot een goede vriend kan duizenden kilometers zijn, maar met een mobiele telefoon is hij of zij toch maar een centimeter van je oor vandaan.
+Het boek en de telefoon zijn een soort "bypass" die twee plaatsen in de ruimte met elkaar verbinden. Bij een hyperlink op een webpagina gebeurt hetzelfde. Om de plaats van een pagina op Internet (of in elk ander elektronisch informatie systeem) te definiëren is dus een ander oplossing nodig dan een simpele x-y-z coördinaat. Uit die behoefte is de URL ontstaan[1].
+
+Een goede URL heeft vier kenmerken. Hij is:
+
+* simpel (een simpele URL is makkelijker te onthouden en sneller te typen);
+* flexibel (een website moet makkelijk uit te breiden zijn);
+* begrijpelijk (pagina's met een URL die logisch in elkaar zit, zijn makkelijker te onderhouden en bieden de gebruiker ondersteuning bij plaatsbepaling in een site);
+* uniek (elke pagina, document en dienst in een website moet een unieke URL kunnen hebben).
+
+Deze vier kenmerken zijn met elkaar in conflict. Meer van de één gaat ten koste van de ander. Een hele korte URL zoals @http://xyz.com/a/b/c/d@ is makkelijk te onthouden, maar alleen omdat de letters op alfabetisch volgorde staan. Dat maakt de URL moeilijk uit te breiden. Bovendien laten de eenletterige benamingen veel te raden over de soort van informatie die op die plaats gevonden kan worden.
+De oplossing van dit probleem is vergelijkbaar met het ontwerpen van een tijdschrift. Omdat steeds nieuwe pagina's en pagina groepen zullen ontstaan, zal het ontwerp altijd soorten van oplossingen moeten beschrijven in de vorm van grammatica, een methode of algoritme.
+Het bepalen van de ultieme URL voor een website is dus typisch een ontwerpprobleem. Er is niet bij voorbaat een eenduidig goede oplossing. Daarom moet een ontwerper er zijn licht over laten schijnen, maar aan de URL's van veel websites is helaas te zien dat dit zelden gebeurt. 
+
+Laten we eens kijken naar de mogelijkheden en randvoorwaarden waarmee de ontwerper van een URL moet werken.
+Een typische URL bestaat uit een aantal onderdelen. Zo bestaat @http://www.items.nl/flash/main.html@ uit drie delen. Het eerste deel @http://@ (Hypertext Transfer Protocol) heet de scheme die aangeeft dat het hier waarschijnlijk om een pagina met HTML code gaat en dat de rest van de URL moet worden geïnterpreteerd zoals hieronder beschreven. Er zijn ook andere protocollen zoals https:// voor beveiligde formulieren en @ftp://@ voor het uploaden en downloaden van folders en files. Binnen dezelfde site kunnen meerdere schemes worden toegepast. 
+
+Het tweede deel van de (http) URL bestaat uit de feitelijke domeinnaam zoals www.items.nl en www.lavecina.org. De domeinnaam bestaat in dit geval zelf ook weer uit 3 delen: www, items en nl, gescheiden door een punt.
+Het eerste deel kan door de provider van een site ook anders worden ingevuld of weggelaten. Het voorvoegsel www (World Wide Web) stamt nog uit de begindagen van Internet en is uit gewoonte vaak beschikbaar, maar er worden ook wel andere functies mee aangegeven zoals intranet of backup.
+
+Het laatste deel van de domeinnaam is een indicatie voor het soort organisatie (.commercial of .organization) of een indicatie van het land van vestiging (.nl, .be of .no)
+De combinatie van het tweede en derde deel, inclusief de punt, vormt de geregistreerde -- en betaalde -- domeinnaam. Deze moet uniek zijn in de wereld.
+Er zijn verschillende inzichten over wat een goede domeinnaam is, variërend van zo kort mogelijk zoals @http://ft.com@ tot een leesbare zin @http://www.joindemonstratingagainstsomething.net@. Het vinden van een goede domeinnaam is op zichzelf ook een ontwerpprobleem, maar deels ook een gewone loterij. Het is de kunst zo snel mogelijk iets vanzelfsprekends te bedenken waar een ander nog niet aan heeft gedacht. Sommige slimmerikken hebben hier een slaatje uit weten te slaan en verkopen voor veel geld domeinnamen die zij eerder kochten. Zo'n dure domeinnaam kopen is een optie, maar in de praktijk is het veel goedkoper -- en niet persé slechter -- om gewoon een andere naam te bedenken. 
+
+Het derde deel @/flash/main.html@ (het pad) van de URL bestaat uit een reeks van namen die zijn gescheiden met een slash. Van oorsprong komen deze namen overeen met de folderstructuur in een computer, waarbij de laatste naam verwijst naar een file waarin de HTML code van de gezochte pagina staat. Dus @http://www.items.nl/flash/main.html@ refereert aan een folder met de naam flash met daarin een file die main.html heet.
+Hoe dieper je in een site zit, hoe meer foldernamen er in de URL staan. Ook hier moet de ontwerper van de URL een mening over hebben. Aangezien de schrijfwijze van de namen van folders op een computer niet overeen komt met wat in een URL is toegestaan komt een volkomen legale foldernaam als "mijn pagina's" er in een URL uit te zien als mijn%20pagina%27s, waarbij in de originele naam een minuten teken is gebruikt, en niet eens een echt aanhalingsteken. Ook is bijvoorbeeld het weergeven van kapitalen in een URL niet op alle soorten computers geheel eenduidig. 
+
+Door een URL kan elke "pagina" op Internet worden gevonden. Maar wie denkt dat het een betrouwbare manier is om alle pagina's op Internet te tellen komt bedrogen uit. Steeds meer webservers slaan tekst en pagina's op in een database, waarbij de opslag niet de gedwongen hiërarchische indeling van een folder/file structuur heeft. Informatie kan makkelijk op meerdere plaatsen en in verschillende hiërarchieën voorkomen. In zo'n geval refereert @/xx/yy/zz@ niet langer aan folders en files maar is het een indicatie voor de webserver hoe de informatie in de database gevonden moet worden.
+
+Met meer kennis over de opbouw van URL's is het aardig spelen. Door bestaande adressen te interpreteren en handmatig aan te passen is het mogelijk om andere beelden uit een site op te halen dan die op de pagina's worden getoond (digitale camera's nummeren de beelden keurig op volgorde) en kunnen pagina's worden bekeken die niet in de navigatie van de site staan. Dan kan soms heel interessante informatie opleveren. 
+
+En dan is er nog de kwestie van formulieren, maar daar is zeker nog wel zo'n column voor nodig. Wordt dus vervolgd. 
+
+Eigenlijk is de URL maar een enkel voorbeeld uit een veel grotere familie van electronische adressen: de URI (Uniform Resource Identifier). Binnen die familie bestaan ook varianten om de plaats van andere soorten informatiebronnen aan te geven, zoals documenten (beelden, films, PDF) en diensten (zoals het updaten van software of het automatisch gelijkzetten van de klok op je computer). De exacte overeenkomsten en verschillen van de standaarden valt buiten dit stukje.
+
+fn1. Voor het ontwerpen van afgeleide adressen zoals bij email info@items.nl gelden vergelijkbare criteria. Dat de tweeletter combinaties als afkorting van de landennaam ook heel andere dingen kunnen betekenen blijkt uit de inkomsten die Turkmenistan voor .tm en de eilandengroep Tuvalu voor het gebruik van .tv krijgen. Met die mogelijkheid had niemand destijds bij het toewijzen van de landencodes rekening gehouden. 
+
+In werkelijkheid is een domeinnaam niet meer dan een etiket op een uniek IP (Internet Protocol) nummer, een patroon van vier driecijferige getallen, ook weer gescheiden door een punt. Zo is de items site ook te zien als http://082.095.185.030/flash/main.html, zolang deze tenminste niet naar een andere provider of computer verhuist. 
+
+h3. URL's
+* http://www.w3.org is de site waar alle standaarden beschreven staan, maar voor normale mensen is de wikipedia site beter leesbaar.
+* http://en.wikipedia.org/wiki/Uniform_Resource_Locator
+* http://en.wikipedia.org/wiki/HTTP
+* http://en.wikipedia.org/wiki/IP

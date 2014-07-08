@@ -17,6 +17,8 @@
 #    =C= is separator between chapters, will be processed separately by textile.
 #    $fileName Field Content lines are pre-processed to fiil the fiels of the Data instance.
 #
+#    TODO: See how we can add soft-hyphens here.
+#
 #    Textile syntax
 #
 #    Single return creates break --> <br/>
