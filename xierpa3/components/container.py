@@ -40,7 +40,7 @@ class Container(Component):
         u"""Build the container-div with a row-div inside."""
         s = self.style
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight)
-        b.div(class_=self.C.CLASS_ROW, margin=s.rowMargin, float=s.rowFloat, width=s.rowWidth, overflow=s.rowOverflow, 
+        b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat, overflow=s.rowOverflow, 
             maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
             media=(
                Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat,),

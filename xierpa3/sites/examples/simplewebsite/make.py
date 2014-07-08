@@ -41,12 +41,14 @@ class MainColumn(Component):
         # Mobile
         fontSizeMobile=Em(3), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
         lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
+        marginRight=Perc(0), doc_marginRight=u"""Margin right for the last column.""",
+
     )                
     def buildBlock(self, b):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-            width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1),
-            media=Media(max=self.C.M_MOBILE_MAX, margin=0,
+            width=s.width, backgroundcolor=s.backgroundColor, 
+            media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight,
               fontsize=s.fontSizeMobile, width=self.C.AUTO, float=self.C.NONE, lineheight=s.lineHeightMobile,
             )
         )
@@ -72,12 +74,13 @@ class SideColumn(Component):
         # Mobile
         fontSizeMobile=Em(1.5), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
         lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
+        marginRight=Perc(1.8), doc_marginRight=u"""Margin right for the column.""",
     )                
     def buildBlock(self, b):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
             width=s.width, backgroundcolor=s.backgroundColor,  
-            media=Media(max=self.C.M_MOBILE_MAX, margin=0, width=self.C.AUTO, float=self.C.NONE,
+            media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight, width=self.C.AUTO, float=self.C.NONE,
               fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
             )
         )
