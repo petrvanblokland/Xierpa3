@@ -472,18 +472,18 @@ figure {
 Make the img of class "autowidth" to get the function working.
 See www.webmonkey.com/2010/02/browser-specific_css_hacks/
 IE (default, as there is no clear way to determine IE now) */
-img.autowidth { width:100%; }
+img.autoWidth { width:100%; }
 // Mozilla
 @-moz-document url-prefix() {
-    img.autowidth { max-width: 100%; width:100%; }
+    img.autoWidth { max-width: 100%; width:100%; }
 }
 // Webkit
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    img.autowidth { max-width: 100%; width:auto; }
+    img.autoWidth { max-width: 100%; width:auto; }
 }
 // Opera
 @media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
-    img.autowidth { max-width: 100%; width:100%; }
+    img.autoWidth { max-width: 100%; width:100%; }
 }
 
 /* CSS Enhancements for Better User Experience */
