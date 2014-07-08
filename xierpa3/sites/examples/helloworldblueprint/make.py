@@ -74,10 +74,10 @@ class HelloWorldBluePrintText(Column):
             media=(
                 # Example for table, show lighter background, change color of text and smaller size.
                 Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=s.backgroundColorTablet, 
-                    color=s.colorTablet, fontsize=Em(3), width=Perc(100)),
+                    color=s.colorTablet, fontsize=Em(3), width=self.C.AUTO, float=self.C.NONE),
                 # For mobile, even more lighter background, change color of text and smaller size.
                 Media(max=self.C.M_MOBILE_MAX, backgroundcolor=s.backgroundColorMobile, 
-                    color=s.colorMobile, fontsize=Em(2), width=Perc(100))
+                    color=s.colorMobile, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE)
             ))
         b.text('Hello parametric world.')
         # One of the advantages of using a real programming language to generate 

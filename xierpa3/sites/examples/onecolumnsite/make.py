@@ -55,7 +55,7 @@ class ExampleColumn(Column):
         color=Color('#222'), doc_color='Column text color.',
         backgroundColor=Color('#FFF'), doc_backgroundColor='Column background color.',
         width=Perc(50), doc_width=u'Column width.',
-        widthMobile=Perc(100), doc_widthMobile=u'Column width for mobile',
+        widthMobile=C.AUTO, doc_widthMobile=u'Column width for mobile, shoud always be “auto” with the row construction.',
         padding=Em(2), doc_padding=u'Column margin in the page.',
         paddingMobile=Em(1.4), doc_paddingMobile=u'Column margin in the page for mobile.',
         # h1
@@ -106,7 +106,7 @@ class ExampleColumn(Column):
               backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
               fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
               # Remove margins on mobile, showing the column on full screen width.
-              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, 
+              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, float=self.C.NONE,
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )

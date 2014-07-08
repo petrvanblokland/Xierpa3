@@ -55,11 +55,11 @@ class HelloWorldResponsiveText(Column):
                 # Example for table, show lighter background, change color of text and smaller size.
                 Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=Color('#444'), 
                       color=Color('orange'), # Translate color name to hex. 
-                      margin=0, fontsize=Em(2), width=Perc(100)),
+                      margin=0, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE), 
                 # For mobile, even more lighter background, change color of text and smaller size.
                 Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#AAA'), 
                       color=Color('red'), # Translate color name to hex. 
-                      margin=0, fontsize=Em(2), width=Perc(100))
+                      margin=0, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE)
             ))
         b.text('Hello world.')
         # One of the advantages of using a real programming language to generate 
