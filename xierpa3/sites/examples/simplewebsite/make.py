@@ -47,7 +47,7 @@ class MainColumn(Component):
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
             width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1),
             media=Media(max=self.C.M_MOBILE_MAX, margin=0,
-              fontsize=s.fontSizeMobile, width=Perc(100), lineheight=s.lineHeightMobile,
+              fontsize=s.fontSizeMobile, width=self.C.AUTO, float=self.C.NONE, lineheight=s.lineHeightMobile,
             )
         )
         article = self.adapter.getArticle() 
@@ -64,7 +64,7 @@ class SideColumn(Component):
     C = Component.C
     
     BLUEPRINT = BluePrint(
-        width=Perc(20), doc_width=u'Side bar width',  # @@@@ Should be 30?
+        width=Perc(30.75), doc_width=u'Side bar width',  # @@@@ Should be 30?
         float=C.LEFT, doc_float=u'Float left inside row.',
         backgroundColor=Color('orange'), doc_backgroundColor=u'Side column background color.',                  
         fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
