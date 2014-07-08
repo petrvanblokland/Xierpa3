@@ -32,11 +32,13 @@ class SimplexFileAdapter(Adapter):
             if wiki is not None:
                 # Create the Data instance and cache the standard query values from the tree.
                 data = simplex.compile(wiki)
+                data.id = id
                 self.cacheArticle(data)
     
     def readWikiFile(self, fsPath): 
-        if not fsPath.endswith('.xml'):
-            fsPath += '.xml'           
+        extension = '.'+self.C.EXTENSION_TXT
+        if not fsPath.endswith(extension):
+            fsPath += extension           
         if os.path.exists(fsPath):
             f = codecs.open(fsPath, encoding='utf-8', mode='r+')
             wiki = f.read()

@@ -35,7 +35,7 @@ class ArticleAdapter(XmlFileAdapter):
         return self.getCachedArticle('manifest-on-skills')
 
 class SimpleArticle(Column):
-    u"""The <b>SimpleArticle</b> class is a simplified example component, similar to the main 
+    u"""The <b>SimplexArticle</b> class is a simplified example component, similar to the main 
     <b>Article</b> component, showing how an XML article file can be used as “database”
     for content structure."""
     def buildColumn(self, b):
@@ -43,11 +43,26 @@ class SimpleArticle(Column):
         self.buildArticleData(b, articleData)
 
     def buildArticleData(self, b, articleData):
-        b.img(src=articleData.poster)
-        b.br()
-        b.text(articleData.category)
-        b.br()
-        b.text('AAAAAA')
+        s = self.style()
+        b.div(class_=s.classColumn, color=s.color, margin=s.margin, 
+              width=s.columnWidth, maxwidth=s.maxWidth, minwidth=s.minWidth, 
+              backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
+              fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
+              # Remove margins on mobile, showing the column on full screen width.
+              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, float=self.C.NONE,
+                fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
+                width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
+        )
+        if articleData.poster:
+            b.img(src=articleData.poster)
+            b.br()
+        if articleData.level:
+            b.text('Level: %s' % articleData.level)
+            b.br()
+        if articleData.category:
+            b.text('Category: %s' % articleData.category)
+            b.br()
+        b._div()
         
 class SimpleXmlArticle(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.

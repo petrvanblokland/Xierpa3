@@ -43,11 +43,27 @@ class SimplexArticle(Column):
         self.buildArticleData(b, articleData)
 
     def buildArticleData(self, b, articleData):
-        b.img(src=articleData.poster)
-        b.br()
-        b.text(articleData.category)
+        u"""Build the column from fields that are available in the articleData"""
+        s = self.style
+        b.div(class_=s.classColumn, color=s.color, margin=s.margin, 
+              width=s.columnWidth, maxwidth=s.maxWidth, minwidth=s.minWidth, 
+              backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
+              fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
+              # Remove margins on mobile, showing the column on full screen width.
+              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, float=self.C.NONE,
+                fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
+                width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
+        )
+        if articleData.poster:
+            b.img(src=articleData.poster)
+            b.br()
+        b.text(articleData.poster)
+        if articleData.category:
+            b.text('Category: %s' % articleData.category)
         for chapter in articleData.items:
+            b.hr()
             b.text(chapter)
+        b._div()
         
 class SimplexArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
