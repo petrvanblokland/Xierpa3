@@ -11,7 +11,7 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px, Perc, Color
+from xierpa3.attributes import Em, Px, Perc
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import SimplexFileAdapter
 from xierpa3.components import Theme, Page, Column, Container, Article

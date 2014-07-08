@@ -10,7 +10,7 @@
 #
 #    article.py
 #
-from xierpa3.components.column import Column
+from xierpa3.components import Column
 from xierpa3.toolbox.transformer import TX
 from xierpa3.attributes import Perc, Em, Border, Margin, Padding, Color
 from xierpa3.descriptors.media import Media
