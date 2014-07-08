@@ -200,6 +200,8 @@ class Constants(Config):
     BASELINE = 'baseline'
     DECIMAL = 'decimal'
     LIST = 'list'
+    INSIDE = 'inside'
+    OUTSIDE = 'outside'
     
     # Pseudo CSS selectors
     FIRSTCHILD = 'first-child'

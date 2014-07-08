@@ -105,18 +105,18 @@ class Article(ArticleColumn):
         articleFirstIndent=0, doc_firstIndent=u'Article p first indent.',
         # Bullet list
         bulletType='disc', doc_bulletType=u'Article bullet type',
-        bulletPosition='inside', doc_bulletPosition=u'Article bullet position.',
-        bulletPaddingLeft=Em(2), doc_bulletPaddingLeft=u'Article bullet padding left.',
-        bulletMarginTop=Em(1), doc_bulletMarginTop=u'Article bullet margin top.',
+        bulletPosition=C.OUTSIDE, doc_bulletPosition=u'Article bullet position. One of (inside, outside).',
+        bulletPaddingLeft=Em(1), doc_bulletPaddingLeft=u'Article bullet padding left.',
         bulletMarginBottom=0, doc_bulletMarginBottom=u'Article bullet margin bottom.',
-        bulletItemMarginBottom=Em(1), doc_bulletItemMarginBottom=u'Article bullet item margin bottom.',
+        bulletMarginTop=Em(0.5), doc_bulletMarginTop=u'Article bullet margin top.',
+        bulletItemMarginBottom=Em(0.5), doc_bulletItemMarginBottom=u'Article bullet item margin bottom.',
         # Ordered list
         numberedListType='decimal', doc_numberedListType=u'Article numbered list type', 
-        numberedListPosition='inside', doc_numberedListPosition=u'Article numbered list position.',
-        numberedListPaddingLeft=Em(2), doc_numberedListPaddingLeft=u'Article numbered list padding left.',
+        numberedListPosition=C.OUTSIDE, doc_numberedListPosition=u'Article numbered list position. One of (inside, outside).',
+        numberedListPaddingLeft=Em(1), doc_numberedListPaddingLeft=u'Article numbered list padding left.',
         numberedListMarginBottom=0, 
-        numberedListMarginTop=Em(1),
-        numberedListItemMarginBottom=Em(1),
+        numberedListMarginTop=Em(0.5),
+        numberedListItemMarginBottom=Em(0.5),
         # Image & caption
         imgMarginTop=Em(1), 
         imgMarginBottom=Em(0.8), 
@@ -148,7 +148,8 @@ class Article(ArticleColumn):
               paddingleft=Em(0.5), paddingright=Em(0.5),
               fontsize=s.chapterSize, lineheight=s.chapterLineHeight,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
-                    fontsize=s.chapterSizeMobile, lineheight=s.chapterLineHeightMobile),
+                    fontsize=s.chapterSizeMobile, lineheight=s.chapterLineHeightMobile,
+                    paddingleft=0, paddingright=0),
         )
         self.buildArticleData(b, articleData)
         b._div()
@@ -193,7 +194,8 @@ class Article(ArticleColumn):
         s = self.style
         class_ = self.C.CLASS_ARTICLETOP
         b.div(class_=class_, float=self.C.LEFT, width=Perc(100), paddingtop=Em(0.5),
-              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE),
+              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
+                paddingleft=0, paddingright=0),
         )
         # Poster image
         if chapterIndex == 0 and s.showPoster:
