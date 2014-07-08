@@ -3,7 +3,7 @@ $level Novice
 $title How to get into art school
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToApplyForArtSchool.png
 $author Petr van Blokland
-$contact ::buro@petr.com::
+$authorEmail ::buro@petr.com::
 $topic Practical tips to get admitted into art school.
 $summary Applying for admission in an art school can feel like a lottery. “Will they take me or not?” And for sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the number of available seats. 
 $featured manifest-on-skilss, generous-gesture, how-to-build-a-simple-kirby-site, how-to-build-a-xierpa3-site

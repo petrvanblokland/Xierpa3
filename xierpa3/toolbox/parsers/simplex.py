@@ -156,7 +156,8 @@ class Simplex(object):
                 parts = line.split(' ')
                 if len(parts) >= 2:
                     # Get field name and restore rest of the line.
-                    data[parts[0][1:].lower()] = ' '.join(parts[1:])
+                    # Field names are case sensitive.
+                    data[parts[0][1:]] = ' '.join(parts[1:])
                 else:
                     data.error = 'Error in field syntax: "%s"' % line
             else:

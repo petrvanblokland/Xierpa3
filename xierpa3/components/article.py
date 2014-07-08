@@ -175,9 +175,9 @@ class Article(ArticleColumn):
                 # Build the top of the article, making a difference between the first chapter
                 # and the chapters with index >= 1
                 self.buildArticleTop(b, articleData, chapterIndex)
-                b.div(class_=self.C.CLASS_CHAPTER)           
+                b.div(class_=self.C.CLASS_CHAPTER, width=self.C.NONE, float=self.C.NONE)           
                 chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
-                if isinstance(chapter, basestring): # Must already be converted to plain output.
+                if isinstance(chapter, basestring): # Chapter result can be converted to plain output.
                     b.text(chapter)
                 elif chapter is not None: # Still a tree object. Build the element nodes.
                     self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
@@ -224,12 +224,14 @@ class Article(ArticleColumn):
         # Author
  
         if chapterIndex == 0 and articleData.author: # Test if there is an author defined.
-            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
                 display=self.C.BLOCK)
+            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
             b.text('By %s' % articleData.author)
-            b._h5()
             b._a()
+            if articleData.authorEmail:
+                b.text(' ' + articleData.authorEmail)
+            b._h5()
         # Chapter title
         """
         chapterTitle = self.adapter.getChapterTitleByIndex(chapterIndex, articleData)
