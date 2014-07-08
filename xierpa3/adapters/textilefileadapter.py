@@ -115,6 +115,7 @@
 import os
 import codecs
 import textile
+from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.storage.data import Data
 
@@ -172,8 +173,9 @@ class TextileFileAdapter(Adapter):
     def cacheArticle(self, article):
         self._cache[article.id] = article
         
-    def getCachedArticle(self, id):
+    def getCachedArticle(self, **kwargs):
         u"""Answer the cached articles. If not available yet, read them through <self.getPaths()<b>."""
+        id = kwargs.get('id')
         if isinstance(id, list):
             pass
         return self._cache.get(id)
@@ -222,14 +224,14 @@ class TextileFileAdapter(Adapter):
     
     #    A P I  G E T 
     
-    def getPageTitle(self, id=None):
-        article = self.getArticle(id)
+    def getPageTitle(self, **kwargs):
+        article = self.getArticle(**kwargs)
         if article is not None:
-            return Data(text=article.name)
+            return self.newData(text=article.name)
         return None
     
-    def getPages(self, count=None):
-        pages = Data()
+    def getPages(self, count=None, **kwargs):
+        pages = self.newData()
         pages.items = []
         for name, article in self.getCachedArticles().items(): # @@@ Add priority sorting and counting here
             pages.items.append(article)
@@ -237,15 +239,15 @@ class TextileFileAdapter(Adapter):
     
     getArticles = getPages
     
-    def getMobilePages(self, count=None):
+    def getMobilePages(self, count=None, **kwargs):
         return self.getPages(count)
     
-    def getArticle(self, id=None):
-        return self.getCachedArticle(id)
+    def getArticle(self, **kwargs):
+        return self.getCachedArticle(**kwargs)
     
     def getFeaturedArticles(self, id, start, count):
         u"""Answer a list of featured articles in the article that has <i>id</i>."""
-        data = Data()
+        data = self.newData()
         data.items = []
         article = self.getArticle(id)
         if article:
@@ -266,20 +268,20 @@ class TextileFileAdapter(Adapter):
             categories[category].append(article)
         return categories
     
-    def getMenu(self, id):
+    def getMenu(self, **kwargs):
         u"""Answer the list of menu articles in this component."""
-        data = Data()
+        data = self.newData()
         data.menuItems = []
-        article = self.getArticle(id)
+        article = self.getArticle(**kwargs)
         if article:
-            for menu in article.menu:
-                menuArticle = self.getArticle(menu.attrib['id'])
-                if menuArticle is not None:
-                    data.menuItems.append(menuArticle)
+            for menuId in TX.commaSpaceString2WordList(article.menu): # Menu attribute is comma separated list
+                menuArticle = self.getArticle(id=menuId)
+                if menuArticle is not None and menuArticle.tag:
+                    data.menuItems.append(menuArticle.tag)
         return data
     
-    def getLogo(self, component):
-        data = Data()
+    def getLogo(self, **kwargs):
+        data = self.newData()
         data.url = '/home'
         data.src = '//data.doingbydesign.com.s3.amazonaws.com/_images/logo.png'
         return data

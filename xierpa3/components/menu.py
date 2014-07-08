@@ -43,7 +43,9 @@ class Menu(Component):
     def buildBlock(self, b):
         u"""Build the menu from the articles in the menu tags of the home.xml document."""
         data = self.adapter.getMenu(id='home')
-        if data.menuItems is not None and len(data.menuItems):
+        b.text(data)
+        """
+        if data.items is not None and len(data.items):
             s = self.style
             b.block(self)
             colClass = self.getColClass(s.colWidth)
@@ -51,7 +53,7 @@ class Menu(Component):
             b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
                 display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
-            for menu in data.menuItems:
+            for menuItem in data.items:
                 b.li(float=s.listFloat, padding=s.listPadding)
                 url = menu.url
                 if url is None:
@@ -65,3 +67,4 @@ class Menu(Component):
             b._nav()
             b._div(comment=colClass)
             b._block(self)
+        """

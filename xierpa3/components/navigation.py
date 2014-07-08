@@ -10,6 +10,7 @@
 #
 #    navigation.py
 #
+from xierpa3.toolbox.transformer import TX
 from xierpa3.components.component import Component
 from xierpa3.attributes import Perc, Px, Em, Border, Z, Color
 from xierpa3.descriptors.media import Media
@@ -95,15 +96,16 @@ class MobileNavigation(Navigation):
                 display=self.C.NONE, clear=self.C.BOTH, position=self.C.ABSOLUTE, top=s.menuHeight-5, 
                 width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.C.NONE, left=0,
                 textalign=self.C.CENTER)
-        
-            for menu in data.menuItems:
-                url = menu.url
+            homeArticle = self.adapter.getArticle(id='home')
+            for menuId in TX.commaSpaceString2WordList(homeArticle.menu):
+                menuArticle = self.adapter.getArticle(id=menuId)
+                url = menuArticle.url
                 if url is None:
-                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menu.id)
-                b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=Perc(100), liststyletype=self.NONE,
+                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuId)
+                b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=Perc(100), liststyletype=self.C.NONE,
                     borderbottom=Border('1 solid white'), height=36, backgroundcolor=Color('#4890BC'))
                 b.a(href=url, color=Color('#E8E8E8'))
-                b.text(menu.name) # Show full name, otherwise use b.text(menu.tag or menu.name)
+                b.text(menuArticle.name or 'Untitled') # Show full name, otherwise use b.text(menu.tag or menu.name)
                 b._a()
                 b._li()
             b._ul()

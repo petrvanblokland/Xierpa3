@@ -269,7 +269,10 @@ class FeaturedByText(FeaturedBase):
             b.div(class_='featuredSummary', clear=self.C.BOTH, float=self.C.LEFT, width=Perc(100), 
                 color=s.summaryColor, fontsize=s.summarySize, lineheight=s.summaryLineHeight, 
                 margintop=s.summaryMarginTop, marginbottom=s.summaryMarginBottom)
-            self.buildElement(b, item.summary)
+            if isinstance(item.summary, basestring):
+                b.text(item.summary)
+            else:
+                self.buildElement(b, item.summary)
             b._div()
 
 class FeaturedByDiapText(FeaturedByText):
@@ -380,7 +383,9 @@ class FeaturedByTextList(FeaturedBase):
             b.text(item.name)
             b._h2()
             b._a()
-            if item.topic is not None: # Test on element. Topic elements need to be defined in global style.
+            if isinstance(item.topic, basestring):
+                b.text(item.topic)
+            elif item.topic is not None: # Test on element. Topic elements need to be defined in global style.
                 self.buildElement(b, item.topic)
 
 class FeaturedTitled(FeaturedBase):
