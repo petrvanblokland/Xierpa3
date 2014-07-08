@@ -118,9 +118,11 @@ class SimplexArticles(Theme):
         # Create the article component to contain articles answered by the adapter.
         #article = SimplexArticle(adapter=adapter) 
         article = Article(adapter=adapter, showPoster=True) 
+        # Make main page container for the article column
+        container = Container(components=article)
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
-            title=self.TITLE, css=self.C.URL_CSS, components=article)
+            title=self.TITLE, css=self.C.URL_CSS, components=container)
         return [homePage]
     
     def make(self, root=None):
