@@ -25,8 +25,8 @@ class Container(Component):
 
     BLUEPRINT = BluePrint( 
         # Page/Column
-        paddingLeft=Px(10), doc_paddingLeft=u'Padding left of main container.',
-        paddingRight=Px(10), doc_paddingRight=u'Padding left of main container.',
+        paddingLeft=(10), doc_paddingLeft=u'Padding left of main container.',
+        paddingRight=(10), doc_paddingRight=u'Padding left of main container.',
         # Row
         rowMargin=Margin(0, C.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.', 
         rowMinWidth=C.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % C.M_MOBILE_MAX,
