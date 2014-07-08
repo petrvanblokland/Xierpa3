@@ -145,11 +145,10 @@ class Article(ArticleColumn):
         s = self.style
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
         b.div(class_=self.getClassName(), 
-              paddingleft=Em(0.5), paddingright=Em(0.5),
               fontsize=s.chapterSize, lineheight=s.chapterLineHeight,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
                     fontsize=s.chapterSizeMobile, lineheight=s.chapterLineHeightMobile,
-                    paddingleft=0, paddingright=0),
+                    paddingleft=Em(0.5), paddingright=Em(0.5)),
         )
         self.buildArticleData(b, articleData)
         b._div()

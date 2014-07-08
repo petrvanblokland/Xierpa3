@@ -39,13 +39,14 @@ class Container(Component):
     def buildBlock(self, b):
         u"""Build the container-div with a row-div inside."""
         s = self.style
-        b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight)
-        b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat, overflow=s.rowOverflow, 
-            maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
-            media=( # Containers have width 100% !
-               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat,
-                    paddingleft=0, paddingright=0),
-        ))
+        b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight,
+              media=Media(max=self.C.M_MOBILE_MAX, paddingleft=0, paddingright=0)
+        )
+        b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat, 
+            overflow=s.rowOverflow, maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
+            media= # Container row has width 100% in media!
+               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat),
+        )
         for component in self.components:
             component.build(b)
         b._div(comment='.'+self.C.CLASS_ROW) # Comment class at end of row
