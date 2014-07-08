@@ -164,7 +164,10 @@ class Article(ArticleColumn):
                 chapterIndices = [self.getChapterIndex(b, articleData)]
             else:
                 chapterIndices = range(len(articleData.items))
+            # Build the chapters in the index list
             for chapterIndex in chapterIndices:
+                # Build the top of the article, making a difference between the first chapter
+                # and the chapters with index >= 1
                 self.buildArticleTop(b, articleData, chapterIndex)           
                 chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
                 if isinstance(chapter, basestring): # Must already be converted to plain output.
@@ -181,7 +184,9 @@ class Article(ArticleColumn):
         For all other pages build a smaller version of the top."""
         s = self.style
         class_ = self.C.CLASS_ARTICLETOP
-        b.div(class_=class_, float=self.C.LEFT, width=Perc(100), paddingtop=Em(0.5))
+        b.div(class_=class_, float=self.C.LEFT, width=Perc(100), paddingtop=Em(0.5),
+              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE),
+        )
         # Poster image
         if chapterIndex == 0 and s.showPoster:
             b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster)
