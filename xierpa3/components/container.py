@@ -32,13 +32,14 @@ class Container(Component):
         rowMinWidth=C.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % C.M_MOBILE_MAX,
         rowMaxWidth=C.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % C.MAXWIDTH,     
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
+        rowOverflow=C.HIDDEN, doc_rowWidth=u'Default overflow hidden inside a row inside a container.',
     )
     
     def buildBlock(self, b):
         u"""Build the container-div with a row-div inside."""
         s = self.style
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight)
-        b.div(class_=self.C.CLASS_ROW, margin=s.rowMargin, width=s.rowWidth, float=self.C.NONE, 
+        b.div(class_=self.C.CLASS_ROW, margin=s.rowMargin, width=s.rowWidth, overflow=s.rowOverflow, 
             maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth, 
             media=(
                Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0),
