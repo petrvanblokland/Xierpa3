@@ -141,7 +141,9 @@ class Article(ArticleColumn):
         
     def buildColumn(self, b):
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
-        b.div(class_=self.getClassName(), paddingleft=Em(0.5), paddingright=Em(0.5))
+        b.div(class_=self.getClassName(), paddingleft=Em(0.5), paddingright=Em(0.5),
+              media=Media(width=self.C.AUTO, float=self.C.NONE),
+        )
         self.buildArticleData(b, articleData)
         b._div()
         
@@ -149,19 +151,26 @@ class Article(ArticleColumn):
         u"""Build the article. If there is a "/chapter-2" url parameter defined and it is in
         the range of available chapters, then show that chapter. Other values are cropped to
         min and max index of the chapter list."""
+        s = self.style
         #b.element(tag='img', class_=self.CLASS_AUTOWIDTH, margintop=Em(1), marginbottom=Em(1))
         if b.isType(('css', 'sass')): # @@@ Clean up, using model article?
             self.buildArticleTop(b, articleData, 0) # Separate CSS for first chapter and the rest.
             self.buildArticleTop(b, articleData, 1)
             self.buildArticleStyle(b) # Build the CSS style template of an article here
         elif articleData is not None and articleData.items:
-            chapterIndex = self.getChapterIndex(b, articleData)
-            self.buildArticleTop(b, articleData, chapterIndex)           
-            chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
-            if isinstance(chapter, basestring): # Must already be converted to plain output.
-                b.text(chapter)
-            elif chapter is not None: # Still a tree object. Build the element nodes.
-                self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
+            # Collect the chapter indices to show. If splitting chapter, we need a list of
+            # the one chapter index that is indicated by the url with /chapter-2
+            if s.splitChapters:
+                chapterIndices = [self.getChapterIndex(b, articleData)]
+            else:
+                chapterIndices = range(len(articleData.items))
+            for chapterIndex in chapterIndices:
+                self.buildArticleTop(b, articleData, chapterIndex)           
+                chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
+                if isinstance(chapter, basestring): # Must already be converted to plain output.
+                    b.text(chapter)
+                elif chapter is not None: # Still a tree object. Build the element nodes.
+                    self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
         elif articleData.text:
             b.text(articleData.text)
         else:
