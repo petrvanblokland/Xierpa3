@@ -117,7 +117,7 @@ class SimplexArticles(Theme):
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
         #article = SimplexArticle(adapter=adapter) 
-        article = Article(adapter=adapter, showPoster=True) 
+        article = Article(adapter=adapter, showPoster=True, splitChapters=False) 
         # Make main page container for the article column
         container = Container(components=article)
         # The class is also the page name in the url.

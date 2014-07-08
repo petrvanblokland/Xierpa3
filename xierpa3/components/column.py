@@ -18,7 +18,7 @@ class Column(Container):
 
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Container.C
-    
+    '''
     BLUEPRINT = BluePrint( 
         classColumn=C.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
         # Layout stuff
@@ -40,10 +40,12 @@ class Column(Container):
         columnDisplayMobile=None, doc_columnDisplayMobile=u'Column display for mobile.',
         columnMinHeight=0, doc_columnMinHeight=u'Column minimal height.', 
     )
+    '''
     def buildBlock(self, b):
         u"""Build the block of a column. Note that for clarity fontsize and lineheight are defined
         for each part separated, relation the overall container fontsize and lineheight.
         Classes inheriting from <b>Column</b> should implement <b>self.buildBlock</b>."""
+        """
         s = self.style
         colClass = self.getColClass(s.colWidth)
         b.block(self)
@@ -60,9 +62,12 @@ class Column(Container):
                 paddingleft=s.columnPaddingLeftMobile, 
                 paddingright=s.columnPaddingRightMobile,),
         ))
+        """
         self.buildColumn(b)
+        """
         b._div(comment=colClass)
         b._block(self) 
+        """
         
     def buildColumn(self, b):
         b.error('Classes inheriting from <b>Column</b> should implement <b>self.buildColumn(b)</b>.')

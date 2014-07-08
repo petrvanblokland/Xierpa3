@@ -44,8 +44,10 @@ class Article(ArticleColumn):
     # Define the basic blue print style for this type of component.
     BLUEPRINT = BluePrint( 
         # Layout stuff
-        colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
-        # Post
+        colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
+        # Chapter behavior
+        splitChapters=True, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.', 
+        # Poster
         showPoster=False, doc_showPoster=u'Boolean flag if the poster image should be shown at start of the article.',                    
         # Title stuff on the first chapter page of the article
         titleSize=Em(3.2), doc_titleSize=u'Title font size on the first chapter page of an article.',
@@ -134,10 +136,15 @@ class Article(ArticleColumn):
         codeMarginBottom=Em(0.5),
         codeBackgroundColor=Color(C.WHITE),
     )
+    def buildBlock(self, b):
+        self.buildColumn(b)
+        
     def buildColumn(self, b):
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
+        b.div(class_=self.getClassName(), paddingleft=Em(0.5), paddingright=Em(0.5))
         self.buildArticleData(b, articleData)
-
+        b._div()
+        
     def buildArticleData(self, b, articleData):
         u"""Build the article. If there is a "/chapter-2" url parameter defined and it is in
         the range of available chapters, then show that chapter. Other values are cropped to
@@ -149,7 +156,7 @@ class Article(ArticleColumn):
             self.buildArticleStyle(b) # Build the CSS style template of an article here
         elif articleData is not None and articleData.items:
             chapterIndex = self.getChapterIndex(b, articleData)
-            self.buildArticleTop(b, articleData, chapterIndex)
+            self.buildArticleTop(b, articleData, chapterIndex)           
             chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
             if isinstance(chapter, basestring): # Must already be converted to plain output.
                 b.text(chapter)
