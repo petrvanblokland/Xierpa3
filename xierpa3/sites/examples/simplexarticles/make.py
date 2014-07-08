@@ -46,8 +46,8 @@ class SimplexArticle(Column):
         b.img(src=articleData.poster)
         b.br()
         b.text(articleData.category)
-        b.br()
-        b.text('AAAAAA')
+        for chapter in articleData.items:
+            b.text(chapter)
         
 class SimplexArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -79,10 +79,11 @@ class SimplexArticles(Theme):
         return s
     
     def baseComponents(self):
-        # Create the component instances
-        from xierpa3.sites.examples import simplexmlarticle
-        # Root path where to find the article XML file for this example page.
-        articleRoot = TX.module2Path(simplexmlarticle) + '/files/articles/' 
+        u"""Create the component instances"""
+        # Import current example site, as anchor for the article files.
+        from xierpa3.sites.examples import simplexarticles
+        # Root path where to find the article Simples wiki file for this example page.
+        articleRoot = TX.module2Path(simplexarticles) + '/files/articles/' 
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
         article = SimplexArticle(adapter=adapter) 
