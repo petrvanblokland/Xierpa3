@@ -10,7 +10,7 @@
 #
 #   phpadapter.py
 #
-from xierpa3.toolbox.storage.status.status import Data
+from xierpa3.toolbox.storage.data import Data
 from xierpa3.adapters.adapter import Adapter
 
 class PhpAdapter(Adapter):

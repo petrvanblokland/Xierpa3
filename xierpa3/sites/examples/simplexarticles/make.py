@@ -13,7 +13,7 @@
 import webbrowser
 from xierpa3.attributes import Em, Px, Perc, Color
 from xierpa3.toolbox.transformer import TX
-from xierpa3.adapters import FileAdapter
+from xierpa3.adapters import SimplexFileAdapter
 from xierpa3.components import Theme, Page, Column, Container
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -24,7 +24,7 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # where the BluePrint values function as API to adjust the component instance behavior
 # from the outside.
 
-class ArticleAdapter(XmlFileAdapter):
+class ArticleAdapter(SimplexFileAdapter):
     u"""Inherit from the <b>FileAdapter</b> to read the example XML article file."""
     
     def getArticle(self, id=None):
@@ -34,8 +34,8 @@ class ArticleAdapter(XmlFileAdapter):
         The builders always know the request parameters, such as the url of the page."""
         return self.getCachedArticle('manifest-on-skills')
 
-class SimpleArticle(Column):
-    u"""The <b>SimpleArticle</b> class is a simplified example component, similar to the main 
+class SimplexArticle(Column):
+    u"""The <b>SimplexArticle</b> class is a simplified example component, similar to the main 
     <b>Article</b> component, showing how an XML article file can be used as “database”
     for content structure."""
     def buildColumn(self, b):
@@ -49,7 +49,7 @@ class SimpleArticle(Column):
         b.br()
         b.text('AAAAAA')
         
-class SimpleXmlArticle(Theme):
+class SimplexArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
@@ -85,7 +85,7 @@ class SimpleXmlArticle(Theme):
         articleRoot = TX.module2Path(simplexmlarticle) + '/files/articles/' 
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
-        article = SimpleArticle(adapter=adapter) 
+        article = SimplexArticle(adapter=adapter) 
         # Put the article in a container for automatic responsive behavior
         container = Container(components=article, backgroundcolor=Color('yellow'))
         # The class is also the page name in the url.
@@ -109,5 +109,5 @@ if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
     # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/Featuring1/   
-    path = SimpleXmlArticle().make()
+    path = SimplexArticles().make()
     webbrowser.open(path)

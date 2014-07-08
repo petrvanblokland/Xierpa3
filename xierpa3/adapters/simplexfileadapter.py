@@ -13,7 +13,6 @@
 #    xpath examples: http://msdn.microsoft.com/en-us/library/ms256086(v=vs.110).aspx
 #
 import os
-from lxml import etree
 import codecs
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
@@ -163,8 +162,8 @@ class SimplexFileAdapter(Adapter):
 
 if __name__ == '__main__':
     # Cache the adapter
-    from xierpa3.sites import doingbydesign
-    fa = SimplexFileAdapter(root=TX.module2Path(doingbydesign)+'/files/articles')
+    from xierpa3.sites.examples import simplexarticles
+    fa = SimplexFileAdapter(root=TX.module2Path(simplexarticles)+'/files/articles')
     if 0:
         print fa.getIdPaths()
         print fa.getPages(None).items
