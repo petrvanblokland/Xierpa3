@@ -174,12 +174,14 @@ class Article(ArticleColumn):
             for chapterIndex in chapterIndices:
                 # Build the top of the article, making a difference between the first chapter
                 # and the chapters with index >= 1
-                self.buildArticleTop(b, articleData, chapterIndex)           
+                self.buildArticleTop(b, articleData, chapterIndex)
+                b.div(class_=self.C.CLASS_CHAPTER)           
                 chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
                 if isinstance(chapter, basestring): # Must already be converted to plain output.
                     b.text(chapter)
                 elif chapter is not None: # Still a tree object. Build the element nodes.
                     self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
+                b._div(comment=self.C.CLASS_CHAPTER)
         elif articleData.text:
             b.text(articleData.text)
         else:
