@@ -32,7 +32,7 @@ class Container(Component):
         rowMinWidth=C.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % C.M_MOBILE_MAX,
         rowMaxWidth=C.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % C.MAXWIDTH,     
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
-        rowOverflow=C.HIDDEN, doc_rowWidth=u'Default overflow hidden inside a row inside a container.',
+        rowOverflow=C.HIDDEN, doc_rowOverflow=u'Default overflow hidden inside a row inside a container.',
     )
     
     def buildBlock(self, b):
