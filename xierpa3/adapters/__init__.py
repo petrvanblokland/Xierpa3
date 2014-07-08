@@ -10,6 +10,5 @@
 #
 from adapter import Adapter
 from blurbadapter import BlurbAdapter
-from xmlfileadapter import XmlFileAdapter 
-from simplexfileadapter import SimplexFileAdapter
+from textilefileadapter import TextileFileAdapter
 from phpadapter import PhpAdapter

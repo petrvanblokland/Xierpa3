@@ -17,5 +17,4 @@ from xierpa3.sites.examples.onecolumnsite.make import OneColumnSite
 from xierpa3.sites.examples.simpletypespecimen.make import SimpleTypeSpecimenSite
 from xierpa3.sites.examples.simplewebsite.make import SimpleWebSite
 from xierpa3.sites.examples.simpleresponsivepage.make import SimpleResponsivePage
-from xierpa3.sites.examples.simplexarticles.make import SimplexArticles
-from xierpa3.sites.examples.simplexmlarticle.make import SimpleXmlArticle 
+from xierpa3.sites.examples.textilearticles.make import TextileArticles

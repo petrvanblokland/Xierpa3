@@ -112,7 +112,6 @@ class SimpleWebSite(Theme):
         s.addStyle('body', fontfamily=BODYFAMILY, fontsize=BODYSIZE, lineheight=BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=BODYFAMILY)
-        s.addStyle('div', float=self.C.LEFT, width=Perc(100))
         return s
     
     def baseComponents(self):

@@ -16,7 +16,7 @@
 #    @@@ Wait for github commit.
 #
 from xierpa3.themes.shop.shop import Shop
-from xierpa3.adapters.xmlfileadapter import XmlFileAdapter
+from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
 from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
     Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
@@ -25,7 +25,7 @@ from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
 
 # Adapter
 
-class DbDAdapter(XmlFileAdapter):
+class DbDAdapter(TextileFileAdapter):
     def getDescription(self, component):
         return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
      

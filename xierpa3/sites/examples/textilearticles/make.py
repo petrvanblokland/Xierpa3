@@ -11,20 +11,18 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px, Perc, Color
+from xierpa3.attributes import Em, Px
 from xierpa3.toolbox.transformer import TX
-from xierpa3.adapters import XmlFileAdapter
-from xierpa3.components import Theme, Page, Column, Container
+from xierpa3.adapters import TextileFileAdapter 
+from xierpa3.components import Theme, Page, Container, Article
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.descriptors.blueprint import BluePrint
-from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 # Define the two component here. Normally these would come from a component library,
 # where the BluePrint values function as API to adjust the component instance behavior
 # from the outside.
 
-class ArticleAdapter(XmlFileAdapter):
+class ArticleAdapter(TextileFileAdapter):
     u"""Inherit from the <b>FileAdapter</b> to read the example XML article file."""
     
     def getArticle(self, id=None):
@@ -34,41 +32,11 @@ class ArticleAdapter(XmlFileAdapter):
         The builders always know the request parameters, such as the url of the page."""
         return self.getCachedArticle('manifest-on-skills')
 
-class SimpleArticle(Column):
-    u"""The <b>SimplexArticle</b> class is a simplified example component, similar to the main 
-    <b>Article</b> component, showing how an XML article file can be used as “database”
-    for content structure."""
-    def buildColumn(self, b):
-        articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
-        self.buildArticleData(b, articleData)
-
-    def buildArticleData(self, b, articleData):
-        s = self.style()
-        b.div(class_=s.classColumn, color=s.color, margin=s.margin, 
-              width=s.columnWidth, maxwidth=s.maxWidth, minwidth=s.minWidth, 
-              backgroundcolor=s.backgroundColor, fontfamily=s.fontFamily, 
-              fontsize=s.fontSize, lineheight=s.lineHeight, padding=s.padding,
-              # Remove margins on mobile, showing the column on full screen width.
-              media=Media(max=self.C.M_MOBILE_MAX, margin=s.marginMobile, float=self.C.NONE,
-                fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
-                width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
-        )
-        if articleData.poster:
-            b.img(src=articleData.poster)
-            b.br()
-        if articleData.level:
-            b.text('Level: %s' % articleData.level)
-            b.br()
-        if articleData.category:
-            b.text('Category: %s' % articleData.category)
-            b.br()
-        b._div()
-        
-class SimpleXmlArticle(Theme):
+class TextileArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The Simple Website Example Page' # Use as title of window.
+    TITLE = u'The Textile Example Page' # Use as title of window.
 
     BODYSIZE = Px(12)
     BODYLEADING = Em(1.4)
@@ -90,19 +58,20 @@ class SimpleXmlArticle(Theme):
         s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, lineheight=self.BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
-        s.addStyle('div', float=self.C.LEFT, width=Perc(100))
         return s
     
     def baseComponents(self):
-        # Create the component instances
-        from xierpa3.sites.examples import simplexmlarticle
-        # Root path where to find the article XML file for this example page.
-        articleRoot = TX.module2Path(simplexmlarticle) + '/files/articles/' 
+        u"""Create the component instances"""
+        # Import current example site, as anchor for the article files.
+        from xierpa3.sites.examples import textilearticles
+        # Root path where to find the article Simples wiki file for this example page.
+        articleRoot = TX.module2Path(textilearticles) + '/files/articles/' 
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
-        article = SimpleArticle(adapter=adapter) 
-        # Put the article in a container for automatic responsive behavior
-        container = Container(components=article, backgroundcolor=Color('yellow'))
+        #article = SimplexArticle(adapter=adapter) 
+        article = Article(adapter=adapter, showPoster=True, splitChapters=False) 
+        # Make main page container for the article column
+        container = Container(components=article)
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
             title=self.TITLE, css=self.C.URL_CSS, components=container)
@@ -124,5 +93,5 @@ if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
     # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/Featuring1/   
-    path = SimpleXmlArticle().make()
+    path = TextileArticles().make()
     webbrowser.open(path)

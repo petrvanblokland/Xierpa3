@@ -8,61 +8,44 @@ $topic Practical tips to get admitted into art school.
 $summary Applying for admission in an art school can feel like a lottery. “Will they take me or not?” And for sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the number of available seats. 
 $featured manifest-on-skilss, generous-gesture, how-to-build-a-simple-kirby-site, how-to-build-a-xierpa3-site
 
-=1=Why and how?=1=
+h1. Why and how?
 
-=lead=
-In a world where only a handful of people seem to have 
-the knowledge and skills to perform a certain task, it hard for fresh students
-to aqcuire these skills. Except for a few, who already do it and would have
-done it anyhow. Not because of their education, but despite their education.
-For all other fresh students this gap is increasing by the day. Not only
-it is hard to motivation, it is also a challenge to maintain it for a number
-of years, before skill and experience are on a level to compete witht the
-happy few, those who already got it. Because they were fast learners
-or because they were lucky enough to be raised in an evironment that
-supported their ambitions.
-=lead=
+p(lead). In a world where only a handful of people seem to have the knowledge and skills to perform a certain task, it hard for fresh students to aqcuire these skills. Except for a few, who already do it and would have done it anyhow. Not because of their education, but despite their education.
+For all other fresh students this gap is increasing by the day. Not only it is hard to motivation, it is also a challenge to maintain it for a number of years, before skill and experience are on a level to compete witht the happy few, those who already got it. Because they were fast learners or because they were lucky enough to be raised in an evironment that supported their ambitions.
 
-Applying for admission in an art school can feel like a lottery. “Will they take me or not?” And for sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the number of available seats.¶ 
-
+p(first). Applying for admission in an art school can feel like a lottery. “Will they take me or not?” And for sure there is a factor of chance involved, especially if the amount of applying students is much bigger than the number of available seats. 
 But in the other hand a lot can be said about very generic points of attention that almost always play a role in the selection of new students. Knowing about how selections work and what it is that the selectors want to put their focus on, certainly will help the student during the admission process. No matter the differences between art schools in different countries and cultures, there is a common ground that is true for most situations. 
-This course shows students the steps that will improve their presentation and increase their chances to become admitted.¶
+This course shows students the steps that will improve their presentation and increase their chances to become admitted.
 
-You have to present yourself in an extended elevator pitch. The procedures do vary from one art school to another, but the common ground is that you will be given a limited time slot and you want to says and show too. This course is about the selection process – what to say and what to show – and about the improvement of your presentation skills.¶
+You have to present yourself in an extended elevator pitch. The procedures do vary from one art school to another, but the common ground is that you will be given a limited time slot and you want to says and show too. This course is about the selection process – what to say and what to show – and about the improvement of your presentation skills.
+Art schools are interested to see the process: how did you get to final results. Can you make clear why you made the choices that you did.
 
-Art schools are interested to see the process: how did you get to final results. Can you make clear why you made the choices that you did.¶
+bq(first). The processes and parameters described in this course may not seem compatible. These are all parameters that otherwise would have guided the course in a more dedicated direction.
 
-!!!The processes and parameters described in this course may not seem compatible. These are all parameters that otherwise would have guided the course in a more dedicated direction.!!!
-
-Art schools not interested seeing just the final results. It is hard to conclude from there how much you contributed to the solution and if the solution was a “lucky shot” or the result of a range of design decisions.
+p(first). Art schools not interested seeing just the final results. It is hard to conclude from there how much you contributed to the solution and if the solution was a “lucky shot” or the result of a range of design decisions.
 
 =C=
 
-=1=Do’s and Don’ts=1=
+h1. Do’s and Don’ts
 
-=2=Do’s=2=
+h2. Do’s
 
-**
 * Do remember that being an artist or designer is a profession. It is not something you are able to do after one or more creative courses.
 * Have an opinion about your work, in relation to other things that you did and also in relation to other artists and designers.
 * Stand out from the crowd. This could mean that you try to explore the boundaries of the admission rules. But never do less. While fully complying with the rules, there are always possibilities to interpret them in a way that the admission committee will remember you.
 * Find the right balance between the “bright kid that will change the world” and the “enfant terrible” who is not willing to learn new trick and just will give trouble.
-**
 
-=2=Don’ts=2=
+h2. Don’ts
 
-**
 * Don’t be shy about what your skills are. Without being untrue, you apply for a position where it matters what you think and what you do.
 * Never copy work of other, while pretending it is your own. Don’t mix your work with the work of others. And if you cannot avoid it (e.g. using photo’s in a research thesis or in the design of a page), make sure always to mention the source. Remember that the reviewers at art schools often have an excellent visual memory. This also applies to traced drawings of existings photo’s. They are able to tell that you did so.
-**
 
 =C=
 
-=1=Aspects of matriculations=1=
+h1. Aspects of matriculations
 
-=2=Preparation=2=
+h2. Preparation
 
-**
 * Admission day
 * Selecting art schools
 * Preparing the port folio
@@ -76,20 +59,17 @@ Art schools not interested seeing just the final results. It is hard to conclude
 * Visa and other issues regarding legal documents
 * Paying the yearly fee
 * Language
-**
 
-:://www.thetimes.co.uk/tto/multimedia/archive/00515/Art_School__20_best_515680a.jpg::
+p(first). !(autoWidth)//www.thetimes.co.uk/tto/multimedia/archive/00515/Art_School__20_best_515680a.jpg!
 
-=2=Admission day=2=
-**
+h2. Admission day
+
 * Execution of assignments during the day of admission
 * Showing of portfolio
 * Admission interview (live or through skype/hangout)
-**
 
-=2=Selecting art schools=2=
+h2. Selecting art schools
 
-**
 * Online information, printed information, recommendations and open days
 * (Online) galleries
 * What are your educational goals?
@@ -102,11 +82,9 @@ Art schools not interested seeing just the final results. It is hard to conclude
 * Value and level of the graduation, some courses, Bachelor, Master and/or Phd, depends if you want to engance your creativity or want to make a living with your skills.
 * Lenght of the study
 * Cost
-**
 
-=2=Preparing the port folio=2=
+h2. Preparing the port folio
 
-**
 * Collecting work
 * Making new stuff
 * Dummies and sketchbooks
@@ -134,10 +112,9 @@ Volgens Yvo de Ruiter
 * Maak het authentiek, geef het een eigen sfeer en wees niet bang je eigen identiteit te tonen
 * Laat iets achter (bv een mini-versie van je portfolio)
 * Maak indruk, geef een reden om jou te onthouden
-**
 
-=2=Write the admission motivation=2=
-**
+h2. Write the admission motivation
+
 * Study the requirements given by the art school
 * Write a motivation that fully fits these requirements and think about adding personal angles.
 * Start early, it may need several versions to make the final one. And if writing is not one of your main skills, then there is even more reason not to postpone this part of the admission until it is too late.
@@ -149,39 +126,36 @@ Credentials tests and diplomas
 * Although the skills of art and design are hard to quantify (good artists and designers by definition do not fit in existing categories), art schools often are a department of larger educational institutes, the do have a strict description of required credentials and diplomas. Make sure that yours fit what the institution needs. It is a waste of time and effort if the admission is rejected purely on formal issues.
 * SAT/ACT/TOFEL scores http://collegeapps.about.com/od/standardizedtests/
 * Make sure that the diplomas you have are valied and recognized, if you apply in another country.
-**
 
-=2=Dates for submission=2=
+h2. Dates for submission
 
-=2=Open days=2=
+h2. Open days
 
-=2=Writing a thesis=2=
+h2. Writing a thesis
+
 Sometimes applying for an art school requires writing a thesis about a given subject. Schools do that to test your abilities of writing besides your visual skills. Also they want to test if you can do research, thinking and writing about a given subject, that is related to your future profession.
-**
+
 * General tips & tricks about researching a new topic here.
 * General tips & tricks about writing here.
 Do research
-* Prepare yourself by doing research in the kind of questions to can expect during the interview. The reviewers want to get an idea about your current state of knowledge and skills. They will test you, sometimes with a trick question. Do research on the institution that you are applying, its history.
-Execution of specific assignments at home.
-**
+* Prepare yourself by doing research in the kind of questions to can expect during the interview. The reviewers want to get an idea about your current state of knowledge and skills. They will test you, sometimes with a trick question. Do research on the institution that you are applying, its history. 
+* Execution of specific assignments at home.
  
-=2=Visa and other issues regarding legal documents=2=
+h2. Visa and other issues regarding legal documents
 
-=2=Paying the yearly fee=2=
-**
+h2. Paying the yearly fee
+
 * The cost of art school can be very different, from almost free to $50.000 per year. Besides the obvious that you need to have that amount of money available, 
 * There is a certain relation between the cost of the course and the offered quality, but the relation on not very fixed. There are very good courses that cost a lot less and there are very expensive ones that don’t add so much to your artistic skills, rather than giving you an academic tittle.
 * Verify what additional cost you can expect during your course, such as a required computer, materials, books and memberships.
 * If you are going abroad, then also add the cost for travelling (how often do you want to go home during the time of your study), housing, additional courses e.g. to speak the native language of the course, of that is necessary.
-**
 
-=2=Language=2=
+h2. Language
 
-=2=Execution of assignments during the day of admission=2=
+h2. Execution of assignments during the day of admission
 
-=2=Showing of portfolio=2=
+h2. Showing of portfolio
 
-**
 * Verify if you will be presenting the port folio in person or if they admission comiittee will go through it without you being there. The difference is that you have to add you comments in written form, if you are not there to present it.
 Admission interview (live or through skype/hangout)
 * Show up on time
@@ -191,14 +165,14 @@ Admission interview (live or through skype/hangout)
 * An interview in person always works better than on through skype of hangout.
 * If you are not in the position to go there, then prepare your online presentation well: rehearse the presentation with someone else, to make sure that the technique works and to verify that there iis enough band width in your place. Wear headphones (preferably an invisible in-ear model) to avoid echos on the other side. If the language of the presentation is not your native language then practice the interview with other people in that language.
 * Be aware of what you write on Twitter or Facebook. Art school teachers also read online.
-**
 
-=2=Summary=2=
+h2. Summary
 
-This course does focus on the admission into art schools. But many of the rules of thumb are also valid in other situations where the artist or designer needs to convince other people about his/her skills and capacities. Presenting to a potential customer, to a subsidy committee or when applying for a job in a creative function, identical or similar processes are important.
+p(first). This course does focus on the admission into art schools. But many of the rules of thumb are also valid in other situations where the artist or designer needs to convince other people about his/her skills and capacities. Presenting to a potential customer, to a subsidy committee or when applying for a job in a creative function, identical or similar processes are important.
 
-=3=Links=3=
-:://www.wikihow.com/Get-Into-an-Art-School::
-:://www.creativebloq.com/career/5-things-you-must-do-when-applying-art-college-5132555::
-:://artbistro.monster.com/education/articles/10997-how-to-get-into-art-school::
+h3. Links
+
+* "Get into an Art School"://www.wikihow.com/Get-Into-an-Art-School
+* "5 things you must do when applying art college"://www.creativebloq.com/career/5-things-you-must-do-when-applying-art-college-5132555
+* "How to get into Art School"://artbistro.monster.com/education/articles/10997-how-to-get-into-art-school::
 
