@@ -77,8 +77,8 @@ class SideColumn(Component):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
             width=s.width, backgroundcolor=s.backgroundColor, padding=Em(1), 
-            media=Media(max=self.C.M_MOBILE_MAX, margin=0, float=self.C.NONE,
-              fontsize=s.fontSizeMobile, width=s.widthMobile, lineheight=s.lineHeightMobile,
+            media=Media(max=self.C.M_MOBILE_MAX, margin=0, width=self.C.AUTO, float=self.C.NONE,
+              fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
             )
         )
         article = self.adapter.getArticle() 
