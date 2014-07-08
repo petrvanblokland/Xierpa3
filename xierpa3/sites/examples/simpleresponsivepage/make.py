@@ -71,11 +71,11 @@ class SimpleResponsiveText(Column):
             # The media parameters are collected and sorted for output at the end of the CSS document.
             media=(
                # Example for table, show lighter background, change color of text and smaller size.
-               Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, width=Perc(100),
-                   backgroundcolor=s.backgroundColorTablet, margin=0,
+               Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, width=self.C.AUTO,
+                   backgroundcolor=s.backgroundColorTablet, margin=0, float=self.C.NONE,
                    color=s.colorTablet, fontsize=s.fontSizeTablet),
                # For mobile, even more lighter background, change color of text and smaller size.
-               Media(max=self.C.M_MOBILE_MAX, margin=0, width=Perc(100),
+               Media(max=self.C.M_MOBILE_MAX, margin=0, width=self.C.AUTO, float=self.C.NONE,
                    backgroundcolor=s.backgroundColorMobile, color=s.colorMobile, 
                    fontsize=s.fontSizeMobile),
             ))
