@@ -69,9 +69,9 @@ class Simplex(object):
         (u"=4=", None, '<h4>', None, '</h4>', u'Head level 4'),
         (u"=5=", None, '<h5>', None, '</h5>', u'Head level 5'),
         (u"=6=", None, '<h6>', None, '</h6>', u'Head level 6'),
-        (u'=ank=', None, '<div class="%s">' % C.CLASS_ANKEILER, None, '<div> <!-- .ankeiler -->', u'Ankeiler'),
-        (u'=lead=', None, '<div class="%s">' % C.CLASS_LEAD, None, '<div> <!-- .lead -->', u'Lead'),
-        (u'=sum=', None, '<div class="%s">' % C.CLASS_SUMMARY, None, '<div> <!-- .summary -->', u'Summary'),
+        (u'=ank=', None, '<div class="%s">' % C.CLASS_ANKEILER, None, '</div> <!-- .ankeiler -->', u'Ankeiler'),
+        (u'=lead=', None, '<div class="%s">' % C.CLASS_LEAD, None, '</div> <!-- .lead -->', u'Lead'),
+        (u'=sum=', None, '<div class="%s">' % C.CLASS_SUMMARY, None, '</div> <!-- .summary -->', u'Summary'),
         (u'||', None, '<!-- ', None, ' -->', u'Comment'),
         
         # (u"'''''", None, '<em><im>', '</im></em>', u'Bold-italic'),
