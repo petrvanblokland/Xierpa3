@@ -33,9 +33,9 @@ class MainColumn(Component):
     C = Component.C
     
     BLUEPRINT = BluePrint(
-        width=Perc(70), doc_width=u'Main column width', 
+        width=Perc(65.4), doc_width=u'Main column width', 
         float=C.LEFT, 
-        backgroundColor=Color('yellow'), doc_backgroundColor=u'Main column background color.', 
+        backgroundColor=Color('white'), doc_backgroundColor=u'Main column background color.', 
         fontSize=Em(2), doc_fontSize=u"""Font size of the body text.""",
         lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
         # Mobile
@@ -66,7 +66,7 @@ class SideColumn(Component):
     BLUEPRINT = BluePrint(
         width=Perc(30.75), doc_width=u'Side bar width',  # @@@@ Should be 30?
         float=C.LEFT, doc_float=u'Float left inside row.',
-        backgroundColor=Color('orange'), doc_backgroundColor=u'Side column background color.',                  
+        backgroundColor=Color('white'), doc_backgroundColor=u'Side column background color.',                  
         fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
         lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
         # Mobile
