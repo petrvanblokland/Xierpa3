@@ -11,7 +11,7 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px
+from xierpa3.attributes import Em, Px, Color
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import TextileFileAdapter 
 from xierpa3.components import Theme, Page, Container, Article
@@ -25,12 +25,14 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 class ArticleAdapter(TextileFileAdapter):
     u"""Inherit from the <b>FileAdapter</b> to read the example XML article file."""
     
+    DEFAULT_ARTICLE = 'programming-python'
+
     def getArticle(self, id=None):
         u"""Redefine this method of the standard <b>FileAdapter</b> always to answer
         the one example article. Normal usage is that the <b>id</b> attribute is connected
         to the current url, as available from <b>builder.getCurrentArticleId()</b>.
         The builders always know the request parameters, such as the url of the page."""
-        return self.getCachedArticle('manifest-on-skills')
+        return self.getCachedArticle(id=self.DEFAULT_ARTICLE)
 
 class TextileArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -42,6 +44,7 @@ class TextileArticles(Theme):
     BODYLEADING = Em(1.4)
     BODYFAMILY = '"Hermes FB Book", Verdana, sans'
     HEADFAMILY = '"Hermes FB Semibold", Impact, sans'
+    CODEFAMILY = 'Courier, monospace'
     
     CC = Theme # Inherit the constants from the parent class.
     
@@ -55,9 +58,14 @@ class TextileArticles(Theme):
 
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, lineheight=self.BODYLEADING)
+        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, 
+            lineheight=self.BODYLEADING)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
+        s.addStyle('code', fontfamily=self.CODEFAMILY, fontsize=Em(1.1), 
+            color=Color('#333'), paddingleft=Em(0.25),
+            paddingright=Em(0.25))
+        s.addStyle('pre', margintop=0, marginbottom=Em(1))
         return s
     
     def baseComponents(self):
@@ -73,8 +81,9 @@ class TextileArticles(Theme):
         # Make main page container for the article column
         container = Container(components=article)
         # The class is also the page name in the url.
-        homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
-            title=self.TITLE, css=self.C.URL_CSS, components=container)
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
+            fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, 
+            components=container)
         return [homePage]
     
     def make(self, root=None):
