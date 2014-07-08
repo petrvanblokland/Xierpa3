@@ -1,0 +1,39 @@
+$title How to build a site with Xierpa3
+$category Course
+$level Beginner
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
+$author Petr van Blokland
+$topic A basic course in building sites the easy way.
+$summary Summary of the course how to build a site with Xierpa3.
+$featured example-hello-world, how-to-build-a-simple-kirby-site, programming-python, typography
+
+h2. Introduction
+
+p(lead). What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the related courses.</lead>
+<p>Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different. Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.
+
+h1. Finding your way
+
+h2. Getting started
+
+p(lead). How to build the most simple default website.
+
+Let’s start. We are going to build a simple blog, using a selection of standard Xierpa3 components. A component defines the behavior and appearance of a part of a page. This can be navigation, a sidebar, an article column or a box holding Social Media links. Also as we will see – components can hold other components, so they actually represent a tree of nested behaviors and styles.
+As in almost all functions in Xierpa3, we don’t write code from scratch. Instead of creating from an empty document, there already is a vast amount of knowledge that we can use, without copying the source code. In object oriented programming languages, such as Python, this is done by inheriting from object classes that have similar, but not identical, behavior.
+Building a new blog website thus starts with creating a new class the inherits van one that exists in the Xierpa3 library. First create a new Python file, e.g. named *blog.py*. We‘ll have to put this file in a folder context so Python can find it, but we’ll solve that in a minute.
+
+<pre>from xierpa3.components.theme import Theme
+	class Blog(Theme):
+    pass
+</pre> 
+
+These lines of code import the *Theme* class from the library and makes it available for the code in this file. The second line defines a new class, a type of object, the inherits from the *Theme* in the library. This means that, unless we redefine something, our new *Blog* class behaves in exactly the same way as the original *Theme* class does. A lot of hidden functionality is hidden inside, and in order to know when we can change, we need to understand what it already can do. But we can ignore that for now. The principle in Xierpa3 is that every component can be used “out of the box”: without adjustments they already implement generic useful behavior and styling. And since a *Theme* is also a component, that also applies to the website as whole.
+
+h2. Python patterns
+h3. Special topic: Learning to program is learning to think in patterns. In models. In algorithms.
+
+h2. Background of Xierpa
+
+Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking. All these component need to work together in order to make the website function as it should.
+
+Xierpa is a toolbox of components, written in the programming "Python":www.python.org. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course "Programming Python":/article-programming-python.

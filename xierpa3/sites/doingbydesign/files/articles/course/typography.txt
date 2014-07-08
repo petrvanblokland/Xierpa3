@@ -1,0 +1,8 @@
+$category Blog
+$title Design the Typography
+$poster data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"
+$author Petr van Blokland
+$topic Tips and tricks on typography.
+$summary Let’s try something impossible. Learning to design Corporate Identities through an online course is just as impossible as learning to play violin from a book. A course can describe the basics, show you hints and tips and give you good advice. And at the bottom line, it all is a matter of discipline to develop your skills.
+$featured example-hello-world, how-to-build-a-simple-kirby-site, how-to-deal-with-designers
+

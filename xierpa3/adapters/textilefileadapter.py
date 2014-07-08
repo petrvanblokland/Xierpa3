@@ -15,7 +15,7 @@
 #
 #    Based on textile wiki format, with the following additions:
 #    =C= is separator between chapters, will be processed separately by textile.
-#    $fileName Field Content lines are pre-processed to fiil the fiels of the Data instance.
+#    $fileName Field Content lines are pre-processed to fiil the fields of the Data instance.
 #
 #    TODO: See how we can add soft-hyphens here.
 #
@@ -125,11 +125,13 @@ class TextileFileAdapter(Adapter):
         self.readArticles()
         
     def readArticles(self):
-        for id, path in self.getIdPaths(): # id, path 
-            wiki = self.readWikiFile(self.root + path)
+        for id, path in self.getIdPaths(): # id, path
+            rootPath = self.root + path 
+            wiki = self.readWikiFile(rootPath)
             if wiki is not None:
                 data = self.compileArticle(wiki)
                 data.id = id
+                data.path = rootPath # Keep the source is case the file needs editing.
                 self.cacheArticle(data)
                 
     def compileArticle(self, wiki):

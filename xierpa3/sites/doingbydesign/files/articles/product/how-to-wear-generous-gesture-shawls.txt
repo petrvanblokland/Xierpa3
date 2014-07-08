@@ -1,0 +1,8 @@
+$category Course
+$level Novice
+$title Generous Gesture
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToWearAGGShawl.png
+$author Claudia Mens
+$topic 10 ways to wear the Generous Gesture shawl.
+
+h1. No text here yet.

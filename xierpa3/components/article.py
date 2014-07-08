@@ -403,10 +403,10 @@ class ArticleSideBar(ArticleColumn):
         u"""Build the styles for the articles side bar.  # @@@ Clean up, using model for article side bar?"""
         s = self.style
         # <div class="footnotes">
-        b.div(class_=self.CLASS_FOOTNOTES, marginbottom=Em(0.5))
+        b.div(class_=self.C.CLASS_FOOTNOTES, marginbottom=Em(0.5))
         b.h4(fontsize=Em(1.1))
         b._h4()
-        b._div(comment=self.CLASS_FOOTNOTES)  
+        b._div(comment=self.C.CLASS_FOOTNOTES)  
         
         # <div class="mobileChapterNavigation">
         b.div(class_=self.C.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.C.NONE,

@@ -1,48 +1,28 @@
-<?xml version="1.0"?>
-<document>
-<meta>
-<category>Course</category>
-<level>Advanced</level>'
-<title>Programming Python</title>
-<poster src="http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png"
-	alt="Programming with Python"/>
-<author>Petr van Blokland</author>
-<topic>A short description of the article.</topic>
-<summary>Summary of the couse Programming Python.</summary>
-</meta>
+$category Course
+$level Advanced
+$title Programming Python
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
+$author Petr van Blokland
+$topic A short description of the article.
+$summary Summary of the couse Programming Python.
+$featured example-hello-world, how-to-build-a-simple-kirby-site, how-to-build-a-xierpa3-site, typography"
 
-<featured>
-<article id="example-hello-world"/>
-<article id="how-to-build-a-simple-kirby-site"/>
-<article id="how-to-build-a-xierpa3-site"/>
-<article id="typography"/>
-</featured>
+h1. Getting started
 
-<chapters>
-<chapter>
-<meta><title>Getting started</title></meta>
-<lead>This is course is about Python. If you now think that it’s about snakes and not about programming, you don’t want to continue. But if you are here to learn more about objects and classes dedicated, then you are on the right track.</lead>
-<p>
+p(lead). This is course is about Python. If you now think that it’s about snakes and not about programming, you don’t want to continue. But if you are here to learn more about objects and classes dedicated, then you are on the right track.
+
 By the way, you don’t have to have any programming experience in order to follow this course. It’s characteristic is that we really start from scratch, using daily life examples to visualize the programs. How they are structured. How they behave. And how they are used. That is a different approach from many other programming courses, which often start with a technical solution in search for a problem.
-</p>
-<p>
 There will be a lot of coding in this course. But I’ll try my ultimate best to clarify as much as I can and to relate everything to practical problems that you can recognize and visualize. I am pretty sure that you will see that programming is not as magic as some programmers want you to believe. And what is more important, knowing about how programming works yourself, can actually save you a lot of time. Even if you don’t want to <em>be</em> a programmer. 
-</p>
+Later we’ll talk more in detail about what programming is. And how is may relate to your profession. Let’s start.
 
-<p>Let’s start
-Later we’ll talk more in detail about what programming is. And how is may relate to your profession.
-</p>
-</chapter>
+h1. Core Python
 
-<chapter>
-<meta><title>Core Python</title></meta>
-<p>
 First let’s do some nerdy stuff. Just to invite you to the core of Python, so you know where it is and how it works. Also this will make you appreciate better when we’ll use the more interactive application Drawbot for the development of the code in this course. 
 
-Open your Applications folder.
-Then search for the Utilities folder and open it.
-Then start the application Terminal.
-Then you should see this.
+* Open your Applications folder.
+* Then search for the Utilities folder and open it.
+* Then start the application Terminal.
+* Then you should see this.
 
 Type “python” (all in lowercase) and hit the enter key.
 This will make the iOS search for the Python application which is hidden even deeper in your system than the Terminal application is. 
@@ -59,54 +39,39 @@ Later in the course we will come back here, because knowing how to operate Pytho
 For now you should download Drawbot. That is a small environment, made by Just van Rossum, brother of Guido, for educational use. It is using the same Python interpreter as you saw working in the Terminal, but now there is a more convenient window interface wrapped around it.
 You can download the Drawbot application from drawbot.com 
 Also there is a brief set of instructions and examples, but all of that will be covered in this course too.
-</p>
 
+h2. The Python Application
 
-</chapter>
-<chapter>
-<meta><title>The Python Application</title></meta>
-<p> 
 Python is a object oriented programming language. What that means will be explained during this course. The language was designed by Guido van Rossum, starting as a university graduation project, he has been working on improving the language and the program ever since. He has been given the title Benevolent Dictator for Life by the Python community. 
 Python is roughly two things: it is a standardized syntax, the grammar of the language, that describes how programs should be written in order to be recognized without errors. A Python program therefor is nothing more than a file with text. Not just any kind of text, the format should fit the Python grammar, but nevertheless it is just a text file.
 The other Python is an application, specifically made for the platform it is running on, that understands, interprets the syntax – so it can detect mistakes in the grammar – and then it can execute the found instructions. In the current major operating systems such as Windows and Mac OS, the Python interpreter is standard installed. 
 The advantage of this layered approach, the Python application is made specifically for the platform it is running on, is that in principle the Python code itself is independent of the type of Operating System. 
 There are different Python versions – there is a 2.7 version as well as the new 3.x version – but from our current point of view in the course the differences can be ignored. 
-</p>
-<p>
+
 The  default Python interpreter has no interface on the desktop of Windows or Mac OS. You need to start the terminal application in order to reach communicate with the application. As this course is intended for designers, I take the liberty to focus on the usage on iOS, but that does not mean that Windows could not follow most of the course. It’s just that the platform we will be using to demonstrate is iOS based. For Windows users some alternatives will be mentioned, but for practical reasons they won’t be developed as demo here.
 
-</p>
-<p>
-
-
 The course is set up as a growing environment. Because the development of a course like this is a design process in itself – increased knowledge and understanding about how it should be done – there will be continuous improvement on the code and the examples. Feedback from subscribers and the regular updates of Python make that the course will adapt and grow over time. So the subscription fee of the course will grow too. This makes the plan for course into an alternative construction of a kickstart project. If you are an early adapter, trusting that the course will grow and develop in a direction that you need, then you just pay the current amount. After that every addition is available free of charge. The Udemy courses always have a lifetime subscription for the fee that you initially paid for it. If you wait for a few months, more content will be added and the price will be subsequently higher, adding approximately $16 per hour video. Any time you jump on the bandwagon, you will pay the price as it is at that moment, based on the volume of the content at that moment. Relatively low in the beginning, putting your trust in the expectation we’ll develop the course further. We start with 2 hours of instructions and examples. If you wait for a while, you will pay more for the same content. 
-</p>
-<p>
+
 So, if you are a designer, or you have other reasons to use Python in your professional life or your personal life, you are already using Python or you expect to do that in the future, then joining this growing environment is likely to be profitable for you. There are many good examples around showing the great potential of programming in Python, but most are solutions in search for a problem to be solved. Using programming in your daily practice requires a reversed approach. You want to achieve something and what is the best pattern this can be done. Instead of reading the translation of “Do you know where the station is?” in a tourist guide, you are interested in conversations in this foreign language where you can decide on the topic. 
 This course is trying to do that. And since these patterns are so divers and changing overtime, you need an environment that will adapt and grow, instead of presenting a fixed “how to” course. 
-</p>
-<p>
+
 At the end of the course an overview of possible future topics is given. This list will be maintained over time, adding wishes and needs expressed by you, the user of the course.
 The development of the examples will try to stay in sync with changes in the outside world. To what extent this will succeed is a future promise, but by joining in at early stage, you express the trust that this will happen. As a reward for this trust you get all future content for the current price.
 This course is the twin of Processing for Designers course. Much of text is the same, as the structure of the Processing and Python is very similar. Also the code examples are very much alike, except that they are adapted to the syntax of each language. And in the advanced part of the courses the examples start to drift apart, because the available functions and libraries is different. You can decide to go through both courses if you want to learn the differences. But if you already have a preference or you made a choice, then following only one of the two courses may be sufficient as a start. If you are starting fresh on programming, the choice can be based on the expertise that is available in your environment, that is a very practical reason. You choice also be based on the difference in flavor between the languages. In preparation of deepening in each of there languages here is a brief summary about their characteristics. 
-</p>
-<p>
+
 Processing is based on Java, an industrial strength programming language, where the type of objects needs to be specified at the start of a program. Python has a much more free usage of types, which makes it good for “sketchy” programming, but it is less reliable in circumstances where the prediction of flawless execution is important. But in reverse, this makes Python much more flexible in the storage of information. Especially the mixing of data type and the storage in the standard dictionary type, allow Python to build data structures that are very hard to achieve in Processing.
+
 The origin of Processing is more in the processing of images, – focussed on pixels and interaction – than Python. Python can for instance be found inside web servers and as scripting language in desktop applications such as FontLab and RoboFont. In general Processing programs are more linear, smaller and dedicated to a specific task, where Python programs tend to be part of larger systems. In that respect Python should be more compared on the level of Java, the language that Processing is built on top of.
 Another difference is the amount and type of available libraries of code is another important factor. There a some minor differences in the syntax of the two languages – minor, but for some people they are really annoying, being accustomed to one kind of notation, such as the use of curly brackets to indicate the start and end of blocks of code in Processing (and Java) and the way Python detects the start and end of a block: entirely by the amount indent of a set of code line. 
 In this course the differences between Processing and Python will be mentioned if that is really important, but this course will mainly focus on the use of Processing in the design practice.
-</p>
-<p>
+
 There are three other important object oriented programming language, who’s structure and syntax are similar to Processing and Python: JavaScript (not to be confused with Java, although the name would suggest the opposite), Ruby (similar to Python, but with a different origin) and Objective-C (the language by Apple to create iPhone and iPad apps). These language are similar, but also so different that for this course we’ll ignore them in order not to confuse different syntaxes. However keep in mind that when you learn one of them well, switching to another language takes much less time, as you already understand how the programming patterns work. In that case it is more a matter of getting accustomed to the difference in syntax and the variation in available libraries.
-</p>
-<p>
+
 Learning a new language – any language – can be hard. In the beginning, when learning a spoken language, none of the sounds you hear make sense at all. It is then hard to imagine that these incredible noises will ever become something that you understand. And producing the noises, speaking the language in a way that others can understand, seems even harder, a world out of reach.
-</p>
-<p>
+
 But as designer you have encountered such problems before. You have the experience that there are always parallels between every design project. A typical project starts with the pile of garbage that your customer puts on your desk, in the hope that you can convert it into a structured design, as by magic. At first glance everything seems like chaos. 
 And then, as with every project, no matter how complicated it seems at first glance, there is a moment of surprise. When you dive into it, spending a period of continuous time without Twitter, Facebook or Phone, taking some rest to make your eyes adjust to the new circumstances, you start to see patterns that were invisible before. And then the patterns appear to be connected, and before you know it, you start to understand the bigger picture. You recognize the larger pieces. And that makes the next steps go faster. And then faster again. It still may take a while, but at some point you find yourself at a level were you can explain to others. Learning is design and design is learning. 
-</p>
-<p>
+
 The main problem with programming is identical to acquiring the skills for any new language: words and grammar are essential, but when there is no obvious reason to learn them, when there is no real problem to solve with that practice, it is a drag. Drilling lists of nouns and verbs that you may never need. 
 Learning to speak and understand a language after being dropped in a foreign city, instead, is very effective as a start. To survive, you need to buy your food and find your way in the underground. That is all good for the essential exchange of information, learning the local language. There is no escape. You have to. 
 On the other hand, this approach can take quite some time to get you on a professional level of conversation. Without proper education it is hard to understand the structure of the grammar, especially if it is very different from your native language.
@@ -115,46 +80,37 @@ The best strategy is to do both at the same time. Live in an environment where y
 The aim of this course is to create that foreign city for you. Little background theory and just the right amount of grammar. And only the details that you need to get a certain task done. Building slowly, until you are at a point that you can write your first poem.
 If that is all you need, then you’ll have a set of nice small applications, doing the dull production work for you. Which leaves more time for your existing design process. 
 And if you think that this is really an interesting area, and that there are lines of code that you can improve by yourself to solve some specific problems, then you are free to alter them. To experiment. You can write your own little stories is this new language. And who knows, maybe you even can be seduced to appreciate that programming with objects, and Python in particular, actually is a design process: what you make would never exist if you didn’t do it. And every time you do it, the result gets better. If you apply that definition of design onto your own creative work, doesn’t that sound familiar?
-</p>
-<p>
+
 An important issue about programming in relation to your design process is that the emphasis totally changes. Where in traditional design, much effort is in the actual creation of material for a presentation. Drawing manually is a slow process, no matter if that is done on paper or in programs such as PhotoShop, InDesign or AutoCad. For the repeating components of a drawing every iteration will reduce the amount of design decisions to be taken. Every literal copy requires less design thinking than when you make adjustments or draw each component from scratch. When drawn on paper, this is a lot of work. But even using digital applications, duplicating through copy-paste will create a series of identical components. That is a fast method. But when, at a certain point in the design process, the original changes, these manual copy operations needs to be done again. In most cases copy-paste forgets about the relation between the source and the copy. There is no reference maintained.
-</p>
-<p>
+
 Yet, it is impossible to skip these steps, otherwise the presentation of the design looks very unfinished. So, manual work – as much value as it has for generating new ideas and acquiring the skills – forces a design process to be linear rather that cyclic. Once a lot of manual drawing has been done, it is hard to throw it all away and start over, no matter if new insights would suggest that to be a better option.
 The main advantage of a fully manual process, is that every decision can be taken without the need to define rules or algorithms. That makes it totally flexible. But also into something that cannot be repeated.
-</p>
-<p>
+
 Programming is the opposite. Instead of putting all the effort in walking through a linear line of decisions, with programming almost all design decisions are taken during the development of the algorithms. Generating the final output is nothing more than the push of a button. The combination of the program and a set of parameters generates a specific state of output. Changing one or more of the parameters can radically modify the appearance of the output, very much dependent on the way the program is conceived. The design decisions are mostly focussed on which parameters are needed, what the bandwidth of their values is and how they should interact when interpreted by the program.
 The disadvantage of this method is that it restricts to the type of designs that can be described in an algorithm. If the algorithm gets more complex than the actual drawing, or if it takes more time to develop it than making the drawing manually, then writing the program makes no sense. 
 But if it is possible to describe the output as a set of rules, then it is very easy to create hundreds of different versions with the same program, just by adjusting the values of the parameters.
 It needs design skill to decide wether a design problem must be solved manually or by developing algorithms. The bigger the design problem, the more divers the number of possible solution, the less likely it is to write a program that does the job. But if the design problem can be split into smaller parts, then it become more realistic that a program van be written to make the design decision. Imagine the difficulty of writing a program to “Design a new magazine”. It not likely to do that, unless a lot of decision have been made by the designer or programmer, before the programming can start. But when the problem is split into smaller pieces, it is very realistic to write a program that will decides on the best layout, with a given amount of content, text and images. 
-</p>
-<p>
+
 This course is about programming in Python, but it is also about design. In more that one way. We will look into the design aspects of programming, such as the creation of classes and giving the right names to objects. But the process of programming is also very similar – identical? – to design, where you do things over and over again, and then the next time it gets better. 
 And finally, in the second half of the course, we’ll dive into the more sophisticated kinds of programming: how can you make programs that actually take design decisions. Don’t worry, fbts don’t take over the world – yet – , you still have to write these programs yourself. But meanwhile it is very possible to write programs that simulate the design process. Just by adding some simple decision algorithms. This course will bring you to that level, step by step.
-</p>
-<p>
 
+h2. Basic coding
 
-Basic coding
 Once you have installed the Drawbot application, open it by a double clicking the icon.
 Then you see this window with three frames, each with a different function. The frame on the top right is the area where you will type your program. The frame at the bottom right is where the Python will show the text result of a program that your run. Do the same thing again as you did in the Terminal. Type “print 7 * 7”. Instead of hitting the enter key, now choose Run from the Python menu, or type cmd-R. The Python interpreter in Drawbot now shows the same answer in the frame at the bottom: 49. You can change one of the values and run the program again, for instance this: “print 7 * 7 * 7”. Now the new answer is visible at the bottom. Every time you change something to the program you need to type cmd-R to make it run again. You will do this a lot during this course, each time to check on the code of the Python program, while you are writing it.
 You can adjust the font type and size of the code editor in the Font menu. Drawbot was initially made by Just for educational purposes. To use the program in a presentation it is of useful to adjust the size of the type.
 The frame on the left is the area where Drawbot can do the drawing. This is one of the main advantages in using this application compared to the Terminal, because there is no area to draw there.
-</p>
-<p>
+
 Add a second line of code in the Python editor frame that says “rect(10, 10, 100, 100)” and run new version of the program by hitting cmd-R again. Now the answer of the multiplication is still visible again, but also there is a new black square at the bottom left of the drawing frame. As you may suspect, the square is positioned at 10 pixels from the left and 10 pixels from the bottom. And the width and height of the square is 100 pixels. These values correspond with the parameters you have put between the brackets. The first 10 is for the x-value, the distance from the left boundary of the drawing frame. The second 10 is for the y-value of the bottom boundary of the drawing frame. Note here that the y-value goes from bottom up, which is the mathematical description of the y-axis. This is different from typography and page layout, where the text grows from the top of the page downwards. This is a difference in orientation between a mathematical coordinate system and a the coordinate system of a page. One can easily be calculated into the other, which we will do later in the course. For now, as long as we are not doing anything with layouts, we’ll use the standard mathematical orientation, where the y-axis point upward.
 You can see the square change. Change the width of 100 to 200 and run the program again. Now the square is replace by a rectangle of 200 pixels wide and 100 pixels high. 
 Duplicate the code line that draws the rectangle, so a second rectangle will be drawn. We have to change the position, or else the rectangles are drawn over each other. The second one is invisible then. Now let’s have a little thought about the position of the second rectangle. If we make the x position a bit larger, then the rectangles still overlap, showing as one wider rectangle. If we want to draw them next to each other, we also can make Python do the calculation. So if the x position is 10+200+10 (10 for the left margin, 200 for the width of the first rectangle and 10 for the gutter between the rectangles) then the second rectangle shows next to the first one. As if they indicate the columns of a text. 
-</p>
-<p>
+
 If we duplicate the two lines into 4, then we can adjust the vertical position of the third and fourth rectangle in the same way. The y position will then be 10+100+10 (10 for the bottom margin, 100 for the height of the first two rectangles and 10 for the gutter between the old 2 and the new 2 rectangles). Now the rectangles show with a fixed position of 10 pixels between them.
-</p>
-<p>
+
 Note that separate instructions always need to start on a new line, otherwise Python cannot easily see the separation between two instruction. Different from programming languages such as Java and JavaScript, where the semicolumn “;” is used as separator, Python is using the line break as separator.
 Imagine that this could be the grid of a page, especially if we add these two color lines on top of our little program. 
-</p>
-<code>
+
+<pre>
 print 7 * 7890
 stroke(0.5)
 fill(None)
@@ -162,187 +118,130 @@ rect(10, 10, 200, 100)
 rect(10+200+10, 10, 200, 100)
 rect(10, 10+100+10, 200, 100)
 rect(10+200+10, 10+100+10, 200, 100)
-</code>
-<p>
+</pre>
+
 The “stroke” tells the Python interpreter to set the color of the outline to a middle gray. And the second line “fill” tells the Python interpreter not to fill the rectangles with the black color we had before. It is important that the None has an initial capital, it is one of the reserved words in the Python language, indicating the None object. There is a difference between 0 (which would indicate black) and None (which indicates Nothing).
-</p>
-<p>
 
 What you can see in this stage is that we need a lot of code lines like these, to draw all the rectangles of a grid or a page. That not a problem at all for the Processing interpreter, but it is a problem for us. It becomes obvious, that copy-paste is an easy method in a program to generate more information and more elements in a drawing, but the tremendous disadvantage is that with every copy-paste the relation with the source is lost. So we get a lot of code, but there is not structure between the code line. There is no knowledge about the relation left. So, for instance, if we would like to change the size of the columns, it would need a lot of manual work to adjust all the widths of the rectangles and also change the position of the rectangles that are next to the changed ones. This manual work is the direct result from our copy-paste action. The rectangles have no knowledge about their neighbors. If something changes to size or position, is does not have any consequence for the other elements on our page.
-</p>
-<p>
+
 So we need a more efficient way, more using the strength of a program, instead of making a flat list of drawing instructions. 
-</p>
-<p>
+
 This difference “copy-paste” versus “using an algorithm” is one of the most important issues to learn about programming. In this course about how to design your design thinking it is a repeating issue in particular. That principle will be mentioned often. 
 In order to program algorithms, we need to look deeper into the Processing language, to gather some basic understanding on the different functions that are available.
-</p>
-
-</chapter>
-<chapter>
-<p>
 
 All the code mentioned in this course is available as supplementary source files. So, you could download the files and copy-paste the examples. For efficiency reasons that is a good option later in this course, because you also will need some predefined code libraries. But for now I advice you to type all the code yourself. It is the best way to learn the language. Not just reading but also to do the writing. 
 There are many similarities with writing the code and drawing and sketching in your other design projects. The aim of this course is to make you experience the similarities and also show you techniques to think and sketch and rethink about algorithms in your Moleskine sketchbook. 
-</p>
-<p>
 
 Forget about the drawing part for now. Let’s start looking at some basic Python coding, before we continue. You already saw the behavior of one of the standard types of objects in Python, the integer. An integer is a whole number, no fraction, that can have a positive or negative value. Also the zero is considered to be an integer. What we did so far is multiplying two integer values 7 where the result was another integer with the value 49. Exactly what you expected to happen. 
-</p>
-<p>
+
 In Python that is often the case. The language is designed to be intuitive. If you expect some behavior of the naming of a function, try that one first. It is likely that the designers of Python thought along the same path, and implemented the function exactly in the same way as you expect. Often this is true, so trusting your intuition will increase your development speed and reduces the amount of time spending on looking things up in the manual – either as book or online.
-</p>
-<p>
+
 Play a bit by changing the values of the multiplication. The very convenient thing about Python is that it tries to understand what you want to do. Unlike languages as Java, where for instance you have to describe the type of value you want to work with, Python assumes and guesses a lot. For heavy duty industrial processes this may lead to unpleasant and unpredictable results sometimes, but for the usage in our design environment that is not a problem. It is a feature, an advantage. In our case the sketchy nature of Python programs is very complementary to the sketching you do as a designer. You don’t know all the questions and answers up front. While you develop the program, the specifications of the values that you use should transform accordingly.
-</p>
-<p>
+
 We need to go through some boring basic stuff. I promise to keep it brief, but there are some conventions that you need to understand as the basic grammar of this new language.
 As you already guessed the other mathematical operations on integer numbers work as well. Running the code 7 + 7 will has 14 as result, 7 - 7 shows zero and 7 / 7 shows 1.
 Play a bit more with calculations that have several operations in on line. For instance try “print 7 + 7 * 5” and notice that the answer is 42. It is the answer to everything, according to the Hitchhikers Guide to the Galaxy, by Douglas Adams. Note that the answer is not 70, which would have been the result of print 14 * 5. The multiplication is preferred above the addition, following the standard mathematical rules. Multiplications and division are grouped together and calculated first, and then the result is added or subtracted. This is called the distributive property of these operations.
 If you want the addition to take place first, use round brackets around that operation. Thus “print (7 + 7) * 5 actually has the output of 70.
-</p>
-<p>
+
 Note that you have to add the “print” instruction in front of the calculation line to indicate to the Python interpreter what to do with the result of the calculation. If you omit the “print” instruction, that the calculation is still executed in a valid way, but the result is ignored. It does not show up in the  output frame.
-</p>
-<p>
 
 You may notice that the word “print” is colored, by the Python editor of Drawbot. The color is a reminder that this word – identifiers as names are called in a programming environment – is reserved by the Python language definition. It cannot be used for anything else. That applies for a number of other words that are part of the core definition of Python such as for, in, def and class. The reserved words are exactly matching. Any alteration to them, such as one or more capitals, adding and removing characters make them into unique names again, not being part of the core syntax of Python. If you want to use the word class (for instance because you are writing a program that generates HTML code for websites) then class could be written as cls or class_. These names are not used in the Python language).
-</p>
-<p>
 
 Normally you don’t want to show the result of every calculation. In most cases you want to use the result again. In that case we will store the resulting value under a name. This is how works. Replace the line by “a = 7 + 7 * 5” and run the program. Nothing is showing in the output, but the result of the calculation is now stored as an integer – a whole number – object with the name “a”. That name is something I just made up. It could be anything else, as long as the name is build from letters, figures and underscores, in any combination. It is a well recognized convention in Python programs that the name of plain objects, such as the “a” starts with a lower case. So the name “myHitchHickersGuide” would have worked in exactly the same way. 
 Now we have stored the result of the calculation as object – also called instance), we can show it. Add the line “print a” to your program and run it again. You will see the 42 show up in the output frame. Apparently that value was the object with the name “a”.
 Unlike other programming languages, Python integers can have any size. The limit is defined by the available memory (and calculation speed) of your computer. So if you multiple 2 really really large numbers you may notice that the answer takes a little bit longer to calculate and to print, but it still does it. Try, for instance to multiply two very large numbers:
-</p>
 
-<code>
-print 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890 * 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-</code>
+<pre>
+print 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890   
+ * 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+</pre>
 
-<p>
 Are you still here? Note that you can stop this video any time and play with the numbers by changing the code lines, to see what happens. Try to predict and understand what happens. If you see a red remark in the bottom part of the editor window, then you made an error in your code. The Python interpreter is checking your code against the standard Python grammar. If it finds something wrong it will show the error message, guessing what might be the problem and showing the line number and a suggestion what the error likely is. Note that this is not alway accurate. If there is a major mistake in the syntax, by definition Python does not understands what you mean. So is also cannot know what it is, that you did wrong. But in general the interpreter is capable of doing a fairly good guess.
-</p>
-<p>
 
 Let’s continue with the exploration of the standard type of objects in Python. So far we used integers. Then there is another type of number, called float. This type contains the numbers that are not integers but fractional values, such as 3.14. If you multiply a float with a float, of course the result is a float again, such as in “print 3.14 * 2.71”. This shows up as 8.5094 in the output frame. Also multiplying a float with an integer will result in a float number.
-</p>
-<p>
+
 Another important type of objects in Python is the string. That is not the name for a specific type of under ware, but it is the collection of a sequence of characters. That is the way chunks of text can be stored. The syntax of a string is to start and end with a single quote or a double quote. It doesn’t really matter which one you use, as long and the start and end character is the same. Type “print 'Hello world'” and run the program again. Now the output frame contains the content of the string, as you expected.
 As said before, Python is an intuitive program. This means that functionality is implemented in such a way that it behave as you expect. For instance the addition of two string creates a new string. See for instance “print 'Hello ' + 'world'”.
 Now the two strings are glued together into one single string and then printed, resulting in the same output as the previous version. Don’t forget to add the space at the end of the string, or else the two words get vacuumed.
-</p>
-<p>
+
 Similarly a string can be multiplied by an integer number. This results in a string that has that amount of the same string glued together. “print 'Hello ' * 10” greets you like a crowd. There are some other issues to strings, such as making them work with unicode – you need this for other languages than the Latin script or when using accent characters – but that will be addressed later in this course. Plain strings are sufficient for now.
-</p>
-<p>
 
 If you want to leave notes in the code for yourself, then use the # hash symbol. It is part of the Python syntax to ignore all the text after the hash symbol, until the end of the line. This way you easily can add comments at the end of every line of code, as notes to yourself about what actually happens here.
 So we let’s add some to the previous lines we did so far. 
-</p>
-<p>
 
 The art of adding good comments is like developing conversation techniques. If you make a lot of noise without saying much, there is the tendency that people won’t listen. And if the information is so short, that it starts to be an exercise of decryption, then the comments are of little use. Writing the comments that are just right, needs practice of balance. That is a micro design problem for every line of code that you write. Comments are like a one way conversation with who you a one year from now. You have to imagine who you are then. What your knowledge is and your willingness to study the code you are writing now, to understand what it does. This clever idea you got today, may not be clear at all, when it is seen in the context of the world a couple of months from now. And that is even more true if someone else has to read your code at that time, without the memory of writing it at all.
-</p>
-<p>
 
-Then there is another important basic object type in Python: the list. A list is an object that contains an indexed set of other objects. That can be any number of any type of object in any order. So for instance “myList = [0,9,1,8,2,7,3,6,4,5]” is a list of integers, in the specified order. Notice that in my definition there are no spaces between the commas and the numbers. The square brackets are the symbols for Python to recognize that the everything in between should be interpreted as being part of the list.
+Then there is another important basic object type in Python: the list. A list is an object that contains an indexed set of other objects. That can be any number of any type of object in any order. So for instance @myList = [0,9,1,8,2,7,3,6,4,5]@ is a list of integers, in the specified order. Notice that in my definition there are no spaces between the commas and the numbers. The square brackets are the symbols for Python to recognize that the everything in between should be interpreted as being part of the list.
 Now if we print the list object in the following line of code “print myList” it will show with spaces behind the commas. This proofs that the list is constructed as an object and the it is printed it gets transformed into a string again, independent of my original description. 
-</p>
-<p>
 
 Because the list is a standard object type in Python that can contain all other Python objects, it can also contain other lists. This construction is called recursion, word that will often be used in this course to indicate when definitions are described in themselves. A list inside a list will show, for instance as “myList = [1,3,5,6,['another list', 100],7,8,9]” where one of the elements of “myList” now is “['another list', 100]”, besides the range of integers. 
 Another Python type that is closely related to the list is the tuple. Instead of square brackets it is defined by round brackets, as in “myTuple = (1,3,5,8)”. Lists and tuples behave almost identical. The subtle differences will be addresses later in the course. For now you can consider them to be equal. 
 Lists and tuples are an efficient way to group a number of values together, especially if their behavior is similar and if we don’t need to select one particular value from the pack. Since a list is a sequential creature, it becomes inefficient to search specific information in huge lists, because the program needs to run through the entire list, from start to end, in order to find that value. Like you need the meaning of a certain word and all you have is a stack of all the English words with their meaning, not ordered in alphabetical order. Since the word you are looking for can be anywhere in the list, the only thing you can do is to start with the first element and compare, then the second and compare, then the third, etc. If you are lucky then the word you are looking for is in the beginning of the list. But fat chance there are also words that are at the end of the list, and then your have to go all the way through, one by one, to find that you are looking for. For a very small list this is not a problem, but for huge lists this is not an efficient way to search.
 The best way to use list is roughly in 2 types of operations. 
 The first is to use the list a source for using the values in a loop. It is possible to run through the entire list to perform the same operation on all element. Type the following 2 lines of code.
-</p>
 
-<code>
+<pre>
 for n in [2,3,4,5,6]:
     print 'Value is', n
-</code>
+</pre>
 
-<p>Make sure to indent the second line and add the column character and the end of the first line. 
-</p>
-<p>
+Make sure to indent the second line and add the column character and the end of the first line. 
+
 The first line tells the Python interpreter to run through the list of [2,3,4,5,6], where for each cycle a new value is taken from the list and put into the object named “n”. For as many values as there are in the list, the block below is executed. Different from programming languages such as Java and Javascript a block is defined as everything between { and }. In the Python syntax a block is defined by all the lines that have an identical indent. So in this case the second line is executed for every value of the list where the value is available in “n”, which is then printed by the second line.
 Executing these two lines show the values of the list, each on a new line.
-</p>
-<code>
+
+<pre>
 Value is 2
 Value is 3
 Value is 4
 Value is 5
 Value is 6
-</code>
-<p>
+</pre>
+
 The other main usage of lists is as source  to retrieve values by their index in the list. To see how that works, execute the following lines:
-</p>
-<code>
+
+<pre>
 myList = [2,3,4,5,6]
 print myList[1]
-</code>
-<p>
+</pre>
+
 The second lines instructs the Python interpreter to get the element from myList with the index “1”. This results in “3”. You may have expected to see the first element of the list, which is “2”, but the index values for a list start with “0” instead of “1”. So to get the first element from myList the following code should be used “myList[0]”.
 Also it is possible to get more values than just one. This is called slicing. A slice is a list that is cut from another – larger – list. The syntax of getting the second to fourth value from the list is this “myList[1:4]” which results in the list “[3, 4, 5]”. 
 It is possible to add lists. 
-</p>
-<p>
 
-That leads to the introduction of another very important basic object type in Python: the dictionary. Where in a list the elements have a certain fixed order (although that may not be alphabetic), in a dictionary the elements have no order at all. The elements are not retrieved by their index position. The values are retrieved by the same key as they were stored in the dictionary.  
-</p>
-<p>
+That leads to the introduction of another very important basic object type in Python: the dictionary. Where in a list the elements have a certain fixed order (although that may not be alphabetic), in a dictionary the elements have no order at all. The elements are not retrieved by their index position. The values are retrieved by the same key as they were stored in the dictionary. 
+Now we have seen the basic types of Python, let’s do some visual examples, to show how they can be used as design tools. Let’s have a look at some more example lines of code. 
 
-Let’s have a look at some more example lines of code. 
-</p>
-<p>
+h2. Design methods
 
-Now we have seen the basic types of Python, let’s do some visual examples, to show how they can be used as design tools. 
-</p>
-<p>
-
-Design methods
 So far we just looked at a sequence of code lines. Programs that work in a linear way, have can only have limited functionality and complexity. The disadvantage of programming this way is that it is impossible to reuse the code for other purposes, without changing the code. 
 In Python it is possible to isolate chunks of code and give them a name. Such a chunk is called a method. The name of a method is called to execute it. 
 Let’s make an example now that reflects objects in reality. 
-</p>
-<p>
-Design of classes
+
+h2. Design of classes
+
 Classes are the most important aspects in an object oriented programming language, such as Python. Where a method isolates a piece of code and makes it available under a name, in a class that concept is even more strongly defined. A class describes the behavior of a set of objects, independent entities of code. In Python terms the objects are called instances. In detail objects can different, but their overall behavior is identical, defined by the class that made them. 
 Imagine a stack of randomly selected books. They are likely to be different in size, color, number of pages, binding technique, cover and material. Yet their overall behavior is expected to be the similar. For books that are based on the Latin script, it is very likely that they will open from right to left, that the uneven page numbers on right pages, that the cover contains the title, that the back of the book shows the title vertical and that most books will fit in a pocket or bag, etc. Defining this stack of objects to be part of the class “Book” means that we can predict their overall behavior. The differences between the individual books are then called the attributes of the objects, such as their title. 
-</p>
-<p>
 
 The class of Cars is another great metaphor for explaining how object programming works. Cars are good example products to illustrate how design works. They all have similar functionality – driving on a highway, using an internal power source – anyone knows more or less how they work. They include highly innovative technology. Industrial products. They are fashionable. They are complicated projects to design, bound to many rules. They are consumer products. They are competitive in pricing  and everyone has an opinion about them. 
-</p>
-<p>
+
 And as useful as they are as metaphor in design education, they also are very illustrative as example in our introductory programming exercises.
 Let’s build a car factory. 
-</p>
 
-<code>
+<pre>
 class CarFactory:
-</code>
+</pre>
 
-<p>
 The reserved word class  – you can see that the Python editor understands, so it automatically adds the color to the word – indicates to the Python interpreter that we are defining a new type of objects, the CarFactory. The name of a class always starts with a capital. That is the convention in the Python language. The names of instances – objects – always start with a lower case. That fact that there is an exception to this – because classes themselves are also objects – is beyond the scope of the course at this point. So I won’t mention that. Oh, I just did.
-</p>
-<p>
+
 The best way to interpret the class of a CarFactory is to see it’s behavior as a factory of cars. A class knows how to create instances – objects – with a defined type of behavior. In order to define the CarFactory class then, we have to think about what kind behavior a car should have. In design term this equals the description of the list of go-no go parameters. A pan should not melt on a stove. A TV should use 220 Volts or 110 Volts, depending on its location. And a car should be able to drive. So let’s add that for a start.
-</p>
-<code>
+
+<pre>
 class CarFactory:
     def drive(self):
         print “I drive”
-</code>
-<p>
+</pre>
+
 The indented def indicates that we define a method in the class CarFactory. Using this method, an instance is able to perform a certain defined task. The word following the def is the name of the method. The convention is that method names start with a lower case. And as they have the role of identifiers, they should only consist of letters, figures and underscores. Ignore the brackets with the self for now, we’ll come back to that later. The definition line ends with a column to indicate to the Python interpreter that everything following from here  – as long as there is an additional indentation – is part of the method definition.
-</p>
-<p>
+
 Then we add a single line for now, that defines the metaphor of the driving car. Note that we are not yet driving in this stage. We just define what a car does when it is instructed to do so. It is a plan for action. Not the action itself. Methods as part of a class definition must be seen as the blueprints of a car inside the CarFactory. It’s not the car itself, it is the specification – the blue print – of a car.
-</p>
-
-</chapter>
-</chapters>
-</document>
-

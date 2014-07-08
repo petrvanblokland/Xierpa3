@@ -1,0 +1,84 @@
+$category Blog
+$level Advanced
+$title How to design Interiors by sketching
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToDesignInteriosBySketching.png
+$author Claudia Mens
+$topic Highlights and pitfalls when redoing your interior.
+$featured generous-gesture, how-to-deal-with-designers, interiors.
+$children how-to-build-a-simple-kirby-site, how-to-build-a-xierpa3-site, how-to-deal-with-designers, how-to-get-into-art-school
+$summary Let’s try something impossible. Learning to design Corporate Identities through an online course is just as impossible as learning to play violin from a book. A course can describe the basics, show you hints and tips and give you good advice. And at the bottom line, it all is a matter of discipline to develop your skills.
+
+p(lead). Let’s try something impossible. Learning to design Corporate Identities through an online course is just as impossible as learning to play violin from a book. A course can describe the basics, show you hints and tips and give you good advice. And at the bottom line, it all is a matter of discipline to develop your skills.
+
+[svgexample 1]
+
+But this course is a serious attempt to do both. It will describe the basics, show you basic hints and tips and give you good advice. And it will be you modest – and yet determined – coach to encourage you to go through the exercises. To develop the discipline. To improve your skills.
+
+[svgexample 2]
+
+So this course needs you just as much as you need the course. Although most of it is a one-way mirror conversation, I hope that the exchange of information will create an environment were you feel comfortable to work in. But not too comfortable, because acquiring skills needs just the right amount of tension and transpiration.
+
+The content is this course is a compilation of our years of talking with customers and lecturing design students. At the individual level they are all different and unique – no two customers are the alike and by definition no two design project are identical – but there is also a lot they have in common. Enough to make general statements and to develop generic methods how to handle corporate identity assignments[1]. A little warning is in place here. In the course I will pose many bold statements, such as “Never start with the logo. Start with the identity.” and “Customers cannot tell you what they need.”, but keep in mind that I am well aware that there are always exceptions to whatever I say about design in general and corporate identities in particular. But there are several reasons to make the bold statements anyway.
+
+!(first) //data.petr.com.s3.amazonaws.com/_images/house/buro_stairs.png!
+
+p(first). First is that in a course like this we have a limited amount of time and resources. The time you want to spend on this course is relatively short and what is more important, I don’t know the details about your design project. I can only make assumptions through the wrong side of this one-way mirror. So I have to stay positioned at a certain level of abstraction, where knowing your design project more in detail, it would have been easier to address the details of it.
+
+Also, this is an international course. I have no idea about the country you live in, what your cultural background is and nor the corporate climate of your customer. 
+
+bq. The processes and parameters described in this course may not seem compatible. These are all parameters that otherwise would have guided the course in a more dedicated direction.
+
+But the most important reason for the bold statements is that I want to challenge you[2] to define your own position, your own opinion about how the design process should be designed. 
+
+The processes and parameters described in this course may not seem compatible with your current way of[3] working and with your environment. As with any design project, you have to adapt the offered methods to your needs. You always have to do that. In any given situation. The course may give you new ideas on how to look at existing projects, to criticize your own way of working. Educate your customers about how the process should work. What the question are they should have asked. What the real definition of the design problem should have been.
+
+The chapters in the course span the whole range from start to implementation and setting up the maintenance. 
+
+* Description of the assignment
+** List of requirements
+** Planning
+** Cost and estimate
+** Strategies of collaboration
+* Models
+** Mood board
+** Network/graph of relation
+** Process of sketching
+** Balance 
+** Visual grammar/Bertin
+** Detail management
+** Design the hierarchy/Selecting+rejecting
+** Iterative/recursion
+** Presenting
+** Direction of interpretation
+** Discourse
+* Basic elements
+** Logo
+*** Counter shapes
+*** Recursively including the other basic elements
+** Name
+** Grid, measurement, ratio, angle
+** Typography
+*** Type
+*** Hierarchy
+** Color
+** Contrast, texture, structure, hierarchy
+** Layout, composition, visual grammar
+** Time based: morph, interpolation, focus, panning, rotating, moiré
+* Applications
+** Stationary
+** Brochures, leaflets, anual reports
+** Ads, promotional materials
+** 3D, products, packaging, exhibitions, architecture
+** Interactive media
+* Use cases
+** Vlietland
+** Dutch Republic
+** Reumafonds
+* Testing
+* Implementation
+* Maintenance
+* Literature/Exercises
+
+fn1. This is a footnote content.
+fn2. The processes and parameters described in this course may not seem compatible with your current way of working and with your environment.
+fn3. As with any design project, you have to adapt the offered methods to your needs, compatible with your current way of working and with your environment.

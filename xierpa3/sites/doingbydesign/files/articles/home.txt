@@ -1,0 +1,3 @@
+$title Home
+$featured how-to-build-a-xierpa3-site, manifest-on-skills, generous-gesture, how-to-build-a-simple-kirby-site
+$menu articles, products, courses, about

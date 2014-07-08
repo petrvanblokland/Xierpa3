@@ -15,6 +15,7 @@
 #    @@@ Temporary out of order. Needs update of some functions. 
 #    @@@ Wait for github commit.
 #
+from xierpa3.toolbox.transformer import TX
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
@@ -68,8 +69,6 @@ class DoingByDesign(Shop):
     
     MAXWIDTH = 1140
     MINWIDTH = 755
-
-    #adapter = FileAdapter()
     
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
@@ -136,30 +135,42 @@ class DoingByDesign(Shop):
     
         # Floating items
         thumbnails = ItemGroup(components=(featuredByImage100,))
-        
+
+        # Import current example site, as anchor for the article files.
+        from xierpa3.sites import doingbydesign
+        # Root path where to find the article Simples wiki file for this example page.
+        articleRoot = TX.module2Path(doingbydesign) + '/files/articles/' 
+        adapter = TextileFileAdapter(articleRoot) # Preferred adapter class for articles in this site.
+       
         homePage = Page(name=self.C.TEMPLATE_INDEX,
             components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
     
         articlePage = Page(name=self.C.TEMPLATE_ARTICLE,
             components=(mobileNavigation, header, article, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
 
         thumbnailPage = Page(name=self.TEMPLATE_COURSES,
             components=(mobileNavigation, header, featuredImages, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
 
         productsPage = Page(name=self.TEMPLATE_PRODUCTS,
             components=(mobileNavigation, header, thumbnails, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
 
         categoryPage = Page(name=self.TEMPLATE_CATEGORY,
             components=(mobileNavigation, header, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
 
         # Automatic documentation about Xierpa3
         documentationPage = Page(name=self.C.TEMPLATE_DOCUMENTATION,
             components=(mobileNavigation, header, documentation, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.C.URL_FAVICON)
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            favicon=self.C.URL_FAVICON, adapter=adapter)
 
         return [homePage, articlePage, productsPage, thumbnailPage, categoryPage, documentationPage]

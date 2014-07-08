@@ -1,0 +1,6 @@
+$tag Courses
+$title Courses from Doing by Design
+$url /courses
+$featured generous-gesture, how-to-build-a-simple-kirby-site, how-to-deal-with-designers, how-to-get-into-art-school
+
+h1. Courses with Doing by Design

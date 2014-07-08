@@ -1,0 +1,6 @@
+$tag Documentation
+$title Documentation
+$url /documentation
+$featured generous-gesture, how-to-build-a-simple-kirby-site, how-to-deal-with-designers"/>
+
+h1. Xierpa3 documentation
