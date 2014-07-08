@@ -151,7 +151,9 @@ class Article(ArticleColumn):
             chapterIndex = self.getChapterIndex(b, articleData)
             self.buildArticleTop(b, articleData, chapterIndex)
             chapter = self.adapter.getChapterByIndex(chapterIndex, article=articleData)
-            if chapter is not None:
+            if isinstance(chapter, basestring): # Must already be converted to plain output.
+                b.text(chapter)
+            elif chapter is not None: # Still a tree object. Build the element nodes.
                 self.buildElement(b, chapter) # Render the indexed chapter element as builder calls.
         elif articleData.text:
             b.text(articleData.text)
@@ -175,18 +177,22 @@ class Article(ArticleColumn):
             b.text(articleData.category)
             b._h5()
             b._a()
+
         # Article title or name (on respectively the first chapter page or the rest of the pages.
-        if chapterIndex == 0: # Show large title on the chapter first page of the article
-            b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
-                color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-            b.text(articleData.name)
-            b._h2()
-        else: # Show smaller title on the rest of the pages
-            b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
-                color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-            b.text(articleData.name)
-            b._h2()
+        title = articleData.name or articleData.title
+        if title:
+            if chapterIndex == 0: # Show large title on the chapter first page of the article
+                b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
+                    color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
+                b.text(title)
+                b._h2()
+            else: # Show smaller title on the rest of the pages
+                b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
+                    color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
+                b.text(title)
+                b._h2()
         # Author
+ 
         if chapterIndex == 0 and articleData.author: # Test if there is an author defined.
             b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
             b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
@@ -195,6 +201,7 @@ class Article(ArticleColumn):
             b._h5()
             b._a()
         # Chapter title
+        """
         chapterTitle = self.adapter.getChapterTitleByIndex(chapterIndex, articleData)
         if chapterTitle:
             if chapterIndex == 0: # Show large title on the chapter first page of the article
@@ -207,6 +214,7 @@ class Article(ArticleColumn):
                      margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
                 b.text(chapterTitle)
                 b._h3()
+        """
         b._div(comment=class_)
                 
     def buildArticleStyle(self, b):

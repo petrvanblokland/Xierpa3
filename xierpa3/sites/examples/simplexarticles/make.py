@@ -14,7 +14,7 @@ import webbrowser
 from xierpa3.attributes import Em, Px, Perc, Color
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import SimplexFileAdapter
-from xierpa3.components import Theme, Page, Column, Container
+from xierpa3.components import Theme, Page, Column, Container, Article
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -54,12 +54,26 @@ class SimplexArticle(Column):
                 fontsize=s.fontSizeMobile, lineheight=s.lineHeight, padding=s.paddingMobile,
                 width=s.widthMobile, maxwidth=s.maxWidthMobile, minwidth=s.minWidthMobile),
         )
+        # Below the conditional content of the article is show. 
         if articleData.poster:
             b.img(src=articleData.poster)
             b.br()
-        b.text(articleData.poster)
+        if articleData.level:
+            b.di
+            b.text('Level: %s' % articleData.level)
+            b.br()
         if articleData.category:
             b.text('Category: %s' % articleData.category)
+            b.br()
+        if articleData.author:
+            b.text('Author: %s' % articleData.author)
+            b.br()
+        if articleData.summary:
+            b.hr()
+            b.h1()
+            b.text('Summary')
+            b._h1()
+            b.text(articleData.summary)
         for chapter in articleData.items:
             b.hr()
             b.text(chapter)
@@ -102,7 +116,8 @@ class SimplexArticles(Theme):
         articleRoot = TX.module2Path(simplexarticles) + '/files/articles/' 
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
-        article = SimplexArticle(adapter=adapter) 
+        #article = SimplexArticle(adapter=adapter) 
+        article = Article(adapter=adapter) 
         # Put the article in a container for automatic responsive behavior
         container = Container(components=article, backgroundcolor=Color('yellow'))
         # The class is also the page name in the url.
