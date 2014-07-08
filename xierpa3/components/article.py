@@ -68,7 +68,9 @@ class Article(ArticleColumn):
         # Chapter stuff
         chapterColor=CHAPTERCOLOR, doc_chapterColor=u'Chapter color.',
         chapterSize=Em(1.2), doc_chapterSize=u'Chapter font size.',
+        chapterSizeMobile=Em(2), doc_chapterSizeMobile=u'Chapter font size for mobile.',
         chapterLineHeight=Em(1.4), doc_chapterLineHeight=u'Chapter leading.',  
+        chapterLineHeightMobile=Em(1.4), doc_chapterLineHeightMobile=u'Chapter leading for mobile.',
         # Chapter lead stuff
         leadSize=Em(1.8), doc_leadSize=u'Chapter lead font size.',
         leadLineHeight=Em(1.2), doc_leadLineHeight=u'Chapter lead leading.',
@@ -140,9 +142,13 @@ class Article(ArticleColumn):
         self.buildColumn(b)
         
     def buildColumn(self, b):
+        s = self.style
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
-        b.div(class_=self.getClassName(), paddingleft=Em(0.5), paddingright=Em(0.5),
-              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE),
+        b.div(class_=self.getClassName(), 
+              paddingleft=Em(0.5), paddingright=Em(0.5),
+              fontsize=s.chapterSize, lineheight=s.chapterLineHeight,
+              media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
+                    fontsize=s.chapterSizeMobile, lineheight=s.chapterLineHeightMobile),
         )
         self.buildArticleData(b, articleData)
         b._div()
