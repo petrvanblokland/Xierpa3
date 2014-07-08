@@ -79,8 +79,8 @@ class SideColumn(Component):
     def buildBlock(self, b):
         s = self.style
         b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-            width=s.width, backgroundcolor=s.backgroundColor,  
-            media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight, width=self.C.AUTO, float=self.C.NONE,
+            width=s.width, backgroundcolor=s.backgroundColor, marginright=s.marginRight,  
+            media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
               fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
             )
         )
