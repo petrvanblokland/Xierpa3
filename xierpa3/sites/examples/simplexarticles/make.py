@@ -117,12 +117,10 @@ class SimplexArticles(Theme):
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create the article component to contain articles answered by the adapter.
         #article = SimplexArticle(adapter=adapter) 
-        article = Article(adapter=adapter) 
-        # Put the article in a container for automatic responsive behavior
-        container = Container(components=article, backgroundcolor=Color('yellow'))
+        article = Article(adapter=adapter, showPoster=True) 
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, fonts=self.URL_FONTS,
-            title=self.TITLE, css=self.C.URL_CSS, components=container)
+            title=self.TITLE, css=self.C.URL_CSS, components=article)
         return [homePage]
     
     def make(self, root=None):
