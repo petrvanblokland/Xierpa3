@@ -11,7 +11,7 @@ h1. Getting started
 
 p(lead). This is course is about Python. If you now think that it’s about snakes and not about programming, you don’t want to continue. But if you are here to learn more about objects and classes dedicated, then you are on the right track.
 
-p(first). By the way, you don’t have to have any programming experience in order to follow this course. It’s characteristic is that we really start from scratch, using daily life examples to visualize the programs. How they are structured. How they behave. And how they are used. That is a different approach from many other programming courses, which often start with a technical solution in search for a problem.
+p(first). -By the way, you don’t have to have any programming experience in order to follow this course. It’s characteristic is that we really start from scratch, using daily life examples to visualize the programs. How they are structured. How they behave. And how they are used. That is a different approach from many other programming courses, which often start with a technical solution in search for a problem.-
 There will be a lot of coding in this course. But I’ll try my ultimate best to clarify as much as I can and to relate everything to practical problems that you can recognize and visualize. I am pretty sure that you will see that programming is not as magic as some programmers want you to believe. And what is more important, knowing about how programming works yourself, can actually save you a lot of time. Even if you don’t want to <em>be</em> a programmer. 
 Later we’ll talk more in detail about what programming is. And how is may relate to your profession. Let’s start.
 

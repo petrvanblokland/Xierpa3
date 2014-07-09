@@ -142,8 +142,13 @@ class DoingByDesign(Shop):
         articleRoot = TX.module2Path(doingbydesign) + '/files/articles/' 
         adapter = TextileFileAdapter(articleRoot) # Preferred adapter class for articles in this site.
        
+        #homePage = Page(name=self.C.TEMPLATE_INDEX,
+        #    components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
+        #    css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+        #    favicon=self.C.URL_FAVICON, adapter=adapter)
+    
         homePage = Page(name=self.C.TEMPLATE_INDEX,
-            components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
+            components=featuredTexts,
             css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
             favicon=self.C.URL_FAVICON, adapter=adapter)
     

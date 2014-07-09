@@ -120,7 +120,7 @@ from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.storage.data import Data
 
 class TextileFileAdapter(Adapter):
-    u"""Adapter for Textile wiki file serving"""
+    u"""Adapter for Textile wiki file serving. """
     def initialize(self):
         self._cache = {}
         self.readArticles()
@@ -137,7 +137,8 @@ class TextileFileAdapter(Adapter):
                 
     def compileArticle(self, wiki):
         u"""Compile the wiki text into a Data instance, but parsing the field definition, split
-        on chapters and translate the chapter content through textile to html."""
+        on chapters and translate the chapter content through textile to html.
+        See specification on :http://redcloth.org/hobix.com/textile/"""
         data = self.newData()
         text = []
         # Filter the field definitions

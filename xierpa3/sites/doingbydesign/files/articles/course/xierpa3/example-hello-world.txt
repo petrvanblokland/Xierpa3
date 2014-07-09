@@ -9,7 +9,7 @@ $featured how-to-build-a-simple-kirby-site, programming-python, typography
 
 h1. Coding the Hello world
 
-p(lead) This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.
+p(lead). This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.
 
 !(first)//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png
 

@@ -72,10 +72,12 @@ class Article(ArticleColumn):
         chapterLineHeight=Em(1.4), doc_chapterLineHeight=u'Chapter leading.',  
         chapterLineHeightMobile=Em(1.4), doc_chapterLineHeightMobile=u'Chapter leading for mobile.',
         # Chapter lead stuff
-        leadSize=Em(1.8), doc_leadSize=u'Chapter lead font size.',
+        leadSize=Em(1.4), doc_leadSize=u'Chapter lead font size.',
         leadLineHeight=Em(1.2), doc_leadLineHeight=u'Chapter lead leading.',
-        leadMarginBottom=Em(0.3), doc_leadMarginBottom=u'Chapter lead bottom margin.',
+        leadMarginBottom=Em(1), doc_leadMarginBottom=u'Chapter lead bottom margin.',
         leadColor=LEADCOLOR, doc_leadColor=u'Chapter lead color.',
+        leadWeidth=None, doc_leadWeight=u'Chapter lead font weight.',
+        leadStyle=None, doc_leadStyle=u'Chapter lead font style.',
         # Chapter first page
         chapterTitleSize0=Em(1.5), doc_chapterTitleSize0=u'Chapter title font size on first page.',
         chapterTitleColor0=CHAPTERTITLECOLOR0, doc_chapterTitleColor0=u'Chapter title color on first page.', 
@@ -101,7 +103,7 @@ class Article(ArticleColumn):
         # Chapter p stuff
         articleSize=Em(1.1), doc_articleSize=u'Article p font size.',
         articleLineHeight=Em(1.6), doc_articleLineHeight=u'Article p leading.',
-        articleIndent=Em(2), doc_articleInden=u'Article p indent.',
+        articleIndent=Em(1), doc_articleInden=u'Article p indent.',
         articleFirstIndent=0, doc_firstIndent=u'Article p first indent.',
         # Bullet list
         bulletType='disc', doc_bulletType=u'Article bullet type',
@@ -290,7 +292,8 @@ class Article(ArticleColumn):
         b.p(class_=self.C.CLASS_LAST)
         b._p()
         # <lead>
-        b.p(class_=self.C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight, 
+        b.p(class_=self.C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight,
+            fontweight=s.leadWeight, fontstyle=s.leadStyle, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, 
             textindent=s.articleFirstIndent)
         self.buildPStyle(b)

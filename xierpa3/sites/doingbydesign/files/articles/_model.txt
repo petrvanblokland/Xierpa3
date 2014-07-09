@@ -1,0 +1,114 @@
+$title>Model for DoingByDesign Textile document. Used for rendering SASS/CSS
+$category Category of the document
+$level Level of the document (Novice, Beginner, ...)
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
+$author Name of the author
+$authorEmail email@oftheauthor.com (optional)
+$topic Topic of the document
+$summary Summary of the document
+$featured document id's, as beste reference from this document
+
+h1. Main headline
+
+p(lead). Lead of the article
+
+!(first)//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png!
+
+p(first). First paragraph with no indent.
+
+Paragraph with indent. Normally this is the largest chunk of text in a document. Normally this is the largest chunk of text in a document. Normally this is the largest chunk of text in a document. Normally this is the largest chunk of text in a document. 
+Line beak inside a paragraph. Normally this is the largest chunk of text in a document. 
+
+<pre>
+	Lines of code
+	Lines of code
+</pre>
+
+*    Bullet list
+* "Observe" smart quotes
+#    -- --> emdash
+#    - --> endash
+#    ... --> ellipsis
+#    space x space --> multiplication sign
+#    (TM) (C) (R) --> ™ © ®
+#    * Bullet list
+#    #  Numbered list
+#    h1. This is a header h1
+#    h2. This is a header h2
+#    h3. This is a header h3
+#    bq. to blockquote
+#    Reference to footnote[1]
+#    fn1. Definition of footnote.
+#    _word_ --> <em>word</em>
+#    *word* --> <strong>word</strong>
+#    **word** --> <b>word</b>
+#    __word__ --> <i>word</i>
+#    ??word?? --> <cite>word</cite>
+#    @r.to_html@ --> <code>r.to_html</code>
+#    -word- --> <del>word</del> (Deletion, strike through)
+#    +word+ --> <ins>word</ins> (Insertion)
+#    ^word^ --> <sup>word</sup>
+#    ~word~ --> <sub>word</sub>
+#    %span% --> <span>word</span>
+#    %{color:red}word% --> <span style="color:red;">word</span>
+#    p(example). Example --> <p class="example">Example</p>
+#    p(#example). Example --> <p id="example">Example</p>
+#    p(example1#big-red2). Red here --> <p class="example1" id="big-red2">Red here</p>
+#    p{color:blue;margin:30px}. Spacey blue --> <p style="color:blue; margin:30px;">Spacey blue</p>
+#    p[fr]. rouge --> <p lang="fr">rouge</p>
+#    I seriously *{color:red}blushed*
+#        when I _(big)sprouted_ that
+#        corn stalk from my
+#        %[es]cabeza%.
+#    -->
+#    <p>I seriously <strong style="color:red;">blushed</strong>
+#    when I <em class="big">sprouted</em> that
+#    corn stalk from my
+#    <span lang="es">cabeza</span>.</p>
+#    p<. align left --> <p style="text-align:left;">align left</p>
+#    p>. align right --> <p style="text-align:right;">align right</p>
+#    p=. centered --> <p style="text-align:center;">centered</p>
+#    p<>. justified --> <p style="text-align:justify;">justified</p>
+#    p(. left ident 1em --> <p style="padding-left:1em;">left ident 1em</p>
+#    p((. left ident 2em --> <p style="padding-left:2em;">left ident 2em</p>
+#    p))). right ident 3em --> <p style="padding-right:3em;">right ident 3em</p>
+#    h2()>. Bingo. --> <h2 style="padding-left:1em; padding-right:1em; text-align:right;">Bingo.</h2>
+#    h3()>[no]{color:red}. Bingo --> <h3 style="color:red; padding-left:1em; padding-right:1em; text-align:right;" lang="no">Bingo</h3>
+#    I searched "Google":http://google.com. --> <p>I searched <a href="http://google.com">Google</a>.</p>
+#    !http://redcloth.org/hobix.com/textile/sample.jpg! --> <img src="..."/>
+#    !openwindow1.gif(Bunny.)! --> <img src="..." title="Bunny." alt="Bunny." />
+#    !openwindow1.gif!:http://hobix.com/ --> <a href="..."><img src="openwindow1.gif" alt="" />
+#    !>obake.gif! --> <p style="float:right"><img src="obake.gif" alt="" /></p>
+#    We use CSS(Cascading Style Sheets). --> <p>We use <acronym title="Cascading Style Sheets">CSS</acronym>.</p>
+#    Table:
+#    | name | age | sex |
+#    | joan | 24 | f |
+#    | archie | 29 | m |
+#    | bella | 45 | f |
+#
+#    |_. name |_. age |_. sex |    --> Header cells
+#    | joan | 24 | f |
+#    | archie | 29 | m |
+#    | bella | 45 | f |
+#
+#    Cell alignment
+#    |_. attribute list |
+#    |<. align left |
+#    |>. align right|
+#    |=. center |
+#    |<>. justify |
+#    |^. valign top |
+#    |~. bottom |
+#    
+#    Cell attributes
+#    |\2. spans two cols |
+#    | col 1 | col 2 |
+#
+#    Table attributes
+#    table{border:1px solid black}.
+#    |This|is|a|row|
+#    |This|is|a|row|
+#
+#    Attributes of rows
+#    |This|is|a|row|
+#    {background:#ddd}. |This|is|grey|row|
