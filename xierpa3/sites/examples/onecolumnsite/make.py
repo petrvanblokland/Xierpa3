@@ -120,7 +120,7 @@ class ExampleColumn(Column):
         # In future this will be solved by supplying more default style parameters
         # to the component, that include the styles of tags that are not used
         # in the main building.
-        # See also the code for components/article, which includes a _model.xml
+        # See also the code for components/article, which includes a _model.txt
         # document for this purpose.
         if b.isType(self.C.TYPE_CSS):
             self.buildCssColumnTemplate(b)

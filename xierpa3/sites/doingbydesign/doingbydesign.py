@@ -148,7 +148,7 @@ class DoingByDesign(Shop):
         #    favicon=self.C.URL_FAVICON, adapter=adapter)
     
         homePage = Page(name=self.C.TEMPLATE_INDEX,
-            components=featuredTexts,
+            components=featuredSideText,
             css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
             favicon=self.C.URL_FAVICON, adapter=adapter)
     

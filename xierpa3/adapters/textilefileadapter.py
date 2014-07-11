@@ -117,7 +117,6 @@ import codecs
 import textile
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
-from xierpa3.toolbox.storage.data import Data
 
 class TextileFileAdapter(Adapter):
     u"""Adapter for Textile wiki file serving. """
@@ -126,19 +125,40 @@ class TextileFileAdapter(Adapter):
         self.readArticles()
         
     def readArticles(self):
+        u"""Read all articles in the root tree path."""
         for id, path in self.getIdPaths(): # id, path
-            rootPath = self.root + path 
-            wiki = self.readWikiFile(rootPath)
-            if wiki is not None:
-                data = self.compileArticle(wiki)
-                data.id = id
-                data.path = rootPath # Keep the source is case the file needs editing.
-                self.cacheArticle(data)
-                
+            self.updateArticle(id, self.root + path)
+        
+    def updateArticle(self, id, path):
+        u"""Update the article from *id* and *path*. Set the modification time, so we know
+        when the file is updated."""
+        data = None
+        wiki = self.readWikiFile(path)
+        if wiki is not None:
+            data = self.compileArticle(wiki)
+            data.id = id
+            data.path = path # Keep the source is case the file needs editing.
+            data.modificationTime = os.path.getmtime(path)
+            self.cacheArticle(data)
+        return data
+           
+    def readWikiFile(self, fsPath): 
+        u"""Read the raw wiki (Textile syntax) file and answer the unicode string."""
+        extension = '.'+self.C.EXTENSION_TXT
+        if not fsPath.endswith(extension):
+            fsPath += extension           
+        if os.path.exists(fsPath):
+            f = codecs.open(fsPath, encoding='utf-8', mode='r+')
+            wiki = f.read()
+            f.close()
+        else:
+            wiki = None
+        return wiki
+    
     def compileArticle(self, wiki):
         u"""Compile the wiki text into a Data instance, but parsing the field definition, split
         on chapters and translate the chapter content through textile to html.
-        See specification on :http://redcloth.org/hobix.com/textile/"""
+        See specification on :http://redcloth.org/hobix.com/textile/ """
         data = self.newData()
         text = []
         # Filter the field definitions
@@ -159,28 +179,24 @@ class TextileFileAdapter(Adapter):
             data.items.append(textile.textile(chapter))
         return data
     
-    def readWikiFile(self, fsPath): 
-        extension = '.'+self.C.EXTENSION_TXT
-        if not fsPath.endswith(extension):
-            fsPath += extension           
-        if os.path.exists(fsPath):
-            f = codecs.open(fsPath, encoding='utf-8', mode='r+')
-            wiki = f.read()
-            f.close()
-        else:
-            wiki = None
-        return wiki
-    
     def cacheArticle(self, article):
         self._cache[article.id] = article
-        
+    
+    def getModelData(self):
+        u"""Answer the model article that includes all possible Textile tags."""
+        return self.getCachedArticle(id='_model')
+       
     def getCachedArticle(self, **kwargs):
         u"""Answer the cached articles. If not available yet, read them through <self.getPaths()<b>."""
         id = kwargs.get('id')
         if isinstance(id, list):
             pass
-        return self._cache.get(id)
-    
+        data = self._cache.get(id)
+        if data is not None and data.modificationTime != os.path.getmtime(data.path):
+            # File content is modified after caching the article. Update it from file.
+            data = self.updateArticle(data.id, data.path)
+        return data
+            
     def getCachedArticles(self):
         return self._cache
     
@@ -247,7 +263,7 @@ class TextileFileAdapter(Adapter):
         return self.getCachedArticle(**kwargs)
     
     def getFeaturedArticles(self, id, start, count):
-        u"""Answer a list of featured articles in the article that has <i>id</i>."""
+        u"""Answer a list of featured articles in the article that has @id@ as identifier."""
         data = self.newData()
         data.items = []
         article = self.getArticle(id)

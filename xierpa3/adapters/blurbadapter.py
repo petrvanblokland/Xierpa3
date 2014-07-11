@@ -16,8 +16,8 @@ from xierpa3.contributions.filibuster.blurb import Blurb
 
 class BlurbAdapter(Adapter):
     u"""
-    The Adapter classes connect the templates to Blurb content. Note that an adapter always returns plain text/content
-    elements (which can include plain HTML), not components. The conversion needs to be done by the calling component.
+    The Adapter classes connect the templates to Blurb content. 
+    Note that an adapter always returns plain text/content elements (which can include plain HTML), not components. The conversion needs to be done by the calling component.
     """
     IMAGES = [
         '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg',

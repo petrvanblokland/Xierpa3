@@ -11,6 +11,7 @@
 #    make.py
 #
 import webbrowser
+from xierpa3.toolbox.transformer import TX
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -131,7 +132,8 @@ class HelloWorldBluePrint(Theme):
         as set by Builder.DEFAULT_ROOTPATH"""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines
         # the behavior of the object that is made by calling the class.
-
+        if root is None:
+            root = TX.asDir(self.C.PATH_EXAMPLES) # Expand user path to full directory path.
         # C S S
         # Create the main CSS builder instance to build the SASS/CSS part of the site.
         cssBuilder = CssBuilder()
@@ -151,5 +153,6 @@ if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.         
     # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/HelloWorldBluePrint/   
-    path = HelloWorldBluePrint().make()
-    webbrowser.open(path)
+    site = HelloWorldBluePrint()
+    path = site.make()
+    webbrowser.open(path) # Open file path with browser

@@ -102,7 +102,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         return class_
 
     def getFilePath(self, component, root=None):
-        u"""Answer the CSS file path of <b>component</b>."""
+        u"""Answer the CSS file path of @component@."""
         return TX.asDir(root or (self.ROOT_PATH + component.__class__.__name__.lower())) + self.DEFAULT_PATH
 
     def save(self, component, root=None, path=None):

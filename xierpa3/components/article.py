@@ -33,6 +33,7 @@ class Article(ArticleColumn):
     SUMMARYCOLOR= CHAPTERCOLOR
     CHAPTERTITLECOLOR0 = Color('#1F1F1F')
     CHAPTERTITLECOLOR1 = CHAPTERTITLECOLOR0
+    H1COLOR = Color('#333')
     H2COLOR = Color('#828487')
     AUTHORCOLOR = H2COLOR
     CATEGORYCOLOR = H2COLOR
@@ -74,7 +75,8 @@ class Article(ArticleColumn):
         # Chapter lead stuff
         leadSize=Em(1.4), doc_leadSize=u'Chapter lead font size.',
         leadLineHeight=Em(1.2), doc_leadLineHeight=u'Chapter lead leading.',
-        leadMarginBottom=Em(1), doc_leadMarginBottom=u'Chapter lead bottom margin.',
+        leadMarginTop=Em(0.5), doc_leadMarginTop=u'Chapter lead margin top.',
+        leadMarginBottom=Em(0.5), doc_leadMarginBottom=u'Chapter lead margin bottom.',
         leadColor=LEADCOLOR, doc_leadColor=u'Chapter lead color.',
         leadWeidth=None, doc_leadWeight=u'Chapter lead font weight.',
         leadStyle=None, doc_leadStyle=u'Chapter lead font style.',
@@ -89,6 +91,13 @@ class Article(ArticleColumn):
         chapterTitleMarginTop1=Em(1), doc_chapterTitleMarginTop1=u'Chapter title margin top on second+ page.',
         chapterTitleMarginBottom1=Em(0.5), doc_chapterTitleMarginBottom1=u'Chapter title margin bottom on second+ page.',
         # H1
+        h1Size=Em(2.5), doc_h1Size=u'Article h1 font size.',
+        h1FontSize=None, doc_h1FontStyle=u'Article h1 font style.',
+        h1FontWeight=None, doc_h1FontWeight=u'Article h1 font weight.',
+        h1LineHeight=Em(1.4), doc_h1LineHeight=u'Article h1 leading.',
+        h1PaddingTop=Em(1), doc_h1PaddingTop=u'Article h1 padding top.',
+        h1PaddingBottom=0, doc_h1PaddingBottom=u'Article h1 padding bottom.',
+        h1Color=H1COLOR, doc_h1Color=u'Article h1 color in article.',
         # H2
         h2Size=Em(2), doc_h2Size=u'Article h2 font size.',
         h2LineHeight=Em(1.4), doc_h2LineHeight=u'Article h2 leading.',
@@ -159,11 +168,16 @@ class Article(ArticleColumn):
         min and max index of the chapter list."""
         s = self.style
         #b.element(tag='img', class_=self.CLASS_AUTOWIDTH, margintop=Em(1), marginbottom=Em(1))
-        if b.isType(('css', 'sass')): # @@@ Clean up, using model article?
+        if b.isType(('css', 'sass')): 
+            if articleData is None: # No specific article id specified, use _mode.txt file
+                # as model for calculating the SASS/CSS
+                articleData = self.adapter.getModelData()
             self.buildArticleTop(b, articleData, 0) # Separate CSS for first chapter and the rest.
             self.buildArticleTop(b, articleData, 1)
             self.buildArticleStyle(b) # Build the CSS style template of an article here
-        elif articleData is not None and articleData.items:
+        elif articleData is None:
+            b.text('Cannot find article')
+        elif articleData.items:
             # Collect the chapter indices to show. If splitting chapter, we need a list of
             # the one chapter index that is indicated by the url with /chapter-2
             if s.splitChapters:
@@ -184,8 +198,6 @@ class Article(ArticleColumn):
                 b._div(comment=self.C.CLASS_CHAPTER)
         elif articleData.text:
             b.text(articleData.text)
-        else:
-            b.text('Cannot find article')
             
     def buildArticleTop(self, b, articleData, chapterIndex):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
@@ -196,64 +208,65 @@ class Article(ArticleColumn):
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
                 paddingleft=0, paddingright=0),
         )
-        # Poster image
-        if chapterIndex == 0 and s.showPoster:
-            b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster)
-        # Article category
-        if chapterIndex == 0 and articleData.category: # Text on text
-            b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, articleData.category))
-            b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
-                fontweight=s.categoryWeight, margintop=Em(1), display=self.C.BLOCK)
-            b.text(articleData.category)
-            b._h5()
-            b._a()
-
-        # Article title or name (on respectively the first chapter page or the rest of the pages.
-        title = articleData.name or articleData.title
-        if title:
-            if chapterIndex == 0: # Show large title on the chapter first page of the article
-                b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
-                    color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-                b.text(title)
-                b._h2()
-            else: # Show smaller title on the rest of the pages
-                b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
-                    color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
-                b.text(title)
-                b._h2()
-        # Author
- 
-        if chapterIndex == 0 and articleData.author: # Test if there is an author defined.
-            b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
-                display=self.C.BLOCK)
-            b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
-            b.text('By %s' % articleData.author)
-            b._a()
-            if articleData.authorEmail:
-                b.text(' ' + articleData.authorEmail)
-            b._h5()
-        # Chapter title
-        """
-        chapterTitle = self.adapter.getChapterTitleByIndex(chapterIndex, articleData)
-        if chapterTitle:
-            if chapterIndex == 0: # Show large title on the chapter first page of the article
-                b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
-                     margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
-                b.text(chapterTitle)
-                b._h3()
-            else: # Other chapter pages
-                b.h3(class_='chapterTitle1', fontsize=s.chapterTitleSize1, color=s.chapterTitleColor1,
-                     margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
-                b.text(chapterTitle)
-                b._h3()
-        """
+        if articleData is not None:
+            # Poster image
+            if chapterIndex == 0 and s.showPoster:
+                b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster)
+            # Article category
+            if chapterIndex == 0 and articleData.category: # Text on text
+                b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, articleData.category))
+                b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
+                    fontweight=s.categoryWeight, margintop=Em(1), display=self.C.BLOCK)
+                b.text(articleData.category)
+                b._h5()
+                b._a()
+    
+            # Article title or name (on respectively the first chapter page or the rest of the pages.
+            title = articleData.name or articleData.title
+            if title:
+                if chapterIndex == 0: # Show large title on the chapter first page of the article
+                    b.h2(class_='articleTitle0', fontsize=s.titleSize, lineheight=s.titleLineHeight, 
+                        color=s.titleColor, marginbottom=Em(0.2), display=self.C.BLOCK)
+                    b.text(title)
+                    b._h2()
+                else: # Show smaller title on the rest of the pages
+                    b.h2(class_='articleTitle1', fontsize=s.nameSize, lineheight=s.nameLineHeight, 
+                        color=s.nameColor, marginbottom=Em(0.2), display=self.C.BLOCK)
+                    b.text(title)
+                    b._h2()
+            # Author
+     
+            if chapterIndex == 0 and articleData.author: # Test if there is an author defined.
+                b.h5(fontsize=s.authorSize, fontweight=s.authorWeight, authorcolor=s.authorColor,
+                    display=self.C.BLOCK)
+                b.a(href='/%s-%s' % (self.C.PARAM_AUTHOR, articleData.author))
+                b.text('By %s' % articleData.author)
+                b._a()
+                if articleData.authorEmail:
+                    b.text(' ' + articleData.authorEmail)
+                b._h5()
+            # Chapter title
+            """
+            chapterTitle = self.adapter.getChapterTitleByIndex(chapterIndex, articleData)
+            if chapterTitle:
+                if chapterIndex == 0: # Show large title on the chapter first page of the article
+                    b.h3(class_='chapterTitle0', fontsize=s.chapterTitleSize0, color=s.chapterTitleColor0,
+                         margintop=s.chapterTitleMarginTop0, marginbottom=s.chapterTitleMarginBottom0)
+                    b.text(chapterTitle)
+                    b._h3()
+                else: # Other chapter pages
+                    b.h3(class_='chapterTitle1', fontsize=s.chapterTitleSize1, color=s.chapterTitleColor1,
+                         margintop=s.chapterTitleMarginTop1, marginbottom=s.chapterTitleMarginBottom1)
+                    b.text(chapterTitle)
+                    b._h3()
+            """
         b._div(comment=class_)
                 
     def buildArticleStyle(self, b):
         s = self.style
         # SVG demo
         b.div(class_=self.C.CLASS_CHAPTER, color=s.chapterColor)
-        # Should move from here. Make sure that svgExamples get SCSS builder calls.
+        # TODO: Should move from here. Make sure that svgExamples get SCSS builder calls.
         b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
         b._div()
         # h1
@@ -294,7 +307,7 @@ class Article(ArticleColumn):
         # <lead>
         b.p(class_=self.C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight,
             fontweight=s.leadWeight, fontstyle=s.leadStyle, 
-            color=s.leadColor, marginbottom=s.leadMarginBottom, 
+            color=s.leadColor, marginbottom=s.leadMarginBottom, margintop=s.leadMarginTop,
             textindent=s.articleFirstIndent)
         self.buildPStyle(b)
         b._p()

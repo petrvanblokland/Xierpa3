@@ -24,23 +24,30 @@ Line beak inside a paragraph. Normally this is the largest chunk of text in a do
 	Lines of code
 </pre>
 
-*    Bullet list
+* Bullet list
 * "Observe" smart quotes
-#    -- --> emdash
-#    - --> endash
-#    ... --> ellipsis
-#    space x space --> multiplication sign
-#    (TM) (C) (R) --> ™ © ®
-#    * Bullet list
-#    #  Numbered list
-#    h1. This is a header h1
-#    h2. This is a header h2
-#    h3. This is a header h3
-#    bq. to blockquote
-#    Reference to footnote[1]
-#    fn1. Definition of footnote.
-#    _word_ --> <em>word</em>
-#    *word* --> <strong>word</strong>
+* Double hyphen -- to emdash
+* Single hyphen - to endash
+* Triple period ... to ellipsis
+* space x space to multiplication sign
+* (TM) (C) (R) --> ™ © ®
+
+h1. This is a header h1
+h2. This is a header h2
+h3. This is a header h3
+h4. This is a header h3
+h5. This is a header h3
+h6. This is a header h3
+
+bq. to blockquote
+
+Reference to footnote[1]
+
+fn1. Definition of footnote.
+
+# Numbered list 
+# _word_ to [em]word[/em]
+# *word* to [strong]word[/strong]
 #    **word** --> <b>word</b>
 #    __word__ --> <i>word</i>
 #    ??word?? --> <cite>word</cite>

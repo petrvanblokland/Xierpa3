@@ -42,7 +42,7 @@ class Builder(object):
         self.initialize() 
         
     def initializeResult(self, result):
-        u"""Initialize the <b>self.result</b> from the optional <i>result</i> stack."""
+        u"""Initialize the @self.result@ from the optional *result* stack."""
         assert result is None or isinstance(result, Stack)
         if result is None:
             result = Stack()
@@ -63,7 +63,7 @@ class Builder(object):
   
     def getExtension(self):
         u"""Answer the default extension of the output file of this type of builder.
-        Typically <b>self.EXTENSION</b> is answered."""
+        Typically @self.EXTENSION@ is answered."""
         return self.EXTENSION
     
     def getComponentFileName(self, root, component):
@@ -71,7 +71,7 @@ class Builder(object):
         return component.name + '.' + self.getExtension()
 
     def getFilePath(self, component, root=None):
-        u"""Answer the file path of <b>component</b>."""
+        u"""Answer the file path of @component@."""
         return TX.asDir(root or self.ROOT_PATH) + self.getComponentFileName(root, component)
 
     def copyTree(self, srcPath, dstPath, force=False):
@@ -96,8 +96,8 @@ class Builder(object):
         return dirPath
     
     def save(self, component, root=None, path=None):
-        u"""Save the <b>self.getResult()</b> in path. If the optional <i>makeDirectory</i> attribute is 
-        <b>True</b> (default is <b>True</b>) then create the directories in the path 
+        u"""Save the @self.getResult()@ in path. If the optional *makeDirectory* attribute is 
+        @True@ (default is @True@) then create the directories in the path 
         if they don’t exist."""
         if path is None: # Allow full overwrite of complete path.
             path = self.getFilePath(component, root)
@@ -106,7 +106,8 @@ class Builder(object):
     
     def saveAsFile(self, path, content, makeDir=False):
         u"""Save content as a file under path. If the file exists it is overwritten.
-        If <b>makeDirs</b> is <b>True</b> (default is <b>False</b>), the try to create the directory first."""
+        If @makeDirs@ is @True@ (default is @False@), the try to create the directory first."""
+        print '23423443', content
         if makeDir:
             self.makeDirectory(path) # Make sure that the directory part of path exists.
         f = open(path, 'wb')
@@ -120,13 +121,13 @@ class Builder(object):
         return self.e.form.keys()
     
     def getParamItems(self):
-        u"""Answer the <b>(name, value)</b> tuple of URL params."""
+        u"""Answer the @(name, value)@ tuple of URL params."""
         return self.e.form.items()
     
     # T A B
 
     def tabs(self):
-        """"Output tabs to the current level and add newlines, depending on the setting of <b>self._newline</b>
+        """"Output tabs to the current level and add newlines, depending on the setting of @self._newline@
         (string with newlines) and <code>self._tabLevel</code> (number of indents)."""
         if self._verbose:
             self.output(self._newLine + (self.C.TAB_INDENT * self._tabLevel)) 
@@ -147,7 +148,7 @@ class Builder(object):
         return Writer(name)
 
     def output(self, s):
-        u"""Output the <b>s</b> string to the result stream."""
+        u"""Output the @s@ string to the result stream."""
         # See all output:
         #print s,
         self.result.peek().write(s)
@@ -165,20 +166,20 @@ class Builder(object):
         return self.popResult()
 
     def pushResult(self, writer=None, name=None):
-        u"""Push the optional <i>writer</i>. If the attribute is <b>None</b>, then create a new writer."""
+        u"""Push the optional *writer*. If the attribute is @None@, then create a new writer."""
         if writer is None:
             # Save an optional identifier, so the caller knows at closing of the block.
             writer = self.newResultWriter(name)
         self.result.push(writer)
 
     def popResult(self):
-        u"""Answer the writer result if it exists. Answer <b>None</b> otherwise."""
+        u"""Answer the writer result if it exists. Answer @None@ otherwise."""
         if self.result:
             return self.result.pop().getValue()
         return None
 
     def popNameResult(self):
-        u"""Answer the tuple of <b>writer.name</b> and the writer result."""
+        u"""Answer the tuple of @writer.name@ and the writer result."""
         if self.result:
             writer = self.result.pop()
             return writer.name, writer.getValue()
@@ -194,11 +195,11 @@ class Builder(object):
     #   B U I L D E R  T Y P E
     
     def isType(self, builderType):
-        u"""Answer the boolean flag if <b>self</b> builder is of <i>builderType</i>.
+        u"""Answer the boolean flag if @self@ builder is of *builderType*.
         In normal processing of the page this should never be necessary, but the test can be used by
         code that otherwise will do a lot of content processing (such as image scaling) in the
-        CSS building phase. Also it can be used to short cut loops in content, to avoid the same
-        definitions showing up in CSS. The comparison is not case-sensitive. <i>Type</i> can be a single
+        CSS building phase. Also it can be used to cut loops in content, to avoid identical definitions 
+        showing up in CSS. The comparison is not case-sensitive. *builderType* can be a single
         string or a list/tuple of strings."""
         lcTypes = []
         if not isinstance(builderType, (list, tuple)):

@@ -134,8 +134,13 @@ class Component(object):
         return names
     
     @classmethod
+    def getRootDir(cls):
+        u"""Answer the default root directory path, e.g. to store example files and cached SASS/CSS."""
+        return TX.asDir(cls.C.PATH_EXAMPLES + cls.getPythonClassName().lower() + '/') # Expand user path to full directory path.
+    
+    @classmethod
     def getClassName(cls):
-        u"""Answers the class name of the <i>cls</i> as capitalized name."""
+        u"""Answers the class name of the *cls* as capitalized name."""
         name = cls.__name__
         return name[0].lower() + name[1:]
 
@@ -149,7 +154,7 @@ class Component(object):
         return self.components and self.components[-1] is component
 
     def getColClass(self, col):
-        u"""Answer the colClass, based on the numeric <i>col</i> value and if the component is the
+        u"""Answer the colClass, based on the numeric *col* value and if the component is the
         last in the parent list of child components."""
         colClass = TX.col2Class(col)
         if self.parent.isLast(self):
@@ -157,8 +162,8 @@ class Component(object):
         return colClass
     
     def getTitle(self, path):
-        u"""Answer the page title as defined in the style or answered by <b>self.adapter</b>.
-        The adapter can use the <b>path</b> argument to fine-tune the title."""
+        u"""Answer the page title as defined in the style or answered by @self.adapter@.
+        The adapter can use the @path@ argument to fine-tune the title."""
         return self.style.title or self.adapter.getPageTitle(path=path).text
 
     def getFavIcon(self, builder):
@@ -177,8 +182,8 @@ class Component(object):
     className = property(_get_className)
     
     def getPrefixClass(self, prefix2=None):
-        u"""Answers the extended class name <b>self.prefix + self.prefix2 + self.class_</b>.
-        If <b>self.class_</b> is not defined, and <b>self.prefix + self.prefix2</b> are defined,
+        u"""Answers the extended class name @self.prefix + self.prefix2 + self.class_@.
+        If @self.class_@ is not defined, and @self.prefix + self.prefix2@ are defined,
         then always add the class name of the component."""
         name = []
         prefix = self.prefix
@@ -191,8 +196,8 @@ class Component(object):
 
     def initializeComponents(self, components):
         u"""
-        Sets the self.components. If components is None, then use the result of <b>self.baseComponents()</b>.
-        If <i>components</i> is a single component, then make it into a list.
+        Sets the self.components. If components is None, then use the result of @self.baseComponents()@.
+        If *components* is a single component, then make it into a list.
         """
         if components is None:
             components = self.baseComponents()
@@ -229,9 +234,9 @@ class Component(object):
 
     def isEmptyCss(self):
         u"""Answer the boolean flag if this component will generate CSS content. This is different from the regular
-        <b>self.isEmpty</b>, since there may be components with content that have <b>self.BUILD_CSS</b> 
-        set to <b>False</b>. When <b>self.BUILD_CSS is True</b> it still should build if there is CSS 
-        content that has set <b>self.BUILD_CSS</b> to <b>True</b>.
+        @self.isEmpty@, since there may be components with content that have @self.BUILD_CSS@ 
+        set to @False@. When @self.BUILD_CSS is True@ it still should build if there is CSS 
+        content that has set @self.BUILD_CSS@ to @True@.
         """
         if not self.style.isEmpty():
             return False
@@ -248,11 +253,11 @@ class Component(object):
         return bool(self.selector)
 
     def isComponent(self, name):
-        """Answer the boolean flag if this is a component where <b>name == self.name</b>."""
+        """Answer the boolean flag if this is a component where @name == self.name@."""
         return name == self.name or (name in self.class_ or []) # Compare with self._name or class names
 
     def getComponent(self, name):
-        """Answer the child component that matches <i>name.</i>"""
+        """Answer the child component that matches *name.*"""
         for component in self.components:
             if component.isComponent(name):
                 return component
@@ -260,12 +265,12 @@ class Component(object):
 
     def build(self, b):
         u"""
-        Test on the type of building to be done here by builder <i>b</i>. 
-        Normally the plain <b>self.buildBlock</b> will be called, but it is possible
+        Test on the type of building to be done here by builder *b*. 
+        Normally the plain @self.buildBlock@ will be called, but it is possible
         to catch the call by implementing a method, dedicated for a particular 
-        kind of builder. <b>self.buildBlock_[builder.ID]</b> will then called instead.
-        E.g. <b>self.buildBlock_css(b)</b> will force the CSS builder to call that
-        method instead of the regular <b>self.buildBlock(b)</b>. Note that this only should be 
+        kind of builder. @self.buildBlock_[builder.ID]@ will then called instead.
+        E.g. @self.buildBlock_css(b)@ will force the CSS builder to call that
+        method instead of the regular @self.buildBlock(b)@. Note that this only should be 
         exceptional situation where there is no way to make the builder call abstract.
         Normally components should not be aware which builder they are talking to.
         """
@@ -278,7 +283,7 @@ class Component(object):
 
     def buildBlock(self, b):
         u"""
-        Generic builder <i>b</i> for all child components of <b>self</b>. 
+        Generic builder *b* for all child components of @self@. 
         Can be redefined by an inheriting class.
         """
         b.block(self)
@@ -298,13 +303,13 @@ class Component(object):
         b._page(self)
         
     def buildDocumentationBlock(self, b, processed=None):
-        u"""Recursive call to build the documentation of <b>self</b> and its child
-        components, using builder <i>b</i>. It is the method generating the 
+        u"""Recursive call to build the documentation of @self@ and its child
+        components, using builder *b*. It is the method generating the 
         documentation for this component.
         The information extracted includes the level of inheritance of the component,
         the general description, as defined in the class doc string, a list of child 
         components, a table with the available cascaded method and the component style,
-        which cascades from the parent class <b>BLUEPRINT</b> definitions."""
+        which cascades from the parent class @BLUEPRINT@ definitions."""
         if processed is None:
             processed = set()
         if self in processed:
@@ -334,13 +339,13 @@ class Component(object):
                 componentLabel = 'components'
             else:
                 componentLabel = 'component'
-            b.text('This <b>%s</b> instance contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
+            b.text('This @%s@ instance contains %d child %s: @%s@.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
         else:
-            b.text('<b>%s</b> has no child components.' % name)
+            b.text('@%s@ has no child components.' % name)
         b._p()
         # Inheritance 
         b.p()
-        b.text(u'<b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
+        b.text(u'@%s@ → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
         b._p()
         # Show the component style
         b.h2()
@@ -463,7 +468,7 @@ class Component(object):
     
     def buildElement(self, b, element):
         u"""Recursive rendering of the etree element, using the document methods in the builder
-        as defined in the <b>DocumentBuilderPart</b> class. The elements are translated
+        as defined in the @DocumentBuilderPart@ class. The elements are translated
         to the standard tag behavior of the builder."""
         b.docTagElement(element)
         b.text(element.text) # Plain text output of the element
@@ -478,7 +483,7 @@ class Component(object):
 
     def _get_hashedID(self):
         u"""
-        Property <b>self.hashedID</b> Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
+        Property @self.hashedID@ Calculate the unique ID based on the content. This ID can be compared between components to decide if they are
         identical. This is used by the CSS builder to decide of styles can be skipped then they are identical. Note that the
         value is cache, so alterations to the content of children don't reflect in the ID, once it is established.
         """
@@ -498,8 +503,8 @@ class Component(object):
     # self.name
 
     def _get_name(self):
-        """Property <b>self.name</b> Answer one of <b>self._name or self.id or self.class_ or self.getClassName()</b>.
-        The name attribute is for text identifiation of an element. It is not guaranteed to be unique."""
+        """Property @self.name@ Answer one of @self._name or self.id or self.class_ or self.getClassName()@.
+        The name attribute is for text identification of an element. It is not guaranteed to be unique."""
         name = self._name or self.id or self.class_
         if name is None: # Still None?
             # Same as self.getClassName(), but that method answers None for some component classes.
@@ -515,7 +520,7 @@ class Component(object):
     # self.oge
 
     def _get_urlName(self):
-        """Property <b>self.urlName</b> Answer the url safe version of <b>self.name</b>."""
+        """Property @self.urlName@ Answer the url safe version of @self.name@."""
         return TX.name2UrlName(self.name)
 
     urlName = property(_get_urlName)
@@ -523,8 +528,8 @@ class Component(object):
     # self.url
 
     def _get_url(self):
-        u"""Property <b>self.url</b> Answer the url of this component.
-        Otherwise answer <b>None</b>.""" 
+        u"""Property @self.url@ Answer the url of this component.
+        Otherwise answer @None@.""" 
         if self._url is None:
             return TX.label2ParamId(self.name)
         return self._url
@@ -537,7 +542,7 @@ class Component(object):
     # self.style
 
     def newStyle(self, selector=None, d=None):
-        u"""Answer a new style with <b>selection</b> and attributes defined in the optional <i>d</i> dictionary."""
+        u"""Answer a new style with @selection@ and attributes defined in the optional *d* dictionary."""
         if d is None:
             d = {}
         return Style(selector, **d)
@@ -545,7 +550,7 @@ class Component(object):
     def baseStyle(self):
         u"""Answer the base style for this component, before the BluePrint parameters
         are copied into it. This can be cone by inheriting classes defining htis method.
-        Default behavior is just to answer the result of <b>self.newStyleI()</b>."""
+        Default behavior is just to answer the result of @self.newStyleI()@."""
         return self.newStyle()
     
     def addStyle(self, selector=None, **kwargs):
@@ -557,9 +562,9 @@ class Component(object):
         self.style.addMedia(selector=selector, **kwargs)
 
     def _get_style(self):
-        u"""Property <b>self.style</b> If it doesn't exist yet, create the default style from self.copyBluePrint.
-        If not defined yet, then create a new instance of <b>Style</b>, initialized by the aggregation of the cascading
-        <b>self.BLUEPRINT</b> of the inherited classes."""
+        u"""Property @self.style@ If it doesn't exist yet, create the default style from self.copyBluePrint.
+        If not defined yet, then create a new instance of @Style@, initialized by the aggregation of the cascading
+        @self.BLUEPRINT@ of the inherited classes."""
         if self._style is None:
             self._style = self.baseStyle() # Allow theme to define the base style.
             # Get the list of classes that self is inheriting from.
@@ -580,7 +585,7 @@ class Component(object):
     # self.css
 
     def _get_css(self):
-        u""""Property <b>self.css</b> Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
+        u""""Property @self.css@ Answer the list of CSS URLs for this component. If there is a parent, then answer the css of the parent,
         Otherwise answer the default list."""
         css = self.style.css
         if css is None and self.parent:
@@ -596,7 +601,7 @@ class Component(object):
     # self.fonts
     
     def _get_fonts(self):
-        u"""Property <b>self.font</b> Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
+        u"""Property @self.font@ Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
         the parent. Otherwise answer the default list."""
         fonts = self.style.fonts
         if fonts is None and self.parent:
@@ -614,7 +619,7 @@ class Component(object):
     # self.prefix
 
     def _get_prefix(self):
-        u"""Property <b>self.prefix</b> Answer prefix of class."""
+        u"""Property @self.prefix@ Answer prefix of class."""
         return self.style.prefix
     def _set_prefix(self, prefix):
         self.style.prefix = prefix
@@ -624,7 +629,7 @@ class Component(object):
     # self.class_     Answer the self._class. This value can be None.
 
     def _get_class_(self):
-        u"""Property <b>self.class_</b> Answer the class name of <b>self</b>."""
+        u"""Property @self.class_@ Answer the class name of @self@."""
         return self.style.class_
 
     def _set_class_(self, class_):
@@ -635,7 +640,7 @@ class Component(object):
     # self.prefixClass
 
     def _get_prefixClass(self):
-        u"""Property <b>self.prefixClass</b> Answer the <b>self.prefix</b> + <b>self.class_</b>."""
+        u"""Property @self.prefixClass@ Answer the @self.prefix@ + @self.class_@."""
         return self.getPrefixClass()
 
     prefixClass = property(_get_prefixClass)
@@ -643,7 +648,7 @@ class Component(object):
     # self.id
 
     def _get_id(self):
-        u"""Property <b>self.id</b> Answer the id of <b>self</b>."""
+        u"""Property @self.id@ Answer the id of @self@."""
         return self.style.id
 
     def _set_id(self, id):
@@ -654,7 +659,7 @@ class Component(object):
     # self.adapter
 
     def _get_adapter(self):
-        u"""Property <b>self.adapter</b> Answer the adapter of <b>self</b>. Although it may
+        u"""Property @self.adapter@ Answer the adapter of @self@. Although it may
         be change during the course of development (and also force otherwise), a component
         keeps the instance of the adapter. The reason is that we want caching to be done by
         the adapter. Builders are only created temporary, so they should not hold the adapter."""
@@ -667,7 +672,7 @@ class Component(object):
     def _set_adapter(self, adapter):
         u"""Set the adapter for this component. This allows various components to have
         their own adapter. If not defined, the component will take the adapter
-        of its parent. If the parent adapter is <b>None</b>, then don’t overwrite
+        of its parent. If the parent adapter is @None@, then don’t overwrite
         the adapter of the builder during runtime."""
         self._adapter = adapter
 
@@ -676,7 +681,7 @@ class Component(object):
     # self.components
 
     def addComponent(self, component):
-        u"""Add <i>component</i> to the <b>self.component</b> list of children."""
+        u"""Add *component* to the @self.component@ list of children."""
         if isinstance(component, basestring):
             from text import Text
             component = Text(component)
@@ -789,7 +794,7 @@ class Component(object):
 
     def _set_selector(self, selector):
         u"""
-        Stores the (CSS) <i>selector</i> in <b>self.style.</b>
+        Stores the (CSS) *selector* in @self.style.@
         """
         if isinstance(selector, (list, tuple)):
             selector = ' '.join(selector)
@@ -797,9 +802,9 @@ class Component(object):
 
     def _get_selector(self):
         """
-        If <b>self.style</b> doesn’t support a selector, then <b>None</b> is answered. In this case the selector block
+        If @self.style@ doesn’t support a selector, then @None@ is answered. In this case the selector block
         opening and block close must be omitted by the caller. Just the component block will be processed. Otherwise the
-        (CSS) selector is defined in order by <b>self.style.selector</b>, <b>self.getClassName()</b>.
+        (CSS) selector is defined in order by @self.style.selector@, @self.getClassName()@.
         """
         selector = self.style.selector
         if selector is None:

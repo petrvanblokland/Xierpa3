@@ -22,6 +22,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Px
+from xierpa3.toolbox.transformer import TX
 from xierpa3.components import Theme, Page, Column 
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -54,35 +55,40 @@ class HelloWorld(Theme):
         # Answer a list of types of pages for this site.
         return [homePage]
 
-    def make(self, root=None):
-        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
-        If not defined, then <b>Builder.DEFAULT_ROOTPATH</b> is used, as in general builders 
+    def make(self, root):
+        u"""The instance of this class builds CSS and HTML files at the optional path *root*.
+        If not defined, then @Builder.C.DEFAULT_ROOTPATH@ is used, as in general builders 
         are associated where output should go to. 
-        E.g. the default <b>HtmlBuilder.DEFAULT_ROOTPATH</b> is defined as to the user extended 
-        path of <b>~/Desktop/Xierpa3Examples/[component.name]</b>.
-        And for <b>CssBuilder</b> it is <b>~/Desktop/Xierpa3Examples/[component.name]/css/style.css</b>."""
-
+        E.g. the default @HtmlBuilder.C.DEFAULT_ROOTPATH@ is defined as to the user extended 
+        path of @~/Desktop/Xierpa3Examples/[component.name]@.
+        And for @CssBuilder@ it is @~/Desktop/Xierpa3Examples/[component.name]/css/style.css@."""
         # C S S
         # Create the main CSS builder instance to build the CSS part of the site.
         cssBuilder = CssBuilder()
         # Compile (=build) the SCSS to CSS.
         self.build(cssBuilder) 
         # Save the file in "css/style.css".
-        cssBuilder.save(self, root) 
+        cssBuilder.save(self, root=root) 
     
         # H T M L
         # Create the main HTML builder instance to build the HTML part of the site.
         htmlBuilder = HtmlBuilder()
         # Compile the site instance and its components into HTML code.
         self.build(htmlBuilder) 
-        # Save the resulting HTML file in "helloWorld.html"
-        # Answer the path, so we can directly open the file with a browser.
-        return htmlBuilder.save(self, root)  
+        # Save the resulting HTML file in "index.html"
+        # Answer the file path, so we can directly open the file with a browser.
+        return htmlBuilder.save(self, path=root + 'index.html')  
     
 if __name__ == '__main__':
     # This construction "__name__ == '__main__'" makes this Python file only 
     # be executed when called in direct mode, such as "python make.py" in the terminal.      
     # Since no rootPath is added to make(), the file export is in builder.DEFAULT_ROOTPATH
     # which typically is the user extended path of ~/Desktop/Xierpa3Examples/HelloWorld/   
-    path = HelloWorld().make()
-    webbrowser.open(path)
+    
+    # TODO: for some reason there is double output of HTML right now, using make()
+    # TODO: Make(root) implements on other example classes
+    
+    site = HelloWorld()
+    root = site.getRootDir()
+    filePath = site.make(root)
+    webbrowser.open('file://'+filePath)
