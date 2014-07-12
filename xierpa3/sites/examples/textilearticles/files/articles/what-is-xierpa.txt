@@ -1,6 +1,6 @@
 $title What is Xierpa?
 $tag Xierpa3
-$category Course
+$category BLog
 $level Beginner
 $poster //data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/typo_petr_v_blokland_2.jpg
 $author Petr van Blokland
@@ -10,9 +10,7 @@ $featured example-hello-world, programming-python, typography
 
 h2. Introduction
 
-p(lead). What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the related courses.
-
-p(first). Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different. Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.
+p(lead). What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the related courses. Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different. Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.
 
 p(first). This blog is based on the presentation for "Typo2014":http://typotalks.com/berlin/
 
@@ -24,125 +22,55 @@ The lecture presents Xierpa3 as Open Source proof of concept, showing that build
 
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.002.png!
 
-p(first). The title is provoking. Intended. And it’s even worse. It is also about the end of HTML, and SVG, and JavaScript. Many responses prededing the lecture at Typo 2104 showed that remarks like that are touching open nerve endings with some people. 
+p(first). The title is provoking. Intended. And it’s even worse. It is also about the end of HTML, and SVG, and JavaScript. Many responses preceding the lecture at Typo 2104 showed that remarks like that are touching open nerve endings with some people. 
 
 Of course I know that CSS will not end. With so much technology spent on so many websites using, the chance that will change, even in the distant future, is infinitely small. CSS is a great resource to describe the styling of online documents. ...for browsers.
 But on the level of design the language is a horrible beast. A static description of static, cascaded details, without the functionality of modern programming, such as objects and inheritance, conditions or loops. 
 
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.003.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.004.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.005.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.006.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.007.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.008.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.009.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.010.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.011.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.012.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.013.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.014.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.015.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.016.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.017.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.018.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.019.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.020.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.021.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.022.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.023.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.024.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.025.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.026.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.027.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.028.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.029.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.030.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.031.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.032.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.033.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.034.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.035.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.036.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.037.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.038.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.039.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.040.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.041.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.042.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.043.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.044.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.045.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.046.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.047.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.048.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.049.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.050.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.051.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.052.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.053.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.054.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.055.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.056.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.057.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.058.png!
+
+p(first). Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking. All these component need to work together in order to make the website function as it should.
+
+Xierpa is a toolbox of components, written in the programming "Python":www.python.org. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course "Programming Python":/article-programming-python.
+
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.059.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.060.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.061.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.062.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.063.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.064.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.065.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.066.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.067.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.068.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.069.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.070.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.071.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.072.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.073.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.074.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.075.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.076.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.077.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.078.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.079.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.080.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.081.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.082.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.083.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.084.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.085.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.086.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.087.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.088.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.089.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.090.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.091.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.092.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.093.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.094.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.095.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.096.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.097.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.098.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.099.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.100.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.101.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.102.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.103.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.104.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.105.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.106.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.107.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.108.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.109.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.110.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.111.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.112.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.113.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.114.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.115.png!
-!(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.116.png!
 
 h1. Finding your way
 
@@ -162,10 +90,9 @@ Building a new blog website thus starts with creating a new class the inherits v
 These lines of code import the *Theme* class from the library and makes it available for the code in this file. The second line defines a new class, a type of object, the inherits from the *Theme* in the library. This means that, unless we redefine something, our new *Blog* class behaves in exactly the same way as the original *Theme* class does. A lot of hidden functionality is hidden inside, and in order to know when we can change, we need to understand what it already can do. But we can ignore that for now. The principle in Xierpa3 is that every component can be used “out of the box”: without adjustments they already implement generic useful behavior and styling. And since a *Theme* is also a component, that also applies to the website as whole.
 
 h2. Python patterns
+
 h3. Special topic: Learning to program is learning to think in patterns. In models. In algorithms.
 
 h2. Background of Xierpa
 
-Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking. All these component need to work together in order to make the website function as it should.
 
-Xierpa is a toolbox of components, written in the programming "Python":www.python.org. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course "Programming Python":/article-programming-python.
