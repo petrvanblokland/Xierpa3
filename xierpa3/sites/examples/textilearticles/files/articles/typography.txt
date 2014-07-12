@@ -1,0 +1,10 @@
+$category Blog
+$tag Typography
+$title Design typography
+$poster data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png"
+$author Petr van Blokland
+$topic Tips and tricks on typography.
+$featured example-hello-world, programming-python
+
+h1. Typography
+

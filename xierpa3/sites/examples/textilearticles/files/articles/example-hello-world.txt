@@ -6,7 +6,7 @@ $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuil
 $author Petr van Blokland
 $topic The most basic website in Xierpa3: Hello, world!
 $summary How to build the most simple website in Xierpa3: Hello, world!
-$featured how-to-build-a-simple-kirby-site, programming-python, typography
+$featured example-hello-world, typography
 
 h1. Coding the “Hello, world” example sites.
 

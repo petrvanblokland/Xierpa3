@@ -41,7 +41,7 @@ class HelloWorldStyle(Theme):
     u"""The <b>HelloWorld</b> site class implements a basic “Hello, world!” page,
     showing the smallest possible web page, while including one style attribute to be 
     generated in CSS."""
-    TITLE = u'The standard "Hello world" page.' # Use as title of window.
+    TITLE = u'The standard “Hello, world!” page.' # Use as title of window.
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list

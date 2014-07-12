@@ -53,7 +53,6 @@ class Menu(Component):
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
             for menuItem in data.items:
                 b.li(float=s.listFloat, padding=s.listPadding)
-                print 'wererwerw', menuItem.url
                 if menuItem.url:
                     url = menuItem.url[0] # Get first of list of related urls or None
                 else:
