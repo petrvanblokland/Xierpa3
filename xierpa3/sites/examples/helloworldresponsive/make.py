@@ -61,7 +61,7 @@ class HelloWorldResponsiveText(Column):
                       color=Color('red'), # Translate color name to hex. 
                       margin=0, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE)
             ))
-        b.text('Hello world.')
+        b.text('Hello, world!')
         # One of the advantages of using a real programming language to generate 
         # HTML/CSS code, is that repetitions can be written as a loop. Not necessary
         # fewer lines, but more expandable and less redundant distribution of 
@@ -102,13 +102,13 @@ class HelloWorldResponsiveText(Column):
         b._div()
         
 class HelloWorldResponsive(Theme):
-    u"""The <b>HelloWorldResponsive</b> class implements a basic Hello World page, running as
+    u"""The <b>HelloWorldResponsive</b> class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The responsive “Hello world” page.' # Use as title of window.
+    TITLE = u'The responsive “Hello, world!” page.' # Use as title of window.
 
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before

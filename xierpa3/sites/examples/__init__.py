@@ -9,6 +9,7 @@
 # -----------------------------------------------------------------------------
 #
 from xierpa3.sites.examples.helloworld.make import HelloWorld
+from xierpa3.sites.examples.helloworldstyle.make import HelloWorldStyle
 from xierpa3.sites.examples.helloworldlayout.make import HelloWorldLayout
 from xierpa3.sites.examples.helloworldblueprint.make import HelloWorldBluePrint
 from xierpa3.sites.examples.helloworldresponsive.make import HelloWorldResponsive

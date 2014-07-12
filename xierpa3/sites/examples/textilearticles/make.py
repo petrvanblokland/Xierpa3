@@ -11,21 +11,19 @@
 #    make.py
 #
 import webbrowser
-from xierpa3.attributes import Em, Px, Color
+from xierpa3.attributes import Em, Px, Color, Perc
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import TextileFileAdapter 
-from xierpa3.components import Theme, Page, Container, Article, Menu
+from xierpa3.components import Theme, Page, Container, Article, ArticleSideBar, Menu
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-
-# Define the two component here. Normally these would come from a component library,
-# where the BluePrint values function as API to adjust the component instance behavior
-# from the outside.
 
 class ArticleAdapter(TextileFileAdapter):
     u"""Inherit from the *FileAdapter* to read the example XML article file."""
     
 class TextileArticles(Theme):
+    u"""Show article pages for the amount of articles in @files/articles@, with a top navigation,
+    article column and article side bar. The menu items are define in the @home.txt@ article source."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
@@ -68,15 +66,17 @@ class TextileArticles(Theme):
         adapter = ArticleAdapter(articleRoot) # Preferred adapter class for articles in this site.
         # Create navigation instance, to choose between the available articles.
         menu = Menu(adapter=adapter)
+        menuContainer = Container(components=menu)
         # Create the article component to contain articles answered by the adapter.
         #article = SimplexArticle(adapter=adapter) 
-        article = Article(adapter=adapter, showPoster=True, splitChapters=False) 
+        article = Article(width=Perc(70), adapter=adapter, showPoster=True, splitChapters=False) 
+        articleSideBar = ArticleSideBar(width=Perc(70), adapter=adapter)
         # Make main page container for the article column
-        container = Container(components=(menu, article)) 
+        container = Container(components=(article, articleSideBar)) 
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, 
-            components=container)
+            components=(menuContainer, container))
         return [homePage]
     
     def make(self, root=None):

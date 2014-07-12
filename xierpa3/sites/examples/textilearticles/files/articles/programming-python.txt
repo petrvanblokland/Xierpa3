@@ -16,6 +16,8 @@ p(first). By the way, you don’t have to have any programming experience in ord
 There will be a lot of coding in this course. But I’ll try my ultimate best to clarify as much as I can and to relate everything to practical problems that you can recognize and visualize. I am pretty sure that you will see that programming is not as magic as some programmers want you to believe. And what is more important, knowing about how programming works yourself, can actually save you a lot of time. Even if you don’t want to <em>be</em> a programmer. 
 Later we’ll talk more in detail about what programming is. And how is may relate to your profession. Let’s start.
 
+=C=
+
 h2. Core Python
 
 p(first). First let’s do some nerdy stuff. Just to invite you to the core of Python, so you know where it is and how it works. Also this will make you appreciate better when we’ll use the more interactive application Drawbot for the development of the code in this course. 
@@ -40,6 +42,8 @@ Later in the course we will come back here, because knowing how to operate Pytho
 For now you should download Drawbot. That is a small environment, made by Just van Rossum, brother of Guido, for educational use. It is using the same Python interpreter as you saw working in the Terminal, but now there is a more convenient window interface wrapped around it.
 You can download the Drawbot application from drawbot.com 
 Also there is a brief set of instructions and examples, but all of that will be covered in this course too.
+
+=C=
 
 h2. The Python Application
 
@@ -95,6 +99,8 @@ It needs design skill to decide wether a design problem must be solved manually 
 This course is about programming in Python, but it is also about design. In more that one way. We will look into the design aspects of programming, such as the creation of classes and giving the right names to objects. But the process of programming is also very similar -- identical? -- to design, where you do things over and over again, and then the next time it gets better. 
 And finally, in the second half of the course, we’ll dive into the more sophisticated kinds of programming: how can you make programs that actually take design decisions. Don’t worry, fbts don’t take over the world -- yet -- , you still have to write these programs yourself. But meanwhile it is very possible to write programs that simulate the design process. Just by adding some simple decision algorithms. This course will bring you to that level, step by step.
 
+=C=
+
 h2. Basic coding
 
 p(first). Once you have installed the Drawbot application, open it by a double clicking the icon.
@@ -112,13 +118,13 @@ Note that separate instructions always need to start on a new line, otherwise Py
 Imagine that this could be the grid of a page, especially if we add these two color lines on top of our little program. 
 
 <pre>
-print 7 * 7890
-stroke(0.5)
-fill(None)
-rect(10, 10, 200, 100)
-rect(10+200+10, 10, 200, 100)
-rect(10, 10+100+10, 200, 100)
-rect(10+200+10, 10+100+10, 200, 100)
+  print 7 * 7890
+  stroke(0.5)
+  fill(None)
+  rect(10, 10, 200, 100)
+  rect(10+200+10, 10, 200, 100)
+  rect(10, 10+100+10, 200, 100)
+  rect(10+200+10, 10+100+10, 200, 100)
 </pre>
 
 p(first). The “stroke” tells the Python interpreter to set the color of the outline to a middle gray. And the second line “fill” tells the Python interpreter not to fill the rectangles with the black color we had before. It is important that the None has an initial capital, it is one of the reserved words in the Python language, indicating the None object. There is a difference between 0 (which would indicate black) and None (which indicates Nothing).
@@ -152,8 +158,7 @@ Normally you don’t want to show the result of every calculation. In most cases
 Now we have stored the result of the calculation as object -- also called instance), we can show it. Add the line @print a@ to your program and run it again. You will see the 42 show up in the output frame. Apparently that value was the object with the name @a@.
 Unlike other programming languages, Python integers can have any size. The limit is defined by the available memory (and calculation speed) of your computer. So if you multiple 2 really really large numbers you may notice that the answer takes a little bit longer to calculate and to print, but it still does it. Try, for instance to multiply two very large numbers:
 
-<pre>
-print 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890   
+<pre>print 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890   
  * 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 </pre>
 
@@ -161,11 +166,11 @@ p(first). Are you still here? Note that you can stop this video any time and pla
 
 Let’s continue with the exploration of the standard type of objects in Python. So far we used integers. Then there is another type of number, called float. This type contains the numbers that are not integers but fractional values, such as 3.14. If you multiply a float with a float, of course the result is a float again, such as in @print 3.14 * 2.71@. This shows up as @8.5094@ in the output frame. Also multiplying a float with an integer will result in a float number.
 
-Another important type of objects in Python is the string. That is not the name for a specific type of under ware, but it is the collection of a sequence of characters. That is the way chunks of text can be stored. The syntax of a string is to start and end with a single quote or a double quote. It doesn’t really matter which one you use, as long and the start and end character is the same. Type @print 'Hello world'@ and run the program again. Now the output frame contains the content of the string, as you expected.
+Another important type of objects in Python is the string. That is not the name for a specific type of under ware, but it is the collection of a sequence of characters. That is the way chunks of text can be stored. The syntax of a string is to start and end with a single quote or a double quote. It doesn’t really matter which one you use, as long and the start and end character is the same. Type @print 'Hello, world!'@ and run the program again. Now the output frame contains the content of the string, as you expected.
 As said before, Python is an intuitive program. This means that functionality is implemented in such a way that it behave as you expect. For instance the addition of two string creates a new string. See for instance @print 'Hello ' + 'world'@.
 Now the two strings are glued together into one single string and then printed, resulting in the same output as the previous version. Don’t forget to add the space at the end of the string, or else the two words get vacuumed.
 
-Similarly a string can be multiplied by an integer number. This results in a string that has that amount of the same string glued together. @print 'Hello ' * 10@ greets you like a crowd. There are some other issues to strings, such as making them work with unicode -- you need this for other languages than the Latin script or when using accent characters -- but that will be addressed later in this course. Plain strings are sufficient for now.
+Similarly a string can be multiplied by an integer number. This results in a string that has that amount of the same string glued together. @print 'Hello ' * 10@ greets you as a crowd. There are some other issues to strings, such as making them work with unicode -- you need this for other languages than the Latin script or when using accent characters -- but that will be addressed later in this course. Plain strings are sufficient for now.
 
 If you want to leave notes in the code for yourself, then use the # hash symbol. It is part of the Python syntax to ignore all the text after the hash symbol, until the end of the line. This way you easily can add comments at the end of every line of code, as notes to yourself about what actually happens here.
 So we let’s add some to the previous lines we did so far. 
@@ -181,9 +186,8 @@ Lists and tuples are an efficient way to group a number of values together, espe
 The best way to use list is roughly in 2 types of operations. 
 The first is to use the list a source for using the values in a loop. It is possible to run through the entire list to perform the same operation on all element. Type the following 2 lines of code.
 
-<pre>
-for n in [2,3,4,5,6]:
-    print 'Value is', n
+<pre>for n in [2,3,4,5,6]:
+  print 'Value is', n
 </pre>
 
 p(first). Make sure to indent the second line and add the column character and the end of the first line. 
@@ -200,8 +204,7 @@ Value is 6
 
 p(first). The other main usage of lists is as source  to retrieve values by their index in the list. To see how that works, execute the following lines:
 
-<pre>
-myList = [2,3,4,5,6]
+<pre>myList = [2,3,4,5,6]
 print myList[1]
 </pre>
 
@@ -211,6 +214,8 @@ It is possible to add lists.
 
 That leads to the introduction of another very important basic object type in Python: the dictionary. Where in a list the elements have a certain fixed order (although that may not be alphabetic), in a dictionary the elements have no order at all. The elements are not retrieved by their index position. The values are retrieved by the same key as they were stored in the dictionary. 
 Now we have seen the basic types of Python, let’s do some visual examples, to show how they can be used as design tools. Let’s have a look at some more example lines of code. 
+
+=C=
 
 h2. Design methods
 
@@ -228,9 +233,7 @@ The class of Cars is another great metaphor for explaining how object programmin
 And as useful as they are as metaphor in design education, they also are very illustrative as example in our introductory programming exercises.
 Let’s build a car factory. 
 
-<pre>
-class CarFactory:
-</pre>
+<pre>class CarFactory:</pre>
 
 p(first). The reserved word class -- you can see that the Python editor understands, so it automatically adds the color to the word -- indicates to the Python interpreter that we are defining a new type of objects, the CarFactory. The name of a class always starts with a capital. That is the convention in the Python language. The names of instances -- objects -- always start with a lower case. That fact that there is an exception to this -- because classes themselves are also objects -- is beyond the scope of the course at this point. So I won’t mention that. Oh, I just did.
 
@@ -238,8 +241,8 @@ The best way to interpret the class of a CarFactory is to see it’s behavior as
 
 <pre>
 class CarFactory:
-    def drive(self):
-        print “I drive”
+  def drive(self):
+    print "I drive"
 </pre>
 
 p(first). The indented def indicates that we define a method in the class CarFactory. Using this method, an instance is able to perform a certain defined task. The word following the def is the name of the method. The convention is that method names start with a lower case. And as they have the role of identifiers, they should only consist of letters, figures and underscores. Ignore the brackets with the self for now, we’ll come back to that later. The definition line ends with a column to indicate to the Python interpreter that everything following from here -- as long as there is an additional indentation -- is part of the method definition.

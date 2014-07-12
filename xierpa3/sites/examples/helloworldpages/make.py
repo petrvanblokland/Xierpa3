@@ -47,7 +47,7 @@ class HelloWorldHome(BaseHelloWorldText):
     <b>self.getClassName()</b> results in <b>HelloWorldHome</b>. Color is different per page."""
     def helloWorldText(self, b):
         b.div(color=Color('yellow')) # Color name will be translate to more reliable hex code.
-        b.text('Hello world home.')
+        b.text('Hello, world!')
         b._div()
                
 class HelloWorldOther1(BaseHelloWorldText):
@@ -55,7 +55,7 @@ class HelloWorldOther1(BaseHelloWorldText):
     <b>self.getClassName()</b> results in <b>HelloWorldOther1</b>. Color is different per page."""
     def helloWorldText(self, b):
         b.div(color=Color('#00FF00')) # Show the text on this page in another color, to visualize the difference.
-        b.text('Hello world on another page.')
+        b.text('Hello, world on another page.')
         b._div()
               
 class HelloWorldOther2(BaseHelloWorldText):
@@ -86,13 +86,13 @@ class Navigation(Column):
         b._div()
             
 class HelloWorldPages(Theme):
-    u"""The <b>HelloWorldLayout</b> class implements a basic Hello World page, running as
+    u"""The <b>HelloWorldLayout</b> class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Also it is available in the example webserver,
     e.g. through the Xierpa3App."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The layout “Hello world” page.' # Use as title of window.
+    TITLE = u'The layout version of "Hello, world!" page.' # Use as title of window.
 
     TEMPLATE_OTHER1 = 'other'
     TEMPLATE_OTHER2 = 'otherworld'

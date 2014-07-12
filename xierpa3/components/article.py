@@ -29,6 +29,8 @@ class Article(ArticleColumn):
     # Default parameters for the article layout, to make sure that the default 
     # behavior makes reasonable good  typography. Each of these values can be redefined
     # by changing the BluePrint parameters in the Article() constructor call.
+    # These values can be change either through inheriting from the Article class,
+    # or by altering the BluePrint values in the Article(...) constructor call.
     CHAPTERCOLOR = Color('#202020')
     SUMMARYCOLOR= CHAPTERCOLOR
     CHAPTERTITLECOLOR0 = Color('#1F1F1F')
@@ -400,14 +402,11 @@ class ArticleSideBar(ArticleColumn):
         colWidth=4, # Default amount of columns for this component   
         # Chapter navigation
         showChapterNavigation=True, 
-        chapterLabel='Chapters',
-        chapterNameSize=Em(1.2),
+        chapterLabel='Chapters', doc_chapterLabel=u'Title of chapter navigation, shown as h2 heading.',
+        chapterNameSize=Em(1.2), doc_chapterNameSize=u'Font size of chapter title.',
         showChapterSummaryOnMax=10, # Not show summary if more than 10 chapters
         mobileChapterButtonColor=Color(C.WHITE), doc_mobileChapterButtonColor=u'Color of chapter button for mobile.',
         mobileChapterButtonBackgroundColor=Color('#444'), doc_mobileChapterButtonBackgroundColor=u'Background color of chapter button for mobile.',
-        # Footnotes
-        showFootNotes=True, 
-        footnoteLabel='Footnotes', 
     )
     def getArticleUrlId(self, b):
         return b.e.form[self.C.PARAM_ARTICLE]
@@ -425,19 +424,19 @@ class ArticleSideBar(ArticleColumn):
             self.buildArticleSideBarStyle(b) # Build the CSS style template of an article here
         else:
             if s.showChapterNavigation:
-                self.buildMobileChapterNavigation(b, article)
+                #self.buildMobileChapterNavigation(b, article)
                 self.buildChapterNavigation(b, article)
-            if s.showFootNotes:
-                self.buildFootNotes(b, article)
+            #if s.showFootNotes:
+            #    self.buildFootNotes(b, article)
      
     def buildArticleSideBarStyle(self, b): 
         u"""Build the styles for the articles side bar.  # @@@ Clean up, using model for article side bar?"""
         s = self.style
         # <div class="footnotes">
-        b.div(class_=self.C.CLASS_FOOTNOTES, marginbottom=Em(0.5))
-        b.h4(fontsize=Em(1.1))
-        b._h4()
-        b._div(comment=self.C.CLASS_FOOTNOTES)  
+        #b.div(class_=self.C.CLASS_FOOTNOTES, marginbottom=Em(0.5))
+        #b.h4(fontsize=Em(1.1))
+        #b._h4()
+        #b._div(comment=self.C.CLASS_FOOTNOTES)  
         
         # <div class="mobileChapterNavigation">
         b.div(class_=self.C.CLASS_MOBILECHAPTERNAVIGATION, marginbottom=Em(0.5), display=self.C.NONE,
@@ -526,7 +525,7 @@ class ArticleSideBar(ArticleColumn):
             b._ul()
             b._div() # .chapterNavigation
             
-    def buildFootNotes(self, b, article):
+    def XXXbuildFootNotes(self, b, article):
         u"""Build the list of footnotes with links to the position in the article where they are defined."""
         s = self.style
         chapterIndex = self.getChapterIndex(b, article)

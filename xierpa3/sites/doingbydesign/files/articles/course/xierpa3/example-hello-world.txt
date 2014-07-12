@@ -1,15 +1,15 @@
-$title>Hello world.
+$title>Hello, world!
 $category Course
 $level Beginner
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
 $author Petr van Blokland
-$topic The most basic website in Xierpa3: Hello world.
-$summary How to build the most simple website in Xierpa3: Hello world.
+$topic The most basic website in Xierpa3: Hello, world!
+$summary How to build the most simple website in Xierpa3: Hello, world!
 $featured how-to-build-a-simple-kirby-site, programming-python, typography
 
-h1. Coding the Hello world
+h1. Coding the “Hello, world!”
 
-p(lead). This example instruction shows coding of the most simple website in Xierpa3: Hello world. Stay close for our first walk-through.
+p(lead). This example instruction shows coding of the most simple website in Xierpa3: “Hello, world!”. Stay close for our first walk-through.
 
 !(first)//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldsafari.png
 
@@ -29,14 +29,14 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 From the set of available Xierpa3 components, the *Theme* is used, as site container for the single *Page*.
 On the page there will be one *Column*.
 
-Next is to define the type of column we want to have, holding the simple “Hello world” text. We create a new type of component for this behavior, which initially inherits all aspect from the standard
+Next is to define the type of column we want to have, holding the simple “Hello, world!” text. We create a new type of component for this behavior, which initially inherits all aspect from the standard
 *Column* class.
 
 <pre>
 class HelloWorldText(Column):
   def buildBlock(self, b):
     b.div(color='red')
-    b.text('Hello world.')
+    b.text('Hello, world!')
     b._div()
 </pre>
 
@@ -51,7 +51,7 @@ of theme, that will appear on the top of the browser window.
 
 <pre>
 class HelloWorld(Theme):
-  TITLE = u'The standard “Hello world” page.'
+  TITLE = u'The standard “Hello, world!” page.'
 </pre>
 
 Then one of the required methods is defined for a *Theme*, answering the
@@ -114,7 +114,7 @@ class HelloWorldText(Column):
 		    backgroundcolor=Color('#222'), padding=Em(0.5), 
 		    fontfamily='Georgia', fontsize=Em(4), 
 		    textalign=self.C.CENTER, lineheight=Em(1.4))
-    b.text('Hello world.')
+    b.text('Hello, world!')
     b._div()
     b.div(class_='caption', color=Color('#888'), 
 		    margin=Margin(0, self.C.AUTO, 0, self.C.AUTO), 
@@ -146,7 +146,7 @@ The rest of this example is the identical to the simple HelloWorld.</p>
 
 <pre>
 class HelloWorldLayout(Theme):
-  TITLE = u'The standard “Hello world” page.'
+  TITLE = u'The standard “Hello, world!” page.'
 
   def baseComponents(self):
     hw = HelloWorldText()
@@ -219,7 +219,7 @@ p(first). As in the previous example, we now redefine the *buildBlock* method.
          Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#BBB'), 
   		   color=Color('red'), fontsize=Em(2), width=Perc(100))
       ))
-    b.text('Hello world.')
+    b.text('Hello, world!')
 </pre>
 
 Still inside the @div@ we’ll add some conditional text, that only shows in one of the

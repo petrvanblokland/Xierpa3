@@ -109,10 +109,10 @@ class HelloWorldBluePrintText(Column):
         b._div()
         
 class HelloWorldBluePrint(Theme):
-    u"""The <b>HelloWorldResponsive</b> class implements a basic Hello World page, running as
+    u"""The <b>HelloWorldResponsive</b> class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
-    TITLE = u'The responsive “Hello world” page using BluePrint styling.' # Use as title of window.
+    TITLE = u'The responsive "Hello, world!" page using BluePrint styling.' # Use as title of window.
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list

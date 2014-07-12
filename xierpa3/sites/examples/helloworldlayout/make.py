@@ -63,10 +63,10 @@ class HelloWorldText(Column):
         b._div()
         
 class HelloWorldLayout(Theme):
-    u"""The <b>HelloWorldLayout</b> class implements a basic Hello World page, running as
+    u"""The <b>HelloWorldLayout</b> class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Also it is available in the example webserver,
     e.g. through the Xierpa3App."""
-    TITLE = u'The layout “Hello world” page.' # Use as title of window.
+    TITLE = u'The layout “Hello, world!” page.' # Use as title of window.
 
     def baseComponents(self):
         u"""Create a theme site with just one single template home page. Answer a list
