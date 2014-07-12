@@ -107,7 +107,6 @@ class Builder(object):
     def saveAsFile(self, path, content, makeDir=False):
         u"""Save content as a file under path. If the file exists it is overwritten.
         If @makeDirs@ is @True@ (default is @False@), the try to create the directory first."""
-        print '23423443', content
         if makeDir:
             self.makeDirectory(path) # Make sure that the directory part of path exists.
         f = open(path, 'wb')

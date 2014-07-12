@@ -128,7 +128,7 @@ class Article(ArticleColumn):
         numberedListMarginBottom=0, 
         numberedListMarginTop=Em(0.5),
         numberedListItemMarginBottom=Em(0.5),
-        # Image & caption
+        # Image & caption block
         imgMarginTop=Em(1), 
         imgMarginBottom=Em(0.8), 
         imgPaddingTop=None, 
@@ -139,22 +139,32 @@ class Article(ArticleColumn):
         captionFontStyle=C.ITALIC, 
         captionFontSize=Em(0.9), 
         captionMarginTop=Em(0.5),
+        # Plain Textile image with class autoWidth, not indenting.
+        # Full width, growing until maximal size of image. Then centered on column width.
+        imgAutoWidthMarginLeft=C.AUTO, doc_imgAutoWidthMarginLeft=u'img.autoWidth margin left.',
+        imgAutoWidthMarginRight=C.AUTO, doc_imgAutoWidthMarginRight=u'img.autoWidth margin right.',
+        imgAutoWidthTextIndent=0, doc_imgAutoWidthTextIndent=u'img.autoWidth text indent.',
+        imgAutoWidthDisplay=C.BLOCK, doc_imgAutoWidthDisplay=u'img.autoWidth display.',
         # Code
-        codeFontFamily='Courier', 
-        codeFontSize=Em(1.1), 
-        codePaddingLeft=Em(1),
-        codePaddingTop=Em(0.5), 
-        codePaddingBottom=0,
-        codeMarginTop=Em(0.5), 
-        codeMarginBottom=Em(0.5),
-        codeBackgroundColor=Color(C.WHITE),
+        preFontFamily='Courier', doc_preFontFamily=u'Font family of pre code blocks.',
+        preFontSize=Em(1.1), doc_preFontSize=u'Font size of pre code blocks.', 
+        prePaddingLeft=Em(1), doc_prePaddingLeft=u'Padding left of pre code blocks.',
+        prePaddingTop=Em(0.5), doc_prePaddingTop=u'Padding top of pre code blocks.', 
+        prePaddingBottom=Em(0.5), doc_prePaddingBottom=u'Padding bottom of pre code blocks.',
+        preMarginTop=Em(0.5),  doc_preMarginTop=u'Margin left of pre code blocks.',
+        preMarginBottom=Em(0.5), doc_preMarginBottom=u'Margin bottom of pre code blocks.',
+        preColor=Color(Color(0)), doc_preColor=u'Color of pre code blocks.',
+        preBackgroundColor=Color(Color('#DDD')), doc_preBackgroundColor=u'Background color of pre code blocks.',
     )
     def buildBlock(self, b):
         self.buildColumn(b)
         
     def buildColumn(self, b):
+        u"""Build the article column. The article data is derived from the adapter by matching with the hard coded url pattern
+        (@$url@ field in the article source) or with the @b.getCurrentArticleId()@, which is @/article-[articleId]@ in the
+        url of the page."""
         s = self.style
-        articleData = self.adapter.getArticle(id=b.getCurrentArticleId())
+        articleData = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
         b.div(class_=self.getClassName(), 
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
                     paddingleft=Em(0.5), paddingright=Em(0.5)),
@@ -211,13 +221,14 @@ class Article(ArticleColumn):
         if articleData is not None:
             # Poster image
             if chapterIndex == 0 and s.showPoster:
-                b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster)
+                b.img(class_=self.C.CLASS_AUTOWIDTH, src=articleData.poster,
+                    marginleft=self.C.AUTO, marginright=self.C.AUTO)
             # Article category
             if chapterIndex == 0 and articleData.category: # Text on text
                 b.a(href='/%s-%s' % (self.C.PARAM_CATEGORY, articleData.category))
                 b.h5(fontsize=s.categorySize, lineheight=s.categoryLineHeight, color=s.categoryColor, 
                     fontweight=s.categoryWeight, margintop=Em(1), display=self.C.BLOCK)
-                b.text(articleData.category)
+                b.text(', '.join(articleData.category))
                 b._h5()
                 b._a()
     
@@ -326,11 +337,11 @@ class Article(ArticleColumn):
             color=s.emColor, fontfamily=s.emFontFamily)
         b._em()
         # <pre>
-        b.pre(fontstyle=s.codeFontStyle, fontweight=s.codeFontWeight, fontsize=s.codeFontSize,
-            color=s.codeColor, fontfamily=s.codeFontFamily, paddingtop=s.codeMarginTop,
-            paddingbottom=s.codePaddingBottom, paddingleft=s.codePaddingLeft,
-            paddingright=s.codePaddingRight, backgroundcolor=s.codeBackgroundColor,
-            margintop=s.codeMarginTop, marginbottom=s.codeMarginBottom,
+        b.pre(fontstyle=s.preFontStyle, fontweight=s.preFontWeight, fontsize=s.preFontSize,
+            color=s.preColor, fontfamily=s.preFontFamily, paddingtop=s.preMarginTop,
+            paddingbottom=s.prePaddingBottom, paddingleft=s.prePaddingLeft,
+            paddingright=s.prePaddingRight, backgroundcolor=s.preBackgroundColor,
+            margintop=s.preMarginTop, marginbottom=s.preMarginBottom,
         )
         b._pre()
         # <div class="imgBlock"><img/><div class="caption">...</div></div>
@@ -344,6 +355,10 @@ class Article(ArticleColumn):
             margintop=s.captionMarginTop)
         b._div() # .caption
         b._div() # .imageBlock
+        # <img> Plain Textile img tag, generated by !(autoWidth)--url--!
+        b.img(class_=self.C.CLASS_AUTOWIDTH, marginleft=s.imgAutoWidthMarginLeft, 
+            marginright=s.imgAutoWidthMarginRight, textindent=s.imgAutoWidthTextIndent, 
+            display=s.imgAutoWidthDisplay)
         # <ul><li>...</li></ul>
         b.ul(liststyletype=s.bulletType, liststyleimage=s.bulletImage, 
             liststyleposition=s.bulletPosition, paddingleft=s.bulletPaddingLeft,

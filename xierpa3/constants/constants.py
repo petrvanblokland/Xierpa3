@@ -223,21 +223,30 @@ class Constants(Config):
     TEMPLATE_DEFAULT = TEMPLATE_INDEX
 
     # Adapter
-    '''
-    ADAPTER_PAGETITLE = 'pageTitle'
-    ADAPTER_LOGO = 'logo' 
-    ADAPTER_MESSAGE = 'message'
-    ADAPTER_CHAPTERS = 'chapters'
-    ADAPTER_FEATUREDARTICLES = 'featuredArticles'
-    ADAPTER_FOOTER = 'footer'
-    ADAPTER_SOCIALMEDIA = 'socialMedia'
-    ADAPTER_TAGCLOUD = 'tagCloud'
-    ADAPTER_ARTICLE = 'article'
-    ADAPTER_ARTICLES = 'articles'
-    ADAPTER_PAGES = 'pages'
-    ADAPTER_MOBILEPAGES = 'mobilePages'
-    ADAPTER_MENU = 'menu'
-    '''
+    
+    # Adapter data fields that can be return optionally by any adapter.
+    ADAPTER_ITEMS = 'items' # Chapters of an article.
+    ADAPTER_MENU = 'menu' # Comma separated menu list
+    ADAPTER_URL = 'url' # Comma separated url list
+    ADAPTER_ERROR = 'error' 
+    ADAPTER_CATEGORY = 'category'
+    ADAPTER_FEATURED = 'featured' # Comma separated list of featured articles ids
+    #ADAPTER_PAGETITLE = 'pageTitle'
+    #ADAPTER_LOGO = 'logo' 
+    #ADAPTER_MESSAGE = 'message'
+    #ADAPTER_CHAPTERS = 'chapters'
+    #ADAPTER_FEATUREDARTICLES = 'featuredArticles'
+    #ADAPTER_FOOTER = 'footer'
+    #ADAPTER_SOCIALMEDIA = 'socialMedia'
+    #ADAPTER_TAGCLOUD = 'tagCloud'
+    #ADAPTER_ARTICLE = 'article'
+    #ADAPTER_PAGES = 'pages'
+    #ADAPTER_MOBILEPAGES = 'mobilePages'
+
+    # Comma separated list fields
+    ADAPTER_COMMAFIELDS = set((ADAPTER_URL, ADAPTER_MENU, ADAPTER_CATEGORY,
+        ADAPTER_FEATURED))
+
     # Types of article selector
     SELECTOR_FEATURED = 'featured'
     

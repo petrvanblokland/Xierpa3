@@ -1196,6 +1196,8 @@ class Transformer(object):
         Transform a comma or whitespace separated string to a list with words.
         </doc>
         """
+        if s is None:
+            s = ''
         t = []
         for c in ',\t\r\n':
             s = s.replace(c, ' ')

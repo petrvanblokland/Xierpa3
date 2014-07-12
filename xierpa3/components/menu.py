@@ -30,8 +30,8 @@ class Menu(Component):
         navMargin=0, 
         navFontSize=Em(1.5),
         # Menu list stuff
-        listStyleType=C.NONE, 
-        listDisplay=C.BLOCK, 
+        listStyleType=C.NONE, doc_listStyleType=u'List style type. One of "W3SChools":http://www.w3schools.com/cssref/pr_list-style-type.asp',
+        listDisplay=C.INLINE, doc_listDisplay=u'Direction of hte menu list. One of @(C.INLINE, C.BLOCK)@.',
         listFloat=C.RIGHT, 
         listPadding=10,
         # Link stuff
@@ -41,11 +41,9 @@ class Menu(Component):
         linkTransition=None, #Transition(),
     )
     def buildBlock(self, b):
-        u"""Build the menu from the articles in the menu tags of the home.xml document."""
-        data = self.adapter.getMenu(id='home')
-        b.text(data)
-        """
-        if data.items is not None and len(data.items):
+        u"""Build the menu from the articles in the menu tags of the @home.xml@ document."""
+        data = self.adapter.getMenu(id='home') # Main menu is defined on the home page.
+        if data.items:
             s = self.style
             b.block(self)
             colClass = self.getColClass(s.colWidth)
@@ -55,16 +53,17 @@ class Menu(Component):
             b.ol(styletype=s.listStyleType, display=s.listDisplay)
             for menuItem in data.items:
                 b.li(float=s.listFloat, padding=s.listPadding)
-                url = menu.url
-                if url is None:
-                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menu.id)
+                print 'wererwerw', menuItem.url
+                if menuItem.url:
+                    url = menuItem.url[0] # Get first of list of related urls or None
+                else:
+                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuItem.id)
                 b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration, 
                     padding=s.linkPadding, transition=s.linkTransition)
-                b.text(menu.tag or menu.name)
+                b.text(menuItem.tag or menuItem.name)
                 b._a()
                 b._li()
             b._ol()
             b._nav()
             b._div(comment=colClass)
             b._block(self)
-        """

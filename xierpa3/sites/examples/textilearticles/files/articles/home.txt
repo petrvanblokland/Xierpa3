@@ -1,0 +1,8 @@
+$title Home
+$tag Home
+$url /index, /force/index
+$menu home, example-hello-world, programming-python
+
+h1. Home page
+
+This is the home page of the Textile articles examples page.

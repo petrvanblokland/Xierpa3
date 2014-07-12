@@ -111,7 +111,8 @@
 #    Attributes of rows
 #    |This|is|a|row|
 #    {background:#ddd}. |This|is|grey|row|
-
+#
+import re
 import os
 import codecs
 import textile
@@ -119,10 +120,22 @@ from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.adapter import Adapter
 
 class TextileFileAdapter(Adapter):
+    
+    # Get Constants->Config as class variable, so inheriting classes can redefine values.
+    C = Adapter.C 
+    
+    # Match line pattern "$fielName value"
+    FIELDVALUE = re.compile('\$([\w]*) (.*)')
+    # Match comma separated list
+    COMMASPLIT = re.compile('[,]*[\s]*([^,]*)')
+    # Set of field names that have to become a list is in C.ADAPTER_COMMAFIELDS
+    
     u"""Adapter for Textile wiki file serving. """
     def initialize(self):
         self._cache = {}
         self.readArticles()
+        # Build the cache meta field references for articles.
+        self.cacheArticleFieldReferences()
         
     def readArticles(self):
         u"""Read all articles in the root tree path."""
@@ -155,6 +168,18 @@ class TextileFileAdapter(Adapter):
             wiki = None
         return wiki
     
+    def _splitFieldValue(self, line):
+        u"""Split the string *s* into field name (starting with $ and ending with space)
+        and string value. If the field is one of @self.COMMAFIELDS@, then the value
+        must be a comma separated list. Split the string into a list of values."""
+        found = self.FIELDVALUE.findall(line)
+        if found:
+            fieldName, value = found[0]
+            if fieldName in self.C.ADAPTER_COMMAFIELDS:
+                value = self.COMMASPLIT.findall(value)[:-1] # Split and remove last empty part
+            return fieldName, value
+        return None, None # No field name match on this line.
+
     def compileArticle(self, wiki):
         u"""Compile the wiki text into a Data instance, but parsing the field definition, split
         on chapters and translate the chapter content through textile to html.
@@ -165,20 +190,38 @@ class TextileFileAdapter(Adapter):
         wiki = wiki.replace('\r', '\n')
         for line in wiki.split('\n'):
             if line.startswith('$'):
-                parts = line.split(' ')
-                if len(parts) >= 2:
-                    # Get field name and restore rest of the line.
-                    # Field names are case sensitive.
-                    data[parts[0][1:]] = ' '.join(parts[1:])
-                else:
-                    data.error = 'Error in field syntax: "%s"' % line
+                fieldName, value = self._splitFieldValue(line)
+                if fieldName is not None:
+                    data[fieldName] = value
             else:
                 text.append(line) # Keep normal text lines.
+        # Split the chapters into items
         data.items = []
         for chapter in ('\n'.join(text)).split('=C='):
             data.items.append(textile.textile(chapter))
         return data
     
+    def cacheArticleFieldReferences(self):
+        u"""(Re)build the dictionary of field relations. This should be done, anytime a new article 
+        is cached or modified. Better to build from scratch if the source changes, than to keep track
+        of changes."""
+        self._urls = {}
+        self._categories = {}
+        self._levels = {}
+        for id, article in self._cache.items():
+            for url in (article.urls or []):
+                if not self._urls.has_key(url):
+                    self._urls[url] = []
+                self._urls[url].append(article)
+            for category in (article.categories or []):
+                if not self._categories.has_key(category):
+                    self._categories[category] = []
+                self._categories[category].append(article)
+            for level in (article.levels or []):
+                if not self._levels.has_key(level):
+                    self._levels[level] = []
+                self._levels[level].append(article)
+
     def cacheArticle(self, article):
         self._cache[article.id] = article
     
@@ -195,8 +238,22 @@ class TextileFileAdapter(Adapter):
         if data is not None and data.modificationTime != os.path.getmtime(data.path):
             # File content is modified after caching the article. Update it from file.
             data = self.updateArticle(data.id, data.path)
+            self.cacheArticleFieldReferences() # Article may have changed fields. Build all caching of fields again.
+        # If article not found, try to match on url.
+        if data is None:
+            data = self.getArticleByUrl(kwargs.get('url'))
         return data
-            
+     
+    def getArticleByUrl(self, url):
+        u"""Answer the article that is matching *url* by one of the values in the @$url@ field.
+        Answer @None@ if not matching article could be found."""
+        data = None
+        fields = self.getFields()
+        articles = fields.urls.get(url)
+        if articles:
+            data = articles[0] # If found multiple matches, just take the first one.
+        return data
+    
     def getCachedArticles(self):
         return self._cache
     
@@ -238,7 +295,7 @@ class TextileFileAdapter(Adapter):
         if chapter is not None:
             return chapter.find('./meta/title')
         return None
-    
+
     #    A P I  G E T 
     
     def getPageTitle(self, **kwargs):
@@ -260,6 +317,7 @@ class TextileFileAdapter(Adapter):
         return self.getPages(count)
     
     def getArticle(self, **kwargs):
+        u"""Answer the matching article, based on the available keywords in *kwargs*."""
         return self.getCachedArticle(**kwargs)
     
     def getFeaturedArticles(self, id, start, count):
@@ -276,25 +334,25 @@ class TextileFileAdapter(Adapter):
                     data.items.append(featuredArticle)
         return data
     
-    def getCategories(self, component):
-        categories = {}
-        for article in self.getCachedArticles().values():
-            category = article.category
-            if not categories.has_key(category):
-                categories[category] = []
-            categories[category].append(article)
-        return categories
+    def getFields(self):
+        u"""Answer a @Data@ instance with dictionaries of all field names, related to lists of articles.
+        Included @data.urls@, @data.categories@ and @data.levels@."""
+        data = self.newData()
+        data.urls = self._urls
+        data.categories = self._categories
+        data.levels = self._levels        
+        return data
     
     def getMenu(self, **kwargs):
-        u"""Answer the list of menu articles in this component."""
+        u"""Answer the @data.items@ of the main menu, indicated by *id*. Normally this will be the @home@
+        page of the site, containing the main menu options in @$menu@. The @data.items@ are article data instances."""
         data = self.newData()
-        data.menuItems = []
+        data.items = []
         article = self.getArticle(**kwargs)
-        if article:
-            for menuId in TX.commaSpaceString2WordList(article.menu): # Menu attribute is comma separated list
-                menuArticle = self.getArticle(id=menuId)
-                if menuArticle is not None and menuArticle.tag:
-                    data.menuItems.append(menuArticle.tag)
+        for menuId in article.menu: # All article id references in the menu list
+            menuArticle = self.getArticle(id=menuId)
+            if menuArticle is not None and menuArticle.tag:
+                data.items.append(menuArticle)
         return data
     
     def getLogo(self, **kwargs):
