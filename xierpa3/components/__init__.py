@@ -27,5 +27,6 @@ from tagcloud import TagCloud
 from message import Message
 from theme import Theme
 from ruler import Ruler
+from blog import BlogResponse
 from socialmedia import SocialMedia
 from documentation import Documentation
