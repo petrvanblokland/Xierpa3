@@ -37,6 +37,9 @@ But on the level of design the language is a horrible beast. A static descriptio
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.018.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.023.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.024.png!
+
+p(first). Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking. All these component need to work together in order to make the website function as it should.
+
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.028.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.029.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.033.png!
@@ -45,8 +48,6 @@ But on the level of design the language is a horrible beast. A static descriptio
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.042.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.045.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.054.png!
-
-p(first). Traditionally it needs a lot of knowledge to build a website. The path from first idea to fully working code is long. And since all the knowledge hardly ever is combined in one person, different disciplines need to work together. Traditionally a graphic designer makes sketches (often in a program very suitable for creating the images for a presentation), an interaction designer adds motion and interaction and then there is a number of programmers making it all happen, varying from HTML, CSS, Javascript, database, search engine and networking. All these component need to work together in order to make the website function as it should.
 
 Xierpa is a toolbox of components, written in the programming "Python":www.python.org. Built together, the components make powerful engines that create documents. This course assumes basic experience with programming in Python. If you don't have that, or if you want to refresh your skills, we recommend to follow the basic course "Programming Python":/article-programming-python.
 
