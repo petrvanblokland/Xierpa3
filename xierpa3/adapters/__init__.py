@@ -10,5 +10,5 @@
 #
 from adapter import Adapter
 from blurbadapter import BlurbAdapter
-from textilefileadapter import TextileFileAdapter
+from textilefileadapter import TextileFileAdapter 
 from phpadapter import PhpAdapter

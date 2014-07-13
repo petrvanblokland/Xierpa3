@@ -47,10 +47,10 @@ class XmlTagBuilderPart:
         return key
 
     def write_attributes(self, attributes, default_attributes, args, tagname):
-        u"""
-        Generic function to write HTML attributes. The new HTML5 feature to store custom data inside the attribute
-        <code>'data-xxx'</code> is defined as attribute name <attr>data_xxx</attr>. See
-        <www>http://ejohn.org/blog/html-5-data-attributes/</www>.
+        u"""Generic function to write HTML attributes. The new HTML5 feature to store custom data inside the attribute
+        @data-xxx@ is defined as attribute name *data_xxx*. See "HTML-5 Attributes":http://ejohn.org/blog/html-5-data-attributes/
+        If the key has an attached builder type as @xxx-html@ or @xxx-css@, 
+        then show the attribute only with the builder type matches the type of @self@.
         """
         for key, value in args.items():
             if key == 'php':
@@ -60,7 +60,11 @@ class XmlTagBuilderPart:
                 if not value is None:
                     key = self.get_clean_attribute_key(key)
                     self.get_attribute_exceptions(key, value)
-            # If the key is not in the standard HTML list, is can be a CSS attribute. Just ignore it.
+            # TODO: Make attribute writing directly by builder if valid extension
+            #else:
+            #    key, builderType = TX.attrName2attrBuilderType(key)
+            #    if builderType is not None:
+            #        # If the key is not in the standard HTML list, is can be a CSS attribute. Just ignore it.
 
         for key, value in default_attributes.items():
             if key not in args.keys():
@@ -68,13 +72,13 @@ class XmlTagBuilderPart:
 
     def write_attribute(self, key, value):
         u"""
-        Auxiliary function to write each attribute to <code>self.result</code>. If the <attr>key</attr> is defined in
-        <code>self.SINGLE_ATTRIBUTES</code> then only output the single key name (even if this breaks XML
-        validation). By default the <code>self.SINGLE_ATTRIBUTES</code> is empty, but it can be redefined by the
-        inheriting application class.<br/>
-        If the <attr>key</attr> is in <code>self.CASCADING_ATTRIBUTES</code> and the <attr>value</attr> is tuple or
-        a list, then join the <attr>value</attr>, separated by spaces. This feature is especially used to build flexible
-        cascading <attr>class_</attr> attributes.<br/>
+        Auxiliary function to write each attribute to @self.result@. If the *key* is defined in
+        @self.SINGLE_ATTRIBUTES@ then only output the single key name (even if this breaks XML
+        validation). By default the @self.SINGLE_ATTRIBUTES@ is empty, but it can be redefined by the
+        inheriting application class.
+        If the *key* is in @self.CASCADING_ATTRIBUTES@ and the *value* is tuple or
+        a list, then join the *value*, separated by spaces. This feature is especially used to build flexible
+        cascading *class_* attributes.
         If the attribute has no value, then the output is skipped.
         """
         line = None
@@ -151,7 +155,7 @@ class XmlTagBuilderPart:
         runningTag = self._tagStack.pop()
         if runningTag is None or not runningTag == tag:
             self.output('<div color=%s>Mismatch in closing tag "%s", expected "%s" in tree "%s".</div>' %
-                    (self.CLASS_ERROR, tag, runningTag, `self._tagStack`))
+                    (self.C.CLASS_ERROR, tag, runningTag, `self._tagStack`))
 
     def _peekTag(self):
         return self._tagStack.top()

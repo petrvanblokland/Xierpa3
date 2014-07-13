@@ -467,7 +467,11 @@ table tr th, table tr, td {
 }
 figure {
     position: relative; }
-
+    
+/* Editable elements */
+[contenteditable="true"] {padding: 10px; background: rgba(240, 240, 240, 0.9);}
+[contenteditable="true"]:hover{ background: rgba(240, 240, 200, 0.9);}
+ 
 /* Solve the difference between IE, Safari, Mozilla and Opera for 100% and auto image widths.
 Make the img of class "autowidth" to get the function working.
 See www.webmonkey.com/2010/02/browser-specific_css_hacks/

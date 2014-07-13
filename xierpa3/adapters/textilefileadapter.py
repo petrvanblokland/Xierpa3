@@ -136,9 +136,9 @@ class TextileFileAdapter(Adapter):
         self.readArticles()
         # Build the cache meta field references for articles.
         self.cacheArticleFieldReferences()
-        
+     
     def readArticles(self):
-        u"""Read all articles in the root tree path."""
+        u"""Read all articles available in the root tree path."""
         for id, path in self.getIdPaths(): # id, path
             self.updateArticle(id, self.root + path)
         
@@ -150,14 +150,16 @@ class TextileFileAdapter(Adapter):
         if wiki is not None:
             data = self.compileArticle(wiki)
             data.id = id
-            data.path = path # Keep the source is case the file needs editing.
+            data.source = wiki
+            data.path = path # Keep the source path is case POST needs to save to the file.
             data.modificationTime = os.path.getmtime(path)
             self.cacheArticle(data)
         return data
-           
-    def readWikiFile(self, fsPath): 
+        
+    @classmethod  
+    def readWikiFile(cls, fsPath): 
         u"""Read the raw wiki (Textile syntax) file and answer the unicode string."""
-        extension = '.'+self.C.EXTENSION_TXT
+        extension = '.'+cls.C.EXTENSION_TXT
         if not fsPath.endswith(extension):
             fsPath += extension           
         if os.path.exists(fsPath):

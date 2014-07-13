@@ -168,7 +168,7 @@ class FeaturedByImageList(FeaturedBase):
             if s.showTopic and item.topic is not None: # Elements must be defined in global style
                 self.buildElement(b, item.topic)
             b._a()
-            b._div(comment=self.CLASS_FEATURED_ITEM)
+            b._div(comment=self.C.CLASS_FEATURED_ITEM)
 
 class FeaturedByText(FeaturedBase):
 

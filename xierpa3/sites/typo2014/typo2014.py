@@ -15,7 +15,7 @@
 #    http://localhost:8013/course/how-to-deal-with-customers
 #
 from xierpa3.themes.shop.shop import Shop
-from xierpa3.adapters.fileadapter import FileAdapter
+from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 #from xierpa3.descriptors.style import StyleSet
 from xierpa3.attributes import Em, Perc
 from xierpa3.components import Logo, SocialMedia, Header, MobileNavigation, Featured, Footer, Menu
@@ -29,7 +29,7 @@ FOOTERBACKGROUNDCOLOR = '#E1E1E1'
        
 # Adapter
 
-class Typo2014Adapter(FileAdapter):
+class Typo2014Adapter(TextileFileAdapter):
     pass
 # Cache the adapter, initialized automatic.
 #ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
@@ -87,15 +87,15 @@ class Typo2014(Shop):
         s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
         s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
         s.addStyle('a:active', color=self.CSS_AACTIVECOLOR)
-        s.addStyle('div.' + self.CLASS_1COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 / 12))
-        s.addStyle('div.' + self.CLASS_2COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 2 / 12))
-        s.addStyle('div.' + self.CLASS_4COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
-        s.addStyle('div.' + self.CLASS_8COL, margin=Em(0.5), float=self.LEFT, width='%d%%' % (98 * 8 / 12))
-        s.addStyle('div.' + self.CLASS_12COL, margin=Em(0.5), float=self.LEFT, width=Perc(100))
-        s.addStyle('div.' + self.CLASS_LAST, marginright=Em(0))
-        s.addStyle('ul', display=self.BLOCK)
-        s.addStyle('li', display=self.BLOCK)
-        s.addStyle('ol', liststyletype=self.DECIMAL)
+        s.addStyle('div.' + self.C.CLASS_1COL, margin=Em(0.5), float=self.C.LEFT, width='%d%%' % (98 / 12))
+        s.addStyle('div.' + self.C.CLASS_2COL, margin=Em(0.5), float=self.C.LEFT, width='%d%%' % (98 * 2 / 12))
+        s.addStyle('div.' + self.C.CLASS_4COL, margin=Em(0.5), float=self.C.LEFT, width='%d%%' % 30) #(98 * 4 / 12))
+        s.addStyle('div.' + self.C.CLASS_8COL, margin=Em(0.5), float=self.C.LEFT, width='%d%%' % (98 * 8 / 12))
+        s.addStyle('div.' + self.C.CLASS_12COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(100))
+        s.addStyle('div.' + self.C.CLASS_LAST, marginright=Em(0))
+        s.addStyle('ul', display=self.C.BLOCK)
+        s.addStyle('li', display=self.C.BLOCK)
+        s.addStyle('ol', liststyletype=self.C.DECIMAL)
         return s
 
     def baseComponents(self):
@@ -129,8 +129,8 @@ class Typo2014(Shop):
 
         # Article
         featuredByTextList = FeaturedByTextList() # Default start a featured index 0
-        article = Container(class_=self.CLASS_ARTICLE, 
-            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.REPEAT, 
+        article = Container(class_=self.C.CLASS_ARTICLE, 
+            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
     
         # Floating items
@@ -139,28 +139,28 @@ class Typo2014(Shop):
         # Documentation
         documentation = Documentation()
         
-        homePage = Page(name=self.TEMPLATE_INDEX,
+        homePage = Page(name=self.C.TEMPLATE_INDEX,
             components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
-        articlePage = Page(name=self.TEMPLATE_ARTICLE,
+        articlePage = Page(name=self.C.TEMPLATE_ARTICLE,
             components=(mobileNavigation, header, article, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
-        thumbnailPage = Page(name=self.TEMPLATE_COURSES,
+        thumbnailPage = Page(name=self.C.TEMPLATE_COURSES,
             components=(mobileNavigation, header, featuredImages, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
-        productsPage = Page(name=self.TEMPLATE_PRODUCTS,
+        productsPage = Page(name=self.C.TEMPLATE_PRODUCTS,
             components=(mobileNavigation, header, thumbnails, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
-        categoryPage = Page(name=self.TEMPLATE_CATEGORY,
+        categoryPage = Page(name=self.C.TEMPLATE_CATEGORY,
             components=(mobileNavigation, header, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 
         # Automatic documentation about Xierpa3
-        documentationPage = Page(name=self.TEMPLATE_DOCUMENTATION,
+        documentationPage = Page(name=self.C.TEMPLATE_DOCUMENTATION,
             components=(mobileNavigation, header, documentation, footer),
             css=self.URL_CSS, fonts=self.URL_FONTS, js=self.URL_JAVASCRIPT, favicon=self.URL_FAVICON)
 

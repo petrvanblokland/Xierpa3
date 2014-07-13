@@ -54,7 +54,8 @@ class TextileArticles(Theme):
         s.addStyle('code', fontfamily=self.CODEFAMILY, fontsize=Em(1.1), 
             color=Color('#333'), paddingleft=Em(0.25),
             paddingright=Em(0.25))
-        s.addStyle('pre', margintop=0, marginbottom=Em(1.5), backgroundcolor=Color('red'))
+        s.addStyle('pre', margintop=0, marginbottom=Em(1.5))
+        s.addStyle('.error', color='red', backgroundcolor=Color('red'))
         return s
     
     def baseComponents(self):

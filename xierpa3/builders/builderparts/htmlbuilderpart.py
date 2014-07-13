@@ -143,7 +143,7 @@ class HtmlBuilderPart:
         'onmouseout', 'relation', 'name', 'disabled',
         'onmouseover', 'onmousedown', 'onmouseup', 'ondblclick', 'onfocus', 'onblur',
         'itemid', 'itemprop', 'itemref', 'itemscope', 'itemtype', 'role', 'default',
-        'width_html', 'contentEditable'])
+        'width_html', 'contenteditable'])
 
     IMG_ATTRIBUTES = set([
         'src', 'name', 'width_html', 'height_html', 'onmouseover', 'onmousedown', 'onmouseup', 'onmouseout',
@@ -158,7 +158,7 @@ class HtmlBuilderPart:
         'onmouseover', 'onmouseout', 'onmousedown', "onmouseup"])
 
     SPAN_ATTRIBUTES = set([ 'relation', 'itemprop',
-        'onmouseover', 'onmouseout', 'onmousedown', 'onmouseup', 'contentEditable'])
+        'onmouseover', 'onmouseout', 'onmousedown', 'onmouseup', 'contenteditable'])
 
     FRAMESET_ATTRIBUTES = set([
         'cols', 'rows',

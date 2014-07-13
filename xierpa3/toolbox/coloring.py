@@ -205,9 +205,9 @@ class Color:
 
     def __init__(self, col, format="hex", bw=None, bwrgb=None):
 
-        self.alpha          = 1
-        self.bwlevel      = bw or BWLEVEL
-        self.bwrgb          = bwrgb or BWRGBWEIGHT
+        self.alpha = 1
+        self.bwlevel = bw or BWLEVEL
+        self.bwrgb = bwrgb or BWRGBWEIGHT
 
         if isinstance(col, (long, float, int)):
             col = hex(col)
@@ -268,6 +268,9 @@ class Color:
             return getattr(self, method)()
         return self.__dict__[key]
 
+    def __ne__(self, color):
+        return self.value == color.value
+    
     def __coerce__(self, color):
         return None
 

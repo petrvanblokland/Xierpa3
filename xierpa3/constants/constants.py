@@ -107,6 +107,7 @@ class Constants(Config):
     CLASS_COLUMN = 'column'
     CLASS_CONTAINER = 'container'
     CLASS_ERROR = 'error'
+    CLASS_EDITABLE = 'editable'
     CLASS_FEATUREDITEM = 'featuredItem'
     CLASS_FIRST = 'first'
     CLASS_FOOTNOTE = 'footnote'
@@ -180,6 +181,8 @@ class Constants(Config):
     BLOCK = 'block'
     INLINEBLOCK = 'inline-block'
     INLINE = 'inline'
+    TRUE = 'true' # CSS True
+    FALSE = 'false', # CSS False
     NONE = 'none'
     BOTH = 'both'
     HIDDEN = 'hidden'
@@ -231,6 +234,7 @@ class Constants(Config):
     ADAPTER_ERROR = 'error' 
     ADAPTER_CATEGORY = 'category'
     ADAPTER_FEATURED = 'featured' # Comma separated list of featured articles ids
+    ADAPTER_SOURCE = 'source' # Source of an article as stored, before any transformation.
     #ADAPTER_PAGETITLE = 'pageTitle'
     #ADAPTER_LOGO = 'logo' 
     #ADAPTER_MESSAGE = 'message'

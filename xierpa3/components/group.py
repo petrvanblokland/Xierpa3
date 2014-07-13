@@ -63,7 +63,7 @@ class ItemGroup(Group):
                 component.style.itemStart = index
                 component.build(b)
                 component.style.itemStart = saveItemStart
-            b._div(comment=self.CLASS_ITEM)
-        b._div(comment=self.CLASS_ROW)
+            b._div(comment=self.C.CLASS_ITEM)
+        b._div(comment=self.C.CLASS_ROW)
    
     
