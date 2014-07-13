@@ -45,6 +45,18 @@ p(first). Traditionally it needs a lot of knowledge to build a website. The path
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.033.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.034.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.041.png!
+
+p(first). If we put the steps to build a website in a row, this is how the sequence could look like. Of course the real design process it iterative and not sequential, but for the clarity of the model, we now assume that there are clear distinguishable steps. Eventually any iterative process is supposed to finish at some point.
+
+* Sketch the design principles.
+* Use as much @Blog@ behavior as possible from an existing library. 
+* Make the new website inherit from the existing @Blog@ class. We don’t want write code if that is not really necessary. So, unless there there is enough flexibility guaranteed, it is best to inherit from what is already made and tested.
+* Define the types of pages
+* Define the components on each page
+* Define the style for each component
+* Add content
+* Finally: define the type of export.
+
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.042.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.045.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.054.png!
