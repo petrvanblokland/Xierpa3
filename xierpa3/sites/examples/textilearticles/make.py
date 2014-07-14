@@ -29,8 +29,18 @@ class TextileArticles(Theme):
 
     TITLE = u'The Textile Example Page' # Use as title of window.
 
-    BODYSIZE = Px(12)
+    BODYSIZE = Px(16)
     BODYLEADING = Em(1.4)
+    BODYCOLOR = '#333333'
+    
+    H2SIZE = Em(2.6)
+    H2LINEHEIGHT = Em(1.2)
+    H2MARGINTOP = Em(0.5)
+    H2MARGINBOTTOM = Em(0.5)
+    
+    LINKCOLOR = '#4890BE'
+    
+    
     BODYFAMILY = '"Hermes FB Book", Verdana, sans'
     HEADFAMILY = '"Hermes FB Semibold", Impact, sans'
     CODEFAMILY = 'Courier, monospace'
@@ -47,9 +57,11 @@ class TextileArticles(Theme):
 
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, 
+        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, color=self.BODYCOLOR, 
             lineheight=self.BODYLEADING)
-        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
+        s.addStyle('a', color=self.LINKCOLOR)
+        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY, color=self.BODYCOLOR)
+        s.addStyle('h2', fontsize=self.H2SIZE, lineheight=self.H2LINEHEIGHT, margintop=self.H2MARGINTOP, marginbottom=self.H2MARGINBOTTOM)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
         s.addStyle('code', fontfamily=self.CODEFAMILY, fontsize=Em(1.1), 
             color=Color('#333'), paddingleft=Em(0.25),
