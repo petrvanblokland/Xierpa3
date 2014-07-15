@@ -13,13 +13,10 @@
 from xierpa3.themes.blog.base import BaseBlog
 from xierpa3.components import Logo, Menu, SocialMedia, Header
 from xierpa3.components import MobileNavigation, Footer, Page
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
-from xierpa3.adapters.fileadapter import FileAdapter
-from xierpa3.sites import typo2014
+from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 
 # Adapter
-class Typo2014Adapter(FileAdapter):
+class Typo2014Adapter(TextileFileAdapter):
     pass
 
 # Cache the adapter, initialized automatic.

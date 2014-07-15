@@ -10,16 +10,13 @@
 #
 #    typo2014demo2.py
 #
-from xierpa3.sites import typo2014
 from xierpa3.themes.blog.base import BaseBlog
-from xierpa3.adapters.fileadapter import FileAdapter
+from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 from xierpa3.components import Logo, Menu, SocialMedia, Header, MobileNavigation, Footer, Page
-from xierpa3.constants.constants import C
-from xierpa3.toolbox.transformer import TX
 
 # Adapter
 
-class Typo2014Adapter(FileAdapter):
+class Typo2014Adapter(TextileFileAdapter):
     pass
 
 # Cache the adapter, initialized automatic.
@@ -27,6 +24,9 @@ class Typo2014Adapter(FileAdapter):
     
 class Typo2014(BaseBlog):
     u"""The <b>Blog</b> class implements the standard example show with content based on files."""
+
+    C = BaseBlog.C
+    
     TITLE = 'Typo 2014'
     SUBTITLE = 'Roots'
 

@@ -17,10 +17,11 @@ from twisted.web import server
 
 from xierpa3.server.base.baseserver import BaseServer
 from xierpa3.server.base.scheduler import Scheduler
-from xierpa3.constants.constants import C
 
 class TwistedServer(BaseServer):
 
+    C = BaseServer.C 
+    
     def start(self, client, port=80):
         u"""
         Start the server by creating a parallel process and then starting the server. The multi-processing only
@@ -29,7 +30,7 @@ class TwistedServer(BaseServer):
         single-process mode.
         """
         print '... Starting Xierpa 3 server'
-        if C.USE_MULTIPROCESSING:
+        if self.C.USE_MULTIPROCESSING:
             print '... Starting multi-processing'
             from multiprocessing import Process
             p = Process(target=self.startScheduler, args=(client,))

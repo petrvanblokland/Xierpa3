@@ -16,11 +16,8 @@ from random import randint
 from xierpa3.toolbox.parsers.c_json import cjson
 from xierpa3.toolbox.storage.status.status import Status
 from xierpa3.toolbox.dating import timestampLong
-from xierpa3.constants.constants import C
 
-Super = Status
-
-class Task(Super):
+class Task(Status):
     u"""
     The <code>Task</code> class implements a set of paramters (inherited from <code>Status</code>) that
     can be saved and derived from json files. These files are read by class method <code>Task.next()</code> 
@@ -28,6 +25,8 @@ class Task(Super):
     A posted task can be positioned in the scheduler list by altering the <attr>priority</attr> and 
     <attr>order</attr> attributes of the post.
     """
+    C = Status.C
+    
     PATH_SCHEDULERTASKS = C.FSPATH_DATAROOT + '/_scheduler/tasks'
     PATH_SCHEDULERLOG = C.FSPATH_DATAROOT + '/_scheduler/log'
 

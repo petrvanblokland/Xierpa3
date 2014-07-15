@@ -32,9 +32,12 @@
 #
 from time import time
 import pickle
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 
 class Session:
+    
+    C = Constants
+    
     def __init__(self, key, timestamp, limit=None, name=None, user=None, keep=False, protected=False):
         #
         #    Defaults:
@@ -53,10 +56,10 @@ class Session:
         self.protected = protected # If True, then the content of e.form it not copied to self
         self.key = key # Store original key
         self.timestamp = timestamp # Time based + random unique id for each session, different per session version.
-        self.data = {C.PARAM_SID: key,     # Always store session key and timestamp in data set, so it will show
+        self.data = {self.C.PARAM_SID: key,     # Always store session key and timestamp in data set, so it will show
             'timestamp': self.timestamp, # and be saved in a server halt-start
         }
-        self.limit = limit or C.SESSION_SESSIONEXPIRATIONTIME    # Remember the original limit, so we can extend with the same amount. Default is 1 hour.
+        self.limit = limit or self.C.SESSION_SESSIONEXPIRATIONTIME    # Remember the original limit, so we can extend with the same amount. Default is 1 hour.
         self.name = name or 'Session' # Store an optional name for this session (e.g. storage for a connected url)
         self.user = user or 'guest' # Store user name in the session
         self.refresh() # Set expire time for this session
@@ -216,7 +219,7 @@ class Session:
         if form:
             self.refresh()
             for field in form.keys():
-                if field == C.PARAM_SID:        # Never overwrite local sessions id
+                if field == self.C.PARAM_SID:        # Never overwrite local sessions id
                     continue
                 self[field] = form[field]
 

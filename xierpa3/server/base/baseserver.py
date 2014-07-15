@@ -11,6 +11,11 @@
 #    http://twistedmatrix.com/documents/10.1.0/web/howto/using-twistedweb.html
 #
 # ----------------------------------------------------------------------------------------------------------------------
+#
+#    baseserver.py
+#
+from xierpa3.constants.constants import Constants
 
 class BaseServer(object):
-    pass
+    
+    C = Constants

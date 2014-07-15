@@ -14,25 +14,28 @@
 #
 #    xpath examples: http://msdn.microsoft.com/en-us/library/ms256086(v=vs.110).aspx
 #  
-from fileadapter import FileAdapter
+from textilefileadapter import TextileFileAdapter
       
-class S3Adapter(FileAdapter):
+class S3Adapter(TextileFileAdapter):
     u"""
-    Adapter for XML file serving from S3 storage.
+    Adapter for Textile file serving from S3 storage.
     """ 
 
     #    @@@ Under development
 
-    def readXmlFile(self, fsPath): 
+    @classmethod  
+    def readWikiFile(cls, fsPath): 
         raise "to_be_implemented"
-        """
-        if not fsPath.endswith('.xml'):
-            fsPath += '.xml'           
+        u"""Read the raw wiki (Textile syntax) file and answer the unicode string."""
+        extension = '.'+cls.C.EXTENSION_TXT
+        if not fsPath.endswith(extension):
+            fsPath += extension           
+        '''
         if os.path.exists(fsPath):
             f = codecs.open(fsPath, encoding='utf-8', mode='r+')
-            xml = f.read()
+            wiki = f.read()
             f.close()
         else:
-            xml = None
-        return xml
-        """
+            wiki = None
+        return wiki
+        '''

@@ -10,6 +10,8 @@
 #
 #     status.py
 #
+from xierpa3.constants.constants import Constants
+
 class Status(object):
     u"""
     The <code>Status</code> class offers a “lazy” storage of basic values, that can be
@@ -20,6 +22,8 @@ class Status(object):
     Note that this is an easy, simple, flat storage device. If storage in a tree is
     required, then use <code>Node<code>, <code>Tree</code> or <code>State</code> classes.
     """
+    C = Constants
+    
     USE_BASECLASSONLY     = True
 
     def __init__(self, **args):

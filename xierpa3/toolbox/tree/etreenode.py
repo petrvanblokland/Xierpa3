@@ -12,7 +12,7 @@
 #
 from lxml import etree
 from xierpa3.toolbox.transformer import TX
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 
 class EtreeNode:
     u"""
@@ -24,6 +24,8 @@ class EtreeNode:
     XmlTreeField</code> fields. For documentation on Etree see <a href="http://lxml.de/tutorial.html">the official
     tutorial</a>.
     """
+    C = Constants
+    
     def __init__(self, tree=None, xml=None):
         if xml is not None:
             tree = etree.fromstring(xml)
@@ -140,7 +142,7 @@ class EtreeNode:
         key = TX.pyAttrName2XmlAttrName(key)
         value = self._xpath('@' + key)
         if value:
-            return TX.xmlValue2PyValue(value[0], C.XSL_XMLCONVERSIONS)
+            return TX.xmlValue2PyValue(value[0], self.C.XSL_XMLCONVERSIONS)
         return None
 
     def _getTag(self):
@@ -164,7 +166,7 @@ class EtreeNode:
         attributes = {}
         for index, value in enumerate(self._xpath('@*') or []):
             attrname = TX.xmlAttrName2PyAttrName(self._xpath('name(@*[%d])' % (index + 1)))
-            attributes[attrname] = TX.xmlValue2PyValue(value, C.XSL_XMLCONVERSIONS)
+            attributes[attrname] = TX.xmlValue2PyValue(value, self.C.XSL_XMLCONVERSIONS)
         return attributes
 
     def _getNodes(self, name=None):

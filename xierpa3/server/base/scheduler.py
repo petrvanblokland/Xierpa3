@@ -12,13 +12,15 @@
 #
 import time
 from xierpa3.toolbox.storage.status.task import Task
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 
 class Scheduler(object):
 
+    C = Constants
+    
     def __init__(self, client):
         self.client = client
-        self.status = C.SCHEDULER_STATUS_IDLE
+        self.status = self.C.SCHEDULER_STATUS_IDLE
 
     def run(self):
         u"""
@@ -32,15 +34,15 @@ class Scheduler(object):
         If there is a valid task pending, then <code>self.doTask(task)</code> is called. Note that while there are
         pending tasks, the loop will not sleep.</doc>
         """
-        self.status = C.SCHEDULER_STATUS_RUN
-        while self.status == C.SCHEDULER_STATUS_RUN:
+        self.status = self.C.SCHEDULER_STATUS_RUN
+        while self.status == self.C.SCHEDULER_STATUS_RUN:
             task = Task.next()
             if task is not None:
                 self.doTask(task)
             else:
                 self.doIdle()
                 # Involuntary sleep outside doIdle call, which may be inherited and changed,
-                time.sleep(C.SCHEDULER_SLEEPTIME)
+                time.sleep(self.C.SCHEDULER_SLEEPTIME)
 
 
     def hasTask(self):
@@ -53,10 +55,10 @@ class Scheduler(object):
         return bool(Task.peek())
 
     def doTask(self, task):
-        if C.USE_SCHEDULERVERBOSE:
+        if self.C.USE_SCHEDULERVERBOSE:
             print '... [Scheduler task]', (task.description or task.name)
-        task.execute(C)
+        task.execute(self.C)
 
     def doIdle(self):
-        if C.USE_SCHEDULERVERBOSE:
+        if self.C.USE_SCHEDULERVERBOSE:
             print '... [Scheduler idle]'

@@ -32,11 +32,13 @@
 #
 from time import time
 from xierpa3.toolbox.dating import uniqueId, uniqueLong
-from xierpa3.constants.constants import C
+from xierpa3.constants.constants import Constants
 from session import Session
 
 class SessionManager(dict):
 
+    C = Constants 
+    
     @classmethod
     def getNewSessionId(cls, size=None):
         u"""
@@ -45,7 +47,7 @@ class SessionManager(dict):
         of <code>self.SESSION_SIDDIGITS</code> if omitted.
         </doc>
         """
-        return str(uniqueId(size or C.SESSION_SIDDIGITS))
+        return str(uniqueId(size or cls.C.SESSION_SIDDIGITS))
 
     @classmethod
     def newTimeStamp(cls):
