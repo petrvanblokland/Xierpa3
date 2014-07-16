@@ -11,8 +11,9 @@
 #    blog.py
 #
 from xierpa3.components.component import Component
-from xierpa3.attributes import Perc
+from xierpa3.attributes import Perc, Color
 from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.descriptors.media import Media
 
 class BlogResponse(Component):
     u"""The <b>Menu</b> supports a generic menu, setup as a list of links. The menu items are supplied
@@ -23,14 +24,16 @@ class BlogResponse(Component):
     BLUEPRINT = BluePrint(
         # Block stuff
         width=Perc(100), doc_width=u'Width of the component.',
+        backgroundColor=Color('#DDD'), doc_backgroundColor=u'Background color of the component.',
     )
     def buildBlock(self, b):
         u"""Build the @BlogResponse@ component."""
         s = self.style
-        b.block(self)
-        colClass = self.getColClass(s.colWidth)
-        b.div(class_=colClass)
+        b.div(class_=self.getClassName(), backgroundcolor=s.backgroundColor, float=self.C.LEFT, 
+            width=s.width, 
+            media=Media(max=self.C.M_MOBILE_MAX, width=Perc(100), display=self.C.BLOCK, 
+                float=self.C.NONE),
+        )
         # TODO: Add blog response form here.
-        b.text('AAAAAAAAAAA')
-        b._div(comment=colClass)
-        b._block(self)
+        b.text('[Develop Blog Response here] ' * 20)
+        b._div(comment=self.getClassName())

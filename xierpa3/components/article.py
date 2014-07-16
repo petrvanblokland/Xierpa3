@@ -172,13 +172,18 @@ class Article(ArticleColumn):
         url of the page."""
         s = self.style
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
-        b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
-              marginright=s.gutter, # Gutter between main column and article side bar.
+        b.div(class_=self.getClassName(), width=Perc(70), #s.width, 
+              float=self.C.LEFT,
+              paddingRight=s.gutter, #marginright=s.gutter, # Gutter between main column and article side bar.
+              marginright=0,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
                     paddingleft=Em(0.5), paddingright=Em(0.5),
                     marginright=0),
         )
-        self.buildArticleData(b, articleData)
+        if articleData is None:
+            self.buildArticleStyle(b)
+        else:
+            self.buildArticleData(b, articleData)
         b._div()
         
     def buildArticleData(self, b, articleData):
@@ -432,68 +437,66 @@ class ArticleSideBar(ArticleColumn):
     def getArticleUrlId(self, b):
         return b.e.form[self.C.PARAM_ARTICLE]
     
-    def buildColumn(self, b):
-        u"""Build the column of the article, as indicated in the urt."""
-        articleData = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
-        if articleData is not None:
-            self.buildArticleSideBar(b, articleData)
-
-    def buildArticleSideBar(self, b, articleData):
+    def buildColumn(self, b): 
         u"""Build nice stuff here from the article. @@@ Add to style that calling site can change
         the order."""
         s = self.style
-        if b.isType(('css', 'sass')): # @@@ Clean up, using model for article side bar?
-            self.buildArticleSideBarStyle(b) # Build the CSS style template of an article here
+        articleData = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
+        b.div(class_=self.getClassName(), width=Perc(20), float=self.C.LEFT,
+            backgroundcolor=Color('orange'), #s.backroundColor,
+            media=Media(max=self.C.M_MOBILE_MAX, width=Perc(100),
+                display=self.C.BLOCK, float=self.C.NONE),
+        )
+        if articleData is None:
+            self.buildArticleSideBarStyle(b)
         else:
-            b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
-                backgroundcolor=s.backroundColor,
-                paddingleft=s.paddingLeft, paddingright=s.paddingRight,
-                media=Media(max=self.C.M_MOBILE_MAX, width=Perc(100),
-                    display=self.C.BLOCK),
-            )
             self.buildArticleFeatures(b, articleData)
-            #if s.showChapterNavigation:
-                #self.buildMobileChapterNavigation(b, articleData)
-                #self.buildChapterNavigation(b, articleData)
-            #if s.showFootNotes:
-            #    self.buildFootNotes(b, article)
-            b._div()
+        #if s.showChapterNavigation:
+            #self.buildMobileChapterNavigation(b, articleData)
+            #self.buildChapterNavigation(b, articleData)
+        #if s.showFootNotes:
+        #    self.buildFootNotes(b, article)
+        b._div(comment=self.getClassName())
             
     def buildArticleFeatures(self, b, articleData):
+        u"""Build the links to the featured article of the current article as
+        stored in @article.featured@."""
         s = self.style
-        if articleData.featured:
-            b.h3(fontsize=Em(1.5))
+        featuredArticles = []
+        if articleData is not None and articleData.featured:
+            for featured in articleData.featured:
+                featuredArticle = self.adapter.getArticle(id=featured)
+                # Check if found and not referring to cyrrent article.
+                if not featuredArticle in (None, articleData):
+                    featuredArticles.append(featuredArticle)
+        # If there are featured articles
+        if featuredArticles:
+            b.h3()
             b.text('Featured')
             b._h3()
-            for featured in articleData.featured:
+            for featuredArticle in featuredArticles:
                 b.p()
-                b.a(href='%s-%s' % (self.C.PARAM_ARTICLE, featured))
-                b.text(featured)
+                b.a(href='%s-%s' % (self.C.PARAM_ARTICLE, featuredArticle.id))
+                b.text(featuredArticle.title)
                 b._a()
                 b._p()
                 
     def buildArticleSideBarStyle(self, b): 
         u"""Build the styles for the articles side bar.  # @@@ Clean up, using model for article side bar?"""
         s = self.style
-        # <div class="footnotes">
-        #b.div(class_=self.C.CLASS_FOOTNOTES, marginbottom=Em(0.5))
-        #b.h4(fontsize=Em(1.1))
-        #b._h4()
-        #b._div(comment=self.C.CLASS_FOOTNOTES)  
+        # <h2>Featured</h2>
+        b.h3()
         
-        # <div class="mobileChapterNavigation">
-        b.div(class_=self.getClassName(), 
-            width=s.width, float=self.C.LEFT, 
-            media=Media(max=self.C.M_MOBILE_MAX, display=self.C.BLOCK)
-        )
+        b._h3()
+        # <ul><li>...</li></ul>
         b.ul()
         b.li(backgroundcolor=s.mobileChapterButtonColor)
         # <a>Chapter name</a>
-        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor)
         b.h2(fontsize=Em(2), lineheight=Em(1.2),
-             marginbottom=Em(0.2), margintop=Em(0.2), padding=Em(0.5))
-        b._h2()
+             marginbottom=Em(0.2), margintop=Em(0.2))
+        b.a(fontsize=s.summaryNameSize, color=s.mobileChapterButtonColor)
         b._a()
+        b._h2()
         b._li()
         b._ul()
         b._div(comment=self.C.CLASS_MOBILECHAPTERNAVIGATION) # Article mobile chapter navigation
@@ -507,6 +510,7 @@ class ArticleSideBar(ArticleColumn):
         b._h4()
         b.ul()
         b.li()
+        
         # <a>Chapter name</a>
         b.a(fontsize=s.summaryNameSize, color=s.summaryNameColor)
         b.h2(fontsize=s.chapterNameSize, color=s.chapterNameColor, lineheight=Em(1.2),
@@ -515,7 +519,6 @@ class ArticleSideBar(ArticleColumn):
         b._a()
         b._li()
         b._ul()  
-        b._div(comment=self.C.CLASS_CHAPTERNAVIGATION) # Article chapter navigation
     
     def buildMobileChapterNavigation(self, b, article):
         s = self.style

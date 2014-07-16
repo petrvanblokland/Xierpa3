@@ -1,7 +1,7 @@
 $title Home
 $tag Home
 $url /index, /force/index
-$menu home, what-is-xierpa, example-hello-world, programming-python, typography
+$menu example-hello-world, typography, programming-python, what-is-python
 
 h1. Home page
 

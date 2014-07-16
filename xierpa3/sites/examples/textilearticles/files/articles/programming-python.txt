@@ -1,12 +1,13 @@
 $category Course
 $level Advanced 
 $tag Programming
+$ranking 2
 $title Programming Python
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
 $author Petr van Blokland
 $topic A short description of the article.
 $summary Summary of the couse Programming Python.
-$featured example-hello-world, how-to-build-a-simple-kirby-site, how-to-build-a-xierpa3-site, typography"
+$featured example-hello-world, typography, programming-python, what-is-python
 
 h1. Getting started
 

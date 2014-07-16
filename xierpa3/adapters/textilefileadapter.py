@@ -116,8 +116,9 @@ import re
 import os
 import codecs
 import textile
-from xierpa3.toolbox.transformer import TX
+from operator import attrgetter
 from xierpa3.adapters.adapter import Adapter
+from xierpa3.toolbox.transformer import TX
 
 class TextileFileAdapter(Adapter):
     
@@ -133,6 +134,7 @@ class TextileFileAdapter(Adapter):
     u"""Adapter for Textile wiki file serving. """
     def initialize(self):
         self._cache = {}
+        self._sorted = []
         self.readArticles()
         # Build the cache meta field references for articles.
         self.cacheArticleFieldReferences()
@@ -151,8 +153,9 @@ class TextileFileAdapter(Adapter):
             data = self.compileArticle(wiki)
             data.id = id
             data.source = wiki
+            data.ranking = TX.asInt(data.ranking) or 0 # Make sure we can sort on the ranking field.
             data.path = path # Keep the source path is case POST needs to save to the file.
-            data.modificationTime = os.path.getmtime(path)
+            data.modificationTime = os.path.getmtime(path) # @@@ TODO: Should be DateTime instance.
             self.cacheArticle(data)
         return data
         
@@ -225,12 +228,16 @@ class TextileFileAdapter(Adapter):
                 self._levels[level].append(article)
 
     def cacheArticle(self, article):
+        u"""Cache the article by @article.id@. And keep the article sorted in the @self._sorted@
+        list of all articles."""
         self._cache[article.id] = article
-    
-    def getModelData(self):
-        u"""Answer the model article that includes all possible Textile tags."""
-        return self.getCachedArticle(id='_model')
-       
+        self.sortArticles()
+        
+    def sortArticles(self):
+        u"""Keep the article sorted in the @self._sorted@ list of all articles."""
+        self._sorted = self._cache.values()
+        self._sorted.sort(key = attrgetter('ranking'), reverse = True)
+           
     def getCachedArticle(self, **kwargs):
         u"""Answer the cached articles. If not available yet, read them through <self.getPaths()<b>."""
         id = kwargs.get('id')
@@ -306,12 +313,23 @@ class TextileFileAdapter(Adapter):
             return self.newData(text=article.name)
         return None
     
-    def getPages(self, count=None, **kwargs):
-        pages = self.newData()
-        pages.items = []
-        for name, article in self.getCachedArticles().items(): # @@@ Add priority sorting and counting here
-            pages.items.append(article)
-        return pages
+    def getPages(self, start=0, count=1, omit=None, **kwargs):
+        u"""Answer the sorted list of *count* pages/articles, starting on *start* index, 
+        selected from all articles. Sorting is based om the @article.ranking@ field.
+        If *omit* is a list of article ids (or a single id), then skip these articles 
+        from the selection."""
+        if omit is None: # Nothing to omit, just slice the pre-sorted article list.
+            items = self._sorted[start:start+count]
+        else: # Otherwise create the list by omitting what is in the attributes.
+            if not isinstance(omit, (list, tuple)):
+                omit = [omit] # Make sure it is a list.
+            items = []
+            for item in self._sorted[start:]:
+                if not item.id in omit:
+                    items.append(item)
+                    if len(items) >= count:
+                        break
+        return self.newData(items=items)
     
     getArticles = getPages
     
@@ -351,10 +369,11 @@ class TextileFileAdapter(Adapter):
         data = self.newData()
         data.items = []
         article = self.getArticle(**kwargs)
-        for menuId in article.menu: # All article id references in the menu list
-            menuArticle = self.getArticle(id=menuId)
-            if menuArticle is not None and menuArticle.tag:
-                data.items.append(menuArticle)
+        if article.menu: 
+            for menuId in article.menu: # All article id references in the menu list
+                menuArticle = self.getArticle(id=menuId)
+                if menuArticle is not None and menuArticle.tag:
+                    data.items.append(menuArticle)
         return data
     
     def getLogo(self, **kwargs):

@@ -4,7 +4,9 @@ $title Design typography
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/course_01.png
 $author Petr van Blokland
 $topic Tips and tricks on typography.
-$featured example-hello-world, programming-python
+$featured example-hello-world, typography, programming-python, what-is-python
 
 h1. Typography
+
+p(first). This is a demo article about Textile coding. 
 

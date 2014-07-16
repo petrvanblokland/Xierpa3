@@ -575,27 +575,12 @@ class HtmlBuilderPart:
     def _section(self):
         self._closeTag(u'section')
 
-    def pre(self, width_html=80, class_=None, ns_space=None):
+    def pre(self, **args):
         """
         The pre element defines preformatted text. The text enclosed in the pre element usually preserves spaces and line
-        breaks. The text renders in a fixed-pitch font.<br/>
-        The <attr>width</attr> attribute defines the maximum number of characters per line (usually 40, 80, or 132).
-        <br/>
-        <seealso><www href="http://www.w3schools.com/tags/tag_pre.asp" target="external"/></seealso>
-        <python>
-        self.pre()<br/>
-        ...<br/>
-        self._pre()
-        </python>
+        breaks. The text renders in a fixed-pitch font.
         """
-        self.output(u'<pre width="%d"' % int(width_html))
-        if class_:
-            self.output(u' class="%s"' % self.class2SpaceString(class_))
-        if ns_space:
-            self.output(u' ns_space="%s"' % ns_space)
-        self.output(u'>')
-        # Push as last, so we can see the current tag on the stack
-        self._pushTag(u'pre')
+        self.write_tag(u'pre', True, args)
 
     def _pre(self):
         self._closeTag(u'pre')

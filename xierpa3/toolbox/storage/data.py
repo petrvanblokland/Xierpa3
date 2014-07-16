@@ -17,7 +17,7 @@ class Data(object):
         self.items = [] # Make sure that self.items can always be iterated.
         for key, item in kargs.items():
             self[key] = item
-    
+            
     def __getattr__(self, key):
         return self.__dict__.get(key)
     

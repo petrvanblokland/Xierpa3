@@ -101,6 +101,10 @@ class SassBuilder(XmlTransformerPart, Builder):
             class_ = parts[-1]
         return class_
 
+    def getCurrentArticleId(self):
+        u"""Always answer @None@, to trigger the execution of style method, built into components."""
+        return None
+
     def getFilePath(self, component, root=None):
         u"""Answer the CSS file path of @component@."""
         return TX.asDir(root or (self.ROOT_PATH + component.__class__.__name__.lower())) + self.DEFAULT_PATH

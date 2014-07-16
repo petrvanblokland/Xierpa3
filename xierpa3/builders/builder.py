@@ -220,7 +220,9 @@ class Builder(object):
     #  R E Q U E S T  &  F O R M
     
     def getCurrentArticleId(self):
-        return self.e.form[self.C.PARAM_ARTICLE]
+        u"""Answer the id of the current article, as defined in the URL by @self.C.PARAM_ARTICLE@.
+        Answer @self.C.DEFAULT_ARTICLEID@ if the parameter is not defined."""
+        return self.e.form[self.C.PARAM_ARTICLE] or self.C.DEFAULT_ARTICLEID
 
     def setCurrentArticleId(self, aid):
         self.e.form.set(self.C.PARAM_ARTICLE, aid)

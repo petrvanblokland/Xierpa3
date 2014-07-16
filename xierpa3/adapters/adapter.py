@@ -31,7 +31,7 @@ class Adapter(object):
         # Store optional root, so the adapter knows where to find stuff.
         self.root = root
         self.initialize()
-    
+        
     @classmethod
     def newData(cls, **kwargs):
         u"""To allow modification by inheriting classes, answer a new instance of Data."""
@@ -39,7 +39,7 @@ class Adapter(object):
     
     def __repr__(self):
         return '<Adapter: %s>' % self.__class__.__name__
-       
+    
     def initialize(self):
         u"""Optionally to be redefined by inheriting adapter classes. Default behavior is to do nothing."""
         pass

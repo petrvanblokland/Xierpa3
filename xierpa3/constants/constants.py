@@ -92,6 +92,8 @@ class Constants(Config):
     ID_MENUICON = 'menu-icon'
     ID_HOME = 'home'
     
+    DEFAULT_ARTICLEID = 'home' # If nothing is seleced in URL.
+
     # Classes
     CLASS_ANKEILER = 'ankeiler'
     CLASS_ANSWER = 'answer'
@@ -115,6 +117,7 @@ class Constants(Config):
     CLASS_IMAGEBLOCK = 'imageBlock'
     CLASS_ITEM = 'item'
     CLASS_LAST = 'last'
+    CLASS_LEVEL = 'level'
     CLASS_LEAD = 'lead'
     CLASS_LEVEL = 'level'
     CLASS_MENU = 'menu'
@@ -224,7 +227,7 @@ class Constants(Config):
     TEMPLATE_ARTICLE = 'article'
     TEMPLATE_DOCUMENTATION = 'documentation'
     TEMPLATE_DEFAULT = TEMPLATE_INDEX
-
+    
     # Adapter
     
     # Adapter data fields that can be return optionally by any adapter.

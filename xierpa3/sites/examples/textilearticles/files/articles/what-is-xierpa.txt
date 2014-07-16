@@ -1,12 +1,12 @@
 $title What is Xierpa?
 $tag Xierpa3
-$category BLog
+$category Blog
 $level Beginner
 $poster //data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/typo_petr_v_blokland_2.jpg
 $author Petr van Blokland
 $topic A basic introduction to Xierpa.
 $summary Summary of what Xierpa is.
-$featured example-hello-world, programming-python, typography
+$featured example-hello-world, typography, programming-python, what-is-python
 
 h2. Introduction
 
