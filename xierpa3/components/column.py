@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -19,10 +19,10 @@ class Column(Container):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Container.C
     '''
-    BLUEPRINT = BluePrint( 
+    BLUEPRINT = BluePrint(
         classColumn=C.CLASS_COLUMN, doc_classColumn=u'Class name of the column.',
         # Layout stuff
-        colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 
+        colWidth=4, doc_colWidth=u'Default amount of columns for this component.',
         columnWidthMobile=C.AUTO, doc_columnWidthMobile=u'Column width for mobile.',
         # Column stuff
         columnMarginLeft=None, doc_columnMarginLeft=u'Column margin left.',
@@ -34,11 +34,11 @@ class Column(Container):
         columnPaddingRightMobile=Em(1), doc_columnPaddingRightMobile=u'Column padding right for mobile.',
         columnPaddingLeft=0, doc_columnPaddingLeft=u'Column padding left.',
         columnPaddingLeftMobile=Em(0.5), doc_columnPaddingLeftMobile=u'Column padding left for mobile.',
-        columnFloat=C.LEFT, doc_columnFloat=u'Column float.', 
-        columnFloatMobile=C.NONE, doc_columnFloatMobile=u'Column float for mobile.', 
+        columnFloat=C.LEFT, doc_columnFloat=u'Column float.',
+        columnFloatMobile=C.NONE, doc_columnFloatMobile=u'Column float for mobile.',
         columnDisplay=C.BLOCK, doc_columnDisplay=u'Column display.',
         columnDisplayMobile=None, doc_columnDisplayMobile=u'Column display for mobile.',
-        columnMinHeight=0, doc_columnMinHeight=u'Column minimal height.', 
+        columnMinHeight=0, doc_columnMinHeight=u'Column minimal height.',
     )
     '''
     def buildBlock(self, b):
@@ -49,26 +49,26 @@ class Column(Container):
         s = self.style
         colClass = self.getColClass(s.colWidth)
         b.block(self)
-        b.div(class_=colClass, marginright=s.columnMarginRight, width=s.colWidth, 
+        b.div(class_=colClass, marginright=s.columnMarginRight, width=s.colWidth,
             marginleft=s.columnMarginLeft, margintop=s.columnMarginTop,
-            paddingleft=s.columnPaddingLeft, float=s.columnFloat, 
-            display=s.columnDisplay,   
+            paddingleft=s.columnPaddingLeft, float=s.columnFloat,
+            display=s.columnDisplay,
             media=(
             	Media(width=s.columnWidthMobile,
-				display=s.columnDisplayMobile, 
-                float=s.columnFloatMobile, 
-                marginleft=s.columnMarginLeftMobile, 
-                marginright=s.columnMarginRightMobile, 
-                paddingleft=s.columnPaddingLeftMobile, 
+				display=s.columnDisplayMobile,
+                float=s.columnFloatMobile,
+                marginleft=s.columnMarginLeftMobile,
+                marginright=s.columnMarginRightMobile,
+                paddingleft=s.columnPaddingLeftMobile,
                 paddingright=s.columnPaddingRightMobile,),
         ))
         """
         self.buildColumn(b)
         """
         b._div(comment=colClass)
-        b._block(self) 
+        b._block(self)
         """
-        
+
     def buildColumn(self, b):
         b.error('Classes inheriting from <b>Column</b> should implement <b>self.buildColumn(b)</b>.')
-        
+

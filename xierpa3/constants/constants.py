@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -16,14 +16,14 @@ try:
     from config.xconfig import Config
 except ImportError:
     from config.COPYTO_config import Config
-    
+
 class Constants(Config):
-    u"""Inherited by main Xierpa3 classes, to share default constants, 
+    u"""Inherited by main Xierpa3 classes, to share default constants,
     will allowing to be redefined by inheriting classes."""
-    
+
     # Indenting output
     TAB_INDENT = ' '*2
-    
+
     UNTITLED = 'Untitled'
     SINGLE_ATTRIBUTES = [] # Attributes that need no value in the output.
     # Types of sites
@@ -36,31 +36,31 @@ class Constants(Config):
     # Of course, taking your own account at //www.webtype.com is even better :)
     XIERPA3_DEMOFONTS = '//cloud.webtype.com/css/34d3e5fe-7dee-4122-9e87-ea5ee4a90a05.css'
     # Redefine this list for other font packages in inheriting theme classes.
-    URL_FONTS = [] #XIERPA3_DEMOFONTS,)    
+    URL_FONTS = [] #XIERPA3_DEMOFONTS,)
     BODYFAMILY = 'Georgia'
     HEADFAMILY = 'Verdana'
     LOGOFAMILY = HEADFAMILY
-    
+
     # Sponsored fonts in the example sites
     URL_WEBTYPELOGO = '//data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/webtypelogo.png'
-    
+
     # Xierpa ico, answered by the default adapter.getIco()
     URL_FAVICON = '//data.xierpadoc.com.s3.amazonaws.com/_images/xierpa_x.ico'
     URL_LOGO = '//data.xierpa.com.s3.amazonaws.com/_images/xierpa_x_green.png'
     # Placeholder for all images if not online.
     URL_XIERPA3RESOURCES = '/xierpa3/resources/'
     URL_IMAGEPLACEHOLDER = URL_XIERPA3RESOURCES + 'images/placeholder.png'
-    
+
     # CSS
     URL_CSS = ['css/style.css']
-    
+
     # Know builder id's, used to check on a specific builder of really necessary.
     # Note that these value should match with the id's of the builder classes.
     TYPE_HTML = 'html'
     TYPE_SASS = 'sass'
     TYPE_CSS = 'css'
     TYPE_PHP = 'php'
-    
+
     # Known component names.
     C_TITLE = 'title'
 
@@ -71,7 +71,7 @@ class Constants(Config):
 
     # Link window targets
     TARGET_EXTERN = 'extern'
-    
+
     # Menu options
     MENU_VERTICAL = 'vertical'
     MENU_HORIZONTAL = 'horizontal' # Default
@@ -91,7 +91,7 @@ class Constants(Config):
     ID_MOBILENAVWRAP = 'nav-wrap'
     ID_MENUICON = 'menu-icon'
     ID_HOME = 'home'
-    
+
     DEFAULT_ARTICLEID = 'home' # If nothing is seleced in URL.
 
     # Classes
@@ -158,7 +158,7 @@ class Constants(Config):
         1: CLASS_1COL, 2: CLASS_2COL, 3: CLASS_3COL, 4: CLASS_4COL, 5: CLASS_5COL, 6: CLASS_6COL,
         7: CLASS_7COL, 8: CLASS_8COL, 9: CLASS_9COL, 10: CLASS_10COL, 11: CLASS_11COL, 12: CLASS_12COL,
     }
-    
+
     # Params
     PARAM_CSS = 'css'
     PARAM_EDIT = 'edit'
@@ -171,7 +171,7 @@ class Constants(Config):
     PARAM_DOCUMENTATION = 'documentation'
     PARAM_FORCE = 'force' # Force the recalculation of the SASS/CSS
     PARAM_AJAX = 'ajax'
-    
+
     # Tag
     TAG_BLOCK = 'div' # Default tag for blocks
 
@@ -208,38 +208,38 @@ class Constants(Config):
     LIST = 'list'
     INSIDE = 'inside'
     OUTSIDE = 'outside'
-    
+
     # Pseudo CSS selectors
     FIRSTCHILD = 'first-child'
-    
+
     # Colors
     BLACK = 'black'
     WHITE = 'white'
-    
+
     # Builder postfixes
     # These are tested on  dispatcher method and attribute name postfix against the generic names.
     # Must containt the ATTR_POSTFIX of all available builders.
     ATTR_POSTFIXES = set(('html', 'css'))
-    
+
     ATTR_MEDIA = 'media' # Special attribute in components to define (a list of) Media instances.
     # Template names (as parameter in url)
     TEMPLATE_INDEX = 'index'
     TEMPLATE_ARTICLE = 'article'
     TEMPLATE_DOCUMENTATION = 'documentation'
     TEMPLATE_DEFAULT = TEMPLATE_INDEX
-    
+
     # Adapter
-    
+
     # Adapter data fields that can be return optionally by any adapter.
     ADAPTER_ITEMS = 'items' # Chapters of an article.
     ADAPTER_MENU = 'menu' # Comma separated menu list
     ADAPTER_URL = 'url' # Comma separated url list
-    ADAPTER_ERROR = 'error' 
+    ADAPTER_ERROR = 'error'
     ADAPTER_CATEGORY = 'category'
     ADAPTER_FEATURED = 'featured' # Comma separated list of featured articles ids
     ADAPTER_SOURCE = 'source' # Source of an article as stored, before any transformation.
     #ADAPTER_PAGETITLE = 'pageTitle'
-    #ADAPTER_LOGO = 'logo' 
+    #ADAPTER_LOGO = 'logo'
     #ADAPTER_MESSAGE = 'message'
     #ADAPTER_CHAPTERS = 'chapters'
     #ADAPTER_FEATUREDARTICLES = 'featuredArticles'
@@ -256,7 +256,7 @@ class Constants(Config):
 
     # Types of article selector
     SELECTOR_FEATURED = 'featured'
-    
+
     # SASS
     SASS_NESTED = 'nested'
     SASS_EXPANDED = 'expanded'
@@ -268,7 +268,7 @@ class Constants(Config):
 
     META_DESCRIPTION = 'description'
     META_KEYWORDS = 'keywords'
-    
+
     # ---------------------------------------------------------------------------------------------------------
     #     S E S S I O N  K E Y S
 
@@ -286,8 +286,8 @@ class Constants(Config):
     #    Standard table and field names
     #
     TABLE_XREF = 'xref'
-    TABLE_ADDRESS = 'address'    
-    
+    TABLE_ADDRESS = 'address'
+
     FIELD_XSRCTABLE = 'xsrc'
     FIELD_XSRCFIELD = 'xsrc'
     FIELD_XREFSRCID = 'srcId'
@@ -295,7 +295,7 @@ class Constants(Config):
     FIELD_XDSTTABLE = 'xdst'
     FIELD_XDSTFIELD = 'dstId'
     FIELD_XREFDSTID = 'dstId'
-    
+
     # ---------------------------------------------------------------------------------------------------------
     #    B R O W S E R  S T U F F
 

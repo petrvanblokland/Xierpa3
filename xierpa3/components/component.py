@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -53,22 +53,22 @@ class Component(object):
     The Component describes the abstract behavior of components on the page.
     """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
-    C = Constants 
+    C = Constants
     # Root default style template. To be cascaded by inheriting classes.
     BLUEPRINT = BluePrint(
         # Default behavior of images, use class autowidth to cover differences between browsers.
         imgClass=C.CLASS_AUTOWIDTH, doc_imgClass=u'Image class, set default to AUTOWIDTH.',
         imgMaxWidth=Perc(100), doc_imgMaxWidth=u'Image maximal width',
-        imgMinWidth=0, doc_imgMinWidth=u'Image minimal width',                           
+        imgMinWidth=0, doc_imgMinWidth=u'Image minimal width',
     )
     TAGNAME = 'div' # By default every component has a root div element.
     BUILD_CSS = True # Default behavior of every component is to build in CSS.
     STYLE_DEFAULT = {} # Default style source, optionally redefined by inheriting classes.
-    
+
     ADAPTER = BlurbAdapter() # Unless defined otherwise by inheriting classes.
-    
+
     def __init__(self, components=None, style=None, id=None, parent=None, name=None,
-            css=None, fonts=None, prefix=None, class_=None, type=None, contentID=None, 
+            css=None, fonts=None, prefix=None, class_=None, type=None, contentID=None,
             count=1, title=None, url=None, template=None, editable=False, adapter=None,
             selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
@@ -125,19 +125,19 @@ class Component(object):
     def _getInheritedClasses(self):
         u"""Answer the list of inherited classes by this component."""
         return list(inspect.getmro(self.__class__))
-    
+
     def _getInheritedClassNames(self):
         u"""Answer the list of inherited class names by this component."""
         names = []
         for cls in self._getInheritedClasses():
             names.append(cls.__name__)
         return names
-    
+
     @classmethod
     def getRootDir(cls):
         u"""Answer the default root directory path, e.g. to store example files and cached SASS/CSS."""
         return TX.asDir(cls.C.PATH_EXAMPLES + cls.getPythonClassName().lower() + '/') # Expand user path to full directory path.
-    
+
     @classmethod
     def getClassName(cls):
         u"""Answers the class name of the *cls* as capitalized name."""
@@ -148,7 +148,7 @@ class Component(object):
     def getPythonClassName(cls):
         u"""Answer the Python class name."""
         return cls.__name__
-    
+
     def isLast(self, component):
         u"""Allow components to test the parent if they are last."""
         return self.components and self.components[-1] is component
@@ -160,7 +160,7 @@ class Component(object):
         if self.parent.isLast(self):
             colClass = (colClass, self.C.CLASS_LAST)
         return colClass
-    
+
     def getTitle(self, path):
         u"""Answer the page title as defined in the style or answered by @self.adapter@.
         The adapter can use the @path@ argument to fine-tune the title."""
@@ -172,15 +172,15 @@ class Component(object):
         if self.style and self.style.favIcon:
             return self.style.favIcon
         return None
-    
+
     # self.className        Answer self.style.className or otherwise class name is directly derived from the object class.
-    
+
     def _get_className(self):
         # @@@ Clean this up, so self.className is used everywhere instead of self.getClassName() or self.class_
         return self.style.className or self.getClassName()
-    
+
     className = property(_get_className)
-    
+
     def getPrefixClass(self, prefix2=None):
         u"""Answers the extended class name @self.prefix + self.prefix2 + self.class_@.
         If @self.class_@ is not defined, and @self.prefix + self.prefix2@ are defined,
@@ -217,25 +217,25 @@ class Component(object):
             f.close()
             return s
         return None
-    
+
     def getRootPath(self):
         from xierpa3 import components
         return components.__path__[0]
 
     def baseComponents(self):
-        """To be redefined by inheriting classes to answer the default child 
+        """To be redefined by inheriting classes to answer the default child
         components of the component."""
         return []
 
     def isEmpty(self):
-        """Answer the boolean flag if this component has any attributes or child 
+        """Answer the boolean flag if this component has any attributes or child
         components."""
         return len(self.components) == 0 and self.style.isEmpty()
 
     def isEmptyCss(self):
         u"""Answer the boolean flag if this component will generate CSS content. This is different from the regular
-        @self.isEmpty@, since there may be components with content that have @self.BUILD_CSS@ 
-        set to @False@. When @self.BUILD_CSS is True@ it still should build if there is CSS 
+        @self.isEmpty@, since there may be components with content that have @self.BUILD_CSS@
+        set to @False@. When @self.BUILD_CSS is True@ it still should build if there is CSS
         content that has set @self.BUILD_CSS@ to @True@.
         """
         if not self.style.isEmpty():
@@ -265,12 +265,12 @@ class Component(object):
 
     def build(self, b):
         u"""
-        Test on the type of building to be done here by builder *b*. 
+        Test on the type of building to be done here by builder *b*.
         Normally the plain @self.buildBlock@ will be called, but it is possible
-        to catch the call by implementing a method, dedicated for a particular 
+        to catch the call by implementing a method, dedicated for a particular
         kind of builder. @self.buildBlock_[builder.ID]@ will then called instead.
         E.g. @self.buildBlock_css(b)@ will force the CSS builder to call that
-        method instead of the regular @self.buildBlock(b)@. Note that this only should be 
+        method instead of the regular @self.buildBlock(b)@. Note that this only should be
         exceptional situation where there is no way to make the builder call abstract.
         Normally components should not be aware which builder they are talking to.
         """
@@ -283,7 +283,7 @@ class Component(object):
 
     def buildBlock(self, b):
         u"""
-        Generic builder *b* for all child components of @self@. 
+        Generic builder *b* for all child components of @self@.
         Can be redefined by an inheriting class.
         """
         b.block(self)
@@ -292,7 +292,7 @@ class Component(object):
         b._block(self)
 
     # D O C U M E N T A T I O N
-    
+
     def buildDocumentation(self, b):
         u"""Builder of the documentation of self. It is the main method generating this
         documentation page."""
@@ -301,22 +301,22 @@ class Component(object):
         self.buildDocumentationBlock(b)
         b._div()
         b._page(self)
-        
+
     def buildDocumentationBlock(self, b, processed=None):
         u"""Recursive call to build the documentation of @self@ and its child
-        components, using builder *b*. It is the method generating the 
+        components, using builder *b*. It is the method generating the
         documentation for this component.
         The information extracted includes the level of inheritance of the component,
-        the general description, as defined in the class doc string, a list of child 
+        the general description, as defined in the class doc string, a list of child
         components, a table with the available cascaded method and the component style,
         which cascades from the parent class @BLUEPRINT@ definitions."""
         if processed is None:
             processed = set()
         if self in processed:
             return
-        
+
         processed.add(self)
-        
+
         name = self.getClassName()
         #b.block(self)
         b.h1(color='red', fontfamily='Verdana', fontsize=14)
@@ -324,7 +324,7 @@ class Component(object):
         b._h1()
         #b._block(self)
         return
-    
+
         # Doc string as class descriptor, if is exists.
         if self.__doc__:
             b.p()
@@ -343,7 +343,7 @@ class Component(object):
         else:
             b.text('@%s@ has no child components.' % name)
         b._p()
-        # Inheritance 
+        # Inheritance
         b.p()
         b.text(u'@%s@ → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
         b._p()
@@ -459,13 +459,13 @@ class Component(object):
             b._td()
             b._tr()
         b._table()
-        # Show recursively the rest of the components 
+        # Show recursively the rest of the components
         for component in self.components:
             component.buildDocumentationBlock(b, processed)
         b.block(self)
-        
+
     # X M L  R E N D E R I N G
-    
+
     def buildElement(self, b, element):
         u"""Recursive rendering of the etree element, using the document methods in the builder
         as defined in the @DocumentBuilderPart@ class. The elements are translated
@@ -476,7 +476,7 @@ class Component(object):
             self.buildElement(b, child)
         b._docTagElement(element)
         b.text(element.tail) # Plain text output of the element tail
-         
+
     # A T T R I B U T E S
 
     # self.hashedID
@@ -529,7 +529,7 @@ class Component(object):
 
     def _get_url(self):
         u"""Property @self.url@ Answer the url of this component.
-        Otherwise answer @None@.""" 
+        Otherwise answer @None@."""
         if self._url is None:
             return TX.label2ParamId(self.name)
         return self._url
@@ -552,7 +552,7 @@ class Component(object):
         are copied into it. This can be cone by inheriting classes defining htis method.
         Default behavior is just to answer the result of @self.newStyleI()@."""
         return self.newStyle()
-    
+
     def addStyle(self, selector=None, **kwargs):
         u"""Add the style attributes to the current style."""
         return self.style.addStyle(selector, **kwargs)
@@ -572,7 +572,7 @@ class Component(object):
             inheritedClasses.reverse()
             for inheritedClass in inheritedClasses:
                 if hasattr(inheritedClass, 'BLUEPRINT'):
-                    self._style.addBluePrint(inheritedClass.BLUEPRINT) 
+                    self._style.addBluePrint(inheritedClass.BLUEPRINT)
             self._style.addBluePrint(self.BLUEPRINT)
         return self._style
 
@@ -599,7 +599,7 @@ class Component(object):
     css = property(_get_css, _set_css)
 
     # self.fonts
-    
+
     def _get_fonts(self):
         u"""Property @self.font@ Answer the list of web font urls for this component. If there is a parent, then answer the fonts of
         the parent. Otherwise answer the default list."""
@@ -607,15 +607,15 @@ class Component(object):
         if fonts is None and self.parent:
             return self.parent.fonts
         return fonts
-    
+
     def _set_fonts(self, urls):
         if urls is None:
             urls = []
         assert isinstance(urls, (tuple, list))
         self.style.fonts = urls
-        
+
     fonts = property(_get_fonts, _set_fonts)
-    
+
     # self.prefix
 
     def _get_prefix(self):
