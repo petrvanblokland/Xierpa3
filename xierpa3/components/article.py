@@ -57,6 +57,8 @@ class Article(ArticleColumn):
         splitChapters=True, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.', 
         # Poster
         showPoster=False, doc_showPoster=u'Boolean flag if the poster image should be shown at start of the article.',                    
+        # Blog response
+        blogResponse=True, doc_blogResponse=u'Boolean flag if a blog response form should be added if @article.blogresponse@ is also @True@.',
         # Title stuff on the first chapter page of the article
         titleSize=Em(3.2), doc_titleSize=u'Title font size on the first chapter page of an article.',
         titleLineHeight=Em(1.2), doc_titleLineHeight=u'Title leading on the first chapter page of an article.',
@@ -184,6 +186,14 @@ class Article(ArticleColumn):
             self.buildArticleStyle(b)
         else:
             self.buildArticleData(b, articleData)
+            
+        # Build blog response form, if required.
+        if s.blogResponse and articleData is not None and articleData.blogresponse == 'True':
+            b.div(class_=self.C.CLASS_BLOGRESPONSE, width=Perc(100),
+                  backgroundcolor=Color('#AAA'))
+            # TODO: Add blog response form here.
+            b.text('[Develop Blog Response here] ' * 20)
+            b._div(comment=self.C.CLASS_BLOGRESPONSE)
         b._div()
         
     def buildArticleData(self, b, articleData):
@@ -231,7 +241,7 @@ class Article(ArticleColumn):
                 b._div(comment=self.C.CLASS_CHAPTER)
         elif articleData.text:
             b.text(articleData.text)
-            
+                    
     def buildArticleTop(self, b, articleData, chapterIndex):
         u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
         For all other pages build a smaller version of the top."""

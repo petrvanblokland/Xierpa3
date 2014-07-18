@@ -14,7 +14,7 @@ import webbrowser
 from xierpa3.attributes import Em, Px, Color, Perc
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import TextileFileAdapter 
-from xierpa3.components import Theme, Page, Container, Article, ArticleSideBar, Menu, BlogResponse
+from xierpa3.components import Theme, Page, Container, Article, ArticleSideBar, Menu
 from xierpa3.components import FeaturedByImage
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
@@ -91,11 +91,10 @@ class TextileArticles(Theme):
         # Create the article component to contain articles answered by the adapter.
         #article = SimplexArticle(adapter=adapter) 
         article = Article(width=Perc(70), adapter=adapter, showPoster=True, splitChapters=False) 
-        articleSideBar = ArticleSideBar(width=Perc(20), adapter=adapter)
-        featuredArticles = FeaturedByImage(width=Perc(20), adapter=adapter)
-        blogResponse = BlogResponse(width=Perc(70), adapter=adapter)
+        articleSideBar = ArticleSideBar(width=Perc(22), adapter=adapter)
+        featuredArticles = FeaturedByImage(width=Perc(22), adapter=adapter)
         # Make main page container for the article column
-        container = Container(components=(article, articleSideBar, featuredArticles, blogResponse)) 
+        container = Container(components=(article, articleSideBar, featuredArticles)) 
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, 

@@ -2,6 +2,7 @@ $title Hello, world!
 $tag Example
 $category Course
 $level Beginner
+$blogresponse True
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
 $author Petr van Blokland
 $topic The most basic website in Xierpa3: Hello, world!

@@ -73,7 +73,7 @@ class FeaturedByImage(FeaturedBase):
         itemMarginBottom=Em(0.5), doc_itemMarginBottom=u'Margin bottom of item/article image cell.',
         itemWidth=Perc(100), doc_itemWidth=u'Width of item/article image cell.',
         # Level
-        showLevel=False, doc_showLevel=u'Boolean flag to show the level field of the article.',
+        showLevel=True, doc_showLevel=u'Boolean flag to show the level field of the article.',
         levelFormat='%s level', doc_levelFormat=u'Python string pattern as level indicator. Takes level string as parameter.',
         genericLevel=None, doc_genericLevel=u'Generic level flag, overruling the article level field.',
         levelColor=Color('#222'), doc_levelColor=u'Color of the level indicator.',
@@ -82,18 +82,20 @@ class FeaturedByImage(FeaturedBase):
         levelMarginTop=Em(0.2), doc_levelMarginTop=u'Margin top of the level indicator.',
         levelMarginBottom=Em(0.2), doc_levelMarginBottom=u'Margin bottom of the level indicator.',
         # Title
-        showTitle=False, doc_showTitle=u'Boolean flag to show the title of the article.',
+        showTitle=True, doc_showTitle=u'Boolean flag to show the title of the article.',
         titleColor=('#222'), doc_titleColor=u'Color of the article title.',
         titleSize=Em(1.5), doc_titleSize=u'Font size of the article title.',
         titleWeight=C.BOLD, doc_titleWeight=u'Font weight of the article title.',
         titleLineHeight=Em(1.4), doc_titleLineHeight=u'Line height of the article title.',
         # Topic
-        showTopic=False, doc_showTopic=u'Boolean flag to show the topic of the article.',
+        showTopic=True, doc_showTopic=u'Boolean flag to show the topic of the article.',
         topicColor=Color('#111'), doc_topicColor=u'Color of the article topic.',
         topicSize=Em(1), doc_topicSize=u'Font size of the article topic.',
         topicWeight=C.NORMAL, doc_topicWeight=u'Font weight of the article topic.',
         topicLineHeight=Em(1.4), doc_topicLineHeight=u'Line height of the article topic.',
+    )
         # Col stuff ??? NOT USED
+    '''
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
         colMarginRight=Perc(1.8), doc_colMarginRight=u'Div.col margin right.',
         colMarginLeft=0, doc_colMarginLeft=u'Div.col margin left.',
@@ -112,7 +114,7 @@ class FeaturedByImage(FeaturedBase):
         mobileMarginRight=Em(0.5),
         mobileFloat=C.NONE, 
         mobileWidth=C.AUTO,
-    )
+        '''
     def buildFeatured(self, b, articles):
         s = self.style
         b.div(class_=self.getClassName(), width=s.width, backgroundcolor=s.backgroundColor,
@@ -138,7 +140,7 @@ class FeaturedByImage(FeaturedBase):
         b.text(`article.ranking or 0`)
         b._h6()
         if s.showLevel or s.genericLevel:
-            b.h5(class_=self.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
+            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
                 margintop=s.levelMarginTop, marginbottom=s.levelMarginBottom)
             # Format the level indicator
             b.text(s.levelFormat % (article.level or s.genericLevel))

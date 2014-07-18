@@ -2,6 +2,7 @@ $category Course
 $level Advanced 
 $tag Programming
 $ranking 2
+$blogresponse True
 $title Programming Python
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
 $author Petr van Blokland
