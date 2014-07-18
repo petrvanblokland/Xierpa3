@@ -92,7 +92,9 @@ class TextileArticles(Theme):
         #article = SimplexArticle(adapter=adapter) 
         article = Article(width=Perc(70), adapter=adapter, showPoster=True, splitChapters=False) 
         articleSideBar = ArticleSideBar(width=Perc(22), adapter=adapter)
-        featuredArticles = FeaturedByImage(width=Perc(22), adapter=adapter)
+        featuredArticles = FeaturedByImage(width=Perc(22), adapter=adapter, 
+            # Example to overwrite the default BluePrint parameter titleColor                               
+            titleColor=Color('red'))
         # Make main page container for the article column
         container = Container(components=(article, articleSideBar, featuredArticles)) 
         # The class is also the page name in the url.

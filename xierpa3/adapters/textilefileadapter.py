@@ -154,6 +154,7 @@ class TextileFileAdapter(Adapter):
             data.id = id
             data.source = wiki
             data.ranking = TX.asInt(data.ranking) or 0 # Make sure we can sort on the ranking field.
+            data.blogresponse = TX.asBool(data.blogresponse) 
             data.path = path # Keep the source path is case POST needs to save to the file.
             data.modificationTime = os.path.getmtime(path) # @@@ TODO: Should be DateTime instance.
             self.cacheArticle(data)

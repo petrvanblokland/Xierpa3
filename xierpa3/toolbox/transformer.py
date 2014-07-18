@@ -920,6 +920,17 @@ class Transformer(object):
         return None
 
     @classmethod
+    def asBool(cls, value, default=None):
+        u"""Answer the translated *value* as boolean. Test on "True" and "False" strings."""
+        if value is None:
+            return bool(default)
+        if value in ('True', 'true', 'T', 't', '1'):
+            return True
+        if value in ('False', 'false', 'F', 'f', '0'):
+            return False
+        return bool(value)
+
+    @classmethod
     def asDict(cls, value):
         u"""
         <doc>

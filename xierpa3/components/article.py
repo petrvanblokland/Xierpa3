@@ -182,7 +182,8 @@ class Article(ArticleColumn):
                     paddingleft=Em(0.5), paddingright=Em(0.5),
                     marginright=0),
         )
-        if articleData is None:
+        if articleData is None: 
+            # If not article defined, then this must be a call for building the CSS.
             self.buildArticleStyle(b)
         else:
             self.buildArticleData(b, articleData)
@@ -190,7 +191,7 @@ class Article(ArticleColumn):
         # Build blog response form, if required.
         if s.blogResponse and articleData is not None and articleData.blogresponse == 'True':
             b.div(class_=self.C.CLASS_BLOGRESPONSE, width=Perc(100),
-                  backgroundcolor=Color('#AAA'))
+                  backgroundcolor=Color('#888'))
             # TODO: Add blog response form here.
             b.text('[Develop Blog Response here] ' * 20)
             b._div(comment=self.C.CLASS_BLOGRESPONSE)

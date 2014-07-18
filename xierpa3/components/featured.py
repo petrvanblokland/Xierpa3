@@ -14,7 +14,7 @@ from random import choice
 from xierpa3.components.column import Column
 from xierpa3.components.container import Container
 from xierpa3.descriptors.media import Media
-from xierpa3.attributes import Em, Margin, Perc, Color
+from xierpa3.attributes import Em, Margin, Perc, Color, Padding
 from xierpa3.descriptors.blueprint import BluePrint
 
 LEVELSIZE = Em(0.9)
@@ -62,18 +62,19 @@ class FeaturedByImage(FeaturedBase):
         # Container component layout stuff
         width=Perc(30), doc_width=u'Overall width of the component.',
         widthMobile=Perc(100), doc_widthMobile=u'Overall width of the component for mobile.',
-        backgroundColor=Color('yellow'), doc_backgroundColor=u'Background color of the component.',
+        backgroundColor=Color('#E0E0E0'), doc_backgroundColor=u'Background color of the component.',
         display=C.BLOCK, doc_display=u'Display status of the component',
         displayMobile=C.NONE, doc_displayMobile=u'Display status of the component for mobile.',
         float=C.LEFT, doc_float=u'Float status of the component.',
         floatMobile=C.NONE, doc_floatMobile=u'Float status of the component for mobile.',
+        padding=Padding(Em(0.35)), doc_padding=u'Padding of the component content.',
         # Item/article stuff
         itemDisplay=C.BLOCK, doc_itemDisplay=u'Display type of item/article image cell.',
         itemClear=C.NONE, doc_itemClear=u'Floating clear of item/article image cell.',
         itemMarginBottom=Em(0.5), doc_itemMarginBottom=u'Margin bottom of item/article image cell.',
         itemWidth=Perc(100), doc_itemWidth=u'Width of item/article image cell.',
         # Level
-        showLevel=True, doc_showLevel=u'Boolean flag to show the level field of the article.',
+        showLevel=False, doc_showLevel=u'Boolean flag to show the level field of the article.',
         levelFormat='%s level', doc_levelFormat=u'Python string pattern as level indicator. Takes level string as parameter.',
         genericLevel=None, doc_genericLevel=u'Generic level flag, overruling the article level field.',
         levelColor=Color('#222'), doc_levelColor=u'Color of the level indicator.',
@@ -83,16 +84,16 @@ class FeaturedByImage(FeaturedBase):
         levelMarginBottom=Em(0.2), doc_levelMarginBottom=u'Margin bottom of the level indicator.',
         # Title
         showTitle=True, doc_showTitle=u'Boolean flag to show the title of the article.',
-        titleColor=('#222'), doc_titleColor=u'Color of the article title.',
-        titleSize=Em(1.5), doc_titleSize=u'Font size of the article title.',
-        titleWeight=C.BOLD, doc_titleWeight=u'Font weight of the article title.',
-        titleLineHeight=Em(1.4), doc_titleLineHeight=u'Line height of the article title.',
+        titleColor=('#444'), doc_titleColor=u'Color of the article title.',
+        titleSize=Em(1.1), doc_titleSize=u'Font size of the article title.',
+        titleWeight=C.NORMAL, doc_titleWeight=u'Font weight of the article title.',
+        titleLineHeight=Em(1.2), doc_titleLineHeight=u'Line height of the article title.',
         # Topic
         showTopic=True, doc_showTopic=u'Boolean flag to show the topic of the article.',
-        topicColor=Color('#111'), doc_topicColor=u'Color of the article topic.',
-        topicSize=Em(1), doc_topicSize=u'Font size of the article topic.',
+        topicColor=Color('#444'), doc_topicColor=u'Color of the article topic.',
+        topicSize=Em(0.8), doc_topicSize=u'Font size of the article topic.',
         topicWeight=C.NORMAL, doc_topicWeight=u'Font weight of the article topic.',
-        topicLineHeight=Em(1.4), doc_topicLineHeight=u'Line height of the article topic.',
+        topicLineHeight=Em(1.2), doc_topicLineHeight=u'Line height of the article topic.',
     )
         # Col stuff ??? NOT USED
     '''
@@ -118,7 +119,7 @@ class FeaturedByImage(FeaturedBase):
     def buildFeatured(self, b, articles):
         s = self.style
         b.div(class_=self.getClassName(), width=s.width, backgroundcolor=s.backgroundColor,
-            display=s.display, float=s.float,
+            display=s.display, float=s.float, padding=s.padding,
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
         )
@@ -135,12 +136,9 @@ class FeaturedByImage(FeaturedBase):
         )
         b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id))
         b.img(class_=(self.C.CLASS_AUTOWIDTH, 'featuredImage'), src=article.poster)
-        # DEBUG ranking
-        b.h6(class_='ranking', fontsize=Em(0.6), color='green', margintop=0, marginbottom=0)
-        b.text(`article.ranking or 0`)
-        b._h6()
         if s.showLevel or s.genericLevel:
-            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, fontweight=s.levelWeight,
+            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, 
+                fontweight=s.levelWeight,
                 margintop=s.levelMarginTop, marginbottom=s.levelMarginBottom)
             # Format the level indicator
             b.text(s.levelFormat % (article.level or s.genericLevel))
@@ -187,7 +185,7 @@ class FeaturedByImageList(FeaturedBase):
         # Thumbnail image stuff
         thumbDisplay=C.BLOCK,
         # Level stuff, handle local fontsize and lineheight here, related to the item size
-        showLevel=True, 
+        showLevel=False, 
         genericLevel='Generic', doc_genericLevel=u'Show this generic level name if level attitbute is undefined in adapter data.',
         levelColor=Color('#6294D0'), doc_levelColor=u'Level color.',
         levelSize=LEVELSIZE, doc_levelSize=u'Level font size.',
@@ -197,7 +195,7 @@ class FeaturedByImageList(FeaturedBase):
         showName=False, 
         nameColor=Color('#A32C2D'), 
         nameSize=Em(0.9), 
-        nameLineHeight=Em(1.4), 
+        nameLineHeight=Em(1.2), 
         nameWeight=C.BOLD,
         # Optional topic
         showTopic=False,

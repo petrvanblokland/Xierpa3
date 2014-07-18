@@ -3,7 +3,8 @@ $tag Example
 $category Course
 $level Beginner
 $blogresponse True
-$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildWebsitesWithXierpa3.png
+$status Published
+$poster http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/documentation/helloworldlayout.py.png
 $author Petr van Blokland
 $topic The most basic website in Xierpa3: Hello, world!
 $summary How to build the most simple website in Xierpa3: Hello, world!
@@ -27,9 +28,9 @@ from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 </pre>
 
-p(first). From the set of available Xierpa3 components, the *Theme* is used, as site container for the single *Page*. On the page there will be one *Column*.
+p(first). From the set of available Xierpa3 components, the @Theme@ is used, as site container for the single @Page@. On the page there will be one @Column@.
 
-Next is to define the type of column we want to have, holding the simple “Hello, world!” text. We create a new type of component for this behavior, which initially inherits all aspect from the standard *Column* class.
+Next is to define the type of column we want to have, holding the simple “Hello, world!” text. We create a new type of component for this behavior, which initially inherits all aspect from the standard @Column@ class.
 
 <pre>class HelloWorldText(Column):
   def buildBlock(self, b):
@@ -38,13 +39,15 @@ Next is to define the type of column we want to have, holding the simple “Hell
     b._div()
 </pre>
 
-p(first). The @b.div@ instructs the HTML builder to build an HTML open @div@ tag, where the @b.div@ creates a closing tag. The CSS builder generates the  corresponding CSS codes for this div, taking the color attribute as value. This attribute is ignored by the HTML builder. Builders know which attributes are for them. Now we defined our new type of component, we need a page to place it on. Create a new type of theme, that initially inherits all behavior from the main Xierpa3 *Theme* component. *TITLE* defines the specific page name for this type of theme, that will appear on the top of the browser window.
+p(first). The @b.div@ instructs the HTML builder to build an HTML open @div@ tag, where the @b._div@ creates a closing tag. The CSS builder generates the  corresponding CSS codes for this div, taking the color attribute as value. This attribute is ignored by the HTML builder. Builders know which attributes are for them. Now we defined our new type of component, we need a page to place it on. Create a new type of theme, that initially inherits all behavior from the main Xierpa3 @Theme@ component. 
 
 <pre>class HelloWorld(Theme):
   TITLE = u'The standard “Hello, world!” page.'
 </pre>
 
-p(first). Then one of the required methods is defined for a *Theme*, answering the list of *Page* instances, each filled with their set of components. In this case there only a one home page, which contains one element: the instance of *HelloWorldText*.
+p(first). @TITLE@ defines the specific page name for this type of theme, that will appear on the top of the browser window. It is a “class variable” of the page and can be accessed by @self.TITLE@. Some components and builders assume the value is defined.
+
+Then one of the required methods is defined for a @Theme@, answering the list of @Page@ instances, each filled with their set of components. In this case there only a one home page, which contains one element: the instance of @HelloWorldText@.
 
 <pre>def baseComponents(self):
   hw = HelloWorldText()
@@ -52,7 +55,7 @@ p(first). Then one of the required methods is defined for a *Theme*, answering t
   return [homePage]
 </pre>
 
-p(first). Calling the @self.make()@ method will build the CSS and HTML and place the result in a directory on the users’ desktop. This *index.html* can be dragged on a browser to view. The CSS is saved in a local *css* directory.
+p(first). Calling the @self.make()@ method will build the CSS and HTML and place the result in a directory on the users’ desktop. This @index.html@ can be dragged on a browser to view. The CSS is saved in a local @css/@ directory.
 
 <pre>def make(self):
   cssBuilder = CssBuilder()
@@ -78,7 +81,7 @@ from xierpa3.constants.constants import C
 from xierpa3.attributes import Em, Margin, Color, Perc
 </pre>
 
-p(first). And again we create a new component, that inherits all behavior from the existing @Column@ class. The @self.C@ class contains a number of constants that can be used throughout the code, to make sure that there is not misspelling in names and types. The use of attribute instances such as *Em* and @Margin@ in the example shows the principle of storing knowsledge into attribute instances. @Shadow@ and @Gradient@ (shown in other example site) are also attributes that hide complex HTML and CSS from the development level of the user.
+p(first). And again we create a new component, that inherits all behavior from the existing @Column@ class. The @self.C@ class contains a number of constants that can be used throughout the code, to make sure that there is not misspelling in names and types. The use of attribute instances such as @Em@ and @Margin@ in the example shows the principle of storing knowsledge into attribute instances. @Shadow@ and @Gradient@ (shown in other example site) are also attributes that hide complex HTML and CSS from the development level of the user.
 
 <pre>class HelloWorldText(Column):
   def buildBlock(self, b):
@@ -103,9 +106,21 @@ p(first). And again we create a new component, that inherits all behavior from t
     b._div()
 </pre>
 
-p(first). Note that although the @div@ may suggest that we are just building HTML there, the method get called both with @b@ as CssBuilder and as HtmlBuilder (or any other build that needs the indication of a start/stop for a block of information). Each builder will filter out the appropriate attributes and translates it into its own syntax. The HTML tags generated by the article are set in CSS by the empty statements.
+p(first). Note that although the @div@ may suggest that we are just building HTML there, the method gets called both with @b@ as @CssBuilder@ and as @HtmlBuilder@ (or any other build that needs the indication of a start/stop for a block of information). Each builder will filter out the appropriate attributes and translates it into its own syntax. The HTML tags generated by the article are set in CSS by the empty statements.
+The @CSSBuilder@ will take the @b.div(class_="myClass", ...)@ to create CSS code such as
 
-Building the styled 2 text blocks, written out with duplicated values, as example how this works. See other examples for approaches with more cascading styled hierarchy.
+<pre>div.myClass { 
+  /* Div style attributes here. */ 
+}
+</pre>
+
+p(first). where the @HTMLBuilder@ will use the same @b.div(...)@ to create HTML code, such as:
+
+<pre>
+  &lt;div class="myClass"&gt;...&lt;/div&gt;
+</pre>
+
+p(first). Building the styled 2 text blocks, written out with duplicated values, as example how this works. See other examples for approaches with more cascading styled hierarchy.
 
 Also note that for clarity of the example, the two @div@ blocks have their own (redundant) styling. In a real site application these values would come from the same source, defining their relation in Python code. Also these values will be translated into SASS variables, which can be altered there, if the generated files are to be used again for manual manipulation, such as external templates. The rest of this example is the identical to the simple HelloWorld.
 
