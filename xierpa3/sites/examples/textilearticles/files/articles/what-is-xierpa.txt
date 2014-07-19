@@ -24,7 +24,7 @@ The lecture presents Xierpa3 as Open Source proof of concept, showing that build
 
 p(first). The title is provoking. Intended. And it’s even worse. It is also about the end of HTML, and SVG, and JavaScript. Many responses preceding the lecture at Typo 2104 showed that remarks like that are touching open nerve endings with some people. 
 
-Of course I know that CSS will not end. With so much technology spent on so many websites using, the chance that will change, even in the distant future, is infinitely small. CSS is a great resource to describe the styling of online documents. ...for browsers.
+Of course I know that CSS will not end. With so much technology spent on so many websites using it, the chance that this will change, even in the distant future, is infinitely small. CSS is a great resource to describe the styling of online documents... For browsers.
 But on the level of design the language is a horrible beast. A static description of static, cascaded details, without the functionality of modern programming, such as objects and inheritance, conditions or loops. 
 
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.006.png!
@@ -43,7 +43,15 @@ p(first). Traditionally it needs a lot of knowledge to build a website. The path
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.028.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.029.png!
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.033.png!
+
+p(first). If the focus of the designer is on making nice visuals, pixel images of a new website, then this leave a lot of room for guessing by the programmer. In theory the designer can have so much knowledge and experience about the way the pixel designs need to be translated into working code, unfortunately this is (almost) never the case. Static images don’t show the complex interaction of components on a page when the screen size is changed. Predicting the behavior on different platforms, different browsers for different kinds of content, without testing the result during the design process, is impossible. Designers who claim that they can do this, aren’t likely to do any experiment. Of course it’s a matter of definition, but I’d call such activities *production* rather than *design*.
+
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.034.png!
+
+p(first). In reality, much -- or even most -- of the work in done by the programmer. Making design decisions on responsive behavior, translating specifications for print into screen, describe the hierarchy of components, cascading dependencies, division of information between HTML, CSS, SVG and Javascript, connecting to database, solve the riddle of versions, implementing the CMS, scaling of images, optimizing for speed and volume and finally doing the coding of it all: building the real system is a lot more work than visualizing the visual parameters of some key page types. 
+Customers aren’t stupid. They will find out sooner or later. So the next time they will ask the question directly to the programmer, who obviously had much more added value to the total. 
+The designer lost control on the process. The design became a stylist. A supplier of visuals. If at all, because pushed in this position, there suddenly is competition with anybody else in the world who claims to have taste.
+
 !(autoWidth)http://data.xierpa.com.s3.amazonaws.com/xierpa3/_images/typo2014/TheEndOfCss016-Images.041.png!
 
 p(first). If we put the steps to build a website in a row, this is how the sequence could look like. Of course the real design process it iterative and not sequential, but for the clarity of the model, we now assume that there are clear distinguishable steps. Eventually any iterative process is supposed to finish at some point.

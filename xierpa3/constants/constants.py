@@ -108,6 +108,7 @@ class Constants(Config):
     CLASS_CHAPTERNAVIGATION = 'chapterNavigation'
     CLASS_COLUMN = 'column'
     CLASS_CONTAINER = 'container'
+    CLASS_DOCUMENTATION = 'documentation'
     CLASS_ERROR = 'error'
     CLASS_EDITABLE = 'editable'
     CLASS_FEATUREDITEM = 'featuredItem'
@@ -162,7 +163,8 @@ class Constants(Config):
     }
 
     # Params
-    PARAM_CSS = 'css'
+    # Don't use "css" as parameter, as it is part of the default CSS path.
+    PARAM_CSSTYPE = 'csstype'
     PARAM_EDIT = 'edit'
     PARAM_ARTICLE = 'article'
     PARAM_CHAPTER = 'chapter' # Chapter index in the current article, starting with 0

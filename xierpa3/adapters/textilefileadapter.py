@@ -208,7 +208,7 @@ class TextileFileAdapter(Adapter):
         return data
     
     def cacheArticleFieldReferences(self):
-        u"""(Re)build the dictionary of field relations. This should be done, anytime a new article 
+        u"""(Re)build the dictionary of field relations. This should be done at any time a new article 
         is cached or modified. Better to build from scratch if the source changes, than to keep track
         of changes."""
         self._urls = {}

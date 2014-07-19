@@ -190,6 +190,7 @@ class Article(ArticleColumn):
             
         # Build blog response form, if required.
         if s.blogResponse and articleData is not None and articleData.blogresponse == 'True':
+            
             b.div(class_=self.C.CLASS_BLOGRESPONSE, width=Perc(100),
                   backgroundcolor=Color('#888'))
             # TODO: Add blog response form here.
@@ -341,7 +342,7 @@ class Article(ArticleColumn):
         b._h4()
         # <p>
         b.p(fontsize=s.articleSize, lineheight=s.articleLineHeight, textindent=s.articleIndent)
-        self.buildPStyle(b)
+        self._buildPStyle(b)
         b._p()
         # <p class="... first">
         b.p(class_=self.C.CLASS_FIRST, textindent=s.articleFirstIndent)
@@ -354,7 +355,7 @@ class Article(ArticleColumn):
             fontweight=s.leadWeight, fontstyle=s.leadStyle, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, margintop=s.leadMarginTop,
             textindent=s.articleFirstIndent)
-        self.buildPStyle(b)
+        self._buildPStyle(b)
         b._p()
         # <b>
         b.b(fontweight=self.C.BOLD)
@@ -398,24 +399,26 @@ class Article(ArticleColumn):
         b.ul(liststyletype=s.bulletType, liststyleimage=s.bulletImage, 
             liststyleposition=s.bulletPosition, paddingleft=s.bulletPaddingLeft,
             marginbottom=s.bulletMarginBottom, margintop=s.bulletMarginTop)
-        self.buildLiStyle(b)
+        self._buildLiStyle(b)
         b._ul()
         # <ol><li>...</li></ol>
         b.ol(liststyletype=s.numberedListType,  
             liststyleposition=s.numberedListPosition, paddingleft=s.numberedListPaddingLeft,
             marginbottom=s.numberedListMarginBottom, margintop=s.numberedListMarginTop)
-        self.buildLiStyle(b)
+        self._buildLiStyle(b)
         b._ol()
         
         b._div() # Article chapter
              
-    def buildLiStyle(self, b):
+    def _buildLiStyle(self, b):
+        u"""Private method. Build the style parameters of a bullet list."""
         # <li> in side article XML
         s = self.style
         b.li(marginbottom=s.bulletItemMarginBottom)
         b._li()
                
-    def buildPStyle(self, b):
+    def _buildPStyle(self, b):
+        u"""Private method. Build the style parameters of a paragraph tag."""
         # <footnote> inside article XML
         s = self.style
         b.sup(class_=self.C.CLASS_FOOTNOTE, top=s.footnoteTop or Em(-0.5), 
@@ -426,19 +429,25 @@ class Article(ArticleColumn):
         b._em()
     
 class ArticleSideBar(ArticleColumn):
-
+    u"""The *ArticleSideBar* class implements a component that can show meta information
+    of the current article, such as the chapter navigation (if the boolean flag
+    @self.style.splitChapters@ is set to @true@), or links to the @article.featured@
+    articles. The standard functions in the @ArticleSideBar@ can be turned on/off by
+    boolean style flags. E.g. @self.style.showChapterNavigation@."""
+    
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = ArticleColumn.C
     
     BLUEPRINT = BluePrint( 
         # Layout stuff
-        colWidth=4, # Default amount of columns for this component   
+        colWidth=4, # Default amount of columns for this component  
+        width=Perc(20), doc_width=u'Width of the main column inside the row.', 
+        widthMobile=Perc(100), doc_widthMobile=u'Width of the main column inside the row for mobile.',
         # Column
-        paddingLeft=Em(0.5), doc_paddingLeft=u'Padding left of main column content.',
-        paddingRight=Em(0.5), doc_paddingRight=u'Padding right of main column content.',
-        backroundColor=Color('yellow'), doc_backgroundColor=u'Background color of side bar.',
+        padding=Em(0.35), doc_padding=u'Padding of the main column container.',
+        backroundColor=Color('white'), doc_backgroundColor=u'Background color of side bar container.',
         # Chapter navigation
-        showChapterNavigation=True, 
+        showChapterNavigation=True, doc_showChapterNavigation=u'Boolean flag to indicate that chapter navigation must be shown. If the article source has chapters, but the main article component @article.style.splitChapters@ is @False@, then in-page navigation will be made.',
         chapterLabel='Chapters', doc_chapterLabel=u'Title of chapter navigation, shown as h2 heading.',
         chapterNameSize=Em(1.2), doc_chapterNameSize=u'Font size of chapter title.',
         showChapterSummaryOnMax=10, # Not show summary if more than 10 chapters
@@ -446,16 +455,18 @@ class ArticleSideBar(ArticleColumn):
         mobileChapterButtonBackgroundColor=Color('#444'), doc_mobileChapterButtonBackgroundColor=u'Background color of chapter button for mobile.',
     )
     def getArticleUrlId(self, b):
-        return b.e.form[self.C.PARAM_ARTICLE]
+        u"""Answer the url parameter of the current page from @b.e.form[self.C.PARAM_ARTICLE]@."""
+        return b.e.form[self.C.PARAM_ARTICLE] # /article-xxx
     
     def buildColumn(self, b): 
-        u"""Build nice stuff here from the article. @@@ Add to style that calling site can change
+        u"""Build meta information from the article. @@@ Add to style that calling site can change
         the order."""
         s = self.style
         articleData = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
-        b.div(class_=self.getClassName(), width=Perc(20), float=self.C.LEFT,
-            backgroundcolor=Color('orange'), #s.backroundColor,
-            media=Media(max=self.C.M_MOBILE_MAX, width=Perc(100),
+        b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
+            backgroundcolor=s.backroundColor,
+            padding=s.padding,
+            media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=self.C.BLOCK, float=self.C.NONE),
         )
         if articleData is None:

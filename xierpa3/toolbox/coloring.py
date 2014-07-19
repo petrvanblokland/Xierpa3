@@ -268,6 +268,11 @@ class Color:
             return getattr(self, method)()
         return self.__dict__[key]
 
+    def __cmp__(self, color):
+        if color is None:
+            return False
+        return `self.value` == color.value
+ 
     def __ne__(self, color):
         return self.value == color.value
     

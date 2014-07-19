@@ -172,12 +172,14 @@ class BaseClient(object):
         builder = CssBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
-        if site.e.form[self.C.PARAM_DOCUMENTATION]:
-            site.buildDocumentation(builder) # Build the live documentation page from the site
-            builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
-            result = builder.getResult() 
-        elif site.e.form[self.C.PARAM_FORCE] or result is None:
-            # Forced or no cached CSS, so try to build is and save it in the cache.
+        #if site.e.form[self.C.PARAM_DOCUMENTATION]: # /documentation
+        #    site.buildDocumentation(builder) # Build the live documentation page from the site
+        #    #builder.save(site, path=filePath) # Compile resulting Sass to Css  
+        #    #builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
+        #    result = builder.css #getResult() 
+        if site.e.form[self.C.PARAM_FORCE] or site.e.form[self.C.PARAM_DOCUMENTATION] or result is None:
+            # Forced or no cached CSS or building documentation, 
+            # so try to build is and save it in the cache.
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
             builder.save(site, path=filePath) # Compile resulting Sass to Css  
             result = builder.getResult() # Get the resulting Sass.
@@ -190,9 +192,9 @@ class BaseClient(object):
         builder = HtmlBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
-        if site.e.form[self.C.PARAM_DOCUMENTATION]:
-            site.buildDocumentation(builder)
-            result = builder.getResult()
+        if site.e.form[self.C.PARAM_DOCUMENTATION]: # /documentation
+            site.buildDocumentation(builder) # Build the live documentation page from the site
+            result = builder.popResult()
         elif site.e.form[self.C.PARAM_FORCE] or result is None:
             # Find the matching template for the current site and build from there.
             template = site.getMatchingTemplate(builder)
@@ -227,7 +229,7 @@ class BaseClient(object):
         #    httprequest.setHeader("Content-Encoding", "gzip")
         #    result = b.getResult().getCompressedValue()
         # else:
-        #    result = b.getResult().getValue()
+        #    result = b.getResult().getValue() 
         self.setMimeTypeEncoding(mimeType, httprequest)        
         return result
     

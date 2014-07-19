@@ -190,12 +190,12 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         return self.e.form[self.C.PARAM_EDIT]
 
     def editor(self, component):
-        self.form(id='editor', method='post', action='/' + component.root.urlName)
+        self.form(id='editor', method='post', action='/ajax')
         self.div(style='float:left;background-color:#D0D0D0;width:100%')
         self.input(type='hidden', name='edit', value=self.e.form[self.C.PARAM_EDIT]) # Keep edit open when in that mode.
-        self.input(type='hidden', name='article', value=self.e.form[self.C.PARAM_ARTICLE]) # Keep edit open when in that mode.
-        self.input(type='submit', name='new', value='New')
-        self.input(type='submit', name='save', value='Save', onclick='saveArticle();')
+        self.input(type='hidden', name='article', value=self.getCurrentArticleId()) # Keep edit open when in that mode.
+        self.input(type='button', name='new', value='New', onclick='newArticle();')
+        self.input(type='button', name='save', value='Save', onclick='saveArticle();')
         self._div()
 
     def _editor(self, component):
@@ -207,7 +207,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             alert('New article');
         }
         function saveArticle(){
-            alert(document.getElementById("article").html());
+            alert('Save article');
+            //alert(document.getElementById("article").html());
             document.getElementById("editor").submit();
         }
         function getContentEditableText(id) {

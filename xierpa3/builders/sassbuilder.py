@@ -220,7 +220,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         If there is a selector and content, then check if the parent block didn't already have an identical
         combination. This e.g. happens when building from a list of data. If there already is a match
         with the selector-content combination, then ignore. If there is already a selector, but with different
-        content, then export the code with an warning as comment."""
+        content, then export the code with a warning as comment."""
         self.popFirst() # Reduce level for firstSelectors.
         firstSelectors = self.firstSelectors.peek()
         tagContent = self.popResult()
@@ -516,6 +516,32 @@ input[type=submit], label, select, .pointer {
     }
 }
 """)
+        # If in documentation mode, add the CSS for the documentation page.
+        # TODO: This could be generated from the documentation builder page,
+        # but somehow the SASS/CSS builders don't get there.
+        if self.e.form[self.C.PARAM_DOCUMENTATION]: # /documentation
+            self.output("""
+/* /documentation */
+div.documentation {
+    
+    font-size: 1em;
+    width:90%; 
+    margin: 20px auto 20px auto;
+    font-family: Verdana;
+    font-size: 0.8em;
+    h1 {font-size:2em; font-weight: bold; padding-top:0.5em; padding-bottom:0.5em;}
+    h2 {font-size:1.5em; font-weight: bold; padding-top:0.5em; padding-bottom:0.5em;}
+    table {width: 100%; font-size: 1em}
+    table th {background-color: #EEE; color:#222;}
+    table td {border-bottom: 1px solid #DDD;}
+    table th, table td {padding-top: 4px; padding-bottom: 4px;}
+    th.name, td.name {width: 20%;}
+    th.value, td.value {width: 20%;}
+    th.description, td.description {width: 60%;}
+    strong, b {font-weight: bold;}
+    code {font-family: Courier, monospace; font-size: 1.1em;}
+}
+""")  
 
     # ---------------------------------------------------------------------------------------------------------
     #    H T M L  T A G S

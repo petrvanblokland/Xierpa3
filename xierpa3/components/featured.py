@@ -49,9 +49,13 @@ class FeaturedBase(Column):
         self.buildFeatured(b, articles)
    
 class FeaturedByImage(FeaturedBase):
-    u"""The <b>FeaturedByImage</b> feature component, shows a featured article by its poster image.
+    u"""The @FeaturedByImage@ feature component, shows a featured article by its poster image
+    on full width of the component.
     If there is no poster image defined in the article meta data, then the first image in the article
-    is used here. The image is a link to the article page."""
+    is used here. The image is a link to the article page.
+    Respectively the binary flags @BluePrint@ *showLevel*, *showTitle* and @showTopic@ 
+    will enable the level of the article (as defined in the article source @$level@), 
+    the article title (@$title@) and topic (@$topic), of set to @True@."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = FeaturedBase.C 
 
@@ -62,17 +66,19 @@ class FeaturedByImage(FeaturedBase):
         # Container component layout stuff
         width=Perc(30), doc_width=u'Overall width of the component.',
         widthMobile=Perc(100), doc_widthMobile=u'Overall width of the component for mobile.',
-        backgroundColor=Color('#E0E0E0'), doc_backgroundColor=u'Background color of the component.',
+        backgroundColor=None, doc_backgroundColor=u'Background color of the component.',
         display=C.BLOCK, doc_display=u'Display status of the component',
         displayMobile=C.NONE, doc_displayMobile=u'Display status of the component for mobile.',
         float=C.LEFT, doc_float=u'Float status of the component.',
         floatMobile=C.NONE, doc_floatMobile=u'Float status of the component for mobile.',
-        padding=Padding(Em(0.35)), doc_padding=u'Padding of the component content.',
+        padding=0, doc_padding=u'Padding of the component content.',
         # Item/article stuff
-        itemDisplay=C.BLOCK, doc_itemDisplay=u'Display type of item/article image cell.',
+        itemDisplay=C.BLOCK, doc_itemDisplay=u'Display type of the item/article image cell.',
+        itemBackgroundColor=Color('#E0E0E0'), doc_itemBackgroundColor=u'Background color of the item/article image cell.',
         itemClear=C.NONE, doc_itemClear=u'Floating clear of item/article image cell.',
         itemMarginBottom=Em(0.5), doc_itemMarginBottom=u'Margin bottom of item/article image cell.',
         itemWidth=Perc(100), doc_itemWidth=u'Width of item/article image cell.',
+        itemPadding=Padding(Em(0.35)), doc_itemPadding=u'Padding of the item/article image cell.',
         # Level
         showLevel=False, doc_showLevel=u'Boolean flag to show the level field of the article.',
         levelFormat='%s level', doc_levelFormat=u'Python string pattern as level indicator. Takes level string as parameter.',
@@ -131,6 +137,7 @@ class FeaturedByImage(FeaturedBase):
     def buildFeaturedImage(self, b, article):
         s = self.style
         b.div(class_=self.C.CLASS_FEATUREDITEM, display=s.itemDisplay,
+            backgroundcolor=s.itemBackgroundColor, padding=s.itemPadding,
             clear=s.itemClear, marginbottom=s.itemMarginBottom, margintop=s.itemMarginTop,
             width=s.itemWidth,
         )

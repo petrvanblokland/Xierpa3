@@ -25,7 +25,7 @@ class CssBuilder(SassBuilder):
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
     # DEFAULT_PATH inherits from SassBuilder
     
-    # Compile by Sass, style is defined by /css-<styleType>
+    # Compile by Sass, style is defined by /csstype-<styleType>
     def initialize(self):
         SassBuilder.initialize(self)
         self.css = None
@@ -37,7 +37,7 @@ class CssBuilder(SassBuilder):
         """
         # Is there a server environment, then overwrite the style type.
         if self.e is not None: 
-            styleType = self.e.form[self.C.PARAM_CSS] or styleType or 'expanded'
+            styleType = self.e.form[self.C.PARAM_CSSTYPE] or styleType or 'expanded'
         if not styleType in self.C.SASS_STYLES:
             styleType = self.C.SASS_DEFAULTSTYLE
         if path is None: # Allow full overwrite of complete path.
@@ -54,7 +54,8 @@ class CssBuilder(SassBuilder):
         return path
     
     def getResult(self):
-        u"""If there is any compiled result, answer it."""
+        u"""If there is any compiled result from SASS to CSS, then answer it.
+        Otherwise answer the result of @self.popResult()@."""
         if self.css is not None:
             return self.css
         return self.popResult()
