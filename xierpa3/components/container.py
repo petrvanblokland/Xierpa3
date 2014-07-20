@@ -11,13 +11,13 @@
 #    container.py
 #
 from xierpa3.components import Component
-from xierpa3.attributes import Perc, Margin, Em
+from xierpa3.attributes import Perc, Margin
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class Container(Component):
-    u"""The <b>Container</b> is the generic component that hold most other components on a page.
-    Containers are always two-layered: a component div to position on a page with a row-div inside
+    u"""The <b>Container</b> is the generic component that holds most other components on a page.
+    Containers are always two-layered: a container @div@ to position on a page with a row @div@ inside
     that handles the responsive behavior of the content."""
 
     # Get Constants->Config as class variable, so inheriting classes can redefine values.

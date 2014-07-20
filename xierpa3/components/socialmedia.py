@@ -33,6 +33,7 @@ class SocialMedia(Column):
         mobileDisplay=C.NONE,
     )            
     def buildColumn(self, b):
+        u"""Build the social media component."""
         s = self.style
         if not self.C.useOnline():
             b.text('No Social Media links when off-line.')

@@ -514,6 +514,8 @@ class Component(object):
         return name
 
     def _set_name(self, name):
+        """Set/Get property @self.name@.
+        Set @self._name@ to *name*."""
         self._name = name
 
     name = property(_get_name, _set_name)
@@ -530,13 +532,15 @@ class Component(object):
     # self.url
 
     def _get_url(self):
-        u"""Property @self.url@ Answer the url of this component.
-        Otherwise answer @None@."""
+        u"""Set/Get property @self.url@.
+        Answer the url of this component. Otherwise answer @None@."""
         if self._url is None:
             return TX.label2ParamId(self.name)
         return self._url
 
     def _set_url(self, url):
+        u"""Set/Get property @self.url@.
+        Set the @self._url@ to *url*."""
         self._url = url
 
     url = property(_get_url, _set_url)
@@ -713,6 +717,10 @@ class Component(object):
         self._components.append(component)
 
     def _set_components(self, components):
+        u"""Get/Set property @self.components@.
+        Set the @self._components@ to *components*. If *components* is not a tuple
+        or a list, then convert the single component into a list first. Set the 
+        @component.parent@ to self for every component in the list."""
         if isinstance(components, basestring):
             from text import Text
             components = [Text(components)]
@@ -725,8 +733,8 @@ class Component(object):
         self._components = components
 
     def _get_components(self):
-        # Just answer the components definition. Filling the adapter content
-        # should be filled by the inheriting component classes at building time.
+        u"""Get/Set property @self.components@.
+        Answer @self._components@."""
         return self._components
 
     components = property(_get_components, _set_components)
@@ -774,8 +782,8 @@ class Component(object):
     # self.parents    Answer the list of parent components
 
     def _get_parents(self):
-        # Answer the list of parents.
-        # If there is no parent, answer an empty list.
+        u"""Get-only property @self.parents@.
+        Answer the list of parents. If there is no parent, answer an empty list."""
         parent = self.parent
         if parent is not None:
             return parent.parents + [parent]
