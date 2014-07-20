@@ -39,7 +39,7 @@ class FeaturedBase(Column):
     CLASS_FEATURED_ITEM_IMG = 'featuredItemImg'
       
     def buildColumn(self, b):
-        u"""Get the featured  article and build the feature, depending on the type of inheriting class.
+        u"""Get the featured article and build the feature, depending on the type of inheriting class.
         The selectors @start@ and @count@ define which and how many articles are selected."""
         s = self.style
         # articles.items list contains the selected articles in the right order.
