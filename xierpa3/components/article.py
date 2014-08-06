@@ -121,8 +121,8 @@ class Article(ArticleColumn):
         # Chapter p stuff
         articleSize=Em(1.1), doc_articleSize=u'Article p font size.',
         articleLineHeight=Em(1.6), doc_articleLineHeight=u'Article p leading.',
-        articleIndent=Em(1), doc_articleInden=u'Article p indent.',
-        articleFirstIndent=0, doc_firstIndent=u'Article p first indent.',
+        articlePPIndent=Em(1), doc_articleInden=u'Article p + p indent.',
+        articleIndent=0, doc_Indent=u'Article regular p indent.',
         # Bullet list
         bulletType='disc', doc_bulletType=u'Article bullet type',
         bulletPosition=C.OUTSIDE, doc_bulletPosition=u'Article bullet position. One of (inside, outside).',
@@ -313,8 +313,8 @@ class Article(ArticleColumn):
         # SVG demo
         b.div(class_=self.C.CLASS_CHAPTER, color=s.chapterColor)
         # TODO: Should move from here. Make sure that svgExamples get SCSS builder calls.
-        b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
-        b._div()
+        #b.div(class_='svgDemo', margintop=Em(0.5), marginbottom=Em(0.5))
+        #b._div()
         # h1
         b.h1(fontsize=s.h1Size, lineheight=s.h1LineHeight, fontweight=s.h1FontSize,
              fontstyle=s.h1FontStyle, fontfamily=s.h1FontFamily, color=s.h1Color,
@@ -344,9 +344,12 @@ class Article(ArticleColumn):
         b.p(fontsize=s.articleSize, lineheight=s.articleLineHeight, textindent=s.articleIndent)
         self._buildPStyle(b)
         b._p()
-        # <p class="... first">
-        b.p(class_=self.C.CLASS_FIRST, textindent=s.articleFirstIndent)
+        # <p> <p>
+        b.p(selectorPath='p + p', textindent=s.articlePPIndent)
         b._p()
+        # <p class="... first">
+        #b.p(class_=self.C.CLASS_FIRST, textindent=s.articleIndent)
+        #b._p()
         # <p class="... last">
         b.p(class_=self.C.CLASS_LAST)
         b._p()
@@ -354,7 +357,7 @@ class Article(ArticleColumn):
         b.p(class_=self.C.CLASS_LEAD, fontsize=s.leadSize, lineheight=s.leadLineHeight,
             fontweight=s.leadWeight, fontstyle=s.leadStyle, 
             color=s.leadColor, marginbottom=s.leadMarginBottom, margintop=s.leadMarginTop,
-            textindent=s.articleFirstIndent)
+            textindent=s.articleIndent)
         self._buildPStyle(b)
         b._p()
         # <b>

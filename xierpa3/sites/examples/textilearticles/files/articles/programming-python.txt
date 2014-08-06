@@ -14,7 +14,7 @@ h1. Getting started
 
 p(lead). This is course is about Python. If you now think that it’s about snakes and not about programming, you don’t want to continue. But if you are here to learn more about objects and classes dedicated, then you are on the right track.
 
-p(first). By the way, you don’t have to have any programming experience in order to follow this course. It’s characteristic is that we really start from scratch, using daily life examples to visualize the programs. How they are structured. How they behave. And how they are used. That is a different approach from many other programming courses, which often start with a technical solution in search for a problem.
+By the way, you don’t have to have any programming experience in order to follow this course. It’s characteristic is that we really start from scratch, using daily life examples to visualize the programs. How they are structured. How they behave. And how they are used. That is a different approach from many other programming courses, which often start with a technical solution in search for a problem.
 There will be a lot of coding in this course. But I’ll try my ultimate best to clarify as much as I can and to relate everything to practical problems that you can recognize and visualize. I am pretty sure that you will see that programming is not as magic as some programmers want you to believe. And what is more important, knowing about how programming works yourself, can actually save you a lot of time. Even if you don’t want to <em>be</em> a programmer. 
 Later we’ll talk more in detail about what programming is. And how is may relate to your profession. Let’s start.
 
@@ -22,14 +22,14 @@ Later we’ll talk more in detail about what programming is. And how is may rela
 
 h2. Core Python
 
-p(first). First let’s do some nerdy stuff. Just to invite you to the core of Python, so you know where it is and how it works. Also this will make you appreciate better when we’ll use the more interactive application Drawbot for the development of the code in this course. 
+First let’s do some nerdy stuff. Just to invite you to the core of Python, so you know where it is and how it works. Also this will make you appreciate better when we’ll use the more interactive application Drawbot for the development of the code in this course. 
 
 * Open your Applications folder.
 * Then search for the Utilities folder and open it.
 * Then start the application Terminal.
 * Then you should see this.
 
-p(first). Type “python” (all in lowercase) and hit the enter key.
+Type “python” (all in lowercase) and hit the enter key.
 This will make the iOS search for the Python application which is hidden even deeper in your system than the Terminal application is. 
 If all goes well you should see something similar to this.
 
@@ -49,7 +49,7 @@ Also there is a brief set of instructions and examples, but all of that will be 
 
 h2. The Python Application
 
-p(first). Python is a object oriented programming language. What that means will be explained during this course. The language was designed by Guido van Rossum, starting as a university graduation project, he has been working on improving the language and the program ever since. He has been given the title Benevolent Dictator for Life by the Python community. 
+Python is a object oriented programming language. What that means will be explained during this course. The language was designed by Guido van Rossum, starting as a university graduation project, he has been working on improving the language and the program ever since. He has been given the title Benevolent Dictator for Life by the Python community. 
 Python is roughly two things: it is a standardized syntax, the grammar of the language, that describes how programs should be written in order to be recognized without errors. A Python program therefor is nothing more than a file with text. Not just any kind of text, the format should fit the Python grammar, but nevertheless it is just a text file.
 The other Python is an application, specifically made for the platform it is running on, that understands, interprets the syntax -- so it can detect mistakes in the grammar -- and then it can execute the found instructions. In the current major operating systems such as Windows and Mac OS, the Python interpreter is standard installed. 
 The advantage of this layered approach, the Python application is made specifically for the platform it is running on, is that in principle the Python code itself is independent of the type of Operating System. 
@@ -105,7 +105,7 @@ And finally, in the second half of the course, we’ll dive into the more sophis
 
 h2. Basic coding
 
-p(first). Once you have installed the Drawbot application, open it by a double clicking the icon.
+Once you have installed the Drawbot application, open it by a double clicking the icon.
 Then you see this window with three frames, each with a different function. The frame on the top right is the area where you will type your program. The frame at the bottom right is where the Python will show the text result of a program that your run. Do the same thing again as you did in the Terminal. Type @print 7 * 7@. Instead of hitting the enter key, now choose Run from the Python menu, or type cmd-R. The Python interpreter in Drawbot now shows the same answer in the frame at the bottom: 49. You can change one of the values and run the program again, for instance this: @print 7 * 7 * 7@. Now the new answer is visible at the bottom. Every time you change something to the program you need to type cmd-R to make it run again. You will do this a lot during this course, each time to check on the code of the Python program, while you are writing it.
 You can adjust the font type and size of the code editor in the Font menu. Drawbot was initially made by Just for educational purposes. To use the program in a presentation it is of useful to adjust the size of the type.
 The frame on the left is the area where Drawbot can do the drawing. This is one of the main advantages in using this application compared to the Terminal, because there is no area to draw there.
@@ -129,7 +129,7 @@ Imagine that this could be the grid of a page, especially if we add these two co
   rect(10+200+10, 10+100+10, 200, 100)
 </pre>
 
-p(first). The “stroke” tells the Python interpreter to set the color of the outline to a middle gray. And the second line “fill” tells the Python interpreter not to fill the rectangles with the black color we had before. It is important that the None has an initial capital, it is one of the reserved words in the Python language, indicating the None object. There is a difference between 0 (which would indicate black) and None (which indicates Nothing).
+The “stroke” tells the Python interpreter to set the color of the outline to a middle gray. And the second line “fill” tells the Python interpreter not to fill the rectangles with the black color we had before. It is important that the None has an initial capital, it is one of the reserved words in the Python language, indicating the None object. There is a difference between 0 (which would indicate black) and None (which indicates Nothing).
 
 What you can see in this stage is that we need a lot of code lines like these, to draw all the rectangles of a grid or a page. That not a problem at all for the Processing interpreter, but it is a problem for us. It becomes obvious, that copy-paste is an easy method in a program to generate more information and more elements in a drawing, but the tremendous disadvantage is that with every copy-paste the relation with the source is lost. So we get a lot of code, but there is not structure between the code line. There is no knowledge about the relation left. So, for instance, if we would like to change the size of the columns, it would need a lot of manual work to adjust all the widths of the rectangles and also change the position of the rectangles that are next to the changed ones. This manual work is the direct result from our copy-paste action. The rectangles have no knowledge about their neighbors. If something changes to size or position, is does not have any consequence for the other elements on our page.
 
@@ -164,7 +164,7 @@ Unlike other programming languages, Python integers can have any size. The limit
  * 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 </pre>
 
-p(first). Are you still here? Note that you can stop this video any time and play with the numbers by changing the code lines, to see what happens. Try to predict and understand what happens. If you see a red remark in the bottom part of the editor window, then you made an error in your code. The Python interpreter is checking your code against the standard Python grammar. If it finds something wrong it will show the error message, guessing what might be the problem and showing the line number and a suggestion what the error likely is. Note that this is not alway accurate. If there is a major mistake in the syntax, by definition Python does not understands what you mean. So is also cannot know what it is, that you did wrong. But in general the interpreter is capable of doing a fairly good guess.
+Are you still here? Note that you can stop this video any time and play with the numbers by changing the code lines, to see what happens. Try to predict and understand what happens. If you see a red remark in the bottom part of the editor window, then you made an error in your code. The Python interpreter is checking your code against the standard Python grammar. If it finds something wrong it will show the error message, guessing what might be the problem and showing the line number and a suggestion what the error likely is. Note that this is not alway accurate. If there is a major mistake in the syntax, by definition Python does not understands what you mean. So is also cannot know what it is, that you did wrong. But in general the interpreter is capable of doing a fairly good guess.
 
 Let’s continue with the exploration of the standard type of objects in Python. So far we used integers. Then there is another type of number, called float. This type contains the numbers that are not integers but fractional values, such as 3.14. If you multiply a float with a float, of course the result is a float again, such as in @print 3.14 * 2.71@. This shows up as @8.5094@ in the output frame. Also multiplying a float with an integer will result in a float number.
 
@@ -192,7 +192,7 @@ The first is to use the list a source for using the values in a loop. It is poss
   print 'Value is', n
 </pre>
 
-p(first). Make sure to indent the second line and add the column character and the end of the first line. 
+Make sure to indent the second line and add the column character and the end of the first line. 
 The first line tells the Python interpreter to run through the list of @[2,3,4,5,6]@, where for each cycle a new value is taken from the list and put into the object named @n@. For as many values as there are in the list, the block below is executed. Different from programming languages such as Java and Javascript a block is defined as everything between @{@ and @}@. In the Python syntax a block is defined by all the lines that have an identical indent. So in this case the second line is executed for every value of the list where the value is available in @n@, which is then printed by the second line.
 Executing these two lines show the values of the list, each on a new line.
 
@@ -204,13 +204,13 @@ Value is 5
 Value is 6
 </pre>
 
-p(first). The other main usage of lists is as source  to retrieve values by their index in the list. To see how that works, execute the following lines:
+The other main usage of lists is as source  to retrieve values by their index in the list. To see how that works, execute the following lines:
 
 <pre>myList = [2,3,4,5,6]
 print myList[1]
 </pre>
 
-p(first). The second lines instructs the Python interpreter to get the element from myList with the index @1@. This results in @3@. You may have expected to see the first element of the list, which is @2@, but the index values for a list start with “0” instead of @1@. So to get the first element from myList the following code should be used @myList[0]@.
+The second lines instructs the Python interpreter to get the element from myList with the index @1@. This results in @3@. You may have expected to see the first element of the list, which is @2@, but the index values for a list start with “0” instead of @1@. So to get the first element from myList the following code should be used @myList[0]@.
 Also it is possible to get more values than just one. This is called slicing. A slice is a list that is cut from another -- larger -- list. The syntax of getting the second to fourth value from the list is this @myList[1:4]@ which results in the list @[3, 4, 5]@. 
 It is possible to add lists. 
 
@@ -221,13 +221,13 @@ Now we have seen the basic types of Python, let’s do some visual examples, to 
 
 h2. Design methods
 
-p(first). So far we just looked at a sequence of code lines. Programs that work in a linear way, have can only have limited functionality and complexity. The disadvantage of programming this way is that it is impossible to reuse the code for other purposes, without changing the code. 
+So far we just looked at a sequence of code lines. Programs that work in a linear way, have can only have limited functionality and complexity. The disadvantage of programming this way is that it is impossible to reuse the code for other purposes, without changing the code. 
 In Python it is possible to isolate chunks of code and give them a name. Such a chunk is called a method. The name of a method is called to execute it. 
 Let’s make an example now that reflects objects in reality. 
 
 h2. Design of classes
 
-p(first). Classes are the most important aspects in an object oriented programming language, such as Python. Where a method isolates a piece of code and makes it available under a name, in a class that concept is even more strongly defined. A class describes the behavior of a set of objects, independent entities of code. In Python terms the objects are called instances. In detail objects can different, but their overall behavior is identical, defined by the class that made them. 
+Classes are the most important aspects in an object oriented programming language, such as Python. Where a method isolates a piece of code and makes it available under a name, in a class that concept is even more strongly defined. A class describes the behavior of a set of objects, independent entities of code. In Python terms the objects are called instances. In detail objects can different, but their overall behavior is identical, defined by the class that made them. 
 Imagine a stack of randomly selected books. They are likely to be different in size, color, number of pages, binding technique, cover and material. Yet their overall behavior is expected to be the similar. For books that are based on the Latin script, it is very likely that they will open from right to left, that the uneven page numbers on right pages, that the cover contains the title, that the back of the book shows the title vertical and that most books will fit in a pocket or bag, etc. Defining this stack of objects to be part of the class “Book” means that we can predict their overall behavior. The differences between the individual books are then called the attributes of the objects, such as their title. 
 
 The class of Cars is another great metaphor for explaining how object programming works. Cars are good example products to illustrate how design works. They all have similar functionality -- driving on a highway, using an internal power source -- anyone knows more or less how they work. They include highly innovative technology. Industrial products. They are fashionable. They are complicated projects to design, bound to many rules. They are consumer products. They are competitive in pricing  and everyone has an opinion about them. 
@@ -237,7 +237,7 @@ Let’s build a car factory.
 
 <pre>class CarFactory:</pre>
 
-p(first). The reserved word class -- you can see that the Python editor understands, so it automatically adds the color to the word -- indicates to the Python interpreter that we are defining a new type of objects, the CarFactory. The name of a class always starts with a capital. That is the convention in the Python language. The names of instances -- objects -- always start with a lower case. That fact that there is an exception to this -- because classes themselves are also objects -- is beyond the scope of the course at this point. So I won’t mention that. Oh, I just did.
+The reserved word class -- you can see that the Python editor understands, so it automatically adds the color to the word -- indicates to the Python interpreter that we are defining a new type of objects, the CarFactory. The name of a class always starts with a capital. That is the convention in the Python language. The names of instances -- objects -- always start with a lower case. That fact that there is an exception to this -- because classes themselves are also objects -- is beyond the scope of the course at this point. So I won’t mention that. Oh, I just did.
 
 The best way to interpret the class of a CarFactory is to see it’s behavior as a factory of cars. A class knows how to create instances -- objects -- with a defined type of behavior. In order to define the CarFactory class then, we have to think about what kind behavior a car should have. In design term this equals the description of the list of go-no go parameters. A pan should not melt on a stove. A TV should use 220 Volts or 110 Volts, depending on its location. And a car should be able to drive. So let’s add that for a start.
 
@@ -247,6 +247,6 @@ class CarFactory:
     print "I drive"
 </pre>
 
-p(first). The indented def indicates that we define a method in the class CarFactory. Using this method, an instance is able to perform a certain defined task. The word following the def is the name of the method. The convention is that method names start with a lower case. And as they have the role of identifiers, they should only consist of letters, figures and underscores. Ignore the brackets with the self for now, we’ll come back to that later. The definition line ends with a column to indicate to the Python interpreter that everything following from here -- as long as there is an additional indentation -- is part of the method definition.
+The indented def indicates that we define a method in the class CarFactory. Using this method, an instance is able to perform a certain defined task. The word following the def is the name of the method. The convention is that method names start with a lower case. And as they have the role of identifiers, they should only consist of letters, figures and underscores. Ignore the brackets with the self for now, we’ll come back to that later. The definition line ends with a column to indicate to the Python interpreter that everything following from here -- as long as there is an additional indentation -- is part of the method definition.
 
 Then we add a single line for now, that defines the metaphor of the driving car. Note that we are not yet driving in this stage. We just define what a car does when it is instructed to do so. It is a plan for action. Not the action itself. Methods as part of a class definition must be seen as the blueprints of a car inside the CarFactory. It’s not the car itself, it is the specification -- the blue print -- of a car.

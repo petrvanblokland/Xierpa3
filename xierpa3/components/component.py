@@ -164,8 +164,9 @@ class Component(object):
         return self.style.title or self.adapter.getPageTitle(path=path).text
 
     def getFavIcon(self, builder):
-        u"""Call back from the builder to answer the favIcon url. This can be redefined by inheriting classes
-        if the favIcon is depending on the content and status of a page."""
+        u"""Call back from the builder to answer the favIcon url. This method can be redefined 
+        by inheriting classes if the favIcon is depending on the content and status of a page.
+        Defautl is to answer style value @self.style.favIcon@."""
         if self.style and self.style.favIcon:
             return self.style.favIcon
         return None
@@ -203,7 +204,9 @@ class Component(object):
         self.components = components # Create parent weakrefs in the components to self
 
     def initialize(self):
-        # To be redefined by inheriting classes to fill default style and components.
+        u"""Called by every component when the constructor finished. This allows inheriting
+        component classes to adjust default settings. Inheriting classes need to redefine the
+        method. Default behavior is to do nothing."""
         pass
 
     def readFile(self, path):

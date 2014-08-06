@@ -15,7 +15,7 @@ from xierpa3.attributes import Em, Px, Color, Perc
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import TextileFileAdapter 
 from xierpa3.components import Theme, Page, Container, Article, ArticleSideBar, Menu
-from xierpa3.components import FeaturedByImage
+from xierpa3.components import FeaturedByImage, FeaturedByText
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
@@ -64,8 +64,8 @@ class TextileArticles(Theme):
 
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, color=self.BODYCOLOR, 
-            lineheight=self.BODYLEADING)
+        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, 
+            color=self.BODYCOLOR, lineheight=self.BODYLEADING)
         s.addStyle('a', color=self.LINKCOLOR)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY, color=self.BODYCOLOR)
         s.addStyle('h1', fontsize=self.H1SIZE, lineheight=self.H1LINEHEIGHT, color=self.H1COLOR, margintop=self.H1MARGINTOP, marginbottom=self.H1MARGINBOTTOM)
@@ -95,8 +95,11 @@ class TextileArticles(Theme):
         featuredArticles = FeaturedByImage(width=Perc(22), adapter=adapter, 
             # Example to overwrite the default BluePrint parameter titleColor                               
             titleColor=Color('red'))
+        #featuredByImage = FeaturedByText(widht=Perc(22), adapter=adapter)
         # Make main page container for the article column
-        container = Container(components=(article, articleSideBar, featuredArticles)) 
+        container = Container(components=(article, articleSideBar, featuredArticles,
+            #featuredByImage
+        )) 
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, 

@@ -53,7 +53,7 @@ class FeaturedByImage(FeaturedBase):
     on full width of the component.
     If there is no poster image defined in the article meta data, then the first image in the article
     is used here. The image is a link to the article page.
-    Respectively the binary flags @BluePrint@ *showLevel*, *showTitle* and @showTopic@ 
+    Respectively the binary flags @BluePrint@ *showLevel*, *showTitle* and *showTopic* 
     will enable the level of the article (as defined in the article source @$level@), 
     the article title (@$title@) and topic (@$topic), of set to @True@."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -238,6 +238,10 @@ class FeaturedByImageList(FeaturedBase):
             b._div(comment=self.C.CLASS_FEATURED_ITEM)
 
 class FeaturedByText(FeaturedBase):
+    u"""The @FeaturedByText@ feature component, shows a featured article by summary.
+    Respectively the binary flags @BluePrint@ *showPoster*, *showLevel*, *showTitle* and 
+    *showTopic* will enable the level of the article (as defined in the article source @$level@), 
+    the article title (@$title@) and topic (@$topic), of set to @True@."""
 
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = FeaturedBase.C 
@@ -278,9 +282,20 @@ class FeaturedByText(FeaturedBase):
         mobileMarginTop=Em(2), mobileMarginBottom=Em(0.5), mobileMarginLeft=Em(0.5), mobileMarginRight=Em(0.5),
         mobileFloat=C.NONE, mobileWidth=C.AUTO,
     )
+    def buildFeatured(self, b, articles):
+        s = self.style
+        b.div(class_=self.getClassName(), width=s.width, backgroundcolor=s.backgroundColor,
+            display=s.display, float=s.float, padding=s.padding,
+            media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
+                display=s.displayMobile, float=s.floatMobile),
+        )
+        for article in articles.items:
+            self._buildFeaturedText(b, article)
+        b._div()
+        
     
-    def buildFeatured(self, b, data):
-        u"""Build the featured item. If <b>self.style.itemRandom</b> is <b>True</b>, then select a random item from the list.
+    def _buildFeaturedText(self, b, data):
+        u"""Build the featured item. If @self.style.itemRandom@ is <b>True</b>, then select a random item from the list.
         If there is no <b>data.item</b> available, then ignore this method."""
         if not data.items:
             return

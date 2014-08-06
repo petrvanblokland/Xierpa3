@@ -185,7 +185,9 @@ class SassBuilder(XmlTransformerPart, Builder):
         if there already is an identical selector-content match inside the current block."""
         self.pushResult() # Divert the selector output, so we can see at closing if the result was empty.
         self.tabs()
-        selector = self.getSelector(tag, kwargs.get('id'), kwargs.get('selectorpath'), kwargs.get('selector'), kwargs.get('class_'), kwargs.get('class_'+self.ATTR_POSTFIX), kwargs.get('pseudo'))
+        # Getthe selector of the CSS. See working of the self.getSelector(...) for the order of interpretation.
+        # self.getSelector(tag, id, selectorPath, selector, class_, class_postfix, pseudo):
+        selector = self.getSelector(tag, kwargs.get('id'), kwargs.get('selectorPath'), kwargs.get('selector'), kwargs.get('class_'), kwargs.get('class_'+self.ATTR_POSTFIX), kwargs.get('pseudo'))
         if selector:
             self.mediaSelectors.push(selector) # Save the stack of selectors for runtime @media
             self.output('%s { ' % selector)
@@ -392,15 +394,25 @@ class SassBuilder(XmlTransformerPart, Builder):
             value = value.value # @@@ TODO: put this in SASS variable too, avoid adding px
         return value
 
-    def getSelector(self, tag, id, selectorpath, selector, class_, class_postfix, pseudo):
-        u"""Build the selector for this tag, depending on the setting of id and input selector."""
+    def getSelector(self, tag, id, selectorPath, selector, class_, class_postfix, pseudo):
+        u"""Build the selector for this tag, depending on the setting of id and input selector attributes.
+        The order of interpretations is:
+        * selectorpath
+        * selector
+        * "#" + id
+        * class_postfix
+        * class_postfix + ":" + pseudo
+        * class_
+        * tag
+        * tag + ":" + +pseudo
+        """
         result = False
-        if id is not None:
-            result = '#' + id
-        elif selectorpath is not None:
-            result = selectorpath
+        if selectorPath is not None:
+            result = selectorPath
         elif selector is not None:
             result = self.selector2Class(selector)
+        elif id is not None:
+            result = '#' + id
         elif class_postfix is not None:
             result = '%s.%s' % (tag, self.selector2Class(class_postfix))
             if pseudo:

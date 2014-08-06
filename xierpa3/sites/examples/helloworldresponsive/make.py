@@ -108,14 +108,14 @@ class HelloWorldResponsive(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The responsive “Hello, world!” page.' # Use as title of window.
+    TITLE = u'The responsive "Hello, world!" page.' # Use as title of window.
 
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
         root = self.newStyle() # Create root style
         root.addStyle('body', backgroundcolor=Color(self.C.WHITE),
-            # TODO: GLOBAL MEDIA DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
+            # TODO: GLOBAL MEDIA SETTING DOES NOT WORK YET: media=Media(max=self.M_MOBILE_MAX, backgroundcolor='orange')
         )
         return root
         
