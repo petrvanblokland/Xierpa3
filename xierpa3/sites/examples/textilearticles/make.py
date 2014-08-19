@@ -47,6 +47,9 @@ class TextileArticles(Theme):
     H2MARGINTOP = Em(0.5)
     H2MARGINBOTTOM = Em(0.5)
     H2COLOR = '#333333'
+    
+    ROWCOLOR = '#BEBEBE'
+
  
     BODYFAMILY = '"Hermes FB Book", Verdana, sans'
     HEADFAMILY = '"Hermes FB Semibold", Impact, sans'
@@ -75,6 +78,7 @@ class TextileArticles(Theme):
             color=Color('#333'), paddingleft=Em(0.25),
             paddingright=Em(0.25))
         s.addStyle('pre', margintop=0, marginbottom=Em(1.5))
+        s.addStyle('row', color=self.ROWCOLOR )
         s.addStyle('.error', color='red', backgroundcolor=Color('red'))
         return s
     
