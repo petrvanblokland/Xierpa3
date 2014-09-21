@@ -295,12 +295,14 @@ class Component(object):
             component.build(b)
         b._block(self)
 
-    def buildAjaxDict(self):
+    def buildAjaxDict(self, site=None, d=None):
         u"""Answer the ajax result dictionary that gets sent back as json."""
-        d = {}
-        d['name'] = 'Petr'
-        d['message'] = 'Hello'
-        d['fontName'] = self.e.form['font'] or 'notdefined'
+        if d is None:
+            d = {}
+        if site is None:
+            site = self
+        for component in self.components:
+            component.buildAjaxDict(site, d)
         return d
 
     # D O C U M E N T A T I O N
