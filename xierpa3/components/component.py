@@ -295,6 +295,14 @@ class Component(object):
             component.build(b)
         b._block(self)
 
+    def buildAjaxDict(self):
+        u"""Answer the ajax result dictionary that gets sent back as json."""
+        d = {}
+        d['name'] = 'Petr'
+        d['message'] = 'Hello'
+        d['fontName'] = self.e.form['font'] or 'notdefined'
+        return d
+
     # D O C U M E N T A T I O N
 
     def buildDocumentation(self, b):
