@@ -18,7 +18,6 @@ from column import Column
 from group import Group, ItemGroup # Group of floating rows
 from menu import Menu
 from logo import Logo
-from featured import Featured, FeaturedByImage, FeaturedByImageList, FeaturedByDiapText, FeaturedByText, FeaturedByTextList
 from page import Page
 from article import Article, ArticleSideBar
 from sidebar import Sidebar
@@ -28,4 +27,8 @@ from message import Message
 from theme import Theme
 from ruler import Ruler
 from socialmedia import SocialMedia
-from documentation import Documentation 
+from documentation import Documentation
+from featured2 import Featured
+
+# Deprecated. Used featured.Featured instead
+from featured import FeaturedByImage, FeaturedByImageList, FeaturedByDiapText, FeaturedByText, FeaturedByTextList

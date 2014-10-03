@@ -12,7 +12,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Em, Margin, Perc, Color, Px
-from xierpa3.components import Theme, Page, Container, FeaturedByImage, FeaturedByImageList, FeaturedByText, FeaturedByTextList
+from xierpa3.components import Theme, Page, Container, Featured
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
@@ -36,7 +36,7 @@ class FeaturedColumn(Theme):
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
-        s = FeaturedByImage.BLUEPRINT
+        s = Featured.BLUEPRINT
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.fontFamily, fontsize=s.fontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
@@ -48,13 +48,11 @@ class FeaturedColumn(Theme):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
-        featuredByImage = FeaturedByImage(width=Perc(100))
+        featured1 = Featured(width=Perc(100))
         #featuredByImageList = FeaturedByImageList(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
         #featuredByText = FeaturedByText(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
         #featuredByTextList = FeaturedByTextList(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
-        container = Container(components=(featuredByImage,
-            #featuredByImageList, featuredByText, featuredByTextList
-            )),
+        container = Container(components=featured1, rowMaxWidth=Perc(50))
         # Create an instance (=object) of the page, containing the featured components.
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, components=container, 

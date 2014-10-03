@@ -28,10 +28,12 @@ class Container(Component):
         paddingLeft=10, doc_paddingLeft=u'Padding left of main container.',
         paddingRight=10, doc_paddingRight=u'Padding left of main container.',
         # Row
+        rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
         rowMargin=Margin(0, C.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.',
         rowMinWidth=C.M_MOBILE_MAX, doc_rowMinWidth=u'Minimum width of the row inside a container. Default is %d.' % C.M_MOBILE_MAX,
+        rowMinWidthMobile=0, doc_rowMinWidthMobile=u'Minimum width of the row inside a container for mobile.',
         rowMaxWidth=C.MAXWIDTH, doc_rowMaxWidth=u'Maximum width of the row inside a container. Default is %d.' % C.MAXWIDTH,
-        rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
+        rowMaxWidthMobile=Perc(100), doc_rowMaxWidthMobile=u'Maximum width of the row inside a container for mobile.',
         rowOverflow=C.HIDDEN, doc_rowOverflow=u'Default overflow hidden inside a row inside a container.',
         rowFloat=C.NONE, doc_rowFloat=u'Default float none inside a row inside a container.',
     )
@@ -45,7 +47,8 @@ class Container(Component):
         b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat,
             overflow=s.rowOverflow, maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,
             media= # Container row has width 100% in media!
-               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=0, float=s.rowFloat),
+               Media(max=self.C.M_MOBILE_MAX, width=Perc(100), minwidth=s.rowMinWidthMobile,
+                    maxwidth=s.rowMaxWidthMobile, float=s.rowFloat),
         )
         for component in self.components:
             component.build(b)
