@@ -55,7 +55,7 @@ class HelloWorldResponsiveText(Column):
                 # Example for table, show lighter background, change color of text and smaller size.
                 Media(min=self.C.M_TABLET_MIN, max=self.C.M_TABLET_MAX, backgroundcolor=Color('#444'), 
                       color=Color('orange'), # Translate color name to hex. 
-                      margin=0, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE), 
+                      margin=0, fontsize=Em(2), width=self.C.AUTO, float=self.C.NONE),
                 # For mobile, even more lighter background, change color of text and smaller size.
                 Media(max=self.C.M_MOBILE_MAX, backgroundcolor=Color('#AAA'), 
                       color=Color('red'), # Translate color name to hex. 
@@ -81,16 +81,18 @@ class HelloWorldResponsiveText(Column):
         #    b._div()
         #
         data = (
-            # class, minWidth, maxWidth,  text
+            # class, minWidth,          maxWidth,     text
             ('c1', self.C.M_DESKTOP_MIN, None, 'Responsive desktop mode.' ),
             ('c2', self.C.M_TABLET_MIN, self.C.M_TABLET_MAX, 'Responsive tablet mode.' ),
             ('c3', None, self.C.M_MOBILE_MAX, 'Responsive mobile mode..' ),
         )
         for class_, minWidth, maxWidth, text in data:
             b.div(class_=class_, display=self.C.NONE, fontsize=Em(0.5), color=Color(self.C.WHITE),
+                background=self.C.NONE,
                 media=Media(min=minWidth, max=maxWidth, display=self.C.BLOCK))
             b.text(text)
             b._div()
+
         b._div()
         b.div(class_=self.C.CLASS_CAPTION, color=Color('#888'), 
             width=Perc(100), maxwidth=700, minwidth=300,
