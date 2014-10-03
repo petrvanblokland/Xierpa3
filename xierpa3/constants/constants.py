@@ -139,6 +139,7 @@ class Constants(Config):
     CLASS_SUMMARY = 'summary'
     CLASS_SUMMARYBOX = 'summaryBox'
     CLASS_TITLE = 'title'
+    CLASS_HEADLINE = 'headline'
     CLASS_TOPIC = 'topic'
     CLASS_UNDERLINE = 'underline'
     CLASS_BLOGRESPONSE = 'blogResponse'

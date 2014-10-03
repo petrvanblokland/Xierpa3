@@ -26,9 +26,6 @@ LABELCOLOR = AUTHORCOLOR
 NAMECOLOR= Color('#66696C')
 SUMMARYCOLOR= Color('#202020')
 
-class XXXFeatured(Container):
-    pass
-
 class FeaturedBase(Column):
     u"""Abstract class that combines functionality for inheriting Featured classes."""
     
@@ -59,7 +56,14 @@ class Featured(FeaturedBase):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = FeaturedBase.C 
 
-    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
+    BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT,
+        # Layout selection parameters.
+        showPoster=True, doc_showPoast=u'Boolean flag to indicate if the poster of the article should be shown.',
+        showLevel=False, doc_showLevel=u'Boolean flag to show the level field of the article.',
+        showTitle=True, doc_showTitle=u'Boolean flag to show the title of the article.',
+        showHeadline=True, doc_showHeadline=u'Boolean flag to show the headline of the article.',
+        showTopic=True, doc_showTopic=u'Boolean flag to show the topic of the article.',
+
         # Selection stuff
         itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
         itemCount=3, doc_itemCount=u'Number of selected items to feature.',
@@ -79,7 +83,6 @@ class Featured(FeaturedBase):
         itemMarginBottom=Em(0.5), doc_itemMarginBottom=u'Margin bottom of item/article image cell.',
         itemPadding=Padding(Em(0.5)), doc_itemPadding=u'Padding of the item/article image cell.',
         # Level
-        showLevel=False, doc_showLevel=u'Boolean flag to show the level field of the article.',
         levelFormat='%s level', doc_levelFormat=u'Python string pattern as level indicator. Takes level string as parameter.',
         genericLevel=None, doc_genericLevel=u'Generic level flag, overruling the article level field.',
         levelColor=Color('#222'), doc_levelColor=u'Color of the level indicator.',
@@ -88,13 +91,16 @@ class Featured(FeaturedBase):
         levelMarginTop=Em(0.2), doc_levelMarginTop=u'Margin top of the level indicator.',
         levelMarginBottom=Em(0.2), doc_levelMarginBottom=u'Margin bottom of the level indicator.',
         # Title
-        showTitle=True, doc_showTitle=u'Boolean flag to show the title of the article.',
         titleColor=('#444'), doc_titleColor=u'Color of the article title.',
         titleSize=Em(1.1), doc_titleSize=u'Font size of the article title.',
         titleWeight=C.NORMAL, doc_titleWeight=u'Font weight of the article title.',
         titleLineHeight=Em(1.2), doc_titleLineHeight=u'Line height of the article title.',
+        # Headline
+        headlineColor=('#444'), doc_headlineColor=u'Color of the article headline.',
+        headlineSize=Em(1.8), doc_headlineSize=u'Font size of the article headline.',
+        headlineWeight=C.NORMAL, doc_headlineWeight=u'Font weight of the article headline.',
+        headlineLineHeight=Em(2.0), doc_headlineLineHeight=u'Line height of the article headline.',
         # Topic
-        showTopic=True, doc_showTopic=u'Boolean flag to show the topic of the article.',
         topicColor=Color('#444'), doc_topicColor=u'Color of the article topic.',
         topicSize=Em(0.8), doc_topicSize=u'Font size of the article topic.',
         topicWeight=C.NORMAL, doc_topicWeight=u'Font weight of the article topic.',
@@ -129,7 +135,7 @@ class Featured(FeaturedBase):
                 display=s.displayMobile, float=s.floatMobile),
         )
         for article in articles.items:
-            if article.poster:  
+            if s.showPoster and article.poster:
                 self.buildFeaturedImage(b, article)
         b._div()
         
@@ -148,10 +154,15 @@ class Featured(FeaturedBase):
             # Format the level indicator
             b.text(s.levelFormat % (article.level or s.genericLevel))
             b._h5()
-        if s.showTitle:
+        if s.showTitle and article.title:
             b.h4(class_=self.C.CLASS_TITLE, color=s.titleColor, fontsize=s.titleSize, 
                  fontweight=s.titleWeight, lineheight=s.titleLineHeight)
             b.text(article.title)
+            b._h4()
+        if s.showHeadline and article.headline:
+            b.h4(class_=self.C.CLASS_HEADLINE, color=s.headlineColor, fontsize=s.headlineSize,
+                 fontweight=s.headlineWeight, lineheight=s.headlineLineHeight)
+            b.text(article.headline)
             b._h4()
         if s.showTopic and article.topic is not None: # Elements must be defined in global style
             b.h5(class_=self.C.CLASS_TOPIC, color=s.topicColor, fontsize=s.topicSize,

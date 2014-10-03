@@ -48,10 +48,9 @@ class FeaturedColumn(Theme):
         u"""Create a theme site with just one single template home page. Answer a list
         of page instances that are used as templates for this site."""
         # Create an instance (=object) of components to be placed on the page.
-        featured1 = Featured(width=Perc(100))
-        #featuredByImageList = FeaturedByImageList(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
-        #featuredByText = FeaturedByText(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
-        #featuredByTextList = FeaturedByTextList(width=Perc(80), display=self.C.BLOCK, displayMobile=self.C.BLOCK)
+        # @itemStart        Start index of the item in the selected/sorted set of articles.
+        # @itemCount        Nunmber of items (default is 3). Omit current article in the selection
+        featured1 = Featured(width=Perc(100), itemCount=2)
         container = Container(components=featured1, rowMaxWidth=Perc(50))
         # Create an instance (=object) of the page, containing the featured components.
         # The class is also the page name in the url.
