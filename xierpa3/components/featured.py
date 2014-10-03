@@ -68,9 +68,9 @@ class FeaturedByImage(FeaturedBase):
         widthMobile=Perc(100), doc_widthMobile=u'Overall width of the component for mobile.',
         backgroundColor=None, doc_backgroundColor=u'Background color of the component.',
         display=C.BLOCK, doc_display=u'Display status of the component',
-        displayMobile=C.NONE, doc_displayMobile=u'Display status of the component for mobile.',
+        displayMobile=C.BLOCK, doc_displayMobile=u'Display status of the component for mobile.',
         float=C.LEFT, doc_float=u'Float status of the component.',
-        floatMobile=C.NONE, doc_floatMobile=u'Float status of the component for mobile.',
+        floatMobile=C.LEFT, doc_floatMobile=u'Float status of the component for mobile.',
         padding=0, doc_padding=u'Padding of the component content.',
         # Item/article stuff
         itemDisplay=C.BLOCK, doc_itemDisplay=u'Display type of the item/article image cell.',
