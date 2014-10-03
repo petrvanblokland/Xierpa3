@@ -91,11 +91,13 @@ class Featured(FeaturedBase):
         levelMarginTop=Em(0.2), doc_levelMarginTop=u'Margin top of the level indicator.',
         levelMarginBottom=Em(0.2), doc_levelMarginBottom=u'Margin bottom of the level indicator.',
         # Title
+        titleFontFamily=None, doc_titleFontFamily=u'Font family of the article title.',
         titleColor=('#444'), doc_titleColor=u'Color of the article title.',
         titleSize=Em(1.1), doc_titleSize=u'Font size of the article title.',
         titleWeight=C.NORMAL, doc_titleWeight=u'Font weight of the article title.',
         titleLineHeight=Em(1.2), doc_titleLineHeight=u'Line height of the article title.',
         # Headline
+        headlineFontFamily=None, doc_headlineFontFamily=u'Font family of the article headline.',
         headlineColor=('#444'), doc_headlineColor=u'Color of the article headline.',
         headlineSize=Em(1.8), doc_headlineSize=u'Font size of the article headline.',
         headlineWeight=C.NORMAL, doc_headlineWeight=u'Font weight of the article headline.',
@@ -148,20 +150,22 @@ class Featured(FeaturedBase):
         b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id))
         b.img(class_=(self.C.CLASS_AUTOWIDTH, 'featuredImage'), src=article.poster)
         if s.showLevel or s.genericLevel:
-            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize, 
+            # Format the level indicator
+            b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize,
                 fontweight=s.levelWeight,
                 margintop=s.levelMarginTop, marginbottom=s.levelMarginBottom)
-            # Format the level indicator
             b.text(s.levelFormat % (article.level or s.genericLevel))
             b._h5()
         if s.showTitle and article.title:
-            b.h4(class_=self.C.CLASS_TITLE, color=s.titleColor, fontsize=s.titleSize, 
-                 fontweight=s.titleWeight, lineheight=s.titleLineHeight)
+            # Format the article title
+            b.h4(class_=self.C.CLASS_TITLE, fontfamily=s.titleFontFamily, color=s.titleColor,
+                 fontsize=s.titleSize, fontweight=s.titleWeight, lineheight=s.titleLineHeight)
             b.text(article.title)
             b._h4()
         if s.showHeadline and article.headline:
-            b.h4(class_=self.C.CLASS_HEADLINE, color=s.headlineColor, fontsize=s.headlineSize,
-                 fontweight=s.headlineWeight, lineheight=s.headlineLineHeight)
+            # Format the article headline
+            b.h4(class_=self.C.CLASS_HEADLINE, fontfamily=s.headlineFontFamily, color=s.headlineColor,
+                 fontsize=s.headlineSize, fontweight=s.headlineWeight, lineheight=s.headlineLineHeight)
             b.text(article.headline)
             b._h4()
         if s.showTopic and article.topic is not None: # Elements must be defined in global style
