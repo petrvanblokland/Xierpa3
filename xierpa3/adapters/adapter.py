@@ -11,7 +11,7 @@
 #   adapter.py
 #
 from xierpa3.toolbox.transformer import TX
-from xierpa3.toolbox.storage.data import Data 
+from xierpa3.toolbox.storage.data import Data
 from xierpa3.constants.constants import Constants
     
 class Adapter(object):
@@ -150,4 +150,3 @@ class Adapter(object):
     def getKeyWords(self):
         u"""Answer the keywords of the site (or page) to be used in the head.meta.keywords tag."""
         return self.newData(text='Keywords of the site here.')
-    

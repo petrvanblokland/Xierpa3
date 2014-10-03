@@ -143,7 +143,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.link(href=url, rel="stylesheet", type="text/css")
 
     def jsUrl(self, js):
-        # Alternative to jQuery: http://vanilla-js.com
+        u"""Alternative to jQuery: http://vanilla-js.com"""
         if not isinstance(js, (tuple, list)):
             js = [js]
         for url in js:
@@ -293,4 +293,3 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         pass
     
     # D R A W I N G
-        

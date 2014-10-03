@@ -50,6 +50,7 @@ class HelloWorldHome(BaseHelloWorldText):
         b.text('Hello, world!')
         b._div()
 
+    # TODO: Needs to clean up. JSON example goes to separate example site.
     def buildAjaxDict(self, site, d):
         myD = d['HelloWorldHome'] = {}
         myD['name'] = 'Petr'
@@ -62,11 +63,13 @@ class HelloWorldOther1(BaseHelloWorldText):
     @self.getClassName()@ results in @HelloWorldHome@. Color is different per page."""
     def _helloWorldText(self, b):
         b.div(color=Color('#00FF00')) # Show the text on this page in another color, to visualize the difference.
+        # TODO: Needs to clean up. JSON example goes to separate example site.
         b.a(href='/ajax/font-MyFont')
         b.text('Hello, world on another page using MyFont')
         b._a()
         b._div()
 
+    # TODO: Needs to clean up. JSON example goes to separate example site.
     def buildAjaxDict(self, site, d):
         myD = d['HelloWorldOther1'] = {}
         myD['message'] = 'Hello ' * 10

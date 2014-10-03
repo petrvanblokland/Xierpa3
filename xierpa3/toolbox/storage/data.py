@@ -32,3 +32,4 @@ class Data(object):
         if hasattr(self, key):
             return getattr(self, key)
         return None
+

@@ -216,7 +216,7 @@ class FeaturedByImageList(FeaturedBase):
     def buildFeatured(self, b, data):
         s = self.style
         for item in data.items:
-            b.div(class_=self.C.CLASS_FEATURED_ITEM, display=s.itemDisplay,
+            b.div(class_=self.CLASS_FEATURED_ITEM, display=s.itemDisplay,
                 clear=s.itemClear, marginbottom=s.itemMarginBottom, width=s.itemWidth,
             )
             b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, item.id))
@@ -235,7 +235,7 @@ class FeaturedByImageList(FeaturedBase):
             if s.showTopic and item.topic is not None: # Elements must be defined in global style
                 self.buildElement(b, item.topic)
             b._a()
-            b._div(comment=self.C.CLASS_FEATURED_ITEM)
+            b._div(comment=self.CLASS_FEATURED_ITEM)
 
 class FeaturedByText(FeaturedBase):
     u"""The @FeaturedByText@ feature component, shows a featured article by summary.
@@ -297,6 +297,7 @@ class FeaturedByText(FeaturedBase):
     def _buildFeaturedText(self, b, data):
         u"""Build the featured item. If @self.style.itemRandom@ is <b>True</b>, then select a random item from the list.
         If there is no <b>data.item</b> available, then ignore this method."""
+        return # TODO: fix this
         if not data.items:
             return
         s = self.style

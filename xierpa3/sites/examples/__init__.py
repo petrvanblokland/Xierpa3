@@ -19,3 +19,4 @@ from xierpa3.sites.examples.simpletypespecimen.make import SimpleTypeSpecimenSit
 from xierpa3.sites.examples.simplewebsite.make import SimpleWebSite
 from xierpa3.sites.examples.simpleresponsivepage.make import SimpleResponsivePage
 from xierpa3.sites.examples.textilearticles.make import TextileArticles
+from xierpa3.sites.examples.featuredcolumn.make import FeaturedColumn
