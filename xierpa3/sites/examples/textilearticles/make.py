@@ -15,7 +15,7 @@ from xierpa3.attributes import Em, Px, Color, Perc
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters import TextileFileAdapter 
 from xierpa3.components import Theme, Page, Container, Article, ArticleSideBar, Menu
-from xierpa3.components import FeaturedByImage, FeaturedByText
+from xierpa3.components import FeaturedByImage
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 

@@ -22,16 +22,16 @@ from xierpa3.attributes import Em, Color, Perc
 from xierpa3.components import Logo, Menu, SocialMedia,\
     Article, ArticleSideBar, \
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
-    ItemGroup, Featured
+    ItemGroup, FeaturedByImage
     #FeaturedByText, FeaturedByTextList, FeaturedByDiapText, FeaturedByImage\
 
 # Adapter
 
 class DbDAdapter(TextileFileAdapter):
-    def getDescription(self, component):
+    def getDescription(self):
         return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
      
-    def getKeyWords(self, component):
+    def getKeyWords(self):
         return self.newData(text=u"""Doing, design, design process, programming, design education""")
 
 class DoingByDesign(Shop):
@@ -112,15 +112,15 @@ class DoingByDesign(Shop):
         #featuredSideText = Featured(colWidth=4, itemStart=1, label='Featured course')
         #featuredByText = Featured(itemStart=2, showPoster=False)
         #featuredByTextList = Featured(itemStart=5)
-        featuredSideText = featuredByImage = featuredByText = featuredByTextList = featuredByImage100 = Featured()
+        featuredSideText = featuredByImage = featuredByText = featuredByTextList = featuredByImage100 = FeaturedByImage()
         # Featured black container
         BGCOLOR = Color('#323A47')
-        featuredImages = Featured(class_='featuredImages', 
+        featuredImages = FeaturedByImage(class_='featuredImages',
             components=(featuredByImage, featuredSideText),
             containerBackgroundColor=BGCOLOR)
         # Featured text container
         BGCOLOR = Color('#E8E8E8')
-        featuredTexts = Featured(class_='featuredTexts', 
+        featuredTexts = FeaturedByImage(class_='featuredTexts',
             components=(featuredByText, featuredByTextList),
             containerBackgroundColor=BGCOLOR)
         # Footer group
@@ -134,7 +134,7 @@ class DoingByDesign(Shop):
         
         # Article
         #featuredByTextList = FeaturedByTextList() # Default start at featured index 0
-        featuredByTextList = Featured() # Default start at featured index 0
+        featuredByTextList = FeaturedByImage() # Default start at featured index 0
         article = Container(class_=self.C.CLASS_ARTICLE,
             containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
@@ -146,7 +146,7 @@ class DoingByDesign(Shop):
         from xierpa3.sites import doingbydesign
         # Root path where to find the article Simples wiki file for this example page.
         articleRoot = TX.module2Path(doingbydesign) + '/files/articles/' 
-        adapter = TextileFileAdapter(articleRoot) # Preferred adapter class for articles in this site.
+        adapter = DbDAdapter(articleRoot) # Preferred adapter class for articles in this site.
        
         #homePage = Page(name=self.C.TEMPLATE_INDEX,
         #    components=(mobileNavigation, header, featuredImages, featuredTexts, footer),

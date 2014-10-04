@@ -12,11 +12,13 @@
 #
 import webbrowser
 from xierpa3.attributes import Perc, Em, Px, Color
-from xierpa3.components import Theme, Page, Container, Component, Featured
+from xierpa3.components import Theme, Page, Container, Component, FeaturedByImage, FeaturedByText, FeaturedByDiapText
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
+from xierpa3.adapters import TextileFileAdapter
+from xierpa3.toolbox.transformer import TX
 
 # For sake of the example define two component classes here. Normally these would come 
 # from a component library, where the BluePrint values function as API to adjust the 
@@ -27,6 +29,13 @@ HEADFAMILY = '"Bureau Grot Cond", Impact, Verdana, sans'
 
 BODYSIZE = Px(12)
 BODYLEADING = Em(1.4)
+
+class SimpleSiteAdapter(TextileFileAdapter):
+    def getDescription(self):
+        return self.newData(text=u"""Simple site, showing what is possible with articles from files.""")
+
+    def getKeyWords(self):
+        return self.newData(text=u"""Simple site. Xierpa3. Demo. Articles.""")
 
 class MainColumn(Component):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -45,21 +54,22 @@ class MainColumn(Component):
 
     )                
     def buildBlock(self, b):
-        s = self.style
-        b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-            width=s.width, backgroundcolor=s.backgroundColor, 
-            media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight,
-              fontsize=s.fontSizeMobile, width=self.C.AUTO, float=self.C.NONE, lineheight=s.lineHeightMobile,
+        article = self.adapter.getArticle()
+        if article is not None:
+            s = self.style
+            b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
+                width=s.width, backgroundcolor=s.backgroundColor,
+                media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight,
+                  fontsize=s.fontSizeMobile, width=self.C.AUTO, float=self.C.NONE, lineheight=s.lineHeightMobile,
+                )
             )
-        )
-        article = self.adapter.getArticle() 
-        b.h1()
-        b.text(article.headline)
-        b._h1()
-        b.p()
-        b.text(article.text)
-        b._p()
-        b._div(comment=self.getClassName())
+            b.h1()
+            b.text(article.headline)
+            b._h1()
+            b.p()
+            b.text(article.text)
+            b._p()
+            b._div(comment=self.getClassName())
           
 class SideColumn(Component):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -77,21 +87,22 @@ class SideColumn(Component):
         marginRight=Perc(1.8), doc_marginRight=u"""Margin right for the column.""",
     )                
     def buildBlock(self, b):
-        s = self.style
-        b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-            width=s.width, backgroundcolor=s.backgroundColor, marginright=s.marginRight,  
-            media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
-              fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
+        article = self.adapter.getArticle()
+        if article is not None:
+            s = self.style
+            b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
+                width=s.width, backgroundcolor=s.backgroundColor, marginright=s.marginRight,
+                media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
+                  fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
+                )
             )
-        )
-        article = self.adapter.getArticle() 
-        b.h1()
-        b.text(article.headline)
-        b._h1()
-        b.p()
-        b.text(article.text)
-        b._p()
-        b._div(comment=self.getClassName())
+            b.h1()
+            b.text(article.headline)
+            b._h1()
+            b.p()
+            b.text(article.text)
+            b._p()
+            b._div(comment=self.getClassName())
         
 class SimpleWebSite(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -115,13 +126,21 @@ class SimpleWebSite(Theme):
         return s
     
     def baseComponents(self):
+        # Create the article adapter
+        # Import current example site, as anchor for the article files.
+        from xierpa3.sites.examples import simplewebsite
+        articleRoot = TX.module2Path(simplewebsite) + '/files/articles/'
+        adapter = SimpleSiteAdapter(articleRoot)
         # Create the component instances
         side = SideColumn()
         main = MainColumn()
-        featured = Featured(count=1)
-        container = Container(components=(featured, side, main)) # Create the single page instance, containing the 2 components
+        featuredByImage = FeaturedByImage(count=1)
+        featuredByText = FeaturedByText(start=1, count=1)
+        featuredByDiapText = FeaturedByDiapText()
+        # Create the single page instance, containing the number of components
+        container = Container(components=(featuredByImage, featuredByText, featuredByDiapText, side, main))
         # The class is also the page name in the url.
-        homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, adapter=adapter,
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, components=container)
         return [homePage]
     

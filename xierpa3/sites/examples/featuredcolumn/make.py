@@ -12,7 +12,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Em, Margin, Perc, Color, Px
-from xierpa3.components import Theme, Page, Container, Featured
+from xierpa3.components import Theme, Page, Container, FeaturedByImage
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
@@ -36,7 +36,7 @@ class FeaturedColumn(Theme):
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
-        s = Featured.BLUEPRINT
+        s = FeaturedByImage.BLUEPRINT
         root = self.newStyle() # Create root style
         root.addStyle('body', fontfamily=s.fontFamily, fontsize=s.fontSize,
             backgroundcolor=s.pageBackgroundColor, lineheight=s.lineHeight)
@@ -50,7 +50,7 @@ class FeaturedColumn(Theme):
         # Create an instance (=object) of components to be placed on the page.
         # @start        Start index of the item in the selected/sorted set of articles.
         # @count        Nunmber of items (default is 3). Omit current article in the selection
-        featured1 = Featured(width=Perc(100), count=2)
+        featured1 = FeaturedByImage(width=Perc(100), count=2)
         container = Container(components=featured1, rowMaxWidth=Perc(50))
         # Create an instance (=object) of the page, containing the featured components.
         # The class is also the page name in the url.
