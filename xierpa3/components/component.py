@@ -70,12 +70,12 @@ class Component(object):
 
     def __init__(self, components=None, style=None, id=None, parent=None, name=None,
             css=None, fonts=None, prefix=None, class_=None, type=None, contentID=None,
-            count=1, title=None, url=None, template=None, editable=False, adapter=None,
-            selector=None, **kwargs):
+            repeat=1, title=None, url=None, template=None, editable=False,
+            adapter=None, selector=None, **kwargs):
         # The class name of the components is used as class names in SASS/CSS
         # Initialize the self.style, as selector and id are stored there.
         self.style = style # If style is None, then use a copy of the self.BLUEPRINT style.
-        self.style.add(kwargs) # Further initialize self.style from keyword arguments
+        self.style.add(kwargs) # Overwrite further initialize self.style from rest of arguments
         self.style.title = title # Page or other component title
         self.style.component = self # Add the weakref reference to self for the root style.
         # Adapter for reading content/data
@@ -106,7 +106,7 @@ class Component(object):
         self.template = template # Optional template match with URL parameter
         self.contentID = contentID # Optional unique id to query content from the self.adapter
         self.parent = parent # Weakref to parent component
-        self.count = count # Count for repeating this component in output
+        self.repeat = repeat # TODO: Make this work. Repeat count for repeating this component in output
         self.url = url # Default is not to have a URL. Page attribute define URL automatic from name.
         self.editable = editable # Is content of the component editable?
         self.type = type # Type of the website, taking TYPES[self.type] from this pool

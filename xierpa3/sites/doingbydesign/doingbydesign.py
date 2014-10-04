@@ -19,10 +19,11 @@ from xierpa3.toolbox.transformer import TX
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
-from xierpa3.components import Logo, Menu, SocialMedia, FeaturedByImage,\
-    Article, ArticleSideBar, FeaturedByText, FeaturedByTextList, FeaturedByDiapText,\
+from xierpa3.components import Logo, Menu, SocialMedia,\
+    Article, ArticleSideBar, \
     MobileNavigation, Container, Header, Footer, Page, Documentation, \
     ItemGroup, Featured
+    #FeaturedByText, FeaturedByTextList, FeaturedByDiapText, FeaturedByImage\
 
 # Adapter
 
@@ -101,13 +102,17 @@ class DoingByDesign(Shop):
             doc_mobileContainerDisplay=u'Header is not visible for mobile')
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
         # Articles featured by image
-        featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
-        featuredByImage100 = FeaturedByImage(colWidth=9) # Featured article as group item
+        #featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
+        #featuredByImage100 = FeaturedByImage(colWidth=9) # Featured article as group item
         #featuredByImageList = FeaturedByImageList() # Featured article on a page. List of related links
         # Articles featured by summary text
-        featuredSideText = FeaturedByDiapText(colWidth=4, itemStart=1, label='Featured course')
-        featuredByText = FeaturedByText(itemStart=2, showPoster=False)
-        featuredByTextList = FeaturedByTextList(itemStart=5)
+        #featuredSideText = FeaturedByDiapText(colWidth=4, itemStart=1, label='Featured course')
+        #featuredByText = FeaturedByText(itemStart=2, showPoster=False)
+        #featuredByTextList = FeaturedByTextList(itemStart=5)
+        #featuredSideText = Featured(colWidth=4, itemStart=1, label='Featured course')
+        #featuredByText = Featured(itemStart=2, showPoster=False)
+        #featuredByTextList = Featured(itemStart=5)
+        featuredSideText = featuredByImage = featuredByText = featuredByTextList = featuredByImage100 = Featured()
         # Featured black container
         BGCOLOR = Color('#323A47')
         featuredImages = Featured(class_='featuredImages', 
@@ -122,14 +127,15 @@ class DoingByDesign(Shop):
         footer = Footer(components=(menu,), containerBackgroundColor=self.CSS_FOOTERBGCOLOR)
 
         # Documentation
-        # The documentation class knows how to collect methods and their attrbutes
+        # The documentation class knows how to collect methods and their attributes
         # from components, adapters and builders and build them in an automated
         # documentation site.
         documentation = Documentation()
         
         # Article
-        featuredByTextList = FeaturedByTextList() # Default start at featured index 0
-        article = Container(class_=self.C.CLASS_ARTICLE, 
+        #featuredByTextList = FeaturedByTextList() # Default start at featured index 0
+        featuredByTextList = Featured() # Default start at featured index 0
+        article = Container(class_=self.C.CLASS_ARTICLE,
             containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
             components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
     

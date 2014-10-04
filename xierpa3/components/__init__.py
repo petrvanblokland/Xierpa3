@@ -29,6 +29,7 @@ from ruler import Ruler
 from socialmedia import SocialMedia
 from documentation import Documentation
 from featured2 import Featured
+from nothing import Nothing # Place holder component doing nothing. Can be used for debugging.
 
 # Deprecated. Used featured.Featured instead
 from featured import FeaturedByImage, FeaturedByImageList, FeaturedByDiapText, FeaturedByText, FeaturedByTextList

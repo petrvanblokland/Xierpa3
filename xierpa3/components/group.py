@@ -29,8 +29,8 @@ class ItemGroup(Group):
     
     BLUEPRINT = BluePrint(
         # Selection stuff
-        itemStart=0, 
-        itemCount=12, # Index of first and last selected thumbnail for this component
+        start=0,
+        count=12, # Index of first and last selected thumbnail for this component
         # Layout stuff
         colWidth=12,
         # Group stuff
@@ -46,7 +46,7 @@ class ItemGroup(Group):
         mediaStyles = Media(max=self.C.M_MOBILE_MAX, display=s.mobileRowDisplay or self.C.BLOCK, float=self.NONE,
                  minwidth=0, width=self.C.AUTO, paddingleft=0, paddingright=0, margin=0)
 
-        for index in range(s.itemCount):
+        for index in range(s.count):
             # Build all child components of the generic group.
             #print index, s.columns, index % s.columns, index % s.columns == s.columns-1
             colIndex = index % s.columns
@@ -66,4 +66,3 @@ class ItemGroup(Group):
             b._div(comment=self.C.CLASS_ITEM)
         b._div(comment=self.C.CLASS_ROW)
    
-    

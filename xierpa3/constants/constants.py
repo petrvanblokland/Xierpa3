@@ -34,7 +34,7 @@ class Constants(Config):
     # If using the font in this package, safest is to refer to the functional constant names below,
     # instead of making a direct reference to the family name.
     # Of course, taking your own account at //www.webtype.com is even better :)
-    XIERPA3_DEMOFONTS = '//cloud.webtype.com/css/34d3e5fe-7dee-4122-9e87-ea5ee4a90a05.css'
+    XIERPA3_DEMOFONTS = '//cloud.webtype.com/css/7aa22aa1-1709-4b55-b95c-3413d3e5280a.css'
     # Redefine this list for other font packages in inheriting theme classes.
     URL_FONTS = [] #XIERPA3_DEMOFONTS,)
     BODYFAMILY = 'Georgia'

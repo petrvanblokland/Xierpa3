@@ -41,7 +41,7 @@ class FeaturedBase(Column):
         s = self.style
         # articles.items list contains the selected articles in the right order.
         # Omit the current article in the selection.
-        articles = self.adapter.getArticles(start=s.itemStart, count=s.itemCount,
+        articles = self.adapter.getArticles(start=s.start, count=s.count,
             omit=b.getCurrentArticleId())
         self.buildFeatured(b, articles)
    
@@ -65,8 +65,8 @@ class Featured(FeaturedBase):
         showTopic=True, doc_showTopic=u'Boolean flag to show the topic of the article.',
 
         # Selection stuff
-        itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
-        itemCount=3, doc_itemCount=u'Number of selected items to feature.',
+        start=0, doc_start=u'Index of first selected item to feature.',
+        count=3, doc_count=u'Number of selected items to feature.',
         # Container component layout stuff
         width=Perc(30), doc_width=u'Overall width of the component.',
         widthMobile=Perc(100), doc_widthMobile=u'Overall width of the component for mobile.',
@@ -101,7 +101,7 @@ class Featured(FeaturedBase):
         headlineColor=('#444'), doc_headlineColor=u'Color of the article headline.',
         headlineSize=Em(1.8), doc_headlineSize=u'Font size of the article headline.',
         headlineWeight=C.NORMAL, doc_headlineWeight=u'Font weight of the article headline.',
-        headlineLineHeight=Em(2.0), doc_headlineLineHeight=u'Line height of the article headline.',
+        headlineLineHeight=Em(1.2), doc_headlineLineHeight=u'Line height of the article headline.',
         # Topic
         topicColor=Color('#444'), doc_topicColor=u'Color of the article topic.',
         topicSize=Em(0.8), doc_topicSize=u'Font size of the article topic.',
@@ -187,8 +187,8 @@ class FeaturedByImageList(FeaturedBase):
 
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
-        itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
-        itemCount=3, doc_itemCount=u'Number of selected items to feature.',
+        start=0, doc_start=u'Index of first selected item to feature.',
+        count=3, doc_count=u'Number of selected items to feature.',
         # Col block stuff
         colDisplay=C.BLOCK, doc_colDisplay=u'Column display type.',
         colClear=C.BOTH, doc_colClear='Column float clear.',
@@ -262,7 +262,7 @@ class FeaturedByText(FeaturedBase):
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, itemCount=1, itemRandom=True,
+        start=0, count=1, itemRandom=True,
         # Label stuff '#828487'
         label=None, labelSize=Em(2), labelColor='red', labelMarginBottom=Em(0.5),
         labelMarginTop=Em(0.3), labelLineHeight=Em(1.4),
@@ -380,8 +380,8 @@ class FeaturedByDiapText(FeaturedByText):
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, 
-        itemCount=10, 
+        start=0,
+        count=10,
         itemRandom=True, doc_itemRandom=u'Choose random from the selected items.',
         # Label stuff 
         label=None, doc_label=u'Label string.',
@@ -443,8 +443,8 @@ class FeaturedByTextList(FeaturedBase):
 
     BLUEPRINT = BluePrint( 
         # Selection stuff
-        itemStart=0, 
-        itemCount=6, # Index of first and last selected feature for this component
+        start=0,
+        count=6, # Index of first and last selected feature for this component
         # Layout stuff
         colWidth=4, # Default amount of columns for this component
         # Category stuff in h5

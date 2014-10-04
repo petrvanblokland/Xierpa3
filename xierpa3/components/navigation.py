@@ -44,7 +44,8 @@ class MobileNavigation(Navigation):
         # Row
         rowClass=C.CLASS_12COL, doc_rowClass=u'Class of the row.',
         # Item stuff
-        itemCount=20, doc_itemCount=u'Preferred/max amount of pages, suggestion to the adapter.',
+        start=0, doc_start=u'Start of the index of selected pages. Suggestion to the adapter.',
+        count=20, doc_count=u'Preferred/max amount of pages, suggestion to the adapter.',
         menuHeight=Px(44), doc_menuHeight=u'Menu height.',
         menuMargin=0, doc_menuMargin=u'Menu margin.', 
         menuBackgroundColor=Color('#323A47'), doc_menuBackgroundColor=u'Menu background color.',

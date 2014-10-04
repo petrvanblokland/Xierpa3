@@ -12,7 +12,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Perc, Em, Px, Color
-from xierpa3.components import Theme, Page, Container, Component
+from xierpa3.components import Theme, Page, Container, Component, Featured
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -22,8 +22,8 @@ from xierpa3.descriptors.media import Media # Include type of Style that holds @
 # from a component library, where the BluePrint values function as API to adjust the 
 # component instance behavior from the outside.
 
-BODYFAMILY = '"Hermes FB Book", Verdana, sans'
-HEADFAMILY = '"Hermes FB Semibold", Impact, Verdana, sans'
+BODYFAMILY = '"BentonSansRE", Verdana, sans'
+HEADFAMILY = '"Bureau Grot Cond", Impact, Verdana, sans'
 
 BODYSIZE = Px(12)
 BODYLEADING = Em(1.4)
@@ -118,7 +118,8 @@ class SimpleWebSite(Theme):
         # Create the component instances
         side = SideColumn()
         main = MainColumn()
-        container = Container(components=(side, main)) # Create the single page instance, containing the 2 components
+        featured = Featured(count=1)
+        container = Container(components=(featured, side, main)) # Create the single page instance, containing the 2 components
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, 
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, components=container)
@@ -141,4 +142,3 @@ if __name__ == '__main__':
     # Since no rootPath is added to make(), the file export is in ~/Desktop/Xierpa3Examples/SimpleWebSite/   
     path = SimpleWebSite().make()
     webbrowser.open(path)
-   

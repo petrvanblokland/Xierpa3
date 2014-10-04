@@ -44,7 +44,7 @@ class FeaturedBase(Column):
         s = self.style
         # articles.items list contains the selected articles in the right order.
         # Omit the current article in the selection.
-        articles = self.adapter.getArticles(start=s.itemStart, count=s.itemCount,
+        articles = self.adapter.getArticles(start=s.start, count=s.count,
             omit=b.getCurrentArticleId())
         self.buildFeatured(b, articles)
    
@@ -61,8 +61,8 @@ class FeaturedByImage(FeaturedBase):
 
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
-        itemStart=0, doc_itemStart=u'Index of first selected item to feature.',
-        itemCount=3, doc_itemCount=u'Number of selected items to feature.',
+        start=0, doc_start=u'Index of first selected item to feature.',
+        count=3, doc_count=u'Number of selected items to feature.',
         # Container component layout stuff
         width=Perc(30), doc_width=u'Overall width of the component.',
         widthMobile=Perc(100), doc_widthMobile=u'Overall width of the component for mobile.',
@@ -174,8 +174,8 @@ class FeaturedByImageList(FeaturedBase):
 
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
-        itemStart=0, doc_itemStart=u'Index of first selected item to feature.', 
-        itemCount=3, doc_itemCount=u'Number of selected items to feature.',
+        start=0, doc_start=u'Index of first selected item to feature.',
+        count=3, doc_count=u'Number of selected items to feature.',
         # Col block stuff
         colDisplay=C.BLOCK, doc_colDisplay=u'Column display type.',
         colClear=C.BOTH, doc_colClear='Column float clear.',
@@ -249,7 +249,7 @@ class FeaturedByText(FeaturedBase):
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, itemCount=1, itemRandom=True,
+        start=0, count=1, itemRandom=True,
         # Label stuff '#828487'
         label=None, labelSize=Em(2), labelColor='red', labelMarginBottom=Em(0.5),
         labelMarginTop=Em(0.3), labelLineHeight=Em(1.4),
@@ -367,8 +367,8 @@ class FeaturedByDiapText(FeaturedByText):
     BLUEPRINT = BluePrint(FeaturedBase.BLUEPRINT, 
         # Selection stuff
         # Index of first and amount of selected features for this component
-        itemStart=0, 
-        itemCount=10, 
+        start=0,
+        count=10,
         itemRandom=True, doc_itemRandom=u'Choose random from the selected items.',
         # Label stuff 
         label=None, doc_label=u'Label string.',
@@ -430,8 +430,8 @@ class FeaturedByTextList(FeaturedBase):
 
     BLUEPRINT = BluePrint( 
         # Selection stuff
-        itemStart=0, 
-        itemCount=6, # Index of first and last selected feature for this component
+        start=0,
+        count=6, # Index of first and last selected feature for this component
         # Layout stuff
         colWidth=4, # Default amount of columns for this component
         # Category stuff in h5
