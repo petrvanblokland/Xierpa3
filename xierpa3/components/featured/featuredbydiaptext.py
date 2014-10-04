@@ -8,12 +8,10 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    featured.py
+#    featuredbydiaptext.py
 #
-from random import choice
 from featuredbytext import FeaturedByText
-from xierpa3.descriptors.media import Media
-from xierpa3.attributes import Em, Perc, Color, Margin
+from xierpa3.attributes import Em, Color
 from xierpa3.descriptors.blueprint import BluePrint
 
 class FeaturedByDiapText(FeaturedByText):
@@ -33,6 +31,7 @@ class FeaturedByDiapText(FeaturedByText):
     BACKGROUNDCOLOR = Color('#202020')
     LEVELCOLOR = Color('#6294D0')
     NAMECOLOR = Color('#E1E1E1')
+    AUTHORCOLOR = Color('#B2B4B7')
 
     # Inherit from the super class blueprint, and then change some of the parameters.
     BLUEPRINT = BluePrint(FeaturedByText.BLUEPRINT,
@@ -54,8 +53,8 @@ class FeaturedByDiapText(FeaturedByText):
         # Poster
         posterWidth='40%', doc_posterWidth=u'Width of the poster image, to allow text to flow around.',
         # Layout stuff
-        backgroundColor=Color(BACKGROUNDCOLOR), doc_backgroundColor=u'Background color of the component. Default is a dark gray.',
         colWidth=8, # Default amount of columns for this component
+        backgroundColor=Color(BACKGROUNDCOLOR), doc_backgroundColor=u'Background color of the component. Default is a dark gray.',
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         showLevel=True, genericLevel='Generic', # Show generic level if level is omitted in data.
         levelColor=Color(LEVELCOLOR), doc_levelColor=u'Color of the level indicator.',
@@ -78,7 +77,7 @@ class FeaturedByDiapText(FeaturedByText):
         # Author stuff in h6
         authorSize=AUTHORSIZE,
         authorWeight=C.NORMAL,
-        authorColor=Color('#B2B4B7'), # Inheriting from the main color as default
+        authorColor=Color(AUTHORCOLOR), # Inheriting from the main color as default
         authorDisplay=C.BLOCK,
         authorLineHeight=Em(1.4),
         # Summary stuff

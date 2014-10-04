@@ -10,6 +10,13 @@
 #
 #    doingbydesign.py
 #
+#    Kirsten examples
+#
+#    http://www.kirstenlangmuur.com/doingbydesign/nl/
+#    http://www.kirstenlangmuur.com/doingbydesign/nl/articles
+#    http://www.kirstenlangmuur.com/doingbydesign/nl/products
+#    http://www.kirstenlangmuur.com/doingbydesign/nl/course
+#
 #    http://localhost:8013/course/how-to-deal-with-customers
 #
 #    @@@ Temporary out of order. Needs update of some functions. 

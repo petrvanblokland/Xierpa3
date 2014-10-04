@@ -8,11 +8,9 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    featured.py
+#    featuredbase.py
 #
-from random import choice
 from xierpa3.components.column import Column
-from xierpa3.attributes import Em, Color
 
 class FeaturedBase(Column):
     u"""Abstract class that combines functionality for inheriting Featured classes."""

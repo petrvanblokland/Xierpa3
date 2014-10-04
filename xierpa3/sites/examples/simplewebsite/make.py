@@ -12,7 +12,7 @@
 #
 import webbrowser
 from xierpa3.attributes import Perc, Em, Px, Color
-from xierpa3.components import Theme, Page, Container, Component, FeaturedByImage, FeaturedByText, FeaturedByDiapText
+from xierpa3.components import Theme, Page, Container, Article, FeaturedByImage, FeaturedByText, Nothing
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.descriptors.blueprint import BluePrint
@@ -37,73 +37,6 @@ class SimpleSiteAdapter(TextileFileAdapter):
     def getKeyWords(self):
         return self.newData(text=u"""Simple site. Xierpa3. Demo. Articles.""")
 
-class MainColumn(Component):
-    # Get Constants->Config as class variable, so inheriting classes can redefine values.
-    C = Component.C
-    
-    BLUEPRINT = BluePrint(
-        width=Perc(65.4), doc_width=u'Main column width', 
-        float=C.LEFT, 
-        backgroundColor=Color('white'), doc_backgroundColor=u'Main column background color.', 
-        fontSize=Em(2), doc_fontSize=u"""Font size of the body text.""",
-        lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
-        # Mobile
-        fontSizeMobile=Em(3), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
-        lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
-        marginRight=Perc(0), doc_marginRight=u"""Margin right for the last column.""",
-
-    )                
-    def buildBlock(self, b):
-        article = self.adapter.getArticle()
-        if article is not None:
-            s = self.style
-            b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-                width=s.width, backgroundcolor=s.backgroundColor,
-                media=Media(max=self.C.M_MOBILE_MAX, marginright=s.marginRight,
-                  fontsize=s.fontSizeMobile, width=self.C.AUTO, float=self.C.NONE, lineheight=s.lineHeightMobile,
-                )
-            )
-            b.h1()
-            b.text(article.headline)
-            b._h1()
-            b.p()
-            b.text(article.text)
-            b._p()
-            b._div(comment=self.getClassName())
-          
-class SideColumn(Component):
-    # Get Constants->Config as class variable, so inheriting classes can redefine values.
-    C = Component.C
-    
-    BLUEPRINT = BluePrint(
-        width=Perc(30.75), doc_width=u'Side bar width',  # @@@@ Should be 30?
-        float=C.LEFT, doc_float=u'Float left inside row.',
-        backgroundColor=Color('white'), doc_backgroundColor=u'Side column background color.',                  
-        fontSize=Em(1), doc_fontSize=u"""Font size of the body text.""",
-        lineHeight=Em(1.4), doc_lineHeight=u"""Line height (leading) of the body size.""",
-        # Mobile
-        fontSizeMobile=Em(1.5), doc_fontSizeMobile=u"""Font size of the body text for mobile.""",
-        lineHeightMobile=Em(1.4), doc_lineHeightMobile=u"""Line height (leading) of the body size for mobile.""",
-        marginRight=Perc(1.8), doc_marginRight=u"""Margin right for the column.""",
-    )                
-    def buildBlock(self, b):
-        article = self.adapter.getArticle()
-        if article is not None:
-            s = self.style
-            b.div(class_=self.getClassName(), fontsize=s.fontSize, lineheight=s.lineHeight,
-                width=s.width, backgroundcolor=s.backgroundColor, marginright=s.marginRight,
-                media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
-                  fontsize=s.fontSizeMobile, lineheight=s.lineHeightMobile,
-                )
-            )
-            b.h1()
-            b.text(article.headline)
-            b._h1()
-            b.p()
-            b.text(article.text)
-            b._p()
-            b._div(comment=self.getClassName())
-        
 class SimpleWebSite(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
@@ -132,13 +65,11 @@ class SimpleWebSite(Theme):
         articleRoot = TX.module2Path(simplewebsite) + '/files/articles/'
         adapter = SimpleSiteAdapter(articleRoot)
         # Create the component instances
-        side = SideColumn()
-        main = MainColumn()
-        featuredByImage = FeaturedByImage(count=1)
-        featuredByText = FeaturedByText(start=1, count=1)
-        featuredByDiapText = FeaturedByDiapText()
+        article = Nothing() #Article(width=Perc(68))
+        featuredByImage = FeaturedByImage(count=1, width=Perc(30))
+        featuredByText = FeaturedByText(start=1, count=3, width=Perc(30))
         # Create the single page instance, containing the number of components
-        container = Container(components=(featuredByImage, featuredByText, featuredByDiapText, side, main))
+        container = Container(components=(article, featuredByImage, featuredByText))
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, adapter=adapter,
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, components=container)

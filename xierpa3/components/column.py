@@ -71,5 +71,5 @@ class Column(Container):
 
     def buildColumn(self, b):
         u"""Build the component column."""
-        b.error('Classes inheriting from <b>Column</b> should implement <b>self.buildColumn(b)</b>.')
+        b.error('Classes inheriting from *Column* should implement <b>self.buildColumn(b)</b>.')
 

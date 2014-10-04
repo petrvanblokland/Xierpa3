@@ -16,7 +16,7 @@ from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
 
 class Container(Component):
-    u"""The <b>Container</b> is the generic component that holds most other components on a page.
+    u"""The *Container* is the generic component that holds most other components on a page.
     Containers are always two-layered: a container @div@ to position on a page with a row @div@ inside
     that handles the responsive behavior of the content."""
 

@@ -8,9 +8,8 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    featured.py
+#    featuredbytext.py
 #
-from random import choice
 from featuredbase import FeaturedBase
 from xierpa3.descriptors.media import Media
 from xierpa3.attributes import Em, Perc, Color, Margin

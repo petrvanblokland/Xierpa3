@@ -8,7 +8,7 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    featured.py
+#    featuredbyimage.py
 #
 from random import choice
 from featuredbase import FeaturedBase
