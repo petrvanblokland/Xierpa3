@@ -36,7 +36,8 @@ class SimpleWebSite(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The Simple Website Example Page' # Use as title of window.
+    # This title will be combined with the title of the article of a specific page.
+    TITLE = u'Simple Website'
 
     BODYFAMILY = '"BentonSansRE", Verdana, sans'
     HEADFAMILY = '"Bureau Grot Cond", Impact, Verdana, sans'

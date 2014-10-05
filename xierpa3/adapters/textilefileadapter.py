@@ -240,10 +240,8 @@ class TextileFileAdapter(Adapter):
         self._sorted.sort(key = attrgetter('ranking'), reverse = True)
            
     def getCachedArticle(self, **kwargs):
-        u"""Answer the cached articles. If not available yet, read them through <self.getPaths()<b>."""
+        u"""Answer the cached articles. If not available yet, read them through *self.getPaths()*."""
         id = kwargs.get('id')
-        if isinstance(id, list):
-            pass
         data = self._cache.get(id)
         if data is not None and data.modificationTime != os.path.getmtime(data.path):
             # File content is modified after caching the article. Update it from file.
@@ -256,7 +254,7 @@ class TextileFileAdapter(Adapter):
      
     def getArticleByUrl(self, url):
         u"""Answer the article that is matching *url* by one of the values in the @$url@ field.
-        Answer @None@ if not matching article could be found."""
+        Answer @None@ if no matching article could be found."""
         data = None
         fields = self.getFields()
         articles = fields.urls.get(url)

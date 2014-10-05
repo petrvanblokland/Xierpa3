@@ -65,10 +65,10 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         self.docType(self.ID)
         self.html()
         self.head()
-        # TODO: Make title dependent on selected article
-        # title = component.getTitle(path=self.getPath())
-        title = self.getPath()
-        self.title_(title) # Search for the title in the component tree
+        # Title depends on selected article. Otherwise show the path, if not available.
+        path = self.getPath()
+        title = component.getTitle(path=path) or path
+        self.title_(title) # Search for the title in the component  tree
         self.ieExceptions()
         # self.supportMediaQueries() # Very slow, getting this from Google?
         self.setViewPort()

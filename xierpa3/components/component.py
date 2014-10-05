@@ -154,14 +154,18 @@ class Component(object):
         u"""Answer the colClass, based on the numeric *col* value and if the component is the
         last in the parent list of child components."""
         colClass = TX.col2Class(col)
-        if self.parent.isLast(self):
+        if self.parent is None or self.parent.isLast(self):
             colClass = (colClass, self.C.CLASS_LAST)
         return colClass
 
     def getTitle(self, path):
         u"""Answer the page title as defined in the style or answered by @self.adapter@.
         The adapter can use the @path@ argument to fine-tune the title."""
-        return self.style.title or self.adapter.getPageTitle(path=path).text
+        pageTitle = self.style.title
+        articleTitle = self.adapter.getPageTitle(path=path)
+        if pageTitle and articleTitle:
+            return '%s | %s' % (pageTitle, articleTitle)
+        return pageTitle or articleTitle
 
     def getFavIcon(self, builder):
         u"""Call back from the builder to answer the favIcon url. This method can be redefined 
