@@ -11,24 +11,19 @@
 #    make.py
 #
 import webbrowser
+
 from xierpa3.attributes import Perc, Em, Px, Color
-from xierpa3.components import Theme, Page, Container, Article, FeaturedByImage, FeaturedByText, Nothing
+from xierpa3.components import Theme, Page, Container, Article, FeaturedByImage, FeaturedByText,\
+    Logo, Menu, MobileNavigation, Header, Footer
 from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
-from xierpa3.descriptors.blueprint import BluePrint
-from xierpa3.descriptors.media import Media # Include type of Style that holds @media parameters.
-from xierpa3.adapters import TextileFileAdapter
 from xierpa3.toolbox.transformer import TX
+# Get articles from textile files. See http://en.wikipedia.org/wiki/Textile_(markup_language)
+from xierpa3.adapters import TextileFileAdapter
 
 # For sake of the example define two component classes here. Normally these would come 
 # from a component library, where the BluePrint values function as API to adjust the 
 # component instance behavior from the outside.
-
-BODYFAMILY = '"BentonSansRE", Verdana, sans'
-HEADFAMILY = '"Bureau Grot Cond", Impact, Verdana, sans'
-
-BODYSIZE = Px(12)
-BODYLEADING = Em(1.4)
 
 class SimpleSiteAdapter(TextileFileAdapter):
     def getDescription(self):
@@ -43,6 +38,13 @@ class SimpleWebSite(Theme):
 
     TITLE = u'The Simple Website Example Page' # Use as title of window.
 
+    BODYFAMILY = '"BentonSansRE", Verdana, sans'
+    HEADFAMILY = '"Bureau Grot Cond", Impact, Verdana, sans'
+
+    BODYSIZE = Px(12)
+    BODYLEADING = Em(1.4)
+    FOOTERBGCOLOR = Color('#202020')
+
     URL_FONTS = [
         # Note that this package contains the a set of latest featured font, and may be changed in the future.
         # If using the font in this package, safest is to refer to the functional constant names below,
@@ -53,26 +55,42 @@ class SimpleWebSite(Theme):
 
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=BODYFAMILY, fontsize=BODYSIZE, lineheight=BODYLEADING)
-        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
-        s.addStyle('h6', fontfamily=BODYFAMILY)
+        s.addStyle('body', fontfamily=self.BODYFAMILY, fontsize=self.BODYSIZE, lineheight=self.BODYLEADING)
+        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY)
+        s.addStyle('h6', fontfamily=self.BODYFAMILY)
         return s
     
     def baseComponents(self):
         # Create the article adapter
-        # Import current example site, as anchor for the article files.
-        from xierpa3.sites.examples import simplewebsite
-        articleRoot = TX.module2Path(simplewebsite) + '/files/articles/'
+        # Import articles from the doingbydesign site, sharing the article files.
+        from xierpa3.sites import doingbydesign
+        # Root path where to find the article Simplex wiki file for this example page.
+        articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
         adapter = SimpleSiteAdapter(articleRoot)
+
+        # Header
+        logo = Logo()
+        menu = Menu()
+        header = Header(components=(logo,menu), mobileContainerDisplay=self.C.NONE,
+            doc_mobileContainerDisplay=u'Header is not visible for mobile')
+        mobileNavigation = MobileNavigation() # Is container by itself. Change??
+
         # Create the component instances
-        article = Nothing() #Article(width=Perc(68))
+        article = Article(width=Perc(68))
         featuredByImage = FeaturedByImage(count=1, width=Perc(30))
         featuredByText = FeaturedByText(start=1, count=3, width=Perc(30))
         # Create the single page instance, containing the number of components
-        container = Container(components=(article, featuredByImage, featuredByText))
+        mainHome = Container(components=(article, featuredByImage, featuredByText))
+
+        # Footer
+        footer = Footer(components=(menu,), containerBackgroundColor=self.FOOTERBGCOLOR)
+
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, adapter=adapter,
-            fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS, components=container)
+            #components=(mobileNavigation, header, mainHome, footer),
+            #components=(header, mainHome, footer),
+            components=Container(header),
+            fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS)
         return [homePage]
     
     def make(self, root=None):

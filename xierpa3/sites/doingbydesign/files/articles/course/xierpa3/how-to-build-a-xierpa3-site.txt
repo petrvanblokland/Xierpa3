@@ -9,8 +9,10 @@ $featured example-hello-world, how-to-build-a-simple-kirby-site, programming-pyt
 
 h2. Introduction
 
-p(lead). What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the related courses.</lead>
-<p>Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different. Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.
+p(lead). What is Xierpa? Why do you need it? What will it solve for you? These questions will be answered in this blog and with more detail in the other related.
+
+Xierpa is a toolbox to build websites. You may be familiar with coding in HTML and CSS, but this is different.
+Xierpa will write most of that code for you. All you need to do is design the big picture, define what the generic behavior of the website is, program that on a high level – using the components that are available in the Xierpa library, and it will convert that into code. Adapted to the intended platform of the website. Stay close for our first walk-through.
 
 h1. Finding your way
 
@@ -30,6 +32,7 @@ Building a new blog website thus starts with creating a new class the inherits v
 These lines of code import the *Theme* class from the library and makes it available for the code in this file. The second line defines a new class, a type of object, the inherits from the *Theme* in the library. This means that, unless we redefine something, our new *Blog* class behaves in exactly the same way as the original *Theme* class does. A lot of hidden functionality is hidden inside, and in order to know when we can change, we need to understand what it already can do. But we can ignore that for now. The principle in Xierpa3 is that every component can be used “out of the box”: without adjustments they already implement generic useful behavior and styling. And since a *Theme* is also a component, that also applies to the website as whole.
 
 h2. Python patterns
+
 h3. Special topic: Learning to program is learning to think in patterns. In models. In algorithms.
 
 h2. Background of Xierpa

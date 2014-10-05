@@ -176,6 +176,7 @@ class Constants(Config):
     PARAM_DOCUMENTATION = 'documentation'
     PARAM_FORCE = 'force' # Force the recalculation of the SASS/CSS
     PARAM_AJAX = 'ajax'
+    PARAM_DEBUG = 'debug'
 
     # Tag
     TAG_BLOCK = 'div' # Default tag for blocks

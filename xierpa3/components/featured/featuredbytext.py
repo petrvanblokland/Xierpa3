@@ -25,6 +25,7 @@ class FeaturedByText(FeaturedBase):
     C = FeaturedBase.C
 
     LEVELSIZE = Em(0.9)
+    LEVELCOLOR = Color('#6294D0')
     AUTHORSIZE = Em(1.2)
     CATEGORYSIZE = Em(1.4)
     AUTHORCOLOR = Color('#828487')
@@ -52,13 +53,14 @@ class FeaturedByText(FeaturedBase):
         labelMarginTop=Em(0.3),
         labelLineHeight=Em(1.4),
         # Poster, select by @showPoster
-        posterWidth='40%',
+        posterWidth=Perc(40), doc_posterWidth=u'Width of the poster thumnail.',
+        posterAlign=C.LEFT, doc_posterAlign=u'Alignment of the poster image, C.LEFT or C.RIGHT. Default is left.',
         # Layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component',
         backgroundColor=None, doc_backgroundColor=u'Background color of the whole component. Default is to inherit.',
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         genericLevel='Generic', # Show generic level if level is omitted in data.
-        levelColor='#6294D0',
+        levelColor=LEVELCOLOR,
         levelSize=LEVELSIZE,
         levelLineHeight=Em(1.4),
         levelWeight=C.BOLD,
@@ -66,10 +68,15 @@ class FeaturedByText(FeaturedBase):
         # Category stuff in h5
         categoryColor=CATEGORYCOLOR,
         categorySize=CATEGORYSIZE,
-        categoryLineHeight=Em(1.2), categoryWeight=C.BOLD,
+        categoryLineHeight=Em(1.2),
+        categoryWeight=C.BOLD,
         # Name stuff in h2
-        nameSize=Em(3.2), nameLineHeight=Em(1), nameWeight=None, # Default inheriting from the main weight.
-        nameColor=NAMECOLOR, nameMarginBottom=Em(0.2), nameMarginTop=0,
+        nameSize=Em(3.2),
+        nameLineHeight=Em(1),
+        nameWeight=None, # Default inheriting from the main weight.
+        nameColor=NAMECOLOR,
+        nameMarginBottom=Em(0.2),
+        nameMarginTop=0,
         nameDisplay=C.BLOCK,
         # Author stuff in h6
         authorSize=AUTHORSIZE,
@@ -129,7 +136,7 @@ class FeaturedByText(FeaturedBase):
         b._a()
         if s.showPoster and article.poster:
             b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id), class_=self.C.CLASS_NAME)
-            b.img(width=s.posterWidth, src=article.poster, float=self.C.LEFT, padding=0,
+            b.img(width=s.posterWidth, src=article.poster, float=s.posterAlign, padding=0,
                 margin=Margin(Em(0.5), Em(0.5), 0, 0),
                 media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE)
             )
@@ -164,3 +171,5 @@ class FeaturedByText(FeaturedBase):
             else:
                 self.buildElement(b, article.summary)
             b._div()
+        if b.e.form[self.C.PARAM_DEBUG]:
+            b.text(`article`)
