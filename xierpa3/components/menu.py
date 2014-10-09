@@ -42,7 +42,7 @@ class Menu(Component):
     )
     def buildBlock(self, b):
         u"""Build the menu from the articles in the menu tags of the @home.xml@ document."""
-        data = self.adapter.getMenu(id='home') # Main menu is defined on the home page.
+        data = self.adapter.getMenu(id=self.C.ID_HOME) # Main menu is defined on the home page.
         if data.items:
             s = self.style
             b.block(self)

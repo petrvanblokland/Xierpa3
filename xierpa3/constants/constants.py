@@ -90,7 +90,7 @@ class Constants(Config):
     ID_NAVIGATIONWRAP = 'navigation-wrap'
     ID_MOBILENAVWRAP = 'nav-wrap'
     ID_MENUICON = 'menu-icon'
-    ID_HOME = 'home'
+    ID_HOME = 'index' # Default article id, typically connected to textile file index.txt
 
     DEFAULT_ARTICLEID = 'home' # If nothing is seleced in URL.
 

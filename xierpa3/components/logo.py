@@ -25,6 +25,11 @@ class Logo(Component):
         colWidth=4, doc_colWidth=u'Default amount of columns for this component.', 
         maxWidth=Perc(100), doc_maxWidth=u'Maximal width of the component',
         minWidth=Perc(100), doc_minWidth=u'Minimal width of the component',
+        # Logo data can be set as through text/style attribute or through the adapter.
+        # The optional url creates a link from the logo, e.g. to the home page.
+        text=None, doc_text=u'Optional text of the logo. Otherwise query the adapter.',
+        src=None, doc_src=u'Optional src for logo image. Otherwise query the adapter.',
+        url=None, doc_url=u'Optional url for logo link. Otherwise query the adapter.',
         # Logo stuff
         width=280, doc_logoWidth=u'Logo width',
         height=C.AUTO, doc_height=u'Logo height', 
@@ -47,12 +52,21 @@ class Logo(Component):
     def buildBlock(self, b):
         s = self.style
         colClass = self.getColClass(s.colWidth)
-        b.block(self)
         b.div(class_=colClass, float=s.logoFloat, marginleft=s.marginLeft,
             marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
+        # @text: text to show instead of the logo image.
         # @url: url of href link. If None no link is made
         # @src: url of the image source.
-        data = self.adapter.getLogo() 
+        data = self.adapter.getLogo()
+        if s.text:
+            data.text = s.text
+            data.src = None
+        if s.src:
+            data.src = s.src
+            data.text = None
+        if s.url:
+            data.url = s.url
+
         if data.url:
             b.a(href=data.url)
         if data.src:
@@ -67,4 +81,3 @@ class Logo(Component):
         if data.url:
             b._a()
         b._div(comment=colClass)
-        b._block(self)

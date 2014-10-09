@@ -8,29 +8,67 @@
 #
 # -----------------------------------------------------------------------------
 #
-#    doingbydesign.py
+#   doingbydesign.py
 #
-#    Kirsten examples
+#   Kirsten examples
 #
-#    http://www.kirstenlangmuur.com/doingbydesign/nl/
-#    http://www.kirstenlangmuur.com/doingbydesign/nl/articles
-#    http://www.kirstenlangmuur.com/doingbydesign/nl/products
-#    http://www.kirstenlangmuur.com/doingbydesign/nl/course
+#   http://www.kirstenlangmuur.com/doingbydesign/nl/
+#   http://www.kirstenlangmuur.com/doingbydesign/nl/articles
+#   http://www.kirstenlangmuur.com/doingbydesign/nl/products
+#   http://www.kirstenlangmuur.com/doingbydesign/nl/course
 #
-#    http://localhost:8013/course/how-to-deal-with-customers
+#   http://localhost:8013/course/how-to-deal-with-customers
 #
-#    @@@ Temporary out of order. Needs update of some functions. 
-#    @@@ Wait for github commit.
+#   @@@ Temporary out of order. Needs update of some functions.
+#   @@@ Wait for github commit.
+#
+#   The typical structure of a Xierpa3 site is:
+#   body
+#       div.page
+#           div.top
+#               div.row
+#                   div.fiveCol          <-- Display is none for mobile
+#                       Logo content
+#                   div.(sevenCol last)  <-- Display is none for mobile
+#                       Menu content
+#                   div.(twelveCol last) <-- Display is none for desktop
+#                       Mobile navigation content
+#
+#           div.featured
+#               div.row
+#                   div.eightCol
+#                       Feature content
+#                   div.(fourCol last)
+#                       Feature content
+#           div.section
+#               div.row
+#                   div.sixCol
+#                       Feature content
+#                   div.(sixCol last)
+#                       Feature content
+#           div.mainContent
+#               div.row
+#                   div.eightCol
+#                       Article content
+#                   div.(fourCol last)
+#                       Article sidebar content
+#           div.footer
+#               div.row
+#                   div.eightCol
+#                       Menu content
+#                   div.(fourCol last)
+#                       Contact content
+#
+#   The xxCol widths always add up to 12, if they are visible at the same time.
+#   The widths are set by the individual components.
+#
 #
 from xierpa3.toolbox.transformer import TX
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
-from xierpa3.components import Logo, Menu, SocialMedia,\
-    Article, ArticleSideBar, \
-    MobileNavigation, Container, Header, Footer, Page, Documentation, \
-    ItemGroup, FeaturedByImage
-    #FeaturedByText, FeaturedByTextList, FeaturedByDiapText, FeaturedByImage\
+from xierpa3.components import Page, Container, Logo, MobileNavigation, Article, Menu
+from xierpa3.descriptors.blueprint import BluePrint
 
 # Adapter
 
@@ -41,154 +79,75 @@ class DbDAdapter(TextileFileAdapter):
     def getKeyWords(self):
         return self.newData(text=u"""Doing, design, design process, programming, design education""")
 
+# Components
+
+class DbDMobileNavigation(MobileNavigation):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
+class Top(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
+class Featured(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
+class Section(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
+class MainContent(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
+class Footer(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
+
 class DoingByDesign(Shop):
-    u"""The <b>Shop</b> class implements the standard example shop with content based on files."""
-    # Get Constants->Config as class variable, so inheriting classes can redefine values.
-    C = Shop.C 
-    
+    u"""The DoingByDesign class implements extended file (textile) based blog site.
+    It is identical to the site that is on doingbydesign.com."""
+
+    C = Shop.C
+
     TITLE = 'Doing by Design'
-    SUBTITLE = 'Notes on design and education.'
+    SUBTITLE = 'Learn by doing your own design'
 
-    # LOGO = 'http://%s/%s/logo.png' % (HOST, IMAGES_PATH)
-    # LOGO = 'http://data.doingbydesign.com.s3.amazonaws.com/_images/logo.png'
-    LOGO = 'Doing by Design'
-    
-    TEMPLATE_COURSES = 'courses'
-    TEMPLATE_CATEGORY = 'category'
-    TEMPLATE_PRODUCTS = 'products'
-    
-    URL_BACKGROUNDIMAGE = '//data.doingbydesign.com.s3.amazonaws.com/_images/articlebackground.png'
-    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'js/toggle.js']
+    URL_JAVASCRIPT = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'] #, 'js/toggle.js']
 
-    # TODO: Make BluePrint instance here.
-    
-    # Load @fontface fonts for this example from www.webtype.com
-    CSS_BODYFAMILY = '"Hermes FB Book"'
-    CSS_HEADFAMILY = '"Hermes FB Semibold"'
-   
-    CSS_BODYSIZE = 13 # Fixed anchor for relative Em-based body sizes
-    CSS_BODYLEADING = Em(1.4)
-    CSS_BGCOLOR = Color('#FFFFFF')
-    CSS_FOOTERBGCOLOR = Color('#E1E1E1')
-    CSS_ALINKCOLOR = Color('#888888')
-    CSS_AVISITEDCOLOR = '+60%'
-    CSS_AHOVERCOLOR = '-60%'
-    CSS_ACTIVECOLOR = '+60%'
-    
-    MAXWIDTH = 1140
-    MINWIDTH = 755
-    
     def baseStyle(self):
         s = self.newStyle() # Answer root style without selector
-        s.addStyle('body', fontfamily=self.CSS_BODYFAMILY, fontsize=self.CSS_BODYSIZE,
-            backgroundcolor=self.CSS_BGCOLOR, lineheight=self.CSS_BODYLEADING)
-        s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.CSS_HEADFAMILY)
-        s.addStyle('h6', fontfamily=self.CSS_BODYFAMILY)
-        s.addStyle('div', float=self.C.LEFT, width=Perc(100))
-        s.addStyle('a, a:link', color=self.CSS_ALINKCOLOR)
-        s.addStyle('a:visited', color=self.CSS_AVISITEDCOLOR)
-        s.addStyle('a:hover', color=self.CSS_AHOVERCOLOR)
-        s.addStyle('a:active', color=self.CSS_ACTIVECOLOR)
-        s.addStyle('div.' + self.C.CLASS_1COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 / 12))
-        s.addStyle('div.' + self.C.CLASS_2COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 * 2 / 12))
-        s.addStyle('div.' + self.C.CLASS_4COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(30)) #(98 * 4 / 12))
-        s.addStyle('div.' + self.C.CLASS_8COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(98 * 8 / 12))
-        s.addStyle('div.' + self.C.CLASS_12COL, margin=Em(0.5), float=self.C.LEFT, width=Perc(100))
-        s.addStyle('div.' + self.C.CLASS_LAST, marginright=Em(0))
-        s.addStyle('ul', display=self.C.BLOCK)
-        s.addStyle('li', display=self.C.BLOCK)
-        s.addStyle('ol', liststyletype=self.C.DECIMAL)
         return s
 
     def baseComponents(self):        
-        logo = Logo()
-        menu = Menu()
-        socialmedia = SocialMedia(twitterAccount='doingbydesign', facebookAccount='doingbydesign') 
-
-        header = Header(components=(logo,menu), mobileContainerDisplay=self.C.NONE,
-            doc_mobileContainerDisplay=u'Header is not visible for mobile')
-        mobileNavigation = MobileNavigation() # Is container by itself. Change??
-        # Articles featured by image
-        #featuredByImage = FeaturedByImage() # Featured article on a page. Main photo+link
-        #featuredByImage100 = FeaturedByImage(colWidth=9) # Featured article as group item
-        #featuredByImageList = FeaturedByImageList() # Featured article on a page. List of related links
-        # Articles featured by summary text
-        #featuredSideText = FeaturedByDiapText(colWidth=4, itemStart=1, label='Featured course')
-        #featuredByText = FeaturedByText(itemStart=2, showPoster=False)
-        #featuredByTextList = FeaturedByTextList(itemStart=5)
-        #featuredSideText = Featured(colWidth=4, itemStart=1, label='Featured course')
-        #featuredByText = Featured(itemStart=2, showPoster=False)
-        #featuredByTextList = Featured(itemStart=5)
-        featuredSideText = featuredByImage = featuredByText = featuredByTextList = featuredByImage100 = FeaturedByImage()
-        # Featured black container
-        BGCOLOR = Color('#323A47')
-        featuredImages = FeaturedByImage(class_='featuredImages',
-            components=(featuredByImage, featuredSideText),
-            containerBackgroundColor=BGCOLOR)
-        # Featured text container
-        BGCOLOR = Color('#E8E8E8')
-        featuredTexts = FeaturedByImage(class_='featuredTexts',
-            components=(featuredByText, featuredByTextList),
-            containerBackgroundColor=BGCOLOR)
-        # Footer group
-        footer = Footer(components=(menu,), containerBackgroundColor=self.CSS_FOOTERBGCOLOR)
-
-        # Documentation
-        # The documentation class knows how to collect methods and their attributes
-        # from components, adapters and builders and build them in an automated
-        # documentation site.
-        documentation = Documentation()
-        
-        # Article
-        #featuredByTextList = FeaturedByTextList() # Default start at featured index 0
-        featuredByTextList = FeaturedByImage() # Default start at featured index 0
-        article = Container(class_=self.C.CLASS_ARTICLE,
-            containerBackgroundImage=self.URL_BACKGROUNDIMAGE, containerBackgroundRepeat=self.C.REPEAT, 
-            components=(Article(), socialmedia, ArticleSideBar(), featuredByTextList))
-    
-        # Floating items
-        thumbnails = ItemGroup(components=(featuredByImage100,))
-
         # Import current example site, as anchor for the article files.
         from xierpa3.sites import doingbydesign
         # Root path where to find the article Simples wiki file for this example page.
-        articleRoot = TX.module2Path(doingbydesign) + '/files/articles/' 
+        articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
         adapter = DbDAdapter(articleRoot) # Preferred adapter class for articles in this site.
-       
-        #homePage = Page(name=self.C.TEMPLATE_INDEX,
-        #    components=(mobileNavigation, header, featuredImages, featuredTexts, footer),
-        #    css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-        #    favicon=self.C.URL_FAVICON, adapter=adapter)
+
+        logo = Logo(text='Doing by Design')
+        menu = Menu()
+        mobileNavigation = DbDMobileNavigation()
+        article = Article()
+
+        # Containers
+        top = Top(components=(logo, menu))
+        featured = Featured()
+        section = Section()
+        mainContent = MainContent(components=article)
+        footer = Footer(components=(menu))
 
         homePage = Page(name=self.C.TEMPLATE_INDEX,
-            components=featuredSideText,
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
+            components=(mobileNavigation, top),# featured, section, mainContent, footer),
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT,
             favicon=self.C.URL_FAVICON, adapter=adapter)
     
-        articlePage = Page(name=self.C.TEMPLATE_ARTICLE,
-            components=(mobileNavigation, header, article, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-            favicon=self.C.URL_FAVICON, adapter=adapter)
-
-        thumbnailPage = Page(name=self.TEMPLATE_COURSES,
-            components=(mobileNavigation, header, featuredImages, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-            favicon=self.C.URL_FAVICON, adapter=adapter)
-
-        productsPage = Page(name=self.TEMPLATE_PRODUCTS,
-            components=(mobileNavigation, header, thumbnails, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-            favicon=self.C.URL_FAVICON, adapter=adapter)
-
-        categoryPage = Page(name=self.TEMPLATE_CATEGORY,
-            components=(mobileNavigation, header, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-            favicon=self.C.URL_FAVICON, adapter=adapter)
-
-        # Automatic documentation about Xierpa3
-        documentationPage = Page(name=self.C.TEMPLATE_DOCUMENTATION,
-            components=(mobileNavigation, header, documentation, footer),
-            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT, 
-            favicon=self.C.URL_FAVICON, adapter=adapter)
-
-        return [homePage, articlePage, productsPage, thumbnailPage, categoryPage, documentationPage]
+        return [homePage]

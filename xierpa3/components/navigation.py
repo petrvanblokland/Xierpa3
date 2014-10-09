@@ -67,8 +67,7 @@ class MobileNavigation(Navigation):
     )                      
     def buildBlock(self, b):
         s = self.style
-        data = self.adapter.getMenu(id='home') # Get data for home page from adapter.
-        b.block(self) # div.mobileNavigation
+        data = self.adapter.getMenu(id=self.C.ID_HOME) # Get data for home page from adapter.
         b.div(class_=(self.C.CLASS_CONTAINER, self.className), display=s.display,
             backgroundcolor=s.backgroundColor, width=s.width,
             marginleft=s.marginLeft, marginright=s.marginRight,
@@ -97,7 +96,7 @@ class MobileNavigation(Navigation):
                 display=self.C.NONE, clear=self.C.BOTH, position=self.C.ABSOLUTE, top=s.menuHeight-5, 
                 width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.C.NONE, left=0,
                 textalign=self.C.CENTER)
-            homeArticle = self.adapter.getArticle(id='home')
+            homeArticle = self.adapter.getArticle(id=self.C.ID_HOME)
             for menuId in TX.commaSpaceString2WordList(homeArticle.menu):
                 menuArticle = self.adapter.getArticle(id=menuId)
                 url = menuArticle.url
@@ -119,4 +118,3 @@ class MobileNavigation(Navigation):
 
         b._snippet(self) # In case PHP saved this block as snippet.
         b._div() # Final comment is automatic from component.selector
-        b._block(self) # div.mobileNavigation
