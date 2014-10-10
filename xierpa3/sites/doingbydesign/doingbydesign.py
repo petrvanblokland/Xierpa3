@@ -69,6 +69,7 @@ from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
 from xierpa3.components import Page, Container, Logo, MobileNavigation, Article, Menu
 from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.descriptors.media import Media
 
 # Adapter
 
@@ -133,13 +134,13 @@ class DoingByDesign(Shop):
         articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
         adapter = DbDAdapter(articleRoot) # Preferred adapter class for articles in this site.
 
-        logo = Logo(text='Doing by Design')
+        logo = Logo(text='Doing by Design', fontFamily='Impact', color=Color('#888'), fontSize=Em(1.8))
         menu = Menu()
         mobileNavigation = DbDMobileNavigation()
         article = Article()
 
         # Containers
-        top = Top(components=(logo, menu))
+        top = Top(components=(logo, menu), backgroundColor=Color('yellow'), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
         featured = Featured()
         section = Section()
         mainContent = MainContent(components=article)

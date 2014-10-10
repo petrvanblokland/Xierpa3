@@ -32,27 +32,27 @@ class Logo(Component):
         url=None, doc_url=u'Optional url for logo link. Otherwise query the adapter.',
         # Logo stuff
         width=280, doc_logoWidth=u'Logo width',
+        backgroundColor=None, doc_backgroundColor=u'Background color of the logo component.',
         height=C.AUTO, doc_height=u'Logo height', 
         marginTop=0, doc_marginTop=u'Logo margin top', 
         marginLeft=0, doc_marginLeft=u'Logo margin left',
         marginRight=Perc(1.8), doc_marginRight=u'Logo margin right', 
-        fontSize=Em(2.9), doc_fontSize=u'Logo font size',
-        marginBottom=0, doc_marginBottom=u'Logo margin bottom', 
+        marginBottom=0, doc_marginBottom=u'Logo margin bottom',
         logoFloat=C.LEFT, doc_logoFloat=u'Logo div float',
-        # H2
-        h2FontFamily=C.LOGOFAMILY, doc_h2FontFamily=u'h2 font family', 
-        h2Size=Em(2.8), doc_h2Size=u'h2 size',
-        h2LineHeight=Em(1.4), doc_h2LineHeight=u'h2 leading',
-        h2Weight=C.BOLD, doc_h2Weight=u'h2 weight',
-        h2Style=None, doc_h2Style=u'h2 style',
-        h2PaddingTop=Em(0.2), doc_h2PaddingTop=u'h2 padding top',
-        h2PaddingBottom=Em(0.2), doc_h2PaddingBottom=u'h2 padding bottom',
-        h2Color=Color('#323A47'), doc_h2Color=u'h2 color',
+        # H2 heading, in case style.text is defined and not style.src (for an image)
+        fontFamily=C.LOGOFAMILY, doc_fontFamily=u'h2 font family',
+        fontSize=Em(2.9), doc_fontSize=u'h2 Logo font size',
+        lineHeight=Em(1.4), doc_lineHeight=u'h2 leading',
+        fontWeight=C.BOLD, doc_fontWeight=u'h2 font weight',
+        fontStyle=None, doc_fontStyle=u'h2 font style',
+        paddingTop=Em(0.2), doc_paddingTop=u'h2 padding top',
+        paddingBottom=Em(0.2), doc_paddingBottom=u'h2 padding bottom',
+        color=Color('#323A47'), doc_color=u'h2 color',
     )
     def buildBlock(self, b):
         s = self.style
         colClass = self.getColClass(s.colWidth)
-        b.div(class_=colClass, float=s.logoFloat, marginleft=s.marginLeft,
+        b.div(class_=colClass, float=s.logoFloat, marginleft=s.marginLeft, backgroundcolor=s.backgroundColor,
             marginright=s.marginRight, margintop=s.marginTop, marginbottom=s.marginBottom)
         # @text: text to show instead of the logo image.
         # @url: url of href link. If None no link is made
@@ -72,9 +72,9 @@ class Logo(Component):
         if data.src:
             b.img(src=data.src, width=s.width, maxwidth=s.maxWidth, height=s.height)
         else:
-            b.h2(fontsize=s.h2Size, lineheight=s.h2LineHeight, 
-                 fontweight=s.h2Weight, fontstyle=s.h2Style, color=s.h2Color,
-                 paddingtop=s.h2PaddingTop, paddingbottom=s.h2PaddingBottom,
+            b.h2(fontsize=s.fontSize, lineheight=s.lineHeight, fontfamily=s.fontFamily,
+                 fontWeight=s.h2Weight, fontStyle=s.h2Style, color=s.color,
+                 paddingtop=s.paddingTop, paddingbottom=s.paddingBottom,
             )
             b.text(data.text)
             b._h2()
