@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -39,7 +39,7 @@ class FeaturedByImageList(FeaturedBase):
         colMarginBottom=Em(0.5), doc_colMarginBottom='Column margin bottom.',
         colColor=None, doc_colColor=u'Column color',
         colMarginRight=Perc(1.8), doc_colMarginLeft=u'Column margin left.',
-        colMarginLeft=0, doc_colMarginLeft=u'Column margin left.',
+        colMarginLeft=0,
         colFloat=C.LEFT,
         colMinHeight=1,
         # Layout stuff
