@@ -45,7 +45,6 @@ class Menu(Component):
         data = self.adapter.getMenu(id=self.C.ID_HOME) # Main menu is defined on the home page.
         if data.items:
             s = self.style
-            b.block(self)
             colClass = self.getColClass(s.colWidth)
             b.div(class_=colClass)
             b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
@@ -65,4 +64,3 @@ class Menu(Component):
             b._ol()
             b._nav()
             b._div(comment=colClass)
-            b._block(self)

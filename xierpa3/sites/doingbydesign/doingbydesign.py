@@ -19,6 +19,9 @@
 #
 #   http://localhost:8013/course/how-to-deal-with-customers
 #
+#   Newspaper responsive example
+#   http://www.liquidreplica.com/newspapers/
+#
 #   @@@ Temporary out of order. Needs update of some functions.
 #   @@@ Wait for github commit.
 #
