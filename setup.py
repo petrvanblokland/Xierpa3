@@ -1,3 +1,7 @@
+'''
+See: https://packaging.python.org/en/latest/distributing.html
+'''
+
 from setuptools import setup, find_packages  # Always prefer setuptools over distutils
 from codecs import open  # To use a consistent encoding
 from os import path
@@ -23,8 +27,8 @@ setup(
     url='https://github.com/petrvanblokland/xierpa3',
 
     # Author details
-    author='The Python Packaging Authority',
-    author_email='pypa-dev@googlegroups.com',
+    author='Petr van Blokland',
+    author_email='buro@petr.com',
 
     # Choose your license
     license='MIT',
@@ -66,7 +70,7 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=['twisted'],
+    install_requires=['twisted', 'boto', 'textile'],
 
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:
