@@ -77,11 +77,11 @@ class SimpleWebSite(Theme):
         mobileNavigation = MobileNavigation() # Is container by itself. Change??
 
         # Create the component instances
-        article = Article(width=Perc(68))
+        #article = Article(width=Perc(68))
         featuredByImage = FeaturedByImage(count=1, width=Perc(30))
-        featuredByText = FeaturedByText(start=1, count=3, width=Perc(30))
+        #featuredByText = FeaturedByText(start=1, count=3, width=Perc(30))
         # Create the single page instance, containing the number of components
-        mainHome = Container(components=(article, featuredByImage, featuredByText))
+        #mainHome = Container(components=(article, featuredByImage, featuredByText))
 
         # Footer
         footer = Footer(components=(menu,), containerBackgroundColor=self.FOOTERBGCOLOR)
@@ -90,7 +90,7 @@ class SimpleWebSite(Theme):
         homePage = Page(class_=self.C.TEMPLATE_INDEX, name=self.C.TEMPLATE_INDEX, adapter=adapter,
             #components=(mobileNavigation, header, mainHome, footer),
             #components=(header, mainHome, footer),
-            components=Container(header),
+            components=featuredByImage,
             fonts=self.URL_FONTS, title=self.TITLE, css=self.C.URL_CSS)
         return [homePage]
     

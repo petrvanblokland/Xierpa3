@@ -70,7 +70,8 @@ from xierpa3.toolbox.transformer import TX
 from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
-from xierpa3.components import Page, Container, Logo, MobileNavigation, Article, Menu
+from xierpa3.components import Page, Container, Logo, MobileNavigation, Article, Menu, FeaturedByImage,\
+    FeaturedByImageList
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media
 
@@ -91,11 +92,6 @@ class DbDMobileNavigation(MobileNavigation):
     )
 
 class Top(Container):
-    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
-        # Layout alternatives
-    )
-
-class Featured(Container):
     BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
         # Layout alternatives
     )
@@ -142,16 +138,22 @@ class DoingByDesign(Shop):
         mobileNavigation = DbDMobileNavigation()
         article = Article()
 
+        featuredByImage = FeaturedByImage(showTitle=False, showHeadline=False, showTopic=False)
+
         # Containers
         top = Top(components=(logo, menu), backgroundColor=Color('yellow'), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
-        featured = Featured()
-        section = Section()
+        section = Section(components=(featuredByImage,))
         mainContent = MainContent(components=article)
         footer = Footer(components=(menu))
 
         homePage = Page(name=self.C.TEMPLATE_INDEX,
-            components=(mobileNavigation, top),# featured, section, mainContent, footer),
+            components=(mobileNavigation, top, section, mainContent, footer),
             css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT,
             favicon=self.C.URL_FAVICON, adapter=adapter)
-    
-        return [homePage]
+
+        articlePage = Page(name=self.C.TEMPLATE_ARTICLE,
+            comoonents=(mobileNavigation, top, article, footer),
+            css=self.C.URL_CSS, fonts=self.C.URL_FONTS, js=self.URL_JAVASCRIPT,
+            favicon=self.C.URL_FAVICON, adapter=adapter)
+
+        return [homePage, articlePage]

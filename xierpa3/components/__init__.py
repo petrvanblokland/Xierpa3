@@ -31,6 +31,7 @@ from documentation import Documentation
 from nothing import Nothing # Place holder component doing nothing. Can be used for debugging.
 # Featured components
 from featured.featuredbyimage import FeaturedByImage
+from featured.featuredbyimagelist import FeaturedByImageList
 from featured.featuredbytext import FeaturedByText
 from featured.featuredbydiaptext import FeaturedByDiapText
 

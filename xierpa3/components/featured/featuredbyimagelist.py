@@ -90,7 +90,7 @@ class FeaturedByImageList(FeaturedBase):
                 b.text(article.name)
                 b._h4()
             if s.showTopic and article.topic is not None: # Elements must be defined in global style
-                self.buildElement(b, article.topic)
+                b.text(article.topic)
             b._a()
             if b.e.form[self.C.PARAM_DEBUG]:
                 b.text(`article`)
