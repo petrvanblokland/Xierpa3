@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -51,9 +51,9 @@ class Environment(State):
 
     def initializeForm(self):
         u"""
-        
+
         The <code>initializeForm</code> method initializes the <code>self.form</code> instance of <code>FormDict</code>.
-        
+
         """
         self.form = FormDict()
         self.handleGetPostParams()
@@ -74,9 +74,9 @@ class Environment(State):
         <p>The <code>setParams</code> method sets the <code>self.params</code> of the of environment to <attr>
         params</attr>. This method can be redefined to get the parameters string from the <attr>params</attr> tuple.
         The tuple is based on from the standard definition in the application module.</p>
-        
+
         <p><code>urlpatterns = patterns('', (r'^(.*)$', build))</code></p>
-        
+
         <p>that generates a tuple with a single parameter set.</p>
         """
         if params:
@@ -100,11 +100,12 @@ class Environment(State):
             for value in args[key]:
                 if not key.startswith(self.PARAM_UPLOADPREFIX):
                     value = value.decode('utf-8')
-                uvalues.append(value)
+                if not self.isCodeInjection(value):
+                    uvalues.append(value)
             self.form[key] = uvalues
 
         """
-        # If there is any posted file content, then also put this in form. 
+        # If there is any posted file content, then also put this in form.
         # It's the application responsibility to cover any possible name clashes.
         # Otherwise an error will be raise.
         for key, item in self.request.FILES.items():
@@ -112,9 +113,21 @@ class Environment(State):
             self.form[key] = item
         """
 
+    def isCodeInjection(self, value):
+        u"""
+        To protect from attempted code injection, filter HTML tags and quotes.
+        Also maybe single quotes, parentheses and such?
+        """
+        if value.startswith('<'):
+            return True
+        elif value.startswith('"'):
+            return True
+
+        return False
+
     def handleUrlParams(self):
         """
-        The <code>handleQueryStringParams</code> method gets the parameters from the path.
+        The <code>handleUrlParams</code> method gets the parameters from the path.
         """
         try:
             path = self.request.path
@@ -133,7 +146,7 @@ class Environment(State):
     def getRequestValue(self, key):
         u"""
         The <code>getRequestValue</code> method answers the <code>self.request</code> value of <attr>key</attr>.
-        
+
         """
         return self.request.received_headers[key]
 
@@ -170,20 +183,20 @@ class Environment(State):
     def getFullPath(self):
         u"""
         The <code>getFullPath</code> method answers the plain full <attr>path</attr> as it appears in the browser.
-        
+
         """
         return self[self.PATH] or '/'
 
     def getServer(self):
         u"""
         The <code>getServer</code> method answers the name of the server domain <code>self[self.HTTP_HOST]</code>
-        
+
         """
         return self[self.HTTP_HOST]
 
     def getServerClient(self):
         u"""
-        
+
         The <code>getServerClient</code> method answers the <code>BaseCient</code> instance that is running the server
         of <code>self.request</code>. Note that the path to this client is depending on the (current version of) Twisted
         Matrix.
@@ -197,7 +210,7 @@ class Environment(State):
         u"""
         The <code>getUserAgent</code> method answers the user-agent string that contains info about the browser and
         OS type as defined by <code>self[self.HTTP_USER_AGENT]</code>.
-        
+
         """
         return self.request.received_headers['user-agent']
 
@@ -216,7 +229,7 @@ class Environment(State):
         u"""
         The <code>getCookies</code> method answers the cookies dictionary of the current request. The default
         behavior is to answer <code>self.request.received_cookies</code>.
-        
+
         """
 
         import urllib
