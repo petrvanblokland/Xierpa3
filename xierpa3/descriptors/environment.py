@@ -14,6 +14,7 @@ import weakref
 from xierpa3.toolbox.parsers.c_json import cjson # Load cjson or json if available.
 from xierpa3.descriptors.state import State
 from xierpa3.toolbox.formdict import FormDict
+import urllib
 
 class Environment(State):
     u"""
@@ -95,6 +96,7 @@ class Environment(State):
             return
 
         self[self.PATH] = path
+
         for key in args.keys():
             uvalues = []
             for value in args[key]:
@@ -134,14 +136,23 @@ class Environment(State):
         except AttributeError:
             return
 
+        path = urllib.unquote(path)
+
         for query in path.split('/'):
             if not query:
                 continue
+
             parts = query.split('-')
+
             if len(parts) == 1:
                 self.form[query] = '1'                # Default value for single name parameters, always as string
             else:
-                self.form[parts[0]] = '-'.join(parts[1:])
+                newparts = []
+                for part in parts[1:]:
+                    if not self.isCodeInjection(part):
+                        newparts.append(part)
+
+                self.form[parts[0]] = '-'.join(newparts)
 
     def getRequestValue(self, key):
         u"""
