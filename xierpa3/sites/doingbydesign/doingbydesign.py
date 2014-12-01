@@ -71,7 +71,7 @@ from xierpa3.themes.shop.shop import Shop
 from xierpa3.adapters import TextileFileAdapter
 from xierpa3.attributes import Em, Color, Perc
 from xierpa3.components import Page, Container, Logo, MobileNavigation, Article, Menu, FeaturedByImage,\
-    FeaturedByImageText
+    FeaturedByText
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media
 
@@ -143,12 +143,13 @@ class DoingByDesign(Shop):
         mobileNavigation = DbDMobileNavigation()
         article = Article()
 
-        #featuredByImageText = FeaturedByImageText()
-        featuredByImage = FeaturedByImage(showTitle=False, showHeadline=False, showTopic=False)
+        featuredByImage = FeaturedByImage(start=0, width=Perc(65.4), showTitle=False,
+            showHeadline=False, showTopic=False)
+        featuredByText = FeaturedByText(start=0, width=Perc(30.75))
 
         # Containers
         top = Top(components=(logo, menu), backgroundColor=Color('yellow'), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
-        featured = Featured(components=featuredByImage)
+        featured = Featured(components=(featuredByImage, featuredByText))
         section = Section(components=(featuredByImage,))
         mainContent = MainContent(components=article)
         footer = Footer(components=(menu))

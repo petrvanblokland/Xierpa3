@@ -35,7 +35,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         >>> sb = SassBuilder()
         >>> p.build(sb)
         >>> sb.getResult()
-        '\n\n/* Start page "page" */\n\n  /* End page "page" */'
+        '\\n\\n/* Start page "page" */\\n\\n  /* End page "page" */'
 
     """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
