@@ -58,7 +58,7 @@ class Shadow(Attribute):
     def build(self, name, builder, prefix=None):
         # Build the instance output on the (sass/css) builder
         if prefix is None: # This is the top call, do the other prefixes
-            for prefix in self.PREFIXES:
+            for prefix in self.C.PREFIXES:
                 shadow = self.prefixes.get(prefix) or self.__class__(self.t, self.r, self.b, self.l, self.color, prefix=prefix)
                 shadow.build(name, builder, prefix)
             sprefix = ''
