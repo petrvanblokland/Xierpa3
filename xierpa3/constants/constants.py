@@ -215,6 +215,34 @@ class Constants(Config):
     INSIDE = 'inside'
     OUTSIDE = 'outside'
 
+    # CSS Writing modes
+    WM_HORIZONTALTB = 'horizontal-tb' # Default value. Content flows horizontally from left to right,
+        # vertically from top to bottom. The next horizontal line is positioned below the previous line.
+        # horizontal-tb is the default value, as this layout is used by most writing systems. For SVG1
+        # documents only, use the deprecated value lr, rl, or lr-tb.
+    WM_RLTB = 'rl-tb' # Content flows horizontally from right to left, vertically from top to bottom.
+        # The next horizontal line is positioned below the previous line.
+    WM_VERTICALLR = 'vertical-lr' # Content flows vertically from top to bottom, horizontally from left
+        # to right. The next vertical line is positioned to the right of the previous line.
+        # For SVG1 documents only, use the deprecated value tb-lr.
+    WM_VERTICALRL = 'vertical-rl' # Content flows vertically from top to bottom, horizontally from
+        # right to left. The next vertical line is positioned to the left of the previous line.
+        # For SVG1 documents only, use the deprecated value tb or tb-rl.
+    WM_BTRL = 'bt-rl' # Content flows vertically from bottom to top, horizontally right to left.
+        # The next vertical line is positioned to the left of the previous line.
+    WM_BTLR = 'br-lr' # Content flows vertically from bottom to top, horizontally left to right.
+        # The next vertical line is positioned to the right of the previous line.
+    WM_LRBT = 'lr-bt' # Content flows horizontally from left to right, vertically from bottom to top.
+        # The next horizontal line is positioned above the previous line.
+    WM_RLBT = 'rl-bt' # Content flows horizontally from right to left, vertically from bottom to top.
+        # The next horizontal line is positioned above the previous line.
+    WM_LR = 'lr' # Deprecated except for SVG1 documents. For CSS, use horizontal-tb (default value).
+    WM_LRTB = 'lr-tb' # Deprecated except for SVG1 documents. For CSS, use horizontal-tb (default value).
+    WM_RL = 'rl' # Deprecated except for SVG1 documents. For CSS, use horizontal-tb (default value).
+    WM_TB = 'tb' # Deprecated except for SVG1 documents. For CSS, use vertical-rl.
+    WM_TBLR = 'tb-lr' # Deprecated except for SVG1 documents. For CSS, use vertical-lr.
+    WM_TBRL = 'tb-rl' # Deprecated except for SVG1 documents. For CSS, use vertical-rl.
+
     # Pseudo CSS selectors
     FIRSTCHILD = 'first-child'
 

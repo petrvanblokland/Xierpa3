@@ -24,8 +24,20 @@ from xierpa3.attributes import Selection, Em, Shadow, asValue, Frame, Value, Tra
 trackAttributes = Stack() # Collect the stack of certain style attribute that are cascading for debugging.
 
 class SassBuilder(XmlTransformerPart, Builder):
-    # For automatic Sass compilation, use inheriting CssBuilder instead.
+    """
+    Build the SASS source for a given component.
+    For automatic Sass compilation, use inheriting CssBuilder instead.
 
+        >>> from xierpa3.components import Page, Column
+        >>> from xierpa3.constants.constants import Constants as C
+        >>> column = Column(writingmode=C.WM_HORIZONTALTB)
+        >>> p = Page(components=column)
+        >>> sb = SassBuilder()
+        >>> p.build(sb)
+        >>> sb.getResult()
+        '\n\n/* Start page "page" */\n\n  /* End page "page" */'
+
+    """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Builder.C 
 
@@ -1127,6 +1139,11 @@ div.documentation {
     def css3_whitespace(self, value):
         self.output('white-space: %s;' % value)
 
+    def css3_writingmode(self, value):
+        u"""Supported modes for *value*: horizontal-tb, rl-tb, vertical-lr, vertical-rl,
+        bt-rl, bt-lr, lr-bt, rl-bt, lr, lr-tb, rl, tb, tb-lr, tb-rl"""
+        self.output('writing-mode: %s;' % value)
+
     # ---------------------------------------------------------------------------------------------------------
     #    B R O W S E R  D E P E N D E N C I E S
 
@@ -1368,3 +1385,13 @@ div.documentation {
         if browser in (None, cls.BROWSER_SAFARI, cls.BROWSER_CHROME):
             result = '-webkit-font-smoothing: %s;' % value
         return result
+
+
+def _runDocTests():
+    import xierpa3
+    import doctest
+    import fbits.floqmodel4.floqmodel
+    return doctest.testmod(xierpa3.builders.sassbuilder)
+
+if __name__ == '__main__':
+    _runDocTests()
