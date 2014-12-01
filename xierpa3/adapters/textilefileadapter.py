@@ -121,7 +121,30 @@ from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.transformer import TX
 
 class TextileFileAdapter(Adapter):
-    
+    u"""The TextileFileAdapter reads the articles from a tree of folder/text files, compiling
+    the Textile source to HTML.
+
+        >>> from xierpa3.builders.htmlbuilder import HtmlBuilder
+        >>> from xierpa3.adapters.textilefileadapter import TextileFileAdapter
+        >>> from xierpa3.sites import doingbydesign
+        >>> # Root path where to find the article Simples wiki file for this example page.
+        >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+        >>> adapter = TextileFileAdapter(articleRoot)
+        >>> article = adapter.getArticle(id='index')
+        >>> article.title
+        u'Home'
+        >>> article.featured[0]
+        u'how-to-build-a-xierpa3-site'
+        >>> article = adapter.getArticle(id=article.featured[0])
+        >>> article.title
+        u'How to build a site with Xierpa3'
+        >>> article.featured[0]
+        u'example-hello-world'
+        >>> article.author
+        u'Petr van Blokland'
+        >>> article.keys()
+
+    """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Adapter.C 
     
@@ -273,7 +296,7 @@ class TextileFileAdapter(Adapter):
         extension = '.'+self.C.EXTENSION_TXT
         for name in os.listdir(self.root + path):
             filePath = path + name
-            if name.startswith('.'):
+            if name and name[0] in '._': # Skip all files and articles that start with . or _
                 continue
             if os.path.isdir(self.root + filePath):
                 self.getIdPaths(filePath+'/', idPaths)

@@ -148,8 +148,8 @@ class DoingByDesign(Shop):
         featuredByText = FeaturedByText(start=0, width=Perc(30.75))
 
         # Containers
-        top = Top(components=(logo, menu), backgroundColor=Color('yellow'), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
-        featured = Featured(components=(featuredByImage, featuredByText), backgroundColor='yellow')
+        top = Top(components=(logo, menu), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
+        featured = Featured(components=(featuredByImage, featuredByText), backgroundColor=Color('#262c37'))
         section = Section(components=(featuredByImage,))
         mainContent = MainContent(components=article)
         footer = Footer(components=(menu))

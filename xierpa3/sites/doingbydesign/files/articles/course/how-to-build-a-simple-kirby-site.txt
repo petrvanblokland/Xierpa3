@@ -1,4 +1,4 @@
-$category Course</category>
+$category Course
 $level Novice
 $title How to build a Kirby site
 $author Kirsten Langmuur and Petr van Blokland

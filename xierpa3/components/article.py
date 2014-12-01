@@ -26,7 +26,28 @@ class ArticleColumn(Column):
         return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(articleData.items or [])-1)
      
 class Article(ArticleColumn):
-    u"""The Article component is the main medium to display article content."""
+    u"""The Article component is the main medium to display article content.
+
+        >>> from xierpa3.builders.htmlbuilder import HtmlBuilder
+        >>> from xierpa3.adapters.textilefileadapter import TextileFileAdapter
+        >>> from xierpa3.sites import doingbydesign
+        >>> # Root path where to find the article Simples wiki file for this example page.
+        >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+        >>> adapter = TextileFileAdapter(articleRoot)
+        >>> len(adapter.getArticles())
+
+        >>> adapter.getArticles().items[0].title
+
+        >>> adapter.getArticles()
+
+        >>> a = Article(adapter=adapter)
+        >>> a.style.colWidth, a.style.gutter
+        (8, 8)
+        >>> b = HtmlBuilder()
+        >>> a.build(b)
+        >>> b.getResult()
+
+    """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = ArticleColumn.C
     
@@ -164,8 +185,8 @@ class Article(ArticleColumn):
         prePaddingBottom=Em(0.5), doc_prePaddingBottom=u'Padding bottom of pre code blocks.',
         preMarginTop=Em(0.5),  doc_preMarginTop=u'Margin left of pre code blocks.',
         preMarginBottom=Em(0.5), doc_preMarginBottom=u'Margin bottom of pre code blocks.',
-        preColor=Color(Color(0)), doc_preColor=u'Color of pre code blocks.',
-        preBackgroundColor=Color(Color('#DDD')), doc_preBackgroundColor=u'Background color of pre code blocks.',
+        preColor=Color(0), doc_preColor=u'Color of pre code blocks.',
+        preBackgroundColor=Color('#DDD'), doc_preBackgroundColor=u'Background color of pre code blocks.',
     )
     def buildBlock(self, b):
         self.buildColumn(b)
