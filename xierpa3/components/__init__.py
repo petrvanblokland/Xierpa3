@@ -34,6 +34,7 @@ from featured.featuredbyimage import FeaturedByImage
 from featured.featuredbyimagelist import FeaturedByImageList
 from featured.featuredbytext import FeaturedByText
 from featured.featuredbydiaptext import FeaturedByDiapText
+from featured.featuredbyimagetext import FeaturedByImageText
 
 # Deprecated. Used featured.Featured instead
 #from featured import FeaturedByImage, FeaturedByImageList, FeaturedByDiapText, FeaturedByText, FeaturedByTextList

@@ -178,6 +178,7 @@ class Component(object):
     # self.className        Answer self.style.className or otherwise class name is directly derived from the object class.
 
     def _get_className(self):
+        u"""Get method of property @self.className@. Use the property instead of this method."""
         # @@@ Clean this up, so self.className is used everywhere instead of self.getClassName() or self.class_
         return self.style.className or self.getClassName()
 
@@ -386,6 +387,8 @@ class Component(object):
                 b.span(style='background-color:%s;' % value)
                 b.text('&nbsp;'*4)
                 b._span()
+            elif isinstance(value, (tuple, list)):
+                b.text(`value`)
             elif not isinstance(value, basestring):
                 b.text('%s' % value)
             elif value.startswith('//'):
@@ -668,12 +671,12 @@ class Component(object):
 
     def _get_class_(self):
         u"""Set/Get property @self.class_@.
-        Answer the class name of @self@."""
+        Answer the class name of @self@. Use the property instead of this method."""
         return self.style.class_
 
     def _set_class_(self, class_):
         u"""Set/Get property @self.class_@.
-        Set the class name of @self@ to *class_*."""
+        Set the class name of @self@ to *class_*. Use the property instead of this method."""
         self.style.class_ = class_
 
     class_ = property(_get_class_, _set_class_)
@@ -682,7 +685,7 @@ class Component(object):
 
     def _get_prefixClass(self):
         u"""Get-only property @self.prefixClass@ 
-        Answer the result of @self.getPrefixClass()@."""
+        Answer the result of @self.getPrefixClass()@. Use the property instead of this method."""
         return self.getPrefixClass()
 
     prefixClass = property(_get_prefixClass)
@@ -691,12 +694,12 @@ class Component(object):
 
     def _get_id(self):
         u"""Set/Get property @self.id@.
-        Answer the id of @self@."""
+        Answer the id of @self@. Use the property instead of this method."""
         return self.style.id
 
     def _set_id(self, id):
         u"""Set/Get property @self.id@.
-        Set the id of @self@ to *id*"""
+        Set the id of @self@ to *id*. Use the property instead of this method."""
         self.style.id = id
 
     id = property(_get_id, _set_id)
@@ -707,7 +710,8 @@ class Component(object):
         u"""Property @self.adapter@ Answer the adapter of @self@. Although it may
         be change during the course of development (and also force otherwise), a component
         keeps the instance of the adapter. The reason is that we want caching to be done by
-        the adapter. Builders are only created temporary, so they should not hold the adapter."""
+        the adapter. Builders are only created temporary, so they should not hold the adapter.
+        Use the property instead of this method."""
         if self._adapter is not None:
             return self._adapter
         if self.parent is not None:
@@ -718,7 +722,7 @@ class Component(object):
         u"""Set the adapter for this component. This allows various components to have
         their own adapter. If not defined, the component will take the adapter
         of its parent. If the parent adapter is @None@, then don’t overwrite
-        the adapter of the builder during runtime."""
+        the adapter of the builder during runtime. Use the property instead of this method."""
         self._adapter = adapter
 
     adapter = property(_get_adapter, _set_adapter)
@@ -737,7 +741,8 @@ class Component(object):
         u"""Get/Set property @self.components@.
         Set the @self._components@ to *components*. If *components* is not a tuple
         or a list, then convert the single component into a list first. Set the 
-        @component.parent@ to self for every component in the list."""
+        @component.parent@ to self for every component in the list.
+        Use the property instead of this method."""
         if isinstance(components, basestring):
             from text import Text
             components = [Text(components)]
@@ -751,7 +756,7 @@ class Component(object):
 
     def _get_components(self):
         u"""Get/Set property @self.components@.
-        Answer @self._components@."""
+        Answer @self._components@. Use the property instead of this method."""
         return self._components
 
     components = property(_get_components, _set_components)
@@ -760,7 +765,7 @@ class Component(object):
 
     def _set_parent(self, parent):
         u"""Get/Set property @self.parent@.
-        Set @self._parent to the weakref of *parent*."""
+        Set @self._parent to the weakref of *parent*. Use the property instead of this method."""
         if parent is not None:
             self._parent = weakref.ref(parent)
         else:
@@ -769,7 +774,7 @@ class Component(object):
     def _get_parent(self):
         u"""Get/Set property @self.parent@.
         Answer the converted weakref of @self._parent@ if it exists and if it is a valid reference.
-        Answer @None@ otherwise."""
+        Answer @None@ otherwise. Use the property instead of this method."""
         if self._parent is not None:
             return self._parent()
         return None
@@ -780,7 +785,8 @@ class Component(object):
 
     def _get_text(self):
         u"""Get/Set property @self.text@.
-        Answer the plain text of the @self@ and recursively called from all child components."""
+        Answer the plain text of the @self@ and recursively called from all child components.
+        Use the property instead of this method."""
         text = []
         for component in self.components:
             t = component.text
@@ -790,7 +796,8 @@ class Component(object):
 
     def _set_text(self, text):
         u"""Get/Set property @self.text@.
-        Reset @self.components@ to a list with a @Text(text) instance inside."""
+        Reset @self.components@ to a list with a @Text(text) instance inside.
+        Use the property instead of this method."""
         self.components = []
         self.addComponent(text) # Create Text instance if text is a string
 
@@ -800,7 +807,8 @@ class Component(object):
 
     def _get_parents(self):
         u"""Get-only property @self.parents@.
-        Answer the list of parents. If there is no parent, answer an empty list."""
+        Answer the list of parents. If there is no parent, answer an empty list.
+        Use the property instead of this method."""
         parent = self.parent
         if parent is not None:
             return parent.parents + [parent]
@@ -814,7 +822,7 @@ class Component(object):
         u"""Get-only property @self.pages@.
         Answer a list with all components that have a URL.
         Normally this is a page, but it can also be another type of component.
-        Don't drill down."""
+        Don't drill down. Use the property instead of this method."""
         pages = []
         for component in self.root.components:
             if component.url:
@@ -827,7 +835,7 @@ class Component(object):
 
     def _get_root(self):
         u"""Get-only property @self.root@.
-        Answers the root component of the @self.parents@.
+        Answers the root component of the @self.parents@. Use the property instead of this method.
         """
         parents = self.parents
         if parents:
@@ -842,7 +850,7 @@ class Component(object):
         u"""Get-only property @self.media@.
         Answers the collected media from @self.style@. 
         If empty or @self.style@ does not exist, answer an empty list.
-        """
+        Use the property instead of this method."""
         style = self.style
         if style:
             return style.media
@@ -854,7 +862,7 @@ class Component(object):
 
     def _set_selector(self, selector):
         u"""Get/Set property @self.selector@.
-        Stores the (CSS) *selector* in @self.style.@
+        Stores the (CSS) *selector* in @self.style. Use the property instead of this method.@
         """
         if isinstance(selector, (list, tuple)):
             selector = ' '.join(selector)
@@ -865,6 +873,7 @@ class Component(object):
         If @self.style@ doesn’t support a selector, then @None@ is answered. In this case the selector block
         opening and block close must be omitted by the caller. Just the component block will be processed. Otherwise the
         (CSS) selector is defined in order by @self.style.selector@, @self.getClassName()@.
+        Use the property instead of this method.
         """
         selector = self.style.selector
         if selector is None:
