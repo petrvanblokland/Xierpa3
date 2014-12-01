@@ -27,6 +27,8 @@ class Container(Component):
         # Page/Column
         paddingLeft=10, doc_paddingLeft=u'Padding left of main container.',
         paddingRight=10, doc_paddingRight=u'Padding left of main container.',
+        # Style
+        backgroundColor=None, doc_backgroundColor=u'Background color of the container.',
         # Row
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
         rowMargin=Margin(0, C.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.',
@@ -42,7 +44,8 @@ class Container(Component):
         u"""Build the container-div with a row-div inside."""
         s = self.style
         b.div(class_=self.getClassName(), paddingleft=s.paddingLeft, paddingright=s.paddingRight,
-              media=Media(max=self.C.M_MOBILE_MAX, paddingleft=0, paddingright=0)
+            backgroundcolor=s.backgroundColor,
+            media=Media(max=self.C.M_MOBILE_MAX, paddingleft=0, paddingright=0)
         )
         b.div(class_=self.C.CLASS_ROW, width=s.rowWidth, margin=s.rowMargin, float=s.rowFloat,
             overflow=s.rowOverflow, maxwidth=s.rowMaxWidth, minwidth=s.rowMinWidth,

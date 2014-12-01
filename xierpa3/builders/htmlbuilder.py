@@ -86,7 +86,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
         self.body()
         # Instead of calling the main self.block
-        self.div(class_=component.class_ or self.C.CLASS_PAGE)
+        self.div(class_='page_' + component.name or component.class_ or self.C.CLASS_PAGE)
         self.comment(component.getClassName()) # Add reference  Python class name of this component
         if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self.editor(component) # Build top editor interface.
@@ -98,7 +98,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
         # Instead of calling the main self._block
         if self.isEditor(): # In case we are live in /edit mode, make the whole page as form.
             self._editor(component)
-        self._div(comment='.'+(component.class_ or self.C.CLASS_PAGE))
+        self._div(comment='.page_'+(component.name or component.class_ or self.C.CLASS_PAGE))
         self._body()
         self._html()
 

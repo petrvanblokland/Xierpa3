@@ -85,12 +85,12 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.newline()
         self.tabs()
         self.comment('Start page "%s"' % component.name)
-        self.div(class_=component.class_ or self.C.CLASS_PAGE)
+        self.div(class_='page_' + component.name or component.class_ or self.C.CLASS_PAGE)
         #self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
 
     def _page(self, component):
         u"""Mark the CSS end of the page <i>component</i> style."""
-        self._div(comment='.'+(component.class_ or self.C.CLASS_PAGE))
+        self._div(comment='.page_'+(component.name or component.class_ or self.C.CLASS_PAGE))
         #self._styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
         self.newline()
         self.tabs()
