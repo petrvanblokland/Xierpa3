@@ -75,7 +75,7 @@ class Article(ArticleColumn):
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
         gutter=8, doc_gutter=u'Gutter width between columns.',
         # Chapter behavior
-        splitChapters=True, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.', 
+        splitChapters=False, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.',
         # Poster
         showPoster=False, doc_showPoster=u'Boolean flag if the poster image should be shown at start of the article.',                    
         # Blog response
@@ -104,7 +104,7 @@ class Article(ArticleColumn):
         chapterLineHeightMobile=Em(1.4), doc_chapterLineHeightMobile=u'Chapter leading for mobile.',
         # Chapter lead stuff
         leadSize=Em(1.4), doc_leadSize=u'Chapter lead font size.',
-        leadLineHeight=Em(1.2), doc_leadLineHeight=u'Chapter lead leading.',
+        leadLineHeight=Em(1.4), doc_leadLineHeight=u'Chapter lead leading.',
         leadMarginTop=Em(0.5), doc_leadMarginTop=u'Chapter lead margin top.',
         leadMarginBottom=Em(0.5), doc_leadMarginBottom=u'Chapter lead margin bottom.',
         leadColor=LEADCOLOR, doc_leadColor=u'Chapter lead color.',
@@ -146,6 +146,7 @@ class Article(ArticleColumn):
         articleIndent=0, doc_Indent=u'Article regular p indent.',
         # Bullet list
         bulletType='disc', doc_bulletType=u'Article bullet type',
+        bulletLineHeight=Em(1.4), doc_bulletLineHeight=u'Article bullet line height',
         bulletPosition=C.OUTSIDE, doc_bulletPosition=u'Article bullet position. One of (inside, outside).',
         bulletPaddingLeft=Em(1), doc_bulletPaddingLeft=u'Article bullet padding left.',
         bulletMarginBottom=0, doc_bulletMarginBottom=u'Article bullet margin bottom.',
@@ -153,6 +154,7 @@ class Article(ArticleColumn):
         bulletItemMarginBottom=Em(0.5), doc_bulletItemMarginBottom=u'Article bullet item margin bottom.',
         # Ordered list
         numberedListType='decimal', doc_numberedListType=u'Article numbered list type', 
+        numberedListLineHeight=Em(1.4), doc_numberedListLineHeight=u'Article numbered list line height',
         numberedListPosition=C.OUTSIDE, doc_numberedListPosition=u'Article numbered list position. One of (inside, outside).',
         numberedListPaddingLeft=Em(1), doc_numberedListPaddingLeft=u'Article numbered list padding left.',
         numberedListMarginBottom=0, doc_numberedListMarginBottom=u'Article numbered list margin bottom.',
@@ -423,7 +425,7 @@ class Article(ArticleColumn):
             marginbottom=s.imgMarginBottom, textindent=s.imgAutoWidthTextIndent, 
             display=s.imgAutoWidthDisplay)
         # <ul><li>...</li></ul>
-        b.ul(liststyletype=s.bulletType, liststyleimage=s.bulletImage, 
+        b.ul(liststyletype=s.bulletType, liststyleimage=s.bulletImage, lineheight=s.bulletLineHeight,
             liststyleposition=s.bulletPosition, paddingleft=s.bulletPaddingLeft,
             marginbottom=s.bulletMarginBottom, margintop=s.bulletMarginTop)
         self._buildLiStyle(b)
@@ -431,6 +433,7 @@ class Article(ArticleColumn):
         # <ol><li>...</li></ol>
         b.ol(liststyletype=s.numberedListType,  
             liststyleposition=s.numberedListPosition, paddingleft=s.numberedListPaddingLeft,
+            lineheight=s.numberedListLineHeight,
             marginbottom=s.numberedListMarginBottom, margintop=s.numberedListMarginTop)
         self._buildLiStyle(b)
         b._ol()

@@ -39,7 +39,7 @@ class ExampleArticle(Column):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Column.C
 
-    ARTICLE_ID = 'programming-python'
+    ARTICLE_ID = 'how-to-use-textile-wiki-text'
 
     BLUEPRINT = BluePrint(
         # Page stuff

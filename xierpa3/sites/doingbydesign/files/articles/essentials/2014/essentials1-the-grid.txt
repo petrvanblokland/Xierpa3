@@ -1,0 +1,13 @@
+$title Essentials #1: The Grid
+$category Web
+$level Beginner
+
+h1. The Grid
+
+This new project that makes the promise to create a system that will automatically generate websites, using artificial intelligence. 
+If that is a threat for you, then it is. Start thinking about how to respond. If you see it as an opportunity, then what is the best way to know as much about it as you can and explore the possibilities.
+
+p(start). "The Grid home":https://thegrid.io/
+
+p(start). "Wired: Publishing tool builds website powered by AI":http://www.wired.com/2014/10/publishing-tool-builds-websites-powered-ai/?mbid=social_twitter#slide-id-1590909
+

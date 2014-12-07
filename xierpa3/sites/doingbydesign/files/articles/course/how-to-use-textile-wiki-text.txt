@@ -1,0 +1,35 @@
+$category Course
+$level Novice
+$title How to use Textile wiki text syntax
+$author Kirsten Langmuur and Petr van Blokland
+$poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/HowToBuildKirbyWebsites.png
+$topic Learn the best way to build a website using Textile wikie source.
+$summary Which is different from code-engineering or the web variant of Desktop Publishing. We’ll address it from a designer point of view, who may not have any knowledge or practical experience with coding.
+$featured example-hello-world, how-to-build-a xierpa3-site, how-to-deal-with-designers, how-to-get-into-art-school"/>
+
+h1. How to use Textile wiki text syntax
+
+h2. Interview[1]
+
+For basic understanding. Our approach is from a design point of view. 
+Which is different from code-engineering or the web variant of Desktop Publishing. We’ll address it from a designer point of view, who may not have any knowledge or practical experience with coding.
+
+* What are we going to do in this session? 
+* Simple example, determine page components
+* How do you start a local project? 
+* Folder, HTML file, CSS file, image folder
+* How can you create and edit the files?
+* Download an editor application.
+* Download TextWrangler of demo of BBEdit, Coda or TextMate (on Mac)
+* Notepad or Notepad2, JEdit, Crimson Editor and other (on Windows)
+* How can you open that document in the browser?
+* What is the difference between HTML and CSS?
+* Why do you need them as separate files? 
+* HTML is per page or page type. 
+* CSS is valid for the entire website.
+* HTML and CSS are different languages with a different syntax (we cannot help that)
+* In HTML there are “tags”. What is that?
+* So let’s make a first page. What do we need?
+* What is a class in CSS?
+
+fn1. There are many HTML/CSS course and documents online. Why add another one with this course? 

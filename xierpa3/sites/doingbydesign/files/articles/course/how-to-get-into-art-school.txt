@@ -124,7 +124,7 @@ h2. Write the admission motivation
 * Design the presentation of the document, depending on the required technique and medium.
 Credentials tests and diplomas
 * Although the skills of art and design are hard to quantify (good artists and designers by definition do not fit in existing categories), art schools often are a department of larger educational institutes, the do have a strict description of required credentials and diplomas. Make sure that yours fit what the institution needs. It is a waste of time and effort if the admission is rejected purely on formal issues.
-* SAT/ACT/TOFEL scores http://collegeapps.about.com/od/standardizedtests/
+* SAT/ACT/TOFEL scores and "standardized  tests":http://collegeapps.about.com/od/standardizedtests/
 * Make sure that the diplomas you have are valied and recognized, if you apply in another country.
 
 h2. Dates for submission
@@ -135,6 +135,7 @@ h2. Writing a thesis
 
 Sometimes applying for an art school requires writing a thesis about a given subject. Schools do that to test your abilities of writing besides your visual skills. Also they want to test if you can do research, thinking and writing about a given subject, that is related to your future profession.
 
+* Planning
 * General tips & tricks about researching a new topic here.
 * General tips & tricks about writing here.
 Do research
@@ -145,10 +146,11 @@ h2. Visa and other issues regarding legal documents
 
 h2. Paying the yearly fee
 
-* The cost of art school can be very different, from almost free to $50.000 per year. Besides the obvious that you need to have that amount of money available, 
+* The cost of art schools can be very different, ranging from almost free to $50.000 per year. Besides the obvious that you need to have that amount of money available, it’s a questions how much value you get for your money.
 * There is a certain relation between the cost of the course and the offered quality, but the relation on not very fixed. There are very good courses that cost a lot less and there are very expensive ones that don’t add so much to your artistic skills, rather than giving you an academic tittle.
 * Verify what additional cost you can expect during your course, such as a required computer, materials, books and memberships.
 * If you are going abroad, then also add the cost for travelling (how often do you want to go home during the time of your study), housing, additional courses e.g. to speak the native language of the course, of that is necessary.
+* Is it is possible to have a part-time job next to your study, in case you need to earn extra? Does the country allow that? Is the curriculum flexible enough to have this job next to your study?
 
 h2. Language
 

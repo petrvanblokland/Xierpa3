@@ -310,7 +310,11 @@ class TextileFileAdapter(Adapter):
         u"""Keep the article ranked in the @self._sorted@ list of all articles."""
         self.ranked = self._cache.values()
         self.ranked.sort(key = attrgetter('ranking'), reverse = True)
-           
+
+    def getRankedArticles(self):
+        u"""Answer the dictionary of articles, sorted by rank."""
+        return self.ranked
+
     def getCachedArticle(self, **kwargs):
         u"""Answer the cached articles. If not available yet, read them through *self.getPaths()*."""
         id = kwargs.get('id')
