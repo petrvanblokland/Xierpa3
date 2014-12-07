@@ -36,13 +36,13 @@ from xierpa3.components import Logo, Menu, SocialMedia,\
 
 class DbDAdapter(TextileFileAdapter):
     def getDescription(self):
-        return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
+        return self.newArticle(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
      
     def getKeyWords(self):
-        return self.newData(text=u"""Doing, design, design process, programming, design education""")
+        return self.newArticle(text=u"""Doing, design, design process, programming, design education""")
 
 class DoingByDesign(Shop):
-    u"""The <b>Shop</b> class implements the standard example shop with content based on files."""
+    u"""The*Shop* class implements the standard example shop with content based on files."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Shop.C 
     

@@ -10,7 +10,7 @@
 #
 #   kirbyadapter.py
 #
-from xierpa3.toolbox.storage.data import Data
+from xierpa3.toolbox.storage.article import Data
 from xierpa3.adapters.adapter import Adapter
 
 class KirbyAdapter(Adapter):
@@ -227,5 +227,4 @@ class KirbyAdapter(Adapter):
     
     def tagName(self):
         return Data(text="<?php echo $tag->name() ?>")
-    
     

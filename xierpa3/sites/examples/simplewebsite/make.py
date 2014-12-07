@@ -27,10 +27,10 @@ from xierpa3.adapters import TextileFileAdapter
 
 class SimpleSiteAdapter(TextileFileAdapter):
     def getDescription(self):
-        return self.newData(text=u"""Simple site, showing what is possible with articles from files.""")
+        return self.newArticle(text=u"""Simple site, showing what is possible with articles from files.""")
 
     def getKeyWords(self):
-        return self.newData(text=u"""Simple site. Xierpa3. Demo. Articles.""")
+        return self.newArticle(text=u"""Simple site. Xierpa3. Demo. Articles.""")
 
 class SimpleWebSite(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.

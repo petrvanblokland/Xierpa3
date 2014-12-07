@@ -28,7 +28,7 @@ class TextileArticles(Theme):
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Theme.C
 
-    TITLE = u'The Textile Example Page' # Use as title of window.
+    TITLE = u'The Textile Example Page' # Used as title of window.
 
     BODYSIZE = Px(16)
     BODYLEADING = Em(1.4)
@@ -71,8 +71,10 @@ class TextileArticles(Theme):
             color=self.BODYCOLOR, lineheight=self.BODYLEADING)
         s.addStyle('a', color=self.LINKCOLOR)
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=self.HEADFAMILY, color=self.BODYCOLOR)
-        s.addStyle('h1', fontsize=self.H1SIZE, lineheight=self.H1LINEHEIGHT, color=self.H1COLOR, margintop=self.H1MARGINTOP, marginbottom=self.H1MARGINBOTTOM)
-        s.addStyle('h2', fontsize=self.H2SIZE, lineheight=self.H2LINEHEIGHT, color=self.H2COLOR, margintop=self.H2MARGINTOP, marginbottom=self.H2MARGINBOTTOM)
+        s.addStyle('h1', fontsize=self.H1SIZE, lineheight=self.H1LINEHEIGHT, color=self.H1COLOR,
+            margintop=self.H1MARGINTOP, marginbottom=self.H1MARGINBOTTOM)
+        s.addStyle('h2', fontsize=self.H2SIZE, lineheight=self.H2LINEHEIGHT, color=self.H2COLOR,
+            margintop=self.H2MARGINTOP, marginbottom=self.H2MARGINBOTTOM)
         s.addStyle('h6', fontfamily=self.BODYFAMILY)
         s.addStyle('code', fontfamily=self.CODEFAMILY, fontsize=Em(1.1), 
             color=Color('#333'), paddingleft=Em(0.25),
@@ -101,7 +103,10 @@ class TextileArticles(Theme):
             titleColor=Color('red'))
         #featuredByImage = FeaturedByText(widht=Perc(22), adapter=adapter)
         # Make main page container for the article column
-        container = Container(components=(article, articleSideBar, featuredArticles,
+        container = Container(components=(
+            #article,
+            articleSideBar,
+            #featuredArticles,
             #featuredByImage
         )) 
         # The class is also the page name in the url.

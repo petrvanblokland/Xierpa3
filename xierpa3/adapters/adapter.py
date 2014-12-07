@@ -11,35 +11,38 @@
 #   adapter.py
 #
 from xierpa3.toolbox.transformer import TX
-from xierpa3.toolbox.storage.data import Data
+from xierpa3.toolbox.storage.article import Article
 from xierpa3.constants.constants import Constants
     
 class Adapter(object):
     u"""
     The Adapter classes connect the templates to content. Note that an adapter always a <b>Data</b>
     instance with attributes fields that fit the request. The caller needs to check if the requested fields
-    really where filled. In case of an error the <b>data.error</b> field is holding the error message
+    really where filled. In case of an error the *article.error* field is holding the error message
     and the error fields are <b>None</b>. In case there is an unknown request, the output text is
     equal to the error message.
     """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Constants
 
-    DATACLASS = Data
+    ARTICLECLASS = Article
     
     def __init__(self, root=None):
         # Store optional root, so the adapter knows where to find stuff.
         self.root = root
         self.initialize()
-        
+
     @classmethod
-    def newData(cls, **kwargs):
+    def newArticle(cls, **kwargs):
         u"""To allow modification by inheriting classes, answer a new instance of Data."""
-        return cls.DATACLASS(**kwargs)
+        return cls.ARTICLECLASS(**kwargs)
     
     def __repr__(self):
         return '<Adapter: %s>' % self.__class__.__name__
-    
+
+    def __len__(self):
+        return len(self.children)
+
     def initialize(self):
         u"""Optionally to be redefined by inheriting adapter classes. Default behavior is to do nothing."""
         pass
@@ -50,27 +53,27 @@ class Adapter(object):
         There is a dispatcher level to search for an adapter method that matches 
         the contentID.
         All adapter method need to answer a Data instance, where the requested data is embedded
-        as one of the attributes <b>(data.text, data.url, data.items)</b>.
+        as one of the attributes @(article.text, article.url, article.chapters)@.
         """
-        data = hook = None
+        article = hook = None
         if contentID is not None:
             hook = TX.asGetMethodName(contentID)
             if hasattr(self, hook):
-                data = getattr(self, hook)(**kwargs)
-        if data is None:
+                article = getattr(self, hook)(**kwargs)
+        if article is None:
             message = '[%s] Could not find adapter.%s()' % (self, hook)
-            data = self.newData(error=message, text=message)
-            print data.error
-        return data
+            article = self.newArticle(error=message, text=message)
+            print article.error
+        return article
 
     # Set of available direct request, which inheriting adapter classes may choose
     # to redefine.
     
     def getSocialMedia(self, **kwargs):
-        return self.newData(text='[Social media icons]')
+        return self.newArticle(text='[Social media icons]')
 
     def getTagCloud(self, **kwargs):
-        return self.newData(text='[Tag Cloud]')
+        return self.newArticle(text='[Tag Cloud]')
 
     # A R T I C L E
     
@@ -87,7 +90,7 @@ class Adapter(object):
         or omitted, then try to find the id the sort order of article ids at <b>index</b>."""
         if id is None:
             id = self.getArticleIds(start=index, selector=selector, order=order, **kwargs)
-        return self.newData(text='[' + 'Article text of ”%s”]' % id)
+        return self.newArticle(text='[' + 'Article text of ”%s”]' % id)
 
     def getArticles(self, ids=None, start=0, count=1, selector=None, order=None, **kwargs):
         u"""Answer the articles as indicated by the arguments. There are several types
@@ -96,57 +99,60 @@ class Adapter(object):
         will answer the articles with index 5, 6 and 7 in the current sort order of articles.
         <b>self.getArticles(ids=('aaa', 'bbb', 'ccc'))</b> will answer the articles with
         the indicated id in the defined order."""
-        items = []
+        articles = []
         if ids is None:
             ids = self.getArticleIds(start=start, count=count, selector=selector, order=None, **kwargs)
         for id in ids:
             kwargs['id'] = id # Cannot be direct argument?
-            items.append(self.getArticle(**kwargs))
-        return self.newData(items=items)
+            articles.append(self.getArticle(**kwargs))
+        return articles
 
     def getChapter(self, index=0, **kwargs):
         u"""Answer the chapter with in index of the current article."""
-        return self.newData(index=index, text='[Chapter %d]' % index)
+        return self.newArticle(chapter=index, text='[Chapter %d]' % index)
  
     def getChapters(self, **kwargs):
-        u"""Answer a list of featured chapters. Also answer the article itself
-        as <b>data.article</b>."""
-        items = []
-        for index in kwargs.get('count', 1):
-            items.append(self.getChapter(index=index, **kwargs))
-        return self.newData(items=items, article=self.getArticle(**kwargs))
-   
+        u"""Answer a list of the selected article chapters."""
+        article = self.getArticle(**kwargs)
+        if article is not None:
+            return article.chapters
+        return  []
+
     # P A G E  S T U F F
         
     def getFavIcon(self, **kwargs):
-        return self.newData(url=self.C.URL_FAVICON)
+        return self.newArticle(url=self.C.URL_FAVICON)
     
     def getPageTitle(self, **kwargs):
-        return self.newData(text='Untitled') # To be redefined by inheriting adapter class.
+        return self.newArticle(text='Untitled') # To be redefined by inheriting adapter class.
     
-    def getMenu(self, count=1, **kwargs):
-        return self.newData(items=(
-            self.newData(text='Menu 1', url='/home'),
-            self.newData(text='Menu 2', url='/home'),
-            self.newData(text='Menu 3', url='/home'),
-        ))
+    def getMenu(self, count=3, **kwargs):
+        u"""Answer a list of *count* menu articles."""
+        menu = []
+        for i in range(count):
+            menu.append(self.newArticle(text='Menu %d' % i, url='/home'))
+        return menu
 
     def getFooter(self, **kwargs):
-        return self.newData(text='[' + 'Footer text. ' * 20 + ']')
+        return self.newArticle(text='[' + 'Footer text. ' * 20 + ']')
 
     def getLogo(self, **kwargs):
-        return self.newData(text='[Logo]', url=self.C.URL_LOGO)
+        return self.newArticle(text='[Logo]', url=self.C.URL_LOGO)
    
     def getPages(self, count=10):
-        return self.newData(items=(self.newData(name='Page', url='/page'),)*count)
+        pages = []
+        for i in range(count):
+            pages.append(self.newArticle(name='Page', url='/page'),)
 
     def getMobilePages(self, count=10):
-        return self.newData(items=(self.newData(name='MobilePage', url='/mobilepage'),)*count)
+        pages = []
+        for i in range(count):
+            pages.append(self.newArticle(name='MobilePage', url='/mobilepage'),)
         
     def getDescription(self):
         u"""Answer the description of the site (or page) to be used in the head.meta.description tag."""
-        return self.newData(text=u'Description of the site here.')
+        return self.newArticle(text=u'Description of the site here.')
     
     def getKeyWords(self):
         u"""Answer the keywords of the site (or page) to be used in the head.meta.keywords tag."""
-        return self.newData(text='Keywords of the site here.')
+        return self.newArticle(text='Keywords of the site here.')

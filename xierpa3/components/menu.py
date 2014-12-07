@@ -42,25 +42,23 @@ class Menu(Component):
     )
     def buildBlock(self, b):
         u"""Build the menu from the articles in the menu tags of the @home.xml@ document."""
-        data = self.adapter.getMenu(id=self.C.ID_HOME) # Main menu is defined on the home page.
-        if data.items:
-            s = self.style
-            colClass = self.getColClass(s.colWidth)
-            b.div(class_=colClass)
-            b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat, 
-                display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
-            b.ol(styletype=s.listStyleType, display=s.listDisplay)
-            for menuItem in data.items:
-                b.li(float=s.listFloat, padding=s.listPadding)
-                if menuItem.url:
-                    url = menuItem.url[0] # Get first of list of related urls or None
-                else:
-                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuItem.id)
-                b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration, 
-                    padding=s.linkPadding, transition=s.linkTransition)
-                b.text(menuItem.tag or menuItem.name)
-                b._a()
-                b._li()
-            b._ol()
-            b._nav()
-            b._div(comment=colClass)
+        s = self.style
+        colClass = self.getColClass(s.colWidth)
+        b.div(class_=colClass)
+        b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat,
+            display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
+        b.ol(styletype=s.listStyleType, display=s.listDisplay)
+        for menuItem in self.adapter.getMenu(id=self.C.ID_HOME): # Main menu is defined on the home page.
+            b.li(float=s.listFloat, padding=s.listPadding)
+            if menuItem.url:
+                url = menuItem.url[0] # Get first of list of related urls or None
+            else:
+                url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuItem.id)
+            b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration,
+                padding=s.linkPadding, transition=s.linkTransition)
+            b.text(menuItem.tag or menuItem.name)
+            b._a()
+            b._li()
+        b._ol()
+        b._nav()
+        b._div(comment=colClass)

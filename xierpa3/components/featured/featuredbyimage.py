@@ -98,7 +98,7 @@ class FeaturedByImage(FeaturedBase):
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
         )
-        for article in articles.items:
+        for article in articles:
             if s.showPoster and article.poster:
                 self.buildFeaturedImage(b, article)
         b._div()

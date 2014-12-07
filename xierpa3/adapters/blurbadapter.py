@@ -63,17 +63,17 @@ class BlurbAdapter(Adapter):
         self.blurb = Blurb()
 
     def getMessage(self, count=1, **kwargs):
-        return self.newData(text=u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com')
+        return self.newArticle(text=u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com')
 
     def getSocialMedia(self, count=1, **kwargs):
-        return self.newData(text=self.blurb.getBlurb('design_theory_title'))
+        return self.newArticle(text=self.blurb.getBlurb('design_theory_title'))
 
     def getTagCloud(self, count=10, **kwargs):
         # Answer count tagCloud list entries as tuple (word, emphasisNumber)
         cloud = []
         for _ in range(10):
-            cloud.append(self.newData(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
-        return self.newData(items=cloud)
+            cloud.append(self.newArticle(text=self.blurb.getBlurb('design_magazines'), emphasis=randint(10, 24)))
+        return cloud
 
     def getArticleIds(self, start=0, count=1, selector=None, order=None, **kwargs):
         ids = []
@@ -82,13 +82,13 @@ class BlurbAdapter(Adapter):
         return ids
 
     def getArticle(self, id=None, index=0, selector=None, order=None, **kwargs):
-        data = self.newData(
+        article = self.newArticle(
             headline=self.blurb.getBlurb('news_headline', 10),
             poster=choice(self.IMAGES),
             ankeiler=self.blurb.getBlurb('article_ankeiler', 30),
             text=self.blurb.getBlurb('article'),
         )
-        return data
+        return article
 
     def getChapter(self, index=0, **kwargs):
         u"""Answer a blurb article as chapter."""
@@ -97,19 +97,18 @@ class BlurbAdapter(Adapter):
     # P A G E  S T U F F
         
     def getFooter(self, count=1, **kwargs):
-        return self.newData(text='Footer: ' + self.blurb.getBlurb('events_headline'))
+        return self.newArticle(text='Footer: ' + self.blurb.getBlurb('events_headline'))
     
     def getLogo(self, **kwargs):
-        return self.newData(url='//petr.com/_images/contact.png')
+        return self.newArticle(url='//petr.com/_images/contact.png')
     
     def getPageTitle(self, **kwargs):
-        return self.newData(text=self.blurb.getBlurb('news_headline'))
+        return self.newArticle(text=self.blurb.getBlurb('news_headline'))
     
     def getDescription(self, **kwargs):
         u"""Answer a blurb description of the site."""
-        return self.newData(text=self.blurb.getBlurb('article_ankeiler', 40))
+        return self.newArticle(text=self.blurb.getBlurb('article_ankeiler', 40))
     
     def getKeyWords(self, **kwargs):
         u"""Answer a blurb set of keywords of the site, comma-space separated."""
-        return self.newData(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))
-    
+        return self.newArticle(text=self.blurb.getBlurb('news_headline', 60).replace(' ', ', '))

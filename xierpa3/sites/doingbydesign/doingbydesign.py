@@ -79,10 +79,10 @@ from xierpa3.descriptors.media import Media
 
 class DbDAdapter(TextileFileAdapter):
     def getDescription(self):
-        return self.newData(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
+        return self.newArticle(text=u"""Doing by Design, information about design, design technology, design process and education. Physical and digital.""")
      
     def getKeyWords(self):
-        return self.newData(text=u"""Doing, design, design process, programming, design education""")
+        return self.newArticle(text=u"""Doing, design, design process, programming, design education""")
 
 # Components
 

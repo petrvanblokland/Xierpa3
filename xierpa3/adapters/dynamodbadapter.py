@@ -40,10 +40,10 @@ class DynamoDBAdapter(Adapter):
         Connector.saveItem(item)
 
     def getMessage(self, count):
-        return self.newData(text=u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com')
+        return self.newArticle(text=u'English is not native. For corrections on disaster misspellings please contact buro (at) petr.com')
 
     def getLogo(self, count):
-        return self.newData(url='http://petr.com/_images/contact.png')
+        return self.newArticle(url='http://petr.com/_images/contact.png')
 
 if __name__ == "__main__":
     pass

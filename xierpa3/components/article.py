@@ -23,7 +23,7 @@ from xierpa3.descriptors.blueprint import BluePrint
 class ArticleColumn(Column):
     u"""Generic column for articles."""
     def getChapterIndex(self, b, articleData):
-        return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(articleData.items or [])-1)
+        return min(max(0, TX.asInt(b.e.form[self.C.PARAM_CHAPTER]) or 0), len(articleData.chapters or [])-1)
      
 class Article(ArticleColumn):
     u"""The Article component is the main medium to display article content.
@@ -36,7 +36,7 @@ class Article(ArticleColumn):
         >>> adapter = TextileFileAdapter(articleRoot)
         >>> len(adapter.getArticles())
 
-        >>> adapter.getArticles().items[0].title
+        >>> adapter.getArticles().chapters[0].title
 
         >>> adapter.getArticles()
 
@@ -246,13 +246,13 @@ class Article(ArticleColumn):
                 b._div()
             else:
                 b.error('Cannot find source of article "%s"' % article.id)
-        elif article.items:
+        elif article.chapters:
             # Collect the chapter indices to show. If splitting chapter, we need a list of
             # the one chapter index that is indicated by the url with /chapter-2
             if s.splitChapters:
                 chapterIndices = [self.getChapterIndex(b, article)]
             else:
-                chapterIndices = range(len(article.items))
+                chapterIndices = range(len(article.chapters))
             # Build the chapters in the index list
             for chapterIndex in chapterIndices:
                 # Build the top of the article, making a difference between the first chapter
@@ -571,7 +571,7 @@ class ArticleSideBar(ArticleColumn):
     
     def buildMobileChapterNavigation(self, b, article):
         s = self.style
-        chapters = article.items
+        chapters = article.chapters
         if chapters and len(chapters) > 1:
             b.div(class_=self.C.CLASS_MOBILECHAPTERNAVIGATION)
             b.ul()
@@ -595,7 +595,7 @@ class ArticleSideBar(ArticleColumn):
         navigation in the sidebar. The title and the summary are links to a page of the same
         article, for the defined chapter index."""
         s = self.style
-        chapters = article.items
+        chapters = article.chapters
         if chapters and len(chapters) > 1:
             b.div(class_=self.C.CLASS_CHAPTERNAVIGATION)
             b.h4()

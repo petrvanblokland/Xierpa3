@@ -38,22 +38,22 @@ class BaseClient(object):
     
     def __repr__(self):
         u"""
-        The <code>__repr__</code> answers the info string about this <code>Client</code> instance.
+        The @__repr__@ answers the info string about this @Client@ instance.
         """
         return u'Client for %s sites' % len(self.getThemes())
 
     def getDefaultSiteClass(self):
         u"""
-        The <code>getDefaultSiteClass</code> method is used by the task daemon, to get access to the current set of
+        The @getDefaultSiteClass@ method is used by the task daemon, to get access to the current set of
         constants. Since the site class contains the specific constants of the site, it can be used to derive the path
-        of DATA storage and to create a shadow builder in the remote process to be called with the <code>task.method
-        </code>.
+        of DATA storage and to create a shadow builder in the remote process to be called with the @task.method
+        @.
         """
         return self.THEMES.get(self.DEFAULTTHEME)
 
     def showStartLabel(self, port):
         u"""
-        The <code>showStartLabel</code> method is used by the client to show the server information at startup.
+        The @showStartLabel@ method is used by the client to show the server information at startup.
         
         """
         print self.LINE
@@ -68,7 +68,7 @@ class BaseClient(object):
 
     def showStopLabel(self):
         u"""
-        The <code>showStopLabel</code> method is used by the client to show the server information at startup.
+        The @showStopLabel@ method is used by the client to show the server information at startup.
         
         """
         print self.LINE
@@ -77,10 +77,10 @@ class BaseClient(object):
 
     def getThemeName(self, httprequest):
         u"""
-        The <code>getThemeName</code> method answers the name of the current theme. This method should be redefined
-        if there is more than one site to be served through this client, depending on a pattern in the <attr>httprequest
-        </attr> URL. Default behavior is to answer the result of <code>self.getDefaultSiteName()</code>.<br/>
-        Note we cannot use <code>self.e</code> to parse the URL, since it cannot be created without a defined site
+        The @getThemeName@ method answers the name of the current theme. This method should be redefined
+        if there is more than one site to be served through this client, depending on a pattern in the *httprequest
+        * URL. Default behavior is to answer the result of @self.getDefaultSiteName()@.<br/>
+        Note we cannot use @self.e@ to parse the URL, since it cannot be created without a defined site
         class.
         """
         import re
@@ -98,41 +98,41 @@ class BaseClient(object):
 
     def getDefaultThemeName(self):
         u"""
-        The <code>getDefaultThemeName</code> method answers the default site name <code>self.DEFAULTTHEME</code>.
+        The @getDefaultThemeName@ method answers the default site name @self.DEFAULTTHEME@.
         
         """
         return self.DEFAULTTHEME
 
     def getThemes(self):
         u"""
-        The <code>getSites</code> answers dictionary with the sites this client runs.
+        The @getSites@ answers dictionary with the sites this client runs.
         """
         return self.THEMES
 
     def getThemeNames(self):
         u"""
-        The <code>getThemeNames</code> method answers the names (keys) of the available sites of this server.
-        Typically this is the list of keys from the dictionary answered by <code>self.getSites()</code>.
+        The @getThemeNames@ method answers the names (keys) of the available sites of this server.
+        Typically this is the list of keys from the dictionary answered by @self.getSites()@.
         """
         return self.getThemes().keys()
 
     def getThemeTitle(self, name):
         u"""
-        The <code>getThemeTitle</code> method answers the class title of named site <attr>name</attr>. The default
-        behavior is to answer <code>self.getSiteClass(name).getTitle()</code>.
+        The @getThemeTitle@ method answers the class title of named site *name*. The default
+        behavior is to answer @self.getSiteClass(name).getTitle()@.
         """
         return self.getTheme().getTitle()
 
     def getDoIndent(self):
         u"""
-        The <code>getDoIndent</code> method answers the boolean flag if the output code building should include indents.
+        The @getDoIndent@ method answers the boolean flag if the output code building should include indents.
         """
         return self.DO_INDENT
     
     def getSite(self, httprequest):
         u"""
-        The <code>getSite</code> method answers a new instance of the site class that is indicated by the result of
-        <code>e.getSiteName()</code>. This site instance typically is derived from the first part of the URL
+        The @getSite@ method answers a new instance of the site class that is indicated by the result of
+        @e.getSiteName()@. This site instance typically is derived from the first part of the URL
         or by the matching domain name. This allows the running of multiple domain names (all with port 80)
         on the same server.
         """
@@ -148,8 +148,8 @@ class BaseClient(object):
 
     def setMimeTypeEncoding(self, mimeType, request):
         u"""
-        <doc>The <code>getMimeTypeEncoding</code> method answers the MIME type and coding in format <code>'text/css;
-        charset-utf-8'</code>.</doc>
+        <doc>The @getMimeTypeEncoding@ method answers the MIME type and coding in format @'text/css;
+        charset-utf-8'@.</doc>
         """
         if mimeType:
             if 'text' in mimeType:
@@ -211,9 +211,9 @@ class BaseClient(object):
     
     def render_GET(self, httprequest):
         u"""
-        The <code>render_GET</code> method is called by Twisted to handle the GET <attr>httprequest</attr>. 
-        It is the main loop (besides the <code>self.render_POST</code>) that builds pages from url requests.
-        The site instance is called by <code>b.build()</code>. The result (this can be HTML, JSON or binary data) is
+        The @render_GET@ method is called by Twisted to handle the GET *httprequest*. 
+        It is the main loop (besides the @self.render_POST@) that builds pages from url requests.
+        The site instance is called by @b.build()@. The result (this can be HTML, JSON or binary data) is
         answered. The application needs to have the right MIME type in the output.
         """
         site = self.getSite(httprequest) # Site is Theme instance
@@ -243,11 +243,11 @@ class BaseClient(object):
     
     def render_POST(self, httprequest):
         u"""
-        The <code>render_POST</code> method is called by Twisted to handle the POST <attr>httprequest</attr>. The
-        site instance is called with <code>b.build()</code>. The result (this can be HTML, JSON or binary data) is
+        The @render_POST@ method is called by Twisted to handle the POST *httprequest*. The
+        site instance is called with @b.build()@. The result (this can be HTML, JSON or binary data) is
         answered. The application is supposed to have the the right MIME type in the output. The data of the post is
-        located in the file object <code>httprequest.content</code>. The data can be read by <code>
-        httprequest.content.read()</code>.
+        located in the file object @httprequest.content@. The data can be read by @
+        httprequest.content.read()@.
         """
         site = self.getSite(httprequest)  # Site is Theme instance
         site.handlePost()

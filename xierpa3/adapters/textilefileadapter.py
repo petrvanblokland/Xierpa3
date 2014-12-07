@@ -119,13 +119,12 @@ import textile
 from operator import attrgetter
 from xierpa3.adapters.adapter import Adapter
 from xierpa3.toolbox.transformer import TX
+from xierpa3.toolbox.storage.article import Article
 
 class TextileFileAdapter(Adapter):
     u"""The TextileFileAdapter reads the articles from a tree of folder/text files, compiling
     the Textile source to HTML.
 
-        >>> from xierpa3.builders.htmlbuilder import HtmlBuilder
-        >>> from xierpa3.adapters.textilefileadapter import TextileFileAdapter
         >>> from xierpa3.sites import doingbydesign
         >>> # Root path where to find the article Simples wiki file for this example page.
         >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
@@ -136,18 +135,33 @@ class TextileFileAdapter(Adapter):
         >>> article.featured[0]
         u'how-to-build-a-xierpa3-site'
         >>> article = adapter.getArticle(id=article.featured[0])
+        >>> article.keys()[:4]
+        [u'author', 'blogresponse', u'category', u'featured']
         >>> article.title
         u'How to build a site with Xierpa3'
         >>> article.featured[0]
         u'example-hello-world'
         >>> article.author
         u'Petr van Blokland'
-        >>> article.keys()
+        >>> article.topic
+        u'A basic course in building sites the easy way.'
+        >>> len(article.chapters)
+        1
+        >>> adapter.ranked[0]
+        [Article blogresponse, featured, id, modificationTime, path, ranking, source, tag, title, url]
+        >>> adapter.ranked[0].title
+        u'Categories'
+        >>> adapter.getIdPaths()[0]
+        ('about', 'about.txt')
 
     """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Adapter.C 
-    
+
+    # Class of Article data/
+    DATACLASS = Article
+    # Chapter tag, split chapters between this code.
+    CHAPTER_TAG = '=C='
     # Match line pattern "$fielName value"
     FIELDVALUE = re.compile('\$([\w]*) (.*)')
     # Match comma separated list
@@ -157,31 +171,65 @@ class TextileFileAdapter(Adapter):
     u"""Adapter for Textile wiki file serving. """
     def initialize(self):
         self._cache = {}
-        self._sorted = []
-        self.readArticles()
+        self.ranked = []
+        self._readArticles()
         # Build the cache meta field references for articles.
-        self.cacheArticleFieldReferences()
+        self._cacheArticleFieldReferences()
      
-    def readArticles(self):
-        u"""Read all articles available in the root tree path."""
+    def _readArticles(self):
+        u"""Read all articles available in the root tree path.
+
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> sorted(adapter.keys())[0]
+            'about'
+
+        """
         for id, path in self.getIdPaths(): # id, path
             self.updateArticle(id, self.root + path)
-        
+
+    def keys(self):
+        """
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> sorted(adapter.keys())[0]
+            'about'
+        """
+        return self._cache.keys()
+
+    def __getitem__(self, key):
+        """Access articles in the adapter through their id. If the article is not yet in the cache
+        and it exists, it will be decompiled. If the file source of the article is newer than the
+        version in cache, it will be updated.
+
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> adapter['index'].title
+            u'Home'
+        """
+        return self.getArticle(id=key)
+
     def updateArticle(self, id, path):
         u"""Update the article from *id* and *path*. Set the modification time, so we know
         when the file is updated."""
-        data = None
+        article = None
         wiki = self.readWikiFile(path)
         if wiki is not None:
-            data = self.compileArticle(wiki)
-            data.id = id
-            data.source = wiki
-            data.ranking = TX.asInt(data.ranking) or 0 # Make sure we can sort on the ranking field.
-            data.blogresponse = TX.asBool(data.blogresponse) 
-            data.path = path # Keep the source path is case POST needs to save to the file.
-            data.modificationTime = os.path.getmtime(path) # @@@ TODO: Should be DateTime instance.
-            self.cacheArticle(data)
-        return data
+            article = self.compileArticle(wiki)
+            article.id = id
+            article.source = wiki
+            article.ranking = TX.asInt(article.ranking) or 0 # Make sure we can sort on the ranking field.
+            article.blogresponse = TX.asBool(article.blogresponse)
+            article.path = path # Keep the source path is case POST needs to save to the file.
+            article.modificationTime = os.path.getmtime(path) # @@@ TODO: Should be DateTime instance.
+            self._cacheArticle(article) # Fill article.chapters.
+        return article
         
     @classmethod  
     def readWikiFile(cls, fsPath): 
@@ -198,9 +246,10 @@ class TextileFileAdapter(Adapter):
         return wiki
     
     def _splitFieldValue(self, line):
-        u"""Split the string *s* into field name (starting with $ and ending with space)
+        u"""Split the string *line* into field name (starting with $ and ending with space)
         and string value. If the field is one of @self.COMMAFIELDS@, then the value
-        must be a comma separated list. Split the string into a list of values."""
+        must be a comma separated list. Split the string into a list of values.
+        """
         found = self.FIELDVALUE.findall(line)
         if found:
             fieldName, value = found[0]
@@ -210,10 +259,10 @@ class TextileFileAdapter(Adapter):
         return None, None # No field name match on this line.
 
     def compileArticle(self, wiki):
-        u"""Compile the wiki text into a Data instance, but parsing the field definition, split
+        u"""Compile the wiki text into an Article instance, but parsing the field definition, split
         on chapters and translate the chapter content through textile to html.
         See specification on :http://redcloth.org/hobix.com/textile/ """
-        data = self.newData()
+        article = self.newArticle()
         text = []
         # Filter the field definitions
         wiki = wiki.replace('\r', '\n')
@@ -221,16 +270,16 @@ class TextileFileAdapter(Adapter):
             if line.startswith('$'):
                 fieldName, value = self._splitFieldValue(line)
                 if fieldName is not None:
-                    data[fieldName] = value
+                    article[fieldName] = value
             else:
                 text.append(line) # Keep normal text lines.
-        # Split the chapters into items
-        data.items = []
-        for chapter in ('\n'.join(text)).split('=C='):
-            data.items.append(textile.textile(chapter))
-        return data
+        # Split the chapters, in the text indicated by =C=
+        article.chapters = []
+        for chapter in ('\n'.join(text)).split(self.CHAPTER_TAG):
+            article.chapters.append(textile.textile(chapter))
+        return article
     
-    def cacheArticleFieldReferences(self):
+    def _cacheArticleFieldReferences(self):
         u"""(Re)build the dictionary of field relations. This should be done at any time a new article 
         is cached or modified. Better to build from scratch if the source changes, than to keep track
         of changes."""
@@ -251,39 +300,50 @@ class TextileFileAdapter(Adapter):
                     self._levels[level] = []
                 self._levels[level].append(article)
 
-    def cacheArticle(self, article):
+    def _cacheArticle(self, article):
         u"""Cache the article by @article.id@. And keep the article sorted in the @self._sorted@
         list of all articles."""
         self._cache[article.id] = article
-        self.sortArticles()
+        self._rankArticles() # Calculate new ranking, including the added article.
         
-    def sortArticles(self):
-        u"""Keep the article sorted in the @self._sorted@ list of all articles."""
-        self._sorted = self._cache.values()
-        self._sorted.sort(key = attrgetter('ranking'), reverse = True)
+    def _rankArticles(self):
+        u"""Keep the article ranked in the @self._sorted@ list of all articles."""
+        self.ranked = self._cache.values()
+        self.ranked.sort(key = attrgetter('ranking'), reverse = True)
            
     def getCachedArticle(self, **kwargs):
         u"""Answer the cached articles. If not available yet, read them through *self.getPaths()*."""
         id = kwargs.get('id')
-        data = self._cache.get(id)
-        if data is not None and data.modificationTime != os.path.getmtime(data.path):
+        article = self._cache.get(id)
+        if article is not None and article.modificationTime != os.path.getmtime(article.path):
             # File content is modified after caching the article. Update it from file.
-            data = self.updateArticle(data.id, data.path)
-            self.cacheArticleFieldReferences() # Article may have changed fields. Build all caching of fields again.
+            article = self.updateArticle(article.id, article.path)
+            self._cacheArticleFieldReferences() # Article may have changed fields. Build all caching of fields again.
         # If article not found, try to match on url.
-        if data is None:
-            data = self.getArticleByUrl(kwargs.get('url'))
-        return data
-     
+        if article is None and kwargs.get('url') is not None:
+            article = self.getArticleByUrl(kwargs.get('url'))
+        # If article not found, try to match on path.
+        if article is None and kwargs.get('path') is not None:
+            article = self.getArticleByUrl(kwargs.get('path'))
+        # If article not found, try by index and selector
+        if article is None and kwargs.get('id') is not None:
+            article = self.getArticleByIndex(kwargs.get('id'), kwargs.get('selector'))
+        return article
+
+    def getArticleByIndex(self, index, selector=None):
+        u"""Answer the article that is matching the *index* in sorting/selection of *selector*."""
+        id = sorted(self._cache.keys())[0]
+        return self._cache[id]
+
     def getArticleByUrl(self, url):
         u"""Answer the article that is matching *url* by one of the values in the @$url@ field.
         Answer @None@ if no matching article could be found."""
-        data = None
+        article = None
         fields = self.getFields()
         articles = fields.urls.get(url)
         if articles:
-            data = articles[0] # If found multiple matches, just take the first one.
-        return data
+            article = articles[0] # If found multiple matches, just take the first one.
+        return article
     
     def getCachedArticles(self):
         return self._cache
@@ -310,17 +370,17 @@ class TextileFileAdapter(Adapter):
     def getChapters(self, article):
         if article.items is None:
             return []
-        return article.items 
+        return article.items
     
     def getChapterByIndex(self, index, article):
-        u"""Find the chapter by <b>index</b> in the ArticleData instance <b>article</b>.
+        u"""Find the chapter by <b>index</b> in the Article instance <b>article</b>.
         Answer <b>None</b> if the chapter index is not valid."""
-        if 0 <= index < len(article.items or []):
-            return article.items[index]
+        if 0 <= index < len(article.chapters):
+            return article.chapters[index]
         return None
     
     def getChapterTitleByIndex(self, index, article):
-        u"""Find the title of the chapter by <b>index</b> in the ArticleData instance <b>article</b>.
+        u"""Find the title of the chapter by <b>index</b> in the Article instance <b>article</b>.
         Answer <b>None</b> if the index is not valid or the title cannot be found."""
         chapter = self.getChapterByIndex(index, article)
         if chapter is not None:
@@ -332,40 +392,40 @@ class TextileFileAdapter(Adapter):
     def getPageTitle(self, **kwargs):
         article = self.getArticle(**kwargs)
         if article is not None:
-            return self.newData(text=article.name)
+            return self.newArticle(text=article.name)
         return None
     
-    def getPages(self, start=0, count=1, omit=None, **kwargs):
+    def getArticles(self, start=0, count=1, omit=None, **kwargs):
         u"""Answer the sorted list of *count* pages/articles, starting on *start* index, 
         selected from all articles. Sorting is based om the @article.ranking@ field.
         If *omit* is a list of article ids (or a single id), then skip these articles 
         from the selection."""
+        articles = []
         if omit is None: # Nothing to omit, just slice the pre-sorted article list.
-            items = self._sorted[start:start+count]
+            chapters = self.ranked[start:start+count]
         else: # Otherwise create the list by omitting what is in the attributes.
             if not isinstance(omit, (list, tuple)):
                 omit = [omit] # Make sure it is a list.
-            items = []
-            for item in self._sorted[start:]:
+            for item in self.ranked[start:]:
                 if not item.id in omit:
-                    items.append(item)
-                    if len(items) >= count:
+                    articles.append(item)
+                    if len(articles) >= count:
                         break
-        return self.newData(items=items)
-    
-    getArticles = getPages
-    
+        return articles
+
     def getMobilePages(self, count=None, **kwargs):
         return self.getPages(count)
     
     def getArticle(self, **kwargs):
-        u"""Answer the matching article, based on the available keywords in *kwargs*."""
+        u"""Answer the matching article, based on the available keywords in *kwargs*. The method will
+        search in cached articles. If the file of the article changed, then it will be updated by
+        compiling the Textile content again.
+        """
         return self.getCachedArticle(**kwargs)
     
     def getFeaturedArticles(self, id, start, count):
         u"""Answer a list of featured articles in the article that has @id@ as identifier."""
-        data = self.newData()
-        data.items = []
+        articles = []
         article = self.getArticle(id)
         if article:
             for index, featured in enumerate(article.featured[start:start+count]):
@@ -373,36 +433,64 @@ class TextileFileAdapter(Adapter):
                     break
                 featuredArticle = self.getArticle(featured.attrib['id'])
                 if featuredArticle is not None:     
-                    data.items.append(featuredArticle)
-        return data
+                    articles.append(featuredArticle)
+        return articles
     
     def getFields(self):
-        u"""Answer a @Data@ instance with dictionaries of all field names, related to lists of articles.
-        Included @data.urls@, @data.categories@ and @data.levels@."""
-        data = self.newData()
-        data.urls = self._urls
-        data.categories = self._categories
-        data.levels = self._levels        
-        return data
+        u"""Answer a @Article@ instance with dictionaries of all field names, related to lists of articles.
+        Included @article.urls@, @article.categories@ and @article.levels@.
+
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> adapter.getFields()
+            [Article categories, levels, urls]
+        """
+        article = self.newArticle()
+        article.urls = self._urls
+        article.categories = self._categories
+        article.levels = self._levels
+        return article
     
-    def getMenu(self, **kwargs):
-        u"""Answer the @data.items@ of the main menu, indicated by *id*. Normally this will be the @home@
-        page of the site, containing the main menu options in @$menu@. The @data.items@ are article data instances."""
-        data = self.newData()
-        data.items = []
-        article = self.getArticle(**kwargs)
+    def getMenuArticles(self, **kwargs):
+        u"""Answer an ordered list of the menu articles, as indicated by the selectors *id* or other values in *kwargs*.
+        Normally this will be the @home@ page of the site, containing the main menu options in @$menu@.
+        The @article.pages@ are article article instances where the menu points to.
+
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> menuArticles = adapter.getMenuArticles(id='index')
+            >>> for article in menuArticles:
+            ...     article.id
+            'articles'
+            'products'
+            'courses'
+            'about'
+        """
+        articles = []
+        article = self.getArticle(**kwargs) # Get the main article for this menu.
         if article.menu: 
             for menuId in article.menu: # All article id references in the menu list
                 menuArticle = self.getArticle(id=menuId)
                 if menuArticle is not None and menuArticle.tag:
-                    data.items.append(menuArticle)
-        return data
+                    articles.append(menuArticle)
+        return articles
     
     def getLogo(self, **kwargs):
-        data = self.newData()
-        data.url = '/home'
-        data.src = '//data.doingbydesign.com.s3.amazonaws.com/_images/logo.png'
-        return data
+        u"""For now, answer the default DbD logo.
+
+            >>> from xierpa3.sites import doingbydesign
+            >>> # Root path where to find the article Simples wiki file for this example page.
+            >>> articleRoot = TX.module2Path(doingbydesign) + '/files/articles/'
+            >>> adapter = TextileFileAdapter(articleRoot)
+            >>> adapter.getLogo()
+            [Article src, url]
+        """
+        return self.newArticle(url='/home',
+            src='//data.doingbydesign.com.s3.amazonaws.com/_images/logo.png')
 
 if __name__ == '__main__':
     # Cache the adapter

@@ -15,6 +15,7 @@ from xierpa3.sites.examples.helloworldblueprint.make import HelloWorldBluePrint
 from xierpa3.sites.examples.helloworldresponsive.make import HelloWorldResponsive
 from xierpa3.sites.examples.helloworldpages.make import HelloWorldPages
 from xierpa3.sites.examples.onecolumnsite.make import OneColumnSite
+from xierpa3.sites.examples.onearticlesite.make import OneArticleSite
 from xierpa3.sites.examples.simpletypespecimen.make import SimpleTypeSpecimenSite
 from xierpa3.sites.examples.simplewebsite.make import SimpleWebSite
 from xierpa3.sites.examples.simpleresponsivepage.make import SimpleResponsivePage

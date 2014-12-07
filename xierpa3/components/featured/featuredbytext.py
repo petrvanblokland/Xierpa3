@@ -110,7 +110,7 @@ class FeaturedByText(FeaturedBase):
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
         )
-        for article in articles.items:
+        for article in articles:
             self._buildFeaturedArticle(b, article)
         b._div()
 

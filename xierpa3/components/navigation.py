@@ -67,7 +67,7 @@ class MobileNavigation(Navigation):
     )                      
     def buildBlock(self, b):
         s = self.style
-        data = self.adapter.getMenu(id=self.C.ID_HOME) # Get data for home page from adapter.
+        menuArticles = self.adapter.getMenu(id=self.C.ID_HOME) # Get data for home page from adapter.
         b.div(class_=(self.C.CLASS_CONTAINER, self.className), display=s.display,
             backgroundcolor=s.backgroundColor, width=s.width,
             marginleft=s.marginLeft, marginright=s.marginRight,
@@ -89,7 +89,7 @@ class MobileNavigation(Navigation):
         b.img(src=s.menuIconUrl,
             padding=0, margin=0, verticalalign=self.C.MIDDLE, maxwidth=Perc(50), height=self.C.AUTO)
         b._div(comment='#'+self.C.ID_MENUICON) # #menu-icon
-        if data.menuItems is None:
+        if menuArticles is None:
             b.error('No items in the adapter')
         else:
             b.ul(id=self.C.ID_NAV, backgroundcolor=s.menuListBackgroundColor,
@@ -97,11 +97,10 @@ class MobileNavigation(Navigation):
                 width=Perc(100), zindex=Z(2000), padding=0, margin=0, liststyletype=self.C.NONE, left=0,
                 textalign=self.C.CENTER)
             homeArticle = self.adapter.getArticle(id=self.C.ID_HOME)
-            for menuId in TX.commaSpaceString2WordList(homeArticle.menu):
-                menuArticle = self.adapter.getArticle(id=menuId)
+            for menuArticle in menuArticles:
                 url = menuArticle.url
                 if url is None:
-                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuId)
+                    url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuArticle.id)
                 b.li(fontsize=s.listFontSize, paddingtop=Em(1.2), width=Perc(100), liststyletype=self.C.NONE,
                     borderbottom=Border('1 solid white'), height=36, backgroundcolor=Color('#4890BC'))
                 b.a(href=url, color=Color('#E8E8E8'))
