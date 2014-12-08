@@ -469,8 +469,9 @@ class ArticleSideBar(ArticleColumn):
     C = ArticleColumn.C
     
     BLUEPRINT = BluePrint( 
+        homeLink=True, doc_homeLink=u'If True, add the link to the home page above the list of featured articles.',
         # Layout stuff
-        colWidth=4, # Default amount of columns for this component  
+        colWidth=4, doc_colWidth=u'Default amount of columns for this component',
         width=Perc(20), doc_width=u'Width of the main column inside the row.', 
         widthMobile=Perc(100), doc_widthMobile=u'Width of the main column inside the row for mobile.',
         # Column
@@ -518,9 +519,15 @@ class ArticleSideBar(ArticleColumn):
         if article is not None and article.featured:
             for featured in article.featured:
                 featuredArticle = self.adapter.getArticle(id=featured)
-                # Check if found and not referring to cyrrent article.
+                # Check if found and not referring to current article.
                 if not featuredArticle in (None, article):
                     featuredArticles.append(featuredArticle)
+        if s.homeLink:
+            b.p()
+            b.a(href='/index')
+            b.text('Home')
+            b._a()
+            b._p()
         # If there are featured articles
         if featuredArticles:
             b.h3()

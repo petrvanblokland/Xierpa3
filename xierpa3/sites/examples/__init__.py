@@ -22,3 +22,4 @@ from xierpa3.sites.examples.simpleresponsivepage.make import SimpleResponsivePag
 from xierpa3.sites.examples.textilearticles.make import TextileArticles
 from xierpa3.sites.examples.featuredcolumn.make import FeaturedColumn
 from xierpa3.sites.examples.basicwebsite.make import BasicWebsite
+from xierpa3.sites.examples.dbdwebsite.make import DbdWebsite
