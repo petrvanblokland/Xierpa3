@@ -101,6 +101,7 @@ class DbdWebsite(Theme):
         featuredByText = FeaturedByText()
         featuredByImageList = FeaturedByImageList()
         articleContainer = Container(components=(article, articleSideBar))
+        articleListContainer = Container()
         homeContainer = Container(components=(featuredByDiapText, featuredByImage, featuredByText,
             featuredByImageList))
 
