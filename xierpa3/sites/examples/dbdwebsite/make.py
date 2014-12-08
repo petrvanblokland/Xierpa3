@@ -16,8 +16,10 @@
 #
 import webbrowser
 from xierpa3.attributes import Color, Em, Perc
-from xierpa3.components import Theme, Page, Column, Container, Article, ArticleSideBar, Footer, \
-    FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList
+from xierpa3.components import Theme, Page, Column, Logo, Menu, MobileNavigation, Container, Article, \
+    ArticleSideBar, Footer, FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList
+from xierpa3.descriptors.blueprint import BluePrint
+from xierpa3.descriptors.media import Media
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 
@@ -25,6 +27,10 @@ from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 BODYFAMILY = '"Benton Sans RE", Verdana, sans'
 HEADFAMILY = '"Hermes FB Semibold", Impact, Verdana, sans'
 
+class Top(Container):
+    BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
+        # Layout alternatives
+    )
 class Navigation(Column):
 
     def buildBlock(self, b):
@@ -83,6 +89,9 @@ class DbdWebsite(Theme):
         # Import current example site, as anchor for the article files.
         adapter = self.getSiteAdapter()
 
+        logo = Logo()
+        menu = Menu()
+        top = Top(components=(logo, menu), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
         navigation = Navigation()
         article = Article()
         articleSideBar = ArticleSideBar()
@@ -90,17 +99,17 @@ class DbdWebsite(Theme):
         featuredByImage = FeaturedByImage()
         featuredByDiapText = FeaturedByDiapText()
         featuredByText = FeaturedByText()
-        featuredByImageLust = FeaturedByImageList()
-        articleContainer = Container(components=(navigation, article, articleSideBar, footer))
-        homeContainer = Container(components=(navigation, featuredByDiapText, featuredByImage, featuredByText,
-            featuredByImageLust, footer))
+        featuredByImageList = FeaturedByImageList()
+        articleContainer = Container(components=(article, articleSideBar))
+        homeContainer = Container(components=(featuredByDiapText, featuredByImage, featuredByText,
+            featuredByImageList))
 
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
-        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=homeContainer, adapter=adapter,
+        homePage = Page(class_=self.C.TEMPLATE_INDEX, components=(top, homeContainer, footer), adapter=adapter,
             title=self.TITLE, fonts=self.URL_FONTS)
 
-        articlePage = Page(class_=self.C.TEMPLATE_ARTICLE, components=articleContainer, adapter=adapter,
+        articlePage = Page(class_=self.C.TEMPLATE_ARTICLE, components=(top, articleContainer, footer), adapter=adapter,
             title=self.TITLE, fonts=self.URL_FONTS)
 
         # Answer a list of types of pages for this site. In this case just one template.
