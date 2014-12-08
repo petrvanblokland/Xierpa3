@@ -125,13 +125,6 @@ class Adapter(object):
     
     def getPageTitle(self, **kwargs):
         return self.newArticle(text='Untitled') # To be redefined by inheriting adapter class.
-    
-    def getMenu(self, count=3, **kwargs):
-        u"""Answer a list of *count* menu articles."""
-        menu = []
-        for i in range(count):
-            menu.append(self.newArticle(text='Menu %d' % i, url='/home'))
-        return menu
 
     def getFooter(self, **kwargs):
         return self.newArticle(text='[' + 'Footer text. ' * 20 + ']')

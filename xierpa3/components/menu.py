@@ -47,18 +47,32 @@ class Menu(Component):
         b.div(class_=colClass)
         b.nav(id=self.C.ID_NAVIGATIONWRAP, width=s.navWidth, float=s.navFloat,
             display=s.navDisplay, margin=s.navMargin, fontsize=s.navFontSize)
-        b.ol(styletype=s.listStyleType, display=s.listDisplay)
-        for menuItem in self.adapter.getMenu(id=self.C.ID_HOME): # Main menu is defined on the home page.
-            b.li(float=s.listFloat, padding=s.listPadding)
+        b.ol(liststyletype=s.listStyleType, display=s.listDisplay)
+        if b.isType(('css', 'sass')):
+            self.buildMenuStyle(b)
+        else:
+            self.buildMenuItems(b)
+        b._ol()
+        b._nav()
+        b._div(comment=colClass)
+
+    def buildMenuStyle(self, b):
+        u"""Build the CSS/SASS style type of the menu, even if the home does not have a menu defined."""
+        s = self.style
+        b.li(float=s.listFloat, padding=s.listPadding)
+        b.a(href='/dummy', color=s.linkColor, textdecoration=s.linkTextDecoration,
+                padding=s.linkPadding, transition=s.linkTransition)
+        b._a()
+        b._li()
+
+    def buildMenuItems(self, b):
+        for menuItem in self.adapter.getMenuArticles(id=self.C.ID_HOME): # Main menu is defined on the home page.
+            b.li()
             if menuItem.url:
                 url = menuItem.url[0] # Get first of list of related urls or None
             else:
                 url = '/%s-%s' % (self.C.PARAM_ARTICLE, menuItem.id)
-            b.a(href=url, color=s.linkColor, textdecoration=s.linkTextDecoration,
-                padding=s.linkPadding, transition=s.linkTransition)
-            b.text(menuItem.tag or menuItem.name)
+            b.a(href=url)
+            b.text(menuItem.tag or menuItem.name or 'Untagged menu article')
             b._a()
             b._li()
-        b._ol()
-        b._nav()
-        b._div(comment=colClass)
