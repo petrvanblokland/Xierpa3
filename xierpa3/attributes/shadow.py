@@ -10,12 +10,13 @@
 #
 #    shadow.py
 #
+from xierpa3.toolbox.coloring import Color
 from xierpa3.attributes.attribute import Attribute
 from xierpa3.attributes.values import asValue
 
 class Shadow(Attribute):
     
-    def __init__(self, t, r, b, l, color, **kwargs):
+    def __init__(self, t=None, r=None, b=None, l=None, color=None, **kwargs):
         #
         # The Shadow class builds the prefix dependent CSS syntax for a shadow attribute.
         #
@@ -27,7 +28,7 @@ class Shadow(Attribute):
         #    -moz-box-shadow: 0 4px 10px -2px #333;
         #    -o-box-shadow: 0 4px 10px -2px #333;
         #
-        #    Width different prefix values
+        #    With different prefix values
         #    boxshadow=Shadow(0, 4, 10, -2, '#333', webkit=Shadow(0, 8, 10, -2, '#FFF')),
         #
         #    box-shadow: 0 4px 10px -2px #333;
@@ -36,11 +37,11 @@ class Shadow(Attribute):
         #    -moz-box-shadow: 0 4px 10px -2px #333;
         #    -o-box-shadow: 0 4px 10px -2px #333;
         #
-        self.t = t
-        self.r = r
-        self.b = b
-        self.l = l
-        self.color = color
+        self.t = t or 0
+        self.r = r or 4
+        self.b = b or 10
+        self.l = l or -2
+        self.color = color or Color('#333')
         self.initializePrefixes(kwargs) # Initialize any child prefix attributes
     
     # self.value

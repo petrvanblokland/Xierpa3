@@ -1,9 +1,10 @@
 $category Course
 $level Novice
-$title How to Deal with Designers and Other Creators</title>
+$title How to Deal with Designers and Other Creators
+$subtitle Learn how to deal with designers in this 10 minute course.
 $poster //data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png
 $author Petr van Blokland
-$topic Learn how to deal with designers in this 10 minute course.</topic>
+$topic Learn how to deal with designers in this 10 minute course.
 $summary Of course you have ideas, and taste and you have the full understanding of why you want this design, and how it will be part of all the other new developments in your company or in your home. But you need someone to work that out for you, to fill in the details. To get it ready for manufacturing. To judge, what is feasible and what is fashionable. 
 $featured how-to-get-into-art-school, interiors, typography, generous-gesture. how-to-build-a-simple-kirby-site, how-to-get-into-art-school
 

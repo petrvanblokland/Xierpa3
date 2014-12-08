@@ -18,7 +18,7 @@ import webbrowser
 from xierpa3.attributes import Color, Em, Perc
 from xierpa3.components import Theme, Page, Column, Logo, Menu, MobileNavigation, Container, Article, \
     ArticleSideBar, Footer, FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList, \
-    ArticlesList
+    ArticlesList, PosterHead
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media
 from xierpa3.toolbox.transformer import TX
@@ -92,20 +92,22 @@ class DbdWebsite(Theme):
 
         logo = Logo()
         menu = Menu()
-        top = Top(components=(logo, menu), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
         navigation = Navigation()
-        article = Article()
+        article = Article(showPoster=False) # No poster inside the article. We use the PosterHead component.
         articleSideBar = ArticleSideBar()
         articlesList = ArticlesList()
-        footer = Footer()
+        posterhead = PosterHead() # Wordpress-like big picture from article.poster link.
         featuredByImage = FeaturedByImage()
         featuredByDiapText = FeaturedByDiapText()
         featuredByText = FeaturedByText()
         featuredByImageList = FeaturedByImageList()
-        articleContainer = Container(components=(article, articleSideBar))
-        articlesListContainer = Container(articlesList,)
+        # Containers for pages
+        top = Top(components=(logo, menu), media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE))
         homeContainer = Container(components=(featuredByDiapText, featuredByImage, featuredByText,
             featuredByImageList))
+        articleContainer = Container(components=(posterhead, article, articleSideBar))
+        articlesListContainer = Container(articlesList,)
+        footer = Footer()
 
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.

@@ -26,7 +26,7 @@ class Container(Component):
     BLUEPRINT = BluePrint(
         # Page/Column
         paddingLeft=10, doc_paddingLeft=u'Padding left of main container.',
-        paddingRight=10, doc_paddingRight=u'Padding left of main container.',
+        paddingRight=10, doc_paddingRight=u'Padding right of main container.',
         # Style
         backgroundColor=None, doc_backgroundColor=u'Background color of the container.',
         # Row

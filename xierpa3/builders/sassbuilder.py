@@ -814,8 +814,10 @@ div.documentation {
             self.output('box-shadow: %s;' % value)
 
     def css3_textshadow(self, value):
-        css = self.getCssBoxShadowValue(value, object="text")
-        self.output(css)
+        if isinstance(value, Shadow):
+            value.build('text-shadow', self)
+        elif value is not None: # Otherwise single CSS line. Better use Shadow instance for browser prefix output.
+            self.output('text-shadow: %s;' % value)
 
     def css3_background(self, value):
         if isinstance(value, Gradient):
@@ -1237,7 +1239,7 @@ div.documentation {
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
         </doc>
         """
-        # TODO: getCssBoxShadowValue now also output the text-stadow css. We may then need a better name for the method.
+        # TODO: getCssBoxShadowValue now also output the text-shadow css. We may then need a better name for the method.
         # @@ color may also be formatted value, such as '4px 4px 3px #888'
         # @@ self.css(ids="...", bowshadow='4px 4px 3px #888')
         # so we need to analyze:
