@@ -1,0 +1,33 @@
+$title Essentials #2: Grids
+$category Web
+$level Beginner
+$ranking 10
+$featured essentials1-the-grid
+
+h1. Grids
+
+Essentials #2: Grids
+
+Different from "Essentials #1":/article-essentials1-the-grid (about the new upcoming application called "The Grid") here are 3 existing examples of the relation between grids and online publishing.
+
+h2. Cedvel
+
+Cedvel is designed and programmed by Fahri Özkaramanlı, a visual communication designer living in İstanbul, interested in exploring the interrelation between people and technology through design.
+As a graphic design student, he made this program as part of his study. It is far from finished, but it is an interesting approach of the topic. It would be very useful if the program could save to HTML/CSS, but currently it only stores pixel images. I think he'd be interested getting your responses. 
+Besides the application itself, the website is also an example how to communicate about technical details in graphic design. And finally he added a number of interesting book titles about typography in general and grids in particular.
+"More here":http://cedvel.com
+
+h2. Golden Grid System: A folding grid for responsive design.
+
+Getting a bit dated (it's a couple of years old now), the “Golden Grid System” (nothing to do with the Golden Section, it's just a name) offers an interesting view how multiple columns fold into single columns, if pages dynamically change size. The best example of this is the website itself. Change the window size and see what happens with the illustrations.
+Note that the techniques for (and opinions about) responsive design are constantly changing. A lot has been written about it and things move forward in high speed. Nevertheless this is an interesting approach of responsive layouts. Other approaches will follow in later issues of this series of essentials.
+"More here":http://goldengridsystem.com
+
+h2. The 892 unique ways to partition a 3x4 grid
+
+Also dated (2009) is the project to make the permutation of possible grid layouts. Patch Kessler designed algorithms to generate all the possible variations, identify unique ones, and sort them—not only for 3 × 4 grids but also for any n × m grid. He instantiated the algorithms in a MATLAB program, which output PDFs, which Thomas Gaskin imported into Adobe Illustrator to design the poster.
+Again, note the different layers of the information presented here: the topic itself, the article about it, the poster presentation and the scientific explanation of the algorithm.
+"More here":http://www.dubberly.com/concept-maps/3x4grid.html
+"The theoretical paper behind it is here":http://www.mechanicaldust.com/Documents/Partitions_05.pdf
+
+

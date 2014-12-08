@@ -1,6 +1,8 @@
 $title Essentials #1: The Grid
 $category Web
 $level Beginner
+$ranking 10
+$featured essentials2-grids
 
 h1. The Grid
 
