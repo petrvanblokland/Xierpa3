@@ -11,7 +11,7 @@
 #    featuredbydiaptext.py
 #
 from featuredbytext import FeaturedByText
-from xierpa3.attributes import Em, Color
+from xierpa3.attributes import Em, Color,Perc
 from xierpa3.descriptors.blueprint import BluePrint
 
 class FeaturedByDiapText(FeaturedByText):
