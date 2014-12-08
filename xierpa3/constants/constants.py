@@ -259,7 +259,7 @@ class Constants(Config):
     # Template names (as parameter in url)
     TEMPLATE_INDEX = 'index'
     TEMPLATE_ARTICLE = 'article'
-    TEMPLATE_OVERVIEW = 'overview'
+    TEMPLATE_ARTICLES = 'articles'
     TEMPLATE_DOCUMENTATION = 'documentation'
     TEMPLATE_DEFAULT = TEMPLATE_INDEX
 

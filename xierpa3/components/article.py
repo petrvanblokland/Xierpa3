@@ -72,7 +72,7 @@ class Article(ArticleColumn):
     # Define the basic blue print style for this type of component.
     BLUEPRINT = BluePrint( 
         # Layout stuff
-        colWidth=8, doc_colWidth=u'Default amount of columns for this component.',
+        width=Perc(70), doc_colWidth=u'Relative width for the article text column.',
         gutter=8, doc_gutter=u'Gutter width between columns.',
         # Chapter behavior
         splitChapters=False, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.',
@@ -199,8 +199,7 @@ class Article(ArticleColumn):
         url of the page."""
         s = self.style
         article = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
-        b.div(class_=self.getClassName(), width=Perc(70), #s.width, 
-              float=self.C.LEFT,
+        b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
               paddingRight=s.gutter, #marginright=s.gutter, # Gutter between main column and article side bar.
               marginright=0,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
@@ -471,8 +470,7 @@ class ArticleSideBar(ArticleColumn):
     BLUEPRINT = BluePrint( 
         homeLink=True, doc_homeLink=u'If True, add the link to the home page above the list of featured articles.',
         # Layout stuff
-        colWidth=4, doc_colWidth=u'Default amount of columns for this component',
-        width=Perc(20), doc_width=u'Width of the main column inside the row.', 
+        width=Perc(28), doc_width=u'Width of the main column inside the row.',
         widthMobile=Perc(100), doc_widthMobile=u'Width of the main column inside the row for mobile.',
         # Column
         padding=Em(0.35), doc_padding=u'Padding of the main column container.',

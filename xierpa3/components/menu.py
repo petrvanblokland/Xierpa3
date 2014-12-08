@@ -24,8 +24,8 @@ class Menu(Component):
         # Block stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component.', 
         # nav stuff
-        navWidth=Perc(100), # ...
-        navFloat=C.RIGHT, 
+        navWidth=Perc(100), doc_navWidth=u'Default with of the nav-tag.',
+        navFloat=C.RIGHT, doc_navFloat=u'Float menu navigation left or right.',
         navDisplay=C.INLINE, 
         navMargin=0, 
         navFontSize=Em(1.5),
@@ -35,9 +35,9 @@ class Menu(Component):
         listFloat=C.RIGHT, 
         listPadding=10,
         # Link stuff
-        linkColor='#4890be', doc_linkColor=u'Link color',
-        linkTextDecoration=C.NONE, 
-        linkPadding=Em(0.3), doc_linkPadding=u'Link padding',
+        linkColor='#4890be', doc_linkColor=u'Link color of a menu item.',
+        linkTextDecoration=C.NONE, doc_linkTextDecoration=u'Link text decoration of a menu item.',
+        linkPadding=Em(0.3), doc_linkPadding=u'Link padding of a menu item.',
         linkTransition=None, #Transition(),
     )
     def buildBlock(self, b):

@@ -112,6 +112,9 @@ class DbdWebsite(Theme):
         articlePage = Page(class_=self.C.TEMPLATE_ARTICLE, components=(top, articleContainer, footer), adapter=adapter,
             title=self.TITLE, fonts=self.URL_FONTS)
 
+        articlesPage = Page(class_=self.C.TEMPLATE_ARTICLES, components=(top, articleListContainer, footer),
+            adapter=adapter, title=self.TITLE, fonts=self.URL_FONTS)
+
         # Answer a list of types of pages for this site. In this case just one template.
-        return [homePage, articlePage]
+        return [homePage, articlePage, articlesPage]
     
