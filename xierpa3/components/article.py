@@ -651,3 +651,21 @@ class ArticleSideBar(ArticleColumn):
                 b._ol()
                 b._div() # .footnotes
     
+class ArticlesList(Column):
+
+    def buildBlock(self, b):
+        b.div(class_='navigation', marginbottom=Em(2), width=Perc(100), backgroundcolor=Color('#EEE'))
+        for article in self.adapter.getRankedArticles():
+            if article.title:
+                b.a(href='/article-%s' % article.id, fontsize=Em(0.8), color=Color('#888'))
+                b.text(article.title)
+                b._a()
+                if article.summary:
+                    b.div(class_='articleSummary')
+                    b.text(article.summary)
+                    b._div()
+            else:
+                b.text('No title for article "%s"' % article.id)
+            b.br()
+        b._div()
+

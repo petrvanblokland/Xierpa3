@@ -19,7 +19,7 @@ from group import Group, ItemGroup # Group of floating rows
 from menu import Menu
 from logo import Logo
 from page import Page
-from article import Article, ArticleSideBar
+from article import Article, ArticleSideBar, ArticlesList
 from sidebar import Sidebar
 from navigation import Navigation, MobileNavigation
 from tagcloud import TagCloud

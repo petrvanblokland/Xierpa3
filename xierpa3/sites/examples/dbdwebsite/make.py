@@ -17,7 +17,8 @@
 import webbrowser
 from xierpa3.attributes import Color, Em, Perc
 from xierpa3.components import Theme, Page, Column, Logo, Menu, MobileNavigation, Container, Article, \
-    ArticleSideBar, Footer, FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList
+    ArticleSideBar, Footer, FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList, \
+    ArticlesList
 from xierpa3.descriptors.blueprint import BluePrint
 from xierpa3.descriptors.media import Media
 from xierpa3.toolbox.transformer import TX
@@ -95,13 +96,14 @@ class DbdWebsite(Theme):
         navigation = Navigation()
         article = Article()
         articleSideBar = ArticleSideBar()
+        articlesList = ArticlesList()
         footer = Footer()
         featuredByImage = FeaturedByImage()
         featuredByDiapText = FeaturedByDiapText()
         featuredByText = FeaturedByText()
         featuredByImageList = FeaturedByImageList()
         articleContainer = Container(components=(article, articleSideBar))
-        articleListContainer = Container()
+        articlesListContainer = Container(articlesList,)
         homeContainer = Container(components=(featuredByDiapText, featuredByImage, featuredByText,
             featuredByImageList))
 
@@ -113,7 +115,7 @@ class DbdWebsite(Theme):
         articlePage = Page(class_=self.C.TEMPLATE_ARTICLE, components=(top, articleContainer, footer), adapter=adapter,
             title=self.TITLE, fonts=self.URL_FONTS)
 
-        articlesPage = Page(class_=self.C.TEMPLATE_ARTICLES, components=(top, articleListContainer, footer),
+        articlesPage = Page(class_=self.C.TEMPLATE_ARTICLES, components=(top, articlesListContainer, footer),
             adapter=adapter, title=self.TITLE, fonts=self.URL_FONTS)
 
         # Answer a list of types of pages for this site. In this case just one template.
