@@ -28,13 +28,15 @@ class FeaturedByDiapText(FeaturedByText):
     LABELCOLOR = AUTHORCOLOR
     NAMECOLOR= Color('#66696C')
     SUMMARYCOLOR= Color('#E0E0E0')
-    BACKGROUNDCOLOR = Color('#202020')
+    BACKGROUNDCOLOR = Color('#323A46')
     LEVELCOLOR = Color('#6294D0')
     NAMECOLOR = Color('#E1E1E1')
     AUTHORCOLOR = Color('#B2B4B7')
 
     # Inherit from the super class blueprint, and then change some of the parameters.
     BLUEPRINT = BluePrint(FeaturedByText.BLUEPRINT,
+        width=Perc(65.4), doc_colWidth=u'Relative width for the featured by text column.',
+        gutter=8, doc_gutter=u'Gutter width between columns.',
         # Layout alternatives
         showPoster=True, doc_showPoster=u'Boolean flag to indicate if the poster of the article should be shown.',
         showCategory=True, doc_showCategory=u'Boolean flag to indicate if the category of this article should be shown.',
@@ -53,7 +55,6 @@ class FeaturedByDiapText(FeaturedByText):
         # Poster
         posterWidth='40%', doc_posterWidth=u'Width of the poster image, to allow text to flow around.',
         # Layout stuff
-        colWidth=8, # Default amount of columns for this component
         backgroundColor=Color(BACKGROUNDCOLOR), doc_backgroundColor=u'Background color of the component. Default is a dark gray.',
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         showLevel=True, genericLevel='Generic', # Show generic level if level is omitted in data.
