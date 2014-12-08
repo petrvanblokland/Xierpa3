@@ -16,7 +16,8 @@
 #
 import webbrowser
 from xierpa3.attributes import Color, Em, Perc
-from xierpa3.components import Theme, Page, Column, Container, Article, ArticleSideBar, Footer, FeaturedByImage
+from xierpa3.components import Theme, Page, Column, Container, Article, ArticleSideBar, Footer, \
+    FeaturedByImage, FeaturedByDiapText, FeaturedByText, FeaturedByImageList
 from xierpa3.toolbox.transformer import TX
 from xierpa3.adapters.textilefileadapter import TextileFileAdapter
 
@@ -86,9 +87,14 @@ class DbdWebsite(Theme):
         article = Article()
         articleSideBar = ArticleSideBar()
         footer = Footer()
-        featured = FeaturedByImage()
+        featuredByImage = FeaturedByImage()
+        featuredByDiapText = FeaturedByDiapText()
+        featuredByText = FeaturedByText()
+        featuredByImageLust = FeaturedByImageList()
         articleContainer = Container(components=(navigation, article, articleSideBar, footer))
-        homeContainer = Container(components=(navigation, featured, footer))
+        homeContainer = Container(components=(navigation, featuredByDiapText, featuredByImage, featuredByText,
+            featuredByImageLust, footer))
+
         # Create an instance (=object) of the page, containing the navigation components.
         # The class is also the page name in the url.
         homePage = Page(class_=self.C.TEMPLATE_INDEX, components=homeContainer, adapter=adapter,

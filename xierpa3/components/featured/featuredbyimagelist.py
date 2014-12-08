@@ -16,7 +16,7 @@ from xierpa3.descriptors.blueprint import BluePrint
 
 class FeaturedByImageList(FeaturedBase):
     u"""The *FeaturedByImageList* feature component builds a vertical list if thumbnails,
-    level and optional names of the selected article items."""
+    level and optional names of the selected article chapters."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
 
     C = FeaturedBase.C
@@ -70,7 +70,7 @@ class FeaturedByImageList(FeaturedBase):
 
     def buildFeatured(self, b, articles):
         s = self.style
-        for article in articles.items:
+        for article in articles:
             if not article.poster:
                 continue # Only show articles that have some kind of poster image.
             b.div(class_=self.CLASS_FEATURED_ITEM, display=s.itemDisplay,

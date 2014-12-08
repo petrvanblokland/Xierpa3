@@ -93,7 +93,7 @@ class BlurbAdapter(Adapter):
     def getChapter(self, index=0, **kwargs):
         u"""Answer a blurb article as chapter."""
         return self.getArticle()
-    
+
     # P A G E  S T U F F
         
     def getFooter(self, count=1, **kwargs):
