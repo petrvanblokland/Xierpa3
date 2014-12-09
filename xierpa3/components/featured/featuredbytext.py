@@ -27,6 +27,7 @@ class FeaturedByText(FeaturedBase):
     LEVELSIZE = Em(0.9)
     LEVELCOLOR = Color('#6294D0')
     TEXTCOLOR = Color('#FFFFFF')
+    LINKCOLOR = Color('#4692BD')
     AUTHORSIZE = Em(1.2)
     CATEGORYSIZE = Em(1.4)
     AUTHORCOLOR = Color('#828487')
@@ -63,7 +64,11 @@ class FeaturedByText(FeaturedBase):
         paddingRight=Em(1),
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         genericLevel='Generic', # Show generic level if level is omitted in data.
+
+        #General style stuff
         colorBodyText=TEXTCOLOR,
+        linkColor=LINKCOLOR,
+
         levelColor=LEVELCOLOR,
         levelSize=LEVELSIZE,
         levelLineHeight=Em(1.4),
@@ -109,7 +114,7 @@ class FeaturedByText(FeaturedBase):
     )
     def buildFeatured(self, b, articles):
         s = self.style
-        b.div(class_=self.getClassName(), color=s.colorBodyText, width=s.width, backgroundcolor=s.backgroundColor,
+        b.div(class_=self.getClassName(), color=s.colorBodyText, backgroundcolor=s.backgroundColor,
             display=s.display, float=s.float, paddingleft=s.paddingLeft,paddingright=s.paddingRight,
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
@@ -131,7 +136,7 @@ class FeaturedByText(FeaturedBase):
                 ))
             b.text(s.label)
             b._h2()
-        b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id), class_=self.C.CLASS_NAME)
+        b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id), color=s.linkColor, class_=self.C.CLASS_NAME)
         b.h2(fontsize=s.nameSize, fontweight=s.nameWeight, lineheight=s.nameLineHeight,
              color=s.nameColor, marginbottom=s.nameMarginBottom, display=s.nameDisplay,
              margintop=s.nameMarginTop)
