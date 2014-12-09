@@ -30,6 +30,8 @@ class PosterHead(Column):
     BLUEPRINT = BluePrint(Column.BLUEPRINT,
         # Container component layout stuff
         width=Perc(100), doc_width=u'Overall width of the component.',
+        # Showings
+        showSubtitle=True, doc_showSubtitle=u'Show the $subtitle if it exists in the article. Otherwise show $topic.',
     )
     def buildColumn(self, b):
         if b.isType(('css', 'sass')):
@@ -45,13 +47,18 @@ class PosterHead(Column):
                 display=s.displayMobile, float=s.floatMobile),
         )
         b.div(class_=self.C.CLASS_FEATUREDITEM, display=s.itemDisplay,
-            backgroundcolor=s.itemBackgroundColor, padding=Em(2),
+            backgroundcolor=s.itemBackgroundColor, padding=Em(1.6),
+            #style='background-repeat:no-repeat;background-size:cover;',
             clear=s.itemClear, marginbottom=s.itemMarginBottom, margintop=s.itemMarginTop,
+            media=Media(max=self.C.M_MOBILE_MAX,
+            #style='background-size:auto'
+            ),
         )
-        b.h1(color=Color('white'), fontsize=Em(4), fontweight=self.C.BOLD, textshadow=Shadow())
+        b.h1(color=Color('white'), fontfamily='Georgia', fontsize=Em(4), fontweight=self.C.BOLD, textshadow=Shadow())
         b._h1()
-        b.h2(color=Color('yellow'), fontsize=Em(2), fontweight=self.C.BOLD, textshadow=Shadow())
-        b._h2()
+        if s.showSubtitle:
+            b.h2(color=Color('yellow'), fontsize=Em(2), fontweight=self.C.BOLD, textshadow=Shadow())
+            b._h2()
         b._div(comment=self.C.CLASS_FEATUREDITEM)
         b._div()
 
@@ -64,7 +71,8 @@ class PosterHead(Column):
             b.h1()
             b.text(article.title)
             b._h1()
-            if article.subtitle or article.topic:
+            # If style subtitle flag is set, then show the $subtitle or $topic if one of them exists in the article.
+            if s.showSubtitle and (article.subtitle or article.topic):
                 b.h2()
                 b.text(article.subtitle or article.topic)
                 b._h2()

@@ -199,7 +199,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         if there already is an identical selector-content match inside the current block."""
         self.pushResult() # Divert the selector output, so we can see at closing if the result was empty.
         self.tabs()
-        # Getthe selector of the CSS. See working of the self.getSelector(...) for the order of interpretation.
+        # Get the selector of the CSS. See working of the self.getSelector(...) for the order of interpretation.
         # self.getSelector(tag, id, selectorPath, selector, class_, class_postfix, pseudo):
         selector = self.getSelector(tag, kwargs.get('id'), kwargs.get('selectorPath'), kwargs.get('selector'), kwargs.get('class_'), kwargs.get('class_'+self.ATTR_POSTFIX), kwargs.get('pseudo'))
         if selector:
@@ -380,10 +380,12 @@ class SassBuilder(XmlTransformerPart, Builder):
         Sass variable, feed directly into the CSS hook call.
         """
         if isinstance(value, (Selection,)):
-            # Select the attribte, based on parameters in the url. 
+            # Select the attribute, based on parameters in the url.
             value = value.selectFromParams(self.e.form)
         elif isinstance(value, (Em,)):
             value = value.value
+        #elif name == 'style':
+        #    pass # Keep value as it is. Hardcoded CSS cannot be a SASS variable.
         elif name.startswith('class_'):
             pass # Keep value as it is
         elif isinstance(value, float):
@@ -793,6 +795,13 @@ div.documentation {
          
     # ---------------------------------------------------------------------------------------------------------
     #    C S S  M N E M O N I C S
+
+    def XXXcss3_style(self, value):
+        # Plain CSS output trough the style goes to CSS instead of directed into the HTML tag.
+        assert isinstance(value, basestring)
+        if not value.endswith(';'):
+            value += ';'
+        self.output(value)
 
     def css3_class_(self, value):
         pass # Class attributes are never CSS arguments
