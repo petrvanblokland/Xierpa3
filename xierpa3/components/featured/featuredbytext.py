@@ -26,6 +26,7 @@ class FeaturedByText(FeaturedBase):
 
     LEVELSIZE = Em(0.9)
     LEVELCOLOR = Color('#6294D0')
+    TEXTCOLOR = Color('#FFFFFF')
     AUTHORSIZE = Em(1.2)
     CATEGORYSIZE = Em(1.4)
     AUTHORCOLOR = Color('#828487')
@@ -58,8 +59,11 @@ class FeaturedByText(FeaturedBase):
         # Layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component',
         backgroundColor=None, doc_backgroundColor=u'Background color of the whole component. Default is to inherit.',
+        paddingLeft=Em(1),
+        paddingRight=Em(1),
         # Level stuff, handle local fontsize and lineheight here, related to the item size
         genericLevel='Generic', # Show generic level if level is omitted in data.
+        colorBodyText=TEXTCOLOR,
         levelColor=LEVELCOLOR,
         levelSize=LEVELSIZE,
         levelLineHeight=Em(1.4),
@@ -105,8 +109,8 @@ class FeaturedByText(FeaturedBase):
     )
     def buildFeatured(self, b, articles):
         s = self.style
-        b.div(class_=self.getClassName(), width=s.width, backgroundcolor=s.backgroundColor,
-            display=s.display, float=s.float, padding=s.padding,
+        b.div(class_=self.getClassName(), color=s.colorBodyText, width=s.width, backgroundcolor=s.backgroundColor,
+            display=s.display, float=s.float, paddingleft=s.paddingLeft,paddingright=s.paddingRight,
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
         )

@@ -201,7 +201,7 @@ class Article(ArticleColumn):
         article = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
         b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
               paddingRight=s.gutter, #marginright=s.gutter, # Gutter between main column and article side bar.
-              marginright=0,
+              paddingleft=Em(0.5), paddingright=Em(0.5),marginright=0,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
                     paddingleft=Em(0.5), paddingright=Em(0.5),
                     marginright=0),
