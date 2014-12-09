@@ -128,13 +128,13 @@ h2. Write the admission motivation
 * Write a motivation that fully fits these requirements and think about adding personal angles.
 * Start early, it may need several versions to make the final one. And if writing is not one of your main skills, then there is even more reason not to postpone this part of the admission until it is too late.
 * Make bullets lists about what you want to say. Think about their order and relevance.
-* Let the language and spelling check by someone else
+* Let someone else check on the language and spelling.
 * Design the motivation document, or let someone help you with the layout if graphic design and typography is not part of your basis skills
 * Design the presentation of the document, depending on the required technique and medium.
 Credentials tests and diplomas
-* Although the skills of art and design are hard to quantify (good artists and designers by definition do not fit in existing categories), art schools often are a department of larger educational institutes, the do have a strict description of required credentials and diplomas. Make sure that yours fit what the institution needs. It is a waste of time and effort if the admission is rejected purely on formal issues.
+* Although the skills of art and design are hard to quantify (good artists and designers by definition do not fit in existing categories), art schools often are a department of larger educational institutes, they do have a strict description of required credentials and diplomas. Make sure that yours fit what the institution needs. It is a waste of time and effort if the admission is rejected purely on formal issues.
 * SAT/ACT/TOFEL scores and "standardized  tests":http://collegeapps.about.com/od/standardizedtests/
-* Make sure that the diplomas you have are valied and recognized, if you apply in another country.
+* Make sure that the diplomas you have are valid and recognized, if you apply in another country.
 
 h2. Dates for submission
 
@@ -142,12 +142,14 @@ h2. Open days
 
 h2. Writing a thesis
 
-Sometimes applying for an art school requires writing a thesis about a given subject. Schools do that to test your abilities of writing besides your visual skills. Also they want to test if you can do research, thinking and writing about a given subject, that is related to your future profession.
+p(first). Sometimes applying for an art school requires writing a thesis about a given subject. Schools do that to test your abilities of writing besides your visual skills. Also they want to test if you can do research, thinking and writing about a given subject, that is related to your future profession.
 
 * Planning
 * General tips & tricks about researching a new topic here.
 * General tips & tricks about writing here.
-Do research
+
+h2. Do research
+
 * Prepare yourself by doing research in the kind of questions to can expect during the interview. The reviewers want to get an idea about your current state of knowledge and skills. They will test you, sometimes with a trick question. Do research on the institution that you are applying, its history. 
 * Execution of specific assignments at home.
  
@@ -172,10 +174,14 @@ Admission interview (live or through skype/hangout)
 * Show up on time
 * Your clothes and the rest of your visual presentation may be important. Check out in advance to what extend this is true.
 * Decide on what the most important things are that you want to tell. Make sure you have a list with you to check if you addressed them all.
-* Make notes about what people tell you about your work. In case there is a possibility to
+* Make notes about what people tell you about your work.
 * An interview in person always works better than on through skype of hangout.
 * If you are not in the position to go there, then prepare your online presentation well: rehearse the presentation with someone else, to make sure that the technique works and to verify that there iis enough band width in your place. Wear headphones (preferably an invisible in-ear model) to avoid echos on the other side. If the language of the presentation is not your native language then practice the interview with other people in that language.
 * Be aware of what you write on Twitter or Facebook. Art school teachers also read online.
+
+h2. Rejection
+
+p(first). In case you get rejected, spend some time to find out what the reason is. Being rejected because of you work (quality or quantity) is very different from rejected based on your presentation or credentials. This knowledge will help you to improve your application next time.
 
 h2. Summary
 
