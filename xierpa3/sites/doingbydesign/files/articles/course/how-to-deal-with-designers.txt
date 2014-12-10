@@ -15,11 +15,11 @@ p(lead). Welcome to this course. If you are working with designers, in your prof
 Of course you have ideas, and taste and you have the full understanding of why you want this design, and how it will be part of all the other new developments in your company or in your home. But you need someone to work that out for you, to fill in the details. To get it ready for manufacturing. To judge, what is feasible and what is fashionable. 
 Maybe you want a new website for your company. Or a logo. Or a new innovative product. Or a catchy advertisement campaign. Or a new building. So you ‘google’ through associating words, while making notes about what you like. You search on sites with similar products, where the style fits your ideas, matching what you have in mind. You are aware that there could potentially be a budget issue, looking at the work of Famous Designers, but that’s a problem to be solved later. You review what your competitors have done before and you try to guess where they are heading. 
 
-!(first)//data.petr.com.s3.amazonaws.com/_images/house/exterior/buro_rietveld_gracht_cepezed2.jpg
+!(first)http://data.petr.com.s3.amazonaws.com/_images/house/exterior/buro_rietveld_gracht_cepezed2.jpg!
 
-p(caption). House at Rietveld Delft by CEPEZED.
+p(caption). House at Rietveld Delft by "CEPEZED":http://www.cepezed.nl.
 
-You then write a brief to describe the context for this new design and you may even compose a mood board, to visualize what you like and perhaps what you don’t like. By the way, this course will show you the methods for doing these things. 
+p(first). You then write a brief to describe the context for this new design and you may even compose a mood board, to visualize what you like and perhaps what you don’t like. By the way, this course will show you the methods for doing these things.
 You search through portfolios, read about previous projects of various designers or architects. You try to find the matching designer or design studio for your brief and mood board. One that understands what you want. And at the same time one that doesn’t only do what you tell him, or else you wouldn’t need to hire one.
 You ask around in your network for opinions and recommendations. Which designer should be invited for a presentation? Who would perform best in a pitch? Which one is likely to conceive the best design solution and work within your budget? And meanwhile not behaving too much, or else no new things will come out. 
 You have to select the right designer. If you find out, half way into the project you made the wrong choice, it is too late. You want a guarantee of success[1], Design in this course is defined as: the process in which sketching and prototyping is repeated and gets better in every cycle.
@@ -34,11 +34,11 @@ Should you request total insight on every level of details and decision making, 
 
 For the record: I am fully aware that there are male designers and female designers, and that there are female customers and male customers, so I will alternate referring to each of them as male or female during this course. Making the customer the opposite gender as the designer in the text of this course, will simplify the language. We’ll start with a male designer and female customer in this chapter. Then in the next chapter this will swap.
 
-!(first)//data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png!
+!(first)http://data.doingbydesign.com.s3.amazonaws.com/_images/udemycourses/DoYouReallyNeedADesigner.png!
 
 p(caption). Do you really[2] need a designer?
 
-This course will present checklists, methods, use-cases and working models. You can use them as starting point for your selection process. And as a model for the way you -- as a customer -- want to interact with the designer. What is your role in the process? You need to learn to think like a designer -- a little bit, not too much, you are on the other side of the table. Your primary responsibilities are to keep the company alive. To maintain your household. It is not your responsibility to make the designer happy by all means. You need to be able to think like a designer, just enough to know how the processes work. To follow his line of reasoning. Why he shows what he shows. Why he comes up with the solutions he does. 
+p(first). This course will present checklists, methods, use-cases and working models. You can use them as starting point for your selection process. And as a model for the way you -- as a customer -- want to interact with the designer. What is your role in the process? You need to learn to think like a designer -- a little bit, not too much, you are on the other side of the table. Your primary responsibilities are to keep the company alive. To maintain your household. It is not your responsibility to make the designer happy by all means. You need to be able to think like a designer, just enough to know how the processes work. To follow his line of reasoning. Why he shows what he shows. Why he comes up with the solutions he does.
 And you want to have the tools to make it clear to designers that it is your problem they should be solving. Not making something that simply fits their own taste.
 
 If you are a design educator, this course is likely to be useful for you too, since most of the methods for stimulating designers also apply to design-students. And the course is definitely for designers, who are -- and all designers should be -- interested in how customers experience the design process. Know your opponents. 
