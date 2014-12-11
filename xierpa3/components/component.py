@@ -318,7 +318,7 @@ class Component(object):
         classes that want to export Javascript need to redefined this method."""
         if b.isType('html'): 
             for component in self.component:
-            component.builsJS(b)
+                component.builsJS(b)
 
     # D O C U M E N T A T I O N
 
