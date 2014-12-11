@@ -13,7 +13,7 @@
 #   Formatting conform https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
 #
 try:
-    from config.xconfig import Config
+    from config.config import Config
 except ImportError:
     from config.COPYTO_config import Config
 
