@@ -476,7 +476,7 @@ class ArticleSideBar(ArticleColumn):
         padding=Em(0.35), doc_padding=u'Padding of the main column container.',
         backroundColor=Color('white'), doc_backgroundColor=u'Background color of side bar container.',
         # Chapter navigation
-        showChapterNavigation=True, doc_showChapterNavigation=u'Boolean flag to indicate that chapter navigation must be shown. If the article source has chapters, but the main article component @article.style.splitChapters@ is @False@, then in-page navigation will be made.',
+        showChapterNavigation=False, doc_showChapterNavigation=u'Boolean flag to indicate that chapter navigation must be shown. If the article source has chapters, but the main article component @article.style.splitChapters@ is @False@, then in-page navigation will be made.',
         chapterLabel='Chapters', doc_chapterLabel=u'Title of chapter navigation, shown as h2 heading.',
         chapterNameSize=Em(1.2), doc_chapterNameSize=u'Font size of chapter title.',
         showChapterSummaryOnMax=10, # Not show summary if more than 10 chapters
@@ -500,11 +500,12 @@ class ArticleSideBar(ArticleColumn):
         )
         if article is None:
             self.buildArticleSideBarStyle(b)
-        else:
+        else: # There is a valid article selection
             self.buildArticleFeatures(b, article)
-        #if s.showChapterNavigation:
+        if s.showChapterNavigation:
+            # If chapters are split, then add the chapter navigation here.
             #self.buildMobileChapterNavigation(b, articleData)
-            #self.buildChapterNavigation(b, articleData)
+            self.buildChapterNavigation(b, article)
         #if s.showFootNotes:
         #    self.buildFootNotes(b, article)
         b._div(comment=self.getClassName())

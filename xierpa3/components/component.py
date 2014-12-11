@@ -310,6 +310,16 @@ class Component(object):
             component.buildAjaxDict(site, d)
         return d
 
+    def buildJS(self, b):
+        u"""
+        Will be called for every component in the tree, so each is allows to build its own
+        Javascript at the end of a document. Default behavior is to ignore this for other
+        than the HtmlBuilder and the just call the child components. Inheriting component
+        classes that want to export Javascript need to redefined this method."""
+        if b.isType('html'): 
+            for component in self.component:
+            component.builsJS(b)
+
     # D O C U M E N T A T I O N
 
     def buildDocumentation(self, b):

@@ -37,4 +37,7 @@ class Page(Component):
         b.page(self)
         for component in self.components:
             component.build(b) # Dispatch the type of building to be done here.
+        # Allow the components to build the JavaScript they need.
+        for component in self.components:
+            component.buildJS(b)
         b._page(self)
