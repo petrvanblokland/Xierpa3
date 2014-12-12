@@ -317,8 +317,8 @@ class Component(object):
         than the HtmlBuilder and the just call the child components. Inheriting component
         classes that want to export Javascript need to redefined this method."""
         if b.isType('html'): 
-            for component in self.component:
-                component.builsJS(b)
+            for component in self.components:
+                component.buildJS(b)
 
     # D O C U M E N T A T I O N
 

@@ -84,6 +84,9 @@ class DbDAdapter(TextileFileAdapter):
     def getKeyWords(self):
         return self.newArticle(text=u"""Doing, design, design process, programming, design education""")
 
+    def getMenu(self, id):
+	pass
+
 # Components
 
 class DbDMobileNavigation(MobileNavigation):
