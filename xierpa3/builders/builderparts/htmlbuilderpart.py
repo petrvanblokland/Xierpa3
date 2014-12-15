@@ -1354,10 +1354,10 @@ class HtmlBuilderPart:
         self._textarea()
         </python>
         """
-        self.write_tag(u'textarea', True, args)
+        self.write_tag_noWhitespace(u'textarea', True, args) # No tabbing inside the <textarea> tag.
 
     def _textarea(self):
-        self._closeTag(u'textarea')
+        self._closeTag_noWhitespace(u'textarea')
 
     def meta(self, **args):
         """
