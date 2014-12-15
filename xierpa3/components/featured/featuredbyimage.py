@@ -110,7 +110,7 @@ class FeaturedByImage(FeaturedBase):
             clear=s.itemClear, marginbottom=s.itemMarginBottom, margintop=s.itemMarginTop,
         )
         b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id))
-        b.img(class_=(self.C.CLASS_AUTOWIDTH, 'featuredImage'), src=article.poster)
+        b.img(class_=(self.C.CLASS_MAXWIDTH, 'featuredImage'), height=s.AUTO, src=article.poster)
         if s.showLevel or s.genericLevel:
             # Format the level indicator
             b.h5(class_=self.C.CLASS_LEVEL, color=s.levelColor, fontsize=s.levelSize,

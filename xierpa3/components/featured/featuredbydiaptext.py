@@ -57,6 +57,8 @@ class FeaturedByDiapText(FeaturedByText):
         posterWidth='40%', doc_posterWidth=u'Width of the poster image, to allow text to flow around.',
         # Layout stuff
         color=TEXTCOLOR,
+        paddingTop=Em(2),
+        paddingBottom=Em(2),
         paddingLeft=Em(1),
         paddingRight=Em(1),
         backgroundColor=Color(BACKGROUNDCOLOR), doc_backgroundColor=u'Background color of the component. Default is a dark gray.',

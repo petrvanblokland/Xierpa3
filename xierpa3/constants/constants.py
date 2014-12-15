@@ -101,6 +101,7 @@ class Constants(Config):
     CLASS_ARTICLETOP = 'articleTop'
     CLASS_AUTHOR = 'author'
     CLASS_AUTOWIDTH = 'autoWidth' # Make img tags behave right for width='auto' in all browser.
+    CLASS_MAXWIDTH = 'maxWidth' # Make img tags behave right for width='auto' in all browser.
     CLASS_CAPTION = 'caption'
     CLASS_CATEGORY = 'category'
     CLASS_CATEGORYTHUMB = 'categoryThumb'
