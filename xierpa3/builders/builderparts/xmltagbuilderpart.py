@@ -130,7 +130,13 @@ class XmlTagBuilderPart:
         """
         self.output(u'<' + tagname)
         self.getandwrite_attributes(tagname, args)
-        self.output(u'>')
+
+        if open:
+            self.output(u'>')
+            # Push as last, so we can see the current tag on the stack
+            self._pushTag(tagname)
+        else:
+            self.output(u'/>')
 
     # ---------------------------------------------------------------------------------------------------------
     #     B L O C K
@@ -154,9 +160,11 @@ class XmlTagBuilderPart:
     def _closeTag(self, tag):
         self.tabOut()
         self.tabs()
-        self._closeTag_noWhitespace(tag)
+        self.output(u'</%s>' % tag)
+        self._popTag(tag)
 
     def _closeTag_noWhitespace(self, tag):
+        u"""Close the tag. Don’t write any white space inside the block. E.g. used by <textarea>."""
         self.output(u'</%s>' % tag)
         self._popTag(tag)
 
