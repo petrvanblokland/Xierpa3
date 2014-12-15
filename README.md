@@ -114,7 +114,7 @@ FB & Twitter: @petrvanblokland
 #### Contributers of code
  * Filibuster by Erik van Blokland and Jonathan Hoefler.
 
-#### Published by he MIT License
+#### Published by the MIT License
  * http://opensource.org/licenses/MIT
 
  -----------------------------------------------------------------------------
