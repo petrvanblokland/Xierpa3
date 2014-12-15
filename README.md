@@ -26,6 +26,13 @@ tested. This will remain until version 1.0.
 But Xierpa is already a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in CSS+HTML (or PHP) directly. 
 
+Recently published in Open Source: Xierpa3App. This is a project that implements an
+OSX wrapper application around the example sites in Xierpa3. Still being worked on,
+it offers a UI to a live server as well as the possibility to see generated CSS and
+the automatic generated documentation pages about a website.
+It will be possible to use Python as scripting, on top of an existing site, e.g.
+to manipulate style parameters of published components.
+
 -----------------------------------------------------------------------------
 
 ### Getting started
