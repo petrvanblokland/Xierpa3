@@ -62,6 +62,7 @@ class Article(ArticleColumn):
     CHAPTERTITLECOLOR1 = CHAPTERTITLECOLOR0
     H1COLOR = Color('#333')
     H2COLOR = Color('#828487')
+    BACKGROUNDCOLOR = Color('#fff')
     AUTHORCOLOR = H2COLOR
     CATEGORYCOLOR = H2COLOR
     LABELCOLOR = H2COLOR
@@ -74,6 +75,8 @@ class Article(ArticleColumn):
         # Layout stuff
         width=Perc(70), doc_colWidth=u'Relative width for the article text column.',
         gutter=8, doc_gutter=u'Gutter width between columns.',
+        backgroundColor=Color(BACKGROUNDCOLOR), doc_backgroundColor=u'Background color of the component. Default is white.',
+        paddingleft=Em(2), doc_paddingleft=u'General article padding',
         # Chapter behavior
         splitChapters=False, doc_splitChapters=u'Boolean flag if the chapters should be listening to url chapter index.',
         # Poster
@@ -201,9 +204,9 @@ class Article(ArticleColumn):
         article = self.adapter.getArticle(id=b.getCurrentArticleId(), url=b.e.path)
         b.div(class_=self.getClassName(), width=s.width, float=self.C.LEFT,
               paddingRight=s.gutter, #marginright=s.gutter, # Gutter between main column and article side bar.
-              paddingleft=Em(0.5), paddingright=Em(0.5),marginright=0,
+              paddingleft=Em(2), paddingtop=Em(2), paddingright=Em(2), backgroundcolor=Color('#fff'), marginright=0,
               media=Media(max=self.C.M_MOBILE_MAX, width=self.C.AUTO, float=self.C.NONE,
-                    paddingleft=Em(0.5), paddingright=Em(0.5),
+                    paddingleft=Em(1), paddingright=Em(1), paddingtop=Em(1),
                     marginright=0),
         )
         if article is None:
@@ -655,7 +658,7 @@ class ArticleSideBar(ArticleColumn):
 class ArticlesList(Column):
 
     def buildBlock(self, b):
-        b.div(class_='navigation', marginbottom=Em(2), width=Perc(100), backgroundcolor=Color('#EEE'))
+        b.div(class_='navigation', paddingleft=Em(2), paddingright=Em(2), paddingtop=Em(2), marginbottom=Em(2), width=Perc(100), backgroundcolor=Color('#EEE'))
         for article in self.adapter.getRankedArticles():
             if article.title:
                 b.a(href='/article-%s' % article.id, fontsize=Em(0.8), color=Color('#888'))

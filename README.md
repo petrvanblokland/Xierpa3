@@ -23,14 +23,21 @@ and documentation are not finished. Parts of Xierpa3 are still under development
 right now. Classes are available in the source that are still being worked on and
 tested. This will remain until version 1.0.
 
-But Xierpa is already a great framework to start thinking about the creation of 
+But Xierpa3 is already a great framework to start thinking about the creation of 
 publications through objects, rather than writing websites in CSS+HTML (or PHP) directly. 
+
+Recently published in Open Source: Xierpa3App. This is a project that implements an
+OSX wrapper application around the example sites in Xierpa3. Still being worked on,
+it offers a UI to a live server as well as the possibility to see generated CSS and
+the automatic generated documentation pages about a website.
+It will be possible to use Python as scripting, on top of an existing site, e.g.
+to manipulate style parameters of published components.
 
 -----------------------------------------------------------------------------
 
 ### Getting started
 
-The includes example site "doingbydesign" will include guided instructions how to get 
+The example site "doingbydesign" will include guided instructions how to get 
 started with Python (www.python.org) in general and Xierpa3 in particular. 
 The example sites are set up as an incremental sequence, starting with the most simple
 "Hello world" site, and then adding styling, adapters, responsive behavior, multiple pages,
@@ -44,7 +51,7 @@ around the Xierpa3 library. Since the application acts like a desktop webserver,
 testing of the example sites without installing any Python libraries. Also it is the platform 
 in which alterations can be made to existing style sets, buth by UI functions or by scripting.
 
-The Xierpa3App will be available for download in the near future.
+The Xierpa3App is available for download as separate Open Source github project.
 	
 -----------------------------------------------------------------------------
 
@@ -107,12 +114,15 @@ FB & Twitter: @petrvanblokland
 #### Contributers of code
  * Filibuster by Erik van Blokland and Jonathan Hoefler.
 
-#### Published by he MIT License
+#### Published by the MIT License
  * http://opensource.org/licenses/MIT
 
  -----------------------------------------------------------------------------
 
 ### Rights
+
+The MIT License
+http://opensource.org/licenses/MIT
 
 Copyright (c) 2014+ Buro Petr van Blokland + Claudia Mens
 

@@ -13,7 +13,7 @@
 #   Formatting conform https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
 #
 try:
-    from config.xconfig import Config
+    from config.config import Config
 except ImportError:
     from config.COPYTO_config import Config
 
@@ -101,6 +101,7 @@ class Constants(Config):
     CLASS_ARTICLETOP = 'articleTop'
     CLASS_AUTHOR = 'author'
     CLASS_AUTOWIDTH = 'autoWidth' # Make img tags behave right for width='auto' in all browser.
+    CLASS_MAXWIDTH = 'maxWidth' # Make img tags behave right for width='auto' in all browser.
     CLASS_CAPTION = 'caption'
     CLASS_CATEGORY = 'category'
     CLASS_CATEGORYTHUMB = 'categoryThumb'

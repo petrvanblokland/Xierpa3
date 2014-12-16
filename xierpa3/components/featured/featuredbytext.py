@@ -60,6 +60,8 @@ class FeaturedByText(FeaturedBase):
         # Layout stuff
         colWidth=8, doc_colWidth=u'Default amount of columns for this component',
         backgroundColor=None, doc_backgroundColor=u'Background color of the whole component. Default is to inherit.',
+        paddingTop=Em(2),
+        paddingBottom=Em(2),
         paddingLeft=Em(1),
         paddingRight=Em(1),
         # Level stuff, handle local fontsize and lineheight here, related to the item size

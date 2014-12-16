@@ -31,6 +31,7 @@ HEADFAMILY = '"Hermes FB Semibold", Impact, Verdana, sans'
 class Top(Container):
     BLUEPRINT = BluePrint(MobileNavigation.BLUEPRINT,
         # Layout alternatives
+        backgroundColor=Color('#fff'), doc_backgroundColor='Top background color.',
     )
 class Navigation(Column):
 

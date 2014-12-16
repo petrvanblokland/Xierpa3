@@ -750,7 +750,13 @@ div.documentation {
         
     def nbsp(self, count):
         pass
-    
+
+    def textarea(self, **kwargs):
+        self.tag('textarea', **kwargs)
+
+    def _textarea(self):
+        self._tag()
+
     def script(self, **kwargs):
         u"""Ignore all Javascript."""
         self.pushResult()
