@@ -719,14 +719,14 @@ class HtmlBuilderPart:
 
     def q(self, **args):
         """
-        <doc>
+        
         The <code>q</code> tag defines the start of a short quotation. Note that nowadays it is better to implement
         this typographic behavior through <code>span</code> and CSS.<para/>
         <todo>Add the other attributes to the <code>p</code> tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_q.asp" target="external"/></seealso>
-        </doc>
+        
         """
         self.write_tag(u'q', True, args)
 

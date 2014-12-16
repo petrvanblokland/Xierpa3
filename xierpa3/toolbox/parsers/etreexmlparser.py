@@ -65,13 +65,13 @@ class UnbasedPathResolver(etree.Resolver):
 
     def unicodify(self, s):
         u"""
-        <doc>
+        
         Make sure, whatever <attr>s</attr> is, that there is a value Unicode string answered. If <attr>s</attr> is not a
         string then use <code>str(s)</code> to convert to a string first. This will make database records convert to a
         string of their id, instead of showing the record <code>repr</code> result. <em>Note that it might be that
         <code>str</code> will cause an error on the content of the object such as a list.</em>. <code>None</code> is
         replaced by an empty Unicode string.
-        </doc>
+        
         """
         if s is None:
             return u''
@@ -176,11 +176,11 @@ class XmlParser:
                     return doc
                 except etree.XMLSyntaxError:
                     try:
-                        xml = '<doc>' + xml + '</doc>'
+                        xml = '' + xml + ''
                         doc = etree.fromstring(xml)
                         return doc
                     except etree.XMLSyntaxError:
-                        msg = '<doc>Error while parsing docstring for xml</doc>'
+                        msg = 'Error while parsing docstring for xml'
                         print 'source:', src, 'xml:', xml.encode('utf-8')
                         return etree.fromstring(msg)
 

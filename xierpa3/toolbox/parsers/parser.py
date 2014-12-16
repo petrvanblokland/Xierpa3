@@ -13,8 +13,8 @@
 
 class Parser(object):
     u"""
-    <doc>
+    
     Mother of all Xierpa parsers.
-    </doc>
+    
     """
     pass

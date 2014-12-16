@@ -15,8 +15,8 @@ from boto.s3.key import Key
 
 class S3Connector():
     u"""
-    <doc>Xierpa wrapper for Amazon S3 connection and bucket using the boto library. Enables us to send and retrieve
-    files from the  data storage. Multiple instances are possible for data retrieval from different buckets.</doc>
+    Xierpa wrapper for Amazon S3 connection and bucket using the boto library. Enables us to send and retrieve
+    files from the  data storage. Multiple instances are possible for data retrieval from different buckets.
     """
 
     BUCKET         = None
@@ -24,9 +24,9 @@ class S3Connector():
 
     def __init__(self, domain, accesskeyid, secretaccesskey):
         u"""
-        <doc>
+        
         Set up basic access and load the bucket for our client site.
-        </doc>
+        
         """
         if S3Connector.CONNECTION is None:
             S3Connector.CONNECTION = boto.connect_s3(accesskeyid, secretaccesskey)
@@ -35,9 +35,9 @@ class S3Connector():
 
     def getBucket(self, name=None, create=True):
         u"""
-        <doc>
+        
         Get an AWS bucket with exception handling. Creates the bucket if it doesn't already exist.
-        </doc>
+        
         """
         try:
             return self.CONNECTION.get_bucket(name)
@@ -50,9 +50,9 @@ class S3Connector():
     
     def listAllBuckets(self):
         u"""
-        <doc>
+        
         Auxiliary definition showing all available buckets.
-        </doc>
+        
         """
         print self.getAllBuckets()
 
@@ -72,9 +72,9 @@ class S3Connector():
     
     def writeString(self, keyname, string, mimetype=None):
         u"""
-        <doc>
+        
         Writes text to the file with key as name.
-        </doc>
+        
         """
         try:
             k = Key(self.BUCKET)
@@ -88,9 +88,9 @@ class S3Connector():
         
     def writeFileToS3(self, keyname, path,  mimetype=None, acl="public-read"):
         u"""
-        <doc>
+        
         Writes file contents from local file to S3 with key as name.
-        </doc>
+        
         """
         try:
             k = Key(self.BUCKET)
@@ -124,9 +124,9 @@ class S3Connector():
         
     def getKey(self, key):
         u"""
-        <doc>
+        
         We describe keys as paths within buckets. Returns None if the key doesn't exist.
-        </doc>
+        
         """
         return self.BUCKET.get_key(key)
 
@@ -135,7 +135,7 @@ class S3Connector():
     
     def getAllKeys(self, headers=None, prefix='', delimiter='', maxkeys=10000):
         u"""
-        <doc>
+        
         A lower-level method for listing contents of a bucket. This closely models the actual S3 API and requires you to
         manually handle the paging of results. For a higher-level method that handles the details of paging for you, you
         can use the list method.
@@ -151,14 +151,14 @@ class S3Connector():
 
         Return type:    ResultSet
         Returns:        The result from S3 listing the keys requested
-        </doc>
+        
         """
         return self.BUCKET.get_all_keys(headers, prefix=prefix, delimiter=delimiter, max_keys=maxkeys)
     
     def getFolderList(self, headers=None, prefix='', delimiter=''):
         u"""
-        <doc>
-        </doc>
+        
+        
         """
         l = []
         for k in self.getAllKeys(headers=headers, prefix=prefix, delimiter=delimiter):
@@ -174,9 +174,9 @@ class S3Connector():
 
     def deleteKey(self, key):
         u"""
-        <doc>
+        
         Deletes the key that is passed.
-        </doc>
+        
         """
         key.delete()
 
@@ -191,18 +191,18 @@ class S3Connector():
 
     def makeFilePointerByPath(self, s3path, tmppath):
         u"""
-        <doc>
+        
         Gets a file from S3 using the path and store it on a temporary location for further processing.
-        </doc>
+        
         """
         key = self.getKey(s3path)
         self.makeFilePointer(key, tmppath)
 
     def makeFilePointer(self, key, tmppath):
         u"""
-        <doc>
+        
         Gets a file from S3 using the key and store it on a temporary location for further processing.
-        </doc>
+        
         """
         fp = open(tmppath, 'w')
         self.getFile(key, fp)
@@ -210,13 +210,13 @@ class S3Connector():
 
     def getFile(self, key, fp):
         u"""
-        <doc>
+        
         Puts a file in the fp file pointer, which is a temporary file object:
         
         <code>
          fp = open(<tmp-path>, 'w')
          </code>
-        </doc>
+        
         
         Throws an exception if key is none.
         """

@@ -171,7 +171,7 @@ COLOR_NAMES = {
 }
 class Color:
     u"""
-    <doc>
+    
     <list>
         <sep>Initialize the color from hex value, rgb or cmyk tuple.<br/>
             Or from string <code>rgb(r,g,b)</code> or <code>cmyk(c,m,y,k)</code></sep>
@@ -197,7 +197,7 @@ class Color:
     >>> #b20070<br/>
     
     </python>
-    </doc>
+    
     """
     RGB = 'rgb'
     CMYK = 'cmyk'
@@ -332,10 +332,10 @@ class Color:
 
     def _rgb(self, alpha=None):
         u"""
-        <doc>
+        
         The <code>c.rgb</code> returns the color as e.g. rgb(254, 63, 103).
         Or add <attr>alpha</attr> as e.g. <code>c.rgb(0.5)</code> the color is returned as rgba(254, 63, 103, 0.5).
-        </doc>
+        
         """
         f = self.format
         a = self.alpha
@@ -353,9 +353,9 @@ class Color:
 
     def _cmyk(self):
         u"""
-        <doc>
+        
         The <code>c.cmyk</code> returns the color as e.g. rgb(254, 63, 103)
-        </doc>
+        
         """
         f = self.format
         self.format = 'cmyk'
@@ -365,9 +365,9 @@ class Color:
 
     def _hex(self):
         u"""
-        <doc>
+        
         The <code>c.hex</code> returns the color as e.g. #fe3f67
-        </doc>
+        
         """
         f = self.format
         self.format = 'hex'
@@ -377,9 +377,9 @@ class Color:
 
     def _uhex(self):
         u"""
-        <doc>
+        
         The <code>c.hex</code> returns the color as e.g. 0xfe3f67
-        </doc>
+        
         """
         f = self.format
         self.format = 'uhex'
@@ -389,9 +389,9 @@ class Color:
 
     def _negative(self):
         u"""
-        <doc>
+        
         The <code>c.negativebw</code> returns white Color if the color is dark, and  black if color is light.
-        </doc>
+        
         """
         v = self.r * self.bwrgb[0] + self.g * self.bwrgb[1] + self.b * self.bwrgb[2]
         if v < self.bwlevel:
@@ -400,9 +400,9 @@ class Color:
 
     def _negativebw(self):
         u"""
-        <doc>
+        
         The <code>c.negativebw</code> returns white Color if the color is dark, and  black if color is light.
-        </doc>
+        
         """
         # v = self.r*self.bwrgb[0] + self.g*self.bwrgb[1] + self.b*self.bwrgb[2]
         if self.negative < 1:
@@ -413,10 +413,10 @@ class Color:
 
     def setformat(self, format):
         u"""
-        <doc>
+        
         The <code>c.setformat()</code> change the output format - if <attr>format</attr> is either
         <code>cmyk</code>,<code>rgb</code> or <code>hex</code>
-        </doc>
+        
         """
         if format in ('cmyk', 'rgb', 'hex', 'uhex'):
             return Color(_hls2colorformat(self.h, self.l, self.s, self.format), format=format)
@@ -425,9 +425,9 @@ class Color:
 
     def setrgb(self, red=None, green=None, blue=None):
         u"""
-        <doc>
+        
         The <code>c.setrgb()</code> set the red, green and blue channel of the color.
-        </doc>
+        
         """
         if isinstance(red, (tuple, list)):
             r, g, b = red
@@ -440,9 +440,9 @@ class Color:
 
     def saturate(self, v):
         u"""
-        <doc>
+        
         The <code>c.saturate()</code> returns a new <code>Color</code> object, that is saturated with with <attr>v</attr> ranging [0:100].
-        </doc>
+        
         """
         v = int(v)
         if v < 0:
@@ -452,9 +452,9 @@ class Color:
 
     def desaturate(self, v):
         u"""
-        <doc>
+        
         The <code>c.desaturate()</code> returns a new <code>Color</code> object, that is desaturated with with <attr>v</attr> ranging [0:100].
-        </doc>
+        
         """
         v = int(v)
         if v < 0:
@@ -464,9 +464,9 @@ class Color:
 
     def lighten(self, v):
         u"""
-        <doc>
+        
         The <code>c.lighten()</code>  returns a new <code>Color</code> object, that is lightened with with <attr>v</attr> ranging [0:100].
-        </doc>
+        
         """
         v = int(v)
         if v < 0:
@@ -476,9 +476,9 @@ class Color:
 
     def darken(self, v):
         u"""
-        <doc>
+        
         The <code>c.darken()</code>  returns a new <code>Color</code> object, that is darkened with with <attr>v</attr> ranging [0:100].
-        </doc>
+        
         """
         v = int(v)
         if v < 0:
@@ -488,12 +488,12 @@ class Color:
 
     def change(self, lightness=0, saturation=0, hue=0):
         u"""
-        <doc>
+        
         The <code>c.change()</code> returns a new <code>Color</code> object, that is changed with<br/>
         <attr>lightness</attr> ranging [-100:100] (default is <code>0</code>),<br/>
         <attr>saturation</attr> ranging [-100:100] (default is <code>0</code>),<br/>
         <attr>hue</attr> ranging [0:254] (default is <code>0</code>),
-        </doc>
+        
         """
         l = _valuechange(self.l, lightness)
         s = _valuechange(self.s, saturation)
@@ -507,10 +507,10 @@ class Color:
 
     def mix(self, mix='BGR'):
         u"""
-        <doc>
+        
         The <code>c.mix()</code> returns a new <code>Color</code> object with mixed RGB channels.<br/>
         <attr>mix</attr>
-        </doc>
+        
         """
         baseseq = 'rgb'
         mix = mix.lower()
@@ -525,19 +525,19 @@ class Color:
 
     def oppositehue(self):
         u"""
-        <doc>
+        
         The <code>c.oppositehue()</code> returns a new <code>Color</code> object with the opposite color on the hue circle, 
         while the lightness and saturation is unchanged.
-        </doc>
+        
         """
         return Color(_hls2colorformat(1 - self.h, self.l, self.s, self.format), format=self.format)
 
     def opposite(self):
         u"""
-        <doc>
+        
         The <code>c.opposite()</code> returns a new <code>Color</code> object with opposite r,g and b channels.<br/>
         E.g. if the red channel of the color is 203, it will be changed to 51
-        </doc>
+        
         """
         r, g, b = _hls2rgbtuple((self.h, self.l, self.s))
         rgb = (254 - r, 254 - g, 254 - b)

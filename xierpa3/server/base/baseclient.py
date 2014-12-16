@@ -148,8 +148,8 @@ class BaseClient(object):
 
     def setMimeTypeEncoding(self, mimeType, request):
         u"""
-        <doc>The @getMimeTypeEncoding@ method answers the MIME type and coding in format @'text/css;
-        charset-utf-8'@.</doc>
+        The @getMimeTypeEncoding@ method answers the MIME type and coding in format @'text/css;
+        charset-utf-8'@.
         """
         if mimeType:
             if 'text' in mimeType:

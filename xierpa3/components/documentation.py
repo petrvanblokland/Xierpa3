@@ -89,7 +89,7 @@ class Documentation(Container):
 
     def buildDoc(self, b, module):
         u"""
-        <doc>Uses the inspect module to extract documentation from objects. Skips boring classes.</doc>    
+        Uses the inspect module to extract documentation from objects. Skips boring classes.    
         """
         modulePath = module.__file__.replace('/__init__.pyc', '')
         b.h1(fontsize=Em(2), color='#202020', lineheight=Em(1.4))

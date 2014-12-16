@@ -1227,9 +1227,9 @@ div.documentation {
     @classmethod
     def XXXgetCssBackgroundSizeValue(cls, value, object="background-size", browser=None):
         u"""
-        <doc>
+        
         The <code>getCssBackgroundSizeValue<code> method answers browser dependent css <code>background-size</code> value.<br/>
-        </doc>
+        
         """
         result = ['%s: %s;' % (object, value)]
         if browser in (None, cls.BROWSER_SAFARI, cls.BROWSER_CHROME):
@@ -1243,7 +1243,7 @@ div.documentation {
     @classmethod
     def XXXgetCssBoxShadowValue(cls, color, x=None, y=None, blur=None, inout=None, browser=None, object="box"):
         u"""
-        <doc>
+        
         The <code>cssBoxShadowValue<code> method answers browser dependent css <code>box-shadow</code> value.<br/>
         Or, if <attr>object</attr> is <code>text</code>, answers browser dependent css <code>text-shadow</code> value.<br/>
         The value can be a list or tuple, as in <code>self.css(ids="...", boxshadow=("#888888", 6, 6, 20))</code><br/>
@@ -1252,7 +1252,7 @@ div.documentation {
         self.div(style=self.cssBoxShadowValue("#888888", 6, 6, 20, "inset"))<br/>
         self.div(style=self.cssBoxShadowValue("inset 6px 6px 20px #888888")<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
-        </doc>
+        
         """
         # TODO: getCssBoxShadowValue now also output the text-shadow css. We may then need a better name for the method.
         # @@ color may also be formatted value, such as '4px 4px 3px #888'
@@ -1294,7 +1294,7 @@ div.documentation {
     @classmethod
     def XXXgetCssGradientValue(cls, startcolor, endcolor=None, x0='left', x1='left', y0='top', y1='bottom', type='linear', browser=None):
         u"""
-        <doc>
+        
         The <code>cssBoxShadowValue<code> method answers browser dependent css <code>gradient</code> value.<br/>
         self.div(style=self.cssGradientValue({'startcolor':'#fff000','endcolor':'#999999'}))<br/>
         self.div(style=self.cssGradientValue('#fff000','#999999'))<br/>
@@ -1304,7 +1304,7 @@ div.documentation {
         background: -moz-linear-gradient(top,  #fff000,  #999999);<br/>
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff000', endColorstr='#999999');<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
-        </doc>
+        
         """
         args = (('x0', x0), ('x1', x1), ('y0', y0), ('y1', y1), ('type', type))
         if not startcolor:
@@ -1369,7 +1369,7 @@ div.documentation {
         The <code>cssBorderRadiusCornerValue<code> method answers browser dependent CSS <code>border-radius</code>
         value of a specific corner.<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
-        </doc>
+        
         """
         result = ['border-%s-%s-radius: %s;' % (topbottom, leftright, value)]
         if browser in (None, cls.BROWSER_SAFARI, cls.BROWSER_CHROME):
@@ -1383,7 +1383,7 @@ div.documentation {
         u"""
         The <code>cssBorderRadiusValue<code> method answers browser dependent CSS <code>border-radius</code> value.<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
-        </doc>
+        
         """
         result = ['border-radius: %s;' % (value)]
         if browser in (None, cls.BROWSER_SAFARI, cls.BROWSER_CHROME):
@@ -1395,10 +1395,10 @@ div.documentation {
     @classmethod
     def getCssFontSmoothValue(cls, value, browser=None):
         u"""
-        <doc>
+        
         The <code>get</code> method answers the browser dependent css for font smoothing.
         Values are one of <code>['none', 'antialiased', 'subpixel-antialiased']</code>.
-        </doc>
+        
         """
         result = ''
         if browser in (None, cls.BROWSER_SAFARI, cls.BROWSER_CHROME):

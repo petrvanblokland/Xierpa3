@@ -102,10 +102,10 @@ class Session:
     
     def clear(self):
         u"""
-        <doc>
+        
         The <code>clear</code> method clears all session data, while keeping the instance working.
         This e.g. can be used when the user is logging out, and all previous data should be cleared.
-        </doc>
+        
         """
         self.key = 0
         self.data = {}
@@ -148,11 +148,11 @@ class Session:
 
     def default(self, field, value):
         u"""
-        <doc>
+        
         The <code>default</code> method sets the value of <attr>field</attr> to <attr>value</attr>
         only if the current value is <code>None</code>. This way the method can be used to compact
         initialize the value of a session field.
-        </doc>
+        
         """
         if self[field] is None:
             self[field] = value

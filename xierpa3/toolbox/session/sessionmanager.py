@@ -42,30 +42,30 @@ class SessionManager(dict):
     @classmethod
     def getNewSessionId(cls, size=None):
         u"""
-        <doc>
+        
         The <code>getNewSessionId</code> method answers a new generated session id of length <attr>size</attr>
         of <code>self.SESSION_SIDDIGITS</code> if omitted.
-        </doc>
+        
         """
         return str(uniqueId(size or cls.C.SESSION_SIDDIGITS))
 
     @classmethod
     def newTimeStamp(cls):
         u"""
-        <doc>
+        
         The <code>newTimeStamp</code> method answers a uniquelong, so there the total number is always unique.
         The result is a 18-digit long that will fit inside a Postgres bigint, instead of a relational id.
-        </doc>
+        
         """
         return uniqueLong()
 
     def getTimeStamps(self):
         u"""
-        <doc>
+        
         The <code>getTimeStamps</code> method answers a list with the timestamps of all existing session.
         The <code>self.garbageCollect</code> method is called to cleanup expired sessions once in a while.
         This is done before the collection of current time stamps is performed.
-        </doc>
+        
         """
         self.garbageCollect()
         timestamps = []
@@ -75,10 +75,10 @@ class SessionManager(dict):
 
     def getSession(self, sid, limit=None, name=None, user=None, keep=False, protected=False):
         u"""
-        <doc>
+        
         The <code>getSession</code> method answers the <code>Session</code> instance with <attr>sid</attr>.
         Answer a new instance if the <attr>sid</attr> cannot be found. Store that session in the dict of <code>self</code>.
-        </doc>
+        
         """
         session = self.get(sid)
         if session is None:
@@ -89,28 +89,28 @@ class SessionManager(dict):
 
     def newSession(self):
         u"""
-        <doc>
+        
         The <code>getNewSession</code> method answers a new session.
-        </doc>
+        
         """
         return self.getSession(0) # Non-existing session id forces the creation of a new one
 
     def refresh(self, sid):
         u"""
-        <doc>
+        
         The <code>refresh</code> method refreshes the timestamp of session <attr>sid</attr>.
         Ignore the call if the session cannot be found.
-        </doc>
+        
         """
         if self.has_key(sid):
             self[sid].refresh()
 
     def getExpire(self, sid):
         u"""
-        <doc>
+        
         The <code>getExpire</code> method answers amount of seconds before the session <attr>sid</attr> will expire.
         Answer <code>0</code> is the session cannot be found.
-        </doc>
+        
         """
         if self.has_key(sid):
             return self[sid].expire - time()
@@ -131,10 +131,10 @@ class SessionManager(dict):
 
     def getLoggedUserIds(self, applicationname):
         u"""
-        <doc>
+        
         The <code>getLoggedUserIds</code> method answers the list of ids for all users that are logged in with 
         non-expired sessions that have <attr>applicationname</attr>. 
-        </doc>
+        
         """
         ids = []
         for session in self.values():
@@ -144,10 +144,10 @@ class SessionManager(dict):
 
     def getSessionById(self, applicationname, sid):
         u"""
-        <doc>
+        
         The <code>getSessionById</code> method answers the session the is defined by <attr>applicationname</attr>
         and <attr>sid</attr>. Answer <code>None</code> if the session cannot be found.
-        </doc>
+        
         """
         session = self.get(sid)
         if session['AppName'] == applicationname:

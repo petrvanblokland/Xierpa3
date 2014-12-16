@@ -42,50 +42,50 @@ class Stack:
 
     def clear(self):
         u"""
-        <doc>
+        
         The <code>clear</code> method clears the stack.
-        </doc>
+        
         """
         self.data = []
 
     def setitem(self, item):
         u"""
-        <doc>
+        
         The <code>setitem</code> method sets the stack content to <code>[item]</code>.
-        </doc>
+        
         """
         self.data = [item]
 
     def push(self, item):
         u"""
-        <doc>
+        
         The <code>push</code> method pushes the <attr>item</attr> on stack.
-        </doc>
+        
         """
         self.data.append(item)
 
     def getAll(self):
         u"""
-        <doc>
+        
         The <code>getAll</code> method answers the whole list with stacked elements.
-        </doc>
+        
         """
         return self.data
 
     def replace(self, item):
         u"""
-        <doc>
+        
         The <code>replace</code> method replaces the top element of the stack by <attr>item</attr>.
-        </doc>
+        
         """
         self.data[-1] = item
 
     def top(self):
         u"""
-        <doc>
+        
         The <code>top</code> method peeks the top level of the stack. This is identical to <code>self.peek()</code>.
         If the stack is empty, then answer <code>None</code>.
-        </doc>
+        
         """
         if not self.data:
             return None
@@ -102,19 +102,19 @@ class Stack:
 
     def root(self):
         u"""
-        <doc>
+        
         The <code>root<code> method answers the root <code>self.data[0]</code> element of the stack.
-        </doc>
+        
         """
         return self.data[0]
 
     def pop(self):
         u"""
-        <doc>
+        
         The <code>pop</code> method pops the stack and answers the popped element.
         If the stack is empty, then answer <code>None</code>. This is a “friendly” error, so the application
         can decide what to do with the wrong sized stack.
-        </doc>
+        
         """
         if len(self.data):
             return self.data.pop()
