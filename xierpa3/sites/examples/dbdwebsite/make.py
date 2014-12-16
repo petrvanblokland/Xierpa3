@@ -65,6 +65,8 @@ class DbdWebsite(Theme):
     # The single column is filled by the self.adapter article query result and standard navigation.
     # The default b.adapter taks the articles from the DbD site.
 
+
+
     def baseStyle(self):
         u"""Answer the single basis style that will be defined as overall CSS, before
         specific block definitions start."""
@@ -75,6 +77,8 @@ class DbdWebsite(Theme):
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=BODYFAMILY)
         s.addStyle('b', fontweight=self.C.BOLD)
+        s.addStyle('a:link', color=Color('#4890BE')
+        s.addStyle('a:hover', color=Color('#66696C'))
         return root
 
     def getSiteAdapter(self):

@@ -83,7 +83,7 @@ class FeaturedByImageList(FeaturedBase):
                 b.text(article.level or s.genericLevel)
                 b.text(' level')
                 b._h5()
-            b.img(class_=self.C.CLASS_AUTOWIDTH, src=article.poster)
+            b.img(class_=self.C.CLASS_AUTOWIDTH, width=Perc(60), src=article.poster)
             if s.showName:
                 b.h4(color=s.nameColor, fontsize=s.nameSize, fontweight=s.nameWeight,
                      lineheight=s.nameLineHeight)

@@ -147,7 +147,7 @@ class FeaturedByText(FeaturedBase):
         b._a()
         if s.showPoster and article.poster:
             b.a(href='/%s-%s' % (self.C.PARAM_ARTICLE, article.id), class_=self.C.CLASS_NAME)
-            b.img(width=s.posterWidth, src=article.poster, float=s.posterAlign, padding=0,
+            b.img(width=Perc(100), src=article.poster, float=s.posterAlign, padding=0,
                 margin=Margin(Em(0.5), Em(0.5), 0, 0),
                 media=Media(max=self.C.M_MOBILE_MAX, display=self.C.NONE)
             )
