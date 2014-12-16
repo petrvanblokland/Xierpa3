@@ -43,7 +43,7 @@ class SessionManager(dict):
     def getNewSessionId(cls, size=None):
         u"""
         
-        The ``getNewSessionId`` method answers a new generated session id of length <attr>size</attr>
+        The ``getNewSessionId`` method answers a new generated session id of length ``size``
         of ``self.SESSION_SIDDIGITS`` if omitted.
         
         """
@@ -76,8 +76,8 @@ class SessionManager(dict):
     def getSession(self, sid, limit=None, name=None, user=None, keep=False, protected=False):
         u"""
         
-        The ``getSession`` method answers the ``Session`` instance with <attr>sid</attr>.
-        Answer a new instance if the <attr>sid</attr> cannot be found. Store that session in the dict of ``self``.
+        The ``getSession`` method answers the ``Session`` instance with ``sid``.
+        Answer a new instance if the ``sid`` cannot be found. Store that session in the dict of ``self``.
         
         """
         session = self.get(sid)
@@ -98,7 +98,7 @@ class SessionManager(dict):
     def refresh(self, sid):
         u"""
         
-        The ``refresh`` method refreshes the timestamp of session <attr>sid</attr>.
+        The ``refresh`` method refreshes the timestamp of session ``sid``.
         Ignore the call if the session cannot be found.
         
         """
@@ -108,7 +108,7 @@ class SessionManager(dict):
     def getExpire(self, sid):
         u"""
         
-        The ``getExpire`` method answers amount of seconds before the session <attr>sid</attr> will expire.
+        The ``getExpire`` method answers amount of seconds before the session ``sid`` will expire.
         Answer ``0`` is the session cannot be found.
         
         """
@@ -133,7 +133,7 @@ class SessionManager(dict):
         u"""
         
         The ``getLoggedUserIds`` method answers the list of ids for all users that are logged in with 
-        non-expired sessions that have <attr>applicationname</attr>. 
+        non-expired sessions that have ``applicationname``. 
         
         """
         ids = []
@@ -145,8 +145,8 @@ class SessionManager(dict):
     def getSessionById(self, applicationname, sid):
         u"""
         
-        The ``getSessionById`` method answers the session the is defined by <attr>applicationname</attr>
-        and <attr>sid</attr>. Answer ``None`` if the session cannot be found.
+        The ``getSessionById`` method answers the session the is defined by ``applicationname``
+        and ``sid``. Answer ``None`` if the session cannot be found.
         
         """
         session = self.get(sid)

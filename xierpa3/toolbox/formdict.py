@@ -93,7 +93,7 @@ class FormDict(object):
     def append(self, params):
         u"""
         
-        The ``append`` method appends the content of <attr>params</attr> to self. If the attribute
+        The ``append`` method appends the content of ``params`` to self. If the attribute
         is a string, then split it on ``'/'``. Otherwise we assume that it is already a list.
         
         """

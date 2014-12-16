@@ -334,7 +334,7 @@ class Color:
         u"""
         
         The ``c.rgb`` returns the color as e.g. rgb(254, 63, 103).
-        Or add <attr>alpha</attr> as e.g. ``c.rgb(0.5)`` the color is returned as rgba(254, 63, 103, 0.5).
+        Or add ``alpha`` as e.g. ``c.rgb(0.5)`` the color is returned as rgba(254, 63, 103, 0.5).
         
         """
         f = self.format
@@ -414,7 +414,7 @@ class Color:
     def setformat(self, format):
         u"""
         
-        The ``c.setformat()`` change the output format - if <attr>format</attr> is either
+        The ``c.setformat()`` change the output format - if ``format`` is either
         ``cmyk``,``rgb`` or ``hex``
         
         """
@@ -441,7 +441,7 @@ class Color:
     def saturate(self, v):
         u"""
         
-        The ``c.saturate()`` returns a new ``Color`` object, that is saturated with with <attr>v</attr> ranging [0:100].
+        The ``c.saturate()`` returns a new ``Color`` object, that is saturated with with ``v`` ranging [0:100].
         
         """
         v = int(v)
@@ -453,7 +453,7 @@ class Color:
     def desaturate(self, v):
         u"""
         
-        The ``c.desaturate()`` returns a new ``Color`` object, that is desaturated with with <attr>v</attr> ranging [0:100].
+        The ``c.desaturate()`` returns a new ``Color`` object, that is desaturated with with ``v`` ranging [0:100].
         
         """
         v = int(v)
@@ -465,7 +465,7 @@ class Color:
     def lighten(self, v):
         u"""
         
-        The ``c.lighten()``  returns a new ``Color`` object, that is lightened with with <attr>v</attr> ranging [0:100].
+        The ``c.lighten()``  returns a new ``Color`` object, that is lightened with with ``v`` ranging [0:100].
         
         """
         v = int(v)
@@ -477,7 +477,7 @@ class Color:
     def darken(self, v):
         u"""
         
-        The ``c.darken()``  returns a new ``Color`` object, that is darkened with with <attr>v</attr> ranging [0:100].
+        The ``c.darken()``  returns a new ``Color`` object, that is darkened with with ``v`` ranging [0:100].
         
         """
         v = int(v)
@@ -490,9 +490,9 @@ class Color:
         u"""
         
         The ``c.change()`` returns a new ``Color`` object, that is changed with<br/>
-        <attr>lightness</attr> ranging [-100:100] (default is ``0``),<br/>
-        <attr>saturation</attr> ranging [-100:100] (default is ``0``),<br/>
-        <attr>hue</attr> ranging [0:254] (default is ``0``),
+        ``lightness`` ranging [-100:100] (default is ``0``),<br/>
+        ``saturation`` ranging [-100:100] (default is ``0``),<br/>
+        ``hue`` ranging [0:254] (default is ``0``),
         
         """
         l = _valuechange(self.l, lightness)
@@ -509,7 +509,7 @@ class Color:
         u"""
         
         The ``c.mix()`` returns a new ``Color`` object with mixed RGB channels.<br/>
-        <attr>mix</attr>
+        ``mix``
         
         """
         baseseq = 'rgb'

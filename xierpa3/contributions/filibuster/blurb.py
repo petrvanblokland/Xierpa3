@@ -167,7 +167,7 @@ class Blurb(object):
     def getBlurb(self, type, cnt=None):
         u"""
         
-        The ``getBlurb`` method answers a random generated blurb of <attr>type</attr>.
+        The ``getBlurb`` method answers a random generated blurb of ``type``.
         The full list of available types get be obtained by calling ``self.getContentType()``.
         
         """

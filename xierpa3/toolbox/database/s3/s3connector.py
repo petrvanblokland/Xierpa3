@@ -110,8 +110,8 @@ class S3Connector():
     
     def readFileFromS3(self, keyname, path):
         u"""
-        The ``readFileFromS3`` method reads the content of <attr>keyname</attr>
-        from S3 and writes it the file with <attr>path</attr>. Answer the a boolean flag
+        The ``readFileFromS3`` method reads the content of ``keyname``
+        from S3 and writes it the file with ``path``. Answer the a boolean flag
         to indicate of the operation succeeded.
         """
         try:

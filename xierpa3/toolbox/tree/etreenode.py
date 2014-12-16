@@ -18,7 +18,7 @@ class EtreeNode:
     u"""
     The ``EtreeNode`` class provides a wrapper around any etree node, to make a more convenient and robust
     Python based API.<br/>
-    Note that if <attr>xml</attr> is supplied to the constructor, it needs to be validated XML, since not other checking
+    Note that if ``xml`` is supplied to the constructor, it needs to be validated XML, since not other checking
     or transformation is performed at this stage.<br/>
     The same is true the other way around. This especially is applies for the instance read and written from ``
     XmlTreeField`` fields. For documentation on Etree see <a href="http://lxml.de/tutorial.html">the official
@@ -59,9 +59,9 @@ class EtreeNode:
     @classmethod
     def getXPath(cls, tree, xpath):
         u"""
-        The ``getXPath`` class method queries the <attr>tree</attr> by <attr>xpath</attr> and answers a
+        The ``getXPath`` class method queries the ``tree`` by ``xpath`` and answers a
         list of ``EtreeNode`` instances for every matching entry. There are several answering conditions: if
-        <attr>tree</attr> is ``None`` then answer ``None``. If there is no result, then answer
+        ``tree`` is ``None`` then answer ``None``. If there is no result, then answer
         ``None``. If the result is a list of ``basestring`` instances (tested on the first of the
         list) then answer the list untouched. Otherwise make a new list with the result ``etree`` nodes wrapped
         as ``EtreeNode`` instances.
@@ -84,9 +84,9 @@ class EtreeNode:
     def getXPathNode(cls, tree, xpath, index=0):
         u"""
         The ``getXPathNode`` class method does the same as ``cls.getXPath`` except that it
-        answers the element of the list indicated by <attr>index</attr>. If there is no result, or if the <attr>index
-        </attr> exceeds the length of the result list, then ``None`` is answered. Default value for the
-        optional <attr>index</attr> attribute is ``0``, resulting in the first element if it exists.
+        answers the element of the list indicated by ``index``. If there is no result, or if the ``index
+        `` exceeds the length of the result list, then ``None`` is answered. Default value for the
+        optional ``index`` attribute is ``0``, resulting in the first element if it exists.
         """
         if tree is None:
             return None
@@ -125,7 +125,7 @@ class EtreeNode:
     def _xpathString(self, xpath):
         u"""
         The ``_xpathString`` method answers the concatenated string of all results (strings or elements)
-        of <attr>xpath</attr>.
+        of ``xpath``.
         """
         result = self._xpath(xpath)
         if result is not None:

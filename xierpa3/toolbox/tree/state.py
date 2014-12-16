@@ -34,11 +34,11 @@ class State(BaseNode):
 
     def __init__(self, attributes=None, form=None, **args):
         u"""
-        The ``__init__`` constructor takes the optional <attr>style</attr> attribute and stores is. If
+        The ``__init__`` constructor takes the optional ``style`` attribute and stores is. If
         it is defined, then this reference to the style node is used a default source if the name of an
         attribute request does not exist in the current attribute set.<br/>
         
-        If the <attr>form</attr> is defined, then copy all form attribute in/over the
+        If the ``form`` is defined, then copy all form attribute in/over the
         ``self._attributes`` values. This is convenient if a state needs to be populated with values
         from ``self.e.form``.
         """
@@ -46,7 +46,7 @@ class State(BaseNode):
 
     def __getattr__(self, name):
         u"""
-        The ``state.name`` (``__getattr__``) interprets the <attr>name</attr> attribute. If
+        The ``state.name`` (``__getattr__``) interprets the ``name`` attribute. If
         it does not exist, then the content of ``self._style`` is tested. If it does not exist, then
         ``None`` is answered, so it does not have to be initialized.
         """
@@ -61,8 +61,8 @@ class State(BaseNode):
 
     def __setitem__(self, name, value):
         u"""
-        The ``set`` (or ``state[name] = value``) method sets the attribute <attr>name</attr> to
-        <attr>value</attr>. This value is stored locally in the attributes dictionary of the state instance. It will not
+        The ``set`` (or ``state[name] = value``) method sets the attribute ``name`` to
+        ``value``. This value is stored locally in the attributes dictionary of the state instance. It will not
         alter the style it may reference. Also it will block any further searching in the cascading set of style values,
         since the locally stored value is found on any next request for that name.
         """
@@ -72,8 +72,8 @@ class State(BaseNode):
 
     def __getitem__(self, name):
         u"""
-        The ``get`` (or ``state[name]``) method answers the state attribute named <attr>name
-        </attr>.
+        The ``get`` (or ``state[name]``) method answers the state attribute named ``name
+        ``.
         """
         value = self._attributes.get(name)
         return value

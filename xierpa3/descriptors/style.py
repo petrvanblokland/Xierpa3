@@ -154,8 +154,8 @@ class Style(State):
     selector = property(_get_selector, _set_selector)
 
 class StyleSet(Style):
-    u"""The <i>StyleSet</i> class is a wrapper set around a set of classes. It behaves like
-    a <i>Style</i> instance, but it does not show up as selector. The open and close
+    u"""The *StyleSet* class is a wrapper set around a set of classes. It behaves like
+    a *Style* instance, but it does not show up as selector. The open and close
     output code is ignore, because **self.selector** always answers **None**."""
 
     def _get_selector(self):

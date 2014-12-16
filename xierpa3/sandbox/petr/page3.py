@@ -427,10 +427,10 @@ class Page(object):
     # <im>
         
     def element_im(self, element):
-        return '<i>'
+        return '*'
             
     def _element_im(self, element):
-        return '</i>'
+        return '*'
         
     # <text>
         

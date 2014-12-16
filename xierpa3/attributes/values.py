@@ -23,15 +23,15 @@ class Value(Attribute):
         return '%s' % self.value
 
 class Named(Value):
-    u"""Show as Sass variable $name from the optional <i>name</i> or from the attribute name 
+    u"""Show as Sass variable $name from the optional *name* or from the attribute name 
     instead of the value."""
     def __init__(self, value, name=None):
         self.value = value
         self.name = name
 
 class Selection(Value):
-    u"""If <i>param</i> exists as attributes in the <i>params</i>, and its value exists in 
-    <i>values</i> as key, then use that value as selection. Otherwise the value of key "default"
+    u"""If *param* exists as attributes in the *params*, and its value exists in 
+    *values* as key, then use that value as selection. Otherwise the value of key "default"
     is used, which can be **None**, so it gets ignored by the builder."""
     def __init__(self, param, values):
         self.param = param

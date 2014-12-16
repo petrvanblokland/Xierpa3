@@ -80,7 +80,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.buildMedia(component)
 
     def page(self, component):
-        u"""Mark the CSS start of the specific page <i>component</i> style. 
+        u"""Mark the CSS start of the specific page *component* style. 
         Called by block of **Page** component."""
         self.newline()
         self.tabs()
@@ -89,7 +89,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         #self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
 
     def _page(self, component):
-        u"""Mark the CSS end of the page <i>component</i> style."""
+        u"""Mark the CSS end of the page *component* style."""
         self._div(comment='.page_'+(component.name or component.class_ or self.C.CLASS_PAGE))
         #self._styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
         self.newline()
@@ -124,7 +124,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         return TX.asDir(root or (self.ROOT_PATH + component.__class__.__name__.lower())) + self.DEFAULT_PATH
 
     def save(self, component, root=None, path=None):
-        u"""Export the current state of the Sass to <i>path</i>. First the set of collected variables
+        u"""Export the current state of the Sass to *path*. First the set of collected variables
         and then the result it self. """
         if path is None: # Allow full overwrite of complete path.
             path = self.getFilePath(component, root)
@@ -149,7 +149,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.buildStyle(component.style)
 
     def _block(self, component):
-        u"""Close the block if there is a valid selector in the <i>component</i>."""
+        u"""Close the block if there is a valid selector in the *component*."""
         if component.selector is not None:
             self._styleBlock(component.selector)
             self.popFirst() # Reduce level for firstSelectors.
@@ -190,7 +190,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         self._tag()
         
     def tag(self, tag, **kwargs):
-        u"""Used for non-component blocks. Build the <i>tag</i> with the given arguments as 
+        u"""Used for non-component blocks. Build the *tag* with the given arguments as 
         selector and SASS source attribute values. If there is a attribute ending with "_css" then ignore
         the output of the attribute with the same name, without "_css" ending. 
         This offers the opportunity to specifically describe css attribute, preferred above the generic attribute value.
@@ -292,7 +292,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.comment('### %s ###' % TX.object2SpacedString(s))
 
     def buildStyle(self, style):
-        u"""If there is <i>style</i> defined, run trough its attributes to match withs corresponding CSS methods.
+        u"""If there is *style* defined, run trough its attributes to match withs corresponding CSS methods.
         This way the CSS-related attributes are separated from the others. For this reason some the the standard
         attributes have other names, e.g. there is a **style.url** and **style.cssurl**."""
         if style is not None:
@@ -305,7 +305,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             self.buildStyles(style.styles)
 
     def buildStyles(self, styles):
-        u"""Build each style in <i>styles</i>."""
+        u"""Build each style in *styles*."""
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
         for style in styles:
             selector = style.selector
@@ -316,7 +316,7 @@ class SassBuilder(XmlTransformerPart, Builder):
 
     def buildMedia(self, component):
         u"""Here all style have been written. What remains is the to sort and output the collected @media expression
-        of <i>component</i> as media queries.
+        of *component* as media queries.
         The collected **Media** instances will generate a selector that is related to
         the path of their parent styles and objects."""
         mediaExpressions = {}
@@ -456,7 +456,7 @@ class SassBuilder(XmlTransformerPart, Builder):
             getattr(self, csshook)(sassValue)
 
     def text(self, textComponent):
-        u"""Ignore output if <i>textComponent</i> is a plain text string."""
+        u"""Ignore output if *textComponent* is a plain text string."""
         if textComponent is not None and not isinstance(textComponent, basestring):
             self.buildStyle(textComponent.style)
     
@@ -1245,13 +1245,13 @@ div.documentation {
         u"""
         
         The ``cssBoxShadowValue`` method answers browser dependent css ``box-shadow`` value.<br/>
-        Or, if <attr>object</attr> is ``text``, answers browser dependent css ``text-shadow`` value.<br/>
+        Or, if ``object`` is ``text``, answers browser dependent css ``text-shadow`` value.<br/>
         The value can be a list or tuple, as in ``self.css(ids="...", boxshadow=("#888888", 6, 6, 20))``<br/>
         Or it may be separate arguments as can be used in a ``style`` attribute:<br/>
         self.div(style=self.cssBoxShadowValue("#888888", 6, 6, 20))<br/>
         self.div(style=self.cssBoxShadowValue("#888888", 6, 6, 20, "inset"))<br/>
         self.div(style=self.cssBoxShadowValue("inset 6px 6px 20px #888888")<br/>
-        Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
+        Omitting the optional ``browser`` attribute will result in the output for all browsers.
         
         """
         # TODO: getCssBoxShadowValue now also output the text-shadow css. We may then need a better name for the method.
@@ -1303,7 +1303,7 @@ div.documentation {
         background: -webkit-gradient(linear, left top, left bottom, from(#fff000), to(#999999));<br/>
         background: -moz-linear-gradient(top,  #fff000,  #999999);<br/>
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff000', endColorstr='#999999');<br/>
-        Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
+        Omitting the optional ``browser`` attribute will result in the output for all browsers.
         
         """
         args = (('x0', x0), ('x1', x1), ('y0', y0), ('y1', y1), ('type', type))
@@ -1337,7 +1337,7 @@ div.documentation {
     def getCssTransformValue(cls, scale=None, skew=None, rotate=None, browser=None):
         u"""
         The ``buildCssTransformValue`` method answers browser dependent css ``border-radius`` value.
-        <br/> Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
+        <br/> Omitting the optional ``browser`` attribute will result in the output for all browsers.
         """
         value = []
         result = []
@@ -1368,7 +1368,7 @@ div.documentation {
         u"""
         The ``cssBorderRadiusCornerValue`` method answers browser dependent CSS ``border-radius``
         value of a specific corner.<br/>
-        Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
+        Omitting the optional ``browser`` attribute will result in the output for all browsers.
         
         """
         result = ['border-%s-%s-radius: %s;' % (topbottom, leftright, value)]
@@ -1382,7 +1382,7 @@ div.documentation {
     def getCssBorderRadiusValue(cls, value, browser=None):
         u"""
         The ``cssBorderRadiusValue`` method answers browser dependent CSS ``border-radius`` value.<br/>
-        Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
+        Omitting the optional ``browser`` attribute will result in the output for all browsers.
         
         """
         result = ['border-radius: %s;' % (value)]

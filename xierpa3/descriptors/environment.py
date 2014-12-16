@@ -72,8 +72,8 @@ class Environment(State):
 
     def setParams(self, params):
         u"""
-        <p>The ``setParams`` method sets the ``self.params`` of the of environment to <attr>
-        params</attr>. This method can be redefined to get the parameters string from the <attr>params</attr> tuple.
+        <p>The ``setParams`` method sets the ``self.params`` of the of environment to ``
+        params``. This method can be redefined to get the parameters string from the ``params`` tuple.
         The tuple is based on from the standard definition in the application module.</p>
 
         <p>``urlpatterns = patterns('', (r'^(.*)$', build))``</p>
@@ -156,7 +156,7 @@ class Environment(State):
 
     def getRequestValue(self, key):
         u"""
-        The ``getRequestValue`` method answers the ``self.request`` value of <attr>key</attr>.
+        The ``getRequestValue`` method answers the ``self.request`` value of ``key``.
 
         """
         return self.request.received_headers[key]
@@ -193,7 +193,7 @@ class Environment(State):
 
     def getFullPath(self):
         u"""
-        The ``getFullPath`` method answers the plain full <attr>path</attr> as it appears in the browser.
+        The ``getFullPath`` method answers the plain full ``path`` as it appears in the browser.
 
         """
         return self[self.PATH] or '/'
@@ -256,7 +256,7 @@ class Environment(State):
 
     def getCookie(self, name):
         u"""
-        The ``getCookie`` method answers the cookie indicated by <attr>name</attr>. If there is no
+        The ``getCookie`` method answers the cookie indicated by ``name``. If there is no
         attribute in the request (e.g. because the builder is created by a parallel process), then answer ``None
         ``.
         """
@@ -269,8 +269,8 @@ class Environment(State):
     # value must be first as existing session code doesn't send a name
     def setCookie(self, value=None, expires=None, url='/', name=None, **args):
         u"""
-        The ``setCookie`` method saves the cookie indicated by <attr>name</attr> with <attr>value</attr>,
-        using the <attr>expires</attr> and <attr>url</attr> attributes.
+        The ``setCookie`` method saves the cookie indicated by ``name`` with ``value``,
+        using the ``expires`` and ``url`` attributes.
         """
 
         import datetime, urllib

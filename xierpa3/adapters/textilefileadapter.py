@@ -41,7 +41,7 @@
 #    _word_ --> <em>word</em>
 #    *word* --> <strong>word</strong>
 #    **word** --> **word**
-#    __word__ --> <i>word</i>
+#    __word__ --> *word*
 #    ??word?? --> <cite>word</cite>
 #    @r.to_html@ --> ``r.to_html``
 #    -word- --> <del>word</del> (Deletion, strike through)

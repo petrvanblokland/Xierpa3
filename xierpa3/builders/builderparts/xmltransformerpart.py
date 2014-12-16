@@ -216,7 +216,7 @@ class XmlTransformerPart:
         pass
     
     def doc_footnote(self, element, attrs):
-        u"""The optional attribute <i>label</i> is a Python string template that defines the content of the reference.
+        u"""The optional attribute *label* is a Python string template that defines the content of the reference.
         Default is "[%s]" where the tag is replaced by the index number of the footnote."""
         if not attrs.has_key('class_'):
             attrs['class_'] = 'footnote'

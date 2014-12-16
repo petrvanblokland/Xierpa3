@@ -29,7 +29,7 @@ class Transformer(object):
     def px(cls, n):
         u"""
         
-        The ``px`` method interprets the value <attr>n</attr>. If it converts to an integer, then
+        The ``px`` method interprets the value ``n``. If it converts to an integer, then
         add ``'px'``. So when the number needs to be a plain value (e.g. as in line-height), then 
         write the number as float or a string that converts to a float (containing a ``'.'``). 
         If the value is ``0`` then don't add ``'px'``.
@@ -57,7 +57,7 @@ class Transformer(object):
     def args2JsArguments(cls, **args):
         u"""
         
-        The ``args2JsArguments`` method translates the arguments <attr>**args</attr> into
+        The ``args2JsArguments`` method translates the arguments ``**args`` into
         a dictionary Javascript source. The value of the argument is tested on type and converted
         into the right Javascript syntax. If the value starts with ``'js:'`` then this
         prefix is removed, and the value is used as such, assuming that it is a chunk of Javascript
@@ -97,7 +97,7 @@ class Transformer(object):
         u"""
         
         The ``ajaxJavascriptCall`` method answers the Javascript source for a function call
-        named <attr>method`` (default value is ``'ajaxlink'``) and with arguments <attr>**args</attr>
+        named ``method`` (default value is ``'ajaxlink'``) and with arguments ``**args``
         as a dictionary that is the result of ``args2JsArguments(**args)``.
         
         """
@@ -110,8 +110,8 @@ class Transformer(object):
     def obj2List(cls, obj):
         u"""
         
-        The ``obj2List`` method convert to <attr>obj</attr> attribute to a list.
-        If the <attr>obj</attr> is a ``basestring`` then perform a comma split.
+        The ``obj2List`` method convert to ``obj`` attribute to a list.
+        If the ``obj`` is a ``basestring`` then perform a comma split.
         Tuples are converted to lists.
         
         """
@@ -125,7 +125,7 @@ class Transformer(object):
     def swapKeyValue(cls, dict):
         u"""
         
-        The ``swapKeyValue`` method swaps the key and value of <attr>dict</attr>, 
+        The ``swapKeyValue`` method swaps the key and value of ``dict``, 
         and answers that a new dict.
         
         """
@@ -138,12 +138,12 @@ class Transformer(object):
     def obj2Dict(cls, obj):
         u"""
         
-        The ``obj2Dict`` method answers the <attr>obj</attr> attribute converted to a dictionary.
-        If the <attr>obj</attr> is a string, then it is firstly converted into a list, separated on commas.
+        The ``obj2Dict`` method answers the ``obj`` attribute converted to a dictionary.
+        If the ``obj`` is a string, then it is firstly converted into a list, separated on commas.
         Then the list is concerted into a dictionary, using the index as key.
-        If the <attr>obj</attr> is a list of 2-item tuples as ``((key, value), ...)`` then
+        If the ``obj`` is a list of 2-item tuples as ``((key, value), ...)`` then
         interpret the first one as key and the second one as value.<br/>
-        If the <attr>obj</attr> is already a dictionary, then is it answered untouched.
+        If the ``obj`` is already a dictionary, then is it answered untouched.
         
         """
         d = {}
@@ -165,7 +165,7 @@ class Transformer(object):
         u"""
         
         The ``dict2ReversedDict`` answers a new dictionary where the key/valye pair of 
-        <attr>d</attr> is reversed.
+        ``d`` is reversed.
         
         """
         reversed = {}
@@ -199,7 +199,7 @@ class Transformer(object):
     def extensionOf(cls, path):
         u"""
         
-        The ``extensionOf`` method answers the lowercase extension of the <attr>path</attr>.
+        The ``extensionOf`` method answers the lowercase extension of the ``path``.
         If there is no extension, answers an empty string. If the extension cannot be derived,
         then answer ``None``.
         
@@ -213,19 +213,19 @@ class Transformer(object):
     def name2UrlName(self, name, pattern=None, usehyphen=True, lower=True):
         u"""
         
-        The ``name2UrlName`` method converts the <attr>name</attr> attribute to a name that is safe to be used
+        The ``name2UrlName`` method converts the ``name`` attribute to a name that is safe to be used
         in an URL. This method is used for uploaded images with unknown (and probably wrong) filenames. Also it is used
         to derive the ``self.FIELD_IDNAME`` content from ``self.FIELD_NAME``. The processing also
         takes care that not multiple hyphen exist in a row.<br/>
         
-        The optional <attr>pattern</attr> (default set to
+        The optional ``pattern`` (default set to
         ``'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-1234567890'``) allows the use of other
         patterns.<br/>
         
         If there is a period in the name, then it might be part of the extension. Split the name into a
         ``name.extension`` and recursively solve the parts.<br/>
         
-        If the <attr>usehyphen</attr> attribute is set (default value is ``True``), then allow the use of
+        If the ``usehyphen`` attribute is set (default value is ``True``), then allow the use of
         hyphens (divider between parameter and value in Xierpa syntax), otherwise all hyphens are replaced by
         underscores.
         
@@ -352,8 +352,8 @@ class Transformer(object):
     def isFsPathChanged(cls, srcfspath, dstfspath):
         u"""
         
-        The ``isFsPathChanged`` method answers the boolean flag if <attr>srcfspath</attr> is modified
-        after <attr>dstfspath</attr> was modified. Note that these files need not be the same (kind of) files. 
+        The ``isFsPathChanged`` method answers the boolean flag if ``srcfspath`` is modified
+        after ``dstfspath`` was modified. Note that these files need not be the same (kind of) files. 
         
         """
         return cls.isPathModified(srcfspath, cls.getPathModificationTime(dstfspath))
@@ -362,8 +362,8 @@ class Transformer(object):
     def isPathModified(cls, fspath, mtime):
         u"""
         
-        The ``isPathModified`` method answers the boolean flag if the <attr>fspath</attr> is modified
-        after the <attr>mtime</attr>.
+        The ``isPathModified`` method answers the boolean flag if the ``fspath`` is modified
+        after the ``mtime``.
         
         """
         return bool(cls.getPathModificationTime(fspath) > mtime)
@@ -372,7 +372,7 @@ class Transformer(object):
     def getPathModificationTime(cls, fspath):
         u"""
         
-        The ``getPathModifocationTime`` method answers the modification time of the <attr>fspath</attr>.
+        The ``getPathModifocationTime`` method answers the modification time of the ``fspath``.
         
         """
         return os.stat(fspath).st_mtime
@@ -381,7 +381,7 @@ class Transformer(object):
     def asPath(cls, fspath):
         u"""
         
-        The ``asPath`` method answers the <attr>fspath</attr> converted to a string
+        The ``asPath`` method answers the ``fspath`` converted to a string
         that starts with a slash and does not end with a slash.
         
         """
@@ -399,9 +399,9 @@ class Transformer(object):
         u"""
         
             The ``getDictValue`` returns a deep dict key value if the key is in the dict, 
-            such as ``dict['aa']['bb']`` where the keys is defined in <attr>path</attr> - 
-            a slash separated string list or a list. There's no errors if the <attr>path</attr> is 
-            not in the dict, an empty string or <attr>default</attr> is returned.<br/>
+            such as ``dict['aa']['bb']`` where the keys is defined in ``path`` - 
+            a slash separated string list or a list. There's no errors if the ``path`` is 
+            not in the dict, an empty string or ``default`` is returned.<br/>
             getDictValue(dict, 'aa/bb')<br/>
             getDictValue(dict, ['aa','bb'])<br/>
         
@@ -426,9 +426,9 @@ class Transformer(object):
         u"""
         
         The ``tableAtField`` method answers the name of a form field as ``'table@field'``
-        from the <attr>table</attr> and <attr>field</attr> attributes. This name will be automatically recognized
+        from the ``table`` and ``field`` attributes. This name will be automatically recognized
         and connected to the a table and field in the record saving mechanism. <br/>
-        If <attr>editor</attr> is defined, it is added to the field name as ``'table@field:editor'`` 
+        If ``editor`` is defined, it is added to the field name as ``'table@field:editor'`` 
         so the field can be recognized for that editor only.
         
         """
@@ -445,7 +445,7 @@ class Transformer(object):
         """
         
         The ``path2Field`` splits a path of format ``'db:table@field`` and answers the field.<br/>
-        If the <attr>path</attr> attribute does not contain a ``@``, then answer the full path.
+        If the ``path`` attribute does not contain a ``@``, then answer the full path.
         
         """
         if not path:
@@ -457,7 +457,7 @@ class Transformer(object):
         """
         
         The ``path2Field`` splits a path of format ``'db:table@field`` and answers the db name.<br/>
-        If the <attr>path</attr> attribute does not contain a ``@``, then answer the full path.
+        If the ``path`` attribute does not contain a ``@``, then answer the full path.
         
         """
         return path.split(':')[0]
@@ -467,7 +467,7 @@ class Transformer(object):
         """
         
         The ``path2TableName`` splits a path of format ``'db:table@field`` and answers the table name.<br/>
-        If the <attr>path</attr> attribute does not contain a ``@``, then answer the full path.
+        If the ``path`` attribute does not contain a ``@``, then answer the full path.
         
         """
         parts = path.split(':')
@@ -481,9 +481,9 @@ class Transformer(object):
     @classmethod
     def asId(cls, value, default=0):
         u"""
-        The ``asId`` method transforms the <attr>value</attr> attribute either to an instance of ``
-        long`` or to ``None``, so it can be used as <attr>id</attr> field in a ``Record``
-        instance. If the value cannot be converted, then the optional <attr>default</attr> (default value is ``0
+        The ``asId`` method transforms the ``value`` attribute either to an instance of ``
+        long`` or to ``None``, so it can be used as ``id`` field in a ``Record``
+        instance. If the value cannot be converted, then the optional ``default`` (default value is ``0
         ``) is answered.<br/>
         """
         try:
@@ -498,7 +498,7 @@ class Transformer(object):
     def isId(cls, value):
         u"""
         
-        The ``isId`` method tests if the <attr>value</attr> can be converted to an id (long or int). The
+        The ``isId`` method tests if the ``value`` can be converted to an id (long or int). The
         boolean result is answered.
         
         """
@@ -514,7 +514,7 @@ class Transformer(object):
     def asIdentifier(cls, value):
         u"""
         
-        The ``asIdentifier`` method answers <attr>value</attr> as identifier by filtering all non-alphanumeric
+        The ``asIdentifier`` method answers ``value`` as identifier by filtering all non-alphanumeric
         from the string.
         
         """
@@ -532,7 +532,7 @@ class Transformer(object):
     def asString(cls, s):
         u"""
         
-        The ``asString`` method converts the object <attr>s<attr> to string.
+        The ``asString`` method converts the object ``s`` to string.
         
         """
         if isinstance(s, basestring):
@@ -567,8 +567,8 @@ class Transformer(object):
     def dataAttribute2Html5Attribute(cls, key):
         u"""
         
-        The ``dataAttribute2Html5Attribute`` method converts an <attr>key</attr> attribute that starts with
-        ``'data_'`` to the HTML5 attribute that starts with ``'data-'``. Otherwise the <attr>key<attr>
+        The ``dataAttribute2Html5Attribute`` method converts an ``key`` attribute that starts with
+        ``'data_'`` to the HTML5 attribute that starts with ``'data-'``. Otherwise the ``key``
         attribute is answered unchanged.
         
         """
@@ -581,8 +581,8 @@ class Transformer(object):
         u"""
         The ``pyAttrName2XmlAttrName`` converts the Python XML attribute name ``key`` to an
         appropriate XML attribute identifier.<br/>.
-        If the <attr>key</attr> is ``'class_'`` then it is translated into ``'class'``.
-        If there is an HTML5 attribute <attr>data_xxxx</attr> used, then change that to <attr>data-xxxx</attr>.
+        If the ``key`` is ``'class_'`` then it is translated into ``'class'``.
+        If there is an HTML5 attribute ``data_xxxx`` used, then change that to ``data-xxxx``.
         """
         if key == 'class_':
             key = 'class'
@@ -594,11 +594,11 @@ class Transformer(object):
     def xmlAttrName2PyAttrName(cls, key):
         u"""
         
-        The ``xmlAttrName2PyAttrName`` method converts the XML attribute name <attr>key</attr> to an
+        The ``xmlAttrName2PyAttrName`` method converts the XML attribute name ``key`` to an
         appropriate Python attribute identifier.<br/>
-        If the <attr>key</attr> is ``'class'`` then it is translated into ``'class_'``. If a namespace
+        If the ``key`` is ``'class'`` then it is translated into ``'class_'``. If a namespace
         is defined (to be recognized on {...}, then replace that by prefix ``'ns_'``.<br/>
-        If there is an HTML5 attribute <attr>data-xxxx</attr> used, then change that to <attr>data_xxxx</attr>.
+        If there is an HTML5 attribute ``data-xxxx`` used, then change that to ``data_xxxx``.
         
         """
         if key == 'class':
@@ -615,7 +615,7 @@ class Transformer(object):
         u"""
         
         The ``xmlValue2PyValue`` method converts the XML string attribute to the appropriate Python object
-        type, if the class is defined in the list <attr>conversions</attr>. If the <attr>value</attr> is not a string,
+        type, if the class is defined in the list ``conversions``. If the ``value`` is not a string,
         it must have been converted before (e.g. by self.EXPR), the answer it untouched.
         
         """
@@ -688,14 +688,14 @@ class Transformer(object):
     def xmlAttr2PyAttr(cls, par_dict, conversions):
         """
         
-        Transform an XML attribute dictionary to a Python attribute dictionary. The <attr>class</attr> attribute name is
-        translated into <attr>class_</attr> and all values are tested to convert into either ``int``,
+        Transform an XML attribute dictionary to a Python attribute dictionary. The ``class`` attribute name is
+        translated into ``class_`` and all values are tested to convert into either ``int``,
         ``long``, ``float`` or boolean as represented by one of ``'TRUE'``,
         ``True``, ``true``, ``FALSE``, ``False``, ``false``. If the
         conversion fails, then pass the value unchanged. If there the attribute name is of format
         ``'{http://www.w3.org/XML/1998/namespace}space'``, e.g. as generated by Xopus XML Schema, then just
         remove the name space prefix.<br/>
-        If there is an HTML5 attribute <attr>data-xxxx</attr> used, then change that to <attr>data_xxxx</attr>.<br/>
+        If there is an HTML5 attribute ``data-xxxx`` used, then change that to ``data_xxxx``.<br/>
         
         """
         pydict = {}
@@ -716,7 +716,7 @@ class Transformer(object):
     def value2TagName(cls, value):
         u"""
         
-        The ``value2TagName`` class method converts the <attr>value</attr> object into a value XML tag name.
+        The ``value2TagName`` class method converts the ``value`` object into a value XML tag name.
         
         """
         tagname = []
@@ -745,7 +745,7 @@ class Transformer(object):
         """
         
         ``TX.escapeHtmlChars`` replaces risky characters with HTML entities.
-        If <attr>dotag</attr> is ``False`` (default is ``True``),
+        If ``dotag`` is ``False`` (default is ``True``),
         then don’t alter the tag, since we want to create valid XML here.
         
         """
@@ -858,7 +858,7 @@ class Transformer(object):
         u"""
         
         The ``id2WindowId`` transformer method answers the unique window id that is used to store the state of
-        a window in the session. If <attr>id</attr> is ``None`` then create a unique id.
+        a window in the session. If ``id`` is ``None`` then create a unique id.
         
         """
         return 'floatWin_%s' % id or uniqueId()
@@ -879,10 +879,10 @@ class Transformer(object):
     def asInt(cls, value, default=None):
         u"""
         
-        The ``asInt`` method answers <attr>value</attr> converted to ``int(value)``. If the conversion
-        was not successful, then answer ``None</attr>. If <attr>value</attr> is ``None``, then answer the
-        <attr>default</attr> attribute.<br/>
-        If <attr>value</attr> is a list or tuple of one element, then use that value.
+        The ``asInt`` method answers ``value`` converted to ``int(value)``. If the conversion
+        was not successful, then answer ``None``. If ``value`` is ``None``, then answer the
+        ``default`` attribute.<br/>
+        If ``value`` is a list or tuple of one element, then use that value.
         print X.asInt(123)
         print X.asInt('2344')
         print X.asInt('0xFF')
@@ -934,7 +934,7 @@ class Transformer(object):
     def asDict(cls, value):
         u"""
         
-        The ``asDict`` method answers the dict instance that can be translated from the <attr>value</attr>. For
+        The ``asDict`` method answers the dict instance that can be translated from the ``value``. For
         now ``dict`` and ``((key, v), (key, v),...`` are supported.
         
         """
@@ -950,7 +950,7 @@ class Transformer(object):
     def isInt(cls, value):
         u"""
         
-        The ``isInt`` method answers the boolean flag if the <attr>value</attr> would convert to a valid
+        The ``isInt`` method answers the boolean flag if the ``value`` would convert to a valid
         ``int`` by ``asInt(value)``.
         
         """
@@ -960,9 +960,9 @@ class Transformer(object):
     def asFloat(cls, value, default=None):
         u"""
         
-        The ``asFloat`` method answers <attr>value</attr> converted to ``float(value)``. If the
-        conversion was not successful, then answer ``None</attr>. If <attr>value</attr> is ``None``, then
-        answer the <attr>default</attr> attribute.
+        The ``asFloat`` method answers ``value`` converted to ``float(value)``. If the
+        conversion was not successful, then answer ``None``. If ``value`` is ``None``, then
+        answer the ``default`` attribute.
         
         """
         try:
@@ -975,9 +975,9 @@ class Transformer(object):
     def value2Bool(cls, v):
         u"""
         
-        The ``value2Bool`` method answers the interpreted value of <attr>v</attr> as boolean. The following
+        The ``value2Bool`` method answers the interpreted value of ``v`` as boolean. The following
         values (independent of case) interpret as ``False``: ``['', '0', 'f', 'F', 'none', 'false']``.
-        If <attr>v</attr> is a list or tuple, then it is ``True`` if there is at least one element 
+        If ``v`` is a list or tuple, then it is ``True`` if there is at least one element 
         the renders to ``True``, so it performs a an ``OR``.
         
         """
@@ -1095,7 +1095,7 @@ class Transformer(object):
     def path2ParentDirectory(cls, path):
         u"""
         
-        The ``path2ParentDirectory`` method answers the directory chunk of <attr>path</attr> by cutting the
+        The ``path2ParentDirectory`` method answers the directory chunk of ``path`` by cutting the
         last ``'/'`` part off. No checking is done if the ``path`` is actually a file.
         
         """
@@ -1229,7 +1229,7 @@ class Transformer(object):
     def fileSizeAsMb(cls, size):
         u"""
         
-        The ``fileSizeAsMb`` method shows the <attr>size</attr> number as a rounded value using one of the
+        The ``fileSizeAsMb`` method shows the ``size`` number as a rounded value using one of the
         ``["bytes", "KB", "MB", "GB", "TB"]`` as measure.
         
         """
@@ -1248,8 +1248,8 @@ class Transformer(object):
     def wordSplit(cls, s, lower=False):
         u"""
         
-        The ``wordSplit`` method splits <attr>s</attr> into parts with no trailing spaces. If the
-        <attr>lower</attr> is ``True</attr> (default is ``False``) the all words are converted to lower
+        The ``wordSplit`` method splits ``s`` into parts with no trailing spaces. If the
+        ``lower`` is ``True`` (default is ``False``) the all words are converted to lower
         case.
         
         """
@@ -1265,8 +1265,8 @@ class Transformer(object):
         u"""
         
         The ``abbreviate`` method answers the abbreviated string ``s`` if it length exceeds the value
-        of the <attr>length</attr> attribute and adds ``'...'``. If <attr>length</attr> is ``None``
-        then the <attr>s</attr> string is answered unchanged.
+        of the ``length`` attribute and adds ``'...'``. If ``length`` is ``None``
+        then the ``s`` string is answered unchanged.
         
         """
         if not s is None:
@@ -1279,7 +1279,7 @@ class Transformer(object):
     def unicodify(cls, s):
         u"""
         
-        Make sure, whatever <attr>s</attr> is, that there is a value unicode string answered. If <attr>s</attr> is not a
+        Make sure, whatever ``s`` is, that there is a value unicode string answered. If ``s`` is not a
         string then use ``str(s)`` to convert to a string first. This will make database records convert to a
         string of their id, instead of showing the record ``repr`` result. <em>Note that is might be that
         ``str`` will cause an error of the content of the object such as a list has unicode strings.</em>.
@@ -1313,8 +1313,8 @@ class Transformer(object):
         u"""
         
         The ``flatten2Class`` method answers the class string, made from space separated class names. If
-        <attr>class_</attr> is a ``tuple`` or ``list``, then merge the content. Check recursively in
-        case the names are nested. If the <attr>classes</attr> is empty or ``None`` or contain an empty
+        ``class_`` is a ``tuple`` or ``list``, then merge the content. Check recursively in
+        case the names are nested. If the ``classes`` is empty or ``None`` or contain an empty
         element, then this is ignored.
         
         """
@@ -1338,7 +1338,7 @@ class Transformer(object):
     
     @classmethod
     def col2Class(cls, col):
-        u"""Translate the <i>col</i> number to a column width class name. If the <i>col</i>
+        u"""Translate the *col* number to a column width class name. If the *col*
         class cannot be found, e.g. because it is **None** then answer the class of **C.MAXCOL**."""        
         colClass = cls.C.COL2CLASS.get(col)    
         if colClass is None:
@@ -1361,7 +1361,7 @@ class Transformer(object):
         
         ``numberFormat`` takes a numeric value and optionally adds thousand-separators
         and/or formats to the specified number of decimal places.
-        If <attr>thousands</attr> is True or default, a comma will be used, otherwise specify the char you want to use.
+        If ``thousands`` is True or default, a comma will be used, otherwise specify the char you want to use.
         
         """
 
@@ -1401,10 +1401,10 @@ class Transformer(object):
         
         ``makeMoney`` takes a number and returns a price string.
         You can optionally specify:
-        <attr>currency</attr>: the currency character
-        <attr>decimal</attr>: number of decimal places
-        <attr>shorten</attr>: whether to throw away the decimal part when it is .00
-        <attr>position</attr>: where the currency char should go: "before" or "after" 
+        ``currency``: the currency character
+        ``decimal``: number of decimal places
+        ``shorten``: whether to throw away the decimal part when it is .00
+        ``position``: where the currency char should go: "before" or "after" 
         Examples:
         ``makeMoney(12)`` returns "$12.00"
         ``makeMoney(12,shorten=True)`` returns "$12"

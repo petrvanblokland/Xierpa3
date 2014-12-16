@@ -377,7 +377,7 @@ class HtmlBuilderPart:
     def h1_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h1(**args)
         self.text(s)
@@ -403,7 +403,7 @@ class HtmlBuilderPart:
     def h2_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h2(**args)
         self.text(s)
@@ -429,7 +429,7 @@ class HtmlBuilderPart:
     def h3_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h3(**args)
         self.text(s)
@@ -455,7 +455,7 @@ class HtmlBuilderPart:
     def h4_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h4(**args)
         self.text(s)
@@ -480,7 +480,7 @@ class HtmlBuilderPart:
     def h5_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h5(**args)
         self.text(s)
@@ -505,7 +505,7 @@ class HtmlBuilderPart:
     def h6_(self, s, **args):
         u"""
         The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
-        where the <attr>s</attr> attribute is the block content.
+        where the ``s`` attribute is the block content.
         """
         self.h6(**args)
         self.text(s)
@@ -769,7 +769,7 @@ class HtmlBuilderPart:
         """
         The ``br`` tag inserts a single line break.<br/>
         The count attribute is not standard XHTML. It indicates the number of ``br`` to repeat.<br/>
-        The <attr>class_</attr> can define the amount of leading in ``px`` of the break.<br/>
+        The ``class_`` can define the amount of leading in ``px`` of the break.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_br.asp" target="external"/></seealso>
         <python>
         self.br()<br/>
@@ -780,7 +780,7 @@ class HtmlBuilderPart:
 
     def nbsp(self, count=1):
         """
-        The ``nbsp`` generates the <attr>count</attr> (default is 1) amound of non-breaking-spaces.
+        The ``nbsp`` generates the ``count`` (default is 1) amound of non-breaking-spaces.
         """
         self.output('&nbsp;'*count)
         
@@ -943,7 +943,7 @@ class HtmlBuilderPart:
     def img(self, **args):
         """
         The ``img`` tag defines an image. The ``img`` tag has no block.<br/>
-        To avoid compatibility problems between browser with the default <attr>border</attr> value,
+        To avoid compatibility problems between browser with the default ``border`` value,
         it is set to ``0`` if not defined.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_img.asp" target="external"/></seealso>
         **self.img(src='./_image/animage.png', width=100)**.
@@ -1219,7 +1219,7 @@ class HtmlBuilderPart:
         radio-buttons. Forms are used to pass user data to a specified URL.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_form.asp" target="external"/></seealso>
         
-        If an upload tag is used in the form, then the <attr>enctype</attr> attribute should be set to ``
+        If an upload tag is used in the form, then the ``enctype`` attribute should be set to ``
         enctype="multipart/form-data"``
         <python>
         self.form(action=e['path'])<br/>
@@ -1265,8 +1265,8 @@ class HtmlBuilderPart:
     def input(self, **args):
         """
         The ``input`` tag defines the start of an input field where the user can enter data.<br/>
-        The attribute <attr>type</attr> can be one of <attr>button | checkbox | file | hidden | image | password | radio |
-        reset | submit | text</attr>.<br/>
+        The attribute ``type`` can be one of ``button | checkbox | file | hidden | image | password | radio |
+        reset | submit | text``.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_input.asp" target="external"/></seealso>
         <python>
         self.input(type='checkbox', name='mycheckbox')<br/>

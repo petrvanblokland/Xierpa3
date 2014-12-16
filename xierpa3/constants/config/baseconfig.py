@@ -18,7 +18,7 @@ import sys
 class BaseConfig(object):
     u"""
     The abstract **ConfigModel** class implements the default values for the abstract **Config**
-    class in <i>config.py</i> that defines all hardware specific class variables.
+    class in *config.py* that defines all hardware specific class variables.
     """
     XIERPA_VERSION = '0.8' # Overall version of this Xierpa3
 

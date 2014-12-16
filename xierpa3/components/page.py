@@ -31,8 +31,8 @@ class Page(Component):
 
     def buildBlock(self, b):
         u"""
-        Make the builder <i>b</i> open the page and open the block. Then call the builder 
-        for all enclosed components. Make the builder <i>b</i> close the block and close the page.
+        Make the builder *b* open the page and open the block. Then call the builder 
+        for all enclosed components. Make the builder *b* close the block and close the page.
         """
         b.page(self)
         for component in self.components:

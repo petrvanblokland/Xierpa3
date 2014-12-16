@@ -34,21 +34,21 @@ class BaseNode(object):
 
     def getAttributeDefault(self, name):
         u"""
-        The ``getAttributeDefault`` method answers the default for attribute <attr>name</attr>. The behavior is
+        The ``getAttributeDefault`` method answers the default for attribute ``name``. The behavior is
         to answer the result of ``self.ATTRIBUTEDEFAULTS.get(name)``.
         """
         return self.ATTRIBUTEDEFAULTS.get(name)
 
     def getNewAttributes(self, attributes=None, args=None):
         u"""
-        The ``getAttributes`` method answers <attr>attributes</attr> attribute or a new instance of
-        ``Attributes``. The attribute set holds the @attributes of the <attr>self</attr> node. Note that the
+        The ``getAttributes`` method answers ``attributes`` attribute or a new instance of
+        ``Attributes``. The attribute set holds the @attributes of the ``self`` node. Note that the
         attribute set is stored “as such” without making a copy. So any change to the attribute set when manipulating
         the tree, will also reflect in the original attribute set.<br/>
 
-        If the <attr>args</attr> dictionary is defined, then the these values are added over the the key-value of new
+        If the ``args`` dictionary is defined, then the these values are added over the the key-value of new
         create ``Attributes`` instance. This is a separate method to allow inheriting node classes to redefine
-        the class of the attribute set. The <attr>args</attr> attribute can be either a dictionary or a list of
+        the class of the attribute set. The ``args`` attribute can be either a dictionary or a list of
         dictionaries.
         """
         if isinstance(attributes, dict):

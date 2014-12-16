@@ -22,8 +22,8 @@ class Task(Status):
     The ``Task`` class implements a set of paramters (inherited from ``Status``) that
     can be saved and derived from json files. These files are read by class method ``Task.next()`` 
     (or ``Task.peek()``) and executed by the running ``Scheduler`` instance. 
-    A posted task can be positioned in the scheduler list by altering the <attr>priority</attr> and 
-    <attr>order</attr> attributes of the post.
+    A posted task can be positioned in the scheduler list by altering the ``priority`` and 
+    ``order`` attributes of the post.
     """
     C = Status.C
     
@@ -52,7 +52,7 @@ class Task(Status):
         to be executed. The method takes the top of the sorted list of task files
         from the ``cls.PATH_SCHEDULERTASKS`` and creates the ``Task``
         instance and then deletes the task file (if the optional attribute 
-        <attr>remove</attr> has default value ``True``. This method is also 
+        ``remove`` has default value ``True``. This method is also 
         called by ``self.peek()``, but then the file is not removed.
         """
         tasknames = cls.getTaskNames()
@@ -110,7 +110,7 @@ class Task(Status):
         u"""
         The ``execute`` method is called by the running ``Scheduler`` instance
         (or directly by the ``self.post`` method, if ``builder.USE_MULTIPROCESSING``
-        is turned off. The attribute <attr>builderorcls</attr> can either be a ``Builder``
+        is turned off. The attribute ``builderorcls`` can either be a ``Builder``
         instance (as it is called directly from from the ``self.post``) or a ``Builder``
         class when called from the running ``Scheduler`` (since the ``Scheduler``
         cannot know any instantiated builder, it just knows the class of the site.
@@ -137,7 +137,7 @@ class Task(Status):
     def getTaskName(self, priority, order):
         u"""
         The ``getTaskName`` method constructs a unique task name that depends on the order
-        of <attr>priority</attr>, ``timestamplong()``, <attr>order</attr> and an 6-digit random integer.
+        of ``priority``, ``timestamplong()``, ``order`` and an 6-digit random integer.
         """
         return '%06d-%s-%06d-%06d.json' % (priority, timestampLong(), order, randint(0, 999999))
 

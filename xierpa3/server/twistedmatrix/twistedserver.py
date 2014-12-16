@@ -50,7 +50,7 @@ class TwistedServer(BaseServer):
 
     def startServer(self, client, port=80):
         u"""
-        The ``start`` method starts the ``TwistedServer`` instance. The <attr>port</attr>
+        The ``start`` method starts the ``TwistedServer`` instance. The ``port``
         (default value is ``80``) defines the main port of the web server.
         """
         client.showStartLabel(port)

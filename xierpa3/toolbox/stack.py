@@ -59,7 +59,7 @@ class Stack:
     def push(self, item):
         u"""
         
-        The ``push`` method pushes the <attr>item</attr> on stack.
+        The ``push`` method pushes the ``item`` on stack.
         
         """
         self.data.append(item)
@@ -75,7 +75,7 @@ class Stack:
     def replace(self, item):
         u"""
         
-        The ``replace`` method replaces the top element of the stack by <attr>item</attr>.
+        The ``replace`` method replaces the top element of the stack by ``item``.
         
         """
         self.data[-1] = item
@@ -93,8 +93,8 @@ class Stack:
 
     def peek(self, index=0):
         u"""
-        The ``peek`` method peeks into the stacked list of elements. The optional <attr>index</attr> (default
-        value is ``0``) goes backwards, so an <attr>index</attr> of ``0`` is the top of the stack.
+        The ``peek`` method peeks into the stacked list of elements. The optional ``index`` (default
+        value is ``0``) goes backwards, so an ``index`` of ``0`` is the top of the stack.
         """
         if index >= len(self.data):
             return None

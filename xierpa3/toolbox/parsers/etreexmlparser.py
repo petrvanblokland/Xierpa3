@@ -66,7 +66,7 @@ class UnbasedPathResolver(etree.Resolver):
     def unicodify(self, s):
         u"""
         
-        Make sure, whatever <attr>s</attr> is, that there is a value Unicode string answered. If <attr>s</attr> is not a
+        Make sure, whatever ``s`` is, that there is a value Unicode string answered. If ``s`` is not a
         string then use ``str(s)`` to convert to a string first. This will make database records convert to a
         string of their id, instead of showing the record ``repr`` result. <em>Note that it might be that
         ``str`` will cause an error on the content of the object such as a list.</em>. ``None`` is
@@ -143,8 +143,8 @@ class XmlParser:
 
     def isvalidxml(self, xml):
         u"""
-        The ``isvalidxml`` method answers the boolean flag id <attr>xml</attr> is a valid XML string. The
-        method adds a module root tag, so the <attr>xml</attr> does not need to have a root tag. 
+        The ``isvalidxml`` method answers the boolean flag id ``xml`` is a valid XML string. The
+        method adds a module root tag, so the ``xml`` does not need to have a root tag. 
         """
         try:
             etree.fromstring(u'<module>' + (xml or '') + '</module>')
@@ -155,12 +155,12 @@ class XmlParser:
 
     def parse(self, src=None, xml=None, checkunicode=False, catchexception=True):
         u"""
-        The ``parse`` method with parse either a <attr>src</attr> or <attr>xml</attr>. If defined the
-        <attr>xml</attr> attribute must be of type unicode. If the <attr>checkunicode</attr> attribute (default value is
-        ``False``) is ``True`` then an error is raised if the <attr>xml</attr> string is not unicode.
+        The ``parse`` method with parse either a ``src`` or ``xml``. If defined the
+        ``xml`` attribute must be of type unicode. If the ``checkunicode`` attribute (default value is
+        ``False``) is ``True`` then an error is raised if the ``xml`` string is not unicode.
         <br/>
         
-        If the optional <attr>catchexception</attr> (default value is ``True``) is set to ``False``
+        If the optional ``catchexception`` (default value is ``True``) is set to ``False``
         then the parser does not try to catch as parser error. This allows the calling application class to  get a
         better view on the type of XML error.
         """

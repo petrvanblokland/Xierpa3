@@ -59,7 +59,7 @@ class GoogleTranslate(Column):
     def buildBlock(self, b):
         u"""
         The @buildGoogleLanguageChoice@ method builds the container that will be filled by
-        the google translator with the language choice popup. The optional class attribute <attr>class_</attr>
+        the google translator with the language choice popup. The optional class attribute ``class_``
         defines the style of the enclosing div tag. The default value is @self.CLASS_GOOGLETRANSLATE@.
         """
         self.div(class_=self.CLASS_GOOGLETRANSLATE)

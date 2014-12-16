@@ -149,7 +149,7 @@ class Session:
     def default(self, field, value):
         u"""
         
-        The ``default`` method sets the value of <attr>field</attr> to <attr>value</attr>
+        The ``default`` method sets the value of ``field`` to ``value``
         only if the current value is ``None``. This way the method can be used to compact
         initialize the value of a session field.
         

@@ -34,7 +34,7 @@ def timestampLong():
 def uniqueId(size=0):
     u"""
     
-    The ``uniqueId`` method answers a unique number (as string) of <attr>size</attr> length concatenated
+    The ``uniqueId`` method answers a unique number (as string) of ``size`` length concatenated
     timestamps. Minimum length of the number is 18 digits, or else string will not be unique.
     
     """
@@ -72,7 +72,7 @@ def monthdays(year, month):
 def checkdatetime(date):
     u"""
     
-    The ``checkdatetime`` answers the <attr>date</attr> if it is a date. If date is None, then answer None. If
+    The ``checkdatetime`` answers the ``date`` if it is a date. If date is None, then answer None. If
     date is a string, then convert to DateTime. Check on the month and day boundaries. Answer the same type that date
     was. Note that we do not check if date was already a DateTime. This method is especially made to set database fields
     with dates, where that None will result in a NULL value for that field.
@@ -86,8 +86,8 @@ def checkdatetime(date):
 
 def newdatetime(date):
     u"""
-    The ``newdate`` method answers a new ``DateTime`` instance. If the <attr>date</attr> is
-    ``None``, then answer ``None``. If <attr>date</attr> is a string, then convert to
+    The ``newdate`` method answers a new ``DateTime`` instance. If the ``date`` is
+    ``None``, then answer ``None``. If ``date`` is a string, then convert to
     ``DateTime``. Check on the month and day boundaries.<br/>
     
     """
@@ -290,20 +290,20 @@ Period = Duration    # Make the lib backward compatible. But the use of Period i
 class DateTime:
     u"""
     
-    The ``newdate`` method answers a new ``DateTime`` instance. If the <attr>date</attr> is
-    ``None``, then answer ``None``. If <attr>date</attr> is a string, then convert to
+    The ``newdate`` method answers a new ``DateTime`` instance. If the ``date`` is
+    ``None``, then answer ``None``. If ``date`` is a string, then convert to
     ``DateTime``. Check on the month and day boundaries.<br/>
     <list>
-        <li>Initialize the current date if the <attr>date</attr> is equal to ``now``</li>
+        <li>Initialize the current date if the ``date`` is equal to ``now``</li>
         <li>Initialize on first day of the week if year and week are defined</li>
         <li>Initialize from existing datetime if "dt" is defined</li>
-        <li>Initialize from <attr>date_time</attr> string, date and time separated by white space.</li>
-        <li>Initialize from <attr>date</attr> string (identical to the result of self.date) if defined</li>
-        <li>Initialize from <attr>time</attr> string (identical to the result of self.time) if defined</li>
+        <li>Initialize from ``date_time`` string, date and time separated by white space.</li>
+        <li>Initialize from ``date`` string (identical to the result of self.date) if defined</li>
+        <li>Initialize from ``time`` string (identical to the result of self.time) if defined</li>
         <li>Initialize from (year, month, day) if all of them are defined.</li>
         <li>Otherwise raise an error</li>
     </list>
-    If the <attr>trimvalues</attr> attribute is set to ``False`` (default is ``True``) then the
+    If the ``trimvalues`` attribute is set to ``False`` (default is ``True``) then the
     input values of the date are <em>not</em> trimmed to their minimum and maximum values. This checking is done in
     context for days in months and years.<br/>
     <python>
@@ -505,7 +505,7 @@ class DateTime:
     def __add__(self, duration):
         u"""
         
-        Add the <attr>duration</attr> to ``self``.
+        Add the ``duration`` to ``self``.
         <python>
         Date + Duration = Date
         Date + 3 = Date
