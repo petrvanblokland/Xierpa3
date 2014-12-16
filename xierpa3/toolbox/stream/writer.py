@@ -27,9 +27,9 @@ class Writer(object):
 
     def reset(self):
         u"""
-        <doc>The <code>reset</code> method resets the data of the writer. This can be used to reset the content of a
+        The <code>reset</code> method resets the data of the writer. This can be used to reset the content of a
         shared (through cloning) builder, where the output stream is divided into parts, such as the export of PHP
-        files.</doc>
+        files.
         """
         self.buffer = StringIO()
         self.writer = codecs.getwriter("utf-8")(self.buffer)
@@ -64,7 +64,7 @@ class Writer(object):
 
     def write(self, s):
         u"""
-        <doc>Write the object s.</doc>
+        Write the object s.
         """
         if s is not None:
             if not isinstance(s, basestring):
