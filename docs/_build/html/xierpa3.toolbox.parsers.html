@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.toolbox.parsers package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-toolbox-parsers-package">
+<h1>xierpa3.toolbox.parsers package<a class="headerlink" href="#xierpa3-toolbox-parsers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.parsers.c_json">
+<span id="xierpa3-toolbox-parsers-c-json-module"></span><h2>xierpa3.toolbox.parsers.c_json module<a class="headerlink" href="#module-xierpa3.toolbox.parsers.c_json" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.parsers.etreexmlparser">
+<span id="xierpa3-toolbox-parsers-etreexmlparser-module"></span><h2>xierpa3.toolbox.parsers.etreexmlparser module<a class="headerlink" href="#module-xierpa3.toolbox.parsers.etreexmlparser" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.parsers.etreexmlparser.</tt><tt class="descname">UnbasedPathResolver</tt><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">lxml.etree.Resolver</span></tt></p>
+<p>XML parsing solution based on LXML etree. Implements a resolver for XSL files that can search upwards the path when
+an relative path is defined.</p>
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.cache">
+<tt class="descname">cache</tt><em class="property"> = {}</em><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.resolve">
+<tt class="descname">resolve</tt><big>(</big><em>url</em>, <em>id</em>, <em>context</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;resolve&lt;/code&gt; method resolves the file system path for finding XSL modules to include. URL is a full
+fspath built up by LXML, we have to disassemble it to find the parts of the tree that we then separately test on
+the existence of _xsl and the run upwards until we find a match. Store the found XSL source in the class cache
+under the URL as key with a time stamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.unicodify">
+<tt class="descname">unicodify</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.UnbasedPathResolver.unicodify" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Make sure, whatever &lt;attr&gt;s&lt;/attr&gt; is, that there is a value Unicode string answered. If &lt;attr&gt;s&lt;/attr&gt; is not a
+string then use &lt;code&gt;str(s)&lt;/code&gt; to convert to a string first. This will make database records convert to a
+string of their id, instead of showing the record &lt;code&gt;repr&lt;/code&gt; result. &lt;em&gt;Note that it might be that
+&lt;code&gt;str&lt;/code&gt; will cause an error on the content of the object such as a list.&lt;/em&gt;. &lt;code&gt;None&lt;/code&gt; is
+replaced by an empty Unicode string.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.XmlParser">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.parsers.etreexmlparser.</tt><tt class="descname">XmlParser</tt><big>(</big><em>e</em>, <em>nocache</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.XmlParser" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.XmlParser.isvalidxml">
+<tt class="descname">isvalidxml</tt><big>(</big><em>xml</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.XmlParser.isvalidxml" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;isvalidxml&lt;/code&gt; method answers the boolean flag id &lt;attr&gt;xml&lt;/attr&gt; is a valid XML string. The
+method adds a module root tag, so the &lt;attr&gt;xml&lt;/attr&gt; does not need to have a root tag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.XmlParser.parse">
+<tt class="descname">parse</tt><big>(</big><em>src=None</em>, <em>xml=None</em>, <em>checkunicode=False</em>, <em>catchexception=True</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.XmlParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;parse&lt;/code&gt; method with parse either a &lt;attr&gt;src&lt;/attr&gt; or &lt;attr&gt;xml&lt;/attr&gt;. If defined the
+&lt;attr&gt;xml&lt;/attr&gt; attribute must be of type unicode. If the &lt;attr&gt;checkunicode&lt;/attr&gt; attribute (default value is
+&lt;code&gt;False&lt;/code&gt;) is &lt;code&gt;True&lt;/code&gt; then an error is raised if the &lt;attr&gt;xml&lt;/attr&gt; string is not unicode.
+&lt;br/&gt;</p>
+<p>If the optional &lt;attr&gt;catchexception&lt;/attr&gt; (default value is &lt;code&gt;True&lt;/code&gt;) is set to &lt;code&gt;False&lt;/code&gt;
+then the parser does not try to catch as parser error. This allows the calling application class to  get a
+better view on the type of XML error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.XmlParser.tostring">
+<tt class="descname">tostring</tt><big>(</big><em>doc</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.XmlParser.tostring" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.etreexmlparser.XmlParser.transform">
+<tt class="descname">transform</tt><big>(</big><em>sourcedoc</em>, <em>template</em>, <em>functions</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.etreexmlparser.XmlParser.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.parsers.parser">
+<span id="xierpa3-toolbox-parsers-parser-module"></span><h2>xierpa3.toolbox.parsers.parser module<a class="headerlink" href="#module-xierpa3.toolbox.parsers.parser" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.parsers.parser.Parser">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.parsers.parser.</tt><tt class="descname">Parser</tt><a class="headerlink" href="#xierpa3.toolbox.parsers.parser.Parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>&lt;doc&gt;
+Mother of all Xierpa parsers.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.parsers.validator">
+<span id="xierpa3-toolbox-parsers-validator-module"></span><h2>xierpa3.toolbox.parsers.validator module<a class="headerlink" href="#module-xierpa3.toolbox.parsers.validator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.parsers.validator.Validator">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.parsers.validator.</tt><tt class="descname">Validator</tt><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.ALLEMAILSPATTERNS">
+<tt class="descname">ALLEMAILSPATTERNS</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x7f88909d9780&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.ALLEMAILSPATTERNS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.DATEPATTERN">
+<tt class="descname">DATEPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x7f88909c5460&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.DATEPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.DOMAIN">
+<tt class="descname">DOMAIN</tt><em class="property"> = u'^(?:([^\\(\\)&lt;&gt;&#64;,;:#\\&quot;\\[\\]]*)\\.)?(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum|cat|[a-zA-Z]{2})$'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.DOMAIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.DOMAINPATTERN">
+<tt class="descname">DOMAINPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x7f88909ca440&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.DOMAINPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.EMAILPATTERN">
+<tt class="descname">EMAILPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x10aa8a440&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.EMAILPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.EMAILUSER">
+<tt class="descname">EMAILUSER</tt><em class="property"> = '^[^\\(\\)&lt;&gt;&#64;,;:#\\&quot;\\[\\]]*$'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.EMAILUSER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.HTTP">
+<tt class="descname">HTTP</tt><em class="property"> = 'http://'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.HTTP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.IMAGENAME">
+<tt class="descname">IMAGENAME</tt><em class="property"> = u'([-0-9a-zA-Z_\\.~]*[\\.](?:jpg|jpeg|png|tiff|gif|pdf)$)'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.IMAGENAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.IMAGENAMEPATTERN">
+<tt class="descname">IMAGENAMEPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x7f888d817b20&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.IMAGENAMEPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.IPADDRESS">
+<tt class="descname">IPADDRESS</tt><em class="property"> = u'^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.IPADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.IPPATTERN">
+<tt class="descname">IPPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x7f88909c6940&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.IPPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.KNOWNDOMAINS">
+<tt class="descname">KNOWNDOMAINS</tt><em class="property"> = 'com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum|cat'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.KNOWNDOMAINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.PDFNAME">
+<tt class="descname">PDFNAME</tt><em class="property"> = u'([-0-9a-zA-Z_\\.~]*[\\.](?:pdf)$)'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.PDFNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.PDFNAMEPATTERN">
+<tt class="descname">PDFNAMEPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x10af927b0&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.PDFNAMEPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.QUOTEDUSER">
+<tt class="descname">QUOTEDUSER</tt><em class="property"> = '^&quot;([^&quot;]*)&quot;$'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.QUOTEDUSER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.QUOTEDUSERPATTERN">
+<tt class="descname">QUOTEDUSERPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x10788edb0&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.QUOTEDUSERPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.SPECIALCHARS">
+<tt class="descname">SPECIALCHARS</tt><em class="property"> = '\\(\\)&lt;&gt;&#64;,;:#\\&quot;\\[\\]'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.SPECIALCHARS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.TELEPHONEPATTERNS">
+<tt class="descname">TELEPHONEPATTERNS</tt><em class="property"> = {'nl': &lt;_sre.SRE_Pattern object at 0x7f88909cb490&gt;}</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.TELEPHONEPATTERNS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.URLPATTERN">
+<tt class="descname">URLPATTERN</tt><em class="property"> = '(?:http://)([-0-9a-zA-Z_\\.~]*\\.?[-0-9a-zA-Z_\\.~]*\\.(?:arpa|arts|biz|com|edu|firm|gov|info|int|mil|nato|net|nom|org|rec|store|web|jp|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|de|di|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|io|iq|ir|is|it|jo|jm|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|an|nc|ne|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sq|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zr|zw)[\\S]*[^\\.\\,\\s])'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.URLPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.USERPATTERN">
+<tt class="descname">USERPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x10aa3f258&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.USERPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.ZIPCODEPATTERNS">
+<tt class="descname">ZIPCODEPATTERNS</tt><em class="property"> = {'nl': &lt;_sre.SRE_Pattern object at 0x7f8890996d90&gt;}</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.ZIPCODEPATTERNS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.ZIPNAME">
+<tt class="descname">ZIPNAME</tt><em class="property"> = u'([-0-9a-zA-Z_\\.~]*[\\.](?:zip)$)'</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.ZIPNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.ZIPNAMEPATTERN">
+<tt class="descname">ZIPNAMEPATTERN</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x10af928a0&gt;</em><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.ZIPNAMEPATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.arg2Arg">
+<em class="property">classmethod </em><tt class="descname">arg2Arg</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.arg2Arg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the argument if it contains keywords.
+These keywords cannot be tested because the value will change in time:</p>
+<p>v.arg2Arg(&#8216;today&#8217;)
+2006/3/4
+v.arg2Arg(&#8216;thisday&#8217;)
+11
+v.arg2Arg(&#8216;thismonth&#8217;)
+2
+v.arg2Arg(&#8216;lastyear&#8217;)
+2004
+v.arg2Arg(&#8216;thisyear&#8217;)
+2005
+v.arg2Arg(&#8216;nextyear&#8217;)
+2006</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">arg2Arg</span><span class="p">(</span><span class="s">&#39;1234&#39;</span><span class="p">)</span>
+<span class="go">&#39;1234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">arg2Arg</span><span class="p">(</span><span class="s">&#39;  1234  &#39;</span><span class="p">)</span>
+<span class="go">&#39;1234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">arg2Arg</span><span class="p">(</span><span class="s">&#39;infinite&#39;</span><span class="p">)</span>
+<span class="go">&#39;10.0e99&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.findEmails">
+<em class="property">classmethod </em><tt class="descname">findEmails</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.findEmails" title="Permalink to this definition">¶</a></dt>
+<dd><p># Answer a (validated) list of all available email addresses in the s.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">findEmails</span><span class="p">(</span><span class="s">&#39;This is a text from buro@petr123.com containing 3 valid (info@apple.com, p.vanblokland@petr.com) email addresses (and wrong xxx@petr.xyz not found)&#39;</span><span class="p">)</span>
+<span class="go">[&#39;buro@petr123.com&#39;, &#39;info@apple.com&#39;, &#39;p.vanblokland@petr.com&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.findUrls">
+<em class="property">classmethod </em><tt class="descname">findUrls</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.findUrls" title="Permalink to this definition">¶</a></dt>
+<dd><p># Answer a list of all available urls in the s.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">findUrls</span><span class="p">(</span><span class="s">&#39;This is a text from http://www.apple.com containing valid urls http://www.petr.com, http://xyz.www.petr.com, and some more text and invalid url http://www.petr.c.&#39;</span><span class="p">)</span>
+<span class="go">[&#39;www.apple.com&#39;, &#39;www.petr.com&#39;, &#39;xyz.www.petr.com&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isBank">
+<em class="property">classmethod </em><tt class="descname">isBank</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isBank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing if s is a valid bank number:
+- replace all &#8221;.&#8221;
+- result should only by figures
+- total number of figures == 9</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;66.76.65.195&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;667665195&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;6.6.7.6.6.5.1.9.5&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;66 76 65 195&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;66.76.65.1950&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;555&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBank</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isBankgiro">
+<em class="property">classmethod </em><tt class="descname">isBankgiro</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isBankgiro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing if s is a valid giro number:
+- should only by figures
+- total number of figures &lt; 10</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;667665195&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;555&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;66.76.65.195&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;667665195&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;66 76&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;66.76.65.1950&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isBankgiro</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isDate">
+<em class="property">classmethod </em><tt class="descname">isDate</tt><big>(</big><em>value</em>, <em>country='nl'</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if value is a valid date. &#64;&#64;&#64; Still add checking on leap year</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;2003/04/04&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;04/04/2004&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;14/04/2004&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;32-04-2004&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;14-04-2004&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;    14.04.2004&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;4-14-2004&#39;</span><span class="p">,</span> <span class="s">&#39;usa&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;14-04-2004&#39;</span><span class="p">,</span> <span class="s">&#39;usa&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;2000-33-44&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;2000-0202&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;2000-02-==02&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;aaa&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;2003/3&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;200-233-444&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;10-2000-12&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;10&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isDate</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isEmail">
+<em class="property">classmethod </em><tt class="descname">isEmail</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isEmail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if s is a valid email adres.
+Testing is done on:
+- pattern
+- Only one &#64;
+- No characters &gt; 127 in user
+- No characters &gt; 127 in domain
+- Valid user name pattern
+- Valid ip number pattern
+- Valid domain name pattern</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;&quot;aaa&quot;@bbb123.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;aaa@bbb.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;aaa@www.bbb.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;aaa@www.bbb.nl&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;aaa.xxx@bbb.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;buro@petr.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@abc.nl&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@100.100.100.100&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@abc.co&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@a.a.a.a.a.a.a.a.a.a.a.a.co&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;~xxx._._._sss@a.a.a.a.a.a.a.a.a.a.a.a.co&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;&lt;xxx-sss@abc.nl&gt;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;x###xx-sss@abc.nl&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@abc.nlxxxx&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@abc.55&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@abc.55&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@222.444.555.666&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;xxx-sss@100,aaa,100,100&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isEmail</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isImage">
+<em class="property">classmethod </em><tt class="descname">isImage</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is the reference to an image.&#8221;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isLength">
+<em class="property">classmethod </em><tt class="descname">isLength</tt><big>(</big><em>value</em>, <em>minrange</em>, <em>maxrange=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>If only minrange, them do an exact match on the value
+If maxrange id defined, then match on the range between 
+the values inclusive by calling self.isRange()</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isLength</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isLength</span><span class="p">(</span><span class="s">&#39;1234&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isLength</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isLength</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isLength</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isPattern">
+<em class="property">classmethod </em><tt class="descname">isPattern</tt><big>(</big><em>value</em>, <em>pattern</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isPattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare to the re pattern. 
+Note that this is kinda expensive, since the pattern is compiled again
+every time that this method is called. So if one of the other other
+check fit the need, then that one is more efficient to use.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="s">&#39;1234&#39;</span><span class="p">,</span> <span class="s">&#39;^[\d]*$&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="s">&#39;1234xxxx&#39;</span><span class="p">,</span> <span class="s">&#39;^[\d]*$&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="s">&#39;aaaaaa&#39;</span><span class="p">,</span> <span class="s">&#39;^[a-zA-Z]*$&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="s">&#39;12345aaaaaa&#39;</span><span class="p">,</span> <span class="s">&#39;^[a-zA-Z]*$&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;^[a-zA-Z]*$&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isPattern</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;^[a-zA-Z]*$&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isPdf">
+<tt class="descname">isPdf</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isPdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is the reference to an image.&#8221;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isRange">
+<em class="property">classmethod </em><tt class="descname">isRange</tt><big>(</big><em>value</em>, <em>minrange</em>, <em>maxrange</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Range testing is inclusive on the margins
+minrange &lt;= value &lt;= maxrange
+So minrange == 10 and value == 10 is true
+Float values can be defined with comma&#8217;s or periods.</p>
+<p>Minrange and maxrange are dates or numbers.
+Note that minrange is the relative number of days from today, if defined as number
+The maxrange is the relative number of days if defined as number.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="s">&#39;3/3/2002&#39;</span><span class="p">,</span> <span class="s">&#39;3/12/2030&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="s">&#39;today&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;5/11/1988&#39;</span><span class="p">,</span> <span class="s">&#39;4/11/1988&#39;</span><span class="p">,</span> <span class="s">&#39;6/11/1988&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;5/11/1988&#39;</span><span class="p">,</span> <span class="s">&#39;4/11/2004&#39;</span><span class="p">,</span> <span class="s">&#39;6/11/2004&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;10/10/2015&#39;</span><span class="p">,</span> <span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="s">&#39;7200&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;10/10/2015&#39;</span><span class="p">,</span> <span class="s">&#39;today&#39;</span><span class="p">,</span> <span class="s">&#39;720&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;50&#39;</span><span class="p">,</span> <span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="s">&#39;100&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;0.4&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;0,4&#39;</span><span class="p">,</span><span class="s">&#39;0,3&#39;</span><span class="p">,</span><span class="s">&#39;0,8&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="s">&#39;0,3&#39;</span><span class="p">,</span><span class="s">&#39;0,8&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isRange</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isTelephone">
+<em class="property">classmethod </em><tt class="descname">isTelephone</tt><big>(</big><em>value</em>, <em>country='nl'</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isTelephone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is a valid telephone number</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;1234567898&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;1 23 23 23 444&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;       1 23 23 23 444&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;+31 15 219 10 40&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;   +31 15 219 10 40   &#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;1 23----------- 23 23 444&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;sdsdsd&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;123 4&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;3232##&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isTelephone</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isTwitter">
+<em class="property">classmethod </em><tt class="descname">isTwitter</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isTwitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer if s is a twitter address (starting with &#64;)</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isUrl">
+<em class="property">classmethod </em><tt class="descname">isUrl</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p># Answer the boolean if this string is a valid url, with out without &#8216;<a class="reference external" href="http://">http://</a>&#8216;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isUrl</span><span class="p">(</span><span class="s">&#39;http://www.petr.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isUrl</span><span class="p">(</span><span class="s">&#39;http://a.b.v.c.x.www.petr.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isUrl</span><span class="p">(</span><span class="s">&#39;ttp://www.petr.com&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isUrl</span><span class="p">(</span><span class="s">&#39;//www.petr.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isUrl</span><span class="p">(</span><span class="s">&#39;www.petr.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isZip">
+<tt class="descname">isZip</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isZip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is the reference to an image.&#8221;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isZipcode">
+<em class="property">classmethod </em><tt class="descname">isZipcode</tt><big>(</big><em>value</em>, <em>country='nl'</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isZipcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is a valid zipcode</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;1234 AB&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;3333XX&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;123XX&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;1234 XXX&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;sdsdsd&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;123 4&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;3232##&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isZipcode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isfuture">
+<em class="property">classmethod </em><tt class="descname">isfuture</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isfuture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer true if value represents a date in the future</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;12/9/2013&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;2013/10/21&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;12/12/2513&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;12/12/2001&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;12/12/1399&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isfuture</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isgiro">
+<em class="property">classmethod </em><tt class="descname">isgiro</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isgiro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing if s is a valid giro number:
+- should only by figures
+- total number of figures &lt; 9</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;66766519&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;555&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;66.76.65.195&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;667665195&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;66 76&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;66.76.65.1950&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isgiro</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isin">
+<em class="property">classmethod </em><tt class="descname">isin</tt><big>(</big><em>value</em>, <em>options</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is in options.
+If options is not a list, then do a comman split.
+We have to run through them separately, because the
+options come from a comma separated list, so the still
+may contain heading and trailing spaces</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="s">&#39;50&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="s">&#39;50&#39;</span><span class="p">,</span> <span class="s">&#39;100&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="mi">51</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="s">&#39;ccc&#39;</span><span class="p">,</span> <span class="s">&#39;aaa, bbb, ccc&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="s">&#39;cccc&#39;</span><span class="p">,</span> <span class="s">&#39;aaa, bbb, ccc&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isinteger">
+<em class="property">classmethod </em><tt class="descname">isinteger</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isinteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is a valid integer</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="mi">12341234123412341234123412341234</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="mf">11212.323e-20</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="s">&#39;3333XX&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isinteger</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isnbsp">
+<em class="property">classmethod </em><tt class="descname">isnbsp</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isnbsp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.isnumber">
+<em class="property">classmethod </em><tt class="descname">isnumber</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.isnumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the value is a valid number</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="mi">12341234123412341234123412341234</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="mf">11212.323e-20</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="s">&#39;3333XX&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">isnumber</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.ispast">
+<em class="property">classmethod </em><tt class="descname">ispast</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.ispast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer true if value represents a date in the past</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;12/9/1313&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;1313/10/21&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;12.1.1921&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;12/1/2040&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;12-01-2540&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;today&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">ispast</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.parsers.validator.Validator.validate">
+<em class="property">classmethod </em><tt class="descname">validate</tt><big>(</big><em>value</em>, <em>params</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.parsers.validator.Validator.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate a value
+The protocol is in params.
+For protocol that need other values to test against, 
+params can also be a comma separated list</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s">&#39;isnumber&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s">&#39;isinteger&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="mf">123.44</span><span class="p">,</span> <span class="s">&#39;isinteger&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;aaaaa&#39;</span><span class="p">,</span> <span class="s">&#39;isLength, 5&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;1/9/2005&#39;</span><span class="p">,</span> <span class="s">&#39;isDate&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;1/13/2005&#39;</span><span class="p">,</span> <span class="s">&#39;isDate&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;30/2/2005&#39;</span><span class="p">,</span> <span class="s">&#39;isDate&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;01/1500/2005&#39;</span><span class="p">,</span> <span class="s">&#39;isDate&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;isin, a,b,c,d,e,f,g,h&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;isRange, 0, 100&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#39;isRange, 50, 100&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;1/1/1966&#39;</span><span class="p">,</span> <span class="s">&#39;isRange,1/1/1870,1/1/2008&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;isRange,1/1/1870,1/1/2008&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;isempty&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.parsers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.toolbox.parsers" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.toolbox.parsers package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.parsers.c_json">xierpa3.toolbox.parsers.c_json module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.parsers.etreexmlparser">xierpa3.toolbox.parsers.etreexmlparser module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.parsers.parser">xierpa3.toolbox.parsers.parser module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.parsers.validator">xierpa3.toolbox.parsers.validator module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.parsers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.toolbox.parsers.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

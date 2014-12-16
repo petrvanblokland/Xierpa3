@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.server.base package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-server-base-package">
+<h1>xierpa3.server.base package<a class="headerlink" href="#xierpa3-server-base-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.server.base.baseclient">
+<span id="xierpa3-server-base-baseclient-module"></span><h2>xierpa3.server.base.baseclient module<a class="headerlink" href="#module-xierpa3.server.base.baseclient" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.server.base.baseclient.BaseClient">
+<em class="property">class </em><tt class="descclassname">xierpa3.server.base.baseclient.</tt><tt class="descname">BaseClient</tt><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Connects the SiteBuilder to Twisted client.</p>
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.DEFAULTTHEME">
+<tt class="descname">DEFAULTTHEME</tt><em class="property"> = 'default'</em><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.DEFAULTTHEME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.DO_INDENT">
+<tt class="descname">DO_INDENT</tt><em class="property"> = True</em><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.DO_INDENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.LINE">
+<tt class="descname">LINE</tt><em class="property"> = '--------------------------------------------------------------------------------'</em><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.LINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.MTIMES">
+<tt class="descname">MTIMES</tt><em class="property"> = {}</em><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.MTIMES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseclient.BaseClient.THEMES">
+<tt class="descname">THEMES</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.THEMES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.buildAjax">
+<tt class="descname">buildAjax</tt><big>(</big><em>site</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.buildAjax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the json of the ajax dict generated by the site. This method gets
+called if there is a &#8220;/ajax&#8221; parameter in the url.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.buildCss">
+<tt class="descname">buildCss</tt><big>(</big><em>site</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.buildCss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the site to CSS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.buildHtml">
+<tt class="descname">buildHtml</tt><big>(</big><em>site</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.buildHtml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the site for HTML.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.buildResource">
+<tt class="descname">buildResource</tt><big>(</big><em>site</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.buildResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>The url refers to a xierpa3 resource, try to find it and answer the result
+with the appropriate mime type.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.server.base.baseclient.BaseClient.codeChanged">
+<em class="property">classmethod </em><tt class="descname">codeChanged</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.codeChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auto-reloading launcher.</p>
+<blockquote>
+<div>Borrowed from Peter Hunt and the CherryPy project (<a class="reference external" href="http://www.cherrypy.org">http://www.cherrypy.org</a>). Some taken from Ian Bicking&#8217;s Paste</div></blockquote>
+<p>(<a class="reference external" href="http://pythonpaste.org/">http://pythonpaste.org/</a>).</p>
+<p>Portions copyright (c) 2004, CherryPy Team (<a class="reference external" href="mailto:team&#37;&#52;&#48;cherrypy&#46;org">team<span>&#64;</span>cherrypy<span>&#46;</span>org</a>). All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+following conditions are met:</p>
+<ul class="simple">
+<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the
+following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+<li>Neither the name of the CherryPy Team nor the names of its contributors may be used to endorse or promote
+products derived from this software without specific prior written permission.</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#8220;AS IS&#8221; AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getDefaultSiteClass">
+<tt class="descname">getDefaultSiteClass</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getDefaultSiteClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getDefaultSiteClass&#64; method is used by the task daemon, to get access to the current set of
+constants. Since the site class contains the specific constants of the site, it can be used to derive the path
+of DATA storage and to create a shadow builder in the remote process to be called with the &#64;task.method
+&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getDefaultThemeName">
+<tt class="descname">getDefaultThemeName</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getDefaultThemeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getDefaultThemeName&#64; method answers the default site name &#64;self.DEFAULTTHEME&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getDoIndent">
+<tt class="descname">getDoIndent</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getDoIndent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getDoIndent&#64; method answers the boolean flag if the output code building should include indents.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getSite">
+<tt class="descname">getSite</tt><big>(</big><em>httprequest</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getSite" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getSite&#64; method answers a new instance of the site class that is indicated by the result of
+&#64;e.getSiteName()&#64;. This site instance typically is derived from the first part of the URL
+or by the matching domain name. This allows the running of multiple domain names (all with port 80)
+on the same server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getTheme">
+<tt class="descname">getTheme</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getTheme" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getThemeName">
+<tt class="descname">getThemeName</tt><big>(</big><em>httprequest</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getThemeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getThemeName&#64; method answers the name of the current theme. This method should be redefined
+if there is more than one site to be served through this client, depending on a pattern in the <a href="#id1"><span class="problematic" id="id2">*</span></a>httprequest
+* URL. Default behavior is to answer the result of &#64;self.getDefaultSiteName()&#64;.&lt;br/&gt;
+Note we cannot use &#64;self.e&#64; to parse the URL, since it cannot be created without a defined site
+class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getThemeNames">
+<tt class="descname">getThemeNames</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getThemeNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getThemeNames&#64; method answers the names (keys) of the available sites of this server.
+Typically this is the list of keys from the dictionary answered by &#64;self.getSites()&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getThemeTitle">
+<tt class="descname">getThemeTitle</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getThemeTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getThemeTitle&#64; method answers the class title of named site <em>name</em>. The default
+behavior is to answer &#64;self.getSiteClass(name).getTitle()&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.getThemes">
+<tt class="descname">getThemes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.getThemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;getSites&#64; answers dictionary with the sites this client runs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.reload">
+<tt class="descname">reload</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.reload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.renderError">
+<tt class="descname">renderError</tt><big>(</big><em>e</em>, <em>t</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.renderError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.renderErrorHead">
+<tt class="descname">renderErrorHead</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.renderErrorHead" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.render_GET">
+<tt class="descname">render_GET</tt><big>(</big><em>httprequest</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.render_GET" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;render_GET&#64; method is called by Twisted to handle the GET <em>httprequest</em>. 
+It is the main loop (besides the &#64;self.render_POST&#64;) that builds pages from url requests.
+The site instance is called by &#64;b.build()&#64;. The result (this can be HTML, JSON or binary data) is
+answered. The application needs to have the right MIME type in the output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.render_POST">
+<tt class="descname">render_POST</tt><big>(</big><em>httprequest</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.render_POST" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;render_POST&#64; method is called by Twisted to handle the POST <em>httprequest</em>. The
+site instance is called with &#64;b.build()&#64;. The result (this can be HTML, JSON or binary data) is
+answered. The application is supposed to have the the right MIME type in the output. The data of the post is
+located in the file object &#64;httprequest.content&#64;. The data can be read by &#64;
+httprequest.content.read()&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.resolveByFile">
+<tt class="descname">resolveByFile</tt><big>(</big><em>site</em>, <em>path</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.resolveByFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the path exists as file. If it does, then answer the content. If forcing then skip. If in /ie then read.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.setMimeTypeEncoding">
+<tt class="descname">setMimeTypeEncoding</tt><big>(</big><em>mimeType</em>, <em>request</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.setMimeTypeEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;The &#64;getMimeTypeEncoding&#64; method answers the MIME type and coding in format &#64;&#8217;text/css;
+charset-utf-8&#8217;&#64;.&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.showStartLabel">
+<tt class="descname">showStartLabel</tt><big>(</big><em>port</em><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.showStartLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;showStartLabel&#64; method is used by the client to show the server information at startup.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.server.base.baseclient.BaseClient.showStopLabel">
+<tt class="descname">showStopLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.server.base.baseclient.BaseClient.showStopLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#64;showStopLabel&#64; method is used by the client to show the server information at startup.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.server.base.baseserver">
+<span id="xierpa3-server-base-baseserver-module"></span><h2>xierpa3.server.base.baseserver module<a class="headerlink" href="#module-xierpa3.server.base.baseserver" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.server.base.baseserver.BaseServer">
+<em class="property">class </em><tt class="descclassname">xierpa3.server.base.baseserver.</tt><tt class="descname">BaseServer</tt><a class="headerlink" href="#xierpa3.server.base.baseserver.BaseServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="xierpa3.server.base.baseserver.BaseServer.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.server.base.baseserver.BaseServer.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xierpa3-server-base-scheduler-module">
+<h2>xierpa3.server.base.scheduler module<a class="headerlink" href="#xierpa3-server-base-scheduler-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.server.base">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.server.base" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.server.base package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.server.base.baseclient">xierpa3.server.base.baseclient module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.server.base.baseserver">xierpa3.server.base.baseserver module</a></li>
+<li><a class="reference internal" href="#xierpa3-server-base-scheduler-module">xierpa3.server.base.scheduler module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.server.base">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.server.base.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

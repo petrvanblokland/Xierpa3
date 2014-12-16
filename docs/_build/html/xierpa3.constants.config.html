@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.constants.config package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-constants-config-package">
+<h1>xierpa3.constants.config package<a class="headerlink" href="#xierpa3-constants-config-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.constants.config.COPYTO_config">
+<span id="xierpa3-constants-config-copyto-config-module"></span><h2>xierpa3.constants.config.COPYTO_config module<a class="headerlink" href="#module-xierpa3.constants.config.COPYTO_config" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.constants.config.COPYTO_config.Config">
+<em class="property">class </em><tt class="descclassname">xierpa3.constants.config.COPYTO_config.</tt><tt class="descname">Config</tt><a class="headerlink" href="#xierpa3.constants.config.COPYTO_config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.constants.config.baseconfig.BaseConfig" title="xierpa3.constants.config.baseconfig.BaseConfig"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.constants.config.baseconfig.BaseConfig</span></tt></a></p>
+<p>Inheriting all default values from BaseConfig. Just uncomment and redefine the values
+if different from the default.</p>
+<dl class="attribute">
+<dt id="xierpa3.constants.config.COPYTO_config.Config.ACCESSKEYID">
+<tt class="descname">ACCESSKEYID</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.COPYTO_config.Config.ACCESSKEYID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.COPYTO_config.Config.PYTHONAPP">
+<tt class="descname">PYTHONAPP</tt><em class="property"> = 'python2.7'</em><a class="headerlink" href="#xierpa3.constants.config.COPYTO_config.Config.PYTHONAPP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.COPYTO_config.Config.SECRETACCESSKEY">
+<tt class="descname">SECRETACCESSKEY</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.COPYTO_config.Config.SECRETACCESSKEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.constants.config.baseconfig">
+<span id="xierpa3-constants-config-baseconfig-module"></span><h2>xierpa3.constants.config.baseconfig module<a class="headerlink" href="#module-xierpa3.constants.config.baseconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig">
+<em class="property">class </em><tt class="descclassname">xierpa3.constants.config.baseconfig.</tt><tt class="descname">BaseConfig</tt><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>The abstract &lt;b&gt;ConfigModel&lt;/b&gt; class implements the default values for the abstract &lt;b&gt;Config&lt;/b&gt;
+class in &lt;i&gt;config.py&lt;/i&gt; that defines all hardware specific class variables.</p>
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.ACCESSKEYID">
+<tt class="descname">ACCESSKEYID</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.ACCESSKEYID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.AMAZON_HOST">
+<tt class="descname">AMAZON_HOST</tt><em class="property"> = 'dynamodb.us-east-1.amazonaws.com'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.AMAZON_HOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.AMAZON_REGION">
+<tt class="descname">AMAZON_REGION</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.AMAZON_REGION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.CONNECTION">
+<tt class="descname">CONNECTION</tt><em class="property"> = 'fast'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.CONNECTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.CONTENT_TYPE">
+<tt class="descname">CONTENT_TYPE</tt><em class="property"> = 'application/x-amz-json-1.0'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.CONTENT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_AWS">
+<tt class="descname">DATABASEENGINE_AWS</tt><em class="property"> = 'amazon_web_services'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_AWS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_PSYCOPG2">
+<tt class="descname">DATABASEENGINE_PSYCOPG2</tt><em class="property"> = 'postgresql_psycopg2'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_PSYCOPG2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_PYGRESQL">
+<tt class="descname">DATABASEENGINE_PYGRESQL</tt><em class="property"> = 'pygresql'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASEENGINE_PYGRESQL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_DEFAULT">
+<tt class="descname">DATABASETYPE_DEFAULT</tt><em class="property"> = 'postgresql'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_POSTGRES">
+<tt class="descname">DATABASETYPE_POSTGRES</tt><em class="property"> = 'postgresql'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_POSTGRES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_SDB">
+<tt class="descname">DATABASETYPE_SDB</tt><em class="property"> = 'SimpleDB'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASETYPE_SDB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_ENGINE">
+<tt class="descname">DATABASE_ENGINE</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_ENGINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_HOST">
+<tt class="descname">DATABASE_HOST</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_HOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_NAME">
+<tt class="descname">DATABASE_NAME</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_OPTIONS">
+<tt class="descname">DATABASE_OPTIONS</tt><em class="property"> = {}</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_OPTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_PASSWORD">
+<tt class="descname">DATABASE_PASSWORD</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_PASSWORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_PORT">
+<tt class="descname">DATABASE_PORT</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_TYPE">
+<tt class="descname">DATABASE_TYPE</tt><em class="property"> = 'postgresql'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_USER">
+<tt class="descname">DATABASE_USER</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DATABASE_USER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DEBUG">
+<tt class="descname">DEBUG</tt><em class="property"> = False</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DEBUG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DEFAULT_IMAGEFONT">
+<tt class="descname">DEFAULT_IMAGEFONT</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DEFAULT_IMAGEFONT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_SIGNING_ALGORITHM">
+<tt class="descname">DYNAMODB_SIGNING_ALGORITHM</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_SIGNING_ALGORITHM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_TARGET">
+<tt class="descname">DYNAMODB_TARGET</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_TARGET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_URI">
+<tt class="descname">DYNAMODB_URI</tt><em class="property"> = '/'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.DYNAMODB_URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.FONT_ROOTPATHS">
+<tt class="descname">FONT_ROOTPATHS</tt><em class="property"> = ('/Library/Fonts',)</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.FONT_ROOTPATHS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.PATH_EXAMPLES">
+<tt class="descname">PATH_EXAMPLES</tt><em class="property"> = '~/Desktop/Xierpa3Examples/'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.PATH_EXAMPLES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.PATH_MAMP">
+<tt class="descname">PATH_MAMP</tt><em class="property"> = '/Applications/MAMP/htdocs/'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.PATH_MAMP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.PORT">
+<tt class="descname">PORT</tt><em class="property"> = 80</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.PYTHONAPP">
+<tt class="descname">PYTHONAPP</tt><em class="property"> = 'python2.7'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.PYTHONAPP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.SECRETACCESSKEY">
+<tt class="descname">SECRETACCESSKEY</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.SECRETACCESSKEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.USE_MULTIPROCESSING">
+<tt class="descname">USE_MULTIPROCESSING</tt><em class="property"> = False</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.USE_MULTIPROCESSING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.USE_ONLINE">
+<tt class="descname">USE_ONLINE</tt><em class="property"> = True</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.USE_ONLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.USE_S3">
+<tt class="descname">USE_S3</tt><em class="property"> = True</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.USE_S3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.XIERPA_VERSION">
+<tt class="descname">XIERPA_VERSION</tt><em class="property"> = '0.8'</em><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.XIERPA_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.useLocalS3">
+<em class="property">classmethod </em><tt class="descname">useLocalS3</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.useLocalS3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.constants.config.baseconfig.BaseConfig.useOnline">
+<em class="property">classmethod </em><tt class="descname">useOnline</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.constants.config.baseconfig.BaseConfig.useOnline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.constants.config.config">
+<span id="xierpa3-constants-config-config-module"></span><h2>xierpa3.constants.config.config module<a class="headerlink" href="#module-xierpa3.constants.config.config" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.constants.config.config.Config">
+<em class="property">class </em><tt class="descclassname">xierpa3.constants.config.config.</tt><tt class="descname">Config</tt><a class="headerlink" href="#xierpa3.constants.config.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.constants.config.baseconfig.BaseConfig" title="xierpa3.constants.config.baseconfig.BaseConfig"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.constants.config.baseconfig.BaseConfig</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.constants.config.config.Config.ACCESSKEYID">
+<tt class="descname">ACCESSKEYID</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.config.Config.ACCESSKEYID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.config.Config.FSPATH_DATAROOT">
+<tt class="descname">FSPATH_DATAROOT</tt><em class="property"> = '/Users/michiel/source/git/Xierpa3/'</em><a class="headerlink" href="#xierpa3.constants.config.config.Config.FSPATH_DATAROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.constants.config.config.Config.SECRETACCESSKEY">
+<tt class="descname">SECRETACCESSKEY</tt><em class="property"> = ''</em><a class="headerlink" href="#xierpa3.constants.config.config.Config.SECRETACCESSKEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.constants.config">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.constants.config" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.constants.config package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.constants.config.COPYTO_config">xierpa3.constants.config.COPYTO_config module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.constants.config.baseconfig">xierpa3.constants.config.baseconfig module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.constants.config.config">xierpa3.constants.config.config module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.constants.config">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.constants.config.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

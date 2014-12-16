@@ -1,0 +1,1866 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.builders package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-builders-package">
+<h1>xierpa3.builders package<a class="headerlink" href="#xierpa3-builders-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xierpa3.builders.builderparts.html">xierpa3.builders.builderparts package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts.canvasbuilderpart">xierpa3.builders.builderparts.canvasbuilderpart module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts.htmlbuilderpart">xierpa3.builders.builderparts.htmlbuilderpart module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts.svgbuilderpart">xierpa3.builders.builderparts.svgbuilderpart module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts.xmltagbuilderpart">xierpa3.builders.builderparts.xmltagbuilderpart module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts.xmltransformerpart">xierpa3.builders.builderparts.xmltransformerpart module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.builderparts.html#module-xierpa3.builders.builderparts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xierpa3.builders.kirby.html">xierpa3.builders.kirby package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.kirby.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.kirby.html#module-xierpa3.builders.kirby.kirbybuilder">xierpa3.builders.kirby.kirbybuilder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.builders.kirby.html#module-xierpa3.builders.kirby">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.builders.angularbuilder">
+<span id="xierpa3-builders-angularbuilder-module"></span><h2>xierpa3.builders.angularbuilder module<a class="headerlink" href="#module-xierpa3.builders.angularbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.angularbuilder.AngularBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.angularbuilder.</tt><tt class="descname">AngularBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.angularbuilder.AngularBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.builders.builder.Builder" title="xierpa3.builders.builder.Builder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builder.Builder</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.builders.angularbuilder.AngularBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.angularbuilder.AngularBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.angularbuilder.AngularBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'angular'</em><a class="headerlink" href="#xierpa3.builders.angularbuilder.AngularBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.angularbuilder.AngularBuilder.build">
+<tt class="descname">build</tt><big>(</big><em>descriptor</em>, <em>components</em><big>)</big><a class="headerlink" href="#xierpa3.builders.angularbuilder.AngularBuilder.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.builder">
+<span id="xierpa3-builders-builder-module"></span><h2>xierpa3.builders.builder module<a class="headerlink" href="#module-xierpa3.builders.builder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.builder.Builder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.builder.</tt><tt class="descname">Builder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="xierpa3.builders.builder.Builder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.builder.Builder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.builder.Builder.DO_INDENT">
+<tt class="descname">DO_INDENT</tt><em class="property"> = False</em><a class="headerlink" href="#xierpa3.builders.builder.Builder.DO_INDENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.builder.Builder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.builders.builder.Builder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.builder.Builder.ID">
+<tt class="descname">ID</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.builders.builder.Builder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.builder.Builder.ROOT_PATH">
+<tt class="descname">ROOT_PATH</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.builders.builder.Builder.ROOT_PATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.block">
+<tt class="descname">block</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic block, called at any block opening. To be redefined by inheriting builder
+classes. Default behavior is to do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.copyTree">
+<tt class="descname">copyTree</tt><big>(</big><em>srcPath</em>, <em>dstPath</em>, <em>force=False</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.copyTree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.error">
+<tt class="descname">error</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getComponentFileName">
+<tt class="descname">getComponentFileName</tt><big>(</big><em>root</em>, <em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getComponentFileName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the file path of the component. &#64;&#64;&#64; This should be based on URL too.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getCurrentArticleId">
+<tt class="descname">getCurrentArticleId</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getCurrentArticleId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the id of the current article, as defined in the URL by &#64;self.C.PARAM_ARTICLE&#64;.
+Answer &#64;self.C.DEFAULT_ARTICLEID&#64; if the parameter is not defined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getExtension">
+<tt class="descname">getExtension</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the default extension of the output file of this type of builder.
+Typically &#64;self.EXTENSION&#64; is answered.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getFilePath">
+<tt class="descname">getFilePath</tt><big>(</big><em>component</em>, <em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getFilePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the file path of &#64;component&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getParamItems">
+<tt class="descname">getParamItems</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getParamItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the &#64;(name, value)&#64; tuple of URL params.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getParamNames">
+<tt class="descname">getParamNames</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getParamNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the names of the params in the URL</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getPath">
+<tt class="descname">getPath</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the path of the current URL, e.g. to select the right article data for this page.
+In CSS/SASS this gets overwritten by answering the path of the model document.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getResult">
+<tt class="descname">getResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there is only one output writer left. This call should be made at the end of a rendering.
+Pop the writer and answer the result.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.getUrl">
+<tt class="descname">getUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.getUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the url of the current page. To be implemented by inheriting classes
+that actually knows about URLs. Default behavior is to do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be redefined by inheriting builder classes. Default behavior is to nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.initializeResult">
+<tt class="descname">initializeResult</tt><big>(</big><em>result</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.initializeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the &#64;self.result&#64; from the optional <em>result</em> stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.isType">
+<tt class="descname">isType</tt><big>(</big><em>builderType</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.isType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the boolean flag if &#64;self&#64; builder is of <em>builderType</em>.
+In normal processing of the page this should never be necessary, but the test can be used by
+code that otherwise will do a lot of content processing (such as image scaling) in the
+CSS building phase. Also it can be used to cut loops in content, to avoid identical definitions 
+showing up in CSS. The comparison is not case-sensitive. <em>builderType</em> can be a single
+string or a list/tuple of strings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.makeDirectory">
+<tt class="descname">makeDirectory</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.makeDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure that the directory of path (as file) exists. Otherwise create it.
+Answer the directory path for convenience of the caller.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.newResultWriter">
+<tt class="descname">newResultWriter</tt><big>(</big><em>name=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.newResultWriter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.newline">
+<tt class="descname">newline</tt><big>(</big><em>count=1</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.newline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.output">
+<tt class="descname">output</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the &#64;s&#64; string to the result stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.peekResult">
+<tt class="descname">peekResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.peekResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the current writer stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.popNameResult">
+<tt class="descname">popNameResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.popNameResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the tuple of &#64;writer.name&#64; and the writer result.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.popResult">
+<tt class="descname">popResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.popResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the writer result if it exists. Answer &#64;None&#64; otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.pushResult">
+<tt class="descname">pushResult</tt><big>(</big><em>writer=None</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.pushResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push the optional <em>writer</em>. If the attribute is &#64;None&#64;, then create a new writer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.save">
+<tt class="descname">save</tt><big>(</big><em>component</em>, <em>root=None</em>, <em>path=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the &#64;self.getResult()&#64; in path. If the optional <em>makeDirectory</em> attribute is 
+&#64;True&#64; (default is &#64;True&#64;) then create the directories in the path 
+if they don’t exist.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.saveAsFile">
+<tt class="descname">saveAsFile</tt><big>(</big><em>path</em>, <em>content</em>, <em>makeDir=False</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.saveAsFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save content as a file under path. If the file exists it is overwritten.
+If &#64;makeDirs&#64; is &#64;True&#64; (default is &#64;False&#64;), the try to create the directory first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.setCurrentArticleId">
+<tt class="descname">setCurrentArticleId</tt><big>(</big><em>aid</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.setCurrentArticleId" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.snippet">
+<tt class="descname">snippet</tt><big>(</big><em>component</em>, <em>name</em><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.snippet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows inheriting (PHP) classes to save the block code to another snippet file,
+by redefining this method. Default behavior is to do nothing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.tabIn">
+<tt class="descname">tabIn</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.tabIn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.tabOut">
+<tt class="descname">tabOut</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.tabOut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.builder.Builder.tabs">
+<tt class="descname">tabs</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.builder.Builder.tabs" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Output tabs to the current level and add newlines, depending on the setting of &#64;self._newline&#64;
+(string with newlines) and &lt;code&gt;self._tabLevel&lt;/code&gt; (number of indents).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.cssbuilder">
+<span id="xierpa3-builders-cssbuilder-module"></span><h2>xierpa3.builders.cssbuilder module<a class="headerlink" href="#module-xierpa3.builders.cssbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.cssbuilder.</tt><tt class="descname">CssBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.builders.sassbuilder.SassBuilder" title="xierpa3.builders.sassbuilder.SassBuilder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.sassbuilder.SassBuilder</span></tt></a></p>
+<p>Used for dispatching component.build_sass, if components want to define builder dependent behavior.</p>
+<dl class="attribute">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.ATTR_POSTFIX">
+<tt class="descname">ATTR_POSTFIX</tt><em class="property"> = 'css'</em><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.ATTR_POSTFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = 'css'</em><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'css'</em><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.getResult">
+<tt class="descname">getResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.getResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there is any compiled result from SASS to CSS, then answer it.
+Otherwise answer the result of &#64;self.popResult()&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.cssbuilder.CssBuilder.save">
+<tt class="descname">save</tt><big>(</big><em>component</em>, <em>path=None</em>, <em>root=None</em>, <em>styleType=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.cssbuilder.CssBuilder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Style type is one of [&#8216;nested&#8217;, &#8216;expanded&#8217;, &#8216;compact&#8217;, &#8216;compressed&#8217;].
+Given by the url parameter &#8220;/css-nested&#8221;.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.htmlbuilder">
+<span id="xierpa3-builders-htmlbuilder-module"></span><h2>xierpa3.builders.htmlbuilder module<a class="headerlink" href="#module-xierpa3.builders.htmlbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.htmlbuilder.</tt><tt class="descname">HtmlBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.xmltagbuilderpart.XmlTagBuilderPart" title="xierpa3.builders.builderparts.xmltagbuilderpart.XmlTagBuilderPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.xmltagbuilderpart.XmlTagBuilderPart</span></tt></a>, <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.canvasbuilderpart.CanvasBuilderPart" title="xierpa3.builders.builderparts.canvasbuilderpart.CanvasBuilderPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.canvasbuilderpart.CanvasBuilderPart</span></tt></a>, <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.svgbuilderpart.SvgBuilderPart" title="xierpa3.builders.builderparts.svgbuilderpart.SvgBuilderPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.svgbuilderpart.SvgBuilderPart</span></tt></a>, <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart" title="xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart</span></tt></a>, <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.htmlbuilderpart.HtmlBuilderPart" title="xierpa3.builders.builderparts.htmlbuilderpart.HtmlBuilderPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.htmlbuilderpart.HtmlBuilderPart</span></tt></a>, <a class="reference internal" href="#xierpa3.builders.builder.Builder" title="xierpa3.builders.builder.Builder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builder.Builder</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.ATTR_POSTFIX">
+<tt class="descname">ATTR_POSTFIX</tt><em class="property"> = 'html'</em><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.ATTR_POSTFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = 'html'</em><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'html'</em><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.XXXcssUrl">
+<tt class="descname">XXXcssUrl</tt><big>(</big><em>css</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.XXXcssUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.block">
+<tt class="descname">block</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional space for a component to build the opening of a block.
+This does &lt;b&gt;not&lt;/b&gt; automatically build a &lt;b&gt;div&lt;/div&gt; since that is not flexible enough.
+To be redefined by inheriting builder classed. Default behavior is to do nothing, except 
+showing the &lt;b&gt;component.selector&lt;/b&gt; as comment/</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildCssLinks">
+<tt class="descname">buildCssLinks</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildCssLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the CSS links inside the head. /css-&lt;SASS_STYLENAME&gt; defines the type of CSS output from the Sass
+compiler. The CSS parameter must be one of [&#8216;nested&#8217;, &#8216;expanded&#8217;, &#8216;compact&#8217;, &#8216;compressed&#8217;]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildFavIconLinks">
+<tt class="descname">buildFavIconLinks</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildFavIconLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the favicon link, from the result of &lt;b&gt;component.adapter.getFavIcon()&lt;/b&gt;.
+If the result is &lt;b&gt;None&lt;/b&gt; then ignore.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildFontLinks">
+<tt class="descname">buildFontLinks</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildFontLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the webfont links of they are defined in &lt;b&gt;components.fonts&lt;/b&gt;.
+Ignore if &lt;b&gt;self.C.useOnline()&lt;/b&gt; is &lt;b&gt;False&lt;/b&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildJavascript">
+<tt class="descname">buildJavascript</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildJavascript" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildMetaDescription">
+<tt class="descname">buildMetaDescription</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildMetaDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the meta tag with description of the site for search engines, if available in the adapter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.buildMetaKeyWords">
+<tt class="descname">buildMetaKeyWords</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.buildMetaKeyWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the meta tag with keywords of the site for search engines, if available in the adapter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.editor">
+<tt class="descname">editor</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.editor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.element">
+<tt class="descname">element</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements are used for local CSS definitions. Ignored by HTML output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.getUrl">
+<tt class="descname">getUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.getUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the url of the current page. To be implemented by inheriting classes
+that actually knows about urls. Default behavior is to do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.ieExceptions">
+<tt class="descname">ieExceptions</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.ieExceptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.image">
+<tt class="descname">image</tt><big>(</big><em>component</em>, <em>class_=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.isEditor">
+<tt class="descname">isEditor</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.isEditor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.jsUrl">
+<tt class="descname">jsUrl</tt><big>(</big><em>js</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.jsUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternative to jQuery: <a class="reference external" href="http://vanilla-js.com">http://vanilla-js.com</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.linkBlock">
+<tt class="descname">linkBlock</tt><big>(</big><em>component</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.linkBlock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.page">
+<tt class="descname">page</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the header of an HTML document.
+Note that the inheriting PhPBuilder uses the result of this method to generate
+the header.php file, as a separate result stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.save">
+<tt class="descname">save</tt><big>(</big><em>component</em>, <em>root=None</em>, <em>path=None</em>, <em>extension=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the file in path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.setViewPort">
+<tt class="descname">setViewPort</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.setViewPort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.supportMediaQueries">
+<tt class="descname">supportMediaQueries</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.supportMediaQueries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.text">
+<tt class="descname">text</tt><big>(</big><em>componentOrText</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>If in &lt;b&gt;self._svgMode&lt;/b&gt; output as SVG tags. Otherwise just output if plain text string.
+If it is a components, then get it’s text string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.htmlbuilder.HtmlBuilder.theme">
+<tt class="descname">theme</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.htmlbuilder.HtmlBuilder.theme" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.indesignbuilder">
+<span id="xierpa3-builders-indesignbuilder-module"></span><h2>xierpa3.builders.indesignbuilder module<a class="headerlink" href="#module-xierpa3.builders.indesignbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.indesignbuilder.</tt><tt class="descname">InDesignBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart" title="xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart</span></tt></a>, <a class="reference internal" href="#xierpa3.builders.javascriptbuilder.JavaScriptBuilder" title="xierpa3.builders.javascriptbuilder.JavaScriptBuilder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.javascriptbuilder.JavaScriptBuilder</span></tt></a></p>
+<p>The InDesignBuilder allows to create InDesign JavaScript, that build the document
+of the calling site instance.</p>
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = 'jsx'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'indesign'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_LANGUAGE">
+<tt class="descname">INDESIGN_LANGUAGE</tt><em class="property"> = 'en_US'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_LANGUAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_USER">
+<tt class="descname">INDESIGN_USER</tt><em class="property"> = 'petr'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_USER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_VERSION">
+<tt class="descname">INDESIGN_VERSION</tt><em class="property"> = '9.0'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.INDESIGN_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.M">
+<em class="property">classmethod </em><tt class="descname">M</tt><big>(</big><em>attribute</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.M" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measurement conversions dispatcher for CSS-like attributes to InDesign units.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.PATH_EXPORT">
+<tt class="descname">PATH_EXPORT</tt><em class="property"> = '/Users/petr/Library/Preferences/Adobe InDesign/Version 9.0/en_US/Scripts/Scripts Panel/Xierpa3'</em><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.PATH_EXPORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.a">
+<tt class="descname">a</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.blockquote">
+<tt class="descname">blockquote</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.blockquote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.div">
+<tt class="descname">div</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.em">
+<tt class="descname">em</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.em" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.h2">
+<tt class="descname">h2</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.h2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.h4">
+<tt class="descname">h4</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.h4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.h5">
+<tt class="descname">h5</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.h5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.img">
+<tt class="descname">img</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.img" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.li">
+<tt class="descname">li</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.li" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.m_Em">
+<em class="property">classmethod </em><tt class="descname">m_Em</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.m_Em" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.nav">
+<tt class="descname">nav</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.nav" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.ol">
+<tt class="descname">ol</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.ol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.p">
+<tt class="descname">p</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.page">
+<tt class="descname">page</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.pre">
+<tt class="descname">pre</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.pre" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.save">
+<tt class="descname">save</tt><big>(</big><em>filePath</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.span">
+<tt class="descname">span</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.span" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.sup">
+<tt class="descname">sup</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.sup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.text">
+<tt class="descname">text</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.theme">
+<tt class="descname">theme</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.theme" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.indesignbuilder.InDesignBuilder.ul">
+<tt class="descname">ul</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.indesignbuilder.InDesignBuilder.ul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.javascriptbuilder">
+<span id="xierpa3-builders-javascriptbuilder-module"></span><h2>xierpa3.builders.javascriptbuilder module<a class="headerlink" href="#module-xierpa3.builders.javascriptbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.javascriptbuilder.JavaScriptBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.javascriptbuilder.</tt><tt class="descname">JavaScriptBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.javascriptbuilder.JavaScriptBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.builders.builder.Builder" title="xierpa3.builders.builder.Builder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builder.Builder</span></tt></a></p>
+<p>The JavaScriptBuilder implements the basic behavior of generating JavaScript output.</p>
+<dl class="attribute">
+<dt id="xierpa3.builders.javascriptbuilder.JavaScriptBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.javascriptbuilder.JavaScriptBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.javascriptbuilder.JavaScriptBuilder.comment">
+<tt class="descname">comment</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.javascriptbuilder.JavaScriptBuilder.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.phpbuilder">
+<span id="xierpa3-builders-phpbuilder-module"></span><h2>xierpa3.builders.phpbuilder module<a class="headerlink" href="#module-xierpa3.builders.phpbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.phpbuilder.</tt><tt class="descname">PhpBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.builders.htmlbuilder.HtmlBuilder" title="xierpa3.builders.htmlbuilder.HtmlBuilder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.htmlbuilder.HtmlBuilder</span></tt></a></p>
+<p>The &lt;b&gt;PhpBuilder checks if the there is already a PHP frame work at the target
+directory of the site, otherwise the default framework is copied there. 
+Then the multiple result streams are saved at the destination in the framework.</p>
+<dl class="attribute">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.ATTR_POSTFIX">
+<tt class="descname">ATTR_POSTFIX</tt><em class="property"> = 'php'</em><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.ATTR_POSTFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = 'php'</em><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'php'</em><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.XXXclear">
+<tt class="descname">XXXclear</tt><big>(</big><em>result=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.XXXclear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.buildCssLinks">
+<tt class="descname">buildCssLinks</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.buildCssLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the CSS links inside the head. /css-&lt;SASS_STYLENAME&gt; defines the type of CSS output from the Sass
+compiler. The CSS parameter must be one of [&#8216;nested&#8217;, &#8216;expanded&#8217;, &#8216;compact&#8217;, &#8216;compressed&#8217;]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.page">
+<tt class="descname">page</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put the result of &lt;b&gt;self.page()&lt;/b&gt; by the parent class HtmlBuilder
+in a separate result stream, that can be save into header.php.
+This method assumes that the parent method builds _div+_body+_html,
+to fit the standard footer.php file structure.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.phpbuilder.PhpBuilder.save">
+<tt class="descname">save</tt><big>(</big><em>component</em>, <em>root=None</em>, <em>path=None</em>, <em>extension=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.phpbuilder.PhpBuilder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the result streams in the PHP framework.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders.sassbuilder">
+<span id="xierpa3-builders-sassbuilder-module"></span><h2>xierpa3.builders.sassbuilder module<a class="headerlink" href="#module-xierpa3.builders.sassbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder">
+<em class="property">class </em><tt class="descclassname">xierpa3.builders.sassbuilder.</tt><tt class="descname">SassBuilder</tt><big>(</big><em>e=None</em>, <em>result=None</em>, <em>verbose=True</em>, <em>doIndent=True</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="xierpa3.builders.builderparts.html#xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart" title="xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builderparts.xmltransformerpart.XmlTransformerPart</span></tt></a>, <a class="reference internal" href="#xierpa3.builders.builder.Builder" title="xierpa3.builders.builder.Builder"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.builders.builder.Builder</span></tt></a></p>
+<blockquote>
+<div><p>Build the SASS source for a given component.
+For automatic Sass compilation, use inheriting CssBuilder instead.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.components</span> <span class="kn">import</span> <span class="n">Page</span><span class="p">,</span> <span class="n">Column</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.constants.constants</span> <span class="kn">import</span> <span class="n">Constants</span> <span class="k">as</span> <span class="n">C</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">column</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">writingmode</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">WM_HORIZONTALTB</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Page</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="n">column</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sb</span> <span class="o">=</span> <span class="n">SassBuilder</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">sb</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sb</span><span class="o">.</span><span class="n">getResult</span><span class="p">()</span>
+<span class="go">&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>/* Start page &#8220;page&#8221; <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+<blockquote>
+<div>/* End page &#8220;page&#8221; <a href="#id3"><span class="problematic" id="id4">*</span></a>/&#8217;</div></blockquote>
+<dl class="attribute">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.ATTR_POSTFIX">
+<tt class="descname">ATTR_POSTFIX</tt><em class="property"> = 'css'</em><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.ATTR_POSTFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.DEFAULT_PATH">
+<tt class="descname">DEFAULT_PATH</tt><em class="property"> = 'css/style.css'</em><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.DEFAULT_PATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.EXTENSION">
+<tt class="descname">EXTENSION</tt><em class="property"> = 'scss'</em><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.ID">
+<tt class="descname">ID</tt><em class="property"> = 'sass'</em><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.XXXcss3_style">
+<tt class="descname">XXXcss3_style</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.XXXcss3_style" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBackgroundSizeValue">
+<em class="property">classmethod </em><tt class="descname">XXXgetCssBackgroundSizeValue</tt><big>(</big><em>value</em>, <em>object='background-size'</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBackgroundSizeValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getCssBackgroundSizeValue&lt;code&gt; method answers browser dependent css &lt;code&gt;background-size&lt;/code&gt; value.&lt;br/&gt;
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBoxShadowValue">
+<em class="property">classmethod </em><tt class="descname">XXXgetCssBoxShadowValue</tt><big>(</big><em>color</em>, <em>x=None</em>, <em>y=None</em>, <em>blur=None</em>, <em>inout=None</em>, <em>browser=None</em>, <em>object='box'</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBoxShadowValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;cssBoxShadowValue&lt;code&gt; method answers browser dependent css &lt;code&gt;box-shadow&lt;/code&gt; value.&lt;br/&gt;
+Or, if &lt;attr&gt;object&lt;/attr&gt; is &lt;code&gt;text&lt;/code&gt;, answers browser dependent css &lt;code&gt;text-shadow&lt;/code&gt; value.&lt;br/&gt;
+The value can be a list or tuple, as in &lt;code&gt;self.css(ids=&#8221;...&#8221;, boxshadow=(&#8220;#888888&#8221;, 6, 6, 20))&lt;/code&gt;&lt;br/&gt;
+Or it may be separate arguments as can be used in a &lt;code&gt;style&lt;/code&gt; attribute:&lt;br/&gt;
+self.div(style=self.cssBoxShadowValue(&#8220;#888888&#8221;, 6, 6, 20))&lt;br/&gt;
+self.div(style=self.cssBoxShadowValue(&#8220;#888888&#8221;, 6, 6, 20, &#8220;inset&#8221;))&lt;br/&gt;
+self.div(style=self.cssBoxShadowValue(&#8220;inset 6px 6px 20px #888888&#8221;)&lt;br/&gt;
+Omitting the optional &lt;attr&gt;browser&lt;/attr&gt; attribute will result in the output for all browsers.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBoxShadowValues">
+<em class="property">classmethod </em><tt class="descname">XXXgetCssBoxShadowValues</tt><big>(</big><em>color</em>, <em>x=None</em>, <em>y=None</em>, <em>blur=None</em>, <em>inout=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssBoxShadowValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssGradientValue">
+<em class="property">classmethod </em><tt class="descname">XXXgetCssGradientValue</tt><big>(</big><em>startcolor</em>, <em>endcolor=None</em>, <em>x0='left'</em>, <em>x1='left'</em>, <em>y0='top'</em>, <em>y1='bottom'</em>, <em>type='linear'</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.XXXgetCssGradientValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;cssBoxShadowValue&lt;code&gt; method answers browser dependent css &lt;code&gt;gradient&lt;/code&gt; value.&lt;br/&gt;
+self.div(style=self.cssGradientValue({&#8216;startcolor&#8217;:&#8217;#fff000&#8217;,&#8217;endcolor&#8217;:&#8217;#999999&#8217;}))&lt;br/&gt;
+self.div(style=self.cssGradientValue(&#8216;#fff000&#8217;,&#8217;#999999&#8217;))&lt;br/&gt;
+&lt;br/&gt;
+&lt;em&gt;Browser dependent formatting:&lt;/em&gt;&lt;br/&gt;
+background: -webkit-gradient(linear, left top, left bottom, from(#fff000), to(#999999));&lt;br/&gt;
+background: -moz-linear-gradient(top,  #fff000,  #999999);&lt;br/&gt;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=&#8217;#fff000&#8217;, endColorstr=&#8217;#999999&#8217;);&lt;br/&gt;
+Omitting the optional &lt;attr&gt;browser&lt;/attr&gt; attribute will result in the output for all browsers.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.a">
+<tt class="descname">a</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.b">
+<tt class="descname">b</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.block">
+<tt class="descname">block</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore additional classes here. They should be defined separately by the user.
+This builds the main component class name CSS.
+Test if component.BUILD_CSS is True, components may be HTML only, not showing up in the CSS.
+Make nesting of output stream, to test if a current block created content, so the headers can be skipped.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.blockquote">
+<tt class="descname">blockquote</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.blockquote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.br">
+<tt class="descname">br</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.br" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildHookProperties">
+<tt class="descname">buildHookProperties</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildHookProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the CSS properties, depending if the hook &lt;b&gt;&#8217;<a href="#id5"><span class="problematic" id="id6">css3_</span></a>&#8216;+name&lt;/b&gt; method exists.
+If the value is an instance of &lt;b&gt;Media&lt;/b&gt; then the attributes are generated on another
+output stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildMedia">
+<tt class="descname">buildMedia</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildMedia" title="Permalink to this definition">¶</a></dt>
+<dd><p>Here all style have been written. What remains is the to sort and output the collected &#64;media expression
+of &lt;i&gt;component&lt;/i&gt; as media queries.
+The collected &lt;b&gt;Media&lt;/b&gt; instances will generate a selector that is related to
+the path of their parent styles and objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildMediaItem">
+<tt class="descname">buildMediaItem</tt><big>(</big><em>media</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildMediaItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildSelectorsMedia">
+<tt class="descname">buildSelectorsMedia</tt><big>(</big><em>selectors</em>, <em>media</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildSelectorsMedia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildStyle">
+<tt class="descname">buildStyle</tt><big>(</big><em>style</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there is &lt;i&gt;style&lt;/i&gt; defined, run trough its attributes to match withs corresponding CSS methods.
+This way the CSS-related attributes are separated from the others. For this reason some the the standard
+attributes have other names, e.g. there is a &lt;b&gt;style.url&lt;/b&gt; and &lt;b&gt;style.cssurl&lt;/b&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.buildStyles">
+<tt class="descname">buildStyles</tt><big>(</big><em>styles</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.buildStyles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build each style in &lt;i&gt;styles&lt;/i&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.circle">
+<tt class="descname">circle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.comment">
+<tt class="descname">comment</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_align">
+<tt class="descname">css3_align</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_align" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_background">
+<tt class="descname">css3_background</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundattachment">
+<tt class="descname">css3_backgroundattachment</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundattachment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundcolor">
+<tt class="descname">css3_backgroundcolor</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundcolor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundimage">
+<tt class="descname">css3_backgroundimage</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundimage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundimageurl">
+<tt class="descname">css3_backgroundimageurl</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundimageurl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundposition">
+<tt class="descname">css3_backgroundposition</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundposition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundrepeat">
+<tt class="descname">css3_backgroundrepeat</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundrepeat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundsize">
+<tt class="descname">css3_backgroundsize</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_backgroundsize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_baselineshift">
+<tt class="descname">css3_baselineshift</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_baselineshift" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_border">
+<tt class="descname">css3_border</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_border" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderbottom">
+<tt class="descname">css3_borderbottom</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderbottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_bordercollapse">
+<tt class="descname">css3_bordercollapse</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_bordercollapse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_bordercolor">
+<tt class="descname">css3_bordercolor</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_bordercolor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderleft">
+<tt class="descname">css3_borderleft</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderradius">
+<tt class="descname">css3_borderradius</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderradius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiusbottomleft">
+<tt class="descname">css3_borderradiusbottomleft</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiusbottomleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiusbottomright">
+<tt class="descname">css3_borderradiusbottomright</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiusbottomright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiustopleft">
+<tt class="descname">css3_borderradiustopleft</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiustopleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiustopright">
+<tt class="descname">css3_borderradiustopright</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderradiustopright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderright">
+<tt class="descname">css3_borderright</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderspacing">
+<tt class="descname">css3_borderspacing</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderstyle">
+<tt class="descname">css3_borderstyle</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderstyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_bordertop">
+<tt class="descname">css3_bordertop</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_bordertop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_borderwidth">
+<tt class="descname">css3_borderwidth</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_borderwidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_bottom">
+<tt class="descname">css3_bottom</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_bottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_boxshadow">
+<tt class="descname">css3_boxshadow</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_boxshadow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_class_">
+<tt class="descname">css3_class_</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_class_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_clear">
+<tt class="descname">css3_clear</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_clip">
+<tt class="descname">css3_clip</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_clip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_color">
+<tt class="descname">css3_color</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_columncount">
+<tt class="descname">css3_columncount</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_columncount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_columngap">
+<tt class="descname">css3_columngap</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_columngap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_content">
+<tt class="descname">css3_content</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_csssrc">
+<tt class="descname">css3_csssrc</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_csssrc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_cursor">
+<tt class="descname">css3_cursor</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_display">
+<tt class="descname">css3_display</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_filter">
+<tt class="descname">css3_filter</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_float">
+<tt class="descname">css3_float</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_float" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_font">
+<tt class="descname">css3_font</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_font" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_fontfamily">
+<tt class="descname">css3_fontfamily</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_fontfamily" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_fontsize">
+<tt class="descname">css3_fontsize</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_fontsize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_fontstyle">
+<tt class="descname">css3_fontstyle</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_fontstyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_fontvariant">
+<tt class="descname">css3_fontvariant</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_fontvariant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_fontweight">
+<tt class="descname">css3_fontweight</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_fontweight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_gradient">
+<tt class="descname">css3_gradient</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_gradient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_height">
+<tt class="descname">css3_height</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_leading">
+<tt class="descname">css3_leading</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_leading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_left">
+<tt class="descname">css3_left</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_letterspacing">
+<tt class="descname">css3_letterspacing</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_letterspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_lineheight">
+<tt class="descname">css3_lineheight</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_lineheight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_liststyle">
+<tt class="descname">css3_liststyle</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_liststyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_liststyleimage">
+<tt class="descname">css3_liststyleimage</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_liststyleimage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_liststyleposition">
+<tt class="descname">css3_liststyleposition</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_liststyleposition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_liststyletype">
+<tt class="descname">css3_liststyletype</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_liststyletype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_margin">
+<tt class="descname">css3_margin</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_marginbottom">
+<tt class="descname">css3_marginbottom</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_marginbottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_marginleft">
+<tt class="descname">css3_marginleft</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_marginleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_marginright">
+<tt class="descname">css3_marginright</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_marginright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_margintop">
+<tt class="descname">css3_margintop</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_margintop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_maxheight">
+<tt class="descname">css3_maxheight</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_maxheight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_maxwidth">
+<tt class="descname">css3_maxwidth</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_maxwidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_minheight">
+<tt class="descname">css3_minheight</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_minheight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_minwidth">
+<tt class="descname">css3_minwidth</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_minwidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_opacity">
+<tt class="descname">css3_opacity</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;opacity&lt;/code&gt; method answers the CSS syntax for opacity for the browsers that support the feature. 
+For now this feature is not implemented in all browsers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_outline">
+<tt class="descname">css3_outline</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_outline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_overflow">
+<tt class="descname">css3_overflow</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_overflow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_padding">
+<tt class="descname">css3_padding</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_paddingbottom">
+<tt class="descname">css3_paddingbottom</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_paddingbottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_paddingleft">
+<tt class="descname">css3_paddingleft</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_paddingleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_paddingright">
+<tt class="descname">css3_paddingright</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_paddingright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_paddingtop">
+<tt class="descname">css3_paddingtop</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_paddingtop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_position">
+<tt class="descname">css3_position</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_right">
+<tt class="descname">css3_right</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_textalign">
+<tt class="descname">css3_textalign</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_textalign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_textdecoration">
+<tt class="descname">css3_textdecoration</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_textdecoration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_textindent">
+<tt class="descname">css3_textindent</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_textindent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_textoverflow">
+<tt class="descname">css3_textoverflow</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_textoverflow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_textshadow">
+<tt class="descname">css3_textshadow</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_textshadow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_texttransform">
+<tt class="descname">css3_texttransform</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_texttransform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_top">
+<tt class="descname">css3_top</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_tracking">
+<tt class="descname">css3_tracking</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_tracking" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_transition">
+<tt class="descname">css3_transition</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_typesmooth">
+<tt class="descname">css3_typesmooth</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_typesmooth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smoothness attributes: values are one of [&#8216;none&#8217;, &#8216;antialiased&#8217;, &#8216;subpixel-antialiased&#8217;].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_valign">
+<tt class="descname">css3_valign</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_valign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_verticalalign">
+<tt class="descname">css3_verticalalign</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_verticalalign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_visibility">
+<tt class="descname">css3_visibility</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_visibility" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_whitespace">
+<tt class="descname">css3_whitespace</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_width">
+<tt class="descname">css3_width</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_wordbreak">
+<tt class="descname">css3_wordbreak</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_wordbreak" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_wordspacing">
+<tt class="descname">css3_wordspacing</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_wordspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_writingmode">
+<tt class="descname">css3_writingmode</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_writingmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supported modes for <em>value</em>: horizontal-tb, rl-tb, vertical-lr, vertical-rl,
+bt-rl, bt-lr, lr-bt, rl-bt, lr, lr-tb, rl, tb, tb-lr, tb-rl</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_x">
+<tt class="descname">css3_x</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_y">
+<tt class="descname">css3_y</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_z">
+<tt class="descname">css3_z</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.css3_zindex">
+<tt class="descname">css3_zindex</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.css3_zindex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.div">
+<tt class="descname">div</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.element">
+<tt class="descname">element</tt><big>(</big><em>tag=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element is used to define CSS values for elements that are part of an XML tree, where they
+cannot be reached for specification. Using element as pseudo tag, allows the definintion of
+styles for elements that are otherwise hidden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.em">
+<tt class="descname">em</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.em" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.error">
+<tt class="descname">error</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.figcaption">
+<tt class="descname">figcaption</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.figcaption" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.figure">
+<tt class="descname">figure</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.form">
+<tt class="descname">form</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.form" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssBorderRadiusCornerValue">
+<em class="property">classmethod </em><tt class="descname">getCssBorderRadiusCornerValue</tt><big>(</big><em>value</em>, <em>topbottom</em>, <em>leftright</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssBorderRadiusCornerValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;cssBorderRadiusCornerValue&lt;code&gt; method answers browser dependent CSS &lt;code&gt;border-radius&lt;/code&gt;
+value of a specific corner.&lt;br/&gt;
+Omitting the optional &lt;attr&gt;browser&lt;/attr&gt; attribute will result in the output for all browsers.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssBorderRadiusValue">
+<em class="property">classmethod </em><tt class="descname">getCssBorderRadiusValue</tt><big>(</big><em>value</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssBorderRadiusValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;cssBorderRadiusValue&lt;code&gt; method answers browser dependent CSS &lt;code&gt;border-radius&lt;/code&gt; value.&lt;br/&gt;
+Omitting the optional &lt;attr&gt;browser&lt;/attr&gt; attribute will result in the output for all browsers.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssBrowserValue">
+<em class="property">classmethod </em><tt class="descname">getCssBrowserValue</tt><big>(</big><em>value</em>, <em>attribute</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssBrowserValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssFontSmoothValue">
+<em class="property">classmethod </em><tt class="descname">getCssFontSmoothValue</tt><big>(</big><em>value</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssFontSmoothValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;get&lt;/code&gt; method answers the browser dependent css for font smoothing.
+Values are one of &lt;code&gt;[&#8216;none&#8217;, &#8216;antialiased&#8217;, &#8216;subpixel-antialiased&#8217;]&lt;/code&gt;.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssOpacityValue">
+<em class="property">classmethod </em><tt class="descname">getCssOpacityValue</tt><big>(</big><em>value</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssOpacityValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;cssBorderRadiusValue&lt;code&gt; method answers browser dependent css &lt;code&gt;border-radius&lt;/code&gt; value.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCssTransformValue">
+<em class="property">classmethod </em><tt class="descname">getCssTransformValue</tt><big>(</big><em>scale=None</em>, <em>skew=None</em>, <em>rotate=None</em>, <em>browser=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCssTransformValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;buildCssTransformValue&lt;code&gt; method answers browser dependent css &lt;code&gt;border-radius&lt;/code&gt; value.
+&lt;br/&gt; Omitting the optional &lt;attr&gt;browser&lt;/attr&gt; attribute will result in the output for all browsers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getCurrentArticleId">
+<tt class="descname">getCurrentArticleId</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getCurrentArticleId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always answer &#64;None&#64;, to trigger the execution of style method, built into components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getFilePath">
+<tt class="descname">getFilePath</tt><big>(</big><em>component</em>, <em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getFilePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the CSS file path of &#64;component&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getSassVariable">
+<tt class="descname">getSassVariable</tt><big>(</big><em>name</em>, <em>value</em>, <em>cnt=0</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getSassVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the name-value. This is done in some steps, in order to create the Sass variables. If there is already a
+name-value match in self.variables, then use that reference. If the value is a list or dict, then don&#8217;t create a
+Sass variable, feed directly into the CSS hook call.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.getSelector">
+<tt class="descname">getSelector</tt><big>(</big><em>tag</em>, <em>id</em>, <em>selectorPath</em>, <em>selector</em>, <em>class_</em>, <em>class_postfix</em>, <em>pseudo</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.getSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the selector for this tag, depending on the setting of id and input selector attributes.
+The order of interpretations is:
+* selectorpath
+* selector
+* &#8220;#&#8221; + id
+* class_postfix
+* class_postfix + &#8221;:&#8221; + pseudo
+* <a href="#id7"><span class="problematic" id="id8">class_</span></a>
+* tag
+* tag + &#8221;:&#8221; + +pseudo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h1">
+<tt class="descname">h1</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h2">
+<tt class="descname">h2</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h3">
+<tt class="descname">h3</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h4">
+<tt class="descname">h4</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h5">
+<tt class="descname">h5</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.h6">
+<tt class="descname">h6</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.h6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.hr">
+<tt class="descname">hr</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.hr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.image">
+<tt class="descname">image</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.img">
+<tt class="descname">img</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.img" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.input">
+<tt class="descname">input</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.lead">
+<tt class="descname">lead</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.lead" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.li">
+<tt class="descname">li</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.li" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.linkBlock">
+<tt class="descname">linkBlock</tt><big>(</big><em>component</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.linkBlock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.nav">
+<tt class="descname">nav</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.nav" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.nbsp">
+<tt class="descname">nbsp</tt><big>(</big><em>count</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.nbsp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.ol">
+<tt class="descname">ol</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.ol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.option">
+<tt class="descname">option</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.option" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.p">
+<tt class="descname">p</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.page">
+<tt class="descname">page</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark the CSS start of the specific page &lt;i&gt;component&lt;/i&gt; style. 
+Called by block of &lt;b&gt;Page&lt;/b&gt; component.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.popFirst">
+<tt class="descname">popFirst</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.popFirst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop and answer the current dictionary of selectors for this block and answer it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.pre">
+<tt class="descname">pre</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.pre" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.pushFirst">
+<tt class="descname">pushFirst</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.pushFirst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push a new empty dictionary of selectors on the firstSelectors stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets fallback values for CSS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.save">
+<tt class="descname">save</tt><big>(</big><em>component</em>, <em>root=None</em>, <em>path=None</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export the current state of the Sass to &lt;i&gt;path&lt;/i&gt;. First the set of collected variables
+and then the result it self.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.script">
+<tt class="descname">script</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore all Javascript.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.section">
+<tt class="descname">section</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.section" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.select">
+<tt class="descname">select</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.select" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.selector2Class">
+<em class="property">classmethod </em><tt class="descname">selector2Class</tt><big>(</big><em>class_</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.selector2Class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the class to comma separated output. Takes any construction of strings and lists. <a href="#id9"><span class="problematic" id="id10">class_</span></a> can be
+[&#8216;name&#8217;, &#8216;name&#8217;] or &#8216;name name&#8217; or [&#8216;name&#8217;, (&#8216;name&#8217;, &#8216;name&#8217;)].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.span">
+<tt class="descname">span</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.span" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.styleBlock">
+<tt class="descname">styleBlock</tt><big>(</big><em>selector</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.styleBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the CSS with the selector. If the style does not have a selector
+then don&#8217;t open the block and don&#8217;t indent. This way the CSS keeps the original
+indented position. The reverse happens when closing the block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.sup">
+<tt class="descname">sup</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.sup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.svg">
+<tt class="descname">svg</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.svg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.table">
+<tt class="descname">table</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.tag">
+<tt class="descname">tag</tt><big>(</big><em>tag</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for non-component blocks. Build the &lt;i&gt;tag&lt;/i&gt; with the given arguments as 
+selector and SASS source attribute values. If there is a attribute ending with &#8220;_css&#8221; then ignore
+the output of the attribute with the same name, without &#8220;_css&#8221; ending. 
+This offers the opportunity to specifically describe css attribute, preferred above the generic attribute value.
+All attributes that have the postfix of another builder are ignored. 
+Make forked nesting of output streams, to test if a current block created content, so the headers can be skipped
+if there already is an identical selector-content match inside the current block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.td">
+<tt class="descname">td</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.td" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.text">
+<tt class="descname">text</tt><big>(</big><em>textComponent</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore output if &lt;i&gt;textComponent&lt;/i&gt; is a plain text string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.th">
+<tt class="descname">th</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.th" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.theme">
+<tt class="descname">theme</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.theme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the reset code for the default values of HTML elements.
+Called by block of &lt;b&gt;theme&lt;/b&gt; component.
+Open the theme block (omitted if the style has no selector) and build the style of &lt;b&gt;component.style&lt;/b&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.tr">
+<tt class="descname">tr</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.tr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.ul">
+<tt class="descname">ul</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.ul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.builders.sassbuilder.SassBuilder.value2SassValue">
+<em class="property">classmethod </em><tt class="descname">value2SassValue</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.builders.sassbuilder.SassBuilder.value2SassValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.builders">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.builders" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.builders package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.angularbuilder">xierpa3.builders.angularbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.builder">xierpa3.builders.builder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.cssbuilder">xierpa3.builders.cssbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.htmlbuilder">xierpa3.builders.htmlbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.indesignbuilder">xierpa3.builders.indesignbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.javascriptbuilder">xierpa3.builders.javascriptbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.phpbuilder">xierpa3.builders.phpbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders.sassbuilder">xierpa3.builders.sassbuilder module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.builders">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.builders.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.imaging package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-imaging-package">
+<h1>xierpa3.imaging package<a class="headerlink" href="#xierpa3-imaging-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.imaging.color">
+<span id="xierpa3-imaging-color-module"></span><h2>xierpa3.imaging.color module<a class="headerlink" href="#module-xierpa3.imaging.color" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="xierpa3.imaging.color.bw">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">bw</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.bw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any valid color format black and white rgb tuple</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bw</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
+<span class="go">(71.333333333333329, 71.333333333333329, 71.333333333333329)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bw</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="go">(71.333333333333329, 71.333333333333329, 71.333333333333329)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.cmyk">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">cmyk</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.cmyk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any valid color format to cmyk tuple</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
+<span class="go">(0.82352941176470584, 0.80784313725490198, 0, 0.17647058823529416)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="go">(0.82352941176470584, 0.80784313725490198, 0, 0.17647058823529416)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="go">[0.10000000000000001, 0.10000000000000001, 0.20000000000000001, 0.20000000000000001]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">(</span><span class="s">&#39;#335566&#39;</span><span class="p">)</span>
+<span class="go">(0.20000000000000007, 0.066666666666666763, 0, 0.59999999999999998)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">(</span><span class="s">&#39;P300&#39;</span><span class="p">)</span>
+<span class="go">[1, 0.44, 0, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cmyk</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="go">(1, 1, 0, 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.colorname2rgb">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">colorname2rgb</tt><big>(</big><em>color</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.colorname2rgb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.convert2colortuple">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">convert2colortuple</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.convert2colortuple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.convertcolor">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">convertcolor</tt><big>(</big><em>value</em>, <em>astuple=None</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.convertcolor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a color</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="go">(12345, &#39;rgb&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="go">(3289650L, &#39;rgb&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">(</span><span class="s">&#39;orange&#39;</span><span class="p">)</span>
+<span class="go">(16753920, &#39;rgb&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="go">(0, &#39;rgb&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">((0.5, 0.5, 0.5, 0), &#39;cmyk&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">(</span><span class="s">&#39;P123&#39;</span><span class="p">)</span>
+<span class="go">([0, 0.23999999999999999, 0.93999999999999995, 0], &#39;cmyk&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convertcolor</span><span class="p">(</span><span class="s">&#39;P300&#39;</span><span class="p">)</span>
+<span class="go">([1, 0.44, 0, 0], &#39;cmyk&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.hexrgb">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">hexrgb</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.hexrgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any valid color format to rbg integer</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
+<span class="go">&#39;0004d2&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="go">&#39;0004d2&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="go">&#39;b3b399&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">(</span><span class="s">&#39;#335566&#39;</span><span class="p">)</span>
+<span class="go">&#39;335566&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">(</span><span class="s">&#39;P300&#39;</span><span class="p">)</span>
+<span class="go">&#39;008fff&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hexrgb</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="go">&#39;0000ff&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.pantone2cmyk">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">pantone2cmyk</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.pantone2cmyk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.imaging.color.rgb">
+<tt class="descclassname">xierpa3.imaging.color.</tt><tt class="descname">rgb</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.imaging.color.rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any valid color format to rbg integer</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">))</span>
+<span class="go">1234L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="go">1234L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="go">11776921L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">(</span><span class="s">&#39;#335566&#39;</span><span class="p">)</span>
+<span class="go">3364198</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">(</span><span class="s">&#39;P300&#39;</span><span class="p">)</span>
+<span class="go">36863L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="go">255</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.imaging">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.imaging" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.imaging package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.imaging.color">xierpa3.imaging.color module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.imaging">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.imaging.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

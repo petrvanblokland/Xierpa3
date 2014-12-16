@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.descriptors package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-descriptors-package">
+<h1>xierpa3.descriptors package<a class="headerlink" href="#xierpa3-descriptors-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.descriptors.blueprint">
+<span id="xierpa3-descriptors-blueprint-module"></span><h2>xierpa3.descriptors.blueprint module<a class="headerlink" href="#module-xierpa3.descriptors.blueprint" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.descriptors.blueprint.BluePrint">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.blueprint.</tt><tt class="descname">BluePrint</tt><big>(</big><em>selector=None</em>, <em>parent=None</em>, <em>component=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.blueprint.BluePrint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.descriptors.style.Style" title="xierpa3.descriptors.style.Style"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.descriptors.style.Style</span></tt></a></p>
+<p>The &lt;b&gt;BluePrint&lt;/b&gt; style holds the default set of style values for component classes.
+If also support the definition of doc string information inside the value, by addingf “<a href="#id1"><span class="problematic" id="id2">doc_</span></a>” 
+preceding the attribute names.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.descriptors.environment">
+<span id="xierpa3-descriptors-environment-module"></span><h2>xierpa3.descriptors.environment module<a class="headerlink" href="#module-xierpa3.descriptors.environment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.descriptors.environment.Environment">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.environment.</tt><tt class="descname">Environment</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.descriptors.state.State" title="xierpa3.descriptors.state.State"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.descriptors.state.State</span></tt></a></p>
+<p>The Environment instance e is the common place of the page builder process, holding all dynamic information related
+to session and request.</p>
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.COOKIES">
+<tt class="descname">COOKIES</tt><em class="property"> = 'cookies'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.COOKIES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.FULLPATH">
+<tt class="descname">FULLPATH</tt><em class="property"> = 'fullpath'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.FULLPATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.HTTPHEADERS">
+<tt class="descname">HTTPHEADERS</tt><em class="property"> = 'httpheaders'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.HTTPHEADERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.HTTPKEYS">
+<tt class="descname">HTTPKEYS</tt><em class="property"> = {'path': 'PATH_INFO', 'cookies': 'received_cookies', 'httpheaders': 'received_headers'}</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.HTTPKEYS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.HTTP_HOST">
+<tt class="descname">HTTP_HOST</tt><em class="property"> = 'httphost'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.HTTP_HOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.PARAM_UPLOADPREFIX">
+<tt class="descname">PARAM_UPLOADPREFIX</tt><em class="property"> = 'upload.'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.PARAM_UPLOADPREFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.environment.Environment.PATH">
+<tt class="descname">PATH</tt><em class="property"> = 'path'</em><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.PATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.addComponent">
+<tt class="descname">addComponent</tt><big>(</big><em>component</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.addComponent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getCookie">
+<tt class="descname">getCookie</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getCookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getCookie&lt;/code&gt; method answers the cookie indicated by &lt;attr&gt;name&lt;/attr&gt;. If there is no
+attribute in the request (e.g. because the builder is created by a parallel process), then answer &lt;code&gt;None
+&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getCookies">
+<tt class="descname">getCookies</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getCookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getCookies&lt;/code&gt; method answers the cookies dictionary of the current request. The default
+behavior is to answer &lt;code&gt;self.request.received_cookies&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getDomain">
+<tt class="descname">getDomain</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getDomain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getFullPath">
+<tt class="descname">getFullPath</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getFullPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getFullPath&lt;/code&gt; method answers the plain full &lt;attr&gt;path&lt;/attr&gt; as it appears in the browser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getFullUrl">
+<tt class="descname">getFullUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getFullUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getHost">
+<tt class="descname">getHost</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getHost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getHostUrl">
+<tt class="descname">getHostUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getHostUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getPort">
+<tt class="descname">getPort</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getPort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getPrefix">
+<tt class="descname">getPrefix</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getPrefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getRequestValue">
+<tt class="descname">getRequestValue</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getRequestValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getRequestValue&lt;/code&gt; method answers the &lt;code&gt;self.request&lt;/code&gt; value of &lt;attr&gt;key&lt;/attr&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getServer">
+<tt class="descname">getServer</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getServer&lt;/code&gt; method answers the name of the server domain &lt;code&gt;self[self.HTTP_HOST]&lt;/code&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getServerClient">
+<tt class="descname">getServerClient</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getServerClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getServerClient&lt;/code&gt; method answers the &lt;code&gt;BaseCient&lt;/code&gt; instance that is running the server
+of &lt;code&gt;self.request&lt;/code&gt;. Note that the path to this client is depending on the (current version of) Twisted
+Matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.getUserAgent">
+<tt class="descname">getUserAgent</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.getUserAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getUserAgent&lt;/code&gt; method answers the user-agent string that contains info about the browser and
+OS type as defined by &lt;code&gt;self[self.HTTP_USER_AGENT]&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.handleGetPostParams">
+<tt class="descname">handleGetPostParams</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.handleGetPostParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;handleGetPostParams&lt;/code&gt; method adds any GET or POST parameters to the &lt;code&gt;self.form&lt;/code&gt;
+instance of &lt;code&gt;FormDict&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.handleUrlParams">
+<tt class="descname">handleUrlParams</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.handleUrlParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;handleUrlParams&lt;/code&gt; method gets the parameters from the path.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.initializeForm">
+<tt class="descname">initializeForm</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.initializeForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;initializeForm&lt;/code&gt; method initializes the &lt;code&gt;self.form&lt;/code&gt; instance of &lt;code&gt;FormDict&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.isCodeInjection">
+<tt class="descname">isCodeInjection</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.isCodeInjection" title="Permalink to this definition">¶</a></dt>
+<dd><p>To protect from attempted code injection, filter HTML tags and quotes.
+Also maybe single quotes, parentheses and such?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.isSsl">
+<tt class="descname">isSsl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.isSsl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.setCookie">
+<tt class="descname">setCookie</tt><big>(</big><em>value=None</em>, <em>expires=None</em>, <em>url='/'</em>, <em>name=None</em>, <em>**args</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.setCookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;setCookie&lt;/code&gt; method saves the cookie indicated by &lt;attr&gt;name&lt;/attr&gt; with &lt;attr&gt;value&lt;/attr&gt;,
+using the &lt;attr&gt;expires&lt;/attr&gt; and &lt;attr&gt;url&lt;/attr&gt; attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.setHeader">
+<tt class="descname">setHeader</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.setHeader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.environment.Environment.setParams">
+<tt class="descname">setParams</tt><big>(</big><em>params</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.environment.Environment.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;p&gt;The &lt;code&gt;setParams&lt;/code&gt; method sets the &lt;code&gt;self.params&lt;/code&gt; of the of environment to &lt;attr&gt;
+params&lt;/attr&gt;. This method can be redefined to get the parameters string from the &lt;attr&gt;params&lt;/attr&gt; tuple.
+The tuple is based on from the standard definition in the application module.&lt;/p&gt;</p>
+<p>&lt;p&gt;&lt;code&gt;urlpatterns = patterns(&#8216;&#8217;, (r&#8217;^(.*)$&#8217;, build))&lt;/code&gt;&lt;/p&gt;</p>
+<p>&lt;p&gt;that generates a tuple with a single parameter set.&lt;/p&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.descriptors.media">
+<span id="xierpa3-descriptors-media-module"></span><h2>xierpa3.descriptors.media module<a class="headerlink" href="#module-xierpa3.descriptors.media" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.descriptors.media.Media">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.media.</tt><tt class="descname">Media</tt><big>(</big><em>selector=None</em>, <em>parent=None</em>, <em>min=None</em>, <em>max=None</em>, <em>expression=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.media.Media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.descriptors.state.State" title="xierpa3.descriptors.state.State"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.descriptors.state.State</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.descriptors.media.Media.expression">
+<tt class="descname">expression</tt><a class="headerlink" href="#xierpa3.descriptors.media.Media.expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.media.Media.parent">
+<tt class="descname">parent</tt><a class="headerlink" href="#xierpa3.descriptors.media.Media.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.descriptors.state">
+<span id="xierpa3-descriptors-state-module"></span><h2>xierpa3.descriptors.state module<a class="headerlink" href="#module-xierpa3.descriptors.state" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.descriptors.state.State">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.state.</tt><tt class="descname">State</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.docs">
+<tt class="descname">docs</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.docs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.descriptors.state.State.fromDict">
+<em class="property">classmethod </em><tt class="descname">fromDict</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.fromDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.getDoc">
+<tt class="descname">getDoc</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.getDoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the doc string of &lt;b&gt;key&lt;/b&gt; if it exists. Answer &lt;b&gt;None&lt;/b&gt; otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.state.State.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.state.State.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.descriptors.style">
+<span id="xierpa3-descriptors-style-module"></span><h2>xierpa3.descriptors.style module<a class="headerlink" href="#module-xierpa3.descriptors.style" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.descriptors.style.Style">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.style.</tt><tt class="descname">Style</tt><big>(</big><em>selector=None</em>, <em>parent=None</em>, <em>component=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.descriptors.state.State" title="xierpa3.descriptors.state.State"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.descriptors.state.State</span></tt></a></p>
+<p>The &lt;b&gt;Style&lt;/b&gt; holds a set of style values for a components and the constructors inside the component block builders.</p>
+<dl class="method">
+<dt id="xierpa3.descriptors.style.Style.add">
+<tt class="descname">add</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.style.Style.addBluePrint">
+<tt class="descname">addBluePrint</tt><big>(</big><em>bluePrint</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style.addBluePrint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.style.Style.addMedia">
+<tt class="descname">addMedia</tt><big>(</big><em>selector</em>, <em>min=None</em>, <em>max=None</em>, <em>expression=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style.addMedia" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Media instance for &#64;media content. The parameters &#64;condition, &#64;min and &#64;max are expected 
+in the arguments as parameters for the &#64;media. They are ignored in the content of the &#64;media block. 
+Set to same selector and component, so CSS knows context. 
+Answer the created media style for convenience.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.style.Style.addStyle">
+<tt class="descname">addStyle</tt><big>(</big><em>selector=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style.addStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selector can be omitted, then just the block will be send to output. Answer the created style instance for
+convenience.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.Style.component">
+<tt class="descname">component</tt><a class="headerlink" href="#xierpa3.descriptors.style.Style.component" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.Style.components">
+<tt class="descname">components</tt><a class="headerlink" href="#xierpa3.descriptors.style.Style.components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the list of parents (=component, not style). If there is no parent, answer an empty list.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.Style.hashedID">
+<tt class="descname">hashedID</tt><a class="headerlink" href="#xierpa3.descriptors.style.Style.hashedID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the unique hashed ID based on the content. This ID can be compared between components to decide if they
+are identical. This is used by the CSS builder to decide of styles can be skipped then they are identical. Note that
+the value is cache, so alterations to the content of children don&#8217;t reflect in the ID, once it is established.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.descriptors.style.Style.isEmpty">
+<tt class="descname">isEmpty</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.Style.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the boolean flag if this Style instance is empty.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.Style.parent">
+<tt class="descname">parent</tt><a class="headerlink" href="#xierpa3.descriptors.style.Style.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.Style.selector">
+<tt class="descname">selector</tt><a class="headerlink" href="#xierpa3.descriptors.style.Style.selector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.descriptors.style.StyleSet">
+<em class="property">class </em><tt class="descclassname">xierpa3.descriptors.style.</tt><tt class="descname">StyleSet</tt><big>(</big><em>selector=None</em>, <em>parent=None</em>, <em>component=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.descriptors.style.StyleSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.descriptors.style.Style" title="xierpa3.descriptors.style.Style"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.descriptors.style.Style</span></tt></a></p>
+<p>The &lt;i&gt;StyleSet&lt;/i&gt; class is a wrapper set around a set of classes. It behaves like
+a &lt;i&gt;Style&lt;/i&gt; instance, but it does not show up as selector. The open and close
+output code is ignore, because &lt;b&gt;self.selector&lt;/b&gt; always answers &lt;b&gt;None&lt;/b&gt;.</p>
+<dl class="attribute">
+<dt id="xierpa3.descriptors.style.StyleSet.selector">
+<tt class="descname">selector</tt><a class="headerlink" href="#xierpa3.descriptors.style.StyleSet.selector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.descriptors">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.descriptors" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.descriptors package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors.blueprint">xierpa3.descriptors.blueprint module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors.environment">xierpa3.descriptors.environment module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors.media">xierpa3.descriptors.media module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors.state">xierpa3.descriptors.state module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors.style">xierpa3.descriptors.style module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.descriptors">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.descriptors.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.contributions.filibuster package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-contributions-filibuster-package">
+<h1>xierpa3.contributions.filibuster package<a class="headerlink" href="#xierpa3-contributions-filibuster-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.contributions.filibuster.blurb">
+<span id="xierpa3-contributions-filibuster-blurb-module"></span><h2>xierpa3.contributions.filibuster.blurb module<a class="headerlink" href="#module-xierpa3.contributions.filibuster.blurb" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.contributions.filibuster.blurb.Blurb">
+<em class="property">class </em><tt class="descclassname">xierpa3.contributions.filibuster.blurb.</tt><tt class="descname">Blurb</tt><big>(</big><em>content=None</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurb.Blurb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>&lt;doc&gt;
+The &lt;code&gt;Content&lt;/code&gt; is a wrapper around the filibuster &lt;code&gt;BlurbWriter&lt;/code&gt;
+of Erik van Blokland and Jonathan Hoefler. There is supposed to be only one instance of
+the writer installed in the system.
+Current set of available types:
+[&#8216;BLURB_IPO&#8217;, &#8216;BLURB_sports&#8217;, &#8216;aerospace_headline&#8217;, &#8216;corporate_biz_news_headline&#8217;, &#8216;corporate_partnership_headline&#8217;, 
+&#8216;corporate_news_headline&#8217;, &#8216;politics_euro_headline&#8217;, &#8216;HEADLINE_market&#8217;, &#8216;corporate_newproduct_headline&#8217;, 
+&#8216;corporate_prod_announcement_headline&#8217;, &#8216;HEADLINE_sports&#8217;, &#8216;news_war_headline&#8217;, &#8216;news_headline&#8217;, &#8216;IPO1&#8217;, 
+&#8216;IPO2&#8217;, &#8216;URL&#8217;, &#8216;URL_biz&#8217;,</p>
+<p>&#8216;_company&#8217;, &#8216;address&#8217;, &#8216;address_floor&#8217;, &#8216;address_street&#8217;, &#8216;air_accident&#8217;, 
+&#8216;air_accident_causes&#8217;, &#8216;air_accident_objects&#8217;, &#8216;air_carrier&#8217;, &#8216;air_carrier_generic&#8217;, &#8216;air_carrier_name&#8217;, 
+&#8216;air_carrier_px&#8217;, &#8216;air_carrier_sx1&#8217;, &#8216;air_class&#8217;, &#8216;air_class_adj&#8217;, &#8216;air_commercial&#8217;, 
+&#8216;air_commercial_motto&#8217;, &#8216;air_commercial_offer&#8217;, &#8216;air_crash_casualties&#8217;, &#8216;air_crashcause&#8217;, 
+&#8216;air_crashinvestigator&#8217;, &#8216;air_crashsites&#8217;, &#8216;air_description&#8217;, &#8216;air_flightnumber&#8217;, &#8216;air_jetmodel_flavor&#8217;, 
+&#8216;air_jetmodel_medium&#8217;, &#8216;air_jetmodel_small&#8217;, &#8216;air_jetmodel_wide&#8217;, &#8216;air_loyalty&#8217;, &#8216;air_loyalty_px&#8217;, 
+&#8216;air_loyalty_sx&#8217;, &#8216;air_news_bad&#8217;, &#8216;air_news_medium&#8217;, &#8216;air_news_neutral&#8217;, &#8216;air_news_slanted&#8217;, 
+&#8216;air_people&#8217;, &#8216;alphabet_caps&#8217;, &#8216;alphabet_common_lc&#8217;, &#8216;alphabet_lc&#8217;, &#8216;alphabet_sizes&#8217;, &#8216;bank&#8217;, 
+&#8216;bank_co_description_pl&#8217;, &#8216;bank_co_description_sing&#8217;, &#8216;bank_co_motto&#8217;, &#8216;bank_co_ptr&#8217;, &#8216;bank_company&#8217;, 
+&#8216;bank_companyparts&#8217;, &#8216;bluster_business_nowisthetime&#8217;, &#8216;bluster_business_opportunity&#8217;, &#8216;broker&#8217;, 
+&#8216;car_blow_doors&#8217;, &#8216;car_body_work&#8217;, &#8216;car_brand_loyalty&#8217;, &#8216;car_busts&#8217;, &#8216;car_compression_ratio&#8217;, 
+&#8216;car_engine_boltons&#8217;, &#8216;car_engine_boltonscap&#8217;, &#8216;car_engine_modifiers&#8217;, &#8216;car_engine_type&#8217;, 
+&#8216;car_heads_carsets&#8217;, &#8216;car_hot_rods&#8217;, &#8216;car_hotrod_modifier&#8217;, &#8216;car_power_delivery&#8217;, 
+&#8216;car_power_designators&#8217;, &#8216;car_shop_talk&#8217;, &#8216;cities_Dutch&#8217;, &#8216;cities_French&#8217;, &#8216;cities_German&#8217;, 
+&#8216;cities_Italian&#8217;, &#8216;cities_Russia&#8217;, &#8216;cities_Spanish&#8217;, &#8216;cities_UK&#8217;, &#8216;cities_USgeneric&#8217;, &#8216;cities_USmajor&#8217;, 
+&#8216;cities_hip&#8217;, &#8216;city&#8217;, &#8216;city_and_state&#8217;, &#8216;co_cool_technology&#8217;, &#8216;co_creative&#8217;, &#8216;co_media&#8217;, &#8216;co_newssource&#8217;, 
+&#8216;co_search&#8217;, &#8216;co_stats&#8217;, &#8216;colors_adj&#8217;, &#8216;colors_elaborate&#8217;, &#8216;colors_more&#8217;, &#8216;colors_primary&#8217;, 
+&#8216;com_adjectivenouns&#8217;, &#8216;com_adjectives&#8217;, &#8216;com_businesscardblurb&#8217;, &#8216;com_bylines&#8217;, &#8216;com_corporatenames&#8217;, 
+&#8216;com_creditcardblurb&#8217;, &#8216;com_letterrors&#8217;, &#8216;com_nouns&#8217;, &#8216;com_writecopy&#8217;, &#8216;company&#8217;, &#8216;company_consolidated&#8217;, 
+&#8216;company_oldschool&#8217;, &#8216;corporation_japanese&#8217;, &#8216;countries_major&#8217;, &#8216;country&#8217;, &#8216;county_US&#8217;, &#8216;da_illustration&#8217;, 
+&#8216;da_statement&#8217;, &#8216;da_text&#8217;, &#8216;design_argument&#8217;, &#8216;design_article_author&#8217;, &#8216;design_article_byline&#8217;, 
+&#8216;design_article_title&#8217;, &#8216;design_buzzword&#8217;, &#8216;design_claim&#8217;, &#8216;design_commissioner&#8217;, &#8216;design_conclusion&#8217;, 
+&#8216;design_counterclaim&#8217;, &#8216;design_designer&#8217;, &#8216;design_example_object&#8217;, &#8216;design_focus_discipline&#8217;, 
+&#8216;design_focus_name&#8217;, &#8216;design_glue&#8217;, &#8216;design_interjection&#8217;, &#8216;design_location&#8217;, &#8216;design_magazines&#8217;, 
+&#8216;design_names&#8217;, &#8216;design_nounspecific&#8217;, &#8216;design_period&#8217;, &#8216;design_question&#8217;, &#8216;design_question_more&#8217;, 
+&#8216;design_questionstarters&#8217;, &#8216;design_quote&#8217;, &#8216;design_quote_glue&#8217;, &#8216;design_quote_infrequent&#8217;, 
+&#8216;design_quote_starter&#8217;, &#8216;design_quote_stopper&#8217;, &#8216;design_ref&#8217;, &#8216;design_sentence&#8217;, &#8216;design_sentencetest&#8217;, 
+&#8216;design_sources&#8217;, &#8216;design_subtitle&#8217;, &#8216;design_technology&#8217;, &#8216;design_theory&#8217;, &#8216;design_theory_adj&#8217;, 
+&#8216;design_theory_adj_ness&#8217;, &#8216;design_theory_noun&#8217;, &#8216;design_theory_px&#8217;, &#8216;design_theory_short&#8217;, 
+&#8216;design_theory_title&#8217;, &#8216;design_theory_verb&#8217;, &#8216;design_title&#8217;, &#8216;design_verb&#8217;, &#8216;design_verb_to_be&#8217;, 
+&#8216;design_word_thingy&#8217;, &#8216;design_word_thingy2&#8217;, &#8216;design_work&#8217;, &#8216;design_work_description&#8217;, 
+&#8216;design_work_description_followup&#8217;, &#8216;design_work_detail&#8217;, &#8216;design_work_form&#8217;, &#8216;design_work_medium&#8217;, 
+&#8216;design_work_parts&#8217;, &#8216;design_worktitles&#8217;, &#8216;design_worktitles_num&#8217;, &#8216;design_worktitles_parts&#8217;, 
+&#8216;disc_hyphen&#8217;, &#8216;eMail&#8217;, &#8216;eMail_biz&#8217;, &#8216;eMail_biz_formal&#8217;, &#8216;eMail_biz_info&#8217;, &#8216;eMail_edu&#8217;, &#8216;eMail_enclosure&#8217;, 
+&#8216;eMail_gov&#8217;, &#8216;eMail_header&#8217;, &#8216;eMail_mil&#8217;, &#8216;eMail_msgbody&#8217;, &#8216;eMail_sender&#8217;, &#8216;eMail_subject&#8217;, &#8216;eMail_user&#8217;, 
+&#8216;eurobank&#8217;, &#8216;eurobank_name&#8217;, &#8216;eurobank_residence&#8217;, &#8216;events_conference&#8217;, &#8216;events_corporate&#8217;, 
+&#8216;events_tradeshow&#8217;, &#8216;fb_weed&#8217;, &#8216;figs&#8217;, &#8216;figs_nonzero&#8217;, &#8216;figs_ord&#8217;, &#8216;figs_rand_5digit&#8217;, &#8216;filibuster_about&#8217;, 
+&#8216;filibuster_adj&#8217;, &#8216;filibuster_co_description_pl&#8217;, &#8216;filibuster_co_description_sing&#8217;, &#8216;filibuster_co_motto&#8217;, 
+&#8216;filibuster_company&#8217;, &#8216;filibuster_companyparts&#8217;, &#8216;filibuster_copyright&#8217;, &#8216;filibuster_currentoffer&#8217;, 
+&#8216;filibuster_disclaimer&#8217;, &#8216;filibuster_privacy_statement&#8217;, &#8216;filibuster_productname&#8217;, 
+&#8216;filibuster_productprefix&#8217;, &#8216;filibuster_productsuffix&#8217;, &#8216;filibuster_terms&#8217;, &#8216;filler_hotair&#8217;, 
+&#8216;filler_intro&#8217;, &#8216;financialmarket&#8217;, &#8216;headline_finance_1&#8217;, &#8216;headline_finance_2&#8217;, &#8216;headline_finance_3&#8217;, 
+&#8216;i_dir_formtrash&#8217;, &#8216;i_dir_generic&#8217;, &#8216;i_dir_scripts&#8217;, &#8216;i_dir_searchtrash&#8217;, &#8216;i_dir_users&#8217;, &#8216;i_host_biz&#8217;, 
+&#8216;i_host_biz_institution&#8217;, &#8216;i_host_edu&#8217;, &#8216;i_host_edu_departments&#8217;, &#8216;i_host_edu_institution&#8217;, 
+&#8216;i_host_edu_server_names&#8217;, &#8216;i_host_gov&#8217;, &#8216;i_host_gov_institution_fed&#8217;, &#8216;i_host_gov_institution_state&#8217;, 
+&#8216;i_host_gov_server_names&#8217;, &#8216;i_host_mil&#8217;, &#8216;i_host_mil_institution&#8217;, &#8216;i_host_mil_server_names&#8217;, 
+&#8216;i_host_random&#8217;, &#8216;i_host_server_biz&#8217;, &#8216;i_host_server_mail&#8217;, &#8216;i_host_server_misc&#8217;, &#8216;i_host_server_news&#8217;, 
+&#8216;i_host_server_web&#8217;, &#8216;i_host_users&#8217;, &#8216;i_host_users_institution&#8217;, &#8216;i_ip_quad&#8217;, &#8216;i_page&#8217;, &#8216;i_page_sx&#8217;, 
+&#8216;i_tld&#8217;, &#8216;i_tld_misc&#8217;, &#8216;i_tld_natl&#8217;, &#8216;i_tld_natl_major&#8217;, &#8216;i_users&#8217;, &#8216;i_users_depts&#8217;, &#8216;i_users_formal&#8217;, 
+&#8216;i_users_informal&#8217;, &#8216;j_adjective&#8217;, &#8216;j_noun_gerund&#8217;, &#8216;j_noun_pl&#8217;, &#8216;j_noun_sing&#8217;, &#8216;j_px&#8217;, &#8216;j_sx&#8217;, &#8216;j_thing&#8217;, 
+&#8216;j_verb&#8217;, &#8216;jargon&#8217;, &#8216;left_or_right&#8217;, &#8216;legal_contract&#8217;, &#8216;legal_contract_name&#8217;, &#8216;legal_contract_thing&#8217;, 
+&#8216;legal_contract_title&#8217;, &#8216;legal_party&#8217;, &#8216;legal_thing&#8217;, &#8216;location&#8217;, &#8216;ltr_article&#8217;, &#8216;ltr_caption&#8217;, 
+&#8216;ltr_headline&#8217;, &#8216;mag_sx&#8217;, &#8216;mag_tech&#8217;, &#8216;mag_tech_px&#8217;, &#8216;mag_tech_sx&#8217;, &#8216;market_index_close&#8217;, 
+&#8216;market_index_fluctuation&#8217;, &#8216;market_index_percent&#8217;, &#8216;market_index_speed&#8217;, &#8216;market_marketplayer&#8217;, 
+&#8216;market_moment&#8217;, &#8216;market_statusdown&#8217;, &#8216;market_statusup&#8217;, &#8216;market_trading&#8217;, &#8216;name&#8217;, &#8216;name_english&#8217;, 
+&#8216;name_female&#8217;, &#8216;name_french&#8217;, &#8216;name_french_cons1&#8217;, &#8216;name_french_cons2&#8217;, &#8216;name_french_cons3&#8217;, 
+&#8216;name_french_cons4&#8217;, &#8216;name_french_px0&#8217;, &#8216;name_french_px1&#8217;, &#8216;name_french_px2&#8217;, &#8216;name_french_sx1&#8217;, 
+&#8216;name_french_sx2&#8217;, &#8216;name_french_v1&#8217;, &#8216;name_french_v2&#8217;, &#8216;name_french_v3&#8217;, &#8216;name_french_v4&#8217;, 
+&#8216;name_german&#8217;, &#8216;name_german_base&#8217;, &#8216;name_german_descent&#8217;, &#8216;name_german_heimat&#8217;, &#8216;name_german_limb&#8217;, 
+&#8216;name_german_male&#8217;, &#8216;name_german_noun&#8217;, &#8216;name_german_px1&#8217;, &#8216;name_german_px2&#8217;, &#8216;name_german_px3&#8217;, 
+&#8216;name_german_title_female&#8217;, &#8216;name_german_title_male&#8217;, &#8216;name_german_title_profession&#8217;, &#8216;name_japanese&#8217;, 
+&#8216;name_japanese_px&#8217;, &#8216;name_japanese_sx&#8217;, &#8216;name_male&#8217;, &#8216;name_somewhiteguy&#8217;, &#8216;names_first&#8217;, 
+&#8216;names_first_absurdlyBritish&#8217;, &#8216;names_first_absurdlyGerman&#8217;, &#8216;names_first_female&#8217;, &#8216;names_first_male&#8217;, 
+&#8216;names_first_patrician&#8217;, &#8216;names_first_purewhitetrash&#8217;, &#8216;names_initial_weighted&#8217;, &#8216;names_last&#8217;, 
+&#8216;names_last_absurdlyBritish&#8217;, &#8216;names_last_patrician&#8217;, &#8216;names_px_scientific&#8217;, &#8216;names_sx&#8217;, 
+&#8216;names_sx_weighted&#8217;, &#8216;nationality_major&#8217;, &#8216;nav&#8217;, &#8216;navigation&#8217;, &#8216;navigation_alt_buy&#8217;, 
+&#8216;navigation_alt_catalog&#8217;, &#8216;navigation_alt_corporate&#8217;, &#8216;navigation_alt_email&#8217;, 
+&#8216;navigation_alt_filibuster&#8217;, &#8216;navigation_alt_frontpage&#8217;, &#8216;navigation_alt_horoscope&#8217;, 
+&#8216;navigation_alt_music&#8217;, &#8216;navigation_alt_sports&#8217;, &#8216;navigation_alt_staff&#8217;, &#8216;navigation_alt_worldnews&#8217;, 
+&#8216;navigation_misc_areas&#8217;, &#8216;navigation_shortform&#8217;, &#8216;news_co_description_pl&#8217;, &#8216;news_co_description_sing&#8217;, 
+&#8216;news_co_motto&#8217;, &#8216;news_co_n&#8217;, &#8216;news_co_px&#8217;, &#8216;news_co_sx&#8217;, &#8216;news_company&#8217;, &#8216;news_companyparts&#8217;, 
+&#8216;news_disaster&#8217;, &#8216;news_disaster_earthquake&#8217;, &#8216;news_disaster_earthquake_magnitude&#8217;, 
+&#8216;news_disaster_fire&#8217;, &#8216;news_disaster_fire_magnitude&#8217;, &#8216;news_disaster_fire_type&#8217;, 
+&#8216;news_disaster_firecause&#8217;, &#8216;news_disaster_storm&#8217;, &#8216;news_disaster_storm_magnitude&#8217;, 
+&#8216;news_disaster_stormname&#8217;, &#8216;news_disaster_stormverb&#8217;, &#8216;news_disasterlocation&#8217;, 
+&#8216;news_disasternoun&#8217;, &#8216;news_disastertype&#8217;, &#8216;news_disasterverb&#8217;, &#8216;news_headline&#8217;, &#8216;newspapers&#8217;, 
+&#8216;newssource&#8217;, &#8216;num_card&#8217;, &#8216;num_card_000_100&#8217;, &#8216;num_card_010_019&#8217;, &#8216;num_card_010_090&#8217;, 
+&#8216;num_ord&#8217;, &#8216;num_ord_000_100&#8217;, &#8216;num_ord_010_019&#8217;, &#8216;num_ord_010_090&#8217;, &#8216;num_roman&#8217;, 
+&#8216;p_USbank_px1&#8217;, &#8216;p_USbank_px2&#8217;, &#8216;p_business_name&#8217;, &#8216;p_business_px&#8217;, &#8216;p_business_sx&#8217;, 
+&#8216;p_co_creative&#8217;, &#8216;p_co_mediaprefix&#8217;, &#8216;p_co_mediasuffix&#8217;, &#8216;p_co_newssrcname&#8217;, &#8216;p_consolidatedbiz_px&#8217;, 
+&#8216;p_consolidatedbiz_sx&#8217;, &#8216;p_corporateform&#8217;, &#8216;p_counters&#8217;, &#8216;p_eurobank_px&#8217;, &#8216;p_eurobank_px1&#8217;, 
+&#8216;p_eurobank_px2&#8217;, &#8216;p_events_number&#8217;, &#8216;p_events_tech_px&#8217;, &#8216;p_events_tech_sx&#8217;, &#8216;p_figures_pop&#8217;, 
+&#8216;p_industries&#8217;, &#8216;p_miscellaneous&#8217;, &#8216;p_news_name&#8217;, &#8216;p_oldbiz_corporateform&#8217;, &#8216;p_oldbiz_px&#8217;, 
+&#8216;p_oldbiz_sx&#8217;, &#8216;p_searchengines&#8217;, &#8216;p_technologies&#8217;, &#8216;p_tv_px&#8217;, &#8216;p_tv_sx&#8217;, &#8216;p_usbankprefix&#8217;, 
+&#8216;p_whatever&#8217;, &#8216;paper_British&#8217;, &#8216;paper_Dutch&#8217;, &#8216;paper_French&#8217;, &#8216;paper_German&#8217;, &#8216;paper_Italian&#8217;, 
+&#8216;paper_Other&#8217;, &#8216;paper_Spanish&#8217;, &#8216;paper_US&#8217;, &#8216;paper_financial&#8217;, &#8216;paper_generic_Dutch&#8217;, 
+&#8216;paper_generic_English&#8217;, &#8216;paper_generic_French&#8217;, &#8216;paper_generic_German&#8217;, &#8216;paper_generic_Italian&#8217;, 
+&#8216;paper_generic_Spanish&#8217;, &#8216;pol_Euro_leader&#8217;, &#8216;politics_euro_nationality&#8217;, &#8216;pol_Euro_officials&#8217;, 
+&#8216;pol_US&#8217;, &#8216;pol_US_agency&#8217;, &#8216;pol_US_candidate&#8217;, &#8216;pol_US_confidant&#8217;, &#8216;pol_US_congressman&#8217;, 
+&#8216;pol_US_congressman_abbr&#8217;, &#8216;pol_US_contraband&#8217;, &#8216;pol_US_department&#8217;, &#8216;pol_US_election&#8217;, 
+&#8216;pol_US_event_pl&#8217;, &#8216;pol_US_event_single&#8217;, &#8216;pol_US_events&#8217;, &#8216;pol_US_guy&#8217;, &#8216;pol_US_party&#8217;, 
+&#8216;pol_US_partyabbr&#8217;, &#8216;pol_US_partyadj&#8217;, &#8216;pol_action&#8217;, &#8216;pol_action_pl&#8217;, &#8216;pol_action_sing&#8217;, 
+&#8216;pol_agreement&#8217;, &#8216;pol_law&#8217;, &#8216;pol_scandal&#8217;, &#8216;pol_scandaladj&#8217;, &#8216;politics_scandalnoun&#8217;, &#8216;pol_subsidyflavor&#8217;, 
+&#8216;pol_treaty&#8217;, &#8216;pol_treatydescription&#8217;, &#8216;politics&#8217;, &#8216;portal_co_description_pl&#8217;, 
+&#8216;portal_co_description_sing&#8217;, &#8216;portal_co_motto&#8217;, &#8216;portal_co_n&#8217;, &#8216;portal_co_px&#8217;, &#8216;portal_co_sx&#8217;, 
+&#8216;portal_company&#8217;, &#8216;portal_companyparts&#8217;, &#8216;press&#8217;, &#8216;prod_accolades&#8217;, &#8216;prod_upgrade&#8217;, &#8216;review&#8217;, 
+&#8216;review_accolade&#8217;, &#8216;review_audience&#8217;, &#8216;review_audience_adj&#8217;, &#8216;review_award&#8217;, &#8216;review_conclusion&#8217;, 
+&#8216;review_interests&#8217;, &#8216;review_intro&#8217;, &#8216;review_majorcompany&#8217;, &#8216;review_offers&#8217;, &#8216;review_source&#8217;, 
+&#8216;sci_anatomy_finger&#8217;, &#8216;sci_anatomy_human&#8217;, &#8216;sci_anatomy_human_transplant&#8217;, &#8216;sci_anatomy_one&#8217;, 
+&#8216;sci_anatomy_two&#8217;, &#8216;sci_astro&#8217;, &#8216;sci_astro_constellations&#8217;, &#8216;sci_astro_misc&#8217;, &#8216;sci_astro_moons&#8217;, 
+&#8216;sci_astro_planets&#8217;, &#8216;sci_astro_stars&#8217;, &#8216;sci_blood&#8217;, &#8216;sci_blood_rhesus&#8217;, &#8216;sci_blood_type&#8217;, 
+&#8216;sci_disciplines&#8217;, &#8216;sci_elements&#8217;, &#8216;sci_isms&#8217;, &#8216;sci_isms_px&#8217;, &#8216;sci_noble_gasses&#8217;, &#8216;sci_other_metals&#8217;, 
+&#8216;sci_popularelements&#8217;, &#8216;sci_pseudo&#8217;, &#8216;sci_pseudomisc&#8217;, &#8216;sci_titles_px&#8217;, &#8216;sci_titles_sx&#8217;, 
+&#8216;sci_transition_metals&#8217;, &#8216;section_biznews&#8217;, &#8216;section_corpnews&#8217;, &#8216;section_sports&#8217;, &#8216;section_weather&#8217;, 
+&#8216;section_worldnews&#8217;, &#8216;seriouspress&#8217;, &#8216;shareprice&#8217;, &#8216;shop_co_description_pl&#8217;, 
+&#8216;shop_co_description_sing&#8217;, &#8216;shop_co_motto&#8217;, &#8216;shop_co_n&#8217;, &#8216;shop_co_px&#8217;, &#8216;shop_co_sx&#8217;, 
+&#8216;shop_company&#8217;, &#8216;shop_companyparts&#8217;, &#8216;source_online&#8217;, &#8216;source_wireservice&#8217;, &#8216;sports_achievement_us&#8217;, 
+&#8216;sports_action&#8217;, &#8216;sports_distance&#8217;, &#8216;sports_eventflavor&#8217;, &#8216;sports_football_match&#8217;, 
+&#8216;sports_footballevent&#8217;, &#8216;sports_footballopportunity&#8217;, &#8216;sports_generic_match&#8217;, &#8216;sports_genericevent&#8217;, 
+&#8216;sports_goal&#8217;, &#8216;sports_league&#8217;, &#8216;sports_machination_us&#8217;, &#8216;sports_organizations_us&#8217;, &#8216;sports_position&#8217;, 
+&#8216;sports_qualifiers&#8217;, &#8216;sports_record&#8217;, &#8216;sports_scores&#8217;, &#8216;sports_scores_big&#8217;, &#8216;sports_scores_small&#8217;, 
+&#8216;sports_soccer_authority&#8217;, &#8216;sports_soccer_highlight&#8217;, &#8216;sports_soccer_location&#8217;, &#8216;sports_soccer_roundoff&#8217;, 
+&#8216;sports_soccer_score&#8217;, &#8216;sports_soccer_teams&#8217;, &#8216;sports_soccer_tournament&#8217;, &#8216;sports_soccer_tournamentpx&#8217;, 
+&#8216;sports_soccer_tournamentsx&#8217;, &#8216;sports_sponsor&#8217;, &#8216;sports_trophy&#8217;, &#8216;sports_venue&#8217;, &#8216;sports_victoryflavor&#8217;, 
+&#8216;sportsbasic_us&#8217;, &#8216;sportsblurb_soccer&#8217;, &#8216;sportsheadline_football&#8217;, &#8216;sportsheadline_generic&#8217;, 
+&#8216;sportsheadline_soccer&#8217;, &#8216;sportsheadline_us&#8217;, &#8216;sportsteam_us&#8217;, &#8216;sportsteam_us_generic&#8217;, 
+&#8216;sportsteam_us_location&#8217;, &#8216;sportsteam_us_px&#8217;, &#8216;sportsteam_us_sx&#8217;, &#8216;sportsverb_achieves_pl&#8217;, 
+&#8216;sportsverb_achieves_sing&#8217;, &#8216;sportsverb_wins_pl&#8217;, &#8216;sportsverb_wins_sing&#8217;, &#8216;startup_co_description_pl&#8217;, 
+&#8216;startup_co_description_sing&#8217;, &#8216;startup_co_motto&#8217;, &#8216;startup_co_n&#8217;, &#8216;startup_co_px&#8217;, &#8216;startup_co_sx&#8217;, 
+&#8216;startup_company&#8217;, &#8216;startup_companyparts&#8217;, &#8216;state_abbr&#8217;, &#8216;state_abbr_lc&#8217;, &#8216;state_name&#8217;, &#8216;syllables&#8217;, 
+&#8216;time_comingyears&#8217;, &#8216;time_day_nearfuture&#8217;, &#8216;time_day_recentpast&#8217;, &#8216;time_days&#8217;, &#8216;time_holidays&#8217;, 
+&#8216;time_holidays_minor&#8217;, &#8216;time_months&#8217;, &#8216;time_seasons&#8217;, &#8216;time_usenet&#8217;, &#8216;time_week_nearfuture&#8217;, 
+&#8216;time_week_recentpast&#8217;, &#8216;tonic&#8217;, &#8216;tonic_ad_intro&#8217;, &#8216;tonic_ad_pitch&#8217;, &#8216;tonic_address&#8217;, 
+&#8216;tonic_adjective&#8217;, &#8216;tonic_close&#8217;, &#8216;tonic_cures&#8217;, &#8216;tonic_disorders&#8217;, &#8216;tonic_form&#8217;, &#8216;tonic_ingredient&#8217;, 
+&#8216;tonic_mechanisms&#8217;, &#8216;tonic_quack&#8217;, &#8216;tonic_remedy&#8217;, &#8216;town_us&#8217;, &#8216;town_us_compass&#8217;, &#8216;town_us_px&#8217;, 
+&#8216;town_us_qualifier&#8217;, &#8216;town_us_sx&#8217;, &#8216;towns_USgeneric&#8217;, &#8216;tv&#8217;, &#8216;university&#8217;, &#8216;university_dept&#8217;, &#8216;usbank&#8217;, 
+&#8216;usbank_name&#8217;, &#8216;usbank_residence&#8217;, &#8216;verb_cooperates&#8217;, &#8216;verb_introduces&#8217;, &#8216;war_affiliatedtarget&#8217;, 
+&#8216;war_affiliation&#8217;, &#8216;war_explosive&#8217;, &#8216;war_explosiveadj&#8217;, &#8216;war_explosivemedium&#8217;, &#8216;war_forces&#8217;, 
+&#8216;war_groups&#8217;, &#8216;war_military&#8217;, &#8216;war_militias&#8217;, &#8216;war_othertarget&#8217;, &#8216;war_target&#8217;, &#8216;war_verb_action&#8217;, 
+&#8216;war_verb_action_future&#8217;, &#8216;war_verb_action_present&#8217;, &#8216;weather_city&#8217;, &#8216;weather_sky&#8217;]</p>
+<p>&lt;/doc&gt;</p>
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurb.Blurb.getBlurb">
+<tt class="descname">getBlurb</tt><big>(</big><em>type</em>, <em>cnt=None</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurb.Blurb.getBlurb" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getBlurb&lt;/code&gt; method answers a random generated blurb of &lt;attr&gt;type&lt;/attr&gt;.
+The full list of available types get be obtained by calling &lt;code&gt;self.getContentType()&lt;/code&gt;.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurb.Blurb.getBlurbTypes">
+<tt class="descname">getBlurbTypes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurb.Blurb.getBlurbTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getBlurbTypes&lt;/code&gt; answers a list of names of all types of content blurbs
+that can can be generated by the writer.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.contributions.filibuster.blurbwriter">
+<span id="xierpa3-contributions-filibuster-blurbwriter-module"></span><h2>xierpa3.contributions.filibuster.blurbwriter module<a class="headerlink" href="#module-xierpa3.contributions.filibuster.blurbwriter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter">
+<em class="property">class </em><tt class="descclassname">xierpa3.contributions.filibuster.blurbwriter.</tt><tt class="descname">BlurbWriter</tt><big>(</big><em>content</em>, <em>debug=False</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A very unspecific recursive compiler and randomizer for text.</p>
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.alternatives">
+<tt class="descname">alternatives</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.alternatives" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.capsentence">
+<tt class="descname">capsentence</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.capsentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.choice">
+<tt class="descname">choice</tt><big>(</big><em>cached</em>, <em>key</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.choice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.clearcache">
+<tt class="descname">clearcache</tt><big>(</big><em>key=None</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.clearcache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.define">
+<tt class="descname">define</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.define" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.findtag">
+<tt class="descname">findtag</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.findtag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.getvalue">
+<tt class="descname">getvalue</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.getvalue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.importcontent">
+<tt class="descname">importcontent</tt><big>(</big><em>contentdict</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.importcontent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.keyindex">
+<tt class="descname">keyindex</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.keyindex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nextclosed">
+<tt class="descname">nextclosed</tt><big>(</big><em>pos</em>, <em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nextclosed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nextopen">
+<tt class="descname">nextopen</tt><big>(</big><em>pos</em>, <em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nextopen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nexttag">
+<tt class="descname">nexttag</tt><big>(</big><em>pos</em>, <em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.nexttag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.parsetag">
+<tt class="descname">parsetag</tt><big>(</big><em>tag</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.parsetag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.replacecode">
+<tt class="descname">replacecode</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.replacecode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.replacetag">
+<tt class="descname">replacetag</tt><big>(</big><em>level</em>, <em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.replacetag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.softdefine">
+<tt class="descname">softdefine</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.softdefine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.write">
+<tt class="descname">write</tt><big>(</big><em>tag</em>, <em>formatdict=None</em>, <em>formatfunc=None</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>this assumes tag to be a direct entry in content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.writetag">
+<tt class="descname">writetag</tt><big>(</big><em>tag</em>, <em>formatdict=None</em>, <em>formatfunc=None</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.BlurbWriter.writetag" title="Permalink to this definition">¶</a></dt>
+<dd><p>this will evaluate tag directly, use writetag if you want to more tags in one line to be processed.
+this is the main interface to the writer class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="xierpa3.contributions.filibuster.blurbwriter.choice">
+<tt class="descclassname">xierpa3.contributions.filibuster.blurbwriter.</tt><tt class="descname">choice</tt><em class="property"> = &lt;bound method Random.choice of &lt;random.Random object at 0x7f888c121a20&gt;&gt;</em><a class="headerlink" href="#xierpa3.contributions.filibuster.blurbwriter.choice" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>history</div></blockquote>
+<dl class="docutils">
+<dt>26 12 99         added support for &#8216;article&#8217; in tags:</dt>
+<dd>&#8216;this_demonstrates_articles&#8217;:    [&#8216;&lt;#article, demo_fruit#&gt;&#8217;],
+&#8216;demo_fruit&#8217;:    [&#8216;pear&#8217;, &#8216;apple&#8217;, &#8216;olive&#8217;]
+#a pear
+#an apple
+#a pear
+#an olive</dd>
+</dl>
+<p>30 12 99         fixed replacecode - now it will interpret identical tags in one line individually</p>
+<dl class="docutils">
+<dt>4 jan 99        added support for inline style references</dt>
+<dd><dl class="first docutils">
+<dt>&lt;#!bold, company#&gt;    will label this for bold, it depends on the styledict</dt>
+<dd>how it is formatted in the end</dd>
+</dl>
+<p>&lt;#!bold, !uppercase, company#&gt; - multiple styles should be possible as well, no?
+in theory yes, but somehow netscape doesn&#8217;t draw the uppercase - odd?
+- tag = name of an entry from the Content module
+- formatdict is a dictionary in which style</p>
+<blockquote class="last">
+<div><p>commands that are used in Content are mapped
+to any arbitrary outside defined stylename.
+This is to prevent pollution from outside formatting stuff
+in the content module.
+For instance, a content tag can say &lt;#!bold, company#&gt;
+the formatdict can look like this: {&#8216;bold&#8217;:    &#8216;CSS_my_specific_bold&#8217;}
+If the style cmd from the tag cam be found in the provided formatdict
+format func is used to format the final resulting text.</p>
+<blockquote>
+<div>def formatfunc(text, tagname)</div></blockquote>
+<p>This means that Writer and Content should also be able to be used
+to make RTF, or any other kind of formatted text without making
+the modules specific to any kind of format, or platform.</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>3.0            added support for the Content package, added some UI
+17 1 2000</p>
+<p>3.1            Writer can now handle nested tags, opening a whole world of metaprogramming
+evb</p>
+<p>3.2            messed with the caching mechanism
+evb</p>
+<p>3.3            now the write() method also accepts tagged entries, simpler code, more flexible
+evb            w.write(&#8216;&lt;#name#&gt;&#8217;) and w.write(&#8216;name&#8217;) have the same results</p>
+<p>3.4            added simpler support for initial capitals. Write &#8216;&lt;#^,word#&gt; for a capital of the first letter
+evb</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.contributions.filibuster.titlecase">
+<span id="xierpa3-contributions-filibuster-titlecase-module"></span><h2>xierpa3.contributions.filibuster.titlecase module<a class="headerlink" href="#module-xierpa3.contributions.filibuster.titlecase" title="Permalink to this headline">¶</a></h2>
+<p>titlecase.py v0.2
+Original Perl version by: John Gruber <a class="reference external" href="http://daringfireball.net/">http://daringfireball.net/</a> 10 May 2008
+Python version by Stuart Colville <a class="reference external" href="http://muffinresearch.co.uk">http://muffinresearch.co.uk</a>
+License: <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
+<dl class="class">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests">
+<em class="property">class </em><tt class="descclassname">xierpa3.contributions.filibuster.titlecase.</tt><tt class="descname">TitlecaseTests</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Tests to ensure titlecase follows all of the rules</p>
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_a_thing">
+<tt class="descname">test_a_thing</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_a_thing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: a thing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_apple_deal">
+<tt class="descname">test_apple_deal</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_apple_deal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Apple Deal With AT&amp;T Falls Through</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_apple_sec">
+<tt class="descname">test_apple_sec</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_apple_sec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: The SEC’s Apple Probe: What You Need to Know</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_at_and_t">
+<tt class="descname">test_at_and_t</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_at_and_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: What Is AT&amp;T&#8217;s Problem?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_domains">
+<tt class="descname">test_domains</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this is just an example.com</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_domains2">
+<tt class="descname">test_domains2</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_domains2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this is something listed on an del.icio.us</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_generalissimo">
+<tt class="descname">test_generalissimo</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_generalissimo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Generalissimo Francisco Franco...</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_itunes">
+<tt class="descname">test_itunes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_itunes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: iTunes should be unmolested</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_nothing_to_be_afraid_of">
+<tt class="descname">test_nothing_to_be_afraid_of</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_nothing_to_be_afraid_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: &#8220;Nothing to Be Afraid of?&#8221;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_nothing_to_be_afraid_of2">
+<tt class="descname">test_nothing_to_be_afraid_of2</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_nothing_to_be_afraid_of2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: &#8220;Nothing to Be Afraid Of?&#8221;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_q_and_a">
+<tt class="descname">test_q_and_a</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_q_and_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Q&amp;A With Steve Jobs: &#8216;That’s What Happens In Technology&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_repair_perms">
+<tt class="descname">test_repair_perms</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_repair_perms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Seriously, ‘Repair Permissions’ Is Voodoo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_double_quotes">
+<tt class="descname">test_small_word_double_quotes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_double_quotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Sub-Phrase With a Small Word in Quotes: &#8220;a Trick...</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_end">
+<tt class="descname">test_small_word_end</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Small word at end is nothing to be afraid of</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_quoted">
+<tt class="descname">test_small_word_quoted</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_quoted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: &#8216;by the Way, Small word at the start but within quotes.&#8217;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_quotes">
+<tt class="descname">test_small_word_quotes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_small_word_quotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Sub-Phrase With a Small Word in Quotes: &#8216;a Trick...</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_sub_phrase_small_word">
+<tt class="descname">test_sub_phrase_small_word</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_sub_phrase_small_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Starting Sub-Phrase With a Small Word: a Trick, Perhaps?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_v_that">
+<tt class="descname">test_this_v_that</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_v_that" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this v that</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_v_that2">
+<tt class="descname">test_this_v_that2</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_v_that2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this v. that</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_vs_that">
+<tt class="descname">test_this_vs_that</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_vs_that" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this vs that</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_vs_that2">
+<tt class="descname">test_this_vs_that2</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_this_vs_that2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: this vs. that</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_thoughts_on_music">
+<tt class="descname">test_thoughts_on_music</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_thoughts_on_music" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: Reading Between the Lines of Steve Jobs’s...</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_vapourware">
+<tt class="descname">test_vapourware</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.TitlecaseTests.test_vapourware" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing: 2lmc Spool: &#8216;Gruber on OmniFocus and Vapo(u)rware&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.contributions.filibuster.titlecase.titlecase">
+<tt class="descclassname">xierpa3.contributions.filibuster.titlecase.</tt><tt class="descname">titlecase</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#xierpa3.contributions.filibuster.titlecase.titlecase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Titlecases input text</p>
+<p>This filter changes all words to Title Caps, and attempts to be clever
+about <a href="#id1"><span class="problematic" id="id2">*</span></a>un*capitalizing SMALL words like a/an/the in the input.</p>
+<p>The list of &#8220;SMALL words&#8221; which are not capped comes from
+the New York Times Manual of Style, plus &#8216;vs&#8217; and &#8216;v&#8217;.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.contributions.filibuster">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.contributions.filibuster" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.contributions.filibuster package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.contributions.filibuster.blurb">xierpa3.contributions.filibuster.blurb module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.contributions.filibuster.blurbwriter">xierpa3.contributions.filibuster.blurbwriter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.contributions.filibuster.titlecase">xierpa3.contributions.filibuster.titlecase module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.contributions.filibuster">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.contributions.filibuster.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

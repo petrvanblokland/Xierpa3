@@ -1,0 +1,714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.toolbox.storage package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-toolbox-storage-package">
+<h1>xierpa3.toolbox.storage package<a class="headerlink" href="#xierpa3-toolbox-storage-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xierpa3.toolbox.storage.status.html">xierpa3.toolbox.storage.status package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.toolbox.storage.status.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.toolbox.storage.status.html#module-xierpa3.toolbox.storage.status.status">xierpa3.toolbox.storage.status.status module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.toolbox.storage.status.html#xierpa3-toolbox-storage-status-task-module">xierpa3.toolbox.storage.status.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.toolbox.storage.status.html#module-xierpa3.toolbox.storage.status">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.adict">
+<span id="xierpa3-toolbox-storage-adict-module"></span><h2>xierpa3.toolbox.storage.adict module<a class="headerlink" href="#module-xierpa3.toolbox.storage.adict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.adict.A">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.adict.</tt><tt class="descname">A</tt><a class="headerlink" href="#xierpa3.toolbox.storage.adict.A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.A.asPList">
+<tt class="descname">asPList</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.A.asPList" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">tl</span><span class="o">.</span><span class="n">asPList</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;    &quot;</span><span class="p">,</span> <span class="s">&quot;    &quot;</span><span class="p">)</span>
+<span class="go">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="go">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+<span class="go">&lt;plist version=&quot;1.0&quot;&gt;</span>
+<span class="go">&lt;array&gt;</span>
+<span class="go">    &lt;integer&gt;2&lt;/integer&gt;</span>
+<span class="go">    &lt;integer&gt;3&lt;/integer&gt;</span>
+<span class="go">    &lt;integer&gt;4&lt;/integer&gt;</span>
+<span class="go">&lt;/array&gt;</span>
+<span class="go">&lt;/plist&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span><span class="o">.</span><span class="n">_data_</span>
+<span class="go">[2, 3, 4]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.A.asSource">
+<tt class="descname">asSource</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.A.asSource" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span><span class="o">.</span><span class="n">asSource</span><span class="p">()</span>
+<span class="go">&#39;[2, 3, 4]&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.adict.A.fromPList">
+<em class="property">classmethod </em><tt class="descname">fromPList</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.A.fromPList" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">asPList</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl2</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">fromPList</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl2</span>
+<span class="go">&lt;AList:[2, 3, 4]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">asPList</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td2</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">fromPList</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td2</span>
+<span class="go">&lt;ADict:{&#39;a&#39;: 1, &#39;b&#39;: 2}&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">fromPList</span><span class="p">(</span><span class="s">&quot;&lt;integer&gt;4&lt;/integer&gt;&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">TypeError</span>: <span class="n">Top level plist object must be list or dict, not int</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.adict.A.fromSource">
+<em class="property">classmethod </em><tt class="descname">fromSource</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.A.fromSource" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">fromSource</span><span class="p">(</span><span class="s">&#39;[2, 3, 4]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span>
+<span class="go">&lt;AList:[2, 3, 4]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">fromSource</span><span class="p">(</span><span class="s">&#39;{&quot;a&quot;: 2, &quot;b&quot;: 3}&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span>
+<span class="go">&lt;ADict:{&#39;a&#39;: 2, &#39;b&#39;: 3}&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.adict.ADict">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.adict.</tt><tt class="descname">ADict</tt><big>(</big><em>d=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.toolbox.storage.adict.A" title="xierpa3.toolbox.storage.adict.A"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.toolbox.storage.adict.A</span></tt></a></p>
+<p>The ADict (AttributeDict) is an improved version of State.  The main
+problem with the State class is that it needs to be recursively converted from
+and to a dictionary. This can be a time consuming conversion, e.g. when storing
+data in font.lib, glyph.lib or a database.</p>
+<p>Note: all attribute names are allowed, as long as they don&#8217;t start with an
+underscore and are not in the set _RESERVEDNAMES.</p>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.asDict">
+<tt class="descname">asDict</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.asDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the internal dictionary.
+&gt;&gt;&gt; td = ADict(dict(a=1, b=[2, 3]))
+&gt;&gt;&gt; td.asDict()
+{&#8216;a&#8217;: 1, &#8216;b&#8217;: [2, 3]}</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.clear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.adict.ADict.fromCopy">
+<em class="property">classmethod </em><tt class="descname">fromCopy</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.fromCopy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span> <span class="o">=</span> <span class="n">ADict</span><span class="o">.</span><span class="n">fromCopy</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">][</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="c"># Make change to original nested dict.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">a</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">x</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.adict.ADict.fromDict">
+<em class="property">classmethod </em><tt class="descname">fromDict</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.fromDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor from dictionary <em>d</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.get">
+<tt class="descname">get</tt><big>(</big><em>name</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the value of <em>name</em>. Answer <em>default</em> of the key does not exist. Dict and list values are wrapped.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">td</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">)</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">td</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span>
+<span class="go">456</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
+<span class="go">&lt;AList:[1, 2, 3]&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.has_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the has_key of the internal dictionary.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the items of the internal dictionary, where dict and list values are wrapped.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="go">[(&#39;a&#39;, 1), (&#39;b&#39;, &lt;AList:[2, 3]&gt;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the keys of the internal dictionary.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.readFrom">
+<tt class="descname">readFrom</tt><big>(</big><em>o</em>, <em>clear=False</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.readFrom" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">readFrom</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">a</span> <span class="c"># Original dictionary should not change.</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.ADict.values">
+<tt class="descname">values</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.ADict.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the values of the internal dictionary, where dict and list values are wrapped.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">td</span> <span class="o">=</span> <span class="n">ADict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="go">[1, &lt;AList:[2, 3]&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.adict.AList">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.adict.</tt><tt class="descname">AList</tt><big>(</big><em>data=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.AList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.toolbox.storage.adict.A" title="xierpa3.toolbox.storage.adict.A"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.toolbox.storage.adict.A</span></tt></a></p>
+<p>The AList (AttributeList) is the replacement of any list, to make sure that the
+replacement of dicts by ADicts (AttributeDicts) keeps working down the line of
+cascading attribute names.</p>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.AList.append">
+<tt class="descname">append</tt><big>(</big><em>o</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.AList.append" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span>
+<span class="go">&lt;AList:[1, 2, 3, 900]&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.AList.asList">
+<tt class="descname">asList</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.AList.asList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contents as a list.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tl</span><span class="o">.</span><span class="n">asList</span><span class="p">()</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.AList.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.AList.clear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.adict.AList.readFrom">
+<tt class="descname">readFrom</tt><big>(</big><em>o</em>, <em>clear=True</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.adict.AList.readFrom" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">AList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">AList</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">readFrom</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Original list changed, t2 should not.</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.article">
+<span id="xierpa3-toolbox-storage-article-module"></span><h2>xierpa3.toolbox.storage.article module<a class="headerlink" href="#module-xierpa3.toolbox.storage.article" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.article.Article">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.article.</tt><tt class="descname">Article</tt><big>(</big><em>**kargs</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.article.Article" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Generic data instance, answered by every adapter query. The attributes of the <em>Data</em> instance
+can be accessed as dictionary key and as attribute.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">article</span> <span class="o">=</span> <span class="n">Article</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">a</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">]</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.article.Article.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.article.Article.has_key" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">article</span> <span class="o">=</span> <span class="n">Article</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.article.Article.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.article.Article.items" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">article</span> <span class="o">=</span> <span class="n">Article</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="go">[(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.article.Article.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.article.Article.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the list of all attribute names.
+&gt;&gt;&gt; article = Article(a=1, b=2, c=3)
+&gt;&gt;&gt; article.keys()
+[&#8216;a&#8217;, &#8216;b&#8217;, &#8216;c&#8217;]</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.formdict">
+<span id="xierpa3-toolbox-storage-formdict-module"></span><h2>xierpa3.toolbox.storage.formdict module<a class="headerlink" href="#module-xierpa3.toolbox.storage.formdict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.formdict.</tt><tt class="descname">FormDict</tt><big>(</big><em>paramd=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">FormDict</span><span class="p">(</span><span class="s">&quot;a-12/b-13&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: [&#39;12&#39;], &#39;b&#39;: [&#39;13&#39;]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">FormDict</span><span class="p">(</span><span class="s">&quot;a-12/a-13/b-13&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: [&#39;12&#39;, &#39;13&#39;], &#39;b&#39;: [&#39;13&#39;]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">FormDict</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;12&#39;</span><span class="p">],</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;13&#39;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: [&#39;12&#39;], &#39;b&#39;: [&#39;13&#39;]}</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.append">
+<tt class="descname">append</tt><big>(</big><em>params</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;append&lt;/code&gt; method appends the content of &lt;attr&gt;params&lt;/attr&gt; to self. If the attribute
+is a string, then split it on &lt;code&gt;&#8217;/&#8217;&lt;/code&gt;. Otherwise we assume that it is already a list.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;clear&lt;/code&gt; clears the internal data, e.g. to be used when logging out.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.dict">
+<tt class="descname">dict</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.getList">
+<tt class="descname">getList</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.getList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.formdict.FormDict.set">
+<tt class="descname">set</tt><big>(</big><em>key</em>, <em>item</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.formdict.FormDict.set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.nonerequest">
+<span id="xierpa3-toolbox-storage-nonerequest-module"></span><h2>xierpa3.toolbox.storage.nonerequest module<a class="headerlink" href="#module-xierpa3.toolbox.storage.nonerequest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.nonerequest.NoneRequest">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.nonerequest.</tt><tt class="descname">NoneRequest</tt><a class="headerlink" href="#xierpa3.toolbox.storage.nonerequest.NoneRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.ordereddict">
+<span id="xierpa3-toolbox-storage-ordereddict-module"></span><h2>xierpa3.toolbox.storage.ordereddict module<a class="headerlink" href="#module-xierpa3.toolbox.storage.ordereddict" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.plistlib">
+<span id="xierpa3-toolbox-storage-plistlib-module"></span><h2>xierpa3.toolbox.storage.plistlib module<a class="headerlink" href="#module-xierpa3.toolbox.storage.plistlib" title="Permalink to this headline">¶</a></h2>
+<p>plistlib.py &#8211; a tool to generate and parse MacOSX .plist files.</p>
+<p>The PropertList (.plist) file format is a simple XML pickle supporting
+basic object types, like dictionaries, lists, numbers and strings.
+Usually the top level object is a dictionary.</p>
+<p>To write out a plist file, use the writePlist(rootObject, pathOrFile)
+function. &#8216;rootObject&#8217; is the top level object, &#8216;pathOrFile&#8217; is a
+filename or a (writable) file object.</p>
+<p>To parse a plist from a file, use the readPlist(pathOrFile) function,
+with a file name or a (readable) file object as the only argument. It
+returns the top level object (again, usually a dictionary).</p>
+<p>To work with plist data in strings, you can use readPlistFromString()
+and writePlistToString().</p>
+<p>Values can be strings, integers, floats, booleans, tuples, lists,
+dictionaries, Data or datetime.datetime objects. String values (including
+dictionary keys) may be unicode strings &#8211; they will be written out as
+UTF-8.</p>
+<p>The &lt;data&gt; plist type is supported through the Data class. This is a
+thin wrapper around a Python string.</p>
+<p>Generate Plist example:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pl = dict(</dt>
+<dd><p class="first">aString=&#8221;Doodah&#8221;,
+aList=[&#8220;A&#8221;, &#8220;B&#8221;, 12, 32.1, [1, 2, 3]],
+aFloat = 0.1,
+anInt = 728,
+aDict=dict(</p>
+<blockquote>
+<div>anotherString=&#8221;&lt;hello &amp; hi there!&gt;&#8221;,
+aUnicodeValue=u&#8217;Mässig, Maß&#8217;,
+aTrueValue=True,
+aFalseValue=False,</div></blockquote>
+<p class="last">),
+someData = Data(&#8220;&lt;binary gunk&gt;&#8221;),
+someMoreData = Data(&#8220;&lt;lots of binary gunk&gt;&#8221; * 10),
+aDate = datetime.datetime.fromtimestamp(time.mktime(time.gmtime())),</p>
+</dd>
+</dl>
+<p>)
+# unicode keys are possible, but a little awkward to use:
+pl[u&#8217;Åbenraa&#8217;] = &#8220;That was a unicode key.&#8221;
+writePlist(pl, fileName)</p>
+</div></blockquote>
+<p>Parse Plist example:</p>
+<blockquote>
+<div>pl = readPlist(pathOrFile)
+print pl[&#8220;aKey&#8221;]</div></blockquote>
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.readPlist">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">readPlist</tt><big>(</big><em>pathOrFile</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.readPlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a .plist file. &#8216;pathOrFile&#8217; may either be a file name or a
+(readable) file object. Return the unpacked root object (which
+usually is a dictionary).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.writePlist">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">writePlist</tt><big>(</big><em>rootObject</em>, <em>pathOrFile</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.writePlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write &#8216;rootObject&#8217; to a .plist file. &#8216;pathOrFile&#8217; may either be a
+file name or a (writable) file object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.readPlistFromString">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">readPlistFromString</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.readPlistFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a plist data from a string. Return the root object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.writePlistToString">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">writePlistToString</tt><big>(</big><em>rootObject</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.writePlistToString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return &#8216;rootObject&#8217; as a plist-formatted string.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.readPlistFromResource">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">readPlistFromResource</tt><big>(</big><em>path</em>, <em>restype='plst'</em>, <em>resid=0</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.readPlistFromResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read plst resource from the resource fork of path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.plistlib.writePlistToResource">
+<tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">writePlistToResource</tt><big>(</big><em>rootObject</em>, <em>path</em>, <em>restype='plst'</em>, <em>resid=0</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.writePlistToResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write &#8216;rootObject&#8217; as a plst resource to the resource fork of path.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.plistlib.Plist">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">Plist</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Plist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">xierpa3.toolbox.storage.plistlib._InternalDict</span></tt></p>
+<p>This class has been deprecated. Use readPlist() and writePlist()
+functions instead, together with regular dict objects.</p>
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.plistlib.Plist.fromFile">
+<em class="property">classmethod </em><tt class="descname">fromFile</tt><big>(</big><em>pathOrFile</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Plist.fromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Use the readPlist() function instead.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.plistlib.Plist.write">
+<tt class="descname">write</tt><big>(</big><em>pathOrFile</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Plist.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Use the writePlist() function instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.plistlib.Data">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">Data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for binary data.</p>
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.plistlib.Data.asBase64">
+<tt class="descname">asBase64</tt><big>(</big><em>maxlinelength=76</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Data.asBase64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.plistlib.Data.fromBase64">
+<em class="property">classmethod </em><tt class="descname">fromBase64</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Data.fromBase64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.plistlib.Dict">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.plistlib.</tt><tt class="descname">Dict</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.plistlib.Dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">xierpa3.toolbox.storage.plistlib._InternalDict</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.preference">
+<span id="xierpa3-toolbox-storage-preference-module"></span><h2>xierpa3.toolbox.storage.preference module<a class="headerlink" href="#module-xierpa3.toolbox.storage.preference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.preference.Preference">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.preference.</tt><tt class="descname">Preference</tt><a class="headerlink" href="#xierpa3.toolbox.storage.preference.Preference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></p>
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.storage.preference.Preference.fromDict">
+<em class="property">classmethod </em><tt class="descname">fromDict</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.preference.Preference.fromDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.preference.Preference.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.preference.Preference.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.preference.Preference.getKeyList">
+<tt class="descname">getKeyList</tt><big>(</big><em>keys</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.preference.Preference.getKeyList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage.xmlfiledict">
+<span id="xierpa3-toolbox-storage-xmlfiledict-module"></span><h2>xierpa3.toolbox.storage.xmlfiledict module<a class="headerlink" href="#module-xierpa3.toolbox.storage.xmlfiledict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.XMLFileDict">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.storage.xmlfiledict.</tt><tt class="descname">XMLFileDict</tt><big>(</big><em>path</em>, <em>create=False</em>, <em>d=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.XMLFileDict" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.save">
+<tt class="descname">save</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.XMLFileDict.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.getCachedFileDict">
+<tt class="descclassname">xierpa3.toolbox.storage.xmlfiledict.</tt><tt class="descname">getCachedFileDict</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.getCachedFileDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="xierpa3.toolbox.storage.xmlfiledict.new">
+<tt class="descclassname">xierpa3.toolbox.storage.xmlfiledict.</tt><tt class="descname">new</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.storage.xmlfiledict.new" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.storage">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.toolbox.storage" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.toolbox.storage package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.adict">xierpa3.toolbox.storage.adict module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.article">xierpa3.toolbox.storage.article module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.formdict">xierpa3.toolbox.storage.formdict module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.nonerequest">xierpa3.toolbox.storage.nonerequest module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.ordereddict">xierpa3.toolbox.storage.ordereddict module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.plistlib">xierpa3.toolbox.storage.plistlib module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.preference">xierpa3.toolbox.storage.preference module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage.xmlfiledict">xierpa3.toolbox.storage.xmlfiledict module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.storage">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.toolbox.storage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

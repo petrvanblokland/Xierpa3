@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.sites.examples.helloworldlayout package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-sites-examples-helloworldlayout-package">
+<h1>xierpa3.sites.examples.helloworldlayout package<a class="headerlink" href="#xierpa3-sites-examples-helloworldlayout-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.sites.examples.helloworldlayout.make">
+<span id="xierpa3-sites-examples-helloworldlayout-make-module"></span><h2>xierpa3.sites.examples.helloworldlayout.make module<a class="headerlink" href="#module-xierpa3.sites.examples.helloworldlayout.make" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout">
+<em class="property">class </em><tt class="descclassname">xierpa3.sites.examples.helloworldlayout.make.</tt><tt class="descname">HelloWorldLayout</tt><big>(</big><em>components=None</em>, <em>style=None</em>, <em>id=None</em>, <em>parent=None</em>, <em>name=None</em>, <em>css=None</em>, <em>fonts=None</em>, <em>prefix=None</em>, <em>class_=None</em>, <em>type=None</em>, <em>contentID=None</em>, <em>repeat=1</em>, <em>title=None</em>, <em>url=None</em>, <em>template=None</em>, <em>editable=False</em>, <em>adapter=None</em>, <em>selector=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="xierpa3.components.html#xierpa3.components.theme.Theme" title="xierpa3.components.theme.Theme"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.components.theme.Theme</span></tt></a></p>
+<p>The &lt;b&gt;HelloWorldLayout&lt;/b&gt; class implements a basic &#8220;Hello, world!&#8221; page, running as
+batch process, saving the result as an HTML file. Also it is available in the example webserver,
+e.g. through the Xierpa3App.</p>
+<dl class="attribute">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.TITLE">
+<tt class="descname">TITLE</tt><em class="property"> = u'The layout \u201cHello, world!\u201d page.'</em><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.TITLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.baseComponents">
+<tt class="descname">baseComponents</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.baseComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a theme site with just one single template home page. Answer a list
+of page instances that are used as templates for this site.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.make">
+<tt class="descname">make</tt><big>(</big><em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldLayout.make" title="Permalink to this definition">¶</a></dt>
+<dd><p>The instance of this class builds CSS and HTML files at the optional path &lt;b&gt;root&lt;/b&gt;.
+If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
+as set by Builder.DEFAULT_ROOTPATH</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldText">
+<em class="property">class </em><tt class="descclassname">xierpa3.sites.examples.helloworldlayout.make.</tt><tt class="descname">HelloWorldText</tt><big>(</big><em>components=None</em>, <em>style=None</em>, <em>id=None</em>, <em>parent=None</em>, <em>name=None</em>, <em>css=None</em>, <em>fonts=None</em>, <em>prefix=None</em>, <em>class_=None</em>, <em>type=None</em>, <em>contentID=None</em>, <em>repeat=1</em>, <em>title=None</em>, <em>url=None</em>, <em>template=None</em>, <em>editable=False</em>, <em>adapter=None</em>, <em>selector=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="xierpa3.components.html#xierpa3.components.column.Column" title="xierpa3.components.column.Column"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.components.column.Column</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldText.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldText.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.sites.examples.helloworldlayout.make.HelloWorldText.buildBlock">
+<tt class="descname">buildBlock</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#xierpa3.sites.examples.helloworldlayout.make.HelloWorldText.buildBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the column. Note that although the &#8220;div&#8221; suggest that it is just
+HTML building there, the method get called both with &lt;b&gt;b&lt;/b&gt; as CssBuilder
+and as HtmlBuilder. Each builder will filter out the appropriate attributes and
+translates it into its own syntax. The HTML tags generated by the article
+are set in CSS by the empty statements.
+Building the styled 2 text blocks, written out with duplicated values,
+as example how this works. See other examples for approaches with more
+cascading styled hierarchy.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.sites.examples.helloworldlayout">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.sites.examples.helloworldlayout" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.sites.examples.helloworldlayout package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.sites.examples.helloworldlayout.make">xierpa3.sites.examples.helloworldlayout.make module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.sites.examples.helloworldlayout">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.sites.examples.helloworldlayout.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

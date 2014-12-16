@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.toolbox.database.s3 package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-toolbox-database-s3-package">
+<h1>xierpa3.toolbox.database.s3 package<a class="headerlink" href="#xierpa3-toolbox-database-s3-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.database.s3.s3connector">
+<span id="xierpa3-toolbox-database-s3-s3connector-module"></span><h2>xierpa3.toolbox.database.s3.s3connector module<a class="headerlink" href="#module-xierpa3.toolbox.database.s3.s3connector" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.database.s3.s3connector.</tt><tt class="descname">S3Connector</tt><big>(</big><em>domain</em>, <em>accesskeyid</em>, <em>secretaccesskey</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;Xierpa wrapper for Amazon S3 connection and bucket using the boto library. Enables us to send and retrieve
+files from the  data storage. Multiple instances are possible for data retrieval from different buckets.&lt;/doc&gt;</p>
+<dl class="attribute">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.BUCKET">
+<tt class="descname">BUCKET</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.BUCKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.CONNECTION">
+<tt class="descname">CONNECTION</tt><em class="property"> = None</em><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.CONNECTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.deleteKey">
+<tt class="descname">deleteKey</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.deleteKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Deletes the key that is passed.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.deleteKeyFromBucket">
+<tt class="descname">deleteKeyFromBucket</tt><big>(</big><em>keyname</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.deleteKeyFromBucket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getAllBuckets">
+<tt class="descname">getAllBuckets</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getAllBuckets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getAllKeys">
+<tt class="descname">getAllKeys</tt><big>(</big><em>headers=None</em>, <em>prefix=''</em>, <em>delimiter=''</em>, <em>maxkeys=10000</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getAllKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+A lower-level method for listing contents of a bucket. This closely models the actual S3 API and requires you to
+manually handle the paging of results. For a higher-level method that handles the details of paging for you, you
+can use the list method.
+Parameters:</p>
+<p>max_keys (int) – The maximum number of keys to retrieve.
+prefix (string) – The prefix of the keys you want to retrieve.
+marker (string) – The “marker” of where you are in the result set.
+delimiter (string) – If this optional, Unicode string parameter is included with your request, then keys that
+contain the same string between the prefix and the first occurrence of the delimiter will be rolled up into a
+single result element in the CommonPrefixes collection. These rolled-up keys are not returned elsewhere in the
+response.</p>
+<p>Return type:    ResultSet
+Returns:        The result from S3 listing the keys requested
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getBucket">
+<tt class="descname">getBucket</tt><big>(</big><em>name=None</em>, <em>create=True</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getBucket" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Get an AWS bucket with exception handling. Creates the bucket if it doesn&#8217;t already exist.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getFile">
+<tt class="descname">getFile</tt><big>(</big><em>key</em>, <em>fp</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Puts a file in the fp file pointer, which is a temporary file object:</p>
+<dl class="docutils">
+<dt>&lt;code&gt;</dt>
+<dd>fp = open(&lt;tmp-path&gt;, &#8216;w&#8217;)
+&lt;/code&gt;</dd>
+</dl>
+<p>&lt;/doc&gt;</p>
+<p>Throws an exception if key is none.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getFolderList">
+<tt class="descname">getFolderList</tt><big>(</big><em>headers=None</em>, <em>prefix=''</em>, <em>delimiter=''</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getFolderList" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getKey">
+<tt class="descname">getKey</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+We describe keys as paths within buckets. Returns None if the key doesn&#8217;t exist.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getList">
+<tt class="descname">getList</tt><big>(</big><em>headers=None</em>, <em>prefix=''</em>, <em>delimiter=''</em>, <em>marker=''</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.getMime">
+<tt class="descname">getMime</tt><big>(</big><em>keyname</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.getMime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.hasKey">
+<tt class="descname">hasKey</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.hasKey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.list">
+<tt class="descname">list</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.listAllBuckets">
+<tt class="descname">listAllBuckets</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.listAllBuckets" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Auxiliary definition showing all available buckets.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.makeFilePointer">
+<tt class="descname">makeFilePointer</tt><big>(</big><em>key</em>, <em>tmppath</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.makeFilePointer" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Gets a file from S3 using the key and store it on a temporary location for further processing.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.makeFilePointerByPath">
+<tt class="descname">makeFilePointerByPath</tt><big>(</big><em>s3path</em>, <em>tmppath</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.makeFilePointerByPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Gets a file from S3 using the path and store it on a temporary location for further processing.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.readFileFromS3">
+<tt class="descname">readFileFromS3</tt><big>(</big><em>keyname</em>, <em>path</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.readFileFromS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;readFileFromS3&lt;/code&gt; method reads the content of &lt;attr&gt;keyname&lt;/attr&gt;
+from S3 and writes it the file with &lt;attr&gt;path&lt;/attr&gt;. Answer the a boolean flag
+to indicate of the operation succeeded.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.readString">
+<tt class="descname">readString</tt><big>(</big><em>keyname</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.readString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.sendFile">
+<tt class="descname">sendFile</tt><big>(</big><em>key</em>, <em>file</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.sendFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.writeFileToS3">
+<tt class="descname">writeFileToS3</tt><big>(</big><em>keyname</em>, <em>path</em>, <em>mimetype=None</em>, <em>acl='public-read'</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.writeFileToS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Writes file contents from local file to S3 with key as name.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.database.s3.s3connector.S3Connector.writeString">
+<tt class="descname">writeString</tt><big>(</big><em>keyname</em>, <em>string</em>, <em>mimetype=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.database.s3.s3connector.S3Connector.writeString" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+Writes text to the file with key as name.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.database.s3">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.toolbox.database.s3" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.toolbox.database.s3 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.database.s3.s3connector">xierpa3.toolbox.database.s3.s3connector module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.database.s3">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.toolbox.database.s3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

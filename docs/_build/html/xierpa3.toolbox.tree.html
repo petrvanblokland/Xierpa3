@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.toolbox.tree package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-toolbox-tree-package">
+<h1>xierpa3.toolbox.tree package<a class="headerlink" href="#xierpa3-toolbox-tree-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.tree.attributes">
+<span id="xierpa3-toolbox-tree-attributes-module"></span><h2>xierpa3.toolbox.tree.attributes module<a class="headerlink" href="#module-xierpa3.toolbox.tree.attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.tree.attributes.Attributes">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.tree.attributes.</tt><tt class="descname">Attributes</tt><a class="headerlink" href="#xierpa3.toolbox.tree.attributes.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></p>
+<p>The &lt;code&gt;Attributes&lt;/code&gt; class defines the dictionary of attributes of a &lt;code&gt;Node&lt;/code&gt; instances.
+Typically the class inherits from &lt;code&gt;dict&lt;/code&gt;.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.tree.basenode">
+<span id="xierpa3-toolbox-tree-basenode-module"></span><h2>xierpa3.toolbox.tree.basenode module<a class="headerlink" href="#module-xierpa3.toolbox.tree.basenode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.tree.basenode.</tt><tt class="descname">BaseNode</tt><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>The abstract &lt;code&gt;BaseNode&lt;/code&gt; class is a wrapper for an &lt;code&gt;Attributes&lt;/code&gt; instance (that needs to be
+initialized by an inheriting node class). The basic attribute methods are implemented here. The
+&lt;code&gt;BaseNode&lt;/code&gt; does not implement any tree functionality, allowing both &lt;code&gt;Node&lt;/code&gt; an
+&lt;code&gt;State&lt;/code&gt; classes to inherit. The first is a tree, but the latter is flat. Though both contain a set of
+attributes.</p>
+<dl class="attribute">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode.ATTRIBUTEDEFAULTS">
+<tt class="descname">ATTRIBUTEDEFAULTS</tt><em class="property"> = {}</em><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode.ATTRIBUTEDEFAULTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode.TX">
+<tt class="descname">TX</tt><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode.TX" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Transformer</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode.getAttributeDefault">
+<tt class="descname">getAttributeDefault</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode.getAttributeDefault" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getAttributeDefault&lt;/code&gt; method answers the default for attribute &lt;attr&gt;name&lt;/attr&gt;. The behavior is
+to answer the result of &lt;code&gt;self.ATTRIBUTEDEFAULTS.get(name)&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode.getAttributes">
+<tt class="descname">getAttributes</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode.getAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getAttributes&lt;/code&gt; method answers the dictionary &lt;code&gt;Attributes&lt;/code&gt; instance
+&lt;code&gt;self._attributes&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.basenode.BaseNode.getNewAttributes">
+<tt class="descname">getNewAttributes</tt><big>(</big><em>attributes=None</em>, <em>args=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.basenode.BaseNode.getNewAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getAttributes&lt;/code&gt; method answers &lt;attr&gt;attributes&lt;/attr&gt; attribute or a new instance of
+&lt;code&gt;Attributes&lt;/code&gt;. The attribute set holds the &#64;attributes of the &lt;attr&gt;self&lt;/attr&gt; node. Note that the
+attribute set is stored “as such” without making a copy. So any change to the attribute set when manipulating
+the tree, will also reflect in the original attribute set.&lt;br/&gt;</p>
+<p>If the &lt;attr&gt;args&lt;/attr&gt; dictionary is defined, then the these values are added over the the key-value of new
+create &lt;code&gt;Attributes&lt;/code&gt; instance. This is a separate method to allow inheriting node classes to redefine
+the class of the attribute set. The &lt;attr&gt;args&lt;/attr&gt; attribute can be either a dictionary or a list of
+dictionaries.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.tree.etreenode">
+<span id="xierpa3-toolbox-tree-etreenode-module"></span><h2>xierpa3.toolbox.tree.etreenode module<a class="headerlink" href="#module-xierpa3.toolbox.tree.etreenode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.tree.etreenode.EtreeNode">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.tree.etreenode.</tt><tt class="descname">EtreeNode</tt><big>(</big><em>tree=None</em>, <em>xml=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.etreenode.EtreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;EtreeNode&lt;/code&gt; class provides a wrapper around any etree node, to make a more convenient and robust
+Python based API.&lt;br/&gt;
+Note that if &lt;attr&gt;xml&lt;/attr&gt; is supplied to the constructor, it needs to be validated XML, since not other checking
+or transformation is performed at this stage.&lt;br/&gt;
+The same is true the other way around. This especially is applies for the instance read and written from &lt;code&gt;
+XmlTreeField&lt;/code&gt; fields. For documentation on Etree see &lt;a href=&#8221;<a class="reference external" href="http://lxml.de/tutorial.html">http://lxml.de/tutorial.html</a>&#8220;&gt;the official
+tutorial&lt;/a&gt;.</p>
+<dl class="attribute">
+<dt id="xierpa3.toolbox.tree.etreenode.EtreeNode.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.toolbox.tree.etreenode.EtreeNode.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.tree.etreenode.EtreeNode.getXPath">
+<em class="property">classmethod </em><tt class="descname">getXPath</tt><big>(</big><em>tree</em>, <em>xpath</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.etreenode.EtreeNode.getXPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getXPath&lt;/code&gt; class method queries the &lt;attr&gt;tree&lt;/attr&gt; by &lt;attr&gt;xpath&lt;/attr&gt; and answers a
+list of &lt;code&gt;EtreeNode&lt;/code&gt; instances for every matching entry. There are several answering conditions: if
+&lt;attr&gt;tree&lt;/attr&gt; is &lt;code&gt;None&lt;/code&gt; then answer &lt;code&gt;None&lt;/code&gt;. If there is no result, then answer
+&lt;code&gt;None&lt;/code&gt;. If the result is a list of &lt;code&gt;basestring&lt;/code&gt; instances (tested on the first of the
+list) then answer the list untouched. Otherwise make a new list with the result &lt;code&gt;etree&lt;/code&gt; nodes wrapped
+as &lt;code&gt;EtreeNode&lt;/code&gt; instances.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.tree.etreenode.EtreeNode.getXPathNode">
+<em class="property">classmethod </em><tt class="descname">getXPathNode</tt><big>(</big><em>tree</em>, <em>xpath</em>, <em>index=0</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.etreenode.EtreeNode.getXPathNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getXPathNode&lt;/code&gt; class method does the same as &lt;code&gt;cls.getXPath&lt;/code&gt; except that it
+answers the element of the list indicated by &lt;attr&gt;index&lt;/attr&gt;. If there is no result, or if the &lt;attr&gt;index
+&lt;/attr&gt; exceeds the length of the result list, then &lt;code&gt;None&lt;/code&gt; is answered. Default value for the
+optional &lt;attr&gt;index&lt;/attr&gt; attribute is &lt;code&gt;0&lt;/code&gt;, resulting in the first element if it exists.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.tree.state">
+<span id="xierpa3-toolbox-tree-state-module"></span><h2>xierpa3.toolbox.tree.state module<a class="headerlink" href="#module-xierpa3.toolbox.tree.state" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.tree.state.State">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.tree.state.</tt><tt class="descname">State</tt><big>(</big><em>attributes=None</em>, <em>form=None</em>, <em>**args</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.state.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.toolbox.tree.basenode.BaseNode" title="xierpa3.toolbox.tree.basenode.BaseNode"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.toolbox.tree.basenode.BaseNode</span></tt></a></p>
+<p>A &lt;code&gt;State&lt;/code&gt; instance holds the current state of style parameters while rendering a set of styles
+in a canvas or CSS. If the state refers to a style, then this is used to get cascading values from, in case
+the current set of attributes does not contain the requested name. Setting values, however, only takes
+place on the state attribute set, so the styles set will never be written.&lt;br/&gt;</p>
+<p>The &lt;code&gt;State&lt;/code&gt; as final &lt;quote&gt;leaf&lt;/quote&gt; underneath a cascading &lt;code&gt;Style&lt;code&gt; tree, can be
+seen as a sketch pad that hold the rendered values and stores any changed value, so it  will not damage the
+fixed styles.&lt;br/&gt;</p>
+<p>&lt;code&gt;State&lt;/code&gt; instances are used in various places where several sides need to share the save values
+and where the set of values is undefined or expanding in the future. Examples are the state sharing between
+&lt;code&gt;ImageBuilder&lt;/code&gt; and &lt;code&gt;Canvas&lt;/code&gt; or the sharing between the main &lt;code&gt;SiteBuilder&lt;/code&gt;
+application and window instances.</p>
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.state.State.get">
+<tt class="descname">get</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.state.State.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;get&lt;/code&gt; (or &lt;code&gt;state[name]&lt;/code&gt;) method answers the state attribute named &lt;attr&gt;name
+&lt;/attr&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.state.State.getState">
+<tt class="descname">getState</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.state.State.getState" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getState&lt;/code&gt; method is allowed for compatibility reasons with &lt;code&gt;Style&lt;/code&gt; instances.
+The behavior is to answers a copy of &lt;code&gt;self&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.tree.state.State.set">
+<tt class="descname">set</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.tree.state.State.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;set&lt;/code&gt; (or &lt;code&gt;state[name] = value&lt;/code&gt;) method sets the attribute &lt;attr&gt;name&lt;/attr&gt; to
+&lt;attr&gt;value&lt;/attr&gt;. This value is stored locally in the attributes dictionary of the state instance. It will not
+alter the style it may reference. Also it will block any further searching in the cascading set of style values,
+since the locally stored value is found on any next request for that name.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.tree">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.toolbox.tree" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.toolbox.tree package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.tree.attributes">xierpa3.toolbox.tree.attributes module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.tree.basenode">xierpa3.toolbox.tree.basenode module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.tree.etreenode">xierpa3.toolbox.tree.etreenode module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.tree.state">xierpa3.toolbox.tree.state module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.tree">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.toolbox.tree.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

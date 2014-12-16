@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.toolbox.session package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-toolbox-session-package">
+<h1>xierpa3.toolbox.session package<a class="headerlink" href="#xierpa3-toolbox-session-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.toolbox.session.session">
+<span id="xierpa3-toolbox-session-session-module"></span><h2>xierpa3.toolbox.session.session module<a class="headerlink" href="#module-xierpa3.toolbox.session.session" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.session.session.Session">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.session.session.</tt><tt class="descname">Session</tt><big>(</big><em>key</em>, <em>timestamp</em>, <em>limit=None</em>, <em>name=None</em>, <em>user=None</em>, <em>keep=False</em>, <em>protected=False</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="xierpa3.toolbox.session.session.Session.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.allExist">
+<tt class="descname">allExist</tt><big>(</big><em>fields, matchvalues=[None]</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.allExist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.anyExists">
+<tt class="descname">anyExists</tt><big>(</big><em>fields, matchvalues=[None]</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.anyExists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.append">
+<tt class="descname">append</tt><big>(</big><em>form</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.asString">
+<tt class="descname">asString</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.asString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.cleanUp">
+<tt class="descname">cleanUp</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.cleanUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean up the session for objects that can&#8217;t be cpickled: 
+1. parsed node trees with weakrefs cannot be cpickled;</p>
+<p>python v 2.4 raises a TypeError instead of pickle.UnpickleableError, so catch this exception</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xpyth.xmlparser</span> <span class="kn">import</span> <span class="n">XMLParser</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parsed_xml</span> <span class="o">=</span> <span class="n">XMLParser</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&#39;&lt;a&gt;&lt;b&gt;c&lt;/b&gt;&lt;/a&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parsed_xml</span>
+<span class="go">&lt;a No parent &gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="s">&#39;1234&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;nodewithweakparent&#39;</span><span class="p">,</span> <span class="n">parsed_xml</span><span class="p">)</span>
+<span class="go">&lt;a No parent &gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;clear&lt;/code&gt; method clears all session data, while keeping the instance working.
+This e.g. can be used when the user is logging out, and all previous data should be cleared.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.default">
+<tt class="descname">default</tt><big>(</big><em>field</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;default&lt;/code&gt; method sets the value of &lt;attr&gt;field&lt;/attr&gt; to &lt;attr&gt;value&lt;/attr&gt;
+only if the current value is &lt;code&gt;None&lt;/code&gt;. This way the method can be used to compact
+initialize the value of a session field.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.expireTime">
+<tt class="descname">expireTime</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.expireTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.expired">
+<tt class="descname">expired</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.expired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.get">
+<tt class="descname">get</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.getExpirationTime">
+<tt class="descname">getExpirationTime</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.getExpirationTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.getSid">
+<tt class="descname">getSid</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.getSid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.initialize">
+<tt class="descname">initialize</tt><big>(</big><em>form=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.items">
+<tt class="descname">items</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.refresh">
+<tt class="descname">refresh</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.set">
+<tt class="descname">set</tt><big>(</big><em>field</em>, <em>value</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.setData">
+<tt class="descname">setData</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.setData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.show">
+<tt class="descname">show</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.session.Session.values">
+<tt class="descname">values</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.session.Session.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.session.sessionmanager">
+<span id="xierpa3-toolbox-session-sessionmanager-module"></span><h2>xierpa3.toolbox.session.sessionmanager module<a class="headerlink" href="#module-xierpa3.toolbox.session.sessionmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager">
+<em class="property">class </em><tt class="descclassname">xierpa3.toolbox.session.sessionmanager.</tt><tt class="descname">SessionManager</tt><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></p>
+<dl class="attribute">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.garbageCollect">
+<tt class="descname">garbageCollect</tt><big>(</big><em>force=False</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.garbageCollect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getExpire">
+<tt class="descname">getExpire</tt><big>(</big><em>sid</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getExpire" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getExpire&lt;/code&gt; method answers amount of seconds before the session &lt;attr&gt;sid&lt;/attr&gt; will expire.
+Answer &lt;code&gt;0&lt;/code&gt; is the session cannot be found.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getLoggedUserIds">
+<tt class="descname">getLoggedUserIds</tt><big>(</big><em>applicationname</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getLoggedUserIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getLoggedUserIds&lt;/code&gt; method answers the list of ids for all users that are logged in with 
+non-expired sessions that have &lt;attr&gt;applicationname&lt;/attr&gt;. 
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getNewSessionId">
+<em class="property">classmethod </em><tt class="descname">getNewSessionId</tt><big>(</big><em>size=None</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getNewSessionId" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getNewSessionId&lt;/code&gt; method answers a new generated session id of length &lt;attr&gt;size&lt;/attr&gt;
+of &lt;code&gt;self.SESSION_SIDDIGITS&lt;/code&gt; if omitted.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getSession">
+<tt class="descname">getSession</tt><big>(</big><em>sid</em>, <em>limit=None</em>, <em>name=None</em>, <em>user=None</em>, <em>keep=False</em>, <em>protected=False</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getSession&lt;/code&gt; method answers the &lt;code&gt;Session&lt;/code&gt; instance with &lt;attr&gt;sid&lt;/attr&gt;.
+Answer a new instance if the &lt;attr&gt;sid&lt;/attr&gt; cannot be found. Store that session in the dict of &lt;code&gt;self&lt;/code&gt;.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getSessionById">
+<tt class="descname">getSessionById</tt><big>(</big><em>applicationname</em>, <em>sid</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getSessionById" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getSessionById&lt;/code&gt; method answers the session the is defined by &lt;attr&gt;applicationname&lt;/attr&gt;
+and &lt;attr&gt;sid&lt;/attr&gt;. Answer &lt;code&gt;None&lt;/code&gt; if the session cannot be found.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.getTimeStamps">
+<tt class="descname">getTimeStamps</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.getTimeStamps" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getTimeStamps&lt;/code&gt; method answers a list with the timestamps of all existing session.
+The &lt;code&gt;self.garbageCollect&lt;/code&gt; method is called to cleanup expired sessions once in a while.
+This is done before the collection of current time stamps is performed.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.newSession">
+<tt class="descname">newSession</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.newSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;getNewSession&lt;/code&gt; method answers a new session.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.newTimeStamp">
+<em class="property">classmethod </em><tt class="descname">newTimeStamp</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.newTimeStamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;newTimeStamp&lt;/code&gt; method answers a uniquelong, so there the total number is always unique.
+The result is a 18-digit long that will fit inside a Postgres bigint, instead of a relational id.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.toolbox.session.sessionmanager.SessionManager.refresh">
+<tt class="descname">refresh</tt><big>(</big><em>sid</em><big>)</big><a class="headerlink" href="#xierpa3.toolbox.session.sessionmanager.SessionManager.refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;doc&gt;
+The &lt;code&gt;refresh&lt;/code&gt; method refreshes the timestamp of session &lt;attr&gt;sid&lt;/attr&gt;.
+Ignore the call if the session cannot be found.
+&lt;/doc&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.toolbox.session">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.toolbox.session" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.toolbox.session package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.session.session">xierpa3.toolbox.session.session module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.session.sessionmanager">xierpa3.toolbox.session.sessionmanager module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.toolbox.session">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.toolbox.session.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

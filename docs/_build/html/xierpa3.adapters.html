@@ -1,0 +1,1032 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xierpa3.adapters package &mdash; Xierpa 3 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xierpa 3 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xierpa3-adapters-package">
+<h1>xierpa3.adapters package<a class="headerlink" href="#xierpa3-adapters-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xierpa3.adapters.kirby.html">xierpa3.adapters.kirby package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.adapters.kirby.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.adapters.kirby.html#xierpa3-adapters-kirby-kirbyadapter-module">xierpa3.adapters.kirby.kirbyadapter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xierpa3.adapters.kirby.html#module-xierpa3.adapters.kirby">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-xierpa3.adapters.adapter">
+<span id="xierpa3-adapters-adapter-module"></span><h2>xierpa3.adapters.adapter module<a class="headerlink" href="#module-xierpa3.adapters.adapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.adapter.Adapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.adapter.</tt><tt class="descname">Adapter</tt><big>(</big><em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>The Adapter classes connect the templates to content. Note that an adapter always a &lt;b&gt;Data&lt;/b&gt;
+instance with attributes fields that fit the request. The caller needs to check if the requested fields
+really where filled. In case of an error the <em>article.error</em> field is holding the error message
+and the error fields are &lt;b&gt;None&lt;/b&gt;. In case there is an unknown request, the output text is
+equal to the error message.</p>
+<dl class="attribute">
+<dt id="xierpa3.adapters.adapter.Adapter.ARTICLECLASS">
+<tt class="descname">ARTICLECLASS</tt><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.ARTICLECLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Article</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.adapters.adapter.Adapter.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.get">
+<tt class="descname">get</tt><big>(</big><em>contentID=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>This get method is the core routine to make the adapter produce content. 
+There is a dispatcher level to search for an adapter method that matches 
+the contentID.
+All adapter method need to answer a Data instance, where the requested data is embedded
+as one of the attributes &#64;(article.text, article.url, article.chapters)&#64;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getArticle">
+<tt class="descname">getArticle</tt><big>(</big><em>id=None</em>, <em>index=0</em>, <em>selector=None</em>, <em>order=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the article, indicate by &lt;b&gt;id&lt;/b&gt;. If &lt;b&gt;id&lt;/b&gt; is &lt;b&gt;None&lt;/b&gt;
+or omitted, then try to find the id the sort order of article ids at &lt;b&gt;index&lt;/b&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getArticleIds">
+<tt class="descname">getArticleIds</tt><big>(</big><em>start=0</em>, <em>count=1</em>, <em>selector=None</em>, <em>order=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getArticleIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the list article ids in the current sort order. To be redefined
+but inheriting adapter classes. Default behavior is the answer an list of index
+numbers from &lt;b&gt;start&lt;/b&gt; to &lt;b&gt;start+count&lt;/b&gt;.
+The &lt;b&gt;selector&lt;/b&gt; and &lt;b&gt;order&lt;/b&gt; indicate the kind of articles to be 
+selected and the order in which they should be indexed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getArticles">
+<tt class="descname">getArticles</tt><big>(</big><em>ids=None</em>, <em>start=0</em>, <em>count=1</em>, <em>selector=None</em>, <em>order=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getArticles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the articles as indicated by the arguments. There are several types
+of selection possible. &lt;b&gt;self.getArticles(count=4)&lt;/b&gt; will answer the 
+first 4 articles in the current sort order of articles. &lt;b&gt;self.getArticles(start=5, count=3)&lt;/b&gt;
+will answer the articles with index 5, 6 and 7 in the current sort order of articles.
+&lt;b&gt;self.getArticles(ids=(&#8216;aaa&#8217;, &#8216;bbb&#8217;, &#8216;ccc&#8217;))&lt;/b&gt; will answer the articles with
+the indicated id in the defined order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getChapter">
+<tt class="descname">getChapter</tt><big>(</big><em>index=0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getChapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the chapter with in index of the current article.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getChapters">
+<tt class="descname">getChapters</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getChapters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a list of the selected article chapters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getDescription">
+<tt class="descname">getDescription</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the description of the site (or page) to be used in the head.meta.description tag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getFavIcon">
+<tt class="descname">getFavIcon</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getFavIcon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getFooter">
+<tt class="descname">getFooter</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getFooter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getKeyWords">
+<tt class="descname">getKeyWords</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getKeyWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the keywords of the site (or page) to be used in the head.meta.keywords tag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getLogo">
+<tt class="descname">getLogo</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getLogo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getMobilePages">
+<tt class="descname">getMobilePages</tt><big>(</big><em>count=10</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getMobilePages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getPageTitle">
+<tt class="descname">getPageTitle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getPages">
+<tt class="descname">getPages</tt><big>(</big><em>count=10</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getPages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getSocialMedia">
+<tt class="descname">getSocialMedia</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getSocialMedia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.getTagCloud">
+<tt class="descname">getTagCloud</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.getTagCloud" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.adapter.Adapter.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optionally to be redefined by inheriting adapter classes. Default behavior is to do nothing.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.adapters.adapter.Adapter.newArticle">
+<em class="property">classmethod </em><tt class="descname">newArticle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adapter.Adapter.newArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>To allow modification by inheriting classes, answer a new instance of Data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.adaptertester">
+<span id="xierpa3-adapters-adaptertester-module"></span><h2>xierpa3.adapters.adaptertester module<a class="headerlink" href="#module-xierpa3.adapters.adaptertester" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.adaptertester.AdapterTester">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.adaptertester.</tt><tt class="descname">AdapterTester</tt><a class="headerlink" href="#xierpa3.adapters.adaptertester.AdapterTester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>The AdapterTester is used to test the validity of the API of an adapter.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">textilefileadapter</span> <span class="kn">import</span> <span class="n">TextileFileAdapter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AdapterTester</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">adapter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="xierpa3.adapters.adaptertester.AdapterTester.error">
+<em class="property">classmethod </em><tt class="descname">error</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adaptertester.AdapterTester.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.adapters.adaptertester.AdapterTester.test">
+<em class="property">classmethod </em><tt class="descname">test</tt><big>(</big><em>adapter</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adaptertester.AdapterTester.test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.adapters.adaptertester.AdapterTester.testArticle">
+<em class="property">classmethod </em><tt class="descname">testArticle</tt><big>(</big><em>article</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adaptertester.AdapterTester.testArticle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.adapters.adaptertester.AdapterTester.testChapters">
+<em class="property">classmethod </em><tt class="descname">testChapters</tt><big>(</big><em>article</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.adaptertester.AdapterTester.testChapters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.blurbadapter">
+<span id="xierpa3-adapters-blurbadapter-module"></span><h2>xierpa3.adapters.blurbadapter module<a class="headerlink" href="#module-xierpa3.adapters.blurbadapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.blurbadapter.</tt><tt class="descname">BlurbAdapter</tt><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+<p>The Adapter classes connect the templates to Blurb content. 
+Note that an adapter always returns plain text/content elements (which can include plain HTML), not components. The conversion needs to be done by the calling component.</p>
+<dl class="attribute">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.IMAGES">
+<tt class="descname">IMAGES</tt><em class="property"> = ['//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bahrain.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/bush.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/chinatown.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/earthquake.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/egypt.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/electrical-storm.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/felix-graph-3.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass2.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass3.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/googleglass4.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/guaguacrater.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/katrina.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/kiss.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/libya.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/little_italy.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/news.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/newspaper.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/nkorealaunch.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama2.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/obama03.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/olympicpast2.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/perfect_storm1_large.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/polarbears.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rahm.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/rolyaluk2.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/royaluk.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/shuttle.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/storm-nbpier.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/swarmybigshot.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/tibet.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/transport.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/travel.jpg', '//lib.xierpaweb.com.s3.amazonaws.com/_images/newspaper/images/news/verticalfashionshow.jpg']</em><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.IMAGES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getArticle">
+<tt class="descname">getArticle</tt><big>(</big><em>id=None</em>, <em>index=0</em>, <em>selector=None</em>, <em>order=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getArticle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getArticleIds">
+<tt class="descname">getArticleIds</tt><big>(</big><em>start=0</em>, <em>count=1</em>, <em>selector=None</em>, <em>order=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getArticleIds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getChapter">
+<tt class="descname">getChapter</tt><big>(</big><em>index=0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getChapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a blurb article as chapter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getDescription">
+<tt class="descname">getDescription</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a blurb description of the site.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getFooter">
+<tt class="descname">getFooter</tt><big>(</big><em>count=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getFooter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getKeyWords">
+<tt class="descname">getKeyWords</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getKeyWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a blurb set of keywords of the site, comma-space separated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getLogo">
+<tt class="descname">getLogo</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getLogo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getMessage">
+<tt class="descname">getMessage</tt><big>(</big><em>count=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getMessage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getPageTitle">
+<tt class="descname">getPageTitle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getSocialMedia">
+<tt class="descname">getSocialMedia</tt><big>(</big><em>count=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getSocialMedia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.blurbadapter.BlurbAdapter.getTagCloud">
+<tt class="descname">getTagCloud</tt><big>(</big><em>count=10</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.blurbadapter.BlurbAdapter.getTagCloud" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.dynamodbadapter">
+<span id="xierpa3-adapters-dynamodbadapter-module"></span><h2>xierpa3.adapters.dynamodbadapter module<a class="headerlink" href="#module-xierpa3.adapters.dynamodbadapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.dynamodbadapter.Connector">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.dynamodbadapter.</tt><tt class="descname">Connector</tt><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.Connector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.dynamodbadapter.</tt><tt class="descname">DynamoDBAdapter</tt><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+<p>Wrapper around the DynamoDB Connector, using:
+- Connector.getItem(id)
+- Connector.saveItem(item)
+- Connector.newItem(d)</p>
+<dl class="method">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getItem">
+<tt class="descname">getItem</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getLogo">
+<tt class="descname">getLogo</tt><big>(</big><em>count</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getLogo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getMessage">
+<tt class="descname">getMessage</tt><big>(</big><em>count</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.getMessage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.newItem">
+<tt class="descname">newItem</tt><big>(</big><em>d=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.newItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.saveItem">
+<tt class="descname">saveItem</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.dynamodbadapter.DynamoDBAdapter.saveItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.phpadapter">
+<span id="xierpa3-adapters-phpadapter-module"></span><h2>xierpa3.adapters.phpadapter module<a class="headerlink" href="#module-xierpa3.adapters.phpadapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.phpadapter.</tt><tt class="descname">PhpAdapter</tt><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+<p>Adapter for PHP output.</p>
+<p>TODO: Make matching with <a class="reference external" href="http://simplemvcframework.com/documentation/v2/install">http://simplemvcframework.com/documentation/v2/install</a></p>
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articlePublished">
+<tt class="descname">articlePublished</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articlePublished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articleTagUrl">
+<tt class="descname">articleTagUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articleTagUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articleTitle">
+<tt class="descname">articleTitle</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articleTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articleUrl">
+<tt class="descname">articleUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articleUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articles">
+<tt class="descname">articles</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articlesNextUrl">
+<tt class="descname">articlesNextUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articlesNextUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.articlesPrevUrl">
+<tt class="descname">articlesPrevUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.articlesPrevUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.chapters">
+<tt class="descname">chapters</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.chapters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.elseIfSearchQuery">
+<tt class="descname">elseIfSearchQuery</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.elseIfSearchQuery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.excerptArticle">
+<tt class="descname">excerptArticle</tt><big>(</big><em>length</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.excerptArticle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.featuredArticles">
+<tt class="descname">featuredArticles</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.featuredArticles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.feed">
+<tt class="descname">feed</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.forEachArticle">
+<tt class="descname">forEachArticle</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.forEachArticle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.forEachPageTag">
+<tt class="descname">forEachPageTag</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.forEachPageTag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.forEachResult">
+<tt class="descname">forEachResult</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.forEachResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.forEachTag">
+<tt class="descname">forEachTag</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.forEachTag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.getPageTitle">
+<tt class="descname">getPageTitle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.getPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.getPages">
+<tt class="descname">getPages</tt><big>(</big><em>count</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.getPages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.getSnippet">
+<tt class="descname">getSnippet</tt><big>(</big><em>s1</em>, <em>s2=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.getSnippet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.htmlSearchQuery">
+<tt class="descname">htmlSearchQuery</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.htmlSearchQuery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.htmlTag">
+<tt class="descname">htmlTag</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.htmlTag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasNext">
+<tt class="descname">ifArticlesHasNext</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasNext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasPrev">
+<tt class="descname">ifArticlesHasPrev</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasPrev" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasPrevAndNext">
+<tt class="descname">ifArticlesHasPrevAndNext</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifArticlesHasPrevAndNext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasNext">
+<tt class="descname">ifPageHasNext</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasNext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasPrev">
+<tt class="descname">ifPageHasPrev</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasPrev" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasPrevAndNext">
+<tt class="descname">ifPageHasPrevAndNext</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifPageHasPrevAndNext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifPaginationHasPages">
+<tt class="descname">ifPaginationHasPages</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifPaginationHasPages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.ifResults">
+<tt class="descname">ifResults</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.ifResults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.kirbyText">
+<tt class="descname">kirbyText</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.kirbyText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.leftArrow">
+<tt class="descname">leftArrow</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.leftArrow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.logoUrl">
+<tt class="descname">logoUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.logoUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.nextLabel">
+<tt class="descname">nextLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.nextLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pageNextUrl">
+<tt class="descname">pageNextUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pageNextUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pagePrevUrl">
+<tt class="descname">pagePrevUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pagePrevUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pagePublished">
+<tt class="descname">pagePublished</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pagePublished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pageTags">
+<tt class="descname">pageTags</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pageTags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pageTitle">
+<tt class="descname">pageTitle</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pageTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.pageUrl">
+<tt class="descname">pageUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.pageUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.previousLabel">
+<tt class="descname">previousLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.previousLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.readMoreLabel">
+<tt class="descname">readMoreLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.readMoreLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.resultDescription">
+<tt class="descname">resultDescription</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.resultDescription" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.resultText">
+<tt class="descname">resultText</tt><big>(</big><em>count</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.resultText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.resultTitle">
+<tt class="descname">resultTitle</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.resultTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.resultUrl">
+<tt class="descname">resultUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.resultUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.rightArrow">
+<tt class="descname">rightArrow</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.rightArrow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.search">
+<tt class="descname">search</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.searchUrl">
+<tt class="descname">searchUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.searchUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.siteTitle">
+<tt class="descname">siteTitle</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.siteTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.tagName">
+<tt class="descname">tagName</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.tagName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.tagUrl">
+<tt class="descname">tagUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.tagUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.tagsLabel">
+<tt class="descname">tagsLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.tagsLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.phpadapter.PhpAdapter.thisUrl">
+<tt class="descname">thisUrl</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.phpadapter.PhpAdapter.thisUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.s3adapter">
+<span id="xierpa3-adapters-s3adapter-module"></span><h2>xierpa3.adapters.s3adapter module<a class="headerlink" href="#module-xierpa3.adapters.s3adapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.s3adapter.S3Adapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.s3adapter.</tt><tt class="descname">S3Adapter</tt><big>(</big><em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.s3adapter.S3Adapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter" title="xierpa3.adapters.textilefileadapter.TextileFileAdapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.textilefileadapter.TextileFileAdapter</span></tt></a></p>
+<p>Adapter for Textile file serving from S3 storage.</p>
+<dl class="classmethod">
+<dt id="xierpa3.adapters.s3adapter.S3Adapter.readWikiFile">
+<em class="property">classmethod </em><tt class="descname">readWikiFile</tt><big>(</big><em>fsPath</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.s3adapter.S3Adapter.readWikiFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.simpledbadapter">
+<span id="xierpa3-adapters-simpledbadapter-module"></span><h2>xierpa3.adapters.simpledbadapter module<a class="headerlink" href="#module-xierpa3.adapters.simpledbadapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.simpledbadapter.SimpleDBAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.simpledbadapter.</tt><tt class="descname">SimpleDBAdapter</tt><a class="headerlink" href="#xierpa3.adapters.simpledbadapter.SimpleDBAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.sqladapter">
+<span id="xierpa3-adapters-sqladapter-module"></span><h2>xierpa3.adapters.sqladapter module<a class="headerlink" href="#module-xierpa3.adapters.sqladapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.sqladapter.</tt><tt class="descname">SQLAdapter</tt><big>(</big><em>database_name</em>, <em>model=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+<dl class="attribute">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.SQL_NOTDELETED">
+<tt class="descname">SQL_NOTDELETED</tt><em class="property"> = 'deleted is not TRUE'</em><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.SQL_NOTDELETED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.getEmptySelection">
+<tt class="descname">getEmptySelection</tt><big>(</big><em>table='item'</em>, <em>fields=None</em>, <em>**args</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.getEmptySelection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.getModel">
+<tt class="descname">getModel</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.getModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model of the database for Python representation and operation of data set. By default represent Item table only.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.getRecord">
+<tt class="descname">getRecord</tt><big>(</big><em>table='item'</em>, <em>id=None</em>, <em>readonly=True</em>, <em>data=None</em>, <em>fields=None</em>, <em>**args</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.getRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getRecord&lt;/code&gt; method answers the result of &lt;code&gt;self._db.getRecord&lt;/code&gt;. If &lt;attr&gt;id&lt;/attr&gt; is
+not defined, then create a new record, using the optional &lt;attr&gt;args&lt;/attr&gt; as values to initialize. If the record
+cannot be found, then answer an instance if &lt;code&gt;NoneRecord&lt;/code&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.getSelection">
+<tt class="descname">getSelection</tt><big>(</big><em>table=None</em>, <em>selector=None</em>, <em>where=None</em>, <em>order=None</em>, <em>slice=None</em>, <em>start=None</em>, <em>parentid=None</em>, <em>readonly=True</em>, <em>query=None</em>, <em>fields=None</em>, <em>deleted=False</em>, <em>andor='AND'</em>, <em>selectall=False</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.getSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &lt;code&gt;getSelection&lt;/code&gt; method is a front for &lt;code&gt;self._db.getSelection()&lt;/code&gt;. The difference is that
+it allows three ways to defined the selection clause: &lt;attr&gt;**args&lt;/attr&gt; is the dictionary of additional
+attributes that will be composed into an AND clause &lt;attr&gt;where&lt;/attr&gt;, or the &lt;attr&gt;selector&lt;/attr&gt; instance or
+the raw &lt;attr&gt;where&lt;/attr&gt;. If one of these attributes is defined, then the value of the preceding ones are
+ignored.&lt;br/&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.sqladapter.SQLAdapter.openDatabase">
+<tt class="descname">openDatabase</tt><big>(</big><em>database_name</em>, <em>model</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.sqladapter.SQLAdapter.openDatabase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.adapters.sqladapter.Selector">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.sqladapter.</tt><tt class="descname">Selector</tt><a class="headerlink" href="#xierpa3.adapters.sqladapter.Selector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="xierpa3.adapters.sqladapter.SqlDatastore">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.sqladapter.</tt><tt class="descname">SqlDatastore</tt><a class="headerlink" href="#xierpa3.adapters.sqladapter.SqlDatastore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters.textilefileadapter">
+<span id="xierpa3-adapters-textilefileadapter-module"></span><h2>xierpa3.adapters.textilefileadapter module<a class="headerlink" href="#module-xierpa3.adapters.textilefileadapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter">
+<em class="property">class </em><tt class="descclassname">xierpa3.adapters.textilefileadapter.</tt><tt class="descname">TextileFileAdapter</tt><big>(</big><em>root=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#xierpa3.adapters.adapter.Adapter" title="xierpa3.adapters.adapter.Adapter"><tt class="xref py py-class docutils literal"><span class="pre">xierpa3.adapters.adapter.Adapter</span></tt></a></p>
+<p>The TextileFileAdapter reads the articles from a tree of folder/text files, compiling
+the Textile source to HTML.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">getArticle</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">&#39;index&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">title</span>
+<span class="go">u&#39;Home&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">featured</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">u&#39;how-to-build-a-xierpa3-site&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">getArticle</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">article</span><span class="o">.</span><span class="n">featured</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">keys</span><span class="p">()[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">[u&#39;author&#39;, &#39;blogresponse&#39;, u&#39;category&#39;, u&#39;featured&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">title</span>
+<span class="go">u&#39;How to build a site with Xierpa3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">featured</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">u&#39;example-hello-world&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">author</span>
+<span class="go">u&#39;Petr van Blokland&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">article</span><span class="o">.</span><span class="n">topic</span>
+<span class="go">u&#39;A basic course in building sites the easy way.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">article</span><span class="o">.</span><span class="n">chapters</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span><span class="o">.</span><span class="n">ranked</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">[Article blogresponse, featured, id, modificationTime, path, ranking, source, tag, title, url]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span><span class="o">.</span><span class="n">ranked</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span>
+<span class="go">u&#39;Categories&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span><span class="o">.</span><span class="n">getIdPaths</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">(&#39;about&#39;, &#39;about.txt&#39;)</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.C">
+<tt class="descname">C</tt><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.C" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Constants</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.CHAPTER_TAG">
+<tt class="descname">CHAPTER_TAG</tt><em class="property"> = '=C='</em><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.CHAPTER_TAG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.COMMASPLIT">
+<tt class="descname">COMMASPLIT</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x107e68370&gt;</em><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.COMMASPLIT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adapter for Textile wiki file serving.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.DATACLASS">
+<tt class="descname">DATACLASS</tt><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.DATACLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Article</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.FIELDVALUE">
+<tt class="descname">FIELDVALUE</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x107e4eb70&gt;</em><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.FIELDVALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.compileArticle">
+<tt class="descname">compileArticle</tt><big>(</big><em>wiki</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.compileArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile the wiki text into an Article instance, but parsing the field definition, split
+on chapters and translate the chapter content through textile to html.
+See specification on :<a class="reference external" href="http://redcloth.org/hobix.com/textile/">http://redcloth.org/hobix.com/textile/</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticle">
+<tt class="descname">getArticle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the matching article, based on the available keywords in <em>kwargs</em>. The method will
+search in cached articles. If the file of the article changed, then it will be updated by
+compiling the Textile content again.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticleByIndex">
+<tt class="descname">getArticleByIndex</tt><big>(</big><em>index</em>, <em>selector=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticleByIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the article that is matching the <em>index</em> in sorting/selection of <em>selector</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticleByUrl">
+<tt class="descname">getArticleByUrl</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticleByUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the article that is matching <em>url</em> by one of the values in the &#64;$url&#64; field.
+Answer &#64;None&#64; if no matching article could be found.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticles">
+<tt class="descname">getArticles</tt><big>(</big><em>start=0</em>, <em>count=1</em>, <em>omit=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getArticles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the sorted list of <em>count</em> pages/articles, starting on <em>start</em> index, 
+selected from all articles. Sorting is based om the &#64;article.ranking&#64; field.
+If <em>omit</em> is a list of article ids (or a single id), then skip these articles 
+from the selection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getCachedArticle">
+<tt class="descname">getCachedArticle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getCachedArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the cached articles. If not available yet, read them through <em>self.getPaths()</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getCachedArticles">
+<tt class="descname">getCachedArticles</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getCachedArticles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapterByIndex">
+<tt class="descname">getChapterByIndex</tt><big>(</big><em>index</em>, <em>article</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapterByIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the chapter by &lt;b&gt;index&lt;/b&gt; in the Article instance &lt;b&gt;article&lt;/b&gt;.
+Answer &lt;b&gt;None&lt;/b&gt; if the chapter index is not valid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapterTitleByIndex">
+<tt class="descname">getChapterTitleByIndex</tt><big>(</big><em>index</em>, <em>article</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapterTitleByIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the title of the chapter by &lt;b&gt;index&lt;/b&gt; in the Article instance &lt;b&gt;article&lt;/b&gt;.
+Answer &lt;b&gt;None&lt;/b&gt; if the index is not valid or the title cannot be found.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapters">
+<tt class="descname">getChapters</tt><big>(</big><em>article</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getChapters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getFeaturedArticles">
+<tt class="descname">getFeaturedArticles</tt><big>(</big><em>id</em>, <em>start</em>, <em>count</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getFeaturedArticles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a list of featured articles in the article that has &#64;id&#64; as identifier.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getFields">
+<tt class="descname">getFields</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer a &#64;Article&#64; instance with dictionaries of all field names, related to lists of articles.
+Included &#64;article.urls&#64;, &#64;article.categories&#64; and &#64;article.levels&#64;.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span><span class="o">.</span><span class="n">getFields</span><span class="p">()</span>
+<span class="go">[Article categories, levels, urls]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getIdPaths">
+<tt class="descname">getIdPaths</tt><big>(</big><em>path=None</em>, <em>idPaths=None</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getIdPaths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getLogo">
+<tt class="descname">getLogo</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getLogo" title="Permalink to this definition">¶</a></dt>
+<dd><p>For now, answer the default DbD logo.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span><span class="o">.</span><span class="n">getLogo</span><span class="p">()</span>
+<span class="go">[Article src, url]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getMenuArticles">
+<tt class="descname">getMenuArticles</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getMenuArticles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer an ordered list of the menu articles, as indicated by the selectors <em>id</em> or other values in <em>kwargs</em>.
+Normally this will be the &#64;home&#64; page of the site, containing the main menu options in &#64;$menu&#64;.
+The &#64;article.pages&#64; are article article instances where the menu points to.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">menuArticles</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">getMenuArticles</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">&#39;index&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">menuArticles</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">article</span><span class="o">.</span><span class="n">id</span>
+<span class="go">&#39;articles&#39;</span>
+<span class="go">&#39;products&#39;</span>
+<span class="go">&#39;courses&#39;</span>
+<span class="go">&#39;about&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getMobilePages">
+<tt class="descname">getMobilePages</tt><big>(</big><em>count=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getMobilePages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getPageTitle">
+<tt class="descname">getPageTitle</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.getRankedArticles">
+<tt class="descname">getRankedArticles</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.getRankedArticles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Answer the dictionary of articles, sorted by rank.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.keys" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">xierpa3.sites</span> <span class="kn">import</span> <span class="n">doingbydesign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Root path where to find the article Simples wiki file for this example page.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">articleRoot</span> <span class="o">=</span> <span class="n">TX</span><span class="o">.</span><span class="n">module2Path</span><span class="p">(</span><span class="n">doingbydesign</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/files/articles/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapter</span> <span class="o">=</span> <span class="n">TextileFileAdapter</span><span class="p">(</span><span class="n">articleRoot</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">adapter</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;about&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.readWikiFile">
+<em class="property">classmethod </em><tt class="descname">readWikiFile</tt><big>(</big><em>fsPath</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.readWikiFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the raw wiki (Textile syntax) file and answer the unicode string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xierpa3.adapters.textilefileadapter.TextileFileAdapter.updateArticle">
+<tt class="descname">updateArticle</tt><big>(</big><em>id</em>, <em>path</em><big>)</big><a class="headerlink" href="#xierpa3.adapters.textilefileadapter.TextileFileAdapter.updateArticle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the article from <em>id</em> and <em>path</em>. Set the modification time, so we know
+when the file is updated.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-xierpa3.adapters">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xierpa3.adapters" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xierpa3.adapters package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.adapter">xierpa3.adapters.adapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.adaptertester">xierpa3.adapters.adaptertester module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.blurbadapter">xierpa3.adapters.blurbadapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.dynamodbadapter">xierpa3.adapters.dynamodbadapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.phpadapter">xierpa3.adapters.phpadapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.s3adapter">xierpa3.adapters.s3adapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.simpledbadapter">xierpa3.adapters.simpledbadapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.sqladapter">xierpa3.adapters.sqladapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters.textilefileadapter">xierpa3.adapters.textilefileadapter module</a></li>
+<li><a class="reference internal" href="#module-xierpa3.adapters">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xierpa3.adapters.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Xierpa 3 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Petr van Blokland, Michiel Kauw-A-Tjoe, Kirsten Langmuur..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
