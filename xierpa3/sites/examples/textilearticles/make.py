@@ -116,7 +116,7 @@ class TextileArticles(Theme):
         return [homePage]
     
     def make(self, root=None):
-        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        u"""The instance of this class builds CSS and HTML files at the optional path **root**.
         If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
         as set by Builder.DEFAULT_ROOTPATH"""
         

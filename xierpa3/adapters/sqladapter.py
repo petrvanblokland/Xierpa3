@@ -44,9 +44,9 @@ class SQLAdapter(Adapter):
 
     def getRecord(self, table='item', id=None, readonly=True, data=None, fields=None, **args):
         u"""
-        The <code>getRecord</code> method answers the result of <code>self._db.getRecord</code>. If <attr>id</attr> is
+        The ``getRecord`` method answers the result of ``self._db.getRecord``. If <attr>id</attr> is
         not defined, then create a new record, using the optional <attr>args</attr> as values to initialize. If the record
-        cannot be found, then answer an instance if <code>NoneRecord</code>.
+        cannot be found, then answer an instance if ``NoneRecord``.
         """
         return self._db.getRecord(table=table, id=id, readonly=readonly,
                                   fields=fields or self._db.getFieldNames(table), data=data, **args)
@@ -55,7 +55,7 @@ class SQLAdapter(Adapter):
             parentid=None, readonly=True, query=None, fields=None, deleted=False, andor='AND',
             selectall=False, *args, **kwargs):
         u"""
-        The <code>getSelection</code> method is a front for <code>self._db.getSelection()</code>. The difference is that
+        The ``getSelection`` method is a front for ``self._db.getSelection()``. The difference is that
         it allows three ways to defined the selection clause: <attr>**args</attr> is the dictionary of additional
         attributes that will be composed into an AND clause <attr>where</attr>, or the <attr>selector</attr> instance or
         the raw <attr>where</attr>. If one of these attributes is defined, then the value of the preceding ones are

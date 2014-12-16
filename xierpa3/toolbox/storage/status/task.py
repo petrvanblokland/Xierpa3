@@ -19,9 +19,9 @@ from xierpa3.toolbox.dating import timestampLong
 
 class Task(Status):
     u"""
-    The <code>Task</code> class implements a set of paramters (inherited from <code>Status</code>) that
-    can be saved and derived from json files. These files are read by class method <code>Task.next()</code> 
-    (or <code>Task.peek()</code>) and executed by the running <code>Scheduler</code> instance. 
+    The ``Task`` class implements a set of paramters (inherited from ``Status``) that
+    can be saved and derived from json files. These files are read by class method ``Task.next()`` 
+    (or ``Task.peek()``) and executed by the running ``Scheduler`` instance. 
     A posted task can be positioned in the scheduler list by altering the <attr>priority</attr> and 
     <attr>order</attr> attributes of the post.
     """
@@ -40,7 +40,7 @@ class Task(Status):
     @classmethod
     def getTaskNames(cls):
         u"""
-        The <code>getTaskNames</code> method answers the list of file names in the
+        The ``getTaskNames`` method answers the list of file names in the
         pending task directory.
         """
         return os.listdir(cls.PATH_SCHEDULERTASKS)
@@ -48,12 +48,12 @@ class Task(Status):
     @classmethod
     def next(cls, remove=True):
         u"""
-        The <code>next</code> method answers the next task instance that needs
+        The ``next`` method answers the next task instance that needs
         to be executed. The method takes the top of the sorted list of task files
-        from the <code>cls.PATH_SCHEDULERTASKS</code> and creates the <code>Task</code>
+        from the ``cls.PATH_SCHEDULERTASKS`` and creates the ``Task``
         instance and then deletes the task file (if the optional attribute 
-        <attr>remove</attr> has default value <code>True</code>. This method is also 
-        called by <code>self.peek()</code>, but then the file is not removed.
+        <attr>remove</attr> has default value ``True``. This method is also 
+        called by ``self.peek()``, but then the file is not removed.
         """
         tasknames = cls.getTaskNames()
         if not tasknames:
@@ -81,16 +81,16 @@ class Task(Status):
     @classmethod
     def peek(cls):
         u"""
-        The <code>peek</code> method answers the next task that must be executed 
-        by the running <code>Scheduler</code>. The method is equivalent to 
-        <code>self.next(False)</code>.
+        The ``peek`` method answers the next task that must be executed 
+        by the running ``Scheduler``. The method is equivalent to 
+        ``self.next(False)``.
         """
         return cls.next(remove=False)
 
     def post(self, builder, priority=999999, order=0, args=None):
         u"""
-        The <code>post</code> method adds <code>self</code> task to the scheduled tasks,
-        if the <code>builder.USE_MULTIPROCESSING</code> is <code>True</code>. Other wise the
+        The ``post`` method adds ``self`` task to the scheduled tasks,
+        if the ``builder.USE_MULTIPROCESSING`` is ``True``. Other wise the
         task is immediately executed. This direct execution is required for servers running
         Python2.5 or older (that don‚Äôs support multiprocessing) of for debugging in Eclipse.
         Due to a deep bug, the Python application of the split process crashes when in debug mode.
@@ -108,13 +108,13 @@ class Task(Status):
 
     def execute(self, builderorcls):
         u"""
-        The <code>execute</code> method is called by the running <code>Scheduler</code> instance
-        (or directly by the <code>self.post</code> method, if <code>builder.USE_MULTIPROCESSING</code>
-        is turned off. The attribute <attr>builderorcls</attr> can either be a <code>Builder</code>
-        instance (as it is called directly from from the <code>self.post</code>) or a <code>Builder</code>
-        class when called from the running <code>Scheduler</code> (since the <code>Scheduler</code>
+        The ``execute`` method is called by the running ``Scheduler`` instance
+        (or directly by the ``self.post`` method, if ``builder.USE_MULTIPROCESSING``
+        is turned off. The attribute <attr>builderorcls</attr> can either be a ``Builder``
+        instance (as it is called directly from from the ``self.post``) or a ``Builder``
+        class when called from the running ``Scheduler`` (since the ``Scheduler``
         cannot know any instantiated builder, it just knows the class of the site.
-        It is assumed that <code>self.method</code> exists as method name or list of method names.
+        It is assumed that ``self.method`` exists as method name or list of method names.
         """
         if inspect.isclass(builderorcls):
             builderorcls = builderorcls()
@@ -136,8 +136,8 @@ class Task(Status):
 
     def getTaskName(self, priority, order):
         u"""
-        The <code>getTaskName</code> method constructs a unique task name that depends on the order
-        of <attr>priority</attr>, <code>timestamplong()</code>, <attr>order</attr> and an 6-digit random integer.
+        The ``getTaskName`` method constructs a unique task name that depends on the order
+        of <attr>priority</attr>, ``timestamplong()``, <attr>order</attr> and an 6-digit random integer.
         """
         return '%06d-%s-%06d-%06d.json' % (priority, timestampLong(), order, randint(0, 999999))
 

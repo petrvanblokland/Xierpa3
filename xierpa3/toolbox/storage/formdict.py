@@ -66,7 +66,7 @@ class FormDict(object):
     def clear(self):
         u"""
         
-        The <code>clear</code> clears the internal data, e.g. to be used when logging out.
+        The ``clear`` clears the internal data, e.g. to be used when logging out.
         
         """
         self.d = {}
@@ -93,8 +93,8 @@ class FormDict(object):
     def append(self, params):
         u"""
         
-        The <code>append</code> method appends the content of <attr>params</attr> to self. If the attribute
-        is a string, then split it on <code>'/'</code>. Otherwise we assume that it is already a list.
+        The ``append`` method appends the content of <attr>params</attr> to self. If the attribute
+        is a string, then split it on ``'/'``. Otherwise we assume that it is already a list.
         
         """
         if not params:

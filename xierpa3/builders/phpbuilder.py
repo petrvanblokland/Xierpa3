@@ -17,7 +17,7 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class PhpBuilder(HtmlBuilder):
     u"""
-    The <b>PhpBuilder checks if the there is already a PHP frame work at the target
+    The **PhpBuilder checks if the there is already a PHP frame work at the target
     directory of the site, otherwise the default framework is copied there. 
     Then the multiple result streams are saved at the destination in the framework.
     """
@@ -29,7 +29,7 @@ class PhpBuilder(HtmlBuilder):
     ATTR_POSTFIX = ID # Postfix of dispatcher and attribute names above generic names.
 
     def page(self, component):
-        u"""Put the result of <b>self.page()</b> by the parent class HtmlBuilder
+        u"""Put the result of **self.page()** by the parent class HtmlBuilder
         in a separate result stream, that can be save into header.php.
         This method assumes that the parent method builds _div+_body+_html,
         to fit the standard footer.php file structure."""
@@ -39,7 +39,7 @@ class PhpBuilder(HtmlBuilder):
         pass
     
     def _page(self, component):
-        u"""Put the result of <b>self._page()</b> by the parent class HtmlBuilder
+        u"""Put the result of **self._page()** by the parent class HtmlBuilder
         in a separate result stream, that can be saved into footer.php.
         This method assumes that the parent method builds html+head+_head+body+div,
         to fit the standard header.php file structure."""

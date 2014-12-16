@@ -17,38 +17,38 @@ from xierpa3.toolbox.transformer import TX
 
 class State(BaseNode):
     u"""
-    A <code>State</code> instance holds the current state of style parameters while rendering a set of styles
+    A ``State`` instance holds the current state of style parameters while rendering a set of styles
     in a canvas or CSS. If the state refers to a style, then this is used to get cascading values from, in case
     the current set of attributes does not contain the requested name. Setting values, however, only takes
     place on the state attribute set, so the styles set will never be written.<br/>
     
-    The <code>State</code> as final <quote>leaf</quote> underneath a cascading <code>Style<code> tree, can be
+    The ``State`` as final <quote>leaf</quote> underneath a cascading ``Style`` tree, can be
     seen as a sketch pad that hold the rendered values and stores any changed value, so it  will not damage the
     fixed styles.<br/>
     
-    <code>State</code> instances are used in various places where several sides need to share the save values
+    ``State`` instances are used in various places where several sides need to share the save values
     and where the set of values is undefined or expanding in the future. Examples are the state sharing between
-    <code>ImageBuilder</code> and <code>Canvas</code> or the sharing between the main <code>SiteBuilder</code>
+    ``ImageBuilder`` and ``Canvas`` or the sharing between the main ``SiteBuilder``
     application and window instances.
     """
 
     def __init__(self, attributes=None, form=None, **args):
         u"""
-        The <code>__init__</code> constructor takes the optional <attr>style</attr> attribute and stores is. If
+        The ``__init__`` constructor takes the optional <attr>style</attr> attribute and stores is. If
         it is defined, then this reference to the style node is used a default source if the name of an
         attribute request does not exist in the current attribute set.<br/>
         
         If the <attr>form</attr> is defined, then copy all form attribute in/over the
-        <code>self._attributes</code> values. This is convenient if a state needs to be populated with values
-        from <code>self.e.form</code>.
+        ``self._attributes`` values. This is convenient if a state needs to be populated with values
+        from ``self.e.form``.
         """
         self._attributes = self.getNewAttributes(attributes, (args, form))
 
     def __getattr__(self, name):
         u"""
-        The <code>state.name</code> (<code>__getattr__</code>) interprets the <attr>name</attr> attribute. If
-        it does not exist, then the content of <code>self._style</code> is tested. If it does not exist, then
-        <code>None</code> is answered, so it does not have to be initialized.
+        The ``state.name`` (``__getattr__``) interprets the <attr>name</attr> attribute. If
+        it does not exist, then the content of ``self._style`` is tested. If it does not exist, then
+        ``None`` is answered, so it does not have to be initialized.
         """
         if name.startswith('_'):
             return self.__dict__.get(name)
@@ -61,7 +61,7 @@ class State(BaseNode):
 
     def __setitem__(self, name, value):
         u"""
-        The <code>set</code> (or <code>state[name] = value</code>) method sets the attribute <attr>name</attr> to
+        The ``set`` (or ``state[name] = value``) method sets the attribute <attr>name</attr> to
         <attr>value</attr>. This value is stored locally in the attributes dictionary of the state instance. It will not
         alter the style it may reference. Also it will block any further searching in the cascading set of style values,
         since the locally stored value is found on any next request for that name.
@@ -72,7 +72,7 @@ class State(BaseNode):
 
     def __getitem__(self, name):
         u"""
-        The <code>get</code> (or <code>state[name]</code>) method answers the state attribute named <attr>name
+        The ``get`` (or ``state[name]``) method answers the state attribute named <attr>name
         </attr>.
         """
         value = self._attributes.get(name)
@@ -82,8 +82,8 @@ class State(BaseNode):
 
     def getState(self):
         u"""
-        The <code>getState</code> method is allowed for compatibility reasons with <code>Style</code> instances.
-        The behavior is to answers a copy of <code>self</code>.
+        The ``getState`` method is allowed for compatibility reasons with ``Style`` instances.
+        The behavior is to answers a copy of ``self``.
         """
         return self.__class__(attributes=copy(self.getAttributes()))
 
@@ -91,7 +91,7 @@ class State(BaseNode):
 
     def _getUniqueAttrsId(self):
         u"""
-        The <code>_getUniqueAttrsId</code> method answers the semi-unique id of the <code>self</code> attributes
+        The ``_getUniqueAttrsId`` method answers the semi-unique id of the ``self`` attributes
         dictionary. This can be used to get a kind-of unique parameter for a given set of attribute values.
         """
         return hash(`self._attributes`)

@@ -110,7 +110,7 @@ class S3Connector():
     
     def readFileFromS3(self, keyname, path):
         u"""
-        The <code>readFileFromS3</code> method reads the content of <attr>keyname</attr>
+        The ``readFileFromS3`` method reads the content of <attr>keyname</attr>
         from S3 and writes it the file with <attr>path</attr>. Answer the a boolean flag
         to indicate of the operation succeeded.
         """
@@ -213,9 +213,9 @@ class S3Connector():
         
         Puts a file in the fp file pointer, which is a temporary file object:
         
-        <code>
+        ``
          fp = open(<tmp-path>, 'w')
-         </code>
+         ``
         
         
         Throws an exception if key is none.

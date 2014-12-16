@@ -94,7 +94,7 @@ class SvgBuilderPart:
     # S V G  C A L L
     
     def svgText(self, s, **kwargs):
-        u"""There was a “normal” builder <b>self.text</b> call, but we are in SVG mode now,
+        u"""There was a “normal” builder **self.text** call, but we are in SVG mode now,
         so the output must be different, based the positioning arguments."""
         self.svgMakeStyle(**kwargs)
         self.write_tag('text', True, kwargs)

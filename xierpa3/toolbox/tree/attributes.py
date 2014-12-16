@@ -13,6 +13,6 @@
 
 class Attributes(dict):
     u"""
-    The <code>Attributes</code> class defines the dictionary of attributes of a <code>Node</code> instances.
-    Typically the class inherits from <code>dict</code>.
+    The ``Attributes`` class defines the dictionary of attributes of a ``Node`` instances.
+    Typically the class inherits from ``dict``.
     """

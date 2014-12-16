@@ -27,7 +27,7 @@ class Writer(object):
 
     def reset(self):
         u"""
-        The <code>reset</code> method resets the data of the writer. This can be used to reset the content of a
+        The ``reset`` method resets the data of the writer. This can be used to reset the content of a
         shared (through cloning) builder, where the output stream is divided into parts, such as the export of PHP
         files.
         """

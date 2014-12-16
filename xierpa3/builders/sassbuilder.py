@@ -59,8 +59,8 @@ class SassBuilder(XmlTransformerPart, Builder):
         
     def theme(self, component):
         u"""Build the reset code for the default values of HTML elements.
-        Called by block of <b>theme</b> component.
-        Open the theme block (omitted if the style has no selector) and build the style of <b>component.style</b>."""
+        Called by block of **theme** component.
+        Open the theme block (omitted if the style has no selector) and build the style of **component.style**."""
         self.reset() # Build the reset code for the default values of HTML elements.
         self.pushFirst() # Make level for dictionary if select-content pairs, to check on duplicates on this level.
         # If there is a base style defined for this theme, then export them before the CSS of all
@@ -73,7 +73,7 @@ class SassBuilder(XmlTransformerPart, Builder):
         self.styleBlock(component.selector) # Build the opening of the style block if the selector is defined.
 
     def _theme(self, component): 
-        u"""Close the theme block. Omit of <b>component.selector</b> is not defined."""
+        u"""Close the theme block. Omit of **component.selector** is not defined."""
         self._styleBlock(component.selector) # Build the closing of the style block if the selector is defined.
         self.popFirst() # Reduce level for firstSelectors.
         # Finally, run through the component-styles for each of the collected media style expression.
@@ -81,7 +81,7 @@ class SassBuilder(XmlTransformerPart, Builder):
 
     def page(self, component):
         u"""Mark the CSS start of the specific page <i>component</i> style. 
-        Called by block of <b>Page</b> component."""
+        Called by block of **Page** component."""
         self.newline()
         self.tabs()
         self.comment('Start page "%s"' % component.name)
@@ -294,7 +294,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     def buildStyle(self, style):
         u"""If there is <i>style</i> defined, run trough its attributes to match withs corresponding CSS methods.
         This way the CSS-related attributes are separated from the others. For this reason some the the standard
-        attributes have other names, e.g. there is a <b>style.url</b> and <b>style.cssurl</b>."""
+        attributes have other names, e.g. there is a **style.url** and **style.cssurl**."""
         if style is not None:
             for key, value in style.items():
                 # Call the css_<key> method if it exists. This filters the CSS attributes from the HTML attributes.
@@ -317,7 +317,7 @@ class SassBuilder(XmlTransformerPart, Builder):
     def buildMedia(self, component):
         u"""Here all style have been written. What remains is the to sort and output the collected @media expression
         of <i>component</i> as media queries.
-        The collected <b>Media</b> instances will generate a selector that is related to
+        The collected **Media** instances will generate a selector that is related to
         the path of their parent styles and objects."""
         mediaExpressions = {}
         for selectors, mediaList in self.runtimeMedia:
@@ -444,8 +444,8 @@ class SassBuilder(XmlTransformerPart, Builder):
         return result
 
     def buildHookProperties(self, name, value):
-        u"""Build the CSS properties, depending if the hook <b>'css3_'+name</b> method exists.
-        If the value is an instance of <b>Media</b> then the attributes are generated on another
+        u"""Build the CSS properties, depending if the hook **'css3_'+name** method exists.
+        If the value is an instance of **Media** then the attributes are generated on another
         output stream."""
         csshook = 'css3_' + name
         if isinstance(value, Media):
@@ -878,7 +878,7 @@ div.documentation {
 
     def css3_opacity(self, value):
         u"""
-        The <code>opacity</code> method answers the CSS syntax for opacity for the browsers that support the feature. 
+        The ``opacity`` method answers the CSS syntax for opacity for the browsers that support the feature. 
         For now this feature is not implemented in all browsers.
         """
         css = self.getCssOpacityValue(value)
@@ -1169,7 +1169,7 @@ div.documentation {
     @classmethod
     def getCssOpacityValue(cls, value, browser=None):
         u"""
-        The <code>cssBorderRadiusValue<code> method answers browser dependent css <code>border-radius</code> value.
+        The ``cssBorderRadiusValue`` method answers browser dependent css ``border-radius`` value.
         """
         alpha = None
         if not isinstance(value, basestring):
@@ -1228,7 +1228,7 @@ div.documentation {
     def XXXgetCssBackgroundSizeValue(cls, value, object="background-size", browser=None):
         u"""
         
-        The <code>getCssBackgroundSizeValue<code> method answers browser dependent css <code>background-size</code> value.<br/>
+        The ``getCssBackgroundSizeValue`` method answers browser dependent css ``background-size`` value.<br/>
         
         """
         result = ['%s: %s;' % (object, value)]
@@ -1244,10 +1244,10 @@ div.documentation {
     def XXXgetCssBoxShadowValue(cls, color, x=None, y=None, blur=None, inout=None, browser=None, object="box"):
         u"""
         
-        The <code>cssBoxShadowValue<code> method answers browser dependent css <code>box-shadow</code> value.<br/>
-        Or, if <attr>object</attr> is <code>text</code>, answers browser dependent css <code>text-shadow</code> value.<br/>
-        The value can be a list or tuple, as in <code>self.css(ids="...", boxshadow=("#888888", 6, 6, 20))</code><br/>
-        Or it may be separate arguments as can be used in a <code>style</code> attribute:<br/>
+        The ``cssBoxShadowValue`` method answers browser dependent css ``box-shadow`` value.<br/>
+        Or, if <attr>object</attr> is ``text``, answers browser dependent css ``text-shadow`` value.<br/>
+        The value can be a list or tuple, as in ``self.css(ids="...", boxshadow=("#888888", 6, 6, 20))``<br/>
+        Or it may be separate arguments as can be used in a ``style`` attribute:<br/>
         self.div(style=self.cssBoxShadowValue("#888888", 6, 6, 20))<br/>
         self.div(style=self.cssBoxShadowValue("#888888", 6, 6, 20, "inset"))<br/>
         self.div(style=self.cssBoxShadowValue("inset 6px 6px 20px #888888")<br/>
@@ -1295,7 +1295,7 @@ div.documentation {
     def XXXgetCssGradientValue(cls, startcolor, endcolor=None, x0='left', x1='left', y0='top', y1='bottom', type='linear', browser=None):
         u"""
         
-        The <code>cssBoxShadowValue<code> method answers browser dependent css <code>gradient</code> value.<br/>
+        The ``cssBoxShadowValue`` method answers browser dependent css ``gradient`` value.<br/>
         self.div(style=self.cssGradientValue({'startcolor':'#fff000','endcolor':'#999999'}))<br/>
         self.div(style=self.cssGradientValue('#fff000','#999999'))<br/>
         <br/>
@@ -1336,7 +1336,7 @@ div.documentation {
     @classmethod
     def getCssTransformValue(cls, scale=None, skew=None, rotate=None, browser=None):
         u"""
-        The <code>buildCssTransformValue<code> method answers browser dependent css <code>border-radius</code> value.
+        The ``buildCssTransformValue`` method answers browser dependent css ``border-radius`` value.
         <br/> Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
         """
         value = []
@@ -1366,7 +1366,7 @@ div.documentation {
     @classmethod
     def getCssBorderRadiusCornerValue(cls, value, topbottom, leftright, browser=None):
         u"""
-        The <code>cssBorderRadiusCornerValue<code> method answers browser dependent CSS <code>border-radius</code>
+        The ``cssBorderRadiusCornerValue`` method answers browser dependent CSS ``border-radius``
         value of a specific corner.<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
         
@@ -1381,7 +1381,7 @@ div.documentation {
     @classmethod
     def getCssBorderRadiusValue(cls, value, browser=None):
         u"""
-        The <code>cssBorderRadiusValue<code> method answers browser dependent CSS <code>border-radius</code> value.<br/>
+        The ``cssBorderRadiusValue`` method answers browser dependent CSS ``border-radius`` value.<br/>
         Omitting the optional <attr>browser</attr> attribute will result in the output for all browsers.
         
         """
@@ -1396,8 +1396,8 @@ div.documentation {
     def getCssFontSmoothValue(cls, value, browser=None):
         u"""
         
-        The <code>get</code> method answers the browser dependent css for font smoothing.
-        Values are one of <code>['none', 'antialiased', 'subpixel-antialiased']</code>.
+        The ``get`` method answers the browser dependent css for font smoothing.
+        Values are one of ``['none', 'antialiased', 'subpixel-antialiased']``.
         
         """
         result = ''

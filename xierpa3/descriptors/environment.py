@@ -53,7 +53,7 @@ class Environment(State):
     def initializeForm(self):
         u"""
 
-        The <code>initializeForm</code> method initializes the <code>self.form</code> instance of <code>FormDict</code>.
+        The ``initializeForm`` method initializes the ``self.form`` instance of ``FormDict``.
 
         """
         self.form = FormDict()
@@ -72,11 +72,11 @@ class Environment(State):
 
     def setParams(self, params):
         u"""
-        <p>The <code>setParams</code> method sets the <code>self.params</code> of the of environment to <attr>
+        <p>The ``setParams`` method sets the ``self.params`` of the of environment to <attr>
         params</attr>. This method can be redefined to get the parameters string from the <attr>params</attr> tuple.
         The tuple is based on from the standard definition in the application module.</p>
 
-        <p><code>urlpatterns = patterns('', (r'^(.*)$', build))</code></p>
+        <p>``urlpatterns = patterns('', (r'^(.*)$', build))``</p>
 
         <p>that generates a tuple with a single parameter set.</p>
         """
@@ -86,8 +86,8 @@ class Environment(State):
 
     def handleGetPostParams(self):
         u"""
-        The <code>handleGetPostParams</code> method adds any GET or POST parameters to the <code>self.form</code>
-        instance of <code>FormDict</code>.
+        The ``handleGetPostParams`` method adds any GET or POST parameters to the ``self.form``
+        instance of ``FormDict``.
         """
         try:
             path = self.request.path
@@ -129,7 +129,7 @@ class Environment(State):
 
     def handleUrlParams(self):
         """
-        The <code>handleUrlParams</code> method gets the parameters from the path.
+        The ``handleUrlParams`` method gets the parameters from the path.
         """
         try:
             path = self.request.path
@@ -156,7 +156,7 @@ class Environment(State):
 
     def getRequestValue(self, key):
         u"""
-        The <code>getRequestValue</code> method answers the <code>self.request</code> value of <attr>key</attr>.
+        The ``getRequestValue`` method answers the ``self.request`` value of <attr>key</attr>.
 
         """
         return self.request.received_headers[key]
@@ -193,14 +193,14 @@ class Environment(State):
 
     def getFullPath(self):
         u"""
-        The <code>getFullPath</code> method answers the plain full <attr>path</attr> as it appears in the browser.
+        The ``getFullPath`` method answers the plain full <attr>path</attr> as it appears in the browser.
 
         """
         return self[self.PATH] or '/'
 
     def getServer(self):
         u"""
-        The <code>getServer</code> method answers the name of the server domain <code>self[self.HTTP_HOST]</code>
+        The ``getServer`` method answers the name of the server domain ``self[self.HTTP_HOST]``
 
         """
         return self[self.HTTP_HOST]
@@ -208,8 +208,8 @@ class Environment(State):
     def getServerClient(self):
         u"""
 
-        The <code>getServerClient</code> method answers the <code>BaseCient</code> instance that is running the server
-        of <code>self.request</code>. Note that the path to this client is depending on the (current version of) Twisted
+        The ``getServerClient`` method answers the ``BaseCient`` instance that is running the server
+        of ``self.request``. Note that the path to this client is depending on the (current version of) Twisted
         Matrix.
         """
         try:
@@ -219,8 +219,8 @@ class Environment(State):
 
     def getUserAgent(self):
         u"""
-        The <code>getUserAgent</code> method answers the user-agent string that contains info about the browser and
-        OS type as defined by <code>self[self.HTTP_USER_AGENT]</code>.
+        The ``getUserAgent`` method answers the user-agent string that contains info about the browser and
+        OS type as defined by ``self[self.HTTP_USER_AGENT]``.
 
         """
         return self.request.received_headers['user-agent']
@@ -238,8 +238,8 @@ class Environment(State):
     #
     def getCookies(self):
         u"""
-        The <code>getCookies</code> method answers the cookies dictionary of the current request. The default
-        behavior is to answer <code>self.request.received_cookies</code>.
+        The ``getCookies`` method answers the cookies dictionary of the current request. The default
+        behavior is to answer ``self.request.received_cookies``.
 
         """
 
@@ -256,9 +256,9 @@ class Environment(State):
 
     def getCookie(self, name):
         u"""
-        The <code>getCookie</code> method answers the cookie indicated by <attr>name</attr>. If there is no
-        attribute in the request (e.g. because the builder is created by a parallel process), then answer <code>None
-        </code>.
+        The ``getCookie`` method answers the cookie indicated by <attr>name</attr>. If there is no
+        attribute in the request (e.g. because the builder is created by a parallel process), then answer ``None
+        ``.
         """
         try:
             return self.getCookies().get(name)
@@ -269,7 +269,7 @@ class Environment(State):
     # value must be first as existing session code doesn't send a name
     def setCookie(self, value=None, expires=None, url='/', name=None, **args):
         u"""
-        The <code>setCookie</code> method saves the cookie indicated by <attr>name</attr> with <attr>value</attr>,
+        The ``setCookie`` method saves the cookie indicated by <attr>name</attr> with <attr>value</attr>,
         using the <attr>expires</attr> and <attr>url</attr> attributes.
         """
 

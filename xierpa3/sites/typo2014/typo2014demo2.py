@@ -23,7 +23,7 @@ class Typo2014Adapter(TextileFileAdapter):
 #ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
     
 class Typo2014(BaseBlog):
-    u"""The <b>Blog</b> class implements the standard example show with content based on files."""
+    u"""The **Blog** class implements the standard example show with content based on files."""
 
     C = BaseBlog.C
     

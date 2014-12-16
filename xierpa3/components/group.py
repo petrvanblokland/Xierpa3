@@ -19,9 +19,9 @@ class Group(Container):
     pass
 
 class ItemGroup(Group):
-    u"""The <b>ItemGroup</b> implements a group with automatic responsive behavior for groups of items. 
+    u"""The **ItemGroup** implements a group with automatic responsive behavior for groups of items. 
     Defined by a range of widths, a group of items is scaled to stay on the same line. If the screen width
-    changes, then then the <b>clear</b> attribute is shifted value, so the line break takes place between another 
+    changes, then then the **clear** attribute is shifted value, so the line break takes place between another 
     set of items."""
 
     # Get Constants->Config as class variable, so inheriting classes can redefine values.

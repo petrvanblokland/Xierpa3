@@ -32,7 +32,7 @@ class Named(Value):
 class Selection(Value):
     u"""If <i>param</i> exists as attributes in the <i>params</i>, and its value exists in 
     <i>values</i> as key, then use that value as selection. Otherwise the value of key "default"
-    is used, which can be <b>None</b>, so it gets ignored by the builder."""
+    is used, which can be **None**, so it gets ignored by the builder."""
     def __init__(self, param, values):
         self.param = param
         self.values = values
@@ -49,7 +49,7 @@ class Z(Value):
         self.value = value
 
 class BaseCalculator(Value):
-    u"""Abstract <b>BaseCalculator</b> class to support arithmetic with measurements of the same type."""
+    u"""Abstract **BaseCalculator** class to support arithmetic with measurements of the same type."""
     def rawValue(self):
         return self._value
      

@@ -14,7 +14,7 @@ from xierpa3.components.component import Component
 from xierpa3.descriptors.blueprint import BluePrint
 
 class Page(Component):
-    u"""The <b>Page</b> component builds the content of a single page, dependent on
+    u"""The **Page** component builds the content of a single page, dependent on
     the parameters in the url."""
     
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -22,7 +22,7 @@ class Page(Component):
     
     BLUEPRINT = BluePrint(
         name='Untitled', doc_name=u'Name of the page.',
-        class_=C.CLASS_PAGE, doc_pageClass=u'Class of the page. Default is the result of <b>self.getClassName()</b> or C.CLASS_PAGE', 
+        class_=C.CLASS_PAGE, doc_pageClass=u'Class of the page. Default is the result of **self.getClassName()** or C.CLASS_PAGE', 
     )
     def reset(self):
         u"""Gets called prior to every page build. Can be redefined by inheriting theme classes.

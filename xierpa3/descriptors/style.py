@@ -17,7 +17,7 @@ from xierpa3.descriptors.state import State
 from xierpa3.descriptors.media import Media
 
 class Style(State):
-    u"""The <b>Style</b> holds a set of style values for a components and the constructors inside the component block builders."""
+    u"""The **Style** holds a set of style values for a components and the constructors inside the component block builders."""
     
     def __init__(self, selector=None, parent=None, component=None, **kwargs):
         u"""
@@ -156,7 +156,7 @@ class Style(State):
 class StyleSet(Style):
     u"""The <i>StyleSet</i> class is a wrapper set around a set of classes. It behaves like
     a <i>Style</i> instance, but it does not show up as selector. The open and close
-    output code is ignore, because <b>self.selector</b> always answers <b>None</b>."""
+    output code is ignore, because **self.selector** always answers **None**."""
 
     def _get_selector(self):
         return None

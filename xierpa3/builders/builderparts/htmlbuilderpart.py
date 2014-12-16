@@ -14,7 +14,7 @@ from xierpa3.toolbox.transformer import TX
 
 class HtmlBuilderPart:
     """
-    The <code>HtmlBuilderPart</code> class implements the standard XHTML tag set with all attributes. No additional
+    The ``HtmlBuilderPart`` class implements the standard XHTML tag set with all attributes. No additional
     whitespace is added.
     """
     # Names of attributes that are written without their value.
@@ -213,7 +213,7 @@ class HtmlBuilderPart:
 
     def get_attribute_exceptions(self, key, value):
         u"""
-        The <code>get_attribute_exceptions</code> method writes the attribute, and checks on naming differences between
+        The ``get_attribute_exceptions`` method writes the attribute, and checks on naming differences between
         the Xierpa attributes and HTML attributes.
         """
         # Boolean attributes.
@@ -276,8 +276,8 @@ class HtmlBuilderPart:
     def head(self, **args):
         u"""
         The head element can contain information about the document.¬†The browser does not display the
-        "head information" to the user. The following tags can be in the head section: <code>base</code>,
-        <code>link</code>, <code>meta</code>, <code>script</code>, <code>style</code> and <code>title</code>.<br/>
+        "head information" to the user. The following tags can be in the head section: ``base``,
+        ``link``, ``meta``, ``script``, ``style`` and ``title``.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_head.asp" target="external"/></seealso>
         <python>
         self.head()<br/>
@@ -324,9 +324,9 @@ class HtmlBuilderPart:
 
     def link(self, **args):
         """
-        The <code>link</code> tag defines the relationship between two linked documents.<br/>
-        Note that this tag is defined by <code>XierpaBuilder</code>. When using an inheriting class
-        from <code>XierpaBuilder</code> then use the <code>rellink</code> tag name instead.<br/>
+        The ``link`` tag defines the relationship between two linked documents.<br/>
+        Note that this tag is defined by ``XierpaBuilder``. When using an inheriting class
+        from ``XierpaBuilder`` then use the ``rellink`` tag name instead.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_link.asp" target="external"/></seealso>
         <python>
         self.head()<br/>
@@ -359,8 +359,8 @@ class HtmlBuilderPart:
 
     def h1(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h1(class_='chapter')<br/>
@@ -376,7 +376,7 @@ class HtmlBuilderPart:
 
     def h1_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h1(**args)
@@ -385,8 +385,8 @@ class HtmlBuilderPart:
 
     def h2(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h2(class_='head')<br/>
@@ -402,7 +402,7 @@ class HtmlBuilderPart:
 
     def h2_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h2(**args)
@@ -411,8 +411,8 @@ class HtmlBuilderPart:
 
     def h3(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h3(class_='subhead')<br/>
@@ -428,7 +428,7 @@ class HtmlBuilderPart:
 
     def h3_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h3(**args)
@@ -437,8 +437,8 @@ class HtmlBuilderPart:
 
     def h4(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h4(class_='subsubhead')<br/>
@@ -454,7 +454,7 @@ class HtmlBuilderPart:
 
     def h4_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h4(**args)
@@ -463,8 +463,8 @@ class HtmlBuilderPart:
 
     def h5(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
          <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h5(class_='caption')<br/>
@@ -479,7 +479,7 @@ class HtmlBuilderPart:
 
     def h5_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h5(**args)
@@ -488,8 +488,8 @@ class HtmlBuilderPart:
 
     def h6(self, **args):
         u"""
-        The <code>h1</code> to <code>h6</code> tags define headers.
-        <code>h1</code> defines the largest header. <code>h6</code> defines the smallest header.<br/>
+        The ``h1`` to ``h6`` tags define headers.
+        ``h1`` defines the largest header. ``h6`` defines the smallest header.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hn.asp" target="external"/></seealso>
         <python>
         self.h6(class_='footnote')<br/>
@@ -504,7 +504,7 @@ class HtmlBuilderPart:
 
     def h6_(self, s, **args):
         u"""
-        The <code>h1_</code> to <code>h6_</code> tags define headers, combining the opening and closing tag
+        The ``h1_`` to ``h6_`` tags define headers, combining the opening and closing tag
         where the <attr>s</attr> attribute is the block content.
         """
         self.h6(**args)
@@ -513,7 +513,7 @@ class HtmlBuilderPart:
 
     def figure(self, **args):
         u"""
-        The <code>figure</code> method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
+        The ``figure`` method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
         You can use the tag to associate a caption together with some embedded content, such as a graphic or video.
         You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents 
         of your <tag>figure</tag> element.
@@ -525,7 +525,7 @@ class HtmlBuilderPart:
 
     def figcaption(self, **args):
         u"""
-        The <code>figure</code> method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
+        The ``figure`` method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
         You can use the tag to associate a caption together with some embedded content, such as a graphic or video.
         You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents 
         of your <tag>figure</tag> element.
@@ -537,7 +537,7 @@ class HtmlBuilderPart:
 
     def hgroup(self, **args):
         u"""
-        The <code>hgroup</code> method (HTML5) defines the heading of a section or a document.
+        The ``hgroup`` method (HTML5) defines the heading of a section or a document.
         The hgroup element is used to group headers, <tag>h1</tag> to <tag>h6</tag>, where the largest 
         is the main heading of the section, and the others are sub-headings.
         """
@@ -548,7 +548,7 @@ class HtmlBuilderPart:
 
     def article(self, **args):
         u"""
-        The <code>article</code> method (HTML5) defines external content.
+        The ``article`` method (HTML5) defines external content.
         The external content could be a news-article from an external provider, or a text from a web log 
         (blog), or a text from a forum, or any other content from an external source.
         """
@@ -559,7 +559,7 @@ class HtmlBuilderPart:
 
     def header(self, **args):
         u"""
-        The <code>article</code> method (HTML5) defines an introduction to the document.
+        The ``article`` method (HTML5) defines an introduction to the document.
         """
         self.write_tag(u'header', True, args)
 
@@ -568,7 +568,7 @@ class HtmlBuilderPart:
 
     def section(self, **args):
         u"""
-        The <code>section</code> method (HTML5) defines defines sections in a document. Such as chapters, headers, footers, or any other sections of the document.
+        The ``section`` method (HTML5) defines defines sections in a document. Such as chapters, headers, footers, or any other sections of the document.
         """
         self.write_tag(u'section', True, args)
 
@@ -587,7 +587,7 @@ class HtmlBuilderPart:
 
     def blockquote(self, **args):
         u"""
-        The <code>blockquote</code> tag is the standard XHTML tag.
+        The ``blockquote`` tag is the standard XHTML tag.
         """
         self.write_tag(u'blockquote', True, args)
 
@@ -596,7 +596,7 @@ class HtmlBuilderPart:
 
     def cite(self, **args):
         u"""
-        The <code>cite</code> tag is the standard XHTML tag.
+        The ``cite`` tag is the standard XHTML tag.
         """
         self.write_tag(u'cite', True, args)
 
@@ -605,8 +605,8 @@ class HtmlBuilderPart:
 
     def p(self, **args):
         """
-        The <code>p</code> tag is the standard XHTML paragraph.
-        <todo>Add the other attributes to the <code>p</code> tag such as: id, class, title, style, dir, lang,
+        The ``p`` tag is the standard XHTML paragraph.
+        <todo>Add the other attributes to the ``p`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_p.asp" target="external"/></seealso>
@@ -618,7 +618,7 @@ class HtmlBuilderPart:
 
     def tt(self, **args):
         u"""
-        The <code>tt</code> method is showing the old teletype font.
+        The ``tt`` method is showing the old teletype font.
         """
         self.write_tag(u'tt', True, args)
 
@@ -627,7 +627,7 @@ class HtmlBuilderPart:
 
     def code(self, **args):
         u"""
-        The <code>code</code> method is the standard XHTML tag, for showing computer code in fixed width font.
+        The ``code`` method is the standard XHTML tag, for showing computer code in fixed width font.
         """
         self.write_tag(u'code', True, args)
 
@@ -636,9 +636,9 @@ class HtmlBuilderPart:
 
     def strong(self, **args):
         """
-        The <code>strong</code> tag is the standard XHTML strong.  Note that nowadays it is better to implement this
-        typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>b</code> tag such as: id, class, title, style, dir, lang,
+        The ``strong`` tag is the standard XHTML strong.  Note that nowadays it is better to implement this
+        typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``b`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
@@ -650,7 +650,7 @@ class HtmlBuilderPart:
 
     def em(self, **args):
         """
-        The <code>em</code> tag is the standard XHTML emphasis.
+        The ``em`` tag is the standard XHTML emphasis.
         """
         self.write_tag(u'em', True, args)
 
@@ -659,9 +659,9 @@ class HtmlBuilderPart:
 
     def b(self, **args):
         """
-        The <code>b</code> tag is the standard XHTML bold.  Note that nowadays it is better to implement this
-        typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>b</code> tag such as: id, class, title, style, dir, lang,
+        The ``b`` tag is the standard XHTML bold.  Note that nowadays it is better to implement this
+        typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``b`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
@@ -673,9 +673,9 @@ class HtmlBuilderPart:
 
     def u(self, **args):
         """
-        The <code>u</code> tag is the standard XHTML underline.  Note that nowadays it is better to implement
-        this typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>u</code> tag such as: id, class, title, style, dir, lang,
+        The ``u`` tag is the standard XHTML underline.  Note that nowadays it is better to implement
+        this typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``u`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
@@ -687,9 +687,9 @@ class HtmlBuilderPart:
 
     def i(self, **args):
         """
-        The <code>i</code> tag is the standard XHTML italic. Note that nowadays it is better to implement
-        this typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>p</code> tag such as: id, class, title, style, dir, lang,
+        The ``i`` tag is the standard XHTML italic. Note that nowadays it is better to implement
+        this typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``p`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
@@ -701,9 +701,9 @@ class HtmlBuilderPart:
 
     def s(self, **args):
         """
-        The <code>s</code> tag is the standard XHTML strike. Note that nowadays it is better to implement
-        this typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>p</code> tag such as: id, class, title, style, dir, lang,
+        The ``s`` tag is the standard XHTML strike. Note that nowadays it is better to implement
+        this typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``p`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_strike.asp" target="external"/></seealso>
@@ -720,9 +720,9 @@ class HtmlBuilderPart:
     def q(self, **args):
         """
         
-        The <code>q</code> tag defines the start of a short quotation. Note that nowadays it is better to implement
-        this typographic behavior through <code>span</code> and CSS.<para/>
-        <todo>Add the other attributes to the <code>p</code> tag such as: id, class, title, style, dir, lang,
+        The ``q`` tag defines the start of a short quotation. Note that nowadays it is better to implement
+        this typographic behavior through ``span`` and CSS.<para/>
+        <todo>Add the other attributes to the ``p`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_q.asp" target="external"/></seealso>
@@ -735,7 +735,7 @@ class HtmlBuilderPart:
 
     def sup(self, **args):
         """
-        The <code>sup</code> tag implements the standard XTHML tag for superior (superscript) text.
+        The ``sup`` tag implements the standard XTHML tag for superior (superscript) text.
         <python>
         self.text(u'Normal text')<br/>
         self.sup()<br/>
@@ -751,7 +751,7 @@ class HtmlBuilderPart:
 
     def sub(self, **args):
         """
-        The <code>sub</code> tag implements the standard XTHML tag for inferior (subscript) text.
+        The ``sub`` tag implements the standard XTHML tag for inferior (subscript) text.
         <python>
         self.text(u'Normal text')<br/>
         self.sub()<br/>
@@ -767,9 +767,9 @@ class HtmlBuilderPart:
 
     def br(self, count=1, **args):
         """
-        The <code>br</code> tag inserts a single line break.<br/>
-        The count attribute is not standard XHTML. It indicates the number of <code>br</code> to repeat.<br/>
-        The <attr>class_</attr> can define the amount of leading in <code>px</code> of the break.<br/>
+        The ``br`` tag inserts a single line break.<br/>
+        The count attribute is not standard XHTML. It indicates the number of ``br`` to repeat.<br/>
+        The <attr>class_</attr> can define the amount of leading in ``px`` of the break.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_br.asp" target="external"/></seealso>
         <python>
         self.br()<br/>
@@ -780,13 +780,13 @@ class HtmlBuilderPart:
 
     def nbsp(self, count=1):
         """
-        The <code>nbsp</code> generates the <attr>count</attr> (default is 1) amound of non-breaking-spaces.
+        The ``nbsp`` generates the <attr>count</attr> (default is 1) amound of non-breaking-spaces.
         """
         self.output('&nbsp;'*count)
         
     def table(self, **args):
         u"""
-        The <code>table</code> tag defines a table.¬†Inside a <code>table</code> tag you can put table headers,
+        The ``table`` tag defines a table.¬†Inside a ``table`` tag you can put table headers,
         table rows, table cells, and other tables.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_table.asp" target="external"/></seealso>
         <python>
@@ -857,7 +857,7 @@ class HtmlBuilderPart:
 
     def td(self, **args):
         """
-        Defines a cell in a table. If the <code>rolspan</code> or <code>colspan</code> are not defined or if their value is <code>1</code>
+        Defines a cell in a table. If the ``rolspan`` or ``colspan`` are not defined or if their value is ``1``
         then the output is ignored.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_td.asp" target="external"/></seealso>
         <python>
@@ -874,8 +874,8 @@ class HtmlBuilderPart:
 
     def th(self, **args):
         """
-        Defines a table header cell in a table. The text within the th element usually renders in bold. If the <code>rolspan
-        </code> or <code>colspan</code> are not defined or if their value is <code>1</code> then the output is ignored.
+        Defines a table header cell in a table. The text within the th element usually renders in bold. If the ``rolspan
+        `` or ``colspan`` are not defined or if their value is ``1`` then the output is ignored.
         <br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_th.asp" target="external"/></seealso>
         <python>
@@ -892,7 +892,7 @@ class HtmlBuilderPart:
     def style(self, type='text/css', **args):
         """
         Defines a style in a document. The style element goes in the head section. If you want to include a style sheet in
-        your page, you should define the style sheet externally, and link to it using XHTML <code>link</code> (note that
+        your page, you should define the style sheet externally, and link to it using XHTML ``link`` (note that
         this tag is redefined in XierpaBuilder.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_style.asp" target="external"/></seealso>
         <python>
@@ -914,7 +914,7 @@ class HtmlBuilderPart:
 
     def div(self, **args):
         """
-        The <code>div</code> tag defines a division/section in a document.<br/>
+        The ``div`` tag defines a division/section in a document.<br/>
         <note>Browsers usually place a line break before and after the div element.</note>
         <seealso><www href="http://www.w3schools.com/tags/tag_div.asp" target="external"/></seealso>
         <python>
@@ -932,7 +932,7 @@ class HtmlBuilderPart:
 
     def canvas(self, **args):
         """
-        The <code>canvas</code> tag defines a canvas in a document.
+        The ``canvas`` tag defines a canvas in a document.
         """
         self.write_tag(u'canvas', True, args)
         self._debugclass(u'canvas', self.getClassName(args, self.CANVAS_ATTRIBUTES))
@@ -942,11 +942,11 @@ class HtmlBuilderPart:
 
     def img(self, **args):
         """
-        The <code>img</code> tag defines an image. The <code>img</code> tag has no block.<br/>
+        The ``img`` tag defines an image. The ``img`` tag has no block.<br/>
         To avoid compatibility problems between browser with the default <attr>border</attr> value,
-        it is set to <code>0</code> if not defined.<br/>
+        it is set to ``0`` if not defined.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_img.asp" target="external"/></seealso>
-        <b>self.img(src='./_image/animage.png', width=100)</b>.
+        **self.img(src='./_image/animage.png', width=100)**.
         If not using online, the replace the url by a local place holder image.
         """
         if not args.get('border'):
@@ -972,7 +972,7 @@ class HtmlBuilderPart:
 
     def hr(self, **args):
         """
-        The <code>hr</code> tag inserts a horizontal rule.<br/>
+        The ``hr`` tag inserts a horizontal rule.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_hr.asp" target="external"/></seealso>
         <python>
         self.hr(size=15, color='green')
@@ -984,7 +984,7 @@ class HtmlBuilderPart:
 
     def a(self, **kwargs):
         """
-        The <code>a</code> tag defines an anchor. An anchor can be used in two ways:<br/>
+        The ``a`` tag defines an anchor. An anchor can be used in two ways:<br/>
         <list>
             <sep>To create a link to another document by using the href attribute</sep>
             <sep>To create a bookmark inside a document, by using the name or id attribute</sep>
@@ -1010,7 +1010,7 @@ class HtmlBuilderPart:
 
     def frameset(self, **args):
         """
-        The <code>frameset</code> tag creates an frame set that contains frames with other documents.
+        The ``frameset`` tag creates an frame set that contains frames with other documents.
         <seealso><www href="http://www.w3schools.com/tags/tag_frameset.asp"/></seealso>
         """
         self.write_tag(u'frameset', True, args)
@@ -1022,7 +1022,7 @@ class HtmlBuilderPart:
 
     def frame(self, **args):
         """
-        The <code>frame</code> tag defines one particular window (frame) within a frameset.
+        The ``frame`` tag defines one particular window (frame) within a frameset.
         Each frame in a frameset can have different attributes, such as border, scrolling, the ability to resize, etc.
         <seealso><www href="http://www.w3schools.com/tags/tag_frame.asp"/></seealso>
         """
@@ -1036,7 +1036,7 @@ class HtmlBuilderPart:
 
     def noframes(self, **args):
         """
-        The <code>noframes</code> tag is used for browsers that do not handle frames.<br/>
+        The ``noframes`` tag is used for browsers that do not handle frames.<br/>
         The noframes element can contain all the elements that you can find inside the body element of a normal HTML
         page.<br/>
         The noframes element is most used to link to a non-frameset version of the web site or to display a message to
@@ -1052,7 +1052,7 @@ class HtmlBuilderPart:
 
     def iframe(self, src, **args):
         """
-        The <code>iframe</code> tag creates an inline frame that contains another document.
+        The ``iframe`` tag creates an inline frame that contains another document.
         <seealso><www href="http://www.w3schools.com/tags/tag_iframe.asp"/></seealso>
         """
         r = self.result
@@ -1071,9 +1071,9 @@ class HtmlBuilderPart:
 
     def script(self, charset='UTF-8', type='text/javascript', **args):
         """
-        The <code>br</code> tag inserts a single line break.<br/>
-        Defines a script, such as a JavaScript. Note that if @src is used, then no <code>self._script()</code> must be used.
-        The count attribute is not standard XHTML. It indicates the number of <code>br</code> to repeat.<br/>
+        The ``br`` tag inserts a single line break.<br/>
+        Defines a script, such as a JavaScript. Note that if @src is used, then no ``self._script()`` must be used.
+        The count attribute is not standard XHTML. It indicates the number of ``br`` to repeat.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_script.asp" target="external"/></seealso>
         <python>
         self.script()<br/>
@@ -1114,7 +1114,7 @@ class HtmlBuilderPart:
 
     def ul(self, **args):
         """
-        The <code>ul</code> tag defines an unordered list.<br/>
+        The ``ul`` tag defines an unordered list.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_ul.asp" target="external"/></seealso>
         <python>
         self.ul()<br/>
@@ -1129,7 +1129,7 @@ class HtmlBuilderPart:
 
     def ol(self, **args):
         """
-        The <code>ol</code> tag defines the start of a definition list.<br/>
+        The ``ol`` tag defines the start of a definition list.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_ol.asp" target="external"/></seealso>
         <python>
         self.ol()<br/>
@@ -1146,8 +1146,8 @@ class HtmlBuilderPart:
 
     def li(self, **args):
         """
-        The <code>li</code> tag defines the start of a list item. The <code>li</code> tag is used in both ordered
-        (<code>ol</code>) and unordered lists (<code>ul</code>).
+        The ``li`` tag defines the start of a list item. The ``li`` tag is used in both ordered
+        (``ol``) and unordered lists (``ul``).
         <seealso><www href="http://www.w3schools.com/tags/tag_li.asp" target="external"/></seealso>
         <python>
         self.li()<br/>
@@ -1162,7 +1162,7 @@ class HtmlBuilderPart:
 
     def dl(self, **args):
         """
-        The <code>dl</code> tag defines an unordered list.<br/>
+        The ``dl`` tag defines an unordered list.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_dl.asp" target="external"/></seealso>
         <python>
         self.dl()<br/>
@@ -1177,8 +1177,8 @@ class HtmlBuilderPart:
 
     def dt(self, **args):
         """
-        The <code>dt</code> tag defines the start of a definition list term. 
-        The <code>dt</code> tag is used only in definition lists (<code>dl</code>).
+        The ``dt`` tag defines the start of a definition list term. 
+        The ``dt`` tag is used only in definition lists (``dl``).
         <seealso><www href="http://www.w3schools.com/tags/tag_dt.asp" target="external"/></seealso>
         <python>
         self.dt()<br/>
@@ -1193,8 +1193,8 @@ class HtmlBuilderPart:
 
     def dd(self, **args):
         """
-        The <code>dd</code> tag defines the start of a definition list term. 
-        The <code>dd</code> tag is used only in definition lists (<code>dl</code>).
+        The ``dd`` tag defines the start of a definition list term. 
+        The ``dd`` tag is used only in definition lists (``dl``).
         <seealso><www href="http://www.w3schools.com/tags/tag_dd.asp" target="external"/></seealso>
         <python>
         self.dd()<br/>
@@ -1219,8 +1219,8 @@ class HtmlBuilderPart:
         radio-buttons. Forms are used to pass user data to a specified URL.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_form.asp" target="external"/></seealso>
         
-        If an upload tag is used in the form, then the <attr>enctype</attr> attribute should be set to <code>
-        enctype="multipart/form-data"</code>
+        If an upload tag is used in the form, then the <attr>enctype</attr> attribute should be set to ``
+        enctype="multipart/form-data"``
         <python>
         self.form(action=e['path'])<br/>
         ...<br/>
@@ -1264,7 +1264,7 @@ class HtmlBuilderPart:
 
     def input(self, **args):
         """
-        The <code>input</code> tag defines the start of an input field where the user can enter data.<br/>
+        The ``input`` tag defines the start of an input field where the user can enter data.<br/>
         The attribute <attr>type</attr> can be one of <attr>button | checkbox | file | hidden | image | password | radio |
         reset | submit | text</attr>.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_input.asp" target="external"/></seealso>
@@ -1276,10 +1276,10 @@ class HtmlBuilderPart:
 
     def label(self, **args):
         """
-        The <code>label</code> tag associates a block of plain text with a form input, usually a check or radio box.
+        The ``label`` tag associates a block of plain text with a form input, usually a check or radio box.
         This way the user can click anywhere in the label text to toggle the input on or off.
-        It can be implemented two ways: <code><label><input…> Text</label></code>, or <code><label for='id_of_input'>
-        Text</label>…<input id='id_of_input' …></code>.
+        It can be implemented two ways: ``<label><input…> Text</label>``, or ``<label for='id_of_input'>
+        Text</label>…<input id='id_of_input' …>``.
         <seealso><www href="http://www.w3schools.com/tags/tag_label.asp" target="external"/></seealso>
         """
         self.write_tag(u'label', True, args)
@@ -1304,7 +1304,7 @@ class HtmlBuilderPart:
 
     def option(self, **args):
         """
-        The <code>option</code> tag defines an option in the drop-down list.<br/>
+        The ``option`` tag defines an option in the drop-down list.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_option.asp" target="external"/></seealso>
         <python>
         self.option()<br/>
@@ -1319,7 +1319,7 @@ class HtmlBuilderPart:
 
     def optgroup(self, **args):
         """
-        The <code>optgroup</code> tag defines an option group in the drop-down list.<br/>
+        The ``optgroup`` tag defines an option group in the drop-down list.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_optgroup.asp" target="external"/></seealso>
         <python>
         self.optgroup()<br/>
@@ -1334,7 +1334,7 @@ class HtmlBuilderPart:
 
     def button(self, **args):
         """
-        <code>button</code> is the standard XHTML control. It is much like <code>input type="button"</code> but more
+        ``button`` is the standard XHTML control. It is much like ``input type="button"`` but more
         versatile. It has open and close tags, and can take almost any non-form HTML structure inside.
         <seealso><www href="http://xhtml.com/en/xhtml/reference/button/" target="external"/></seealso>
         """
@@ -1361,7 +1361,7 @@ class HtmlBuilderPart:
 
     def meta(self, **args):
         """
-        The <code>meta</code> element provides meta-information about your page, such as descriptions and keywords for
+        The ``meta`` element provides meta-information about your page, such as descriptions and keywords for
         search engines and refresh rates.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_meta.asp" target="external"/></seealso>
         <python>
@@ -1373,7 +1373,7 @@ class HtmlBuilderPart:
         self.write_tag(u'meta', False, args)
 
     def object(self, **args):
-        u"""The <code>object</code> defines an embedded object. Use this element to add 
+        u"""The ``object`` defines an embedded object. Use this element to add 
         multimedia to your XHTML page. This element allows you to specify the data and 
         parameters for objects inserted into HTML documents, and the code that can be used to 
         display/manipulate that data."""

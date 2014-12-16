@@ -30,7 +30,7 @@ class State(object):
         return cls(d)
     
     def getDoc(self, key):
-        u"""Answer the doc string of <b>key</b> if it exists. Answer <b>None</b> otherwise."""
+        u"""Answer the doc string of **key** if it exists. Answer **None** otherwise."""
         return self._docs.get('doc_' + key)
     
     def __repr__(self):

@@ -16,12 +16,12 @@ from xierpa3.constants.constants import Constants
 
 class EtreeNode:
     u"""
-    The <code>EtreeNode</code> class provides a wrapper around any etree node, to make a more convenient and robust
+    The ``EtreeNode`` class provides a wrapper around any etree node, to make a more convenient and robust
     Python based API.<br/>
     Note that if <attr>xml</attr> is supplied to the constructor, it needs to be validated XML, since not other checking
     or transformation is performed at this stage.<br/>
-    The same is true the other way around. This especially is applies for the instance read and written from <code>
-    XmlTreeField</code> fields. For documentation on Etree see <a href="http://lxml.de/tutorial.html">the official
+    The same is true the other way around. This especially is applies for the instance read and written from ``
+    XmlTreeField`` fields. For documentation on Etree see <a href="http://lxml.de/tutorial.html">the official
     tutorial</a>.
     """
     C = Constants
@@ -59,12 +59,12 @@ class EtreeNode:
     @classmethod
     def getXPath(cls, tree, xpath):
         u"""
-        The <code>getXPath</code> class method queries the <attr>tree</attr> by <attr>xpath</attr> and answers a
-        list of <code>EtreeNode</code> instances for every matching entry. There are several answering conditions: if
-        <attr>tree</attr> is <code>None</code> then answer <code>None</code>. If there is no result, then answer
-        <code>None</code>. If the result is a list of <code>basestring</code> instances (tested on the first of the
-        list) then answer the list untouched. Otherwise make a new list with the result <code>etree</code> nodes wrapped
-        as <code>EtreeNode</code> instances.
+        The ``getXPath`` class method queries the <attr>tree</attr> by <attr>xpath</attr> and answers a
+        list of ``EtreeNode`` instances for every matching entry. There are several answering conditions: if
+        <attr>tree</attr> is ``None`` then answer ``None``. If there is no result, then answer
+        ``None``. If the result is a list of ``basestring`` instances (tested on the first of the
+        list) then answer the list untouched. Otherwise make a new list with the result ``etree`` nodes wrapped
+        as ``EtreeNode`` instances.
         """
         if tree is None:
             return None
@@ -83,10 +83,10 @@ class EtreeNode:
     @classmethod
     def getXPathNode(cls, tree, xpath, index=0):
         u"""
-        The <code>getXPathNode</code> class method does the same as <code>cls.getXPath</code> except that it
+        The ``getXPathNode`` class method does the same as ``cls.getXPath`` except that it
         answers the element of the list indicated by <attr>index</attr>. If there is no result, or if the <attr>index
-        </attr> exceeds the length of the result list, then <code>None</code> is answered. Default value for the
-        optional <attr>index</attr> attribute is <code>0</code>, resulting in the first element if it exists.
+        </attr> exceeds the length of the result list, then ``None`` is answered. Default value for the
+        optional <attr>index</attr> attribute is ``0``, resulting in the first element if it exists.
         """
         if tree is None:
             return None
@@ -112,19 +112,19 @@ class EtreeNode:
 
     def _xpath(self, xpath):
         u"""
-        The <code>_xpath</code> function is the instance equivalent of <code>cls.getXPathNode</code>.
+        The ``_xpath`` function is the instance equivalent of ``cls.getXPathNode``.
         """
         return self.__class__.getXPath(self._getTree(), xpath)
 
     def _xpathNode(self, xpath):
         u"""
-        The <code>_xpathNode</code> function is the instance equivalent of <code>cls.getXPathNode</code>.
+        The ``_xpathNode`` function is the instance equivalent of ``cls.getXPathNode``.
         """
         return self.__class__.getXPathNode(self._getTree(), xpath)
 
     def _xpathString(self, xpath):
         u"""
-        The <code>_xpathString</code> method answers the concatenated string of all results (strings or elements)
+        The ``_xpathString`` method answers the concatenated string of all results (strings or elements)
         of <attr>xpath</attr>.
         """
         result = self._xpath(xpath)

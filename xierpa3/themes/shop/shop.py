@@ -20,6 +20,6 @@
 from xierpa3.components import Theme
 
 class Shop(Theme):
-    u"""The <b>SimpleBlog</b> class implements the standard example blog."""
+    u"""The **SimpleBlog** class implements the standard example blog."""
     TITLE = '[Title of the blog]'
     SUBTITLE = '[Subtitle of the blog]'

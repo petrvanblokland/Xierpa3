@@ -62,7 +62,7 @@ class HelloWorldBluePrintText(Column):
     
     def buildBlock(self, b):
         u"""Build the column, using the parameters from the class BluePrint instance.
-        This dictionary is builds the <b>self.style()</b> by cascading all BlurPrint instances
+        This dictionary is builds the **self.style()** by cascading all BlurPrint instances
         of the parent classes. The result is a complete specification of all the parameters 
         the direction the style and behavior of this component."""
         s = self.style
@@ -109,7 +109,7 @@ class HelloWorldBluePrintText(Column):
         b._div()
         
 class HelloWorldBluePrint(Theme):
-    u"""The <b>HelloWorldResponsive</b> class implements a basic "Hello, world!" page, running as
+    u"""The **HelloWorldResponsive** class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Double click the generated file or
     drag to a browser see the result."""
     TITLE = u'The responsive "Hello, world!" page using BluePrint styling.' # Use as title of window.
@@ -127,7 +127,7 @@ class HelloWorldBluePrint(Theme):
         return [homePage]
 
     def make(self, root):
-        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        u"""The instance of this class builds CSS and HTML files at the optional path **root**.
         If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
         as set by Builder.DEFAULT_ROOTPATH"""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines

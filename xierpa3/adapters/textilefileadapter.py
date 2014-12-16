@@ -40,10 +40,10 @@
 #    fn1. Definition of footnote.
 #    _word_ --> <em>word</em>
 #    *word* --> <strong>word</strong>
-#    **word** --> <b>word</b>
+#    **word** --> **word**
 #    __word__ --> <i>word</i>
 #    ??word?? --> <cite>word</cite>
-#    @r.to_html@ --> <code>r.to_html</code>
+#    @r.to_html@ --> ``r.to_html``
 #    -word- --> <del>word</del> (Deletion, strike through)
 #    +word+ --> <ins>word</ins> (Insertion)
 #    ^word^ --> <sup>word</sup>
@@ -377,15 +377,15 @@ class TextileFileAdapter(Adapter):
         return article.items
     
     def getChapterByIndex(self, index, article):
-        u"""Find the chapter by <b>index</b> in the Article instance <b>article</b>.
-        Answer <b>None</b> if the chapter index is not valid."""
+        u"""Find the chapter by **index** in the Article instance **article**.
+        Answer **None** if the chapter index is not valid."""
         if 0 <= index < len(article.chapters):
             return article.chapters[index]
         return None
     
     def getChapterTitleByIndex(self, index, article):
-        u"""Find the title of the chapter by <b>index</b> in the Article instance <b>article</b>.
-        Answer <b>None</b> if the index is not valid or the title cannot be found."""
+        u"""Find the title of the chapter by **index** in the Article instance **article**.
+        Answer **None** if the index is not valid or the title cannot be found."""
         chapter = self.getChapterByIndex(index, article)
         if chapter is not None:
             return chapter.find('./meta/title')

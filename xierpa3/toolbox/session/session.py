@@ -103,7 +103,7 @@ class Session:
     def clear(self):
         u"""
         
-        The <code>clear</code> method clears all session data, while keeping the instance working.
+        The ``clear`` method clears all session data, while keeping the instance working.
         This e.g. can be used when the user is logging out, and all previous data should be cleared.
         
         """
@@ -149,8 +149,8 @@ class Session:
     def default(self, field, value):
         u"""
         
-        The <code>default</code> method sets the value of <attr>field</attr> to <attr>value</attr>
-        only if the current value is <code>None</code>. This way the method can be used to compact
+        The ``default`` method sets the value of <attr>field</attr> to <attr>value</attr>
+        only if the current value is ``None``. This way the method can be used to compact
         initialize the value of a session field.
         
         """
@@ -179,7 +179,7 @@ class Session:
         python v 2.4 raises a TypeError instead of pickle.UnpickleableError, so catch this exception
         
         >>> from xpyth.xmlparser import XMLParser
-        >>> parsed_xml = XMLParser().parse('<a><b>c</b></a>')
+        >>> parsed_xml = XMLParser().parse('<a>**c**</a>')
         >>> parsed_xml
         <a No parent >
         >>> s = Session('1234')

@@ -25,7 +25,7 @@ class BaseHelloWorldText(Column):
 
     def buildBlock(self, b):
         u"""Build a content base class. Inherited by specific HelloWorld... classes
-        that define the method <b>self.helloWorldText(b). In this example the CSS parameter
+        that define the method **self.helloWorldText(b). In this example the CSS parameter
         are still defined inside the block. Different from the real usage of BluePrint API parameter,
         that allow modification from including components or inheriting components."""
         b.div(class_=self.getClassName(), margin=Margin(0, self.C.AUTO, 0, self.C.AUTO), 
@@ -103,7 +103,7 @@ class Navigation(Column):
         b._div()
             
 class HelloWorldPages(Theme):
-    u"""The <b>HelloWorldLayout</b> class implements a basic "Hello, world!" page, running as
+    u"""The **HelloWorldLayout** class implements a basic "Hello, world!" page, running as
     batch process, saving the result as an HTML file. Also it is available in the example webserver,
     e.g. through the Xierpa3App."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
@@ -136,7 +136,7 @@ class HelloWorldPages(Theme):
         return [homePage, other1Page, other2Page]
 
     def make(self, root=None):
-        u"""The instance of this class builds CSS and HTML files at the optional path <b>root</b>.
+        u"""The instance of this class builds CSS and HTML files at the optional path **root**.
         If not defined, then the default ~/Desktop/Xierpa3Examples/[component.name] is used as export path,
         as set by Builder.DEFAULT_ROOTPATH"""
         # Create an "instance" (=object) of type "HelloWorldLayout". The type (=class) defines

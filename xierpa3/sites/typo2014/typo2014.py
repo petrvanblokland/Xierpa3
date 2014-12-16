@@ -35,7 +35,7 @@ class Typo2014Adapter(TextileFileAdapter):
 #ADAPTER = Typo2014Adapter(root=TX.module2Path(typo2014) + '/files/articles')
 
 class Typo2014(Shop):
-    u"""The <b>Shop</b> class implements the standard example shop
+    u"""The **Shop** class implements the standard example shop
     with content based on files."""
     TITLE = 'Doing by Design'
     SUBTITLE = 'Notes on design and education.'

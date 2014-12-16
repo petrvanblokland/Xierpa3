@@ -21,7 +21,7 @@ class Navigation(Component):
     pass
 
 class MobileNavigation(Navigation):
-    u"""The <b>MobileNavigation</b> only shows in mobile screen mode."""
+    u"""The **MobileNavigation** only shows in mobile screen mode."""
     
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = Navigation.C 

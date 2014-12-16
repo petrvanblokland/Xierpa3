@@ -26,7 +26,7 @@ class UnbasedPathResolver(etree.Resolver):
 
     def resolve(self, url, id, context):
         u"""
-        The <code>resolve</code> method resolves the file system path for finding XSL modules to include. URL is a full
+        The ``resolve`` method resolves the file system path for finding XSL modules to include. URL is a full
         fspath built up by LXML, we have to disassemble it to find the parts of the tree that we then separately test on
         the existence of _xsl and the run upwards until we find a match. Store the found XSL source in the class cache
         under the URL as key with a time stamp.
@@ -67,9 +67,9 @@ class UnbasedPathResolver(etree.Resolver):
         u"""
         
         Make sure, whatever <attr>s</attr> is, that there is a value Unicode string answered. If <attr>s</attr> is not a
-        string then use <code>str(s)</code> to convert to a string first. This will make database records convert to a
-        string of their id, instead of showing the record <code>repr</code> result. <em>Note that it might be that
-        <code>str</code> will cause an error on the content of the object such as a list.</em>. <code>None</code> is
+        string then use ``str(s)`` to convert to a string first. This will make database records convert to a
+        string of their id, instead of showing the record ``repr`` result. <em>Note that it might be that
+        ``str`` will cause an error on the content of the object such as a list.</em>. ``None`` is
         replaced by an empty Unicode string.
         
         """
@@ -143,7 +143,7 @@ class XmlParser:
 
     def isvalidxml(self, xml):
         u"""
-        The <code>isvalidxml</code> method answers the boolean flag id <attr>xml</attr> is a valid XML string. The
+        The ``isvalidxml`` method answers the boolean flag id <attr>xml</attr> is a valid XML string. The
         method adds a module root tag, so the <attr>xml</attr> does not need to have a root tag. 
         """
         try:
@@ -155,12 +155,12 @@ class XmlParser:
 
     def parse(self, src=None, xml=None, checkunicode=False, catchexception=True):
         u"""
-        The <code>parse</code> method with parse either a <attr>src</attr> or <attr>xml</attr>. If defined the
+        The ``parse`` method with parse either a <attr>src</attr> or <attr>xml</attr>. If defined the
         <attr>xml</attr> attribute must be of type unicode. If the <attr>checkunicode</attr> attribute (default value is
-        <code>False</code>) is <code>True</code> then an error is raised if the <attr>xml</attr> string is not unicode.
+        ``False``) is ``True`` then an error is raised if the <attr>xml</attr> string is not unicode.
         <br/>
         
-        If the optional <attr>catchexception</attr> (default value is <code>True</code>) is set to <code>False</code>
+        If the optional <attr>catchexception</attr> (default value is ``True``) is set to ``False``
         then the parser does not try to catch as parser error. This allows the calling application class to  get a
         better view on the type of XML error.
         """

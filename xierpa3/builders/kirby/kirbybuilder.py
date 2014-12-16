@@ -44,7 +44,7 @@ class XXXKirbyBuilder(HtmlBuilder):
         return 'assets/css/style.css'
         
     def getTemplatePath(self, component):
-        u"""Answer the relative local oath to the template of <b>component</b>."""
+        u"""Answer the relative local oath to the template of **component**."""
         return 'site/templates/%s.php' % component.name
     
     def XXXgetCmsPath(self):

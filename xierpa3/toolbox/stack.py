@@ -43,7 +43,7 @@ class Stack:
     def clear(self):
         u"""
         
-        The <code>clear</code> method clears the stack.
+        The ``clear`` method clears the stack.
         
         """
         self.data = []
@@ -51,7 +51,7 @@ class Stack:
     def setitem(self, item):
         u"""
         
-        The <code>setitem</code> method sets the stack content to <code>[item]</code>.
+        The ``setitem`` method sets the stack content to ``[item]``.
         
         """
         self.data = [item]
@@ -59,7 +59,7 @@ class Stack:
     def push(self, item):
         u"""
         
-        The <code>push</code> method pushes the <attr>item</attr> on stack.
+        The ``push`` method pushes the <attr>item</attr> on stack.
         
         """
         self.data.append(item)
@@ -67,7 +67,7 @@ class Stack:
     def getAll(self):
         u"""
         
-        The <code>getAll</code> method answers the whole list with stacked elements.
+        The ``getAll`` method answers the whole list with stacked elements.
         
         """
         return self.data
@@ -75,7 +75,7 @@ class Stack:
     def replace(self, item):
         u"""
         
-        The <code>replace</code> method replaces the top element of the stack by <attr>item</attr>.
+        The ``replace`` method replaces the top element of the stack by <attr>item</attr>.
         
         """
         self.data[-1] = item
@@ -83,8 +83,8 @@ class Stack:
     def top(self):
         u"""
         
-        The <code>top</code> method peeks the top level of the stack. This is identical to <code>self.peek()</code>.
-        If the stack is empty, then answer <code>None</code>.
+        The ``top`` method peeks the top level of the stack. This is identical to ``self.peek()``.
+        If the stack is empty, then answer ``None``.
         
         """
         if not self.data:
@@ -93,8 +93,8 @@ class Stack:
 
     def peek(self, index=0):
         u"""
-        The <code>peek</code> method peeks into the stacked list of elements. The optional <attr>index</attr> (default
-        value is <code>0</code>) goes backwards, so an <attr>index</attr> of <code>0</code> is the top of the stack.
+        The ``peek`` method peeks into the stacked list of elements. The optional <attr>index</attr> (default
+        value is ``0``) goes backwards, so an <attr>index</attr> of ``0`` is the top of the stack.
         """
         if index >= len(self.data):
             return None
@@ -103,7 +103,7 @@ class Stack:
     def root(self):
         u"""
         
-        The <code>root<code> method answers the root <code>self.data[0]</code> element of the stack.
+        The ``root`` method answers the root ``self.data[0]`` element of the stack.
         
         """
         return self.data[0]
@@ -111,8 +111,8 @@ class Stack:
     def pop(self):
         u"""
         
-        The <code>pop</code> method pops the stack and answers the popped element.
-        If the stack is empty, then answer <code>None</code>. This is a “friendly” error, so the application
+        The ``pop`` method pops the stack and answers the popped element.
+        If the stack is empty, then answer ``None``. This is a “friendly” error, so the application
         can decide what to do with the wrong sized stack.
         
         """

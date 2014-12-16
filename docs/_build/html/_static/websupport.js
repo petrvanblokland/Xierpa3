@@ -699,7 +699,7 @@
       <p class="add-a-comment">Add a comment\
         (<a href="#" class="comment-markup" id="ab<%id%>">markup</a>):</p>\
       <div class="comment-markup-box" id="mb<%id%>">\
-        reStructured text markup: <i>*emph*</i>, <b>**strong**</b>, \
+        reStructured text markup: <i>*emph*</i>, ****strong****, \
         <tt>``code``</tt>, \
         code blocks: <tt>::</tt> and an indented block after blank line</div>\
       <form method="post" id="cf<%id%>" class="comment-form" action="">\

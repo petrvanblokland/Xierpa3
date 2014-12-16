@@ -34,8 +34,8 @@ class Theme(Component):
     def getMatchingTemplate(self, builder):
         u"""
         Find the page template in self.components that has the best name match with currently available parameters in
-        <b>self.e.form</b>. Unquote the url parameters and remove the spaces to create potential template names.
-        Then match them against the available template components of <b>self</b>.
+        **self.e.form**. Unquote the url parameters and remove the spaces to create potential template names.
+        Then match them against the available template components of **self**.
         """
         urlNames = set()
         for urlName in builder.getParamNames():

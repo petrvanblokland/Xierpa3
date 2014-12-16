@@ -44,7 +44,7 @@ class Column(Container):
     def buildBlock(self, b):
         u"""Build the block of a column. Note that for clarity fontsize and lineheight are defined
         for each part separated, relation the overall container fontsize and lineheight.
-        Classes inheriting from <b>Column</b> should implement <b>self.buildBlock</b>."""
+        Classes inheriting from **Column** should implement **self.buildBlock**."""
         """
         s = self.style
         colClass = self.getColClass(s.colWidth)
@@ -71,5 +71,5 @@ class Column(Container):
 
     def buildColumn(self, b):
         u"""Build the component column."""
-        b.error('Classes inheriting from *Column* should implement <b>self.buildColumn(b)</b>.')
+        b.error('Classes inheriting from *Column* should implement **self.buildColumn(b)**.')
 

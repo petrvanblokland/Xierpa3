@@ -14,13 +14,13 @@ from xierpa3.constants.constants import Constants
 
 class Status(object):
     u"""
-    The <code>Status</code> class offers a “lazy” storage of basic values, that can be
-    stored with JSON in the <code>StatusField</code> field of a database record.
+    The ``Status`` class offers a “lazy” storage of basic values, that can be
+    stored with JSON in the ``StatusField`` field of a database record.
     It can contain an arbitrary set of attributes and getting an attribute that does
-    not exist, simply answers <code>None</code>, so in general they don't need to be
-    initialized if the default value is <code>False</code>.<br/>
+    not exist, simply answers ``None``, so in general they don't need to be
+    initialized if the default value is ``False``.<br/>
     Note that this is an easy, simple, flat storage device. If storage in a tree is
-    required, then use <code>Node<code>, <code>Tree</code> or <code>State</code> classes.
+    required, then use ``Node``, ``Tree`` or ``State`` classes.
     """
     C = Constants
     

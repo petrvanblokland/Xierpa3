@@ -18,7 +18,7 @@ import re
 def uniqueLong():
     u"""
     
-    The <code>uniqueLong</code> method answers a unique number (as string) of 18 digits.
+    The ``uniqueLong`` method answers a unique number (as string) of 18 digits.
     
     """
     return DateTime.timestamprandomlong()
@@ -26,7 +26,7 @@ def uniqueLong():
 def timestampLong():
     u"""
     
-    The <code>timestampLong</code> method answers the timestamp. This may not be unique.
+    The ``timestampLong`` method answers the timestamp. This may not be unique.
     
     """
     return DateTime.timestamplong()
@@ -34,7 +34,7 @@ def timestampLong():
 def uniqueId(size=0):
     u"""
     
-    The <code>uniqueId</code> method answers a unique number (as string) of <attr>size</attr> length concatenated
+    The ``uniqueId`` method answers a unique number (as string) of <attr>size</attr> length concatenated
     timestamps. Minimum length of the number is 18 digits, or else string will not be unique.
     
     """
@@ -72,7 +72,7 @@ def monthdays(year, month):
 def checkdatetime(date):
     u"""
     
-    The <code>checkdatetime</code> answers the <attr>date</attr> if it is a date. If date is None, then answer None. If
+    The ``checkdatetime`` answers the <attr>date</attr> if it is a date. If date is None, then answer None. If
     date is a string, then convert to DateTime. Check on the month and day boundaries. Answer the same type that date
     was. Note that we do not check if date was already a DateTime. This method is especially made to set database fields
     with dates, where that None will result in a NULL value for that field.
@@ -86,9 +86,9 @@ def checkdatetime(date):
 
 def newdatetime(date):
     u"""
-    The <code>newdate</code> method answers a new <code>DateTime</code> instance. If the <attr>date</attr> is
-    <code>None</code>, then answer <code>None</code>. If <attr>date</attr> is a string, then convert to
-    <code>DateTime</code>. Check on the month and day boundaries.<br/>
+    The ``newdate`` method answers a new ``DateTime`` instance. If the <attr>date</attr> is
+    ``None``, then answer ``None``. If <attr>date</attr> is a string, then convert to
+    ``DateTime``. Check on the month and day boundaries.<br/>
     
     """
     if date is None:
@@ -100,14 +100,14 @@ def newdatetime(date):
 class Duration:
     u"""
     
-    The <code>Duration</code> class contains a duration in time. It can e.g. be used to add to a <code>DateTime</code>
+    The ``Duration`` class contains a duration in time. It can e.g. be used to add to a ``DateTime``
     instance with a new date as result.<br/>
     <python>
     Duration(3)<br/>
     Duration(seconds=10)<br/>
     Duration(td=timedelta)<br/>
     </python>
-    All common arithmetic applies to a <code>Duration</code> instance. 
+    All common arithmetic applies to a ``Duration`` instance. 
     <python>
     d = Duration(3)<br/>
     d * 3 is a duration of 6 days.<br/>
@@ -290,11 +290,11 @@ Period = Duration    # Make the lib backward compatible. But the use of Period i
 class DateTime:
     u"""
     
-    The <code>newdate</code> method answers a new <code>DateTime</code> instance. If the <attr>date</attr> is
-    <code>None</code>, then answer <code>None</code>. If <attr>date</attr> is a string, then convert to
-    <code>DateTime</code>. Check on the month and day boundaries.<br/>
+    The ``newdate`` method answers a new ``DateTime`` instance. If the <attr>date</attr> is
+    ``None``, then answer ``None``. If <attr>date</attr> is a string, then convert to
+    ``DateTime``. Check on the month and day boundaries.<br/>
     <list>
-        <li>Initialize the current date if the <attr>date</attr> is equal to <code>now</code></li>
+        <li>Initialize the current date if the <attr>date</attr> is equal to ``now``</li>
         <li>Initialize on first day of the week if year and week are defined</li>
         <li>Initialize from existing datetime if "dt" is defined</li>
         <li>Initialize from <attr>date_time</attr> string, date and time separated by white space.</li>
@@ -303,7 +303,7 @@ class DateTime:
         <li>Initialize from (year, month, day) if all of them are defined.</li>
         <li>Otherwise raise an error</li>
     </list>
-    If the <attr>trimvalues</attr> attribute is set to <code>False</code> (default is <code>True</code>) then the
+    If the <attr>trimvalues</attr> attribute is set to ``False`` (default is ``True``) then the
     input values of the date are <em>not</em> trimmed to their minimum and maximum values. This checking is done in
     context for days in months and years.<br/>
     <python>
@@ -436,8 +436,8 @@ class DateTime:
     def __str__(self):
         u"""
         
-        The function <code>str(dt)</code> answers the string representation of the date. Typically the identical to
-        <code>dt.date + ' ' + dt.time</code>.
+        The function ``str(dt)`` answers the string representation of the date. Typically the identical to
+        ``dt.date + ' ' + dt.time``.
         
         """
         return `self`
@@ -445,8 +445,8 @@ class DateTime:
     def __repr__(self):
         u"""
         
-        The function <code>repr(dt)</code> (or <code>`dt`</code>) answers the string representation of the date,
-        typically identical to <code>dt.date + ' ' + dt.time</code>.
+        The function ``repr(dt)`` (or ```dt```) answers the string representation of the date,
+        typically identical to ``dt.date + ' ' + dt.time``.
         
         """
         return self.date + ' ' + self.time
@@ -454,7 +454,7 @@ class DateTime:
     def __nonzero__(self):
         u"""
         
-        Always answer <code>True</code> indicating that a <code>DateTime</code> instance can never be zero.
+        Always answer ``True`` indicating that a ``DateTime`` instance can never be zero.
         
         """
         return True
@@ -462,9 +462,9 @@ class DateTime:
     def __lt__(self, dt):
         u"""
         
-        Answers <code>True</code> if <code>self</code> is in the past of date <code>dt</code> as in <code>self &lt; dt</code>.<br/>
+        Answers ``True`` if ``self`` is in the past of date ``dt`` as in ``self &lt; dt``.<br/>
         Note that in evaluating the condition the difference in time is taken into account as well.<br/>
-        Use <code>self.datenumber &amp;lt; dt.datenumber</code> to test on date comparison only instead of <code>dy &amp;lt; self</code>.</br>
+        Use ``self.datenumber &amp;lt; dt.datenumber`` to test on date comparison only instead of ``dy &amp;lt; self``.</br>
         
         """
         return self.datetime < dt.datetime
@@ -472,9 +472,9 @@ class DateTime:
     def __le__(self, dt):
         u"""
         
-        Answers <code>True</code> if <code>self</code> is in the past of or equal to date <code>dt</code> as in <code>self &lt;=< dt/code>.<br/>
+        Answers ``True`` if ``self`` is in the past of or equal to date ``dt`` as in ``self &lt;=< dt/code>.<br/>
         Note that in evaluating the condition the difference in time is taken into account as well.<br/>
-        Use <code>self.datenumber &amp;lt; dt.datenumber</code> to test on date comparison only instead of <code>dy &amp;lt;= self</code>.</br>
+        Use ``self.datenumber &amp;lt; dt.datenumber`` to test on date comparison only instead of ``dy &amp;lt;= self``.</br>
         
         """
         return self.datetime <= dt.datetime
@@ -505,7 +505,7 @@ class DateTime:
     def __add__(self, duration):
         u"""
         
-        Add the <attr>duration</attr> to <code>self</code>.
+        Add the <attr>duration</attr> to ``self``.
         <python>
         Date + Duration = Date
         Date + 3 = Date
@@ -539,7 +539,7 @@ class DateTime:
     def timestamprandomlong(cls):
         u"""
         
-        The <code>_uniquenumber</code> method/attributes answers a unique number of format <code>'20090621200511993066'</code>, 
+        The ``_uniquenumber`` method/attributes answers a unique number of format ``'20090621200511993066'``, 
         derived from date, time and a six digit random number. This can be used e.g. in a URL as parameters to make sure that browser 
         will not cache the content of the page. The number is also used to create a unique file name for background shell scripts.
         
@@ -554,7 +554,7 @@ class DateTime:
     def _timestamp(self, usetz=False):
         u"""
         
-        The <code>dt.timestamp</code> answers a formatted string <code>2010-10-05 16:47:29+o4</code> of the date. This
+        The ``dt.timestamp`` answers a formatted string ``2010-10-05 16:47:29+o4`` of the date. This
         is exactly what SQL needs as timestamp with time zone definition.<br/>
         <note>use of tz does not yet work, and is ignored</note>
         
@@ -570,7 +570,7 @@ class DateTime:
     def _date(self):
         u"""
         
-        The <code>dt.date</code> answers a formatted string <code>2008-10-23</code> of the date.
+        The ``dt.date`` answers a formatted string ``2008-10-23`` of the date.
         This is exactly what SQL needs as date-string definition.
         
         """
@@ -579,7 +579,7 @@ class DateTime:
     def _eurodate(self):
         u"""
         
-        The <code>dt.eurodate</code> answers a formatted string <code>23-10-2008</code> of the date.
+        The ``dt.eurodate`` answers a formatted string ``23-10-2008`` of the date.
         
         """
         return '%02d-%02d-%02d' % (self.day, self.month, self.year)
@@ -587,8 +587,8 @@ class DateTime:
     def _studyyear(self):
         u"""
         
-        The <code>dt.studyyear</code> method/attribute answers a string <code>0708 with leading zero for the study year
-        from <code>2007-08-01</code> until <code>2008-07-31</code>
+        The ``dt.studyyear`` method/attribute answers a string ``0708 with leading zero for the study year
+        from ``2007-08-01`` until ``2008-07-31``
         
         """
         studyyear = (self.year - 2000) * 100 + self.year - 2000 + 1
@@ -599,7 +599,7 @@ class DateTime:
     def _datenumber(self):
         u"""
         
-        The <code>dt.datenumber</code> method/attribute answers a long integer number 20080502 of the date. This can by
+        The ``dt.datenumber`` method/attribute answers a long integer number 20080502 of the date. This can by
         used to compare dates on day only and not on time. Or it can be used as ordering key.
         
         """
@@ -608,7 +608,7 @@ class DateTime:
     def _datetuple(self):
         u"""
         
-        The <code>dt.datetuple</code> method/attribute answers a tuple <code>(y,m,d)</code> of the date.
+        The ``dt.datetuple`` method/attribute answers a tuple ``(y,m,d)`` of the date.
         
         """
         return self.year, self.month, self.day
@@ -616,7 +616,7 @@ class DateTime:
     def _time(self):
         u"""
         
-        The <code>dt.datenumber</code> method/attribute answers a formatted <code>'12:23:45'</code> time string.
+        The ``dt.datenumber`` method/attribute answers a formatted ``'12:23:45'`` time string.
         
         """
         return '%02d:%02d:%02d' % (self.hour, self.minute, self.second)
@@ -624,7 +624,7 @@ class DateTime:
     def _date_time(self):
         u"""
         
-        The <code>dt.date_time</code> method/attribute answers a formatted <code>'2010-12-06 12:23:34'</code> date/time
+        The ``dt.date_time`` method/attribute answers a formatted ``'2010-12-06 12:23:34'`` date/time
         string.
         
         """
@@ -633,7 +633,7 @@ class DateTime:
     def _timetuple(self):
         u"""
         
-        The <code>dt.timetuple</code> method/attribute answers a tuple <code>(h, m, s)</code> of the time.
+        The ``dt.timetuple`` method/attribute answers a tuple ``(h, m, s)`` of the time.
         
         """
         return self.hour, self.minute, self.second
@@ -641,7 +641,7 @@ class DateTime:
     def _timezone(self):
         u"""
         
-        The <code>dt.timezone</code> method/attribute answers the timezone <code>dt.tz</code>.
+        The ``dt.timezone`` method/attribute answers the timezone ``dt.tz``.
         
         """
         return self.tz
@@ -649,7 +649,7 @@ class DateTime:
     def _week(self):
         u"""
         
-        The <code>dt.week</code> method/attribute answers the weeknummer according to ISO 8601 where the first week of
+        The ``dt.week`` method/attribute answers the weeknummer according to ISO 8601 where the first week of
         the year that contains a thursday.
         
         """
@@ -658,7 +658,7 @@ class DateTime:
     def _dayname(self):
         u"""
         
-        The <code>dt.dayname</code> method/attribute answers a 3 letter abbreviation of current day name. 
+        The ``dt.dayname`` method/attribute answers a 3 letter abbreviation of current day name. 
         
         """
         return self.daynames[self.weekday]
@@ -666,7 +666,7 @@ class DateTime:
     def _fulldayname(self):
         u"""
         
-        The <code>dt.fulldayname</code> method/attribute answers the full name of the current day. 
+        The ``dt.fulldayname`` method/attribute answers the full name of the current day. 
         
         """
         return self.fulldaynames[self.weekday]
@@ -674,7 +674,7 @@ class DateTime:
     def _monthname(self):
         u"""
         
-        The <code>dt.monthname</code> method/attribute answers a 3 letter abbreviation of current month name. 
+        The ``dt.monthname`` method/attribute answers a 3 letter abbreviation of current month name. 
         
         """
         return self.monthnames[self.month]
@@ -682,7 +682,7 @@ class DateTime:
     def _fullmonthname(self):
         u"""
         
-        The <code>dt.fullmonthname</code> method/attribute answers the full name of the current month. 
+        The ``dt.fullmonthname`` method/attribute answers the full name of the current month. 
         
         """
         return self.fullmonthnames[self.month]
@@ -690,7 +690,7 @@ class DateTime:
     def _monthstart(self):
         u"""
         
-        The <code>dt.monthstart</code> method/attribute answers the first day of the current month.    
+        The ``dt.monthstart`` method/attribute answers the first day of the current month.    
         
         """
         return self + (1 - self.day) # Keep integer calculation combined by brackets
@@ -698,7 +698,7 @@ class DateTime:
     def _monthend(self):
         u"""
         
-        The <code>dt.monthend</code> method/attribute answers the last day of the current month.    
+        The ``dt.monthend`` method/attribute answers the last day of the current month.    
         
         """
         return self - self.day + self.monthdays
@@ -706,7 +706,7 @@ class DateTime:
     def _weekstart(self):
         u"""
         
-        The <code>dt.weekstart</code> method/attribute answers the “Monday” date of the current week.
+        The ``dt.weekstart`` method/attribute answers the “Monday” date of the current week.
         
         """
         return self - self.weekday
@@ -722,7 +722,7 @@ class DateTime:
     def _yearstart(self):
         u"""
         
-        The <code>dt.yearstart</code> method/attribute answers the first day of the current year.    
+        The ``dt.yearstart`` method/attribute answers the first day of the current year.    
         
         """
         return DateTime(self.year, 1, 1)
@@ -730,7 +730,7 @@ class DateTime:
     def _yearend(self):
         u"""
         
-        The <code>dt.yearend</code> method/attribute answers the last day of the current year.    
+        The ``dt.yearend`` method/attribute answers the last day of the current year.    
         
         """
         return DateTime(self.year, 12, 31)
@@ -738,7 +738,7 @@ class DateTime:
     def _workday(self):
         u"""
         
-        The <code>dt.workday</code> method/attribute answers <code>True</code> if this day is one of Monday till Friday.
+        The ``dt.workday`` method/attribute answers ``True`` if this day is one of Monday till Friday.
         
         """
         return 0 <= self.weekday <= 4
@@ -746,7 +746,7 @@ class DateTime:
     def _nextworkday(self):
         u"""
         
-        The <code>dt.nextworkday</code> method/attribute answers the first next date (including itself) that is a
+        The ``dt.nextworkday`` method/attribute answers the first next date (including itself) that is a
         workday
         
         """
@@ -757,7 +757,7 @@ class DateTime:
     def _leapyear(self):
         u"""
         
-        The <code>dt.leapyear</code> method/attribute answers a boolean if the <code>dt</code> is a leap year.
+        The ``dt.leapyear`` method/attribute answers a boolean if the ``dt`` is a leap year.
         
         """
         return leapyear(self.year)
@@ -765,7 +765,7 @@ class DateTime:
     def _yeardays(self):
         u"""
         
-        The <code>dt.yeardays</code> method/attribute answers the number of days in the current year.
+        The ``dt.yeardays`` method/attribute answers the number of days in the current year.
         
         """
         if leapyear(self.year):
@@ -775,7 +775,7 @@ class DateTime:
     def _monthdays(self):
         u"""
         
-        The <code>dt.monthdays</code> method/attribute answers the number of days in the current month.
+        The ``dt.monthdays`` method/attribute answers the number of days in the current month.
         
         """
         return monthdays(self.year, self.month)
@@ -783,7 +783,7 @@ class DateTime:
     def _nextmonth(self):
         u"""
         
-        The <code>nextmonth</code> method/attribute answers the first day of the month after the current month. Due to
+        The ``nextmonth`` method/attribute answers the first day of the month after the current month. Due to
         length differences between the months, it is not consistent to answer the current day number in the next month,
         so it is set to 1.
         
@@ -793,7 +793,7 @@ class DateTime:
     def _prevmonth(self):
         u"""
         
-        The <code>prevmonth</code> method/attribute answers the first day of the month previous to the current month.
+        The ``prevmonth`` method/attribute answers the first day of the month previous to the current month.
         Due to length differences between the months, it is not consistent to  answer the current day number in the
         previous month
         
@@ -803,7 +803,7 @@ class DateTime:
     def _calendarmonth(self):
         u"""
         
-        The <code>calendarmonth</code> method/attribute answers a list of lists containing the weeks with dates of the
+        The ``calendarmonth`` method/attribute answers a list of lists containing the weeks with dates of the
         current month. Note that the first and lost week are filled with the days of end of the previous month and the
         start of the next month.<br/>
         <python>
@@ -832,8 +832,8 @@ class DateTime:
     def _calendaryear(self):
         u"""
         
-        The <code>calendaryear</code> method/attribute answers a list of lists of lists containing all
-        <code>calendarmonths</code> of the year.<br/>
+        The ``calendaryear`` method/attribute answers a list of lists of lists containing all
+        ``calendarmonths`` of the year.<br/>
         <python>
             [<br/>
             [<br/>

@@ -43,8 +43,8 @@ class SessionManager(dict):
     def getNewSessionId(cls, size=None):
         u"""
         
-        The <code>getNewSessionId</code> method answers a new generated session id of length <attr>size</attr>
-        of <code>self.SESSION_SIDDIGITS</code> if omitted.
+        The ``getNewSessionId`` method answers a new generated session id of length <attr>size</attr>
+        of ``self.SESSION_SIDDIGITS`` if omitted.
         
         """
         return str(uniqueId(size or cls.C.SESSION_SIDDIGITS))
@@ -53,7 +53,7 @@ class SessionManager(dict):
     def newTimeStamp(cls):
         u"""
         
-        The <code>newTimeStamp</code> method answers a uniquelong, so there the total number is always unique.
+        The ``newTimeStamp`` method answers a uniquelong, so there the total number is always unique.
         The result is a 18-digit long that will fit inside a Postgres bigint, instead of a relational id.
         
         """
@@ -62,8 +62,8 @@ class SessionManager(dict):
     def getTimeStamps(self):
         u"""
         
-        The <code>getTimeStamps</code> method answers a list with the timestamps of all existing session.
-        The <code>self.garbageCollect</code> method is called to cleanup expired sessions once in a while.
+        The ``getTimeStamps`` method answers a list with the timestamps of all existing session.
+        The ``self.garbageCollect`` method is called to cleanup expired sessions once in a while.
         This is done before the collection of current time stamps is performed.
         
         """
@@ -76,8 +76,8 @@ class SessionManager(dict):
     def getSession(self, sid, limit=None, name=None, user=None, keep=False, protected=False):
         u"""
         
-        The <code>getSession</code> method answers the <code>Session</code> instance with <attr>sid</attr>.
-        Answer a new instance if the <attr>sid</attr> cannot be found. Store that session in the dict of <code>self</code>.
+        The ``getSession`` method answers the ``Session`` instance with <attr>sid</attr>.
+        Answer a new instance if the <attr>sid</attr> cannot be found. Store that session in the dict of ``self``.
         
         """
         session = self.get(sid)
@@ -90,7 +90,7 @@ class SessionManager(dict):
     def newSession(self):
         u"""
         
-        The <code>getNewSession</code> method answers a new session.
+        The ``getNewSession`` method answers a new session.
         
         """
         return self.getSession(0) # Non-existing session id forces the creation of a new one
@@ -98,7 +98,7 @@ class SessionManager(dict):
     def refresh(self, sid):
         u"""
         
-        The <code>refresh</code> method refreshes the timestamp of session <attr>sid</attr>.
+        The ``refresh`` method refreshes the timestamp of session <attr>sid</attr>.
         Ignore the call if the session cannot be found.
         
         """
@@ -108,8 +108,8 @@ class SessionManager(dict):
     def getExpire(self, sid):
         u"""
         
-        The <code>getExpire</code> method answers amount of seconds before the session <attr>sid</attr> will expire.
-        Answer <code>0</code> is the session cannot be found.
+        The ``getExpire`` method answers amount of seconds before the session <attr>sid</attr> will expire.
+        Answer ``0`` is the session cannot be found.
         
         """
         if self.has_key(sid):
@@ -132,7 +132,7 @@ class SessionManager(dict):
     def getLoggedUserIds(self, applicationname):
         u"""
         
-        The <code>getLoggedUserIds</code> method answers the list of ids for all users that are logged in with 
+        The ``getLoggedUserIds`` method answers the list of ids for all users that are logged in with 
         non-expired sessions that have <attr>applicationname</attr>. 
         
         """
@@ -145,8 +145,8 @@ class SessionManager(dict):
     def getSessionById(self, applicationname, sid):
         u"""
         
-        The <code>getSessionById</code> method answers the session the is defined by <attr>applicationname</attr>
-        and <attr>sid</attr>. Answer <code>None</code> if the session cannot be found.
+        The ``getSessionById`` method answers the session the is defined by <attr>applicationname</attr>
+        and <attr>sid</attr>. Answer ``None`` if the session cannot be found.
         
         """
         session = self.get(sid)

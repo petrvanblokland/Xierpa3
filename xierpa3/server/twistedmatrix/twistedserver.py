@@ -25,7 +25,7 @@ class TwistedServer(BaseServer):
     def start(self, client, port=80):
         u"""
         Start the server by creating a parallel process and then starting the server. The multi-processing only
-        starts if configuration value <code>Constants.USE_MULTIPROCESSING</code> is <code>True</code>. Note that Eclipse
+        starts if configuration value ``Constants.USE_MULTIPROCESSING`` is ``True``. Note that Eclipse
         crashes Python when debugging the child process. For debugging that part of the code, the server has to run in
         single-process mode.
         """
@@ -42,7 +42,7 @@ class TwistedServer(BaseServer):
 
     def startScheduler(self, client):
         u"""
-        The <code>startScheduler</code> method is called from the <code>self.start</code> through are multiprocess.
+        The ``startScheduler`` method is called from the ``self.start`` through are multiprocess.
         This way the client and depending builders are a clone copy of self. The Scheduler is used to perform
         time-consuming tasks. It communicates through records/fields of a tasks table.
         """
@@ -50,8 +50,8 @@ class TwistedServer(BaseServer):
 
     def startServer(self, client, port=80):
         u"""
-        The <code>start</code> method starts the <code>TwistedServer</code> instance. The <attr>port</attr>
-        (default value is <code>80</code>) defines the main port of the web server.
+        The ``start`` method starts the ``TwistedServer`` instance. The <attr>port</attr>
+        (default value is ``80``) defines the main port of the web server.
         """
         client.showStartLabel(port)
 
@@ -64,7 +64,7 @@ class TwistedServer(BaseServer):
 
     def getScheduler(self, client):
         u"""
-        The <code>getScheduler</code> method answers a <code>Scheduler</code> instance, that will run as daemon /
+        The ``getScheduler`` method answers a ``Scheduler`` instance, that will run as daemon /
         tasks server, to perform background tasks for the main site server. The method can be redefined but the
         inheriting application server class.
         """

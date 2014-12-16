@@ -167,7 +167,7 @@ class FeaturedByImage(FeaturedBase):
         b._div(comment=self.C.CLASS_FEATUREDITEM)
   
 class FeaturedByImageList(FeaturedBase):
-    u"""The <b>FeaturedByImageList</b> feature component builds a vertical list if thumbnails, 
+    u"""The **FeaturedByImageList** feature component builds a vertical list if thumbnails, 
     level and optional names of the selected article items."""
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
     C = FeaturedBase.C 
@@ -295,8 +295,8 @@ class FeaturedByText(FeaturedBase):
         
     
     def _buildFeaturedText(self, b, data):
-        u"""Build the featured item. If @self.style.itemRandom@ is <b>True</b>, then select a random item from the list.
-        If there is no <b>data.item</b> available, then ignore this method."""
+        u"""Build the featured item. If @self.style.itemRandom@ is **True**, then select a random item from the list.
+        If there is no **data.item** available, then ignore this method."""
         return # TODO: fix this
         if not data.items:
             return

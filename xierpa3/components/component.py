@@ -363,13 +363,13 @@ class Component(object):
                 componentLabel = 'components'
             else:
                 componentLabel = 'component'
-            b.text('This <b>%s</b> instance contains %d child %s: <b>%s</b>.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
+            b.text('This **%s** instance contains %d child %s: **%s**.' % (name, len(componentList), componentLabel, ', '.join(componentList)))
         else:
-            b.text('<b>%s</b> has no child components.' % name)
+            b.text('**%s** has no child components.' % name)
         b._p()
         # Inheritance
         b.p()
-        b.text(u'<b>%s</b> → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
+        b.text(u'**%s** → %s' % (name, u' → '.join(self._getInheritedClassNames()[1:])))
         b._p()
         # Show the component style
         b.h2()

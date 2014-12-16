@@ -28,7 +28,7 @@ from xierpa3.builders.cssbuilder import CssBuilder
 from xierpa3.builders.htmlbuilder import HtmlBuilder
 
 class HelloWorldText(Column):
-    u"""The <b>HelloWorldText</b> text column component shows the fixed ”Hello, world!” 
+    u"""The **HelloWorldText** text column component shows the fixed ”Hello, world!” 
     in red color."""
     def buildBlock(self, b):
         # Single style attribute, just to show how it works. 

@@ -20,7 +20,7 @@ class TwistedClient(BaseClient, Resource):
 
     def isLeaf(self):
         u"""
-        The <code>isLeaf</code> method is required for Twisted clients, inheriting from <code>Resource</code>.
+        The ``isLeaf`` method is required for Twisted clients, inheriting from ``Resource``.
         """
         return True
 

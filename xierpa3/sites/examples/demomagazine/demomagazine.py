@@ -18,7 +18,7 @@ from xierpa3.builders.htmlbuilder import HtmlBuilder
 from xierpa3.builders.cssbuilder import CssBuilder
 
 class DemoMagazine(BaseMagazine):
-    u"""The <b>Blog</b> class implements the standard example blog."""
+    u"""The **Blog** class implements the standard example blog."""
     TITLE = 'Blog Petr van Blokland + Claudia Mens'
     SUBTITLE = 'Notes on design and education.'
 

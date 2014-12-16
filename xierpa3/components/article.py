@@ -273,7 +273,7 @@ class Article(ArticleColumn):
             b.text(article.text)
                     
     def buildArticleTop(self, b, article, chapterIndex):
-        u"""Build the top of the article: type, title, author, etc. on the first page, if index is <b>0</b>.
+        u"""Build the top of the article: type, title, author, etc. on the first page, if index is **0**.
         For all other pages build a smaller version of the top."""
         s = self.style
         class_ = self.C.CLASS_ARTICLETOP
@@ -388,7 +388,7 @@ class Article(ArticleColumn):
             textindent=s.articleIndent)
         self._buildPStyle(b)
         b._p()
-        # <b>
+        # **
         b.b(fontweight=self.C.BOLD)
         b._b()
         # <blockquote>

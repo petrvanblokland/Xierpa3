@@ -118,8 +118,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.jsUrl(component.style.js)
 
     def buildFavIconLinks(self, component):
-        u"""Build the favicon link, from the result of <b>component.adapter.getFavIcon()</b>.
-        If the result is <b>None</b> then ignore."""
+        u"""Build the favicon link, from the result of **component.adapter.getFavIcon()**.
+        If the result is **None** then ignore."""
         data = component.adapter.getFavIcon()
         if data.url is not None:
             self.output("<link type='image/x-icon' rel='icon' href='%s'></link>" % data.url)
@@ -161,8 +161,8 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
             self.link(href=cssUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
 
     def buildFontLinks(self, component):
-        u"""Build the webfont links of they are defined in <b>components.fonts</b>.
-        Ignore if <b>self.C.useOnline()</b> is <b>False</b>."""
+        u"""Build the webfont links of they are defined in **components.fonts**.
+        Ignore if **self.C.useOnline()** is **False**."""
         if self.C.useOnline():
             for fontUrl in component.fonts: # Should always be defined, default is an empty list
                 self.link(href=fontUrl, type="text/css", charset="UTF-8", rel="stylesheet", media="screen")
@@ -228,9 +228,9 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def block(self, component):
         """Optional space for a component to build the opening of a block.
-        This does <b>not</b> automatically build a <b>div</div> since that is not flexible enough.
+        This does **not** automatically build a **div</div> since that is not flexible enough.
         To be redefined by inheriting builder classed. Default behavior is to do nothing, except 
-        showing the <b>component.selector</b> as comment/"""
+        showing the **component.selector** as comment/"""
         if component.selector:
             self.tabs()
             self.div(class_=component.class_)
@@ -238,9 +238,9 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def _block(self, component):
         """Allow the component to build the closing of a block.
-        This does <b>not</b> automatically build a <b>div</div> since that is not flexible enough.
+        This does **not** automatically build a **div</div> since that is not flexible enough.
         To be redefined by inheriting builder classed. Default behavior is to do nothing, except 
-        showing the <b>component.selector</b> as comment."""
+        showing the **component.selector** as comment."""
         if component.selector:
             self.tabs()
             self._div(comment=component.class_)
@@ -254,7 +254,7 @@ class HtmlBuilder(XmlTagBuilderPart, CanvasBuilderPart, SvgBuilderPart,
 
     def text(self, componentOrText, **kwargs):
         u"""
-        If in <b>self._svgMode</b> output as SVG tags. Otherwise just output if plain text string.
+        If in **self._svgMode** output as SVG tags. Otherwise just output if plain text string.
         If it is a components, then get it’s text string.
         """
         if componentOrText is None:
