@@ -184,7 +184,7 @@ class Article(ArticleColumn):
         imgAutoWidthDisplay=C.BLOCK, doc_imgAutoWidthDisplay=u'img.autoWidth display.',
         # Code
         preFontFamily='Courier', doc_preFontFamily=u'Font family of pre code blocks.',
-        preFontSize=Em(1.1), doc_preFontSize=u'Font size of pre code blocks.', 
+        preFontSize=Em(0.8), doc_preFontSize=u'Font size of pre code blocks.',
         prePaddingLeft=Em(1), doc_prePaddingLeft=u'Padding left of pre code blocks.',
         prePaddingTop=Em(0.5), doc_prePaddingTop=u'Padding top of pre code blocks.', 
         prePaddingBottom=Em(0.5), doc_prePaddingBottom=u'Padding bottom of pre code blocks.',
@@ -473,7 +473,8 @@ class ArticleSideBar(ArticleColumn):
     BLUEPRINT = BluePrint( 
         homeLink=True, doc_homeLink=u'If True, add the link to the home page above the list of featured articles.',
         # Layout stuff
-        width=Perc(28), doc_width=u'Width of the main column inside the row.',
+        # TODO: 70%+20% doesn't add to 100, but cannot be larger. Margins adding up?
+        width=Perc(20), doc_width=u'Width of the main column inside the row.',
         widthMobile=Perc(100), doc_widthMobile=u'Width of the main column inside the row for mobile.',
         # Column
         padding=Em(0.35), doc_padding=u'Padding of the main column container.',
@@ -505,12 +506,12 @@ class ArticleSideBar(ArticleColumn):
             self.buildArticleSideBarStyle(b)
         else: # There is a valid article selection
             self.buildArticleFeatures(b, article)
-        if s.showChapterNavigation:
-            # If chapters are split, then add the chapter navigation here.
-            #self.buildMobileChapterNavigation(b, articleData)
-            self.buildChapterNavigation(b, article)
-        #if s.showFootNotes:
-        #    self.buildFootNotes(b, article)
+            if s.showChapterNavigation:
+                # If chapters are split, then add the chapter navigation here.
+                #self.buildMobileChapterNavigation(b, articleData)
+                self.buildChapterNavigation(b, article)
+            #if s.showFootNotes:
+            #    self.buildFootNotes(b, article)
         b._div(comment=self.getClassName())
             
     def buildArticleFeatures(self, b, article):
@@ -573,6 +574,7 @@ class ArticleSideBar(ArticleColumn):
         b.li()
         
         # <a>Chapter name</a>
+        # TODO: h2 margintop not working?
         b.a(fontsize=s.summaryNameSize, color=s.summaryNameColor)
         b.h2(fontsize=s.chapterNameSize, color=s.chapterNameColor, lineheight=Em(1.2),
              marginbottom=Em(0.2), margintop=Em(0.4))
@@ -619,14 +621,15 @@ class ArticleSideBar(ArticleColumn):
                 b.a(class_=self.C.CLASS_NAME, 
                     href='/%s-%s/%s-%s' % (self.C.PARAM_ARTICLE, article.id, self.C.PARAM_CHAPTER, index), 
                 )
-                chapterTitle = chapter.find('./meta/title') # @@@ Add this as adapter query
-                if chapterTitle is None: # No title, add a default chapter title (not in the right style)
-                    b.text('Chapter %d' % index)
+                # TODO: derive chapter title in the proper way from <h2> using re
+                chapterTitle = chapter.find('./meta/title')
+                if chapterTitle == -1: # No title, add a default chapter title (not in the right style)
+                    b.text('Chapter %d' % (index+1))
                 else:
                     self.buildElement(b, chapterTitle)
                 if len(chapters) < s.showChapterSummaryOnMax:
                     summary = chapter.find('./meta/summary') # @@@ Add this as adapter query
-                    if summary is not None:
+                    if summary != -1:
                         self.buildElement(b, summary)
                 b._a()
                 b._li()

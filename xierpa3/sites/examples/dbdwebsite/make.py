@@ -77,7 +77,12 @@ class DbdWebsite(Theme):
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=BODYFAMILY)
         s.addStyle('b', fontweight=self.C.BOLD)
+<<<<<<< HEAD
         s.addStyle('a:', color=Color('red'))
+=======
+        s.addStyle('a:link', color=Color('#4890BE'))
+        s.addStyle('a:hover', color=Color('#66696C'))
+>>>>>>> FETCH_HEAD
         return root
 
     def getSiteAdapter(self):
@@ -98,7 +103,7 @@ class DbdWebsite(Theme):
         menu = Menu()
         navigation = Navigation()
         article = Article(showPoster=False) # No poster inside the article. We use the PosterHead component.
-        articleSideBar = ArticleSideBar()
+        articleSideBar = ArticleSideBar(showChapterNavigation=True)
         articlesList = ArticlesList()
         posterhead = PosterHead() # Wordpress-like big picture from article.poster link.
         featuredByImage = FeaturedByImage()

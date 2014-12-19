@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -98,7 +98,7 @@
 #    |<>. justify |
 #    |^. valign top |
 #    |~. bottom |
-#    
+#
 #    Cell attributes
 #    |\2. spans two cols |
 #    | col 1 | col 2 |
@@ -156,7 +156,7 @@ class TextileFileAdapter(Adapter):
 
     """
     # Get Constants->Config as class variable, so inheriting classes can redefine values.
-    C = Adapter.C 
+    C = Adapter.C
 
     # Class of Article data/
     DATACLASS = Article
@@ -167,7 +167,7 @@ class TextileFileAdapter(Adapter):
     # Match comma separated list
     COMMASPLIT = re.compile('[,]*[\s]*([^,]*)')
     # Set of field names that have to become a list is in C.ADAPTER_COMMAFIELDS
-    
+
     u"""Adapter for Textile wiki file serving. """
     def initialize(self):
         self._cache = {}
@@ -175,7 +175,7 @@ class TextileFileAdapter(Adapter):
         self._readArticles()
         # Build the cache meta field references for articles.
         self._cacheArticleFieldReferences()
-     
+
     def _readArticles(self):
         u"""Read all articles available in the root tree path.
 
@@ -230,13 +230,13 @@ class TextileFileAdapter(Adapter):
             article.modificationTime = os.path.getmtime(path) # @@@ TODO: Should be DateTime instance.
             self._cacheArticle(article) # Fill article.chapters.
         return article
-        
-    @classmethod  
-    def readWikiFile(cls, fsPath): 
+
+    @classmethod
+    def readWikiFile(cls, fsPath):
         u"""Read the raw wiki (Textile syntax) file and answer the unicode string."""
         extension = '.'+cls.C.EXTENSION_TXT
         if not fsPath.endswith(extension):
-            fsPath += extension           
+            fsPath += extension
         if os.path.exists(fsPath):
             f = codecs.open(fsPath, encoding='utf-8', mode='r+')
             wiki = f.read()
@@ -244,7 +244,7 @@ class TextileFileAdapter(Adapter):
         else:
             wiki = None
         return wiki
-    
+
     def _splitFieldValue(self, line):
         u"""Split the string *line* into field name (starting with $ and ending with space)
         and string value. If the field is one of @self.COMMAFIELDS@, then the value
@@ -278,9 +278,9 @@ class TextileFileAdapter(Adapter):
         for chapter in ('\n'.join(text)).split(self.CHAPTER_TAG):
             article.chapters.append(textile.textile(chapter))
         return article
-    
+
     def _cacheArticleFieldReferences(self):
-        u"""(Re)build the dictionary of field relations. This should be done at any time a new article 
+        u"""(Re)build the dictionary of field relations. This should be done at any time a new article
         is cached or modified. Better to build from scratch if the source changes, than to keep track
         of changes."""
         self._urls = {}
@@ -305,7 +305,7 @@ class TextileFileAdapter(Adapter):
         list of all articles."""
         self._cache[article.id] = article
         self._rankArticles() # Calculate new ranking, including the added article.
-        
+
     def _rankArticles(self):
         u"""Keep the article ranked in the @self._sorted@ list of all articles."""
         self.ranked = self._cache.values()
@@ -348,41 +348,45 @@ class TextileFileAdapter(Adapter):
         if articles:
             article = articles[0] # If found multiple matches, just take the first one.
         return article
-    
+
     def getCachedArticles(self):
         return self._cache
-    
+
     def getIdPaths(self, path=None, idPaths=None):
         if path is None:
             path = ''
         if idPaths is None:
             idPaths = []
         extension = '.'+self.C.EXTENSION_TXT
-        for name in os.listdir(self.root + path):
-            filePath = path + name
-            if name and name[0] in '._': # Skip all files and articles that start with . or _
-                continue
-            if os.path.isdir(self.root + filePath):
-                self.getIdPaths(filePath+'/', idPaths)
-            elif not name.endswith(extension):
-                continue
-            else:
-                name = name.replace(extension, '')
-                idPaths.append((name, filePath))
+
+        try:
+            for name in os.listdir(self.root + path):
+                filePath = path + name
+                if name and name[0] in '._': # Skip all files and articles that start with . or _
+                    continue
+                if os.path.isdir(self.root + filePath):
+                    self.getIdPaths(filePath+'/', idPaths)
+                elif not name.endswith(extension):
+                    continue
+                else:
+                    name = name.replace(extension, '')
+                    idPaths.append((name, filePath))
+        except Exception, e:
+            print e
         return idPaths
-    
+
     def getChapters(self, article):
         if article.items is None:
             return []
         return article.items
-    
+
     def getChapterByIndex(self, index, article):
         u"""Find the chapter by **index** in the Article instance **article**.
         Answer **None** if the chapter index is not valid."""
         if 0 <= index < len(article.chapters):
             return article.chapters[index]
         return None
-    
+
     def getChapterTitleByIndex(self, index, article):
         u"""Find the title of the chapter by **index** in the Article instance **article**.
         Answer **None** if the index is not valid or the title cannot be found."""
@@ -391,18 +395,18 @@ class TextileFileAdapter(Adapter):
             return chapter.find('./meta/title')
         return None
 
-    #    A P I  G E T 
-    
+    #    A P I  G E T
+
     def getPageTitle(self, **kwargs):
         article = self.getArticle(**kwargs)
         if article is not None:
             return self.newArticle(text=article.name)
         return None
-    
+
     def getArticles(self, start=0, count=1, omit=None, **kwargs):
-        u"""Answer the sorted list of *count* pages/articles, starting on *start* index, 
+        u"""Answer the sorted list of *count* pages/articles, starting on *start* index,
         selected from all articles. Sorting is based om the @article.ranking@ field.
-        If *omit* is a list of article ids (or a single id), then skip these articles 
+        If *omit* is a list of article ids (or a single id), then skip these articles
         from the selection."""
         articles = []
         if omit is None: # Nothing to omit, just slice the pre-sorted article list.
@@ -419,14 +423,14 @@ class TextileFileAdapter(Adapter):
 
     def getMobilePages(self, count=None, **kwargs):
         return self.getPages(count)
-    
+
     def getArticle(self, **kwargs):
         u"""Answer the matching article, based on the available keywords in *kwargs*. The method will
         search in cached articles. If the file of the article changed, then it will be updated by
         compiling the Textile content again.
         """
         return self.getCachedArticle(**kwargs)
-    
+
     def getFeaturedArticles(self, id, start, count):
         u"""Answer a list of featured articles in the article that has @id@ as identifier."""
         articles = []
@@ -436,10 +440,10 @@ class TextileFileAdapter(Adapter):
                 if index == count:
                     break
                 featuredArticle = self.getArticle(featured.attrib['id'])
-                if featuredArticle is not None:     
+                if featuredArticle is not None:
                     articles.append(featuredArticle)
         return articles
-    
+
     def getFields(self):
         u"""Answer a @Article@ instance with dictionaries of all field names, related to lists of articles.
         Included @article.urls@, @article.categories@ and @article.levels@.
@@ -456,7 +460,7 @@ class TextileFileAdapter(Adapter):
         article.categories = self._categories
         article.levels = self._levels
         return article
-    
+
     def getMenuArticles(self, **kwargs):
         u"""Answer an ordered list of the menu articles, as indicated by the selectors *id* or other values in *kwargs*.
         Normally this will be the @home@ page of the site, containing the main menu options in @$menu@.
@@ -476,13 +480,13 @@ class TextileFileAdapter(Adapter):
         """
         articles = []
         article = self.getArticle(**kwargs) # Get the main article for this menu.
-        if article.menu: 
+        if article.menu:
             for menuId in article.menu: # All article id references in the menu list
                 menuArticle = self.getArticle(id=menuId)
                 if menuArticle is not None and menuArticle.tag:
                     articles.append(menuArticle)
         return articles
-    
+
     def getLogo(self, **kwargs):
         u"""For now, answer the default DbD logo.
 
