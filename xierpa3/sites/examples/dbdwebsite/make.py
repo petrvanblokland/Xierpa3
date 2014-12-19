@@ -77,8 +77,7 @@ class DbdWebsite(Theme):
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=BODYFAMILY)
         s.addStyle('b', fontweight=self.C.BOLD)
-        s.addStyle('a:link', color=Color('#4890BE')
-        s.addStyle('a:hover', color=Color('#66696C'))
+        s.addStyle('a:', color=Color('red'))
         return root
 
     def getSiteAdapter(self):

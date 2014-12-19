@@ -661,13 +661,14 @@ class ArticlesList(Column):
         b.div(class_='navigation', paddingleft=Em(2), paddingright=Em(2), paddingtop=Em(2), marginbottom=Em(2), width=Perc(100), backgroundcolor=Color('#EEE'))
         for article in self.adapter.getRankedArticles():
             if article.title:
-                b.a(href='/article-%s' % article.id, fontsize=Em(0.8), color=Color('#888'))
+                b.a(href='/article-%s' % article.id, fontsize=Em(1.5), color=Color('#478FBE'))
                 b.text(article.title)
                 b._a()
                 if article.summary:
-                    b.div(class_='articleSummary')
+                    b.div(class_='articleSummary', fontsize=Em(1), lineheight=Em(1.5), width=Perc(90))
                     b.text(article.summary)
                     b._div()
+
             else:
                 b.text('No title for article "%s"' % article.id)
             b.br()

@@ -117,7 +117,7 @@ class FeaturedByText(FeaturedBase):
     def buildFeatured(self, b, articles):
         s = self.style
         b.div(class_=self.getClassName(), color=s.colorBodyText, backgroundcolor=s.backgroundColor,
-            display=s.display, float=s.float, paddingleft=s.paddingLeft,paddingright=s.paddingRight,
+            display=s.display, float=s.float, paddingtop=s.paddingTop, paddingleft=s.paddingLeft, paddingright=s.paddingRight,
             media=Media(max=self.C.M_MOBILE_MAX, width=s.widthMobile,
                 display=s.displayMobile, float=s.floatMobile),
         )
