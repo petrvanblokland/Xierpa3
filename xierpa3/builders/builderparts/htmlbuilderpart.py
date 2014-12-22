@@ -368,10 +368,10 @@ class HtmlBuilderPart:
         self._h1()
         </python>
         """
-        self.write_tag(u'h1', True, args)
+        self.write_tag_noWhitespace(u'h1', True, args)
 
     def _h1(self):
-        self._closeTag(u'h1')
+        self._closeTag_noWhitespace(u'h1')
         self.newline()
 
     def h1_(self, s, **args):
@@ -394,10 +394,10 @@ class HtmlBuilderPart:
         self._h2()
         </python>
         """
-        self.write_tag(u'h2', True, args)
+        self.write_tag_noWhitespace(u'h2', True, args)
 
     def _h2(self):
-        self._closeTag(u'h2')
+        self._closeTag_noWhitespace(u'h2')
         self.newline()
 
     def h2_(self, s, **args):
@@ -420,10 +420,10 @@ class HtmlBuilderPart:
         self._h3()
         </python>
         """
-        self.write_tag(u'h3', True, args)
+        self.write_tag_noWhitespace(u'h3', True, args)
 
     def _h3(self):
-        self._closeTag(u'h3')
+        self._closeTag_noWhitespace(u'h3')
         self.newline()
 
     def h3_(self, s, **args):
@@ -446,10 +446,10 @@ class HtmlBuilderPart:
         self._h4()
         </python>
         """
-        self.write_tag(u'h4', True, args)
+        self.write_tag_noWhitespace(u'h4', True, args)
 
     def _h4(self):
-        self._closeTag(u'h4')
+        self._closeTag_noWhitespace(u'h4')
         self.newline()
 
     def h4_(self, s, **args):
@@ -472,10 +472,10 @@ class HtmlBuilderPart:
         self._h5()
         </python>
         """
-        self.write_tag(u'h5', True, args)
+        self.write_tag_noWhitespace(u'h5', True, args)
 
     def _h5(self):
-        self._closeTag(u'h5')
+        self._closeTag_noWhitespace(u'h5')
 
     def h5_(self, s, **args):
         u"""
@@ -497,10 +497,10 @@ class HtmlBuilderPart:
         self._h6()
         </python>
         """
-        self.write_tag(u'h6', True, args)
+        self.write_tag_noWhitespace(u'h6', True, args)
 
     def _h6(self):
-        self._closeTag(u'h6')
+        self._closeTag_noWhitespace(u'h6')
 
     def h6_(self, s, **args):
         u"""
@@ -580,10 +580,10 @@ class HtmlBuilderPart:
         The pre element defines preformatted text. The text enclosed in the pre element usually preserves spaces and line
         breaks. The text renders in a fixed-pitch font.
         """
-        self.write_tag(u'pre', True, args)
+        self.write_tag_noWhitespace(u'pre', True, args)
 
     def _pre(self):
-        self._closeTag(u'pre')
+        self._closeTag_noWhitespace(u'pre')
 
     def blockquote(self, **args):
         u"""
@@ -611,28 +611,28 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_p.asp" target="external"/></seealso>
         """
-        self.write_tag(u'p', True, args)
+        self.write_tag_noWhitespace(u'p', True, args)
 
     def _p(self):
-        self._closeTag(u'p')
+        self._closeTag_noWhitespace(u'p')
 
     def tt(self, **args):
         u"""
         The ``tt`` method is showing the old teletype font.
         """
-        self.write_tag(u'tt', True, args)
+        self.write_tag_noWhitespace(u'tt', True, args)
 
     def _tt(self):
-        self._closeTag(u'tt')
+        self._closeTag_noWhitespace(u'tt')
 
     def code(self, **args):
         u"""
         The ``code`` method is the standard XHTML tag, for showing computer code in fixed width font.
         """
-        self.write_tag(u'code', True, args)
+        self.write_tag_noWhitespace(u'code', True, args)
 
     def _code(self):
-        self._closeTag(u'code')
+        self._closeTag_noWhitespace(u'code')
 
     def strong(self, **args):
         """
@@ -643,19 +643,19 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
         """
-        self.write_tag(u'strong', True, args)
+        self.write_tag_noWhitespace(u'strong', True, args)
 
     def _strong(self):
-        self._closeTag(u'strong')
+        self._closeTag_noWhitespace(u'strong')
 
     def em(self, **args):
         """
         The ``em`` tag is the standard XHTML emphasis.
         """
-        self.write_tag(u'em', True, args)
+        self.write_tag_noWhitespace(u'em', True, args)
 
     def _em(self):
-        self._closeTag(u'em')
+        self._closeTag_noWhitespace(u'em')
 
     def b(self, **args):
         """
@@ -666,10 +666,10 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
         """
-        self.write_tag(u'b', True, args)
+        self.write_tag_noWhitespace(u'b', True, args)
 
     def _b(self):
-        self._closeTag(u'b')
+        self._closeTag_noWhitespace(u'b')
 
     def u(self, **args):
         """
@@ -680,10 +680,10 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
         """
-        self.write_tag(u'u', True, args)
+        self.write_tag_noWhitespace(u'u', True, args)
 
     def _u(self):
-        self._closeTag(u'u')
+        self._closeTag_noWhitespace(u'u')
 
     def i(self, **args):
         """
@@ -694,10 +694,10 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_font_style.asp" target="external"/></seealso>
         """
-        self.write_tag(u'i', True, args)
+        self.write_tag_noWhitespace(u'i', True, args)
 
     def _i(self):
-        self._closeTag(u'i')
+        self._closeTag_noWhitespace(u'i')
 
     def s(self, **args):
         """
@@ -708,10 +708,10 @@ class HtmlBuilderPart:
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_strike.asp" target="external"/></seealso>
         """
-        self.write_tag(u's', True, args)
+        self.write_tag_noWhitespace(u's', True, args)
 
     def _s(self):
-        self._closeTag(u's')
+        self._closeTag_noWhitespace(u's')
 
     # D E P R E C A T E D ?
     # strike = s
@@ -728,10 +728,10 @@ class HtmlBuilderPart:
         <seealso><www href="http://www.w3schools.com/tags/tag_q.asp" target="external"/></seealso>
         
         """
-        self.write_tag(u'q', True, args)
+        self.write_tag_noWhitespace(u'q', True, args)
 
     def _q(self):
-        self._closeTag(u'q')
+        self._closeTag_noWhitespace(u'q')
 
     def sup(self, **args):
         """
@@ -744,10 +744,10 @@ class HtmlBuilderPart:
         </python>
         Normal text <sup>and suporior</sup>
         """
-        self.write_tag(u'sup', True, args)
+        self.write_tag_noWhitespace(u'sup', True, args)
 
     def _sup(self):
-        self._closeTag(u'sup')
+        self._closeTag_noWhitespace(u'sup')
 
     def sub(self, **args):
         """
@@ -760,9 +760,9 @@ class HtmlBuilderPart:
         </python>
         Normal text <sub>and inferior</sub>
         """
-        self.write_tag(u'sub', True, args)
+        self.write_tag_noWhitespace(u'sub', True, args)
     def _sub(self):
-        self._closeTag(u'sub')
+        self._closeTag_noWhitespace(u'sub')
 
 
     def br(self, count=1, **args):
@@ -776,7 +776,7 @@ class HtmlBuilderPart:
         </python>
         """
         for _ in range(count):
-            self.write_tag(u'br', False, args)
+            self.write_tag_noWhitespace(u'br', False, args)
 
     def nbsp(self, count=1):
         """
@@ -795,7 +795,7 @@ class HtmlBuilderPart:
         self._table()
         </python>
         """
-        self.write_tag(u'table', True, args)
+        self.write_tag_noWhitespace(u'table', True, args)
         #self._debugclass(u'table', self.getClassName(args, self.TABLE_ATTRIBUTES))
 
     def getClassName(self, args, attributes):
@@ -812,11 +812,11 @@ class HtmlBuilderPart:
         u"""
         Defines the text header of a table.
         """
-        self.write_tag(u'thead', True, args)
+        self.write_tag_noWhitespace(u'thead', True, args)
 
 
     def _thead(self):
-        self._closeTag(u'thead')
+        self._closeTag_noWhitespace(u'thead')
 
 
     def tfoot(self, **args):
@@ -866,11 +866,11 @@ class HtmlBuilderPart:
         self._td()
         </python>
         """
-        self.write_tag(u'td', True, args)
+        self.write_tag_noWhitespace(u'td', True, args)
         #self._debugclass(u'td', self.getClassName(args, self.TD_ATTRIBUTES))
 
     def _td(self):
-        self._closeTag(u'td')
+        self._closeTag_noWhitespace(u'td')
 
     def th(self, **args):
         """
@@ -884,10 +884,10 @@ class HtmlBuilderPart:
         self._th()
         </python>
         """
-        self.write_tag(u'th', True, args)
+        self.write_tag_noWhitespace(u'th', True, args)
 
     def _th(self):
-        self._closeTag(u'th')
+        self._closeTag_noWhitespace(u'th')
 
     def style(self, type='text/css', **args):
         """
@@ -907,10 +907,10 @@ class HtmlBuilderPart:
         self._closeTag('style')
 
     def span(self, **args):
-        self.write_tag(u'span', True, args)
+        self.write_tag_noWhitespace(u'span', True, args)
 
     def _span(self):
-        self._closeTag(u'span')
+        self._closeTag_noWhitespace(u'span')
 
     def div(self, **args):
         """
@@ -923,10 +923,10 @@ class HtmlBuilderPart:
         self._div()
         </python>
         """
-        self.write_tag(u'div', True, args)
+        self.write_tag_noWhitespace(u'div', True, args)
 
     def _div(self, comment=None):
-        self._closeTag(u'div')
+        self._closeTag_noWhitespace(u'div')
         if comment is not None:
             self.comment(comment)
 
@@ -979,7 +979,7 @@ class HtmlBuilderPart:
         <hr size="15" color="green"/>
         </python>
         """
-        self.write_tag(u'hr', False, args)
+        self.write_tag_noWhitespace(u'hr', False, args)
 
 
     def a(self, **kwargs):
@@ -997,16 +997,16 @@ class HtmlBuilderPart:
         self._a()
         </python>
         """
-        self.write_tag(u'a', True, kwargs)
+        self.write_tag_noWhitespace(u'a', True, kwargs)
 
     def _a(self):
-        self._closeTag(u'a')
+        self._closeTag_noWhitespace(u'a')
 
     def nav(self, **kwargs):
-        self.write_tag(u'nav', True, kwargs)
+        self.write_tag_noWhitespace(u'nav', True, kwargs)
 
     def _nav(self):
-        self._closeTag(u'nav')
+        self._closeTag_noWhitespace(u'nav')
 
     def frameset(self, **args):
         """
@@ -1155,10 +1155,10 @@ class HtmlBuilderPart:
         self._li()
         </python>
         """
-        self.write_tag(u'li', True, args)
+        self.write_tag_noWhitespace(u'li', True, args)
 
     def _li(self):
-        self._closeTag(u'li')
+        self._closeTag_noWhitespace(u'li')
 
     def dl(self, **args):
         """
@@ -1377,22 +1377,22 @@ class HtmlBuilderPart:
         multimedia to your XHTML page. This element allows you to specify the data and 
         parameters for objects inserted into HTML documents, and the code that can be used to 
         display/manipulate that data."""
-        self.write_tag(u'object', True, args)
+        self.write_tag_noWhitespace(u'object', True, args)
 
     def _object(self):
-        self._closeTag(u'object')
+        self._closeTag_noWhitespace(u'object')
 
     def small(self, **args):
-        self.write_tag(u'small', True, args)
+        self.write_tag_noWhitespace(u'small', True, args)
 
     def _small(self):
-        self._closeTag(u'small')
+        self._closeTag_noWhitespace(u'small')
 
     def big(self, **args):
-        self.write_tag(u'big', True, args)
+        self.write_tag_noWhitespace(u'big', True, args)
 
     def _big(self):
-        self._closeTag(u'big')
+        self._closeTag_noWhitespace(u'big')
 
     def param(self, **args):
         u"""The param element allows you to specify the run-time settings for an object inserted 
