@@ -36,10 +36,10 @@ class Top(Container):
 class Navigation(Column):
 
     def buildBlock(self, b):
-        b.div(class_='navigation', marginbottom=Em(2), width=Perc(100), backgroundcolor=Color('#EEE'))
+        b.div(class_='navigation', marginbottom=Em(2), paddingright=Em(1), backgroundcolor=Color('#EEE'))
         for article in self.adapter.getRankedArticles():
             if article.title:
-                b.a(href='/article-%s' % article.id, fontsize=Em(0.8), color=Color('#888'))
+                b.a(href='/article-%s' % article.id, fontsize=Em(0.8), marginright=Em(1), color=Color('#888'))
                 b.text(article.title)
                 b._a()
             else:
@@ -77,12 +77,8 @@ class DbdWebsite(Theme):
         s.addStyle('h1, h2, h3, h4, h5, p.lead', fontfamily=HEADFAMILY)
         s.addStyle('h6', fontfamily=BODYFAMILY)
         s.addStyle('b', fontweight=self.C.BOLD)
-<<<<<<< HEAD
-        s.addStyle('a:', color=Color('red'))
-=======
-        s.addStyle('a:link', color=Color('#4890BE'))
-        s.addStyle('a:hover', color=Color('#66696C'))
->>>>>>> FETCH_HEAD
+        s.addStyle('a', color=Color('#CECECE'))
+
         return root
 
     def getSiteAdapter(self):
