@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -35,7 +35,7 @@ class BaseClient(object):
     DO_INDENT = True # Boolean flag if the build code should be indented.
     DEFAULTTHEME = 'default'
     THEMES = None # Name-class of the theme component trees, redefined by inheriting classes.
-    
+
     def __repr__(self):
         u"""
         The @__repr__@ answers the info string about this @Client@ instance.
@@ -54,7 +54,7 @@ class BaseClient(object):
     def showStartLabel(self, port):
         u"""
         The @showStartLabel@ method is used by the client to show the server information at startup.
-        
+
         """
         print self.LINE
         date = str(DateTime(date='now'))
@@ -69,7 +69,7 @@ class BaseClient(object):
     def showStopLabel(self):
         u"""
         The @showStopLabel@ method is used by the client to show the server information at startup.
-        
+
         """
         print self.LINE
         print u'... Stop Client' # on %s' % DateTime(date='now')
@@ -99,7 +99,7 @@ class BaseClient(object):
     def getDefaultThemeName(self):
         u"""
         The @getDefaultThemeName@ method answers the default site name @self.DEFAULTTHEME@.
-        
+
         """
         return self.DEFAULTTHEME
 
@@ -128,7 +128,7 @@ class BaseClient(object):
         The @getDoIndent@ method answers the boolean flag if the output code building should include indents.
         """
         return self.DO_INDENT
-    
+
     def getSite(self, httprequest):
         u"""
         The @getSite@ method answers a new instance of the site class that is indicated by the result of
@@ -180,21 +180,21 @@ class BaseClient(object):
         result = self.resolveByFile(site, filePath)
         #if site.e.form[self.C.PARAM_DOCUMENTATION]: # /documentation
         #    site.buildDocumentation(builder) # Build the live documentation page from the site
-        #    #builder.save(site, path=filePath) # Compile resulting Sass to Css  
-        #    #builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css  
-        #    result = builder.css #getResult() 
+        #    #builder.save(site, path=filePath) # Compile resulting Sass to Css
+        #    #builder.save(site, path=filePath.replace('.css', '_doc.css')) # Compile resulting Sass to Css
+        #    result = builder.css #getResult()
         if site.e.form[self.C.PARAM_FORCE] or site.e.form[self.C.PARAM_DOCUMENTATION] or result is None:
-            # Forced or no cached CSS or building documentation, 
+            # Forced or no cached CSS or building documentation,
             # so try to build is and save it in the cache.
             site.build(builder) # Build from entire site theme, not just from template. Result is stream in builder.
-            builder.save(site, path=filePath) # Compile resulting Sass to Css  
+            builder.save(site, path=filePath) # Compile resulting Sass to Css
             result = builder.getResult() # Get the resulting Sass.
         return result, self.C.MIMETYPE_CSS
-    
+
     def buildHtml(self, site):
         u"""Build the site for HTML."""
         doIndent = self.getDoIndent() # Boolean flag if indenting should be in output.
-        site.reset() # Allow the theme to reset values for every page request, depending on url parameters. 
+        site.reset() # Allow the theme to reset values for every page request, depending on url parameters.
         builder = HtmlBuilder(e=site.e, doIndent=doIndent)
         filePath = builder.getFilePath(site)
         result = self.resolveByFile(site, filePath)
@@ -208,15 +208,16 @@ class BaseClient(object):
             template.build(builder)
             result = builder.popResult()
         return result, self.C.MIMETYPE_HTML
-    
+
     def render_GET(self, httprequest):
         u"""
-        The @render_GET@ method is called by Twisted to handle the GET *httprequest*. 
+        The @render_GET@ method is called by Twisted to handle the GET *httprequest*.
         It is the main loop (besides the @self.render_POST@) that builds pages from url requests.
         The site instance is called by @b.build()@. The result (this can be HTML, JSON or binary data) is
         answered. The application needs to have the right MIME type in the output.
         """
         site = self.getSite(httprequest) # Site is Theme instance
+
         try:
             path = site.e.request.path
             if path.startswith(self.C.URL_XIERPA3RESOURCES):
@@ -237,30 +238,32 @@ class BaseClient(object):
         #    httprequest.setHeader("Content-Encoding", "gzip")
         #    result = b.getResult().getCompressedValue()
         # else:
-        #    result = b.getResult().getValue() 
-        self.setMimeTypeEncoding(mimeType, httprequest)        
+        #    result = b.getResult().getValue()
+        self.setMimeTypeEncoding(mimeType, httprequest)
         return result
-    
+
     def render_POST(self, httprequest):
-        u"""
-        The @render_POST@ method is called by Twisted to handle the POST *httprequest*. The
-        site instance is called with @b.build()@. The result (this can be HTML, JSON or binary data) is
-        answered. The application is supposed to have the the right MIME type in the output. The data of the post is
-        located in the file object @httprequest.content@. The data can be read by @
-        httprequest.content.read()@.
-        """
+        u"""The @render_POST@ method is called by Twisted to handle the POST
+        *httprequest*. The site instance is called with @b.build()@. The result
+        (this can be HTML, JSON or binary data) is answered. The application is
+        supposed to have the the right MIME type in the output. The data of the
+        post is located in the file object @httprequest.content@. The data can
+        be read by @ httprequest.content.read()@."""
+        print 'post'
         site = self.getSite(httprequest)  # Site is Theme instance
         site.handlePost()
 
         if isinstance(httprequest.content, StringIO.OutputType):
             # Probably JSON.
             json = httprequest.content.getvalue()
-            # print json
-            # b.buildJSON(json)
+            site.buildJSON(json)
+
         try:
             path = site.e.request.path
+
             if path.startswith(self.C.URL_XIERPA3RESOURCES):
                 result, mimeType = self.buildResource(site)
+
             # If there is a matching file in the site root/files folder, then answer this.
             if site.e.request.path.endswith('.css'):
                 result, mimeType = self.buildCss(site)
@@ -272,9 +275,10 @@ class BaseClient(object):
             t = traceback.format_exc()
             result = self.renderError(e, t)
             mimeType = self.C.MIMETYPE_HTML
-        self.setMimeTypeEncoding(mimeType, httprequest)        
+
+        self.setMimeTypeEncoding(mimeType, httprequest)
         return result
-    
+
         # if b.shouldBeCompressed():
         #    httprequest.setHeader("Content-Encoding", "gzip")
         #    return b.getResult().getCompressedValue()
@@ -287,7 +291,7 @@ class BaseClient(object):
             <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
             <link href="http://data.xierpa.com.s3.amazonaws.com/_images/xierpa-icon.ico" rel="shortcut icon"/>
             <title>404 Page</title>
-        
+
             <style type="text/css">
             body { font-family: Verdana; font-size: 10pt; color: black; background: grey; }
             pre { background: #eee; padding: 6px; border: 1px dotted #ccc; overflow: auto }
@@ -298,7 +302,7 @@ class BaseClient(object):
             #content { position: relative; margin-left: auto; margin-right: auto; top: 20px; margin-bottom: 40px;
                 border: 1px solid #aaa; background: white; padding: 20px;}
             </style>
-        
+
         </head>
         """
 
@@ -356,12 +360,12 @@ class BaseClient(object):
     @classmethod
     def codeChanged(cls):
         u"""
-        
+
         Auto-reloading launcher.
 
          Borrowed from Peter Hunt and the CherryPy project (http://www.cherrypy.org). Some taken from Ian Bicking's Paste
         (http://pythonpaste.org/).
- 
+
         Portions copyright (c) 2004, CherryPy Team (team@cherrypy.org). All rights reserved.
 
         Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
@@ -382,7 +386,7 @@ class BaseClient(object):
         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
         OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
         DAMAGE.
-        
+
         """
         for filename in filter(lambda v: v, map(lambda m: getattr(m, "__file__", None), sys.modules.values())):
             if filename.endswith(".pyc") or filename.endswith(".pyo"):
