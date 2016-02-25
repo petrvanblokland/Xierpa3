@@ -28,7 +28,7 @@ class Container(Component):
         paddingLeft=10, doc_paddingLeft=u'Padding left of main container.',
         paddingRight=10, doc_paddingRight=u'Padding right of main container.',
         # Style
-        backgroundColor=('#303846'), doc_backgroundColor=u'Background color of the container.',
+        backgroundColor=('#fff'), doc_backgroundColor=u'Background color of the container.',
         # Row
         rowWidth=Perc(100), doc_rowWidth=u'Default width of a row inside a container.',
         rowMargin=Margin(0, C.AUTO), doc_margin=u'Row margin. This makes the main container (page) center on maxwidth.',

@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #    xierpa server
 #    Copyright (c) 2014+  buro@petr.com, www.petr.com, www.xierpa.com
-#    
+#
 #    X I E R P A  3
 #    Distribution by the MIT License.
 #
@@ -252,7 +252,7 @@ class HtmlBuilderPart:
 
     def docType(self, s):
         self.output('<!DOCTYPE %s>\n' % s)
-        
+
     def html(self, xmlns=None, **args):
         """
         <seealso><www href="http://www.w3schools.com/tags/tag_html.asp" target="external"/></seealso>
@@ -515,7 +515,7 @@ class HtmlBuilderPart:
         u"""
         The ``figure`` method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
         You can use the tag to associate a caption together with some embedded content, such as a graphic or video.
-        You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents 
+        You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents
         of your <tag>figure</tag> element.
         """
         self.write_tag(u'figure', True, args)
@@ -527,7 +527,7 @@ class HtmlBuilderPart:
         u"""
         The ``figure`` method (HTML5) is used for annotating illustrations, diagrams, photos, code listings, etc.
         You can use the tag to associate a caption together with some embedded content, such as a graphic or video.
-        You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents 
+        You can use the tag in conjunction with the <tag>figcaption</tag> element to provide a caption for the contents
         of your <tag>figure</tag> element.
         """
         self.write_tag(u'figcaption', True, args)
@@ -538,7 +538,7 @@ class HtmlBuilderPart:
     def hgroup(self, **args):
         u"""
         The ``hgroup`` method (HTML5) defines the heading of a section or a document.
-        The hgroup element is used to group headers, <tag>h1</tag> to <tag>h6</tag>, where the largest 
+        The hgroup element is used to group headers, <tag>h1</tag> to <tag>h6</tag>, where the largest
         is the main heading of the section, and the others are sub-headings.
         """
         self.write_tag(u'hgroup', True, args)
@@ -549,7 +549,7 @@ class HtmlBuilderPart:
     def article(self, **args):
         u"""
         The ``article`` method (HTML5) defines external content.
-        The external content could be a news-article from an external provider, or a text from a web log 
+        The external content could be a news-article from an external provider, or a text from a web log
         (blog), or a text from a forum, or any other content from an external source.
         """
         self.write_tag(u'article', True, args)
@@ -719,14 +719,14 @@ class HtmlBuilderPart:
 
     def q(self, **args):
         """
-        
+
         The ``q`` tag defines the start of a short quotation. Note that nowadays it is better to implement
         this typographic behavior through ``span`` and CSS.<para/>
         <todo>Add the other attributes to the ``p`` tag such as: id, class, title, style, dir, lang,
         onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown,
         onkeyup</todo>
         <seealso><www href="http://www.w3schools.com/tags/tag_q.asp" target="external"/></seealso>
-        
+
         """
         self.write_tag_noWhitespace(u'q', True, args)
 
@@ -783,7 +783,7 @@ class HtmlBuilderPart:
         The ``nbsp`` generates the ``count`` (default is 1) amound of non-breaking-spaces.
         """
         self.output('&nbsp;'*count)
-        
+
     def table(self, **args):
         u"""
         The ``table`` tag defines a table.¬†Inside a ``table`` tag you can put table headers,
@@ -1177,7 +1177,7 @@ class HtmlBuilderPart:
 
     def dt(self, **args):
         """
-        The ``dt`` tag defines the start of a definition list term. 
+        The ``dt`` tag defines the start of a definition list term.
         The ``dt`` tag is used only in definition lists (``dl``).
         <seealso><www href="http://www.w3schools.com/tags/tag_dt.asp" target="external"/></seealso>
         <python>
@@ -1193,7 +1193,7 @@ class HtmlBuilderPart:
 
     def dd(self, **args):
         """
-        The ``dd`` tag defines the start of a definition list term. 
+        The ``dd`` tag defines the start of a definition list term.
         The ``dd`` tag is used only in definition lists (``dl``).
         <seealso><www href="http://www.w3schools.com/tags/tag_dd.asp" target="external"/></seealso>
         <python>
@@ -1218,7 +1218,7 @@ class HtmlBuilderPart:
         The form element creates a form for user input. A form can contain elements such as textfields, checkboxes and
         radio-buttons. Forms are used to pass user data to a specified URL.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_form.asp" target="external"/></seealso>
-        
+
         If an upload tag is used in the form, then the ``enctype`` attribute should be set to ``
         enctype="multipart/form-data"``
         <python>
@@ -1345,7 +1345,7 @@ class HtmlBuilderPart:
 
     def textarea(self, **args):
         """
-        Defines a text area (a multi-line text input control). A user can write text in the text area. In a text 
+        Defines a text area (a multi-line text input control). A user can write text in the text area. In a text
         area you can write an unlimited number of characters. The default font in the text area is fixed pitch.<br/>
         <seealso><www href="http://www.w3schools.com/tags/tag_textarea.asp" target="external"/></seealso>
         <python>
@@ -1373,9 +1373,9 @@ class HtmlBuilderPart:
         self.write_tag(u'meta', False, args)
 
     def object(self, **args):
-        u"""The ``object`` defines an embedded object. Use this element to add 
-        multimedia to your XHTML page. This element allows you to specify the data and 
-        parameters for objects inserted into HTML documents, and the code that can be used to 
+        u"""The ``object`` defines an embedded object. Use this element to add
+        multimedia to your XHTML page. This element allows you to specify the data and
+        parameters for objects inserted into HTML documents, and the code that can be used to
         display/manipulate that data."""
         self.write_tag_noWhitespace(u'object', True, args)
 
@@ -1395,7 +1395,7 @@ class HtmlBuilderPart:
         self._closeTag_noWhitespace(u'big')
 
     def param(self, **args):
-        u"""The param element allows you to specify the run-time settings for an object inserted 
+        u"""The param element allows you to specify the run-time settings for an object inserted
         into XHTML documents."""
         self.write_tag(u'param', False, args)
 
